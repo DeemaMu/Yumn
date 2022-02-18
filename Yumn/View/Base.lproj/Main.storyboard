@@ -321,12 +321,36 @@
                                     <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="6FU-5X-VlE" customClass="RoundedView" customModule="Yumn" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="21.5" width="414" height="777"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="DRy-Zh-1mY" userLabel="sectionsStack">
-                                                <rect key="frame" x="20" y="85" width="374" height="562"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="61" translatesAutoresizingMaskIntoConstraints="NO" id="sIe-oS-DwQ">
+                                                <rect key="frame" x="20" y="8" width="374" height="680"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GK8-hk-FsJ">
+                                                        <rect key="frame" x="12.5" y="0.0" width="349" height="36"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="349" id="RW5-et-qR9"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="DRy-Zh-1mY" userLabel="sectionsStack">
+                                                        <rect key="frame" x="0.0" y="97" width="374" height="583"/>
+                                                    </stackView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="DRy-Zh-1mY" firstAttribute="top" secondItem="sIe-oS-DwQ" secondAttribute="top" constant="97" id="8LQ-ge-s4U"/>
+                                                    <constraint firstAttribute="trailing" secondItem="GK8-hk-FsJ" secondAttribute="trailing" constant="12.5" id="IlD-yd-2LU"/>
+                                                    <constraint firstItem="GK8-hk-FsJ" firstAttribute="top" secondItem="sIe-oS-DwQ" secondAttribute="top" id="U6D-ZT-iqU"/>
+                                                    <constraint firstItem="GK8-hk-FsJ" firstAttribute="leading" secondItem="sIe-oS-DwQ" secondAttribute="leading" constant="12.5" id="W1A-HN-qii"/>
+                                                    <constraint firstItem="DRy-Zh-1mY" firstAttribute="leading" secondItem="sIe-oS-DwQ" secondAttribute="leadingMargin" id="u2d-fc-NVo"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstItem="sIe-oS-DwQ" firstAttribute="leading" secondItem="6FU-5X-VlE" secondAttribute="leading" constant="20" id="3co-Us-BXi"/>
+                                            <constraint firstItem="sIe-oS-DwQ" firstAttribute="centerX" secondItem="6FU-5X-VlE" secondAttribute="centerX" id="7cB-Kn-7nk"/>
+                                            <constraint firstAttribute="bottom" secondItem="sIe-oS-DwQ" secondAttribute="bottom" constant="89" id="bfx-oP-FPi"/>
+                                            <constraint firstItem="sIe-oS-DwQ" firstAttribute="top" secondItem="6FU-5X-VlE" secondAttribute="topMargin" id="wNR-bT-zTP"/>
+                                        </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusV">
                                                 <real key="value" value="40"/>
@@ -357,6 +381,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="التبرع بالدم" leftItemsSupplementBackButton="YES" id="vdn-i1-LTF"/>
+                    <connections>
+                        <outlet property="segmentsView" destination="GK8-hk-FsJ" id="wqw-mg-pTc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xgd-Zx-D9c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

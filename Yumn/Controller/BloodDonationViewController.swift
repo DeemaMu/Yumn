@@ -13,13 +13,15 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
         
     }
     
-
+    @IBOutlet weak var segmentsView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let codeSegmented = CustomSegmentedControl(frame: CGRect(x: 0, y: 50, width: self.view.frame.width, height: 50), buttonTitle: ["مراكز التبرع","الإرشادات","الإحتياج"])
+        let codeSegmented = CustomSegmentedControl(frame: CGRect(x: 0, y: 0, width: segmentsView.frame.width, height: 50), buttonTitle: ["مراكز التبرع","الإرشادات","الإحتياج"])
             codeSegmented.backgroundColor = .clear
-        self.view.addSubview(codeSegmented)
+//        codeSegmented.delegate?.change(to: 2)
+        segmentsView.addSubview(codeSegmented)
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()

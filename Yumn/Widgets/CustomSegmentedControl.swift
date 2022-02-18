@@ -57,6 +57,13 @@ class CustomSegmentedControl: UIView {
             if btn == sender {
                 let selectorPosition = frame.width/CGFloat(buttonTitles.count) * CGFloat(buttonIndex)
                 selectedIndex = buttonIndex
+//                if(selectedIndex == 0){
+//                    selectedIndex = 2
+//                } else if (selectedIndex==1){
+//                    selectedIndex = 1
+//                } else if (selectedIndex==2){
+//                    selectedIndex = 0
+//                }
                 delegate?.change(to: selectedIndex)
                 UIView.animate(withDuration: 0.3) {
                     self.selectorView.frame.origin.x = selectorPosition
@@ -104,6 +111,21 @@ extension CustomSegmentedControl {
             button.setTitle(buttonTitle, for: .normal)
             button.addTarget(self, action:#selector(CustomSegmentedControl.buttonAction(sender:)), for: .touchUpInside)
             button.setTitleColor(textColor, for: .normal)
+            
+            let quote = buttonTitle
+            guard let customFont = UIFont(name: "Tajawal", size: 15) else {
+                fatalError("""
+                    Failed to load the "Tajawal" font.
+                    Make sure the font file is included in the project and the font name is spelled correctly.
+                    """
+                )
+            }
+//            let font = UIFont(name: "Tajawl", size: 20)
+            let attributes = [NSAttributedString.Key.font: customFont]
+            let attributedQuote = NSAttributedString(string: quote, attributes: attributes)
+            
+            button.setAttributedTitle(attributedQuote , for: .normal)
+            
             buttons.append(button)
         }
         buttons[0].setTitleColor(selectorTextColor, for: .normal)
