@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftUI
+import BetterSegmentedControl
 
 class BloodDonationViewController: UIViewController, CustomSegmentedControlDelegate {
     func change(to index: Int) {
@@ -14,9 +15,13 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
     }
     
     @IBOutlet weak var segmentsView: UIView!
+    @IBOutlet weak var seg2: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        let control = BetterSegmentedControl(frame: CGRect(x: 0, y: 0,width: seg2.frame.width, height: 50.0))
+        
+//        let control = BetterSegmentedControl.init(frame: CGRect(x: 0, y: 0, width: seg2.frame.width, height: 50), segments: , index: , options: )
         
         let codeSegmented = CustomSegmentedControl(frame: CGRect(x: 0, y: 0, width: segmentsView.frame.width, height: 50), buttonTitle: ["مراكز التبرع","الإرشادات","الإحتياج"])
             codeSegmented.backgroundColor = .clear

@@ -331,8 +331,14 @@
                                                             <constraint firstAttribute="width" constant="349" id="RW5-et-qR9"/>
                                                         </constraints>
                                                     </view>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="DRy-Zh-1mY" userLabel="sectionsStack">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="DRy-Zh-1mY" userLabel="sectionsStack">
                                                         <rect key="frame" x="0.0" y="97" width="374" height="583"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iuc-9T-qSY" userLabel="seg2">
+                                                                <rect key="frame" x="67" y="0.0" width="240" height="583"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            </view>
+                                                        </subviews>
                                                     </stackView>
                                                 </subviews>
                                                 <constraints>
@@ -382,6 +388,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="التبرع بالدم" leftItemsSupplementBackButton="YES" id="vdn-i1-LTF"/>
                     <connections>
+                        <outlet property="seg2" destination="iuc-9T-qSY" id="A1l-Tk-aJl"/>
                         <outlet property="segmentsView" destination="GK8-hk-FsJ" id="wqw-mg-pTc"/>
                     </connections>
                 </viewController>
