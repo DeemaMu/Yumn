@@ -7,15 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		956C67FD27BFEAD10026EA9E /* VolunteerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956C67FC27BFEAD10026EA9E /* VolunteerProfileViewController.swift */; };
 		95785059279E1917004F3D8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95785058279E1917004F3D8F /* AppDelegate.swift */; };
 		9578505B279E1917004F3D8F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9578505A279E1917004F3D8F /* SceneDelegate.swift */; };
 		9578505D279E1917004F3D8F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9578505C279E1917004F3D8F /* ViewController.swift */; };
 		95785060279E1917004F3D8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9578505E279E1917004F3D8F /* Main.storyboard */; };
 		95785062279E1918004F3D8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95785061279E1918004F3D8F /* Assets.xcassets */; };
 		95785065279E1918004F3D8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95785063279E1918004F3D8F /* LaunchScreen.storyboard */; };
+		95B7374C27BFF025006EE496 /* Tajawal-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 956C67FE27BFEB2E0026EA9E /* Tajawal-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		956C67FC27BFEAD10026EA9E /* VolunteerProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolunteerProfileViewController.swift; sourceTree = "<group>"; };
+		956C67FE27BFEB2E0026EA9E /* Tajawal-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tajawal-Regular.ttf"; sourceTree = "<group>"; };
 		95785055279E1917004F3D8F /* Yumn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yumn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95785058279E1917004F3D8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9578505A279E1917004F3D8F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +60,8 @@
 		95785057279E1917004F3D8F /* Yumn */ = {
 			isa = PBXGroup;
 			children = (
+				95B7374B27BFEFF9006EE496 /* Hospital */,
+				95B7374A27BFEFE5006EE496 /* Volunteer */,
 				95785058279E1917004F3D8F /* AppDelegate.swift */,
 				9578505A279E1917004F3D8F /* SceneDelegate.swift */,
 				9578505C279E1917004F3D8F /* ViewController.swift */,
@@ -63,8 +69,24 @@
 				95785061279E1918004F3D8F /* Assets.xcassets */,
 				95785063279E1918004F3D8F /* LaunchScreen.storyboard */,
 				95785066279E1918004F3D8F /* Info.plist */,
+				956C67FE27BFEB2E0026EA9E /* Tajawal-Regular.ttf */,
 			);
 			path = Yumn;
+			sourceTree = "<group>";
+		};
+		95B7374A27BFEFE5006EE496 /* Volunteer */ = {
+			isa = PBXGroup;
+			children = (
+				956C67FC27BFEAD10026EA9E /* VolunteerProfileViewController.swift */,
+			);
+			path = Volunteer;
+			sourceTree = "<group>";
+		};
+		95B7374B27BFEFF9006EE496 /* Hospital */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Hospital;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +149,7 @@
 			files = (
 				95785065279E1918004F3D8F /* LaunchScreen.storyboard in Resources */,
 				95785062279E1918004F3D8F /* Assets.xcassets in Resources */,
+				95B7374C27BFF025006EE496 /* Tajawal-Regular.ttf in Resources */,
 				95785060279E1917004F3D8F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,6 +164,7 @@
 				9578505D279E1917004F3D8F /* ViewController.swift in Sources */,
 				95785059279E1917004F3D8F /* AppDelegate.swift in Sources */,
 				9578505B279E1917004F3D8F /* SceneDelegate.swift in Sources */,
+				956C67FD27BFEAD10026EA9E /* VolunteerProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
