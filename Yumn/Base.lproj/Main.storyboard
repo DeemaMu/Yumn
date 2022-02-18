@@ -62,14 +62,14 @@
             <objects>
                 <viewController id="vzy-az-E16" userLabel="VolunteerProfileViewController" customClass="VolunteerProfileViewController" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JaO-Ue-ppo">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1146"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1038"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qme-FE-nuE">
-                                <rect key="frame" x="0.0" y="60" width="414" height="1086"/>
+                                <rect key="frame" x="0.0" y="60" width="414" height="978"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yl6-Gh-gxc">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1096"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yl6-Gh-gxc">
+                                        <rect key="frame" x="0.0" y="68" width="414" height="1096"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Volunteer" translatesAutoresizingMaskIntoConstraints="NO" id="Hpu-I9-MRj">
                                                 <rect key="frame" x="87" y="15" width="240" height="128"/>
@@ -81,7 +81,7 @@
                                                 <color key="textColor" red="0.21960784310000001" green="0.3803921569" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <color key="highlightedColor" red="0.21960784310000001" green="0.3803921569" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ديمه" borderStyle="roundedRect" placeholder="اسمك الكامل" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ALO-Mo-LL4">
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ادخل اسمك الاول" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ALO-Mo-LL4">
                                                 <rect key="frame" x="57" y="184" width="301" height="34"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -95,7 +95,7 @@
                                                 <color key="textColor" red="0.21960784310000001" green="0.3803921569" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <color key="highlightedColor" red="0.21960784310000001" green="0.3803921569" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="المطيري" borderStyle="roundedRect" placeholder="اسمك الكامل" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AGL-t7-S4l">
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ادخل اسم عائلتك" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AGL-t7-S4l">
                                                 <rect key="frame" x="57" y="271" width="301" height="34"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -109,7 +109,7 @@
                                                 <color key="textColor" red="0.21960784310000001" green="0.3803921569" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <color key="highlightedColor" red="0.21960784310000001" green="0.3803921569" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1121671679" borderStyle="roundedRect" placeholder="اسمك الكامل" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6GC-AH-zWG">
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ادخل سجلك المدني" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6GC-AH-zWG">
                                                 <rect key="frame" x="57" y="357" width="301" height="34"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -123,7 +123,7 @@
                                                 <color key="textColor" red="0.21960784310000001" green="0.3803921569" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <color key="highlightedColor" red="0.21960784310000001" green="0.3803921569" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="dema77.da@gmail.com" borderStyle="roundedRect" placeholder="اسمك الكامل" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZeK-oE-S9F">
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ادخل بريدك الالكتروني" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZeK-oE-S9F">
                                                 <rect key="frame" x="57" y="450" width="301" height="34"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -137,12 +137,13 @@
                                                 <color key="textColor" red="0.21960784310000001" green="0.3803921569" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <color key="highlightedColor" red="0.21960784310000001" green="0.3803921569" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0554243113" borderStyle="roundedRect" placeholder="اسمك الكامل" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ga0-L1-KEi">
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ادخل رقم الجوال" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ga0-L1-KEi">
                                                 <rect key="frame" x="57" y="526" width="301" height="34"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="18"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="الجنس" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="55h-MK-MHf">
                                                 <rect key="frame" x="246" y="572" width="112" height="21"/>
@@ -151,7 +152,7 @@
                                                 <color key="textColor" red="0.21960784310000001" green="0.3803921569" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <color key="highlightedColor" red="0.21960784310000001" green="0.3803921569" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="انثى" borderStyle="roundedRect" placeholder="اسمك الكامل" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zLB-Ny-eFx">
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="اسمك الكامل" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zLB-Ny-eFx">
                                                 <rect key="frame" x="57" y="601" width="301" height="34"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -165,21 +166,21 @@
                                                 <color key="textColor" red="0.21960784310000001" green="0.3803921569" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <color key="highlightedColor" red="0.21960784310000001" green="0.3803921569" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="O" borderStyle="roundedRect" placeholder="اسمك الكامل" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hgI-WQ-CL8">
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="اسمك الكامل" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hgI-WQ-CL8">
                                                 <rect key="frame" x="57" y="672" width="301" height="34"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ديت اوف برث" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QbB-TA-fg1">
-                                                <rect key="frame" x="262" y="720" width="96" height="18"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="تاريخ الميلاد" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QbB-TA-fg1">
+                                                <rect key="frame" x="271" y="720" width="87" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="18"/>
                                                 <color key="textColor" red="0.21960784310000001" green="0.3803921569" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <color key="highlightedColor" red="0.21960784310000001" green="0.3803921569" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="29/6/2000" borderStyle="roundedRect" placeholder="اسمك الكامل" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wcC-Oq-NH1">
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="اسمك الكامل" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wcC-Oq-NH1">
                                                 <rect key="frame" x="57" y="749" width="301" height="34"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -200,6 +201,9 @@
                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="Update:" destination="vzy-az-E16" eventType="touchUpInside" id="n9c-vQ-SuG"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="الوزن" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qxj-FX-379">
                                                 <rect key="frame" x="246" y="801" width="112" height="21"/>
@@ -208,12 +212,12 @@
                                                 <color key="textColor" red="0.21960784310000001" green="0.3803921569" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <color key="highlightedColor" red="0.21960784310000001" green="0.3803921569" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" placeholder="اسمك الكامل" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ncw-Yf-OdR">
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ادخل وزنك" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ncw-Yf-OdR">
                                                 <rect key="frame" x="57" y="830" width="301" height="34"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="18"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="المدينة" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tOQ-Tb-xWT">
                                                 <rect key="frame" x="306" y="878" width="52" height="18"/>
@@ -222,7 +226,7 @@
                                                 <color key="textColor" red="0.21960784310000001" green="0.3803921569" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <color key="highlightedColor" red="0.21960784310000001" green="0.3803921569" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="الرياض" borderStyle="roundedRect" placeholder="اسمك الكامل" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KNy-GD-myh">
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ادخل اسم مدينتك" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KNy-GD-myh">
                                                 <rect key="frame" x="57" y="907" width="301" height="34"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -268,20 +272,20 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="88f-Kz-h8C"/>
-                    <size key="freeformSize" width="414" height="1200"/>
+                    <size key="freeformSize" width="414" height="1092"/>
                     <connections>
                         <outlet property="backView" destination="Yl6-Gh-gxc" id="4eP-zl-3bK"/>
-                        <outlet property="birthdayTextField" destination="wcC-Oq-NH1" id="WFn-ov-Ggu"/>
+                        <outlet property="birthdateTextField" destination="wcC-Oq-NH1" id="8DY-Tz-QOx"/>
                         <outlet property="bloodTypeTextField" destination="hgI-WQ-CL8" id="Fqg-Io-v5i"/>
                         <outlet property="cityTextField" destination="KNy-GD-myh" id="yce-Dl-q9U"/>
                         <outlet property="emailTextField" destination="ZeK-oE-S9F" id="ONi-qh-fub"/>
                         <outlet property="familyTextField" destination="AGL-t7-S4l" id="7aY-ja-jdg"/>
+                        <outlet property="genderTextField" destination="zLB-Ny-eFx" id="M7u-a4-BnD"/>
                         <outlet property="nameTextField" destination="ALO-Mo-LL4" id="I4y-hJ-CuZ"/>
                         <outlet property="nationalIDTextField" destination="6GC-AH-zWG" id="jxe-rX-xMX"/>
                         <outlet property="phoneTextField" destination="ga0-L1-KEi" id="Q7b-iN-DLO"/>
                         <outlet property="saveButton" destination="RFc-Gk-dS0" id="1mB-lE-U20"/>
-                        <outlet property="sexTextField" destination="zLB-Ny-eFx" id="FDx-cI-c6o"/>
-                        <outlet property="wiegthTextField" destination="Ncw-Yf-OdR" id="A7e-eZ-oMf"/>
+                        <outlet property="weightTextField" destination="Ncw-Yf-OdR" id="KeR-Pk-dVp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Urp-pn-2Th" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
