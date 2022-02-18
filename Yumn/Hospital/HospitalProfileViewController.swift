@@ -4,7 +4,7 @@
 //
 //  Created by Deema Almutairi on 19/02/2022.
 //
-
+import SCLAlertView
 import Foundation
 import FirebaseFirestore
 import UIKit
@@ -106,9 +106,10 @@ class HospitalProfileViewController: UIViewController, UITextFieldDelegate {
              // save data
              docRef.setData(["hospitalName": hospitalTextField.text!,
                              "phone": Int(phoneTextField.text!)!,
-                             "uid":"",
+                             "uid":"Mw9h0hFX20vyTKuplNdv",
                              "userType":"Hospital"
                             ])
+        SCLAlertView().showSuccess("Success", subTitle: "تم حفظ التغييرات بنجاح")
     }
 }
 
