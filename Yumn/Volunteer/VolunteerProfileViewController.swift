@@ -8,7 +8,7 @@ import Foundation
 import FirebaseFirestore
 import UIKit
 
-class VolunteerProfileViewController: UIViewController {
+class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
     
     let database = Firestore.firestore()
     
@@ -33,19 +33,21 @@ class VolunteerProfileViewController: UIViewController {
     @IBOutlet weak var cityTextField: UITextField!
     
     @IBOutlet weak var saveButton: UIButton!
-//
+    
+    let datePicker = UIDatePicker()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         backView.layer.cornerRadius = 45
         saveButton.layer.cornerRadius = 45
         textFieldSetUP()
-    
+        createDatePicker()
         // Read Data
         profileInfo()
        
-        
     }
+    
     func profileInfo(){
         // 1. get the Doc
         let docRef = database.document("users/XtXzhe5lMWR2J04EAe5n4GMs2ar1")
@@ -101,6 +103,7 @@ class VolunteerProfileViewController: UIViewController {
             }
         }
     }
+    
     func textFieldSetUP(){
         textFieldStyle(TextField: nameTextField)
         textFieldStyle(TextField: familyTextField)
@@ -115,6 +118,23 @@ class VolunteerProfileViewController: UIViewController {
     }
     
     func textFieldStyle(TextField : UITextField){
+        TextField.delegate = self
+        TextFieldStyle(TextField: TextField)
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        let bottomLine = CALayer()
+        
+        bottomLine.frame = CGRect(x: 0, y: textField.frame.height - 2, width: textField.frame.width, height: 2)
+        
+        bottomLine.backgroundColor = UIColor.init(red: 56/255, green: 97/255, blue: 93/255, alpha: 1).cgColor
+        
+        textField.borderStyle = .none
+        
+        textField.layer.addSublayer(bottomLine)
+    }
+    
+    func TextFieldStyle(TextField : UITextField){
         let bottomLine = CALayer()
         
         bottomLine.frame = CGRect(x: 0, y: TextField.frame.height - 2, width: TextField.frame.width, height: 2)
@@ -124,8 +144,41 @@ class VolunteerProfileViewController: UIViewController {
         TextField.borderStyle = .none
         
         TextField.layer.addSublayer(bottomLine)
-//        TextField.font = UIFont(name: "Tajawal-Regular", size: 18)!
     }
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+        TextFieldStyle(TextField: textField)
+    }
+    
+    // Datepicker
+
+func createDatePicker(){
+    // toolbar
+    let toolBar = UIToolbar()
+    toolBar.sizeToFit()
+    
+    // Done button
+    let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
+    toolBar.setItems([doneBtn], animated: true)
+    // assign tool bar
+    birthdateTextField.inputAccessoryView = toolBar
+    
+    //
+    birthdateTextField.inputView = datePicker
+    
+    datePicker.datePickerMode = .date
+}
+
+@objc func donePressed(){
+    // Formatter
+    
+    let formatter = DateFormatter()
+    formatter.dateStyle = .medium
+    formatter.timeStyle = .none
+    
+    birthdateTextField.text = formatter.string(from: datePicker.date)
+    self.view.endEditing(true)
+}
     
     @IBAction func Update(_ sender: Any) {
         // get the Doc
@@ -141,6 +194,8 @@ class VolunteerProfileViewController: UIViewController {
                         "bloodType": bloodTypeTextField.text!,
                         "birthdate": birthdateTextField.text!,
                         "weight": Double(weightTextField.text!)!,
-                        "city": cityTextField.text!])
+                        "city": cityTextField.text!,
+                        "uid" : "XtXzhe5lMWR2J04EAe5n4GMs2ar1",
+                        "userType" : "Volunteer"])
     }
 }
