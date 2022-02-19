@@ -14,9 +14,15 @@ class VHomeViewController: UIViewController {
         
     }
     
-    func BG(){
-        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToBloodDonation" {
+            let destinationVC = segue.destination as! BloodDonationViewController
+//            destinationVC.bmiValue = calculatorBrain.getBMIValue()
+//            destinationVC.advice = calculatorBrain.getAdvice()
+//            destinationVC.color = calculatorBrain.getColor()
+        }
     }
+    
 
 
 }
