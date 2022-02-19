@@ -8,17 +8,25 @@
 import UIKit
 import SwiftUI
 import BetterSegmentedControl
+import MapKit
+import CoreLocation
+
 
 class BloodDonationViewController: UIViewController, CustomSegmentedControlDelegate {
+    
+    var location:CLLocation?
+    var userLocation:CLLocationCoordinate2D?
+    @IBOutlet weak var segmentsView: UIView!
+    @IBOutlet weak var seg2: UIView!
+    
     func change(to index: Int) {
         
     }
     
-    @IBOutlet weak var segmentsView: UIView!
-    @IBOutlet weak var seg2: UIView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("\(String(describing: userLocation))")
+
 //        let control = BetterSegmentedControl(frame: CGRect(x: 0, y: 0,width: seg2.frame.width, height: 50.0))
         
 //        let control = BetterSegmentedControl.init(frame: CGRect(x: 0, y: 0, width: seg2.frame.width, height: 50), segments: , index: , options: )

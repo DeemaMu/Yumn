@@ -6,18 +6,24 @@
 //
 
 import UIKit
+import SwiftUI
+import CoreLocation
 
 class VHomeViewController: UIViewController {
+    
+    @ObservedObject var lm = LocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("\(String(describing: lm.location))")
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToBloodDonation" {
             let destinationVC = segue.destination as! BloodDonationViewController
-//            destinationVC.bmiValue = calculatorBrain.getBMIValue()
+            destinationVC.userLocation = lm.getUserLocation()
+            destinationVC.location = lm.location
 //            destinationVC.advice = calculatorBrain.getAdvice()
 //            destinationVC.color = calculatorBrain.getColor()
         }

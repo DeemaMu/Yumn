@@ -24,6 +24,12 @@
 		B9503D8827BAE4E500E312B8 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9503D8727BAE4E400E312B8 /* CustomSegmentedControl.swift */; };
 		B97A37FE27B9D32A00718079 /* RoundedShadowedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A37FD27B9D32A00718079 /* RoundedShadowedView.swift */; };
 		B97A380227BA9EA000718079 /* BloodDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A380127BA9EA000718079 /* BloodDonationViewController.swift */; };
+		B9DA61CE27C10C2900359487 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9DA61CD27C10C2800359487 /* GoogleService-Info.plist */; };
+		B9DA61D127C10DC800359487 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B9DA61D027C10DC800359487 /* FirebaseAnalytics */; };
+		B9DA61D327C10DC800359487 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B9DA61D227C10DC800359487 /* FirebaseAuth */; };
+		B9DA61D527C10DC800359487 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B9DA61D427C10DC800359487 /* FirebaseFirestore */; };
+		B9DA61DA27C10FCC00359487 /* LocationManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DA61D927C10FCC00359487 /* LocationManger.swift */; };
+		B9DA61DC27C1100B00359487 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DA61DB27C1100B00359487 /* Location.swift */; };
 		E9731C5EF4D3F672CC7B6A82 /* Pods_Yumn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE297370FD9B2B9E8B5BCA18 /* Pods_Yumn.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +55,9 @@
 		B9503D8727BAE4E400E312B8 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		B97A37FD27B9D32A00718079 /* RoundedShadowedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowedView.swift; sourceTree = "<group>"; };
 		B97A380127BA9EA000718079 /* BloodDonationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationViewController.swift; sourceTree = "<group>"; };
+		B9DA61CD27C10C2800359487 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B9DA61D927C10FCC00359487 /* LocationManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManger.swift; sourceTree = "<group>"; };
+		B9DA61DB27C1100B00359487 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		FE477FC8E4914E762153ADF0 /* Pods-Yumn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.debug.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,6 +66,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9DA61D127C10DC800359487 /* FirebaseAnalytics in Frameworks */,
+				B9DA61D527C10DC800359487 /* FirebaseFirestore in Frameworks */,
+				B9DA61D327C10DC800359487 /* FirebaseAuth in Frameworks */,
 				E9731C5EF4D3F672CC7B6A82 /* Pods_Yumn.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -93,7 +105,9 @@
 		95785057279E1917004F3D8F /* Yumn */ = {
 			isa = PBXGroup;
 			children = (
-				B930F86627B85D3200E70860 /* Widgets */,
+				B9DA61D627C10F7200359487 /* Managers */,
+				B9DA61CD27C10C2800359487 /* GoogleService-Info.plist */,
+				B930F86627B85D3200E70860 /* Custom Classes */,
 				B930F85727B8560E00E70860 /* Fonts */,
 				B930F85627B8548900E70860 /* Controller */,
 				B930F85527B8547E00E70860 /* View */,
@@ -110,6 +124,7 @@
 		B930F85427B8547300E70860 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B9DA61DB27C1100B00359487 /* Location.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -145,14 +160,22 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		B930F86627B85D3200E70860 /* Widgets */ = {
+		B930F86627B85D3200E70860 /* Custom Classes */ = {
 			isa = PBXGroup;
 			children = (
 				B930F86727B85D5E00E70860 /* RoundedView.swift */,
 				B97A37FD27B9D32A00718079 /* RoundedShadowedView.swift */,
 				B9503D8727BAE4E400E312B8 /* CustomSegmentedControl.swift */,
 			);
-			path = Widgets;
+			path = "Custom Classes";
+			sourceTree = "<group>";
+		};
+		B9DA61D627C10F7200359487 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				B9DA61D927C10FCC00359487 /* LocationManger.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		FB3A4FC32329E4399DABC3B5 /* Pods */ = {
@@ -161,7 +184,6 @@
 				FE477FC8E4914E762153ADF0 /* Pods-Yumn.debug.xcconfig */,
 				23B012C0B7B8550DB6A02CF8 /* Pods-Yumn.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -183,6 +205,11 @@
 			dependencies = (
 			);
 			name = Yumn;
+			packageProductDependencies = (
+				B9DA61D027C10DC800359487 /* FirebaseAnalytics */,
+				B9DA61D227C10DC800359487 /* FirebaseAuth */,
+				B9DA61D427C10DC800359487 /* FirebaseFirestore */,
+			);
 			productName = Yumn;
 			productReference = 95785055279E1917004F3D8F /* Yumn.app */;
 			productType = "com.apple.product-type.application";
@@ -211,6 +238,9 @@
 				Base,
 			);
 			mainGroup = 9578504C279E1917004F3D8F;
+			packageReferences = (
+				B9DA61CF27C10DC800359487 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 95785056279E1917004F3D8F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -233,6 +263,7 @@
 				B930F86127B8567700E70860 /* Tajawal-Medium.ttf in Resources */,
 				B930F86427B8567700E70860 /* Tajawal-Regular.ttf in Resources */,
 				95785060279E1917004F3D8F /* Main.storyboard in Resources */,
+				B9DA61CE27C10C2900359487 /* GoogleService-Info.plist in Resources */,
 				B930F86327B8567700E70860 /* Tajawal-ExtraLight.ttf in Resources */,
 				B930F86527B8567700E70860 /* Tajawal-Black.ttf in Resources */,
 			);
@@ -289,7 +320,9 @@
 			files = (
 				B9503D8827BAE4E500E312B8 /* CustomSegmentedControl.swift in Sources */,
 				9578505D279E1917004F3D8F /* VHomeViewController.swift in Sources */,
+				B9DA61DA27C10FCC00359487 /* LocationManger.swift in Sources */,
 				B97A380227BA9EA000718079 /* BloodDonationViewController.swift in Sources */,
+				B9DA61DC27C1100B00359487 /* Location.swift in Sources */,
 				B930F86827B85D5F00E70860 /* RoundedView.swift in Sources */,
 				B97A37FE27B9D32A00718079 /* RoundedShadowedView.swift in Sources */,
 				95785059279E1917004F3D8F /* AppDelegate.swift in Sources */,
@@ -446,6 +479,7 @@
 				DEVELOPMENT_TEAM = 94UUPGX482;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Yumn/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Yumn Needs Access to Your Location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -457,7 +491,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.udacity.Yumn;
+				PRODUCT_BUNDLE_IDENTIFIER = Nouf.Yumn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -476,6 +510,7 @@
 				DEVELOPMENT_TEAM = 94UUPGX482;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Yumn/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Yumn Needs Access to Your Location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -487,7 +522,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.udacity.Yumn;
+				PRODUCT_BUNDLE_IDENTIFIER = Nouf.Yumn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -517,6 +552,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B9DA61CF27C10DC800359487 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B9DA61D027C10DC800359487 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B9DA61CF27C10DC800359487 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		B9DA61D227C10DC800359487 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B9DA61CF27C10DC800359487 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		B9DA61D427C10DC800359487 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B9DA61CF27C10DC800359487 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9578504D279E1917004F3D8F /* Project object */;
 }
