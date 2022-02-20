@@ -2,6 +2,7 @@
 platform :ios, '14.0'
 
 pod 'BetterSegmentedControl', '~> 2.0'
+pod 'SwiftIcons', '~> 3.0'
 post_install do |installer|
 installer.pods_project.build_configurations.each do |config|
 config.build_settings['LD_RUNPATH_SEARCH_PATHS'] = [

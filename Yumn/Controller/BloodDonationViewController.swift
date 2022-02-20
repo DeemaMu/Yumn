@@ -2,7 +2,7 @@
 //  BloodDonationViewController.swift
 //  Yumn
 //
-//  Created by Rawan Mohammed on 14/02/2022.
+//  Created by Rawan Mohammed on 10/02/2022.
 //
 
 import UIKit
@@ -18,6 +18,7 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
     var userLocation:CLLocationCoordinate2D?
     @IBOutlet weak var segmentsView: UIView!
     @IBOutlet weak var seg2: UIView!
+    var hospitals:[Location] = []
     
     func change(to index: Int) {
         
@@ -27,12 +28,12 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
         super.viewDidLoad()
         print("\(String(describing: userLocation))")
 
-//        let control = BetterSegmentedControl(frame: CGRect(x: 0, y: 0,width: seg2.frame.width, height: 50.0))
+//        let control = BetterSegmentedControl(frame: CGRect(x: 0, y: 0,width: seg2.frame.width,        height: 50.0))
         
-//        let control = BetterSegmentedControl.init(frame: CGRect(x: 0, y: 0, width: seg2.frame.width, height: 50), segments: , index: , options: )
+//        let control = BetterSegmentedControl.init(frame: CGRect(x: 0, y: 0, width:                    seg2.frame.width, height: 50), segments: , index: , options: )
         
         let codeSegmented = CustomSegmentedControl(frame: CGRect(x: 0, y: 0, width: segmentsView.frame.width, height: 50), buttonTitle: ["مراكز التبرع","الإرشادات","الإحتياج"])
-            codeSegmented.backgroundColor = .clear
+        codeSegmented.backgroundColor = .clear
 //        codeSegmented.delegate?.change(to: 2)
         segmentsView.addSubview(codeSegmented)
         
@@ -53,8 +54,23 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func getAllLocations(){
+        
+    }
+    
+    
+    func calculateDistance(lat: Double, long: Double ) -> Double {
+        let currentLocation = CLLocation(latitude: userLocation!.latitude, longitude: userLocation!.longitude)
+        let DestinationLocation = CLLocation(latitude: lat, longitude: long)
+        let distance = currentLocation.distance(from: DestinationLocation) / 1000
+        return distance
+        
+    }
+    
 
 }
+
 //
 //struct BloodDonationViewController_Previews: PreviewProvider {
 //    static var previews: some View {

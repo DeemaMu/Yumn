@@ -14,12 +14,6 @@ struct Location{
     let long:Double
     let city:String
     let area:String
-    
-    func calculateDistance(latitude: Double, longitude: Double ) -> Double {
-        let currentLocation = CLLocation(latitude: latitude, longitude: longitude)
-        let DestinationLocation = CLLocation(latitude: lat, longitude: long)
-        let distance = currentLocation.distance(from: DestinationLocation) / 1000
-        return distance
+    var distance:Double?
         
-    }
 }
