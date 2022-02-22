@@ -34,7 +34,18 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var saveButton: UIButton!
     
+    // Error Messages
+    
+    @IBOutlet weak var firstNameMSG: UILabel!
+    @IBOutlet weak var lastNameMSG: UILabel!
+    @IBOutlet weak var nationalIDMSG: UILabel!
+    @IBOutlet weak var emailMSG: UILabel!
+    @IBOutlet weak var phoneMSG: UILabel!
+    
+    
+    
     let datePicker = UIDatePicker()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,11 +54,25 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
         saveButton.layer.cornerRadius = 45
         textFieldSetUP()
         createDatePicker()
+        
         // Read Data
         profileInfo()
+        
+        // Hide
+        saveButton(enabeld: false)
+        hideErrorMSGs()
        
     }
-    
+    func saveButton(enabeld : Bool){
+        saveButton.isEnabled = enabeld
+    }
+    func hideErrorMSGs(){
+        firstNameMSG.isHidden = true
+        lastNameMSG.isHidden = true
+        nationalIDMSG.isHidden = true
+        emailMSG.isHidden = true
+        phoneMSG.isHidden = true
+    }
     func profileInfo(){
         // 1. get the Doc
         let docRef = database.document("users/XtXzhe5lMWR2J04EAe5n4GMs2ar1")
@@ -198,4 +223,154 @@ func createDatePicker(){
                         "uid" : "XtXzhe5lMWR2J04EAe5n4GMs2ar1",
                         "userType" : "Volunteer"])
     }
+    
+    @IBAction func firstNameChanged(_ sender: Any) {
+        if let firstName = nameTextField.text
+                {
+                    if let errorMessage = invalidName(firstName)
+                    {
+                        firstNameMSG.text = errorMessage
+                        firstNameMSG.isHidden = false
+                    }
+                    else
+                    {
+                        firstNameMSG.isHidden = true
+                    }
+                }
+                
+                checkForValidForm()
+    }
+    func invalidName(_ value: String) -> String?
+        {
+            let set = CharacterSet(charactersIn: value)
+            if CharacterSet.decimalDigits.isSuperset(of: set)
+            {
+                return "يجب ان يحتوي على احرف فقط"
+            }
+            
+            if value.count < 2
+            {
+                return "الرجاء ادخال اسم صحيح"
+            }
+            return nil
+        }
+    
+    @IBAction func lastNameChanged(_ sender: Any) {
+        if let lastName = familyTextField.text
+                {
+                    if let errorMessage = invalidName(lastName)
+                    {
+                        lastNameMSG.text = errorMessage
+                        lastNameMSG.isHidden = false
+                    }
+                    else
+                    {
+                        lastNameMSG.isHidden = true
+                    }
+                }
+                
+                checkForValidForm()
+    }
+    
+    @IBAction func nationalIDChanged(_ sender: Any) {
+        if let nationalID = nationalIDTextField.text
+                {
+                    if let errorMessage = invalidID(nationalID)
+                    {
+                        nationalIDMSG.text = errorMessage
+                        nationalIDMSG.isHidden = false
+                    }
+                    else
+                    {
+                        nationalIDMSG.isHidden = true
+                    }
+                }
+                checkForValidForm()
+    }
+    
+    func invalidID(_ value: String) -> String?
+        {
+            let set = CharacterSet(charactersIn: value)
+            if !CharacterSet.decimalDigits.isSuperset(of: set)
+            {
+                return "يجب ان لا يحتوي على احرف"
+            }
+            
+            if value.count != 10
+            {
+                return "الرجاء ادخال سجل مدني صحيح"
+            }
+            return nil
+        }
+    
+    @IBAction func emailChanged(_ sender: Any) {
+        if let email = emailTextField.text
+                {
+                    if let errorMessage = invalidEmail(email)
+                    {
+                        emailMSG.text = errorMessage
+                        emailMSG.isHidden = false
+                    }
+                    else
+                    {
+                        emailMSG.isHidden = true
+                    }
+                }
+                
+                checkForValidForm()
+    }
+    
+    func invalidEmail(_ value: String) -> String?
+        {
+            let reqularExpression = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+            let predicate = NSPredicate(format: "SELF MATCHES %@", reqularExpression)
+            if !predicate.evaluate(with: value)
+            {
+                return "الرجاء ادخال بريد الكتروني صحيح"
+            }
+            
+            return nil
+        }
+    @IBAction func phoneChanged(_ sender: Any) {
+        if let phoneNumber = phoneTextField.text
+                {
+                    if let errorMessage = invalidPhoneNumber(phoneNumber)
+                    {
+                        phoneMSG.text = errorMessage
+                        phoneMSG.isHidden = false
+                    }
+                    else
+                    {
+                        phoneMSG.isHidden = true
+                    }
+                }
+                checkForValidForm()
+    }
+    
+    func invalidPhoneNumber(_ value: String) -> String?
+        {
+            let set = CharacterSet(charactersIn: value)
+            if !CharacterSet.decimalDigits.isSuperset(of: set)
+            {
+                return "الرجاء ادخال رقم جوال صحيح"
+            }
+            
+            if value.count != 10
+            {
+                return "الرجاء ادخال رقم جوال صحيح"
+            }
+            return nil
+        }
+    
+    func checkForValidForm()
+        {
+            if emailMSG.isHidden && firstNameMSG.isHidden && lastNameMSG.isHidden && phoneMSG.isHidden && nationalIDMSG.isHidden
+            {
+                saveButton.isEnabled = true
+            }
+            else
+            {
+                saveButton.isEnabled = false
+            }
+        }
 }
