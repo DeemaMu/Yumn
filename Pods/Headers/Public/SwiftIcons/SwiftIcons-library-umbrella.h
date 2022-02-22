@@ -1,1 +1,0 @@
-../../../Target Support Files/SwiftIcons-library/SwiftIcons-library-umbrella.h

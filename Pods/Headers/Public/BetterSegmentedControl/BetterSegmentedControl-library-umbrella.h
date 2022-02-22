@@ -1,1 +1,0 @@
-../../../Target Support Files/BetterSegmentedControl-library/BetterSegmentedControl-library-umbrella.h
