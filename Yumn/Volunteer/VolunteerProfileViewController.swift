@@ -16,26 +16,18 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var familyTextField: UITextField!
-    
     @IBOutlet weak var nationalIDTextField: UITextField!
-    
     @IBOutlet weak var emailTextField: UITextField!
-    
     @IBOutlet weak var phoneTextField: UITextField!
-    
     @IBOutlet weak var genderTextField: UITextField!
-    
     @IBOutlet weak var bloodTypeTextField: UITextField!
-    
     @IBOutlet weak var birthdateTextField: UITextField!
-    
     @IBOutlet weak var weightTextField: UITextField!
     @IBOutlet weak var cityTextField: UITextField!
     
     @IBOutlet weak var saveButton: UIButton!
     
     // Error Messages
-    
     @IBOutlet weak var firstNameMSG: UILabel!
     @IBOutlet weak var lastNameMSG: UILabel!
     @IBOutlet weak var nationalIDMSG: UILabel!
@@ -44,7 +36,7 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
     
     
     
-    let datePicker = UIDatePicker()
+//    let datePicker = UIDatePicker()
     
     
     override func viewDidLoad() {
@@ -178,32 +170,45 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
     // Datepicker
 
 func createDatePicker(){
-    // toolbar
-    let toolBar = UIToolbar()
-    toolBar.sizeToFit()
+    let toolbar = UIToolbar()
+    toolbar.sizeToFit()
     
-    // Done button
-    let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
-    toolBar.setItems([doneBtn], animated: true)
-    // assign tool bar
-    birthdateTextField.inputAccessoryView = toolBar
+    let doneBtn = UIBarButtonItem(title: "تم", style: .done, target: nil, action: #selector(donePressed))
+    doneBtn.tintColor = UIColor.init(red: 56/255, green: 97/255, blue: 93/255, alpha: 1)
+    toolbar.setItems([doneBtn], animated: true)
     
-    //
-    birthdateTextField.inputView = datePicker
+    birthdateTextField.inputAccessoryView = toolbar
     
+    
+    let datePicker = UIDatePicker()
     datePicker.datePickerMode = .date
+    datePicker.addTarget(self, action: #selector(dateChange(datePicker:)), for: UIControl.Event.valueChanged)
+    datePicker.frame.size = CGSize(width: 0, height: 300)
+    datePicker.preferredDatePickerStyle = .wheels
+    
+    // Today's Date
+    datePicker.maximumDate = Date()
+    birthdateTextField.inputView = datePicker
 }
 
-@objc func donePressed(){
-    // Formatter
-    
-    let formatter = DateFormatter()
-    formatter.dateStyle = .medium
-    formatter.timeStyle = .none
-    
-    birthdateTextField.text = formatter.string(from: datePicker.date)
+    @objc func donePressed(){
     self.view.endEditing(true)
 }
+    
+func formaDate(date: Date) -> String {
+        
+    let formatter = DateFormatter()
+    
+    formatter.dateFormat = "dd/MM/YYYY"
+        
+        return formatter.string(from: date)
+    }
+    
+    
+    @objc func dateChange(datePicker: UIDatePicker){
+        birthdateTextField.text = formaDate(date: datePicker.date)
+    }
+    
     
     @IBAction func Update(_ sender: Any) {
         // get the Doc
