@@ -13,10 +13,12 @@ import CoreLocation
 
 class BloodDonationViewController: UIViewController, CustomSegmentedControlDelegate {
     
-    @IBOutlet weak var hospitalsList: UITableView!
     var location:CLLocation?
     var userLocation:CLLocationCoordinate2D?
     @IBOutlet weak var segmentsView: UIView!
+    
+    @IBOutlet weak var tableMain: UITableView!
+    
     @IBOutlet weak var seg2: UIView!
     
     
@@ -25,6 +27,9 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
         Location(name: "الملك خالد", lat: 25.8778, long: 45.4444, city: "الرياض", area: "الدرعية"),
         Location(name: "المملكة", lat: 26.8778, long: 46.4444, city: "الرياض", area: "الربيع")
     ]
+    
+    var sortedHospitals:[Location]?
+
 
     
     override func viewDidLoad() {
@@ -44,14 +49,13 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
         hospitals[2].distance = calculateDistance( lat: hospitals[2].lat, long: hospitals[2].long)
         
     
-        let sortedHospitals = hospitals.sorted(by: { (h0: Location, h1: Location) -> Bool in
+        sortedHospitals = hospitals.sorted(by: { (h0: Location, h1: Location) -> Bool in
             return h0.distance! < h1.distance!
         })
         
-        hospitals = sortedHospitals
-        
-        hospitalsList.dataSource = self
-//        hospitalsList.register(UINib(nibName: "HospitalCellTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "HospitalsCell")
+                
+        tableMain.dataSource = self
+        tableMain.register(UINib(nibName: "HospitalCellTableViewCell", bundle: nil), forCellReuseIdentifier: "HospitalsCell")
         
         
 
@@ -74,7 +78,9 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
     */
     
     func change(to index: Int) {
-        
+        if(index==0){
+            
+        }
     }
     
     func getAllLocations(){
@@ -97,15 +103,16 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
 extension BloodDonationViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return hospitals.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath)
-        cell.textLabel?.text = "10"
-//        cell.hospitalName.text = hospitals[indexPath.row].name
-//        cell.locationText.text = "\(hospitals[indexPath.row].area) - \(hospitals[indexPath.row].city)"
-//        cell.distanceText.text = "يبعد: \(String(describing: hospitals[indexPath.row].distance))"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HospitalsCell", for: indexPath) as! HospitalCellTableViewCell
+        
+        cell.hospitalName.text = sortedHospitals![indexPath.row].name
+        cell.locationText.text = "\(sortedHospitals![indexPath.row].area) - \(sortedHospitals![indexPath.row].city)"
+        cell.distanceText.text = "يبعد: \(String(describing: sortedHospitals![indexPath.row].distance))"
+        
         return cell
     }
     
