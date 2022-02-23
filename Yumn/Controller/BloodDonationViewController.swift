@@ -37,11 +37,9 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
 //        codeSegmented.delegate?.change(to: 2)
         segmentsView.addSubview(codeSegmented)
         
-        // trial for retrieveing data
-        //
-//        hController.userLocation = self.userLocation
-//        sortedHospitals = hController.getHospitals()
+        
         sortedHospitals = getHospitals()
+        
         tableMain.dataSource = self
         tableMain.register(UINib(nibName: "HospitalCellTableViewCell", bundle: nil), forCellReuseIdentifier: "HospitalsCell")
             
