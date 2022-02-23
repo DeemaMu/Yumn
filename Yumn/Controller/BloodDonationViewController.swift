@@ -10,28 +10,21 @@ import SwiftUI
 import BetterSegmentedControl
 import MapKit
 import CoreLocation
+import Firebase
 
 class BloodDonationViewController: UIViewController, CustomSegmentedControlDelegate {
     
     var location:CLLocation?
     var userLocation:CLLocationCoordinate2D?
     @IBOutlet weak var segmentsView: UIView!
-    
     @IBOutlet weak var tableMain: UITableView!
-    
     @IBOutlet weak var seg2: UIView!
     
-    
-    var hospitals:[Location] = [
-        Location(name: "دلة", lat: 25.8777, long: 42.4444, city: "الرياض", area: "النخيل"),
-        Location(name: "الملك خالد", lat: 25.8778, long: 45.4444, city: "الرياض", area: "الدرعية"),
-        Location(name: "المملكة", lat: 26.8778, long: 46.4444, city: "الرياض", area: "الربيع")
-    ]
-    
     var sortedHospitals:[Location]?
-
-
+    var hController = HospitalsController()
     
+    let db = Firestore.firestore()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,58 +37,26 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
 //        codeSegmented.delegate?.change(to: 2)
         segmentsView.addSubview(codeSegmented)
         
-        hospitals[0].distance = calculateDistance( lat: hospitals[0].lat, long: hospitals[0].long)
-        hospitals[1].distance = calculateDistance( lat: hospitals[1].lat, long: hospitals[1].long)
-        hospitals[2].distance = calculateDistance( lat: hospitals[2].lat, long: hospitals[2].long)
-        
-    
-        sortedHospitals = hospitals.sorted(by: { (h0: Location, h1: Location) -> Bool in
-            return h0.distance! < h1.distance!
-        })
-        
-                
+        // trial for retrieveing data
+        //
+//        hController.userLocation = self.userLocation
+//        sortedHospitals = hController.getHospitals()
+        sortedHospitals = getHospitals()
         tableMain.dataSource = self
         tableMain.register(UINib(nibName: "HospitalCellTableViewCell", bundle: nil), forCellReuseIdentifier: "HospitalsCell")
-        
-        
+            
 
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.layoutIfNeeded()
-        
-//        hospitalsList.reloadData()
+                
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     func change(to index: Int) {
         if(index==0){
             
         }
     }
-    
-    func getAllLocations(){
-        
-    }
-    
-    
-    func calculateDistance(lat: Double, long: Double ) -> Double {
-        let currentLocation = CLLocation(latitude: userLocation!.latitude, longitude: userLocation!.longitude)
-        let DestinationLocation = CLLocation(latitude: lat, longitude: long)
-        let distance = currentLocation.distance(from: DestinationLocation) / 1000
-        return distance
-        
-    }
-    
 
 }
 
@@ -103,7 +64,7 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
 extension BloodDonationViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return hospitals.count
+        return sortedHospitals!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -111,7 +72,9 @@ extension BloodDonationViewController: UITableViewDataSource {
         
         cell.hospitalName.text = sortedHospitals![indexPath.row].name
         cell.locationText.text = "\(sortedHospitals![indexPath.row].area) - \(sortedHospitals![indexPath.row].city)"
-        cell.distanceText.text = "يبعد: \(String(describing: sortedHospitals![indexPath.row].distance))"
+        
+        let distance = String(format: "%.3f", sortedHospitals![indexPath.row].distance!)
+        cell.distanceText.text = "يبعد: \(distance) كم"
         
         return cell
     }

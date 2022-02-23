@@ -26,6 +26,7 @@
 		B9419DFD27C52D9C00962A1B /* HospitalCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9419DFB27C52D9C00962A1B /* HospitalCellTableViewCell.xib */; };
 		B9503D8827BAE4E500E312B8 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9503D8727BAE4E400E312B8 /* CustomSegmentedControl.swift */; };
 		B952BB1027C60EF90049D81B /* Trial1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B952BB0F27C60EF80049D81B /* Trial1.swift */; };
+		B952BB1227C641B80049D81B /* HospitalsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B952BB1127C641B80049D81B /* HospitalsController.swift */; };
 		B97A37FE27B9D32A00718079 /* RoundedShadowedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A37FD27B9D32A00718079 /* RoundedShadowedView.swift */; };
 		B97A380227BA9EA000718079 /* BloodDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A380127BA9EA000718079 /* BloodDonationViewController.swift */; };
 		B9DA61CE27C10C2900359487 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9DA61CD27C10C2800359487 /* GoogleService-Info.plist */; };
@@ -59,6 +60,7 @@
 		B9419DFB27C52D9C00962A1B /* HospitalCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HospitalCellTableViewCell.xib; sourceTree = "<group>"; };
 		B9503D8727BAE4E400E312B8 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		B952BB0F27C60EF80049D81B /* Trial1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trial1.swift; sourceTree = "<group>"; };
+		B952BB1127C641B80049D81B /* HospitalsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalsController.swift; sourceTree = "<group>"; };
 		B97A37FD27B9D32A00718079 /* RoundedShadowedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowedView.swift; sourceTree = "<group>"; };
 		B97A380127BA9EA000718079 /* BloodDonationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationViewController.swift; sourceTree = "<group>"; };
 		B9DA61CD27C10C2800359487 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				B9DA61DB27C1100B00359487 /* Location.swift */,
+				B952BB1127C641B80049D81B /* HospitalsController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				B97A380227BA9EA000718079 /* BloodDonationViewController.swift in Sources */,
 				B9DA61DC27C1100B00359487 /* Location.swift in Sources */,
 				B952BB1027C60EF90049D81B /* Trial1.swift in Sources */,
+				B952BB1227C641B80049D81B /* HospitalsController.swift in Sources */,
 				B930F86827B85D5F00E70860 /* RoundedView.swift in Sources */,
 				B97A37FE27B9D32A00718079 /* RoundedShadowedView.swift in Sources */,
 				95785059279E1917004F3D8F /* AppDelegate.swift in Sources */,

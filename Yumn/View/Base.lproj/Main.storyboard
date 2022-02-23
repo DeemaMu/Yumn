@@ -324,27 +324,27 @@
                                     <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="6FU-5X-VlE" customClass="RoundedView" customModule="Yumn" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="21.5" width="414" height="777"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GK8-hk-FsJ">
-                                                <rect key="frame" x="32" y="22" width="350" height="43"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            </view>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="159" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="awV-fw-XTK">
-                                                <rect key="frame" x="20" y="92" width="374" height="596"/>
+                                                <rect key="frame" x="22" y="71" width="372" height="617"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="596" id="SOE-8c-Koc"/>
+                                                    <constraint firstAttribute="height" constant="617" id="SOE-8c-Koc"/>
                                                 </constraints>
                                             </tableView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GK8-hk-FsJ">
+                                                <rect key="frame" x="32" y="8" width="350" height="43"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
-                                            <constraint firstItem="awV-fw-XTK" firstAttribute="top" secondItem="GK8-hk-FsJ" secondAttribute="bottom" constant="27" id="12H-1q-jB3"/>
-                                            <constraint firstItem="awV-fw-XTK" firstAttribute="top" secondItem="GK8-hk-FsJ" secondAttribute="bottom" constant="27" id="53b-iq-OQn"/>
+                                            <constraint firstItem="awV-fw-XTK" firstAttribute="top" secondItem="GK8-hk-FsJ" secondAttribute="bottom" constant="20" id="12H-1q-jB3"/>
+                                            <constraint firstItem="awV-fw-XTK" firstAttribute="top" secondItem="GK8-hk-FsJ" secondAttribute="bottom" constant="20" id="53b-iq-OQn"/>
                                             <constraint firstItem="GK8-hk-FsJ" firstAttribute="leading" secondItem="6FU-5X-VlE" secondAttribute="leading" constant="32" id="DXg-UJ-y4M"/>
-                                            <constraint firstItem="awV-fw-XTK" firstAttribute="centerX" secondItem="6FU-5X-VlE" secondAttribute="centerX" id="HTm-hm-LXj"/>
-                                            <constraint firstItem="awV-fw-XTK" firstAttribute="centerX" secondItem="GK8-hk-FsJ" secondAttribute="centerX" id="I3d-7f-Mu7"/>
-                                            <constraint firstItem="GK8-hk-FsJ" firstAttribute="top" secondItem="6FU-5X-VlE" secondAttribute="top" constant="22" id="bkE-tk-E4H"/>
-                                            <constraint firstItem="awV-fw-XTK" firstAttribute="leading" secondItem="6FU-5X-VlE" secondAttribute="leading" constant="20" id="kRQ-N0-AzR"/>
+                                            <constraint firstItem="awV-fw-XTK" firstAttribute="centerX" secondItem="6FU-5X-VlE" secondAttribute="centerX" constant="1" id="HTm-hm-LXj"/>
+                                            <constraint firstItem="awV-fw-XTK" firstAttribute="centerX" secondItem="GK8-hk-FsJ" secondAttribute="centerX" constant="1" id="I3d-7f-Mu7"/>
+                                            <constraint firstItem="GK8-hk-FsJ" firstAttribute="top" secondItem="6FU-5X-VlE" secondAttribute="top" constant="8" id="bkE-tk-E4H"/>
+                                            <constraint firstItem="awV-fw-XTK" firstAttribute="leading" secondItem="6FU-5X-VlE" secondAttribute="leading" constant="22" id="kRQ-N0-AzR"/>
                                             <constraint firstAttribute="bottom" secondItem="awV-fw-XTK" secondAttribute="bottom" constant="89" id="tNu-jL-Mtm"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>

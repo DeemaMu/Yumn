@@ -15,5 +15,4 @@ struct Location{
     let city:String
     let area:String
     var distance:Double?
-        
 }
