@@ -19,7 +19,7 @@ class HospitalProfileViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var hospitalTextField: UITextField!
     @IBOutlet weak var saveButton: UIButton!
     
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,7 @@ class HospitalProfileViewController: UIViewController, UITextFieldDelegate {
         
         // Read Data
         profileInfo()
-       
+        
     }
     
     func profileInfo(){
@@ -54,7 +54,7 @@ class HospitalProfileViewController: UIViewController, UITextFieldDelegate {
                 // Assign the values here
                 self?.hospitalTextField.text = hospitalName
                 self?.phoneTextField.text = String(phone)
-             
+                
             }
         }
     }
@@ -98,17 +98,17 @@ class HospitalProfileViewController: UIViewController, UITextFieldDelegate {
     }
     
     // Datepicker
-  
+    
     @IBAction func Update(_ sender: Any) {
-//         get the Doc
-             let docRef = database.document("users/Mw9h0hFX20vyTKuplNdv")
-     
-             // save data
-             docRef.setData(["hospitalName": hospitalTextField.text!,
-                             "phone": Int(phoneTextField.text!)!,
-                             "uid":"Mw9h0hFX20vyTKuplNdv",
-                             "userType":"Hospital"
-                            ])
+        //         get the Doc
+        let docRef = database.document("users/Mw9h0hFX20vyTKuplNdv")
+        
+        // save data
+        docRef.setData(["hospitalName": hospitalTextField.text!,
+                        "phone": Int(phoneTextField.text!)!,
+                        "uid":"Mw9h0hFX20vyTKuplNdv",
+                        "userType":"Hospital"
+                       ])
         SCLAlertView().showSuccess("Success", subTitle: "تم حفظ التغييرات بنجاح")
     }
 }

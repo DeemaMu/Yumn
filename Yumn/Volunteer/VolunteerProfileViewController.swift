@@ -13,7 +13,7 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
     let database = Firestore.firestore()
     
     @IBOutlet weak var backView: UIView!
-
+    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var familyTextField: UITextField!
     @IBOutlet weak var nationalIDTextField: UITextField!
@@ -36,7 +36,7 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
     
     
     
-//    let datePicker = UIDatePicker()
+    //    let datePicker = UIDatePicker()
     
     
     override func viewDidLoad() {
@@ -53,7 +53,7 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
         // Hide
         saveButton(enabeld: false)
         hideErrorMSGs()
-       
+        
     }
     func saveButton(enabeld : Bool){
         saveButton.isEnabled = enabeld
@@ -168,38 +168,38 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
     }
     
     // Datepicker
-
-func createDatePicker(){
-    let toolbar = UIToolbar()
-    toolbar.sizeToFit()
     
-    let doneBtn = UIBarButtonItem(title: "تم", style: .done, target: nil, action: #selector(donePressed))
-    doneBtn.tintColor = UIColor.init(red: 56/255, green: 97/255, blue: 93/255, alpha: 1)
-    toolbar.setItems([doneBtn], animated: true)
-    
-    birthdateTextField.inputAccessoryView = toolbar
-    
-    
-    let datePicker = UIDatePicker()
-    datePicker.datePickerMode = .date
-    datePicker.addTarget(self, action: #selector(dateChange(datePicker:)), for: UIControl.Event.valueChanged)
-    datePicker.frame.size = CGSize(width: 0, height: 300)
-    datePicker.preferredDatePickerStyle = .wheels
-    
-    // Today's Date
-    datePicker.maximumDate = Date()
-    birthdateTextField.inputView = datePicker
-}
-
-    @objc func donePressed(){
-    self.view.endEditing(true)
-}
-    
-func formaDate(date: Date) -> String {
+    func createDatePicker(){
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
         
-    let formatter = DateFormatter()
+        let doneBtn = UIBarButtonItem(title: "تم", style: .done, target: nil, action: #selector(donePressed))
+        doneBtn.tintColor = UIColor.init(red: 56/255, green: 97/255, blue: 93/255, alpha: 1)
+        toolbar.setItems([doneBtn], animated: true)
+        
+        birthdateTextField.inputAccessoryView = toolbar
+        
+        
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        datePicker.addTarget(self, action: #selector(dateChange(datePicker:)), for: UIControl.Event.valueChanged)
+        datePicker.frame.size = CGSize(width: 0, height: 300)
+        datePicker.preferredDatePickerStyle = .wheels
+        
+        // Today's Date
+        datePicker.maximumDate = Date()
+        birthdateTextField.inputView = datePicker
+    }
     
-    formatter.dateFormat = "dd/MM/YYYY"
+    @objc func donePressed(){
+        self.view.endEditing(true)
+    }
+    
+    func formaDate(date: Date) -> String {
+        
+        let formatter = DateFormatter()
+        
+        formatter.dateFormat = "dd/MM/YYYY"
         
         return formatter.string(from: date)
     }
@@ -231,151 +231,151 @@ func formaDate(date: Date) -> String {
     
     @IBAction func firstNameChanged(_ sender: Any) {
         if let firstName = nameTextField.text
-                {
-                    if let errorMessage = invalidName(firstName)
-                    {
-                        firstNameMSG.text = errorMessage
-                        firstNameMSG.isHidden = false
-                    }
-                    else
-                    {
-                        firstNameMSG.isHidden = true
-                    }
-                }
-                
-                checkForValidForm()
+        {
+            if let errorMessage = invalidName(firstName)
+            {
+                firstNameMSG.text = errorMessage
+                firstNameMSG.isHidden = false
+            }
+            else
+            {
+                firstNameMSG.isHidden = true
+            }
+        }
+        
+        checkForValidForm()
     }
     func invalidName(_ value: String) -> String?
+    {
+        let set = CharacterSet(charactersIn: value)
+        if CharacterSet.decimalDigits.isSuperset(of: set)
         {
-            let set = CharacterSet(charactersIn: value)
-            if CharacterSet.decimalDigits.isSuperset(of: set)
-            {
-                return "يجب ان يحتوي على احرف فقط"
-            }
-            
-            if value.count < 2
-            {
-                return "الرجاء ادخال اسم صحيح"
-            }
-            return nil
+            return "يجب ان يحتوي على احرف فقط"
         }
+        
+        if value.count < 2
+        {
+            return "الرجاء ادخال اسم صحيح"
+        }
+        return nil
+    }
     
     @IBAction func lastNameChanged(_ sender: Any) {
         if let lastName = familyTextField.text
-                {
-                    if let errorMessage = invalidName(lastName)
-                    {
-                        lastNameMSG.text = errorMessage
-                        lastNameMSG.isHidden = false
-                    }
-                    else
-                    {
-                        lastNameMSG.isHidden = true
-                    }
-                }
-                
-                checkForValidForm()
+        {
+            if let errorMessage = invalidName(lastName)
+            {
+                lastNameMSG.text = errorMessage
+                lastNameMSG.isHidden = false
+            }
+            else
+            {
+                lastNameMSG.isHidden = true
+            }
+        }
+        
+        checkForValidForm()
     }
     
     @IBAction func nationalIDChanged(_ sender: Any) {
         if let nationalID = nationalIDTextField.text
-                {
-                    if let errorMessage = invalidID(nationalID)
-                    {
-                        nationalIDMSG.text = errorMessage
-                        nationalIDMSG.isHidden = false
-                    }
-                    else
-                    {
-                        nationalIDMSG.isHidden = true
-                    }
-                }
-                checkForValidForm()
-    }
-    
-    func invalidID(_ value: String) -> String?
         {
-            let set = CharacterSet(charactersIn: value)
-            if !CharacterSet.decimalDigits.isSuperset(of: set)
+            if let errorMessage = invalidID(nationalID)
             {
-                return "يجب ان لا يحتوي على احرف"
-            }
-            
-            if value.count != 10
-            {
-                return "الرجاء ادخال سجل مدني صحيح"
-            }
-            return nil
-        }
-    
-    @IBAction func emailChanged(_ sender: Any) {
-        if let email = emailTextField.text
-                {
-                    if let errorMessage = invalidEmail(email)
-                    {
-                        emailMSG.text = errorMessage
-                        emailMSG.isHidden = false
-                    }
-                    else
-                    {
-                        emailMSG.isHidden = true
-                    }
-                }
-                
-                checkForValidForm()
-    }
-    
-    func invalidEmail(_ value: String) -> String?
-        {
-            let reqularExpression = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-            let predicate = NSPredicate(format: "SELF MATCHES %@", reqularExpression)
-            if !predicate.evaluate(with: value)
-            {
-                return "الرجاء ادخال بريد الكتروني صحيح"
-            }
-            
-            return nil
-        }
-    @IBAction func phoneChanged(_ sender: Any) {
-        if let phoneNumber = phoneTextField.text
-                {
-                    if let errorMessage = invalidPhoneNumber(phoneNumber)
-                    {
-                        phoneMSG.text = errorMessage
-                        phoneMSG.isHidden = false
-                    }
-                    else
-                    {
-                        phoneMSG.isHidden = true
-                    }
-                }
-                checkForValidForm()
-    }
-    
-    func invalidPhoneNumber(_ value: String) -> String?
-        {
-            let set = CharacterSet(charactersIn: value)
-            if !CharacterSet.decimalDigits.isSuperset(of: set)
-            {
-                return "الرجاء ادخال رقم جوال صحيح"
-            }
-            
-            if value.count != 10
-            {
-                return "الرجاء ادخال رقم جوال صحيح"
-            }
-            return nil
-        }
-    
-    func checkForValidForm()
-        {
-            if emailMSG.isHidden && firstNameMSG.isHidden && lastNameMSG.isHidden && phoneMSG.isHidden && nationalIDMSG.isHidden
-            {
-                saveButton.isEnabled = true
+                nationalIDMSG.text = errorMessage
+                nationalIDMSG.isHidden = false
             }
             else
             {
-                saveButton.isEnabled = false
+                nationalIDMSG.isHidden = true
             }
         }
+        checkForValidForm()
+    }
+    
+    func invalidID(_ value: String) -> String?
+    {
+        let set = CharacterSet(charactersIn: value)
+        if !CharacterSet.decimalDigits.isSuperset(of: set)
+        {
+            return "يجب ان لا يحتوي على احرف"
+        }
+        
+        if value.count != 10
+        {
+            return "الرجاء ادخال سجل مدني صحيح"
+        }
+        return nil
+    }
+    
+    @IBAction func emailChanged(_ sender: Any) {
+        if let email = emailTextField.text
+        {
+            if let errorMessage = invalidEmail(email)
+            {
+                emailMSG.text = errorMessage
+                emailMSG.isHidden = false
+            }
+            else
+            {
+                emailMSG.isHidden = true
+            }
+        }
+        
+        checkForValidForm()
+    }
+    
+    func invalidEmail(_ value: String) -> String?
+    {
+        let reqularExpression = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", reqularExpression)
+        if !predicate.evaluate(with: value)
+        {
+            return "الرجاء ادخال بريد الكتروني صحيح"
+        }
+        
+        return nil
+    }
+    @IBAction func phoneChanged(_ sender: Any) {
+        if let phoneNumber = phoneTextField.text
+        {
+            if let errorMessage = invalidPhoneNumber(phoneNumber)
+            {
+                phoneMSG.text = errorMessage
+                phoneMSG.isHidden = false
+            }
+            else
+            {
+                phoneMSG.isHidden = true
+            }
+        }
+        checkForValidForm()
+    }
+    
+    func invalidPhoneNumber(_ value: String) -> String?
+    {
+        let set = CharacterSet(charactersIn: value)
+        if !CharacterSet.decimalDigits.isSuperset(of: set)
+        {
+            return "الرجاء ادخال رقم جوال صحيح"
+        }
+        
+        if value.count != 10
+        {
+            return "الرجاء ادخال رقم جوال صحيح"
+        }
+        return nil
+    }
+    
+    func checkForValidForm()
+    {
+        if emailMSG.isHidden && firstNameMSG.isHidden && lastNameMSG.isHidden && phoneMSG.isHidden && nationalIDMSG.isHidden
+        {
+            saveButton.isEnabled = true
+        }
+        else
+        {
+            saveButton.isEnabled = false
+        }
+    }
 }
