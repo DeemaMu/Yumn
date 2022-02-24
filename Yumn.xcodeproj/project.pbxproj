@@ -17,6 +17,7 @@
 		959AB20327BFFA660093981E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 959AB20227BFFA660093981E /* GoogleService-Info.plist */; };
 		959AB20527C056450093981E /* HospitalProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959AB20427C056450093981E /* HospitalProfileViewController.swift */; };
 		95B7374C27BFF025006EE496 /* Tajawal-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 956C67FE27BFEB2E0026EA9E /* Tajawal-Regular.ttf */; };
+		95F97A5027C847040002D79A /* ConvertingColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F97A4F27C847040002D79A /* ConvertingColors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		95785066279E1918004F3D8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		959AB20227BFFA660093981E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		959AB20427C056450093981E /* HospitalProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalProfileViewController.swift; sourceTree = "<group>"; };
+		95F97A4F27C847040002D79A /* ConvertingColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertingColors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				95785063279E1918004F3D8F /* LaunchScreen.storyboard */,
 				95785066279E1918004F3D8F /* Info.plist */,
 				956C67FE27BFEB2E0026EA9E /* Tajawal-Regular.ttf */,
+				95F97A4F27C847040002D79A /* ConvertingColors.swift */,
 			);
 			path = Yumn;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95F97A5027C847040002D79A /* ConvertingColors.swift in Sources */,
 				95785059279E1917004F3D8F /* AppDelegate.swift in Sources */,
 				9578505B279E1917004F3D8F /* SceneDelegate.swift in Sources */,
 				959AB20527C056450093981E /* HospitalProfileViewController.swift in Sources */,

@@ -4,6 +4,7 @@
 //  Created by Deema Almutairi on 15/02/2022.
 //
 
+import SCLAlertView
 import Foundation
 import FirebaseFirestore
 import FirebaseAuth

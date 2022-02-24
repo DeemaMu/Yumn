@@ -540,11 +540,14 @@
                                                 <color key="textColor" red="0.64609696049999998" green="0.1048829421" blue="0.032010463310000001" alpha="0.62572787220000003" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ادخل اسم المستشفى" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NbY-69-WkC">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ادخل اسم المستشفى" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NbY-69-WkC">
                                                 <rect key="frame" x="57" y="199" width="301" height="34"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="hospitalNameChanged:" destination="wY0-Td-oQg" eventType="editingChanged" id="LeF-xh-7PD"/>
+                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="رقم الجوال" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yeT-HQ-MWZ">
                                                 <rect key="frame" x="57" y="275" width="301" height="18"/>
@@ -552,11 +555,20 @@
                                                 <color key="textColor" red="0.21960784310000001" green="0.3803921569" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <color key="highlightedColor" red="0.21960784310000001" green="0.3803921569" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="مطلوب" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Xa-Id-aea">
+                                                <rect key="frame" x="57" y="333" width="301" height="21"/>
+                                                <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="11"/>
+                                                <color key="textColor" red="0.64609696049999998" green="0.1048829421" blue="0.032010463310000001" alpha="0.62572787220000003" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ادخل رقم الجوال" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v9W-PJ-fnc">
                                                 <rect key="frame" x="57" y="298" width="301" height="34"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                <connections>
+                                                    <action selector="phoneChanged:" destination="wY0-Td-oQg" eventType="editingChanged" id="eS7-h4-ELB"/>
+                                                </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zg5-ic-ors">
                                                 <rect key="frame" x="57" y="402" width="301" height="52"/>
@@ -582,14 +594,17 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="MMF-fw-v5C" firstAttribute="top" secondItem="ImA-Lf-jXS" secondAttribute="bottom" constant="30" id="0cg-7D-NOJ"/>
+                                            <constraint firstItem="2Xa-Id-aea" firstAttribute="top" secondItem="v9W-PJ-fnc" secondAttribute="bottom" constant="1" id="0uF-8E-24P"/>
                                             <constraint firstItem="yeT-HQ-MWZ" firstAttribute="leading" secondItem="PLq-Oy-bMj" secondAttribute="leading" id="1Rx-p9-pIN"/>
                                             <constraint firstItem="PLq-Oy-bMj" firstAttribute="trailing" secondItem="NbY-69-WkC" secondAttribute="trailing" id="1kU-G7-OsB"/>
                                             <constraint firstItem="PLq-Oy-bMj" firstAttribute="leading" secondItem="NbY-69-WkC" secondAttribute="leading" id="3B9-hn-wjT"/>
                                             <constraint firstItem="PLq-Oy-bMj" firstAttribute="height" secondItem="NbY-69-WkC" secondAttribute="height" multiplier="0.617647" id="4dm-wx-ktk"/>
                                             <constraint firstItem="MMF-fw-v5C" firstAttribute="height" secondItem="ImA-Lf-jXS" secondAttribute="height" multiplier="0.164062" id="597-vU-YF3"/>
                                             <constraint firstItem="NbY-69-WkC" firstAttribute="height" secondItem="MMF-fw-v5C" secondAttribute="height" multiplier="1.61905" id="6VO-dD-KJ2"/>
+                                            <constraint firstItem="2Xa-Id-aea" firstAttribute="trailing" secondItem="v9W-PJ-fnc" secondAttribute="trailing" id="7UF-Du-6ug"/>
                                             <constraint firstItem="zg5-ic-ors" firstAttribute="trailing" secondItem="v9W-PJ-fnc" secondAttribute="trailing" id="AYV-S2-a5x"/>
                                             <constraint firstItem="MMF-fw-v5C" firstAttribute="leading" secondItem="ImA-Lf-jXS" secondAttribute="leading" constant="-30" id="JTv-XO-0Gw"/>
+                                            <constraint firstItem="2Xa-Id-aea" firstAttribute="leading" secondItem="v9W-PJ-fnc" secondAttribute="leading" id="JqV-en-0WY"/>
                                             <constraint firstItem="yeT-HQ-MWZ" firstAttribute="top" secondItem="PLq-Oy-bMj" secondAttribute="bottom" constant="20" id="N4P-rb-muh"/>
                                             <constraint firstItem="zg5-ic-ors" firstAttribute="height" secondItem="v9W-PJ-fnc" secondAttribute="height" multiplier="1.52941" id="NlV-Nf-Zaz"/>
                                             <constraint firstItem="NbY-69-WkC" firstAttribute="leading" secondItem="MMF-fw-v5C" secondAttribute="leading" id="RuJ-yx-wlA"/>
@@ -605,6 +620,7 @@
                                             <constraint firstItem="ImA-Lf-jXS" firstAttribute="leading" secondItem="O7Q-bl-Da3" secondAttribute="leading" constant="87" id="jiR-sj-BMK"/>
                                             <constraint firstItem="v9W-PJ-fnc" firstAttribute="leading" secondItem="yeT-HQ-MWZ" secondAttribute="leading" id="n04-NG-gOg"/>
                                             <constraint firstItem="MMF-fw-v5C" firstAttribute="trailing" secondItem="ImA-Lf-jXS" secondAttribute="trailing" constant="31" id="of6-oH-GJw"/>
+                                            <constraint firstItem="2Xa-Id-aea" firstAttribute="height" secondItem="v9W-PJ-fnc" secondAttribute="height" multiplier="0.617647" id="tAc-EY-Yj1"/>
                                             <constraint firstItem="ImA-Lf-jXS" firstAttribute="height" secondItem="O7Q-bl-Da3" secondAttribute="height" multiplier="0.116788" constant="36.671784000000002" id="tiv-6z-m0l"/>
                                             <constraint firstItem="v9W-PJ-fnc" firstAttribute="top" secondItem="yeT-HQ-MWZ" secondAttribute="bottom" constant="5" id="vEM-Dl-7mS"/>
                                             <constraint firstAttribute="height" constant="782" id="xQe-8S-ZOr"/>
@@ -643,6 +659,8 @@
                     <connections>
                         <outlet property="backView" destination="O7Q-bl-Da3" id="orX-zQ-AVj"/>
                         <outlet property="hospitalTextField" destination="NbY-69-WkC" id="Jn0-qx-wgT"/>
+                        <outlet property="nameErrorMSG" destination="PLq-Oy-bMj" id="u8m-ea-1aX"/>
+                        <outlet property="phoneErrorMSG" destination="2Xa-Id-aea" id="SXv-1j-PXu"/>
                         <outlet property="phoneTextField" destination="v9W-PJ-fnc" id="S3l-MB-1Kv"/>
                         <outlet property="saveButton" destination="zg5-ic-ors" id="u7r-WL-Ink"/>
                     </connections>
