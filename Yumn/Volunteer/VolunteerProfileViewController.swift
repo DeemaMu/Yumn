@@ -11,6 +11,7 @@ import UIKit
 class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
     
     let database = Firestore.firestore()
+    var points = 0
     
     @IBOutlet weak var backView: UIView!
     
@@ -46,27 +47,7 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        backView.layer.cornerRadius = 45
-        saveButton.layer.cornerRadius = 45
-        textFieldSetUP()
-        
-        createDatePicker()
-        
-        bloodTypePicker.delegate = self
-        bloodTypePicker.dataSource = self
-        bloodTypeTextField.inputView = bloodTypePicker
-        addToolBar(bloodTypeTextField)
-        
-        citiesPicker.delegate = self
-        citiesPicker.dataSource = self
-        cityTextField.inputView = citiesPicker
-        addToolBar(cityTextField)
-        
-        weightPicker.delegate = self
-        weightPicker.dataSource = self
-        weightTextField.inputView = weightPicker
-        addToolBar(weightTextField)
+        setUP()
         
         // Read Data
         profileInfo()
@@ -77,15 +58,70 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    func addToolBar(_ textField : UITextField){
+    func setUP(){
+        backView.layer.cornerRadius = 45
+        saveButton.layer.cornerRadius = 45
         
+        // Style
+        style(TextField: nameTextField)
+        style(TextField: familyTextField)
+        style(TextField: nationalIDTextField)
+        style(TextField: emailTextField)
+        style(TextField: phoneTextField)
+        style(TextField: bloodTypeTextField)
+        style(TextField: birthdateTextField)
+        style(TextField: weightTextField)
+        style(TextField: cityTextField)
+        
+        genderButtons(button: femaleButton)
+        genderButtons(button: maleButton)
+        
+        // PickerView
+        createDatePicker()
+        setupPicker(bloodTypePicker,bloodTypeTextField)
+        setupPicker(citiesPicker,cityTextField)
+        setupPicker(weightPicker,weightTextField)
+        
+    }
+    
+    
+    // Datepicker
+    func createDatePicker(){
+        
+        addToolBar(birthdateTextField)
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        datePicker.addTarget(self, action: #selector(dateChange(datePicker:)), for: UIControl.Event.valueChanged)
+        datePicker.frame.size = CGSize(width: 0, height: 300)
+        datePicker.preferredDatePickerStyle = .wheels
+        
+        // Today's Date
+        datePicker.maximumDate = Date()
+        birthdateTextField.inputView = datePicker
+        
+    }
+    func formaDate(date: Date) -> String {
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/YYYY"
+        return formatter.string(from: date)
+        
+    }
+    
+    func setupPicker(_ pickerView : UIPickerView ,_ textField : UITextField){
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        textField.inputView = pickerView
+        addToolBar(textField)
+        
+    }
+    func addToolBar(_ textField : UITextField){
         // ToolBar
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
         
-        
         // Adding Button ToolBar
-        let doneButton = UIBarButtonItem(title: "تم", style: .plain, target: self, action: #selector(doneClick))
+        let doneButton = UIBarButtonItem(title: "تم", style: .done, target: self, action: #selector(donePressed))
         doneButton.tintColor = UIColor.init(red: 56/255, green: 97/255, blue: 93/255, alpha: 1)
         let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         toolBar.setItems([spaceButton, doneButton], animated: false)
@@ -94,84 +130,13 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    @objc func doneClick() {
+    @objc func donePressed() {
         cityTextField.resignFirstResponder()
         bloodTypeTextField.resignFirstResponder()
         weightTextField.resignFirstResponder()
+        self.view.endEditing(true)
     }
-    
-    func saveButton(enabeld : Bool){
-        saveButton.isEnabled = enabeld
-    }
-    func hideErrorMSGs(){
-        firstNameMSG.isHidden = true
-        lastNameMSG.isHidden = true
-        nationalIDMSG.isHidden = true
-        emailMSG.isHidden = true
-        phoneMSG.isHidden = true
-    }
-    func profileInfo(){
-        // 1. get the Doc
-        let docRef = database.document("users/XtXzhe5lMWR2J04EAe5n4GMs2ar1")
-        
-        // 2. to get live data
-        docRef.addSnapshotListener { [weak self] snapshot, error in
-            guard let data = snapshot?.data(), error == nil else{
-                return
-            }
-            
-            guard let firstName = data["firstName"] as? String else {
-                return
-            }
-            guard let lastName = data["lastName"] as? String else {
-                return
-            }
-            guard let nationalID = data["nationalID"] as? Int else {
-                return
-            }
-            guard let email = data["email"] as? String else {
-                return
-            }
-            guard let phone = data["phone"] as? Int else {
-                return
-            }
-            guard let gender = data["gender"] as? String else {
-                return
-            }
-            guard let bloodType = data["bloodType"] as? String else {
-                return
-            }
-            guard let birthdate = data["birthdate"] as? String else {
-                return
-            }
-            guard let weight = data["weight"] as? Double else {
-                return
-            }
-            guard let city = data["city"] as? String else {
-                return
-            }
-            DispatchQueue.main.async {
-                // Assign the values here
-                self?.nameTextField.text = firstName
-                self?.familyTextField.text = lastName
-                self?.nationalIDTextField.text = String(nationalID)
-                self?.emailTextField.text = email
-                self?.phoneTextField.text = String(phone)
-                self?.bloodTypeTextField.text = bloodType
-                self?.birthdateTextField.text = birthdate
-                
-                if (gender == "m"){
-                    self?.maleSELECTED()
-                }else if(gender == "f"){
-                    self?.femaleSELECTED()
-                }
-                
-                self?.weightTextField.text = String(weight)
-                self?.cityTextField.text = city
-            }
-        }
-    }
-    
+
     func maleSELECTED(){
         maleButton.isSelected = true
         maleButton.backgroundColor = UIColor.init(red: 182/255, green: 218/255, blue: 214/255, alpha: 1)
@@ -186,20 +151,6 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
         maleButton.isSelected = false
         maleButton.backgroundColor = UIColor.white
     }
-    func textFieldSetUP(){
-        textFieldStyle(TextField: nameTextField)
-        textFieldStyle(TextField: familyTextField)
-        textFieldStyle(TextField: nationalIDTextField)
-        textFieldStyle(TextField: emailTextField)
-        textFieldStyle(TextField: phoneTextField)
-        textFieldStyle(TextField: bloodTypeTextField)
-        textFieldStyle(TextField: birthdateTextField)
-        textFieldStyle(TextField: weightTextField)
-        textFieldStyle(TextField: cityTextField)
-        
-        genderButtons(button: femaleButton)
-        genderButtons(button: maleButton)
-    }
     
     func genderButtons(button : UIButton){
         
@@ -209,114 +160,144 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
         //        button.setTitleColor(.black, for: .normal)
         
     }
-    func textFieldStyle(TextField : UITextField){
+    
+    func saveButton(enabeld : Bool){
+        saveButton.isEnabled = enabeld
+    }
+    func hideErrorMSGs(){
+        firstNameMSG.isHidden = true
+        lastNameMSG.isHidden = true
+        nationalIDMSG.isHidden = true
+        emailMSG.isHidden = true
+        phoneMSG.isHidden = true
+    }
+    
+    
+    func style(TextField : UITextField){
         TextField.delegate = self
-        TextFieldStyle(TextField: TextField)
+        normalStyle(TextField: TextField)
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         let bottomLine = CALayer()
-        
-        bottomLine.frame = CGRect(x: 0, y: textField.frame.height - 2, width: textField.frame.width, height: 2)
-        
+        bottomLine.frame = CGRect(x: 0, y: textField.frame.height - 1, width: textField.frame.width, height: 1)
         bottomLine.backgroundColor = UIColor.init(red: 56/255, green: 97/255, blue: 93/255, alpha: 1).cgColor
-        
         textField.borderStyle = .none
-        
         textField.layer.addSublayer(bottomLine)
     }
     
-    func TextFieldStyle(TextField : UITextField){
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+        normalStyle(TextField: textField)
+    }
+    
+    func normalStyle(TextField : UITextField){
         let bottomLine = CALayer()
-        
-        bottomLine.frame = CGRect(x: 0, y: TextField.frame.height - 2, width: TextField.frame.width, height: 2)
-        
+        bottomLine.frame = CGRect(x: 0, y: TextField.frame.height - 1, width: TextField.frame.width, height: 1)
         bottomLine.backgroundColor = UIColor.init(red: 134/255, green: 202/255, blue: 195/255, alpha: 1).cgColor
-        
         TextField.borderStyle = .none
-        
         TextField.layer.addSublayer(bottomLine)
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        TextFieldStyle(TextField: textField)
+    
+   
+    
+    // Get Profile info
+    func profileInfo(){
+        
+        // 1. get the Doc
+        let docRef = database.document("volunteer/f8ppu8BUAOdRZjCjv9AiTwq1yeh2")
+        
+        // 2. to get live data
+        docRef.addSnapshotListener { [weak self] snapshot, error in
+            guard let data = snapshot?.data(), error == nil else{
+                return
+            }
+            
+            guard let firstName = data["firstName"] as? String else {
+                return
+            }
+            guard let lastName = data["lastName"] as? String else {
+                return
+            }
+            guard let nationalID = data["nationalID"] as? String else {
+                return
+            }
+            guard let email = data["email"] as? String else {
+                return
+            }
+            guard let phone = data["phone"] as? String else {
+                return
+            }
+            guard let gender = data["gender"] as? String else {
+                return
+            }
+            guard let bloodType = data["bloodType"] as? String else {
+                return
+            }
+            guard let birthdate = data["birthDate"] as? String else {
+                return
+            }
+            guard let weight = data["weight"] as? String else {
+                return
+            }
+            guard let city = data["city"] as? String else {
+                return
+            }
+            guard let points = data["points"] as? Int else {
+                return
+            }
+            DispatchQueue.main.async {
+                // Assign the values here
+                self?.nameTextField.text = firstName
+                self?.familyTextField.text = lastName
+                self?.nationalIDTextField.text = nationalID
+                self?.emailTextField.text = email
+                self?.phoneTextField.text = phone
+                self?.bloodTypeTextField.text = bloodType
+                self?.birthdateTextField.text = birthdate
+                
+                if (gender == "m"){
+                    self?.maleSELECTED()
+                } else if(gender == "f"){
+                    self?.femaleSELECTED()
+                }
+                self?.points = points
+                self?.weightTextField.text = weight
+                self?.cityTextField.text = city
+            }
+        }
     }
     
-    // Datepicker
-    
-    func createDatePicker(){
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-        
-        let doneBtn = UIBarButtonItem(title: "تم", style: .done, target: nil, action: #selector(donePressed))
-        doneBtn.tintColor = UIColor.init(red: 56/255, green: 97/255, blue: 93/255, alpha: 1)
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        toolbar.setItems([spaceButton, doneBtn], animated: false)
-        toolbar.isUserInteractionEnabled = true
-        
-        birthdateTextField.inputAccessoryView = toolbar
-        
-        
-        let datePicker = UIDatePicker()
-        datePicker.datePickerMode = .date
-        datePicker.addTarget(self, action: #selector(dateChange(datePicker:)), for: UIControl.Event.valueChanged)
-        datePicker.frame.size = CGSize(width: 0, height: 300)
-        datePicker.preferredDatePickerStyle = .wheels
-        
-        // Today's Date
-        datePicker.maximumDate = Date()
-        birthdateTextField.inputView = datePicker
-    }
-    
-    @objc func donePressed(){
-        self.view.endEditing(true)
-    }
-    
-    func formaDate(date: Date) -> String {
-        
-        let formatter = DateFormatter()
-        
-        formatter.dateFormat = "dd/MM/YYYY"
-        
-        return formatter.string(from: date)
-    }
-    
-    // Handle click events
-    @IBAction func femaleSelected(_ sender: Any) {
-        femaleSELECTED()
-        saveButton(enabeld: true)
-    }
-    @IBAction func maleSelected(_ sender: Any) {
-        maleSELECTED()
-        saveButton(enabeld: true)
-    }
-    
-    
-    @objc func dateChange(datePicker: UIDatePicker){
-        birthdateTextField.text = formaDate(date: datePicker.date)
-        saveButton(enabeld: true)
-    }
-    
-    
+    // Save update
     @IBAction func Update(_ sender: Any) {
+        
+        var gender = "m"
+        if (femaleButton.isSelected){
+            gender = "f"
+        }
+        
         // get the Doc
-        let docRef = database.document("users/XtXzhe5lMWR2J04EAe5n4GMs2ar1")
+        let docRef = database.document("volunteer/f8ppu8BUAOdRZjCjv9AiTwq1yeh2")
+        
         
         // save data
         docRef.setData(["firstName": nameTextField.text!,
                         "lastName": familyTextField.text!,
-                        "nationalID": Int(nationalIDTextField.text!)!,
+                        "nationalID": nationalIDTextField.text!,
                         "email": emailTextField.text!,
-                        "phone": Int(phoneTextField.text!)!,
-                        //"gender": genderTextField.text!,
+                        "phone": phoneTextField.text!,
+                        "gender": gender,
                         "bloodType": bloodTypeTextField.text!,
-                        "birthdate": birthdateTextField.text!,
-                        "weight": Double(weightTextField.text!)!,
+                        "birthDate": birthdateTextField.text!,
+                        "weight": weightTextField.text!,
                         "city": cityTextField.text!,
-                        "uid" : "XtXzhe5lMWR2J04EAe5n4GMs2ar1",
+                        "uid" : "f8ppu8BUAOdRZjCjv9AiTwq1yeh2",
+                        "points":points,
                         "userType" : "Volunteer"])
     }
     
+    
+    // Listeners
     @IBAction func firstNameChanged(_ sender: Any) {
         if let firstName = nameTextField.text
         {
@@ -332,20 +313,6 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
         }
         
         checkForValidForm()
-    }
-    func invalidName(_ value: String) -> String?
-    {
-        let set = CharacterSet(charactersIn: value)
-        if CharacterSet.decimalDigits.isSuperset(of: set)
-        {
-            return "يجب ان يحتوي على احرف فقط"
-        }
-        
-        if value.count < 2
-        {
-            return "الرجاء ادخال اسم صحيح"
-        }
-        return nil
     }
     
     @IBAction func lastNameChanged(_ sender: Any) {
@@ -381,21 +348,6 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
         checkForValidForm()
     }
     
-    func invalidID(_ value: String) -> String?
-    {
-        let set = CharacterSet(charactersIn: value)
-        if !CharacterSet.decimalDigits.isSuperset(of: set)
-        {
-            return "يجب ان لا يحتوي على احرف"
-        }
-        
-        if value.count != 10
-        {
-            return "الرجاء ادخال سجل مدني صحيح"
-        }
-        return nil
-    }
-    
     @IBAction func emailChanged(_ sender: Any) {
         if let email = emailTextField.text
         {
@@ -413,17 +365,7 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
         checkForValidForm()
     }
     
-    func invalidEmail(_ value: String) -> String?
-    {
-        let reqularExpression = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let predicate = NSPredicate(format: "SELF MATCHES %@", reqularExpression)
-        if !predicate.evaluate(with: value)
-        {
-            return "الرجاء ادخال بريد الكتروني صحيح"
-        }
-        
-        return nil
-    }
+    
     @IBAction func phoneChanged(_ sender: Any) {
         if let phoneNumber = phoneTextField.text
         {
@@ -440,8 +382,96 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
         checkForValidForm()
     }
     
+    @IBAction func femaleSelected(_ sender: Any) {
+        femaleSELECTED()
+        saveButton(enabeld: true)
+    }
+    
+    @IBAction func maleSelected(_ sender: Any) {
+        maleSELECTED()
+        saveButton(enabeld: true)
+    }
+    
+    @objc func dateChange(datePicker: UIDatePicker){
+        birthdateTextField.text = formaDate(date: datePicker.date)
+        saveButton(enabeld: true)
+    }
+    
+    
+    
+    // Validation
+    func invalidName(_ value: String) -> String?
+    {
+        let set = CharacterSet(charactersIn: value)
+        
+        // Empty
+        if value.count == 0
+        {
+            return "مطلوب"
+        }
+        
+        // Not TEXT
+        if CharacterSet.decimalDigits.isSuperset(of: set)
+        {
+            return "يجب ان يحتوي على احرف فقط"
+        }
+        
+        // Invalid length
+        if value.count < 2 || value.count > 30
+        {
+            return "الرجاء ادخال اسم صحيح"
+        }
+        return nil
+    }
+    
+    func invalidID(_ value: String) -> String?
+    {
+        
+        // Empty
+        if value.count == 0
+        {
+            return "مطلوب"
+        }
+        
+        let set = CharacterSet(charactersIn: value)
+        if !CharacterSet.decimalDigits.isSuperset(of: set)
+        {
+            return "يجب ان يحتوي على ارقام فقط"
+        }
+        
+        if value.count != 10
+        {
+            return "الرجاء ادخال سجل مدني صحيح"
+        }
+        return nil
+    }
+    
+    func invalidEmail(_ value: String) -> String?
+    {
+        // Empty
+        if value.count == 0
+        {
+            return "مطلوب"
+        }
+        
+        let reqularExpression = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", reqularExpression)
+        if !predicate.evaluate(with: value)
+        {
+            return "الرجاء ادخال بريد الكتروني صحيح"
+        }
+        
+        return nil
+    }
+    
     func invalidPhoneNumber(_ value: String) -> String?
     {
+        // Empty
+        if value.count == 0
+        {
+            return "مطلوب"
+        }
+        
         let set = CharacterSet(charactersIn: value)
         if !CharacterSet.decimalDigits.isSuperset(of: set)
         {
@@ -455,6 +485,9 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
         return nil
     }
     
+    
+    
+    // Final Validation
     func checkForValidForm()
     {
         if emailMSG.isHidden && firstNameMSG.isHidden && lastNameMSG.isHidden && phoneMSG.isHidden && nationalIDMSG.isHidden
@@ -466,7 +499,10 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
             saveButton.isEnabled = false
         }
     }
+    
 }
+
+
 
 
 extension VolunteerProfileViewController: UIPickerViewDelegate, UIPickerViewDataSource {
