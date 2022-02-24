@@ -35,9 +35,11 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var phoneMSG: UILabel!
     
     
+    let bloodTypePicker = UIPickerView()
+    let citiesPicker = UIPickerView()
     
-    //    let datePicker = UIDatePicker()
-    
+    let bloodList = ["لا اعلم","O+", "O-", "AB+", "AB-", "B-", "B+", "A+", "A-" ]
+    let cities = ["الرياض", "مكة المكرمة","المدينة المنورة","جدة","تبوك","نجران","الطائف","ينبع","الخبر","الدمام","حائل","الباحة","ضباء","الأحساء", "جازان"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +47,18 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
         backView.layer.cornerRadius = 45
         saveButton.layer.cornerRadius = 45
         textFieldSetUP()
+        
         createDatePicker()
+        
+        bloodTypePicker.delegate = self
+        bloodTypePicker.dataSource = self
+        bloodTypeTextField.inputView = bloodTypePicker
+        addToolBar(bloodTypeTextField)
+        
+        citiesPicker.delegate = self
+        citiesPicker.dataSource = self
+        cityTextField.inputView = citiesPicker
+        addToolBar(cityTextField)
         
         // Read Data
         profileInfo()
@@ -55,6 +68,29 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
         hideErrorMSGs()
         
     }
+    
+    func addToolBar(_ textField : UITextField){
+        
+        // ToolBar
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        
+        
+        // Adding Button ToolBar
+        let doneButton = UIBarButtonItem(title: "تم", style: .plain, target: self, action: #selector(doneClick))
+        doneButton.tintColor = UIColor.init(red: 56/255, green: 97/255, blue: 93/255, alpha: 1)
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolBar.setItems([spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        textField.inputAccessoryView = toolBar
+        
+    }
+    
+    @objc func doneClick() {
+        cityTextField.resignFirstResponder()
+        bloodTypeTextField.resignFirstResponder()
+    }
+    
     func saveButton(enabeld : Bool){
         saveButton.isEnabled = enabeld
     }
@@ -175,7 +211,9 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
         
         let doneBtn = UIBarButtonItem(title: "تم", style: .done, target: nil, action: #selector(donePressed))
         doneBtn.tintColor = UIColor.init(red: 56/255, green: 97/255, blue: 93/255, alpha: 1)
-        toolbar.setItems([doneBtn], animated: true)
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbar.setItems([spaceButton, doneBtn], animated: false)
+        toolbar.isUserInteractionEnabled = true
         
         birthdateTextField.inputAccessoryView = toolbar
         
@@ -378,4 +416,48 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
             saveButton.isEnabled = false
         }
     }
+}
+
+
+extension VolunteerProfileViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    public func numberOfComponents(in pickerView: UIPickerView) -> Int{
+        return 1
+    }
+    
+    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
+        if (pickerView == bloodTypePicker){
+            return bloodList.count
+        }
+        else if (pickerView == citiesPicker){
+            return cities.count
+        }
+        
+        return 1
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if (pickerView == bloodTypePicker){
+            return bloodList[row]
+        }
+        else if (pickerView == citiesPicker){
+            return cities[row]
+        }
+        
+        return ""
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if (pickerView == bloodTypePicker){
+            bloodTypeTextField.text = bloodList[row]
+            //  bloodTypeTextField.resignFirstResponder()
+        }
+        else if (pickerView == citiesPicker){
+            cityTextField.text = cities[row]
+            //  cityTextField.resignFirstResponder()
+        }
+    }
+    
 }
