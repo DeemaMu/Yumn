@@ -6,7 +6,7 @@
 
 import Foundation
 import FirebaseFirestore
-
+import FirebaseAuth
 import UIKit
 
 class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
@@ -53,9 +53,12 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
         // Read Data
         profileInfo()
         
-        // Hide
+        // Hide 
         saveButton(enabeld: false)
         hideErrorMSGs()
+        
+        // Hide keyboard
+        self.hideKeyboardWhenTappedAround()
         
     }
     
@@ -78,13 +81,13 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
     
     @objc func keyboardWillShow(_ notification:Notification) {
         if bloodTypeTextField.isFirstResponder {
-            view.frame.origin.y -= getKeyboardHeight(notification)
+            view.frame.origin.y -= 100
         }
         if birthdateTextField.isFirstResponder {
-            view.frame.origin.y -= getKeyboardHeight(notification)
+            view.frame.origin.y -= 150
         }
         if weightTextField.isFirstResponder {
-            view.frame.origin.y -= getKeyboardHeight(notification)
+            view.frame.origin.y -= 90
         }
         if cityTextField.isFirstResponder {
             view.frame.origin.y -= getKeyboardHeight(notification)
@@ -325,14 +328,48 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
     // Save updates
     @IBAction func Update(_ sender: Any) {
         
-        if Auth.auth().currentUser != nil {
-          // User is signed in.
-          // ...
-        } else {
-          // No user is signed in.
-          // ...
-        }
+//        if Auth.auth().currentUser != nil {
+//            // User is signed in.
+//
+//            let user = Auth.auth().currentUser
+//            let uid = user?.uid
+//
+//            var gender = "m"
+//            if (femaleButton.isSelected){
+//                gender = "f"
+//            }
+//
+//            // get the Doc
+//            let docRef = database.collection("volunteer").document(uid!)
         
+//            // save data
+//            docRef.setData(["firstName": nameTextField.text!,
+//                            "lastName": familyTextField.text!,
+//                            "nationalID": nationalIDTextField.text!,
+//                            "email": emailTextField.text!,
+//                            "phone": phoneTextField.text!,
+//                            "gender": gender,
+//                            "bloodType": bloodTypeTextField.text!,
+//                            "birthDate": birthdateTextField.text!,
+//                            "weight": weightTextField.text!,
+//                            "city": cityTextField.text!,
+//                            "points": points,
+//                            "uid" : uid!,
+//                            "userType" : "Volunteer"]){ error in
+//
+//                if error != nil {
+//                    print(error?.localizedDescription as Any)
+//
+//                    // Show error message or pop up message
+//                    print ("error in saving the volunteer data")
+//
+//
+//                }
+//            }
+//        } else {
+//          // No user is signed in.
+//          print("No user")
+//        }
         
         var gender = "m"
         if (femaleButton.isSelected){
@@ -340,8 +377,8 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
         }
         
         // get the Doc
-        let docRef = database.document("volunteer/f8ppu8BUAOdRZjCjv9AiTwq1yeh2")
-//        let docRef = database.collection("volunteer").document(result!.user.uid)
+            let docRef = database.document("volunteer/f8ppu8BUAOdRZjCjv9AiTwq1yeh2")
+
         // save data
         docRef.setData(["firstName": nameTextField.text!,
                         "lastName": familyTextField.text!,
