@@ -450,9 +450,10 @@
                                 <rect key="frame" x="20" y="0.0" width="374" height="808"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4aq-nY-Umz">
-                                        <rect key="frame" x="0.0" y="8" width="374" height="51"/>
+                                        <rect key="frame" x="0.0" y="8" width="374" height="61"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="Gd0-UO-lLt"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="DAO-h8-9lU"/>
+                                            <constraint firstAttribute="height" constant="60" id="Gd0-UO-lLt"/>
                                         </constraints>
                                         <segments>
                                             <segment title="First"/>
@@ -460,6 +461,9 @@
                                             <segment title="three"/>
                                         </segments>
                                         <color key="selectedSegmentTintColor" systemColor="tintColor"/>
+                                        <connections>
+                                            <action selector="segmentedControlDidChange:" destination="6P2-Rb-C5G" eventType="valueChanged" id="hgO-2l-bym"/>
+                                        </connections>
                                     </segmentedControl>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KsN-Jm-2rM">
                                         <rect key="frame" x="39" y="135" width="284" height="86"/>

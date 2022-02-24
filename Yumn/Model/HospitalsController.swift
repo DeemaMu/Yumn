@@ -15,9 +15,9 @@ struct HospitalsController {
 extension BloodDonationViewController {
     
     func getHospitals() -> [Location] {
-
+        
         var hospitals:[Location] = []
-
+        
         db.collection("hospitalsInformation").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -38,7 +38,7 @@ extension BloodDonationViewController {
                 DispatchQueue.main.async {
                     self.tableMain.reloadData()
                 }
-
+                
             }
         }
         let hospitals2 = hospitals.sorted(by: { (h0: Location, h1: Location) -> Bool in
@@ -46,7 +46,7 @@ extension BloodDonationViewController {
         })
         return hospitals2
     }
-
+    
     func calculateDistance(lat: Double, long: Double ) -> Double {
         let currentLocation = CLLocation(latitude: userLocation!.latitude, longitude: userLocation!.longitude)
         let DestinationLocation = CLLocation(latitude: lat, longitude: long)
