@@ -19,7 +19,8 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var nationalIDTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
-    @IBOutlet weak var genderTextField: UITextField!
+    @IBOutlet weak var femaleButton: UIButton!
+    @IBOutlet weak var maleButton: UIButton!
     @IBOutlet weak var bloodTypeTextField: UITextField!
     @IBOutlet weak var birthdateTextField: UITextField!
     @IBOutlet weak var weightTextField: UITextField!
@@ -37,9 +38,11 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
     
     let bloodTypePicker = UIPickerView()
     let citiesPicker = UIPickerView()
+    let weightPicker = UIPickerView()
     
     let bloodList = ["لا اعلم","O+", "O-", "AB+", "AB-", "B-", "B+", "A+", "A-" ]
     let cities = ["الرياض", "مكة المكرمة","المدينة المنورة","جدة","تبوك","نجران","الطائف","ينبع","الخبر","الدمام","حائل","الباحة","ضباء","الأحساء", "جازان"]
+    let weight = ["اكثر من 30","اقل من 30"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +62,11 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
         citiesPicker.dataSource = self
         cityTextField.inputView = citiesPicker
         addToolBar(cityTextField)
+        
+        weightPicker.delegate = self
+        weightPicker.dataSource = self
+        weightTextField.inputView = weightPicker
+        addToolBar(weightTextField)
         
         // Read Data
         profileInfo()
@@ -89,6 +97,7 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
     @objc func doneClick() {
         cityTextField.resignFirstResponder()
         bloodTypeTextField.resignFirstResponder()
+        weightTextField.resignFirstResponder()
     }
     
     func saveButton(enabeld : Bool){
@@ -150,26 +159,56 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
                 self?.phoneTextField.text = String(phone)
                 self?.bloodTypeTextField.text = bloodType
                 self?.birthdateTextField.text = birthdate
-                self?.genderTextField.text = gender
+                
+                if (gender == "m"){
+                    self?.maleSELECTED()
+                }else if(gender == "f"){
+                    self?.femaleSELECTED()
+                }
+                
                 self?.weightTextField.text = String(weight)
                 self?.cityTextField.text = city
             }
         }
     }
     
+    func maleSELECTED(){
+        maleButton.isSelected = true
+        maleButton.backgroundColor = UIColor.init(red: 182/255, green: 218/255, blue: 214/255, alpha: 1)
+        
+        femaleButton.isSelected = false
+        femaleButton.backgroundColor = UIColor.white
+    }
+    func femaleSELECTED(){
+        femaleButton.isSelected = true
+        femaleButton.backgroundColor = UIColor.init(red: 182/255, green: 218/255, blue: 214/255, alpha: 1)
+        
+        maleButton.isSelected = false
+        maleButton.backgroundColor = UIColor.white
+    }
     func textFieldSetUP(){
         textFieldStyle(TextField: nameTextField)
         textFieldStyle(TextField: familyTextField)
         textFieldStyle(TextField: nationalIDTextField)
         textFieldStyle(TextField: emailTextField)
         textFieldStyle(TextField: phoneTextField)
-        textFieldStyle(TextField: genderTextField)
         textFieldStyle(TextField: bloodTypeTextField)
         textFieldStyle(TextField: birthdateTextField)
         textFieldStyle(TextField: weightTextField)
         textFieldStyle(TextField: cityTextField)
+        
+        genderButtons(button: femaleButton)
+        genderButtons(button: maleButton)
     }
     
+    func genderButtons(button : UIButton){
+        
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 16
+        button.layer.borderColor = UIColor.init(red: 134/255, green: 202/255, blue: 195/255, alpha: 1).cgColor
+        //        button.setTitleColor(.black, for: .normal)
+        
+    }
     func textFieldStyle(TextField : UITextField){
         TextField.delegate = self
         TextFieldStyle(TextField: TextField)
@@ -242,9 +281,20 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
         return formatter.string(from: date)
     }
     
+    // Handle click events
+    @IBAction func femaleSelected(_ sender: Any) {
+        femaleSELECTED()
+        saveButton(enabeld: true)
+    }
+    @IBAction func maleSelected(_ sender: Any) {
+        maleSELECTED()
+        saveButton(enabeld: true)
+    }
+    
     
     @objc func dateChange(datePicker: UIDatePicker){
         birthdateTextField.text = formaDate(date: datePicker.date)
+        saveButton(enabeld: true)
     }
     
     
@@ -258,7 +308,7 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
                         "nationalID": Int(nationalIDTextField.text!)!,
                         "email": emailTextField.text!,
                         "phone": Int(phoneTextField.text!)!,
-                        "gender": genderTextField.text!,
+                        //"gender": genderTextField.text!,
                         "bloodType": bloodTypeTextField.text!,
                         "birthdate": birthdateTextField.text!,
                         "weight": Double(weightTextField.text!)!,
@@ -432,6 +482,9 @@ extension VolunteerProfileViewController: UIPickerViewDelegate, UIPickerViewData
         else if (pickerView == citiesPicker){
             return cities.count
         }
+        else if (pickerView == weightPicker){
+            return weight.count
+        }
         
         return 1
         
@@ -444,6 +497,9 @@ extension VolunteerProfileViewController: UIPickerViewDelegate, UIPickerViewData
         else if (pickerView == citiesPicker){
             return cities[row]
         }
+        else if (pickerView == weightPicker){
+            return weight[row]
+        }
         
         return ""
         
@@ -452,11 +508,15 @@ extension VolunteerProfileViewController: UIPickerViewDelegate, UIPickerViewData
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if (pickerView == bloodTypePicker){
             bloodTypeTextField.text = bloodList[row]
-            //  bloodTypeTextField.resignFirstResponder()
+            saveButton(enabeld: true)
         }
         else if (pickerView == citiesPicker){
             cityTextField.text = cities[row]
-            //  cityTextField.resignFirstResponder()
+            saveButton(enabeld: true)
+        }
+        else if (pickerView == weightPicker){
+            weightTextField.text = weight[row]
+            saveButton(enabeld: true)
         }
     }
     
