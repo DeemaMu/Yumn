@@ -27,6 +27,8 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        tableMain.isHidden = true
 
 //        print("\(String(describing: userLocation))")
 //        let control = BetterSegmentedControl(frame: CGRect(x: 0, y: 0,width: seg2.frame.width,        height: 50.0))
@@ -36,7 +38,6 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
         codeSegmented.backgroundColor = .clear
 //        codeSegmented.delegate?.change(to: 2)
         segmentsView.addSubview(codeSegmented)
-        
         
         sortedHospitals = getHospitals()
         
@@ -51,9 +52,7 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
     }
     
     func change(to index: Int) {
-        if(index==0){
-            
-        }
+        print("segmentedControl index changed to \(index)")
     }
 
 }

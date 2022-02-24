@@ -57,13 +57,6 @@ class CustomSegmentedControl: UIView {
             if btn == sender {
                 let selectorPosition = frame.width/CGFloat(buttonTitles.count) * CGFloat(buttonIndex)
                 selectedIndex = buttonIndex
-//                if(selectedIndex == 0){
-//                    selectedIndex = 2
-//                } else if (selectedIndex==1){
-//                    selectedIndex = 1
-//                } else if (selectedIndex==2){
-//                    selectedIndex = 0
-//                }
                 delegate?.change(to: selectedIndex)
                 UIView.animate(withDuration: 0.3) {
                     self.selectorView.frame.origin.x = selectorPosition
@@ -97,7 +90,7 @@ extension CustomSegmentedControl {
     
     private func configSelectorView() {
         let selectorWidth = frame.width / CGFloat(self.buttonTitles.count)
-        selectorView = UIView(frame: CGRect(x: 0, y: self.frame.height, width: selectorWidth, height: 2))
+        selectorView = UIView(frame: CGRect(x: frame.width - (frame.width / CGFloat(self.buttonTitles.count)), y: self.frame.height, width: selectorWidth, height: 2))
         selectorView.backgroundColor = selectorViewColor
         addSubview(selectorView)
     }
@@ -128,7 +121,7 @@ extension CustomSegmentedControl {
             
             buttons.append(button)
         }
-        buttons[0].setTitleColor(selectorTextColor, for: .normal)
+        buttons[2].setTitleColor(selectorTextColor, for: .normal)
     }
     
     
