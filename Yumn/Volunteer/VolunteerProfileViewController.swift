@@ -6,6 +6,7 @@
 
 import Foundation
 import FirebaseFirestore
+
 import UIKit
 
 class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
@@ -56,6 +57,58 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
         saveButton(enabeld: false)
         hideErrorMSGs()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        subscribeToKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        unsubscribeFromKeyboardNotifications()
+    }
+    
+    func subscribeToKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    func unsubscribeFromKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification:Notification) {
+        if bloodTypeTextField.isFirstResponder {
+            view.frame.origin.y -= getKeyboardHeight(notification)
+        }
+        if birthdateTextField.isFirstResponder {
+            view.frame.origin.y -= getKeyboardHeight(notification)
+        }
+        if weightTextField.isFirstResponder {
+            view.frame.origin.y -= getKeyboardHeight(notification)
+        }
+        if cityTextField.isFirstResponder {
+            view.frame.origin.y -= getKeyboardHeight(notification)
+        }
+    }
+    @objc func keyboardWillHide(_ notification:Notification){
+        if bloodTypeTextField.isFirstResponder {
+            view.frame.origin.y = 0
+        }
+        if birthdateTextField.isFirstResponder {
+            view.frame.origin.y = 0
+        }
+        if weightTextField.isFirstResponder {
+            view.frame.origin.y = 0
+        }
+        if cityTextField.isFirstResponder {
+            view.frame.origin.y = 0
+        }
+    }
+    func getKeyboardHeight(_ notification:Notification) -> CGFloat {
+        
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        return keyboardSize.cgRectValue.height
     }
     
     func setUP(){
@@ -136,7 +189,7 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
         weightTextField.resignFirstResponder()
         self.view.endEditing(true)
     }
-
+    
     func maleSELECTED(){
         maleButton.isSelected = true
         maleButton.backgroundColor = UIColor.init(red: 182/255, green: 218/255, blue: 214/255, alpha: 1)
@@ -199,7 +252,7 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-   
+    
     
     // Get Profile info
     func profileInfo(){
@@ -267,9 +320,19 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
+  
     
-    // Save update
+    // Save updates
     @IBAction func Update(_ sender: Any) {
+        
+        if Auth.auth().currentUser != nil {
+          // User is signed in.
+          // ...
+        } else {
+          // No user is signed in.
+          // ...
+        }
+        
         
         var gender = "m"
         if (femaleButton.isSelected){
@@ -278,8 +341,7 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
         
         // get the Doc
         let docRef = database.document("volunteer/f8ppu8BUAOdRZjCjv9AiTwq1yeh2")
-        
-        
+//        let docRef = database.collection("volunteer").document(result!.user.uid)
         // save data
         docRef.setData(["firstName": nameTextField.text!,
                         "lastName": familyTextField.text!,
@@ -291,9 +353,19 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
                         "birthDate": birthdateTextField.text!,
                         "weight": weightTextField.text!,
                         "city": cityTextField.text!,
+                        "points": points,
                         "uid" : "f8ppu8BUAOdRZjCjv9AiTwq1yeh2",
-                        "points":points,
-                        "userType" : "Volunteer"])
+                        "userType" : "Volunteer"]){ error in
+            
+            if error != nil {
+                print(error?.localizedDescription as Any)
+    
+                // Show error message or pop up message
+                print ("error in saving the volunteer data")
+                
+                
+            }
+        }
     }
     
     

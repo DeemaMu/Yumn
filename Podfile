@@ -9,5 +9,6 @@ pod 'Firebase/Core'
 pod 'Firebase/Crashlytics'
 pod 'Firebase/Firestore'
 pod 'SCLAlertView'
+pod 'Firebase/Auth'
 
 end
