@@ -39,10 +39,13 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
         //        segmentedControl.removeBorder()
         //        segmentedControl.addUnderlineForSelectedSegment()
         //
+        
         codeSegmented = CustomSegmentedControl(frame: CGRect(x: 0, y: 0, width: segmentsView.frame.width, height: 50), buttonTitle: ["مراكز التبرع","الإرشادات","الإحتياج"])
         codeSegmented!.backgroundColor = .clear
         //        codeSegmented.delegate?.change(to: 2)
         segmentsView.addSubview(codeSegmented!)
+        
+        
         codeSegmented?.delegate = self
         
         sortedHospitals = getHospitals()
