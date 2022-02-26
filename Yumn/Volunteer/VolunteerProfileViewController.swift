@@ -83,13 +83,13 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
     
     @objc func keyboardWillShow(_ notification:Notification) {
         if bloodTypeTextField.isFirstResponder {
-            view.frame.origin.y -= 100
+            view.frame.origin.y -= getKeyboardHeight(notification)
         }
         if birthdateTextField.isFirstResponder {
-            view.frame.origin.y -= 150
+            view.frame.origin.y -= getKeyboardHeight(notification)
         }
         if weightTextField.isFirstResponder {
-            view.frame.origin.y -= 90
+            view.frame.origin.y -= getKeyboardHeight(notification)
         }
         if cityTextField.isFirstResponder {
             view.frame.origin.y -= getKeyboardHeight(notification)
