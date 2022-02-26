@@ -8,19 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		4431FB9FD03492447C77118B /* Pods_Yumn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC1A8B5E9D4CEC34ED1A240 /* Pods_Yumn.framework */; };
+		95062D9627CADC0500D63911 /* Tajawal-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95062D9227CADC0400D63911 /* Tajawal-Light.ttf */; };
+		95062D9727CADC0500D63911 /* Tajawal-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95062D9327CADC0500D63911 /* Tajawal-Medium.ttf */; };
+		95062D9827CADC0500D63911 /* Tajawal-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95062D9427CADC0500D63911 /* Tajawal-Regular.ttf */; };
+		95062D9927CADC0500D63911 /* Tajawal-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95062D9527CADC0500D63911 /* Tajawal-Bold.ttf */; };
 		95785059279E1917004F3D8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95785058279E1917004F3D8F /* AppDelegate.swift */; };
 		9578505B279E1917004F3D8F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9578505A279E1917004F3D8F /* SceneDelegate.swift */; };
 		9578505D279E1917004F3D8F /* VHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9578505C279E1917004F3D8F /* VHomeViewController.swift */; };
 		95785060279E1917004F3D8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9578505E279E1917004F3D8F /* Main.storyboard */; };
 		95785062279E1918004F3D8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95785061279E1918004F3D8F /* Assets.xcassets */; };
 		95785065279E1918004F3D8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95785063279E1918004F3D8F /* LaunchScreen.storyboard */; };
-		B930F85F27B8567700E70860 /* Tajawal-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B930F85827B8567700E70860 /* Tajawal-Bold.ttf */; };
-		B930F86027B8567700E70860 /* Tajawal-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B930F85927B8567700E70860 /* Tajawal-ExtraBold.ttf */; };
-		B930F86127B8567700E70860 /* Tajawal-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B930F85A27B8567700E70860 /* Tajawal-Medium.ttf */; };
-		B930F86227B8567700E70860 /* Tajawal-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B930F85B27B8567700E70860 /* Tajawal-Light.ttf */; };
-		B930F86327B8567700E70860 /* Tajawal-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B930F85C27B8567700E70860 /* Tajawal-ExtraLight.ttf */; };
-		B930F86427B8567700E70860 /* Tajawal-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B930F85D27B8567700E70860 /* Tajawal-Regular.ttf */; };
-		B930F86527B8567700E70860 /* Tajawal-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B930F85E27B8567700E70860 /* Tajawal-Black.ttf */; };
 		B930F86827B85D5F00E70860 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B930F86727B85D5E00E70860 /* RoundedView.swift */; };
 		B9419DFC27C52D9C00962A1B /* HospitalCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9419DFA27C52D9C00962A1B /* HospitalCellTableViewCell.swift */; };
 		B9419DFD27C52D9C00962A1B /* HospitalCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9419DFB27C52D9C00962A1B /* HospitalCellTableViewCell.xib */; };
@@ -35,6 +32,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		95062D9227CADC0400D63911 /* Tajawal-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tajawal-Light.ttf"; sourceTree = "<group>"; };
+		95062D9327CADC0500D63911 /* Tajawal-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tajawal-Medium.ttf"; sourceTree = "<group>"; };
+		95062D9427CADC0500D63911 /* Tajawal-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tajawal-Regular.ttf"; sourceTree = "<group>"; };
+		95062D9527CADC0500D63911 /* Tajawal-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tajawal-Bold.ttf"; sourceTree = "<group>"; };
 		95785055279E1917004F3D8F /* Yumn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yumn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95785058279E1917004F3D8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9578505A279E1917004F3D8F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,13 +44,6 @@
 		95785061279E1918004F3D8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95785064279E1918004F3D8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		95785066279E1918004F3D8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B930F85827B8567700E70860 /* Tajawal-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Tajawal-Bold.ttf"; path = "../../../../../Downloads/Tajawal-2/Tajawal-Bold.ttf"; sourceTree = "<group>"; };
-		B930F85927B8567700E70860 /* Tajawal-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Tajawal-ExtraBold.ttf"; path = "../../../../../Downloads/Tajawal-2/Tajawal-ExtraBold.ttf"; sourceTree = "<group>"; };
-		B930F85A27B8567700E70860 /* Tajawal-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Tajawal-Medium.ttf"; path = "../../../../../Downloads/Tajawal-2/Tajawal-Medium.ttf"; sourceTree = "<group>"; };
-		B930F85B27B8567700E70860 /* Tajawal-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Tajawal-Light.ttf"; path = "../../../../../Downloads/Tajawal-2/Tajawal-Light.ttf"; sourceTree = "<group>"; };
-		B930F85C27B8567700E70860 /* Tajawal-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Tajawal-ExtraLight.ttf"; path = "../../../../../Downloads/Tajawal-2/Tajawal-ExtraLight.ttf"; sourceTree = "<group>"; };
-		B930F85D27B8567700E70860 /* Tajawal-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Tajawal-Regular.ttf"; path = "../../../../../Downloads/Tajawal-2/Tajawal-Regular.ttf"; sourceTree = "<group>"; };
-		B930F85E27B8567700E70860 /* Tajawal-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Tajawal-Black.ttf"; path = "../../../../../Downloads/Tajawal-2/Tajawal-Black.ttf"; sourceTree = "<group>"; };
 		B930F86727B85D5E00E70860 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		B9419DFA27C52D9C00962A1B /* HospitalCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalCellTableViewCell.swift; sourceTree = "<group>"; };
 		B9419DFB27C52D9C00962A1B /* HospitalCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HospitalCellTableViewCell.xib; sourceTree = "<group>"; };
@@ -86,6 +80,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		95062D9127CADBE800D63911 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				95062D9527CADC0500D63911 /* Tajawal-Bold.ttf */,
+				95062D9227CADC0400D63911 /* Tajawal-Light.ttf */,
+				95062D9327CADC0500D63911 /* Tajawal-Medium.ttf */,
+				95062D9427CADC0500D63911 /* Tajawal-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		9578504C279E1917004F3D8F = {
 			isa = PBXGroup;
 			children = (
@@ -107,7 +112,7 @@
 		95785057279E1917004F3D8F /* Yumn */ = {
 			isa = PBXGroup;
 			children = (
-				B930F85727B8560E00E70860 /* Fonts */,
+				95062D9127CADBE800D63911 /* Fonts */,
 				B930F86627B85D3200E70860 /* Custom Classes */,
 				B9DA61D627C10F7200359487 /* Managers */,
 				B930F85427B8547300E70860 /* Model */,
@@ -150,20 +155,6 @@
 				B9C7969427C7A839006A78A3 /* TabBarController.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		B930F85727B8560E00E70860 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				B930F85E27B8567700E70860 /* Tajawal-Black.ttf */,
-				B930F85827B8567700E70860 /* Tajawal-Bold.ttf */,
-				B930F85927B8567700E70860 /* Tajawal-ExtraBold.ttf */,
-				B930F85C27B8567700E70860 /* Tajawal-ExtraLight.ttf */,
-				B930F85B27B8567700E70860 /* Tajawal-Light.ttf */,
-				B930F85A27B8567700E70860 /* Tajawal-Medium.ttf */,
-				B930F85D27B8567700E70860 /* Tajawal-Regular.ttf */,
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 		B930F86627B85D3200E70860 /* Custom Classes */ = {
@@ -253,18 +244,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B930F86227B8567700E70860 /* Tajawal-Light.ttf in Resources */,
 				B9419DFD27C52D9C00962A1B /* HospitalCellTableViewCell.xib in Resources */,
 				95785065279E1918004F3D8F /* LaunchScreen.storyboard in Resources */,
+				95062D9827CADC0500D63911 /* Tajawal-Regular.ttf in Resources */,
 				95785062279E1918004F3D8F /* Assets.xcassets in Resources */,
-				B930F85F27B8567700E70860 /* Tajawal-Bold.ttf in Resources */,
-				B930F86027B8567700E70860 /* Tajawal-ExtraBold.ttf in Resources */,
-				B930F86127B8567700E70860 /* Tajawal-Medium.ttf in Resources */,
-				B930F86427B8567700E70860 /* Tajawal-Regular.ttf in Resources */,
 				95785060279E1917004F3D8F /* Main.storyboard in Resources */,
+				95062D9727CADC0500D63911 /* Tajawal-Medium.ttf in Resources */,
+				95062D9627CADC0500D63911 /* Tajawal-Light.ttf in Resources */,
+				95062D9927CADC0500D63911 /* Tajawal-Bold.ttf in Resources */,
 				B9DA61CE27C10C2900359487 /* GoogleService-Info.plist in Resources */,
-				B930F86327B8567700E70860 /* Tajawal-ExtraLight.ttf in Resources */,
-				B930F86527B8567700E70860 /* Tajawal-Black.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
