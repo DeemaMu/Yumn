@@ -16,7 +16,8 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
     var points = 0
     
     @IBOutlet weak var backView: UIView!
-    
+    let blue = UIColor.init(red: 134/255, green: 202/255, blue: 195/255, alpha: 1)
+
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var familyTextField: UITextField!
     @IBOutlet weak var nationalIDTextField: UITextField!
@@ -402,6 +403,33 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
                 print ("error in saving the volunteer data")
                 
                 
+            }
+        }
+        let color = blue
+        let white = UIColor.white
+        if let whiteColor = white.rgb(){
+            if let blueColor = color.rgb() {
+                
+                let timeoutAction: SCLAlertView.SCLTimeoutConfiguration.ActionType = {
+                    self.navigationController?.popViewController(animated: true)
+                    self.dismiss(animated: true, completion: nil)
+                        }
+                
+                let alertView = SCLAlertView()
+                
+//                alertView.addButton("تم", backgroundColor: blue, textColor: UIColor.white, showTimeout: .none) {
+//                    self.navigationController?.popViewController(animated: true)
+//                    self.dismiss(animated: true, completion: nil)
+//                }
+//
+//                alertView.showCustom("تم!", subTitle: "تم حفظ التغييرات بنجاح", color: blue, icon: UIImage(named: "done")!)
+//
+                
+                alertView.showSuccess("تم!", subTitle: "تم حفظ التغييرات بنجاح", closeButtonTitle: "تم", timeout: .init(timeoutValue: 10, timeoutAction: timeoutAction), colorStyle: UInt(blueColor), colorTextButton: UInt(whiteColor), circleIconImage: UIImage(named: "done"), animationStyle: SCLAnimationStyle.bottomToTop)
+        
+                
+            } else {
+                print("conversion failed")
             }
         }
     }
