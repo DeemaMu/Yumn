@@ -164,9 +164,6 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="358" height="173"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain" title=""/>
-                                                                        <connections>
-                                                                            <segue destination="6P2-Rb-C5G" kind="show" id="7FX-vo-ulI"/>
-                                                                        </connections>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تبرع بالأعضاء" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hqx-pO-75t">
                                                                         <rect key="frame" x="118" y="71.5" width="232" height="30"/>
@@ -448,66 +445,6 @@
             </objects>
             <point key="canvasLocation" x="1045" y="901"/>
         </scene>
-        <!--Trial1-->
-        <scene sceneID="i3b-K3-Gcr">
-            <objects>
-                <viewController id="6P2-Rb-C5G" customClass="Trial1" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="EDQ-Of-g3j">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e8X-ie-4AN">
-                                <rect key="frame" x="20" y="88" width="374" height="725"/>
-                                <subviews>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4aq-nY-Umz">
-                                        <rect key="frame" x="0.0" y="8" width="374" height="61"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="DAO-h8-9lU"/>
-                                            <constraint firstAttribute="height" constant="60" id="Gd0-UO-lLt"/>
-                                        </constraints>
-                                        <segments>
-                                            <segment title="First"/>
-                                            <segment title="Second"/>
-                                            <segment title="three"/>
-                                        </segments>
-                                        <color key="selectedSegmentTintColor" systemColor="tintColor"/>
-                                        <connections>
-                                            <action selector="segmentedControlDidChange:" destination="6P2-Rb-C5G" eventType="valueChanged" id="hgO-2l-bym"/>
-                                        </connections>
-                                    </segmentedControl>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KsN-Jm-2rM">
-                                        <rect key="frame" x="39" y="135" width="284" height="86"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="4aq-nY-Umz" firstAttribute="leading" secondItem="e8X-ie-4AN" secondAttribute="leading" id="WfS-md-w4W"/>
-                                    <constraint firstItem="4aq-nY-Umz" firstAttribute="top" secondItem="e8X-ie-4AN" secondAttribute="top" constant="8" id="Wtn-Pt-IqO"/>
-                                    <constraint firstItem="4aq-nY-Umz" firstAttribute="centerX" secondItem="e8X-ie-4AN" secondAttribute="centerX" id="ama-a5-Hru"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="sCL-CJ-lZf"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="e8X-ie-4AN" firstAttribute="bottom" secondItem="sCL-CJ-lZf" secondAttribute="bottom" id="4oh-1D-j7l"/>
-                            <constraint firstItem="e8X-ie-4AN" firstAttribute="top" secondItem="sCL-CJ-lZf" secondAttribute="top" id="5AE-2M-Bag"/>
-                            <constraint firstItem="e8X-ie-4AN" firstAttribute="leading" secondItem="EDQ-Of-g3j" secondAttribute="leadingMargin" id="fMQ-9s-DsM"/>
-                            <constraint firstItem="e8X-ie-4AN" firstAttribute="trailing" secondItem="EDQ-Of-g3j" secondAttribute="trailingMargin" id="ie4-gm-G0O"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="gQu-DZ-PEc"/>
-                    <connections>
-                        <outlet property="segmentedControl" destination="4aq-nY-Umz" id="nAB-V8-WMX"/>
-                        <outlet property="trialView" destination="KsN-Jm-2rM" id="88s-ug-y3e"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sII-ng-jgd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1905.7971014492755" y="900.66964285714278"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="9gl-dw-zLH">
             <objects>
@@ -586,9 +523,6 @@
         </systemColor>
         <systemColor name="tertiaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
