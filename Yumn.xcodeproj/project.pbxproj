@@ -25,12 +25,9 @@
 		B9419DFC27C52D9C00962A1B /* HospitalCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9419DFA27C52D9C00962A1B /* HospitalCellTableViewCell.swift */; };
 		B9419DFD27C52D9C00962A1B /* HospitalCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9419DFB27C52D9C00962A1B /* HospitalCellTableViewCell.xib */; };
 		B9503D8827BAE4E500E312B8 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9503D8727BAE4E400E312B8 /* CustomSegmentedControl.swift */; };
-		B952BB1027C60EF90049D81B /* Trial1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B952BB0F27C60EF80049D81B /* Trial1.swift */; };
 		B952BB1227C641B80049D81B /* HospitalsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B952BB1127C641B80049D81B /* HospitalsController.swift */; };
 		B97A37FE27B9D32A00718079 /* RoundedShadowedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A37FD27B9D32A00718079 /* RoundedShadowedView.swift */; };
 		B97A380227BA9EA000718079 /* BloodDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A380127BA9EA000718079 /* BloodDonationViewController.swift */; };
-		B9C7969127C733B2006A78A3 /* StackedViewsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C7969027C733B2006A78A3 /* StackedViewsProvider.swift */; };
-		B9C7969327C73621006A78A3 /* SegmentedControlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C7969227C73621006A78A3 /* SegmentedControlBuilder.swift */; };
 		B9C7969527C7A83A006A78A3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C7969427C7A839006A78A3 /* TabBarController.swift */; };
 		B9DA61CE27C10C2900359487 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9DA61CD27C10C2800359487 /* GoogleService-Info.plist */; };
 		B9DA61D127C10DC800359487 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B9DA61D027C10DC800359487 /* FirebaseAnalytics */; };
@@ -62,12 +59,9 @@
 		B9419DFA27C52D9C00962A1B /* HospitalCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalCellTableViewCell.swift; sourceTree = "<group>"; };
 		B9419DFB27C52D9C00962A1B /* HospitalCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HospitalCellTableViewCell.xib; sourceTree = "<group>"; };
 		B9503D8727BAE4E400E312B8 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
-		B952BB0F27C60EF80049D81B /* Trial1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trial1.swift; sourceTree = "<group>"; };
 		B952BB1127C641B80049D81B /* HospitalsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalsController.swift; sourceTree = "<group>"; };
 		B97A37FD27B9D32A00718079 /* RoundedShadowedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowedView.swift; sourceTree = "<group>"; };
 		B97A380127BA9EA000718079 /* BloodDonationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationViewController.swift; sourceTree = "<group>"; };
-		B9C7969027C733B2006A78A3 /* StackedViewsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackedViewsProvider.swift; sourceTree = "<group>"; };
-		B9C7969227C73621006A78A3 /* SegmentedControlBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlBuilder.swift; sourceTree = "<group>"; };
 		B9C7969427C7A839006A78A3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B9DA61CD27C10C2800359487 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B9DA61D927C10FCC00359487 /* LocationManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManger.swift; sourceTree = "<group>"; };
@@ -159,7 +153,6 @@
 			children = (
 				9578505C279E1917004F3D8F /* VHomeViewController.swift */,
 				B97A380127BA9EA000718079 /* BloodDonationViewController.swift */,
-				B952BB0F27C60EF80049D81B /* Trial1.swift */,
 				B9C7969427C7A839006A78A3 /* TabBarController.swift */,
 			);
 			path = Controller;
@@ -185,8 +178,6 @@
 				B930F86727B85D5E00E70860 /* RoundedView.swift */,
 				B97A37FD27B9D32A00718079 /* RoundedShadowedView.swift */,
 				B9503D8727BAE4E400E312B8 /* CustomSegmentedControl.swift */,
-				B9C7969027C733B2006A78A3 /* StackedViewsProvider.swift */,
-				B9C7969227C73621006A78A3 /* SegmentedControlBuilder.swift */,
 			);
 			path = "Custom Classes";
 			sourceTree = "<group>";
@@ -344,12 +335,9 @@
 				B9419DFC27C52D9C00962A1B /* HospitalCellTableViewCell.swift in Sources */,
 				9578505D279E1917004F3D8F /* VHomeViewController.swift in Sources */,
 				B9C7969527C7A83A006A78A3 /* TabBarController.swift in Sources */,
-				B9C7969127C733B2006A78A3 /* StackedViewsProvider.swift in Sources */,
 				B9DA61DA27C10FCC00359487 /* LocationManger.swift in Sources */,
 				B97A380227BA9EA000718079 /* BloodDonationViewController.swift in Sources */,
 				B9DA61DC27C1100B00359487 /* Location.swift in Sources */,
-				B952BB1027C60EF90049D81B /* Trial1.swift in Sources */,
-				B9C7969327C73621006A78A3 /* SegmentedControlBuilder.swift in Sources */,
 				B952BB1227C641B80049D81B /* HospitalsController.swift in Sources */,
 				B930F86827B85D5F00E70860 /* RoundedView.swift in Sources */,
 				B97A37FE27B9D32A00718079 /* RoundedShadowedView.swift in Sources */,
