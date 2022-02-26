@@ -4,8 +4,8 @@ platform :ios, '14.0'
 target 'Yumn' do
   # Comment the next line if you don't want to use dynamic frameworks
  use_frameworks!
-	pod 'BetterSegmentedControl', '~> 2.0'
-	pod 'SnapKit', '~> 5.0.0'
+	# pod 'BetterSegmentedControl', '~> 2.0'
+	# pod 'SnapKit', '~> 5.0.0'
 	# pod 'Firebase/Firestore'
 
   # Pods for Yumn
