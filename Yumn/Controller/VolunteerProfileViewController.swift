@@ -15,6 +15,7 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
     let database = Firestore.firestore()
     var points = 0
     
+    @IBOutlet weak var barTitle: UINavigationItem!
     @IBOutlet weak var backView: UIView!
     let blue = UIColor.init(red: 134/255, green: 202/255, blue: 195/255, alpha: 1)
 
@@ -62,14 +63,22 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
         // Hide keyboard
         self.hideKeyboardWhenTappedAround()
         
+
     }
+//    override func willMove(toParent parent: UIViewController?) {
+//        self.navigationController?.navigationBar.tintColor = UIColor.white
+//        self.navigationController?.navigationBar.backgroundColor = blue
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         subscribeToKeyboardNotifications()
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         unsubscribeFromKeyboardNotifications()
+        self.navigationController?.navigationBar.tintColor = blue
     }
     
     func subscribeToKeyboardNotifications() {
