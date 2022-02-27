@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jGt-ZN-hwX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Jm4-gj-E4s">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -341,7 +341,13 @@
                             <constraint firstAttribute="bottom" secondItem="EGJ-P8-wum" secondAttribute="bottom" id="KAY-mg-gaE"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="الصفحة الرئيسية" id="zeZ-r9-qUy"/>
+                    <navigationItem key="navigationItem" title="الصفحة الرئيسية" id="zeZ-r9-qUy">
+                        <barButtonItem key="rightBarButtonItem" image="Profile" id="o1w-JF-rTM">
+                            <connections>
+                                <segue destination="jGt-ZN-hwX" kind="show" id="mCX-oJ-ejz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -512,16 +518,16 @@
         <!--VolunteerProfileViewController-->
         <scene sceneID="Q01-7N-cZk">
             <objects>
-                <viewController id="jGt-ZN-hwX" userLabel="VolunteerProfileViewController" customClass="VolunteerProfileViewController" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="jGt-ZN-hwX" userLabel="VolunteerProfileViewController" customClass="VolunteerProfileViewController" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ifk-4t-x2z">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1350"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZIw-4L-2X3">
-                                <rect key="frame" x="0.0" y="104" width="414" height="1246"/>
+                                <rect key="frame" x="0.0" y="103" width="414" height="1247"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NYA-Dn-g5e">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1236"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1247"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Volunteer" translatesAutoresizingMaskIntoConstraints="NO" id="akN-TK-hax">
                                                 <rect key="frame" x="87" y="15" width="240" height="128"/>
@@ -801,7 +807,7 @@
                                             <constraint firstItem="FTf-ez-tAc" firstAttribute="height" secondItem="wp7-7S-s3u" secondAttribute="height" multiplier="1.88889" id="RI8-3z-O7j"/>
                                             <constraint firstItem="wp7-7S-s3u" firstAttribute="top" secondItem="tnM-Rh-U79" secondAttribute="bottom" constant="37" id="SLf-He-61E"/>
                                             <constraint firstItem="MYt-r3-nzY" firstAttribute="trailing" secondItem="X0S-8f-IPV" secondAttribute="trailing" id="Sbe-cN-cmz"/>
-                                            <constraint firstItem="akN-TK-hax" firstAttribute="height" secondItem="NYA-Dn-g5e" secondAttribute="height" multiplier="0.116788" constant="-16.34996799999999" id="TqC-9H-vur"/>
+                                            <constraint firstItem="akN-TK-hax" firstAttribute="height" secondItem="NYA-Dn-g5e" secondAttribute="height" multiplier="0.116788" constant="-17.634636" id="TqC-9H-vur"/>
                                             <constraint firstItem="uWz-Ul-Iln" firstAttribute="height" secondItem="ZcE-tL-R5i" secondAttribute="height" multiplier="1.47619" id="UHV-5X-QRt"/>
                                             <constraint firstItem="ayt-jZ-W8L" firstAttribute="leading" secondItem="MYt-r3-nzY" secondAttribute="leading" id="UcP-Ml-EeX"/>
                                             <constraint firstItem="3wx-a3-Wx7" firstAttribute="leading" secondItem="ayt-jZ-W8L" secondAttribute="leading" id="UmG-3S-5tK"/>
@@ -819,7 +825,7 @@
                                             <constraint firstItem="FTf-ez-tAc" firstAttribute="trailing" secondItem="wp7-7S-s3u" secondAttribute="trailing" id="a4x-Rf-MIj"/>
                                             <constraint firstItem="Mvs-X7-pcg" firstAttribute="height" secondItem="3wx-a3-Wx7" secondAttribute="height" multiplier="0.617647" id="aLn-ts-515"/>
                                             <constraint firstItem="FTf-ez-tAc" firstAttribute="leading" secondItem="wp7-7S-s3u" secondAttribute="leading" id="bgo-g8-1JF"/>
-                                            <constraint firstAttribute="height" constant="1236" id="dez-fN-uwB"/>
+                                            <constraint firstAttribute="height" constant="1247" id="dez-fN-uwB"/>
                                             <constraint firstItem="IdP-53-PZO" firstAttribute="trailing" secondItem="DZo-x3-npd" secondAttribute="trailing" id="do9-Rp-vac"/>
                                             <constraint firstItem="0Go-lx-S4s" firstAttribute="leading" secondItem="aI9-5L-2sn" secondAttribute="leading" id="eUt-HR-SIM"/>
                                             <constraint firstItem="oVs-HM-hAp" firstAttribute="height" secondItem="9W8-0C-JWG" secondAttribute="height" multiplier="1.52941" id="eoW-Nh-mxB"/>
@@ -871,27 +877,18 @@
                                     <constraint firstAttribute="trailing" secondItem="NYA-Dn-g5e" secondAttribute="trailing" id="pa5-gz-ToW"/>
                                 </constraints>
                             </scrollView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="الصفحة الشخصية" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0HF-On-ImD">
-                                <rect key="frame" x="112" y="51" width="191" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="25"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="io9-5Y-EVE"/>
                         <color key="backgroundColor" red="0.52549019610000003" green="0.79215686269999996" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="ZIw-4L-2X3" firstAttribute="top" secondItem="io9-5Y-EVE" secondAttribute="top" constant="60" id="86z-nc-7pR"/>
+                            <constraint firstItem="ZIw-4L-2X3" firstAttribute="top" secondItem="io9-5Y-EVE" secondAttribute="top" constant="15" id="86z-nc-7pR"/>
                             <constraint firstItem="NYA-Dn-g5e" firstAttribute="width" secondItem="ifk-4t-x2z" secondAttribute="width" id="LYc-qr-Qka"/>
                             <constraint firstAttribute="bottom" secondItem="ZIw-4L-2X3" secondAttribute="bottom" id="PsD-eM-kFo"/>
                             <constraint firstItem="ZIw-4L-2X3" firstAttribute="trailing" secondItem="io9-5Y-EVE" secondAttribute="trailing" id="W8m-Aw-Oxm"/>
                             <constraint firstItem="ZIw-4L-2X3" firstAttribute="leading" secondItem="io9-5Y-EVE" secondAttribute="leading" id="jVP-W0-a8v"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="pPv-Ks-pcc"/>
+                    <navigationItem key="navigationItem" title="الصفحة الشخصية" id="pPv-Ks-pcc"/>
                     <size key="freeformSize" width="414" height="1350"/>
                     <connections>
                         <outlet property="backView" destination="NYA-Dn-g5e" id="1e4-Fb-vQC"/>
@@ -916,7 +913,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5hv-Mh-Laj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1313" y="58"/>
+            <point key="canvasLocation" x="-1313.0434782608697" y="57.589285714285708"/>
         </scene>
         <!--HospitalProfileViewController-->
         <scene sceneID="d4j-sU-Jig">
@@ -1079,6 +1076,7 @@
     </scenes>
     <resources>
         <image name="Hospital" width="500" height="500"/>
+        <image name="Profile" width="80" height="76"/>
         <image name="Volunteer" width="512" height="512"/>
         <image name="blood alt" width="256" height="256"/>
         <image name="calender-grey" width="30" height="30"/>
