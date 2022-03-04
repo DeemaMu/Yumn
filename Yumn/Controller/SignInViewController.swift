@@ -10,7 +10,7 @@ import UIKit
 
 class SignInViewController: UIViewController {
     
-    @IBOutlet weak var pView: UIView!
+   // @IBOutlet weak var pView: UIView!
     
     @IBOutlet weak var popUpStack: UIStackView!
     
@@ -35,7 +35,7 @@ class SignInViewController: UIViewController {
     
     @IBOutlet weak var eyeButton: UIButton!
     
-    @IBOutlet weak var signInStack: UIStackView!
+  //  @IBOutlet weak var signInStack: UIStackView!
     
     @IBOutlet weak var emailLabel: UILabel!
     
@@ -72,20 +72,20 @@ class SignInViewController: UIViewController {
     
     func setUpElements(){
         
-        navigationController?.hidesBarsOnTap = true
-        
-        signInStack.setCustomSpacing(0, after: signUpButton)
        
 
         
         loadingGif.superview?.bringSubviewToFront(loadingGif)
         
         
-        view.bringSubviewToFront(popUpStack)
-
-
-
         
+        //The line below removes the top navigation bar however it alters the textfields when the pop up appears
+        
+        
+      //  navigationController?.hidesBarsOnTap = true
+        
+        popUpStack.superview?.bringSubviewToFront(popUpStack)
+
         
         
         
@@ -183,7 +183,7 @@ class SignInViewController: UIViewController {
            
            
            if (textfield.text!.isEmpty){
-           bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width + 106, height: 2)
+           bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width + 95, height: 2)
            } //was width + 120
            else {
               bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width  , height: 2)

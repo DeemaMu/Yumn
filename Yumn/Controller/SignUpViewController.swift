@@ -161,7 +161,7 @@ class SignUpViewController: UIViewController {
         stepper1.image = UIImage(named: "stepper 1:2")
         
         
-        
+
 
         
         
@@ -235,14 +235,16 @@ class SignUpViewController: UIViewController {
         
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
-        
-        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
+        let doneBtn = UIBarButtonItem(title: "تم", style: .done, target: self, action: #selector(donePressed))
+        doneBtn.tintColor = UIColor.init(red: 56/255, green: 97/255, blue: 93/255, alpha: 1)
+
+     
         toolbar.setItems([doneBtn], animated: true)
         
         
         
         dateTextField.inputAccessoryView = toolbar
-        toolbar.tintColor = UIColor(red:137/255, green: 191/255, blue: 186/255, alpha: 1.00)
+      
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 
         toolbar.items = [flexSpace, doneBtn]
@@ -550,7 +552,7 @@ class SignUpViewController: UIViewController {
      
         let bottomLine = CALayer()
         
-        bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 18, width: textfield.frame.width , height: 2)
+        bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 20, width: textfield.frame.width , height: 2)
         
         bottomLine.backgroundColor = UIColor(red:137/255, green: 191/255, blue: 186/255, alpha: 1.00).cgColor
         

@@ -47,7 +47,7 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
     
     let bloodList = ["لا اعلم","O+", "O-", "AB+", "AB-", "B-", "B+", "A+", "A-" ]
     let cities = ["الرياض", "مكة المكرمة","المدينة المنورة","جدة","تبوك","نجران","الطائف","ينبع","الخبر","الدمام","حائل","الباحة","ضباء","الأحساء", "جازان"]
-    let weight = ["اكثر من 30","اقل من 30"]
+    let weight = ["أقل من ٥٠ كج", "٥٠ كج أو أعلى"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

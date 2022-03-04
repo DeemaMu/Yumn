@@ -27,6 +27,8 @@ class HomeViewController: UIViewController {
                     // Put your code which should be executed with a delay here
                 let name = document.get("firstName") as! String
                     let mssg = "حياك الله " + name  + "، تو ما نور يُمْن"
+                    
+                    
                     self.showToast(message: mssg, font: .systemFont(ofSize: 20), image: (UIImage(named: "yumn") ?? UIImage(named: "")! ))}
 
                 
