@@ -1451,49 +1451,10 @@ class SignUpViewController: UIViewController {
 
 
 
-extension UIViewController {
-
-    func showToast(message : String, font: UIFont, image: UIImage){
-
-    let toastLabel = UILabel(frame: CGRect(x: 5, y: 45, width: self.view.frame.size.width-10, height: 70))
-        
-
-        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        toastLabel.textColor = UIColor.white
-        toastLabel.font = font
-        toastLabel.textAlignment = .center;
-        toastLabel.text = message
-        toastLabel.alpha = 1.0
-        toastLabel.layer.cornerRadius = 10;
-        toastLabel.clipsToBounds  =  true
-        self.view.addSubview(toastLabel)
-   
-
-        
-    let imageView = UIImageView(frame: CGRect(x: self.view.frame.size.width-70, y: 10, width: 45, height: 45))
-        imageView.layer.masksToBounds = true
-
-    imageView.image = image
-        imageView.layer.cornerRadius = 10
-
-        toastLabel.addSubview(imageView)
-    self.view.addSubview(toastLabel)
-    UIView.animate(withDuration: 12, delay: 0, options:
-                    
-                    
-                    .transitionFlipFromTop, animations: {
-                        
-                        
-         toastLabel.alpha = 0.0
-    }, completion: {(isCompleted) in
-        toastLabel.removeFromSuperview()
-    })
-}
     
     
     
-    
-}
+
 
 
 
