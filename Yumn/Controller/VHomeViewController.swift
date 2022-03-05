@@ -94,6 +94,68 @@ class VHomeViewController: UIViewController {
     }
     
     
+    @IBAction func onPressedOk(_ sender: Any) {
+        
+        blackBlurredView.isHidden = true
+        popupview.isHidden = true
+        
+        
+    }
+    
+    @IBAction func funcPressed(_ sender: Any) {
+        
+   
+            
+            do
+                {
+            try Auth.auth().signOut()
+                    transitionToLogIn()
+                    
+                    
+                    // add a flushbar
+                   
+                }
+                catch let error as NSError
+                {
+                    print(error.localizedDescription)
+                    
+                    // Show pop up message
+                }
+
+            
+        
+    }
+    
+    /*
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        
+      
+        
+        
+         if (popupTitle.text == "تأكيد تسجيل الخروج"){
+            return true
+        }
+        
+        return false
+        
+     
+        
+    }
+    */
+    
+    
+    
+    func transitionToLogIn(){
+        
+       let signInViewController =  storyboard?.instantiateViewController(identifier: Constants.Storyboard.signInViewController) as? SignInViewController
+        
+        view.window?.rootViewController = signInViewController
+        view.window?.makeKeyAndVisible()
+        
+       // SignInViewController.showToast(message: "تم تسجي لالخروج بنجاح", font: .systemFont(ofSize: 20), image: (UIImage(named: "yumn") ?? UIImage(named: "")! ))}
+
+    }
+
 }
 
 extension UIViewController {
