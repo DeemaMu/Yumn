@@ -13,7 +13,7 @@ struct Constants {
     
     struct Storyboard{
         
-      static let volunteerHomeViewController = "VolunteerHome"
+      static let volunteerHomeViewController = "vHomeVC"
       static let contSignUpViewController = "contSignUp"
       static let signInViewController = "SignIn"
       static let hospitalHomeViewController = "HospitalHome"

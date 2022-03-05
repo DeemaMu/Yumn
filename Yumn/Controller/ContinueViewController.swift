@@ -10,12 +10,28 @@ import UIKit
 
 class ContinueViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
+    @IBOutlet weak var loadingGif: UIImageView!
+    
+    
+    @IBOutlet weak var blurredView: UIView!
+    
+    @IBOutlet weak var popupView: UIView!
+    
+    @IBOutlet weak var popupTitle: UILabel!
+    
+    @IBOutlet weak var popupMessage: UILabel!
+    
+    @IBOutlet weak var popupButton: UIButton!
     
     @IBOutlet weak var weightLabel: UILabel!
    
     @IBOutlet weak var bloodError: UILabel!
     
-   
+    @IBOutlet weak var blackBlurredView: UIView!
+    
+    
+    @IBOutlet weak var popupStack: UIStackView!
+    
    
     @IBOutlet weak var weightError: UILabel!
     
@@ -64,11 +80,15 @@ class ContinueViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         super.viewDidLoad()
         
         
-     
+        popupStack.superview?.bringSubviewToFront(popupStack)
+
        
-      
+        popupView.layer.cornerRadius = 35
+        popupButton.layer.cornerRadius = 20
 
         thePicker.delegate = self
+        
+        loadingGif.loadGif(name: "yumnLoading")
         
      
     
@@ -85,7 +105,6 @@ class ContinueViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         toolbar.setItems([doneBtn], animated: true)
         
         
-       // bloodTypeTexfield.inputAccessoryView = toolbar
         
 
 
@@ -295,7 +314,7 @@ class ContinueViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
      
         let bottomLine = CALayer()
         
-        bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width + 10, height: 2)
+        bottomLine.frame = CGRect(x: 0, y: textfield.frame.height  , width: textfield.frame.width + 7, height: 2)
         
         bottomLine.backgroundColor = UIColor(red:137/255, green: 191/255, blue: 186/255, alpha: 1.00).cgColor
         
@@ -337,7 +356,7 @@ class ContinueViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @objc func turnTextFieldTextfieldToRed(textfield: UITextField){
         let bottomLine = CALayer()
         
-        bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width + 7, height: 2)
+        bottomLine.frame = CGRect(x: 0, y: textfield.frame.height , width: textfield.frame.width + 7, height: 2)
         
         bottomLine.backgroundColor = UIColor.red.cgColor
         
@@ -522,17 +541,59 @@ class ContinueViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             Auth.auth().createUser(withEmail: Constants.Globals.email, password: Constants.Globals.password) { (result, err) in
                 
                 
+                // Blur the background
+                self.blurredView.isHidden = false
+                // Show Loading indicator
+                self.loadingGif.isHidden = false
+                
+                
                 // Check for errors
                 
                 if err != nil {
                     
+                    
+                    
+                    
                     // There was an error creating the user
+                    
+                    // If an error occurs hide the blurred view
+                     self.blurredView.isHidden = true
+                    // If an error occurs hide the loading indicator
+                     self.loadingGif.isHidden = true
+                    
+                    
+                    print (err!.localizedDescription)
+                    
                     
                     // Print the exact message to customize the error mesage later
                     print(err?.localizedDescription as Any)
                     
                     
                     // Show pop up message to the user
+                    
+                    
+                    
+                    
+                    //Network error
+                    
+                    if (err!.localizedDescription == "Network error (such as timeout, interrupted connection or unreachable host) has occurred.")
+                    {
+                        
+                        self.blackBlurredView.isHidden = false
+                        self.popupView.isHidden = false
+                        self.popupTitle.text = "خطأ في الشبكة"
+                        self.popupMessage.text = "الرجاء التحقق من الاتصال بالشبكة"
+                    }
+                    
+                    // Couldn't create the user
+                    else {
+                        
+                    self.blackBlurredView.isHidden = false
+                    self.popupView.isHidden = false
+                    self.popupTitle.text = "حصل خطأ"
+                    self.popupMessage.text = "حصل خطأ أثناء إنشاء الحساب الرجاء المحاولة لاحقا"
+                    }
+                
                     
                     print ("error in creating the user")
                     
@@ -601,10 +662,12 @@ class ContinueViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                         }
 
                         
+                        // If volunteer is created remove the blurred view
+                         self.blurredView.isHidden = true
+                        // If volunteer is created remove the loading indicator
+                        self.loadingGif.isHidden = true
                         
-                        // Add welcome flushbar
-                        let msg = "حياك الله " + Constants.Globals.firstName + " تو ما نور يمن"
-                        self.showToast(message: msg, font: .systemFont(ofSize: 12.0))
+                     
                         
                         
                         // Transition to the home screen
@@ -636,6 +699,12 @@ class ContinueViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     
 
+    @IBAction func onPressedOK(_ sender: Any) {
+        
+        
+        popupView.isHidden = true
+        blackBlurredView.isHidden = true
+    }
     
     
     
