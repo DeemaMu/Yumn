@@ -183,7 +183,7 @@ class SignInViewController: UIViewController {
            
            
            if (textfield.text!.isEmpty){
-           bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width + 95, height: 2)
+           bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width + 85, height: 2)
            } //was width + 120
            else {
               bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width  , height: 2)
@@ -211,7 +211,7 @@ class SignInViewController: UIViewController {
     
         // Required
         if (textfield.text!.count == 0) {
-            emailError.text = "اجباري"
+            emailError.text = "مطلوب"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: emailTextField)
             emailLabel.alpha = 0
@@ -245,7 +245,7 @@ class SignInViewController: UIViewController {
      
         // Required
         if (textfield.text!.count == 0) {
-            passwordError.text = "اجباري"
+            passwordError.text = "مطلوب"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: passwordTextField)
             passwordLabel.alpha = 0
@@ -290,12 +290,12 @@ class SignInViewController: UIViewController {
         
         
         if (emailTextField.text!.isEmpty){
-            emailError.text = "إجباري"
+            emailError.text = "مطلوب"
             turnTextFieldTextfieldToRed(textfield: emailTextField)
         }
         
         if (passwordTextField.text!.isEmpty){
-            passwordError.text = "إجباري"
+            passwordError.text = "مطلوب"
             turnTextFieldTextfieldToRed(textfield: passwordTextField)
         }
         
@@ -530,6 +530,11 @@ class SignInViewController: UIViewController {
     }
     
     
+    
+    func showSnack(){
+        self.showToast(message: "mssg", font: .systemFont(ofSize: 20), image: (UIImage(named: "yumn-1") ?? UIImage(named: "")!))
+        
+    }
     
     @IBAction func onPressedOK(_ sender: Any) {
         

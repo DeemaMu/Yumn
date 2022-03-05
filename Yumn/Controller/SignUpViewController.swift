@@ -586,7 +586,7 @@ class SignUpViewController: UIViewController {
         }
         // Required
         else if (textfield.text!.count == 0) {
-            firstNameError.text = "اجباري"
+            firstNameError.text = "مطلوب"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: firstNameTextField)
             firstNamelabel.alpha = 0
@@ -634,7 +634,7 @@ class SignUpViewController: UIViewController {
         
         // Required
         else if (textfield.text!.count == 0) {
-            lastNameError.text = "اجباري"
+            lastNameError.text = "مطلوب"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: lastNameTextField)
             lastNameLabel.alpha = 0
@@ -667,7 +667,7 @@ class SignUpViewController: UIViewController {
         @objc func validateID(textfield: UITextField){
             // Required
              if (textfield.text!.count == 0) {
-                idError.text = "اجباري"
+                idError.text = "مطلوب"
                 // Turn the textfield to red
                 turnTextFieldTextfieldToRed(textfield: idTextField)
                 idLabel.alpha = 0
@@ -751,7 +751,7 @@ class SignUpViewController: UIViewController {
         
         // Required
         if (textfield.text!.count == 0) {
-            emailError.text = "اجباري"
+            emailError.text = "مطلوب"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: emailTextField)
             emailLabel.alpha = 0
@@ -849,7 +849,7 @@ class SignUpViewController: UIViewController {
     
         // Required
         if (textfield.text!.isEmpty) {
-            dateError.text = "اجباري"
+            dateError.text = "مطلوب"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: dateTextField)
             dateLabel.alpha = 0
@@ -887,7 +887,7 @@ class SignUpViewController: UIViewController {
         
         // Required
           if (textfield.text!.count == 0) {
-            phoneNumberError.text = "اجباري"
+            phoneNumberError.text = "مطلوب"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: phoneTextField)
             phoneLabel.alpha = 0
@@ -969,7 +969,7 @@ class SignUpViewController: UIViewController {
         // Required
         if (textfield.text!.isEmpty) {
 
-            passwordError.text = "اجباري"
+            passwordError.text = "مطلوب"
             passwordLabel.alpha = 0
             passordCriteria[0] = 0
             passordCriteria[1] = 0
@@ -1297,7 +1297,7 @@ class SignUpViewController: UIViewController {
         // Empty First name
         if (firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
         {
-            firstNameError.text = "اجباري"
+            firstNameError.text = "مطلوب"
             turnTextFieldTextfieldToRed(textfield: firstNameTextField)
         
         }
@@ -1305,7 +1305,7 @@ class SignUpViewController: UIViewController {
         // Empty last name
         if (lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
         {
-            lastNameError.text = "اجباري"
+            lastNameError.text = "مطلوب"
             turnTextFieldTextfieldToRed(textfield: lastNameTextField)
         
         }
@@ -1315,7 +1315,7 @@ class SignUpViewController: UIViewController {
         // Empty id
         if (idTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
         {
-            idError.text = "اجباري"
+            idError.text = "مطلوب"
             turnTextFieldTextfieldToRed(textfield: idTextField)
         
         }
@@ -1323,7 +1323,7 @@ class SignUpViewController: UIViewController {
         // Empty email
         if (emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
         {
-            emailError.text = "اجباري"
+            emailError.text = "مطلوب"
             turnTextFieldTextfieldToRed(textfield: emailTextField)
         
         }
@@ -1333,7 +1333,7 @@ class SignUpViewController: UIViewController {
         // Empty phone
         if (phoneTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
         {
-            phoneNumberError.text = "اجباري"
+            phoneNumberError.text = "مطلوب"
             turnTextFieldTextfieldToRed(textfield: phoneTextField)
         
         }
@@ -1344,7 +1344,7 @@ class SignUpViewController: UIViewController {
         // Empty birthdate
         if (dateTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
         {
-            dateError.text = "اجباري"
+            dateError.text = "مطلوب"
             turnTextFieldTextfieldToRed(textfield: dateTextField)
         
         }
@@ -1354,7 +1354,7 @@ class SignUpViewController: UIViewController {
         // Empty password
         if (passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
         {
-            passwordError.text = "اجباري"
+            passwordError.text = "مطلوب"
             turnTextFieldTextfieldToRed(textfield: passwordTextField)
         
         }
@@ -1387,7 +1387,6 @@ class SignUpViewController: UIViewController {
         
             
     }
-    
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         

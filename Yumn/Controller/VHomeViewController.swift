@@ -39,7 +39,6 @@ class VHomeViewController: UIViewController {
 
  
         
-        
         let db = Firestore.firestore()
         
         let docRef = db.collection("volunteer").document(Auth.auth().currentUser!.uid)
@@ -147,16 +146,31 @@ class VHomeViewController: UIViewController {
     
     func transitionToLogIn(){
         
+  
        let signInViewController =  storyboard?.instantiateViewController(identifier: Constants.Storyboard.signInViewController) as? SignInViewController
         
         view.window?.rootViewController = signInViewController
         view.window?.makeKeyAndVisible()
         
-       // SignInViewController.showToast(message: "تم تسجي لالخروج بنجاح", font: .systemFont(ofSize: 20), image: (UIImage(named: "yumn") ?? UIImage(named: "")! ))}
+       // self.showToast(message: "mssg", font: .systemFont(ofSize: 20), image: (UIImage(named: "yumn-1") ?? UIImage(named: "")!)
+                                                                               
+      //  let storyboard: UIStoryboard =  UIStoryboard.init(name: "SignIn",bundle: nil)
+      //  let firstViewController: SignInViewController = storyboard.instantiateViewController(withIdentifier: "SignIn") as! SignInViewController;
+        
+       // firstViewController.showSnack();
+        
+        
+    
+        
+                                                                               
+  
+    
 
-    }
-
+        }
+    
 }
+
+
 
 extension UIViewController {
 

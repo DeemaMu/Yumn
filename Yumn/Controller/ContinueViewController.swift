@@ -373,7 +373,7 @@ class ContinueViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
         // Required
         if (textfield.text!.isEmpty) {
-            cityError.text = "اجباري"
+            cityError.text = "مطلوب"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: cityTextfield)
             cityLabel.alpha = 0
@@ -404,7 +404,7 @@ class ContinueViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
         // Required
         if (textfield.text!.isEmpty) {
-            weightError.text = "اجباري"
+            weightError.text = "مطلوب"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: weightTextfield)
             weightLabel.alpha = 0
@@ -435,7 +435,7 @@ class ContinueViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
         // Required
         if (textfield.text!.isEmpty) {
-            bloodError.text = "اجباري"
+            bloodError.text = "مطلوب"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: bloodTypeTexfield)
             bloodTypeLabel.alpha = 0
@@ -506,7 +506,7 @@ class ContinueViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         {
             
-            cityError.text! = "إجباري"
+            cityError.text! = "مطلوب"
             turnTextFieldTextfieldToRed(textfield: cityTextfield)
         }
         
@@ -514,7 +514,7 @@ class ContinueViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         if (bloodTypeTexfield.text!.prefix(2).trimmingCharacters(in: .whitespacesAndNewlines) == "")
         
         {
-            bloodError.text! = "إجباري"
+            bloodError.text! = "مطلوب"
             turnTextFieldTextfieldToRed(textfield: bloodTypeTexfield)
 
             
@@ -526,7 +526,7 @@ class ContinueViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         {
             
-            weightError.text! = "إجباري"
+            weightError.text! = "مطلوب"
             turnTextFieldTextfieldToRed(textfield: weightTextfield)
 
         }
