@@ -65,14 +65,7 @@ class VHomeViewController: UIViewController {
         }
     }
     
-    @IBAction func onPressedLogout(_ sender: Any) {
-        
-       // show popup message with 2 buttons
-        
-        
-        
-    }
-    
+
     
 }
 
@@ -125,7 +118,5 @@ extension UIViewController {
 
     })
 }
-    
-    
     
 }
