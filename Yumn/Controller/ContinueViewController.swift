@@ -690,7 +690,7 @@ class ContinueViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     func transitionToHome(){
         
         // I have to check if the user is volunteer or hospital, in the log in
-       let volunteerHomeViewController =  storyboard?.instantiateViewController(identifier: Constants.Storyboard.volunteerHomeViewController) as? HomeViewController
+       let volunteerHomeViewController =  storyboard?.instantiateViewController(identifier: Constants.Storyboard.volunteerHomeViewController) as? TabBarController
         
         view.window?.rootViewController = volunteerHomeViewController
         view.window?.makeKeyAndVisible()
