@@ -343,7 +343,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="الصفحة الرئيسية" largeTitleDisplayMode="never" id="zeZ-r9-qUy">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="RQG-xJ-BFk"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="weight" id="RQG-xJ-BFk"/>
                         <barButtonItem key="rightBarButtonItem" image="Profile" width="20" id="o1w-JF-rTM">
                             <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-4"/>
                             <connections>
@@ -352,6 +352,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="logOutBtn" destination="RQG-xJ-BFk" id="CGN-Tn-WSp"/>
                         <outlet property="topNavBar" destination="zeZ-r9-qUy" id="tYX-63-QDp"/>
                     </connections>
                 </viewController>

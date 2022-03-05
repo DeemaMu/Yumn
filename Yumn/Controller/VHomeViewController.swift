@@ -13,6 +13,8 @@ import Firebase
 
 class VHomeViewController: UIViewController {
     
+    @IBOutlet weak var logOutBtn: UIBarButtonItem!
+    
     @IBOutlet weak var topNavBar: UINavigationItem!
     
     @ObservedObject var lm = LocationManager()
@@ -98,7 +100,7 @@ extension UIViewController {
         
         self.navigationController?.view.addSubview(toastLabel)
 
-    UIView.animate(withDuration: 12, delay: 5, options:
+    UIView.animate(withDuration: 10, delay: 5, options:
                     
                     
                     .transitionFlipFromTop, animations: {
