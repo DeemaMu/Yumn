@@ -31,6 +31,12 @@ class VHomeViewController: UIViewController {
     @ObservedObject var lm = LocationManager()
 
     override func viewDidLoad() {
+        
+        popupview.layer.cornerRadius = 35
+        okButton.layer.cornerRadius = 20
+        funcBtn.layer.cornerRadius = 20
+
+
  
         
         
