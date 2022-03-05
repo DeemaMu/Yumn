@@ -13,10 +13,21 @@ import Firebase
 
 class VHomeViewController: UIViewController {
     
-    @IBOutlet weak var logOutBtn: UIBarButtonItem!
+    @IBOutlet weak var popupTitle: UILabel!
+    
+    @IBOutlet weak var popupMessage: UILabel!
+    
+    @IBOutlet weak var funcBtn: UIButton!
+    
+    @IBOutlet weak var okButton: UIButton!
+    
+    @IBOutlet weak var blackBlurredView: UIView!
+    
+    @IBOutlet weak var logoutBtn: UIBarButtonItem!
     
     @IBOutlet weak var topNavBar: UINavigationItem!
     
+    @IBOutlet weak var popupview: UIView!
     @ObservedObject var lm = LocationManager()
 
     override func viewDidLoad() {
@@ -65,7 +76,17 @@ class VHomeViewController: UIViewController {
         }
     }
     
-
+    @IBAction func onPressedLogout(_ sender: Any) {
+        
+        //Show pop up wity 2 buttons
+        
+        blackBlurredView.isHidden = false
+        popupview.isHidden = false
+        popupTitle.text = "تأكيد تسجيل الخروج"
+        popupMessage.text = "هل أنت متأكد أنك تريد تسجيل الخروج؟"
+        
+    }
+    
     
 }
 

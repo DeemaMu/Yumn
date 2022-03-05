@@ -332,6 +332,77 @@
                                     <constraint firstAttribute="trailing" secondItem="det-XD-85J" secondAttribute="trailing" id="vb1-eC-PRx"/>
                                 </constraints>
                             </stackView>
+                            <view hidden="YES" alpha="0.30000001192092896" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BFm-q3-ErW">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vNa-1E-m1j">
+                                <rect key="frame" x="364" y="300" width="0.0" height="0.0"/>
+                                <subviews>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SWz-n9-z6B">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="180"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kGt-9A-cqv">
+                                                <rect key="frame" x="122.5" y="25" width="35" height="15"/>
+                                                <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="15"/>
+                                                <color key="textColor" red="0.56862747670000002" green="0.79215681550000006" blue="0.76862752440000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAb-YY-7Ki">
+                                                <rect key="frame" x="123.5" y="80" width="33.5" height="15"/>
+                                                <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="15"/>
+                                                <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f17-fe-QU8">
+                                                <rect key="frame" x="40" y="35" width="160" height="40"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A6g-U2-cu1">
+                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
+                                                        <color key="backgroundColor" red="0.2901961207" green="0.42745098469999998" blue="0.41176474089999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="Saq-pD-Rqt"/>
+                                                            <constraint firstAttribute="width" constant="80" id="V0C-ho-JDe"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="12"/>
+                                                        <state key="normal" title="تم">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="onPressedOK:" destination="xOg-aq-xZv" eventType="touchUpInside" id="6Uj-It-ESt"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2jP-cf-Z4H">
+                                                        <rect key="frame" x="80" y="0.0" width="80" height="40"/>
+                                                        <color key="backgroundColor" red="0.2901961207" green="0.42745098469999998" blue="0.41176474089999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="80" id="Sfz-mB-KzJ"/>
+                                                            <constraint firstAttribute="height" constant="40" id="auJ-wv-3Sj"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="12"/>
+                                                        <state key="normal" title="تم">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="onPressedOK:" destination="xOg-aq-xZv" eventType="touchUpInside" id="YyT-qD-1M6"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="280" id="7bg-bP-QBh"/>
+                                            <constraint firstItem="EAb-YY-7Ki" firstAttribute="top" secondItem="SWz-n9-z6B" secondAttribute="top" constant="80" id="7up-Hv-oX0"/>
+                                            <constraint firstItem="kGt-9A-cqv" firstAttribute="top" secondItem="SWz-n9-z6B" secondAttribute="top" constant="25" id="9qI-pk-0AC"/>
+                                            <constraint firstItem="EAb-YY-7Ki" firstAttribute="centerX" secondItem="SWz-n9-z6B" secondAttribute="centerX" id="euJ-6W-V4V"/>
+                                            <constraint firstAttribute="height" constant="180" id="q4a-tf-zNZ"/>
+                                            <constraint firstItem="kGt-9A-cqv" firstAttribute="centerX" secondItem="SWz-n9-z6B" secondAttribute="centerX" id="wiZ-Co-OQd"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.92549019607843142" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -340,10 +411,17 @@
                             <constraint firstItem="EGJ-P8-wum" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="Dqr-hZ-Jtq"/>
                             <constraint firstItem="EGJ-P8-wum" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Fwu-jx-iiK"/>
                             <constraint firstAttribute="bottom" secondItem="EGJ-P8-wum" secondAttribute="bottom" id="KAY-mg-gaE"/>
+                            <constraint firstAttribute="trailing" secondItem="vNa-1E-m1j" secondAttribute="trailing" constant="50" id="Xpm-R8-MxZ"/>
+                            <constraint firstItem="vNa-1E-m1j" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="300" id="laB-EY-75x"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="الصفحة الرئيسية" largeTitleDisplayMode="never" id="zeZ-r9-qUy">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="weight" id="RQG-xJ-BFk"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="rectangle.portrait.and.arrow.right" catalog="system" id="q4U-rO-Uzz">
+                            <color key="tintColor" red="0.56862747670000002" green="0.79215681550000006" blue="0.76862752440000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="onPressedLogout:" destination="BYZ-38-t0r" id="ZIU-mG-iQr"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="Profile" width="20" id="o1w-JF-rTM">
                             <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-4"/>
                             <connections>
@@ -352,7 +430,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="logOutBtn" destination="RQG-xJ-BFk" id="CGN-Tn-WSp"/>
+                        <outlet property="blackBlurredView" destination="BFm-q3-ErW" id="4oS-kr-9Df"/>
+                        <outlet property="funcBtn" destination="2jP-cf-Z4H" id="BhL-oS-8JM"/>
+                        <outlet property="logoutBtn" destination="q4U-rO-Uzz" id="9JB-iV-ik7"/>
+                        <outlet property="okButton" destination="A6g-U2-cu1" id="vFd-Pi-DHV"/>
+                        <outlet property="popupMessage" destination="EAb-YY-7Ki" id="DT2-zF-G7X"/>
+                        <outlet property="popupTitle" destination="kGt-9A-cqv" id="3LA-HH-97o"/>
+                        <outlet property="popupview" destination="SWz-n9-z6B" id="ZJd-Rp-rLV"/>
                         <outlet property="topNavBar" destination="zeZ-r9-qUy" id="tYX-63-QDp"/>
                     </connections>
                 </viewController>
@@ -2192,6 +2276,7 @@
         <image name="home" width="378" height="351"/>
         <image name="logo2" width="362" height="262"/>
         <image name="packages-grey" width="30" height="30"/>
+        <image name="rectangle.portrait.and.arrow.right" catalog="system" width="128" height="108"/>
         <image name="weight" width="512" height="512"/>
         <namedColor name="mainLight">
             <color red="0.52499997615814209" green="0.79199999570846558" blue="0.76499998569488525" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
