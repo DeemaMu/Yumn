@@ -504,7 +504,7 @@ class SignInViewController: UIViewController {
     func transitionToHospitalHome(){
         
         // I have to check if the user is volunteer or hospital, in the log in
-       let hospitalHomeViewController =  storyboard?.instantiateViewController(identifier: Constants.Storyboard.hospitalHomeViewController) as? HospitalHomeViewController
+       let hospitalHomeViewController =  storyboard?.instantiateViewController(identifier: Constants.Storyboard.hospitalHomeViewController) as? customTabBarVC
         
         view.window?.rootViewController = hospitalHomeViewController
         view.window?.makeKeyAndVisible()

@@ -8,7 +8,6 @@
 import UIKit
 import FirebaseFirestore
 import Charts
-//import NVActivityIndicatorView
 
 
 class bloodChartViewController: UIViewController, ChartViewDelegate {
@@ -17,8 +16,8 @@ class bloodChartViewController: UIViewController, ChartViewDelegate {
     var pieChart = PieChartView()
     
     @IBOutlet weak var viewPie: UIView!
-    @IBOutlet weak var donateBloodLbl: UILabel!
-    @IBOutlet weak var backBtn: UIButton!
+    @IBOutlet weak var viewPieWhole: UIView!
+    @IBOutlet weak var cityOfUser: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,17 +29,21 @@ class bloodChartViewController: UIViewController, ChartViewDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        
-        guard let customFont = UIFont(name: "Tajawal-Bold", size: UIFont.labelFontSize) else {
+
+        guard let customFont2 = UIFont(name: "Tajawal-Regular", size: UIFont.labelFontSize) else {
             fatalError("""
                 Failed to load the "CustomFont-Light" font.
                 Make sure the font file is included in the project and the font name is spelled correctly.
                 """
             )
         }
-        donateBloodLbl.font = UIFontMetrics.default.scaledFont(for: customFont)
-        donateBloodLbl.adjustsFontForContentSizeCategory = true
-        donateBloodLbl.font = donateBloodLbl.font.withSize(28)
+        
+        
+        
+        // updated
+        cityOfUser.font = UIFontMetrics.default.scaledFont(for: customFont2)
+        cityOfUser.adjustsFontForContentSizeCategory = true
+        cityOfUser.font = cityOfUser.font.withSize(24)
         
        
         // for rounded top corners (view)
@@ -87,7 +90,7 @@ class bloodChartViewController: UIViewController, ChartViewDelegate {
         // this will be diff for organs, since in organs we want it from all the cities in SA, unlike the blood it's based on the city of the user
 
         // important
-        // bring the current user city, make it voulnteer collection instead of users 
+        // bring the current user city, make it voulnteer collection instead of users
         /*
          let currentUserCity : String
          db.collection(const.FStore.usersCollection).document(currentUser.uid)
@@ -106,8 +109,11 @@ class bloodChartViewController: UIViewController, ChartViewDelegate {
          }
          */
         
+        // updated
+        let currentUserCityArabic = "الرياض"
+        let currentUserCity = "الرياض" // will be changed to current user doc
+        cityOfUser.text = "رسم بياني لاحتياج الدم في مدينة \(currentUserCityArabic)"
         
-        let currentUserCity = "Riyadh" // will be changed to current user doc
         db.collection(const.FStore.hospitalCollection).whereField(const.FStore.cityField, isEqualTo: currentUserCity).addSnapshotListener { (QuerySnapshot, error) in
             if let e = error{
                 print("there was an issue fetching hospitals with city = \(currentUserCity) from firestore. \(e)")
@@ -147,7 +153,7 @@ class bloodChartViewController: UIViewController, ChartViewDelegate {
           
     }
     
-  /*
+   /*
     fileprivate func loadingIndicator(loadingTag:Int){
         
         /*
@@ -179,10 +185,12 @@ class bloodChartViewController: UIViewController, ChartViewDelegate {
     
     func setUpChart(){
         
+        // updated
         pieChart.frame = CGRect(x: 0, y: 0,
-                                width: self.view.frame.size.width,
-                                height: self.view.frame.size.width)
-        pieChart.center = view.center
+                                width: self.viewPie.frame.size.width,
+                                height: self.viewPie.frame.size.width)
+        
+        pieChart.center = viewPieWhole.center
         view.addSubview(pieChart)
         
     }

@@ -6,6 +6,7 @@
 //
 import UIKit
 import FirebaseFirestore
+import FirebaseAuth
 
 protocol BloodShortageDelegate : AnyObject{
     
@@ -25,6 +26,7 @@ class updateBloodShortageVC: UIViewController {
     weak var delegate: BloodShortageDelegate!
     var passOrFail : String?
     let db = Firestore.firestore()
+    let user = Auth.auth().currentUser
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var bloodShortageNeed: UILabel!
@@ -41,8 +43,7 @@ class updateBloodShortageVC: UIViewController {
         // delete it
 
         // write code to get the first doc of bloodshortage 
-        // change the uid of doc to current user
-        let userRef = db.collection(const.FStore.hospitalCollection).document("0F3Wi195PeBbeQuZKpNt")
+        let userRef = db.collection(const.FStore.hospitalCollection).document(user!.uid)
            
            userRef.updateData([
             // 0 >> A+ , 1 >> A-,  2 >> B+, 3 >> B-
@@ -73,10 +74,11 @@ class updateBloodShortageVC: UIViewController {
                 self.ubdateTotalBloodShortage(totalObj: TBS)
             }})
 
-
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
         self.dismiss(animated: true, completion: { self.delegate?.onBloodUpdateCompletion(toastType: self.passOrFail! ) })
+        }
     
-    
+        // end save btn
     }
     
 

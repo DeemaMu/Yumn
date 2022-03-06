@@ -15,8 +15,10 @@ class organsChartVC: UIViewController, ChartViewDelegate {
     var pieChart = PieChartView()
     
     
+    @IBOutlet weak var cityOfUser: UILabel!
+    @IBOutlet weak var organPieWholeContainer: UIView!
     @IBOutlet weak var viewOrganPie: UIView!
-    @IBOutlet weak var organDonation: UILabel!
+ //   @IBOutlet weak var organDonation: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,18 +31,23 @@ class organsChartVC: UIViewController, ChartViewDelegate {
         super.viewDidLayoutSubviews()
         
         
-        guard let customFont = UIFont(name: "Tajawal-Bold", size: UIFont.labelFontSize) else {
+
+        guard let customFont2 = UIFont(name: "Tajawal-Regular", size: UIFont.labelFontSize) else {
             fatalError("""
                 Failed to load the "CustomFont-Light" font.
                 Make sure the font file is included in the project and the font name is spelled correctly.
                 """
             )
         }
-        organDonation.font = UIFontMetrics.default.scaledFont(for: customFont)
-        organDonation.adjustsFontForContentSizeCategory = true
-        organDonation.font = organDonation.font.withSize(28)
         
-       
+
+        
+        // updated
+        cityOfUser.font = UIFontMetrics.default.scaledFont(for: customFont2)
+        cityOfUser.adjustsFontForContentSizeCategory = true
+        cityOfUser.font = cityOfUser.font.withSize(24)
+
+        
         // for rounded top corners (view)
         if #available(iOS 11.0, *) {
                 self.viewOrganPie.clipsToBounds = true
@@ -74,7 +81,7 @@ class organsChartVC: UIViewController, ChartViewDelegate {
     
     func getTotalOrganShortage( completion: @escaping (totalOrganShortage?)->())  {
    
-        
+        cityOfUser.text = "رسم بياني لاحتياج الأعضاء في المملكة"
         let docRef = db.collection(const.FStore.hospitalCollection).document(const.FStore.totalOrganShDoc)
 
         // Get data
@@ -112,9 +119,9 @@ class organsChartVC: UIViewController, ChartViewDelegate {
     func setUpChart(){
         
         pieChart.frame = CGRect(x: 0, y: 0,
-                                width: self.view.frame.size.width,
-                                height: self.view.frame.size.width)
-        pieChart.center = view.center
+                                width: self.viewOrganPie.frame.size.width,
+                                height: self.viewOrganPie.frame.size.width)
+        pieChart.center = organPieWholeContainer.center
         view.addSubview(pieChart)
         
     }

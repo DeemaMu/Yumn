@@ -19,7 +19,16 @@ class customTabBarVC: UITabBarController, UITabBarControllerDelegate {
         super.viewDidLoad()
         
         self.delegate = self
-        self.selectedIndex = 0 // make it 0 so it starts at shortage
+        if self.restorationIdentifier == "hospitalHome" {
+            
+        self.selectedIndex = 0 // make it 0 so it starts at shortage in hospital home
+            
+        }
+        
+        else {
+            
+            self.selectedIndex = 1
+        }
         UITabBar.appearance().barTintColor =  UIColor.white
 
         /*
@@ -47,9 +56,25 @@ class customTabBarVC: UITabBarController, UITabBarControllerDelegate {
     
     
     func setupMiddleButton() {
-           let middleButton = UIButton(frame: CGRect(x: (self.view.bounds.width / 2) - 46, y: -30, width: 92, height: 70))
+           let middleButton = UIButton(frame: CGRect(x: (self.view.bounds.width / 2) - 46, y: -30, width: 92, height: 70)) // width: 70 for v
            
+        
+        if self.restorationIdentifier == "hospitalHome" {
+        
+        
            middleButton.setBackgroundImage(UIImage(named: "calendarHome"), for: .normal)
+            
+        }
+        
+        else {
+            
+            print("volunteer home")
+
+            middleButton.setBackgroundImage(UIImage(named: "home"), for: .normal)
+
+        }
+        
+        
            middleButton.layer.shadowColor = UIColor.black.cgColor
            middleButton.layer.shadowOpacity = 0.1
            middleButton.layer.shadowOffset = CGSize(width: 4, height: 4)

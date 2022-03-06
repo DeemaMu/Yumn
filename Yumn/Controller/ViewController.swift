@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseFirestore
+import FirebaseAuth
 class HospitalHomeMainViewController: UIViewController {
     
     @IBOutlet weak var shortageNeed: UILabel!
@@ -59,13 +60,22 @@ class HospitalHomeMainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if Auth.auth().currentUser != nil {
+          // User is signed in.
+          let user = Auth.auth().currentUser
+            
+            getBloodShortage(userID:user!.uid)
+
+            getOrganShortageByMap(userID:user!.uid)
+            
+            
+        } else {
+          // No user is signed in.
+            print("No user is signed in")
+          // ...
+        }
         
-        
-        // make it current user
-        getBloodShortage(userID:"0F3Wi195PeBbeQuZKpNt")
-        // make it current user
-       // getOrganShortage(userID:"0F3Wi195PeBbeQuZKpNt")
-        getOrganShortageByMap(userID:"0F3Wi195PeBbeQuZKpNt")
+
         
         
         guard let customFont = UIFont(name: "Tajawal-Bold", size: UIFont.labelFontSize) else {
@@ -417,11 +427,11 @@ extension HospitalHomeMainViewController : BloodShortageDelegate,  OrganShortage
         //updateOrganShortageVC().delegate=self
         
         if toastType == "pass" {
-            components().showToast(message: "تم تحديث احتياج الأعضاء بنجاح", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn")!, viewC: self)
+            components().showToast(message: "تم تحديث احتياج الأعضاء بنجاح", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!, viewC: self)
         }
         
         else {
-            components().showToast(message: "حدثت مشكلة اثناء تحديث احتياج الأعضاء، لم يتم تحديث احتياج  الأعضاء", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn")!, viewC: self)
+            components().showToast(message: "حدثت مشكلة اثناء تحديث احتياج الأعضاء، لم يتم تحديث احتياج  الأعضاء", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!, viewC: self)
         }
     }
     

@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseFirestore
+import FirebaseAuth
 
 
 
@@ -38,6 +39,8 @@ class updateOrganShortageVC: UIViewController {
     weak var delegate: OrganShortageDelegate!
     var passOrFail : String?
     let db = Firestore.firestore()
+    let user = Auth.auth().currentUser
+
     
     
     
@@ -100,7 +103,7 @@ class updateOrganShortageVC: UIViewController {
         
         // write code to get the first doc of bloodshortage
         // change the uid of doc to current user
-        let userRef = db.collection(const.FStore.hospitalCollection).document("0F3Wi195PeBbeQuZKpNt")
+        let userRef = db.collection(const.FStore.hospitalCollection).document(user!.uid)
            
            userRef.updateData([
             // 0 >> heart , 1 >> lung,  2 >> kidney, 3 >> liver
@@ -132,7 +135,13 @@ class updateOrganShortageVC: UIViewController {
                 self.ubdateTotalOrganShortage(totalObj: TBS)
             }})
         
+        
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+            
         self.dismiss(animated: true, completion: { self.delegate?.onOrganUpdateCompletion(toastType: self.passOrFail! ) })
+            
+        }
        // end of save button
         
     }
@@ -172,7 +181,6 @@ class updateOrganShortageVC: UIViewController {
          cornea: dataDescription![const.FStore.cornea] as! Int,
          boneMarrow: dataDescription![const.FStore.boneMarrow] as! Int)
      
-        print(dataDescription?[const.FStore.heart] ?? "")
         
         
      completion(totalOrganShort)
