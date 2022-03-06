@@ -12,6 +12,7 @@ target 'Yumn' do
   pod 'Firebase/Firestore'
   pod 'SCLAlertView'
   pod 'Firebase/Auth'
+  pod 'Charts'
 
   # Pods for Yumn
 
