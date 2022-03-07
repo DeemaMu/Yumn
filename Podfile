@@ -14,24 +14,6 @@ target 'Yumn' do
   pod 'Firebase/Auth'
   pod 'Charts'
 
-  # Pods for Yumn
 
-post_install do |installer|
-  installer.pods_project.build_configurations.each do |config|
-    config.build_settings['LD_RUNPATH_SEARCH_PATHS'] = [
-    '$(FRAMEWORK_SEARCH_PATHS)',
-    '"/Applications/Xcode.app/Contents/Developer/Toolchains/Swift_2.3.xctoolchain/usr/lib/swift/iphonesimulator"'
-    ]
-  end
-end
-
-post_install do |installer|
-  installer.pods_project.targets.each do |target|
-    flutter_additional_ios_build_settings(target)
-     target.build_configurations.each do |config|
-              config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '10.0'
-     end
-  end
-end
 
 end

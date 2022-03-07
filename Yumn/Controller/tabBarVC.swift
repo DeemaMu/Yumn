@@ -24,11 +24,11 @@ class TabBarVC: UITabBar {
             shapeLayer.path = createPath()
             shapeLayer.strokeColor = UIColor.lightGray.cgColor
             shapeLayer.fillColor = #colorLiteral(red: 0.9782002568, green: 0.9782230258, blue: 0.9782107472, alpha: 1)
-            shapeLayer.lineWidth = 0.5
-            shapeLayer.shadowOffset = CGSize(width:0, height:0)
+            shapeLayer.lineWidth = 0.1//0.5
+            shapeLayer.shadowOffset = CGSize(width: 0, height: 10)//CGSize(width:0, height:0)
             shapeLayer.shadowRadius = 10
-            shapeLayer.shadowColor = UIColor.gray.cgColor
-            shapeLayer.shadowOpacity = 0.3
+            shapeLayer.shadowColor = #colorLiteral(red: 0.504814744, green: 0.5049032569, blue: 0.5048031211, alpha: 1)//UIColor.gray.cgColor
+            shapeLayer.shadowOpacity = 0.8//0.3
 
             if let oldShapeLayer = self.shapeLayer {
                 self.layer.replaceSublayer(oldShapeLayer, with: shapeLayer)
