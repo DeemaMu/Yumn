@@ -298,8 +298,12 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
     // Get Profile info
     func profileInfo(){
         
+        let user = Auth.auth().currentUser
+        let uid = user?.uid
+
+        
         // 1. get the Doc
-        let docRef = database.document("volunteer/f8ppu8BUAOdRZjCjv9AiTwq1yeh2")
+        let docRef = database.collection("volunteer").document(uid!)
         
         // 2. to get live data
         docRef.addSnapshotListener { [weak self] snapshot, error in
@@ -366,81 +370,50 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
     // Save updates
     @IBAction func Update(_ sender: Any) {
         
-//        if Auth.auth().currentUser != nil {
-//            // User is signed in.
-//
-//            let user = Auth.auth().currentUser
-//            let uid = user?.uid
-//
-//            var gender = "m"
-//            if (femaleButton.isSelected){
-//                gender = "f"
-//            }
-//
-//            // get the Doc
-//            let docRef = database.collection("volunteer").document(uid!)
         
-//            // save data
-//            docRef.setData(["firstName": nameTextField.text!,
-//                            "lastName": familyTextField.text!,
-//                            "nationalID": nationalIDTextField.text!,
-//                            "email": emailTextField.text!,
-//                            "phone": phoneTextField.text!,
-//                            "gender": gender,
-//                            "bloodType": bloodTypeTextField.text!,
-//                            "birthDate": birthdateTextField.text!,
-//                            "weight": weightTextField.text!,
-//                            "city": cityTextField.text!,
-//                            "points": points,
-//                            "uid" : uid!,
-//                            "userType" : "Volunteer"]){ error in
-//
-//                if error != nil {
-//                    print(error?.localizedDescription as Any)
-//
-//                    // Show error message or pop up message
-//                    print ("error in saving the volunteer data")
-//
-//
-//                }
-//            }
-//        } else {
-//          // No user is signed in.
-//          print("No user")
-//        }
-        
-        var gender = "m"
-        if (femaleButton.isSelected){
-            gender = "f"
-        }
-        
-        // get the Doc
-            let docRef = database.document("volunteer/f8ppu8BUAOdRZjCjv9AiTwq1yeh2")
+        if Auth.auth().currentUser != nil {
+            // User is signed in.
 
-        // save data
-        docRef.setData(["firstName": nameTextField.text!,
-                        "lastName": familyTextField.text!,
-                        "nationalID": nationalIDTextField.text!,
-                        "email": emailTextField.text!,
-                        "phone": phoneTextField.text!,
-                        "gender": gender,
-                        "bloodType": bloodTypeTextField.text!,
-                        "birthDate": birthdateTextField.text!,
-                        "weight": weightTextField.text!,
-                        "city": cityTextField.text!,
-                        "points": points,
-                        "uid" : "f8ppu8BUAOdRZjCjv9AiTwq1yeh2",
-                        "userType" : "Volunteer"]){ error in
-            
-            if error != nil {
-                print(error?.localizedDescription as Any)
-    
-                // Show error message or pop up message
-                print ("error in saving the volunteer data")
-                
-                
+            let user = Auth.auth().currentUser
+            let uid = user?.uid
+
+            var gender = "m"
+            if (femaleButton.isSelected){
+                gender = "f"
             }
+
+            // get the Doc
+            let docRef = database.collection("volunteer").document(uid!)
+        
+            // save data
+            docRef.setData(["firstName": nameTextField.text!,
+                            "lastName": familyTextField.text!,
+                            "nationalID": nationalIDTextField.text!,
+                            "email": emailTextField.text!,
+                            "phone": phoneTextField.text!,
+                            "gender": gender,
+                            "bloodType": bloodTypeTextField.text!,
+                            "birthDate": birthdateTextField.text!,
+                            "weight": weightTextField.text!,
+                            "city": cityTextField.text!,
+                            "points": points,
+                            "uid" : uid!,
+                            "userType" : "Volunteer"]){ error in
+
+                if error != nil {
+                    print(error?.localizedDescription as Any)
+
+                    // Show error message or pop up message
+                    print ("error in saving the volunteer data")
+
+
+                }
+            }
+        } else {
+          // No user is signed in.
+          print("No user")
         }
+        
         let color = blue
         let white = UIColor.white
         if let whiteColor = white.rgb(){
