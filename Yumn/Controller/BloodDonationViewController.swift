@@ -60,6 +60,17 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+//        self.navigationController?.navigationBar.tintColor = UIColor.white
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+    }
+    
+    
     func change(to index: Int) {
         print("segmentedControl index changed to \(index)")
         if(index==0){
