@@ -108,7 +108,7 @@ class VHomeViewController: UIViewController {
             do
                 {
             try Auth.auth().signOut()
-                 //   transitionToLogIn()
+                    transitionToLogIn()
                     
                     
                     // add a flushbar
