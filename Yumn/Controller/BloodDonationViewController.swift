@@ -7,7 +7,7 @@
 
 import UIKit
 import SwiftUI
-import BetterSegmentedControl
+//import BetterSegmentedControl
 import MapKit
 import CoreLocation
 import Firebase
