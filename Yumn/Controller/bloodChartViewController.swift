@@ -93,12 +93,12 @@ class bloodChartViewController: UIViewController, ChartViewDelegate {
         // bring the current user city, make it voulnteer collection instead of users
         /*
          let currentUserCity : String
-         db.collection(const.FStore.usersCollection).document(currentUser.uid)
+         db.collection(Constants.FStore.usersCollection).document(currentUser.uid)
             .getDocument { (snapshot, error ) in
 
                  if let document = snapshot.data() {
 
-         currentUserCity = document![const.FStore.cityField] as! String
+         currentUserCity = document![Constants.FStore.cityField] as! String
                 
 
                   } else {
@@ -114,7 +114,7 @@ class bloodChartViewController: UIViewController, ChartViewDelegate {
         let currentUserCity = "الرياض" // will be changed to current user doc
         cityOfUser.text = "رسم بياني لاحتياج الدم في مدينة \(currentUserCityArabic)"
         
-        db.collection(const.FStore.hospitalCollection).whereField(const.FStore.cityField, isEqualTo: currentUserCity).addSnapshotListener { (QuerySnapshot, error) in
+        db.collection(Constants.FStore.hospitalCollection).whereField(Constants.FStore.cityField, isEqualTo: currentUserCity).addSnapshotListener { (QuerySnapshot, error) in
             if let e = error{
                 print("there was an issue fetching hospitals with city = \(currentUserCity) from firestore. \(e)")
             }else {
@@ -128,17 +128,17 @@ class bloodChartViewController: UIViewController, ChartViewDelegate {
                       
                         let data = documentSnapshot.data()
                         
-                        if let bloodShortageMapField = data[const.FStore.bShField] as? [String : Int]{
+                        if let bloodShortageMapField = data[Constants.FStore.bShField] as? [String : Int]{
                        
-                            totalBloodDict["total_A_pos"]! += (bloodShortageMapField[const.FStore.aPos]!)
-                            totalBloodDict["total_B_pos"]! += (bloodShortageMapField[const.FStore.bPos]!)
-                            totalBloodDict["total_O_pos"]! += (bloodShortageMapField[const.FStore.oPos]!)
-                            totalBloodDict["total_AB_pos"]! += (bloodShortageMapField[const.FStore.abPos]!)
+                            totalBloodDict["total_A_pos"]! += (bloodShortageMapField[Constants.FStore.aPos]!)
+                            totalBloodDict["total_B_pos"]! += (bloodShortageMapField[Constants.FStore.bPos]!)
+                            totalBloodDict["total_O_pos"]! += (bloodShortageMapField[Constants.FStore.oPos]!)
+                            totalBloodDict["total_AB_pos"]! += (bloodShortageMapField[Constants.FStore.abPos]!)
                             
-                            totalBloodDict["total_A_neg"]! += (bloodShortageMapField[const.FStore.aNeg]!)
-                            totalBloodDict["total_B_neg"]! += (bloodShortageMapField[const.FStore.bNeg]!)
-                            totalBloodDict["total_O_neg"]! += (bloodShortageMapField[const.FStore.oNeg]!)
-                            totalBloodDict["total_AB_neg"]! += (bloodShortageMapField[const.FStore.abNeg]!)
+                            totalBloodDict["total_A_neg"]! += (bloodShortageMapField[Constants.FStore.aNeg]!)
+                            totalBloodDict["total_B_neg"]! += (bloodShortageMapField[Constants.FStore.bNeg]!)
+                            totalBloodDict["total_O_neg"]! += (bloodShortageMapField[Constants.FStore.oNeg]!)
+                            totalBloodDict["total_AB_neg"]! += (bloodShortageMapField[Constants.FStore.abNeg]!)
                             
 
                         } // end of if map
@@ -162,14 +162,14 @@ class bloodChartViewController: UIViewController, ChartViewDelegate {
         pieChart.noDataFont = UIFont(name: "Helvetica", size: 10.0)!
         */
         
-        let loading = NVActivityIndicatorView(frame: .zero, type: .ballClipRotateMultiple, color: const.Colors.yellow, padding: 0)
+        let loading = NVActivityIndicatorView(frame: .zero, type: .ballClipRotateMultiple, color: Constants.Colors.yellow, padding: 0)
         loading.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(loading)
         NSLayoutConstraint.activate([
-            loading.widthAnchor.constraint(equalToConstant: 40),
-            loading.heightAnchor.constraint(equalToConstant: 40),
-            loading.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            loading.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            loading.widthAnchor.Constantsraint(equalToConstant: 40),
+            loading.heightAnchor.Constantsraint(equalToConstant: 40),
+            loading.centerYAnchor.Constantsraint(equalTo: view.centerYAnchor),
+            loading.centerXAnchor.Constantsraint(equalTo: view.centerXAnchor)
         ])
         // 1 to start animation of loading indicator
         if loadingTag == 1 {
@@ -233,7 +233,7 @@ class bloodChartViewController: UIViewController, ChartViewDelegate {
          ]
          let set = PieChartDataSet(entries: pieChartEntry)
          //set.colors = ChartColorTemplates.colorful() //colorful()
-         set.colors = [const.Colors.green, const.Colors.yellow, const.Colors.orange, const.Colors.pink, const.Colors.green, const.Colors.yellow, const.Colors.orange, const.Colors.pink
+         set.colors = [Constants.Colors.green, Constants.Colors.yellow, Constants.Colors.orange, Constants.Colors.pink, Constants.Colors.green, Constants.Colors.yellow, Constants.Colors.orange, Constants.Colors.pink
         ]
          let data = PieChartData(dataSet: set)
        //  self.pieChart.drawHoleEnabled = false

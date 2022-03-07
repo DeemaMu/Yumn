@@ -70,7 +70,7 @@ class updateOrganShortageVC: UIViewController {
         tableView.dataSource = self
         super.viewDidLoad()
         
-        tableView.register(UINib(nibName: const.cellNibNameOrgans, bundle: nil), forCellReuseIdentifier: const.cellIDOrgans)
+        tableView.register(UINib(nibName: Constants.cellNibNameOrgans, bundle: nil), forCellReuseIdentifier: Constants.cellIDOrgans)
         startTimerForShowScrollIndicator()
         
         
@@ -103,7 +103,7 @@ class updateOrganShortageVC: UIViewController {
         
         // write code to get the first doc of bloodshortage
         // change the uid of doc to current user
-        let userRef = db.collection(const.FStore.hospitalCollection).document(user!.uid)
+        let userRef = db.collection(Constants.FStore.hospitalCollection).document(user!.uid)
            
            userRef.updateData([
             // 0 >> heart , 1 >> lung,  2 >> kidney, 3 >> liver
@@ -158,7 +158,7 @@ class updateOrganShortageVC: UIViewController {
    func getTotalOrganShortage (completion: @escaping (totalOrganShortage?)->()){
     
     // first get the total so you can add the update to them
-    let docRef = db.collection(const.FStore.hospitalCollection).document(const.FStore.totalOrganShDoc)
+    let docRef = db.collection(Constants.FStore.hospitalCollection).document(Constants.FStore.totalOrganShDoc)
     
     docRef.getDocument { (document, error) in
         guard let document = document, document.exists else {
@@ -169,17 +169,17 @@ class updateOrganShortageVC: UIViewController {
      
         
      let totalOrganShort = totalOrganShortage(
-         heart: dataDescription![const.FStore.heart] as! Int,
-         lung: dataDescription![const.FStore.lung] as! Int,
+         heart: dataDescription![Constants.FStore.heart] as! Int,
+         lung: dataDescription![Constants.FStore.lung] as! Int,
          
-         kidney: dataDescription![const.FStore.kidney] as! Int,
-         liver: dataDescription![const.FStore.liver] as! Int,
+         kidney: dataDescription![Constants.FStore.kidney] as! Int,
+         liver: dataDescription![Constants.FStore.liver] as! Int,
          
-         pancreas: dataDescription![const.FStore.pancreas] as! Int,
-        intestine: dataDescription![const.FStore.intestine] as! Int,
+         pancreas: dataDescription![Constants.FStore.pancreas] as! Int,
+        intestine: dataDescription![Constants.FStore.intestine] as! Int,
         
-         cornea: dataDescription![const.FStore.cornea] as! Int,
-         boneMarrow: dataDescription![const.FStore.boneMarrow] as! Int)
+         cornea: dataDescription![Constants.FStore.cornea] as! Int,
+         boneMarrow: dataDescription![Constants.FStore.boneMarrow] as! Int)
      
         
         
@@ -215,19 +215,19 @@ class updateOrganShortageVC: UIViewController {
         
     
     // we update the total in firestore
-            let docRef = self.db.collection(const.FStore.hospitalCollection).document(const.FStore.totalOrganShDoc)
+            let docRef = self.db.collection(Constants.FStore.hospitalCollection).document(Constants.FStore.totalOrganShDoc)
             
         docRef.updateData([
                      
-                     const.FStore.heart : heart,
-                     const.FStore.lung : lung,
-                     const.FStore.kidney : kidney,
-                     const.FStore.liver : liver,
+                     Constants.FStore.heart : heart,
+                     Constants.FStore.lung : lung,
+                     Constants.FStore.kidney : kidney,
+                     Constants.FStore.liver : liver,
                                
-                     const.FStore.intestine : intestine,
-                     const.FStore.cornea : cornea,
-                     const.FStore.pancreas : pancreas,
-                     const.FStore.boneMarrow : boneMarrow
+                     Constants.FStore.intestine : intestine,
+                     Constants.FStore.cornea : cornea,
+                     Constants.FStore.pancreas : pancreas,
+                     Constants.FStore.boneMarrow : boneMarrow
         
         ])
     { (error) in
@@ -269,7 +269,7 @@ extension updateOrganShortageVC : UITableViewDataSource {
      // position - done updated
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: const.cellIDOrgans, for: indexPath) as! organCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIDOrgans, for: indexPath) as! organCell
         
         cell.organ?.text = organsArray[indexPath.row].organ
         cell.organValue?.text = String(organsArray[indexPath.row].value)

@@ -184,7 +184,7 @@ class HospitalHomeMainViewController: UIViewController {
     
     func getOrganShortageByMap(userID:String){
         
-        db.collection(const.FStore.hospitalCollection).document(userID).addSnapshotListener{(QuerySnapshot,error) in
+        db.collection(Constants.FStore.hospitalCollection).document(userID).addSnapshotListener{(QuerySnapshot,error) in
             if let e = error{
                 print("there was an issue fetching organ shortage from firestore. \(e)")
             }else {
@@ -192,18 +192,18 @@ class HospitalHomeMainViewController: UIViewController {
                     
                     let data = snapshotDocuments.data()
                     
-                    if let organShortageMapField = data?[const.FStore.oShField] as? [String : Int]{
+                    if let organShortageMapField = data?[Constants.FStore.oShField] as? [String : Int]{
                     
-                        print("lung from map \(organShortageMapField[const.FStore.lung]!)")
+                        print("lung from map \(organShortageMapField[Constants.FStore.lung]!)")
                         
-                       let heartData = (organShortageMapField[const.FStore.heart]!)
-                       let lungData = (organShortageMapField[const.FStore.lung]!)
-                       let kidneyData = (organShortageMapField[const.FStore.kidney]!)
-                       let liverData = (organShortageMapField[const.FStore.liver]!)
-                       let corneaData = (organShortageMapField[const.FStore.cornea]!)
-                       let pancreasData = (organShortageMapField[const.FStore.pancreas]!)
-                       let boneMarrowData = (organShortageMapField[const.FStore.boneMarrow]!)
-                       let intestineData = (organShortageMapField[const.FStore.intestine]!)
+                       let heartData = (organShortageMapField[Constants.FStore.heart]!)
+                       let lungData = (organShortageMapField[Constants.FStore.lung]!)
+                       let kidneyData = (organShortageMapField[Constants.FStore.kidney]!)
+                       let liverData = (organShortageMapField[Constants.FStore.liver]!)
+                       let corneaData = (organShortageMapField[Constants.FStore.cornea]!)
+                       let pancreasData = (organShortageMapField[Constants.FStore.pancreas]!)
+                       let boneMarrowData = (organShortageMapField[Constants.FStore.boneMarrow]!)
+                       let intestineData = (organShortageMapField[Constants.FStore.intestine]!)
                         
                         // for updating organ shortage
                         self.organsRow = [
@@ -257,7 +257,7 @@ class HospitalHomeMainViewController: UIViewController {
 
     func getBloodShortage(userID:String){
         //current user
-         db.collection(const.FStore.hospitalCollection).document(userID).addSnapshotListener{(QuerySnapshot,error) in // addSnapshotListener instead of getDocuments
+         db.collection(Constants.FStore.hospitalCollection).document(userID).addSnapshotListener{(QuerySnapshot,error) in // addSnapshotListener instead of getDocuments
             if let e = error{
                 print("there was an issue fetching blood shortage from firestore. \(e)")
             }else {
@@ -266,19 +266,19 @@ class HospitalHomeMainViewController: UIViewController {
                     let data = snapshotDocuments.data()
                     
                    // var bloodShortageMapField = [String : Int]()
-                    if let bloodShortageMapField = data?[const.FStore.bShField] as? [String : Int]{
+                    if let bloodShortageMapField = data?[Constants.FStore.bShField] as? [String : Int]{
                     
                     
                     
-                        let aPos = (bloodShortageMapField[const.FStore.aPos]!)
-                       let bPos = (bloodShortageMapField[const.FStore.bPos]!)
-                       let oPos = (bloodShortageMapField[const.FStore.oPos]!)
-                       let abPos = (bloodShortageMapField[const.FStore.abPos]!)
+                        let aPos = (bloodShortageMapField[Constants.FStore.aPos]!)
+                       let bPos = (bloodShortageMapField[Constants.FStore.bPos]!)
+                       let oPos = (bloodShortageMapField[Constants.FStore.oPos]!)
+                       let abPos = (bloodShortageMapField[Constants.FStore.abPos]!)
                        
-                       let aNeg = (bloodShortageMapField[const.FStore.aNeg]!)
-                       let bNeg = (bloodShortageMapField[const.FStore.bNeg]!)
-                       let oNeg = (bloodShortageMapField[const.FStore.oNeg]!)
-                       let abNeg = (bloodShortageMapField[const.FStore.abNeg]!)
+                       let aNeg = (bloodShortageMapField[Constants.FStore.aNeg]!)
+                       let bNeg = (bloodShortageMapField[Constants.FStore.bNeg]!)
+                       let oNeg = (bloodShortageMapField[Constants.FStore.oNeg]!)
+                       let abNeg = (bloodShortageMapField[Constants.FStore.abNeg]!)
                     
                         // for updating blood shortage
                         self.bloodRow = [
@@ -337,7 +337,7 @@ class HospitalHomeMainViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == const.Segue.updateBloodShSegue {
+        if segue.identifier == Constants.Segue.updateBloodShSegue {
             
             // Create a new variable to store the instance of updateBloodShortageVC
             let destinationVC = segue.destination as! updateBloodShortageVC
@@ -348,7 +348,7 @@ class HospitalHomeMainViewController: UIViewController {
         }
         
         
-       if segue.identifier == const.Segue.updateOrgansShSegue { // make sure it matches the segue id
+       if segue.identifier == Constants.Segue.updateOrgansShSegue { // make sure it matches the segue id
             
             // Create a new variable to store the instance of updateBloodShortageVC
             let destinationVC = segue.destination as! updateOrganShortageVC

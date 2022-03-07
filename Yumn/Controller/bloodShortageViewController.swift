@@ -43,7 +43,7 @@ class updateBloodShortageVC: UIViewController {
         // delete it
 
         // write code to get the first doc of bloodshortage
-        let userRef = db.collection(const.FStore.hospitalCollection).document(user!.uid)
+        let userRef = db.collection(Constants.FStore.hospitalCollection).document(user!.uid)
 
            userRef.updateData([
             // 0 >> A+ , 1 >> A-,  2 >> B+, 3 >> B-
@@ -89,7 +89,7 @@ class updateBloodShortageVC: UIViewController {
         super.viewDidLoad()
 
 
-//        tableView.register(UINib(nibName: const.cellNibName, bundle: nil), forCellReuseIdentifier: const.cellIdentifier)
+//        tableView.register(UINib(nibName: Constants.cellNibName, bundle: nil), forCellReuseIdentifier: Constants.cellIdentifier)
 
         guard let customFont = UIFont(name: "Tajawal-Bold", size: UIFont.labelFontSize) else {
             fatalError("""
@@ -124,7 +124,7 @@ class updateBloodShortageVC: UIViewController {
    func getTotalBloodShortage (completion: @escaping (totalBloodShortage?)->()){
 
     // first get the total so you can add the update to them
-    let docRef = db.collection(const.FStore.hospitalCollection).document(const.FStore.totalBloodShDoc)
+    let docRef = db.collection(Constants.FStore.hospitalCollection).document(Constants.FStore.totalBloodShDoc)
 
     docRef.getDocument { (document, error) in
         guard let document = document, document.exists else {
@@ -135,17 +135,17 @@ class updateBloodShortageVC: UIViewController {
 
 
      let totalBloodShort = totalBloodShortage(
-         aPos: dataDescription![const.FStore.aPos] as! Int,
-         aNeg: dataDescription![const.FStore.aNeg] as! Int,
+         aPos: dataDescription![Constants.FStore.aPos] as! Int,
+         aNeg: dataDescription![Constants.FStore.aNeg] as! Int,
 
-         oPos: dataDescription![const.FStore.oPos] as! Int,
-         oNeg: dataDescription![const.FStore.oNeg] as! Int,
+         oPos: dataDescription![Constants.FStore.oPos] as! Int,
+         oNeg: dataDescription![Constants.FStore.oNeg] as! Int,
 
-         bPos: dataDescription![const.FStore.bPos] as! Int,
-         bNeg: dataDescription![const.FStore.bNeg] as! Int,
+         bPos: dataDescription![Constants.FStore.bPos] as! Int,
+         bNeg: dataDescription![Constants.FStore.bNeg] as! Int,
 
-         abPos: dataDescription![const.FStore.abPos] as! Int,
-         abNeg: dataDescription![const.FStore.abNeg] as! Int)
+         abPos: dataDescription![Constants.FStore.abPos] as! Int,
+         abNeg: dataDescription![Constants.FStore.abNeg] as! Int)
 
 
 
@@ -179,19 +179,19 @@ class updateBloodShortageVC: UIViewController {
 
 
     // we update the total in firestore
-            let docRef = self.db.collection(const.FStore.hospitalCollection).document(const.FStore.totalBloodShDoc)
+            let docRef = self.db.collection(Constants.FStore.hospitalCollection).document(Constants.FStore.totalBloodShDoc)
 
         docRef.updateData([
 
-                     const.FStore.aPos : aPos,
-                     const.FStore.bPos : bPos,
-                     const.FStore.oPos : oPos,
-                     const.FStore.abPos : abPos,
+                     Constants.FStore.aPos : aPos,
+                     Constants.FStore.bPos : bPos,
+                     Constants.FStore.oPos : oPos,
+                     Constants.FStore.abPos : abPos,
 
-                     const.FStore.aNeg : aNeg,
-                     const.FStore.bNeg : bNeg,
-                     const.FStore.oNeg : oNeg,
-                     const.FStore.abNeg : abNeg
+                     Constants.FStore.aNeg : aNeg,
+                     Constants.FStore.bNeg : bNeg,
+                     Constants.FStore.oNeg : oNeg,
+                     Constants.FStore.abNeg : abNeg
 
         ])
     { (error) in
@@ -235,7 +235,7 @@ extension updateBloodShortageVC : UITableViewDataSource {
      // position - done updated
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: const.cellIdentifier, for: indexPath) as! bloodTypeCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier, for: indexPath) as! bloodTypeCell
 
        // cell.bloodTypeLbl?.text = Array(bloodValues)[indexPath.row].key
        // cell.bloodTypeValue?.text = String(Array(bloodValues)[indexPath.row].value!) // must be updated whenever user click the btn

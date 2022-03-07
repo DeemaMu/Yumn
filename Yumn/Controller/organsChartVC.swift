@@ -82,7 +82,7 @@ class organsChartVC: UIViewController, ChartViewDelegate {
     func getTotalOrganShortage( completion: @escaping (totalOrganShortage?)->())  {
    
         cityOfUser.text = "رسم بياني لاحتياج الأعضاء في المملكة"
-        let docRef = db.collection(const.FStore.hospitalCollection).document(const.FStore.totalOrganShDoc)
+        let docRef = db.collection(Constants.FStore.hospitalCollection).document(Constants.FStore.totalOrganShDoc)
 
         // Get data
                docRef.getDocument { (document, error) in
@@ -92,14 +92,14 @@ class organsChartVC: UIViewController, ChartViewDelegate {
                    }
                    let dataDescription = document.data()
                 let totalOrganShort = totalOrganShortage(
-                    heart: dataDescription![const.FStore.heart] as! Int,
-                    lung: dataDescription![const.FStore.lung] as! Int,
-                    kidney: dataDescription![const.FStore.kidney] as! Int,
-                    liver: dataDescription![const.FStore.liver] as! Int,
-                    pancreas: dataDescription![const.FStore.pancreas] as! Int,
-                    intestine: dataDescription![const.FStore.intestine] as! Int,
-                    cornea: dataDescription![const.FStore.cornea] as! Int,
-                    boneMarrow: dataDescription![const.FStore.boneMarrow] as! Int)
+                    heart: dataDescription![Constants.FStore.heart] as! Int,
+                    lung: dataDescription![Constants.FStore.lung] as! Int,
+                    kidney: dataDescription![Constants.FStore.kidney] as! Int,
+                    liver: dataDescription![Constants.FStore.liver] as! Int,
+                    pancreas: dataDescription![Constants.FStore.pancreas] as! Int,
+                    intestine: dataDescription![Constants.FStore.intestine] as! Int,
+                    cornea: dataDescription![Constants.FStore.cornea] as! Int,
+                    boneMarrow: dataDescription![Constants.FStore.boneMarrow] as! Int)
                 
                 
                 completion(totalOrganShort)
@@ -168,7 +168,7 @@ class organsChartVC: UIViewController, ChartViewDelegate {
         
         let set = PieChartDataSet(entries: pieChartEntry)
         //set.colors = ChartColorTemplates.colorful()
-        set.colors = [const.Colors.green, const.Colors.yellow, const.Colors.orange, const.Colors.pink, const.Colors.green, const.Colors.yellow, const.Colors.orange, const.Colors.pink]
+        set.colors = [Constants.Colors.green, Constants.Colors.yellow, Constants.Colors.orange, Constants.Colors.pink, Constants.Colors.green, Constants.Colors.yellow, Constants.Colors.orange, Constants.Colors.pink]
         let data = PieChartData(dataSet: set)
         
         let pFormater = NumberFormatter()
