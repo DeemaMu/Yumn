@@ -27,47 +27,11 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var popupStack: UIStackView!
     
-    
-    
-    //    @IBOutlet weak var firstNamelabel: UILabel!
-    //
-    //    @IBOutlet weak var lastNameLabel: UILabel!
-    //
-    //
-    //    @IBOutlet weak var emailLabel: UILabel!
-    //
-    //
-    //    @IBOutlet weak var phoneLabel: UILabel!
-    //
-    //
-    //    @IBOutlet weak var dateLabel: UILabel!
-    //
-    //    @IBOutlet weak var passwordLabel: UILabel!
-    //
-    //
-    //    @IBOutlet weak var idLabel: UILabel!
-    
-    //    @IBOutlet weak var errorLabel: UILabel!
-    
-    
-    
-    //    @IBOutlet weak var stackView: UIStackView!
-    
-    
-    //    @IBOutlet weak var backButton: UIButton!
-    //
-    //    @IBOutlet weak var scrollView: UIScrollView!
-    
-    //    //The new interface trial
-    //    @IBOutlet weak var whiteView: UITextField!
-    
     @IBOutlet weak var backView: UIView!
-    
     
     let style = styles()
     var gender = "f"
     
-    //    @IBOutlet weak var topNavBar: UINavigationBar!
     @IBOutlet weak var eyeButton: UIButton!
     
     
@@ -115,15 +79,10 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
     
     
     let thePicker = UIPickerView()
-    //    let thePicker2 = UIPickerView()
     
     let bloodList = ["","O+", "O-", "AB+", "AB-", "B-", "B+", "A+", "A-" , "لا أعلم"]
     let cityList = ["الرياض", "مكة المكرمة","المدينة المنورة","جدة","تبوك","نجران","الطائف","ينبع","الخبر","الدمام","حائل","الباحة","ضباء","الأحساء", "جازان"]
     let weightList = ["", "أقل من ٥٠ كج", "٥٠ كج أو أعلى"]
-    
-    
-    
-    
     
     
     override func viewDidLoad() {
@@ -158,39 +117,39 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
     
     // added for top bar
     
-    //    override func viewWillAppear(_ animated: Bool) {
-    ////        self.navigationController?.navigationBar.tintColor = UIColor.white
-    //        super.viewWillAppear(animated)
-    //
-    //        var nav = self.navigationController?.navigationBar
-    //        guard let customFont = UIFont(name: "Tajawal-Bold", size: 25) else {
-    //            fatalError("""
-    //                Failed to load the "Tajawal" font.
-    //                Make sure the font file is included in the project and the font name is spelled correctly.
-    //                """
-    //            )
-    //        }
-    //
-    //        nav?.tintColor = UIColor.white
-    //        nav?.barTintColor = UIColor.init(named: "mainLight")
-    //        nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: customFont]
-    //        navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-    //
-    //    }
-    //
-    //    override func viewWillDisappear(_ animated: Bool) {
-    //        var nav = self.navigationController?.navigationBar
-    //        guard let customFont = UIFont(name: "Tajawal-Bold", size: 25) else {
-    //            fatalError("""
-    //                Failed to load the "Tajawal" font.
-    //                Make sure the font file is included in the project and the font name is spelled correctly.
-    //                """
-    //            )
-    //        }
-    //        nav?.tintColor = UIColor.init(named: "mainLight")
-    //        nav?.barTintColor = UIColor.init(named: "mainLight")
-    //        nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(named: "mainLight")!, NSAttributedString.Key.font: customFont]
-    //    }
+        override func viewWillAppear(_ animated: Bool) {
+    //        self.navigationController?.navigationBar.tintColor = UIColor.white
+            super.viewWillAppear(animated)
+    
+            var nav = self.navigationController?.navigationBar
+            guard let customFont = UIFont(name: "Tajawal-Bold", size: 25) else {
+                fatalError("""
+                    Failed to load the "Tajawal" font.
+                    Make sure the font file is included in the project and the font name is spelled correctly.
+                    """
+                )
+            }
+            
+            nav?.tintColor = UIColor.white
+            nav?.barTintColor = UIColor.init(named: "mainLight")
+            nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: customFont]
+            navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    
+        }
+    
+        override func viewWillDisappear(_ animated: Bool) {
+            var nav = self.navigationController?.navigationBar
+            guard let customFont = UIFont(name: "Tajawal-Bold", size: 25) else {
+                fatalError("""
+                    Failed to load the "Tajawal" font.
+                    Make sure the font file is included in the project and the font name is spelled correctly.
+                    """
+                )
+            }
+            nav?.tintColor = UIColor.init(named: "mainLight")
+            nav?.barTintColor = UIColor.init(named: "mainLight")
+            nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(named: "mainLight")!, NSAttributedString.Key.font: customFont]
+        }
     
     
     // MARK: - SETUP
@@ -249,9 +208,6 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
         
         containsSpecialIcon.image = UIImage(systemName: "multiply.circle")
         containsSpecialIcon.tintColor = UIColor.lightGray
-        
-        //        //The new view
-        //        whiteView.layer.cornerRadius = 35
         
     }
     
@@ -341,15 +297,15 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
         style.normalStyle(TextField: textfield)
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        
-        //        if textField == self.bloodTypeTexfield {
-        //            self.thePicker.isHidden = false
-        //            //if you don't want the users to se the keyboard type:
-        //
-        //            textField.endEditing(true)
-        //        }
-    }
+//    func textFieldDidBeginEditing(_ textField: UITextField) {
+//
+//                if textField == self.bloodTypeTexfield {
+//                    self.thePicker.isHidden = false
+//                    //if you don't want the users to se the keyboard type:
+//
+//                    textField.endEditing(true)
+//                }
+//    }
     
     @IBAction func femaleSelected(_ sender: Any) {
         femaleButton.isSelected = true
@@ -386,7 +342,6 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
             firstNameError.text = "الاسم الأول يجب أن لا يتجاوز ١٦ حرفا"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: firstNameTextField)
-            //            firstNamelabel.alpha = 1
         }
         // Required
         else if (textfield.text!.count == 0) {
@@ -394,7 +349,6 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
             firstNameError.text = "اجباري"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: firstNameTextField)
-            //            firstNamelabel.alpha = 0
         }
         
         // Only letters
@@ -403,16 +357,12 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
             firstNameError.text = "الاسم الأول يجب أن يتكون من أحرف فقط"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: firstNameTextField)
-            //            firstNamelabel.alpha = 1
         }
         
         // Everything is fine
         else {
             firstNameError.isHidden = true
-            // White space so that the layout is not affected; however, trim it in the validation
-            //            firstNameError.text="  "
             turnTextFieldTextfieldToNormal(textfield: firstNameTextField)
-            //            firstNamelabel.alpha = 1
             Constants.Globals.firstName = textfield.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         }
     }
@@ -521,7 +471,6 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
             
         }
         
-        
     }
     
     // Date validation
@@ -565,7 +514,6 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
             phoneNumberError.text = "رقم الجوال يجب أن يبدأ ب ٠٥"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: phoneTextField)
-            //            phoneLabel.alpha = 1
             
         }
         // Only numbers
@@ -574,7 +522,6 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
             phoneNumberError.text = "رقم الجوال يجب أن يتكون من أرقام فقط"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: phoneTextField)
-            //            phoneLabel.alpha = 1
             
         }
         
@@ -585,7 +532,6 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
             phoneNumberError.text = "رقم الجوال يجب أن لا يتجاوز ١٠ أرقام"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: phoneTextField)
-            //            phoneLabel.alpha = 1
             
         }
         
@@ -596,7 +542,6 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
             phoneNumberError.text = "رقم الجوال يجب أن لا يقل عن ١٠ أرقام"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: phoneTextField)
-            //            phoneLabel.alpha = 1
             
         }
         
@@ -606,8 +551,6 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
             // White space so that the layout is not affected; however, trim it in the validation
             phoneNumberError.text="  "
             style(textfield: phoneTextField)
-            //            phoneLabel.alpha = 1
-            
             Constants.Globals.phone = textfield.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         }
         
@@ -707,8 +650,7 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
                 charNumIcon.tintColor = UIColor.red
                 charNumLabel.textColor = UIColor.red
                 
-                
-                
+
                 
                 // Turn the textfield to red
                 turnTextFieldTextfieldToRed(textfield: passwordTextField)
@@ -990,59 +932,6 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
     
     
     // MARK: - Backend
-    //
-    //    @IBAction func onPressedCont(_ sender: Any) {
-    //
-    //
-    //        //chc if not empty
-    //
-    //        // Cont...
-    //    }
-    
-    
-    //    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-    //
-    //        var allValidations = firstNameError.text! + lastNameError.text! + idError.text! + emailError.text! + phoneNumberError.text!
-    //
-    //
-    //        // Did not include the password here since I will check it down
-    //        allValidations += dateError.text!
-    //
-    //
-    //        // Just for testing
-    //        let check = ((allValidations.trimmingCharacters(in: .whitespacesAndNewlines)))
-    //        print (check)
-    //
-    //
-    //
-    //        // If all the fields are filled and valid and the password is strong
-    //        if (isPasswordStrong == true && check == ""){
-    //            return true
-    //        }
-    //
-    //        // If all the fields are filled and valid but the password is weak/empty
-    //        else if (isPasswordStrong == false && check == "")
-    //        {
-    //
-    //
-    //            return false
-    //
-    //
-    //
-    //
-    //        }
-    //
-    //        else {
-    //            // Textfields are not valid or password is weak/empty
-    //            print ("Weak/empty pass or some textfields are not valid")
-    //
-    //
-    //
-    //            return false
-    //        }
-    //
-    //    }
-    
     
     @IBAction func onPressedSignUp(_ sender: Any) {
         
@@ -1300,9 +1189,6 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
                     
                     self.transitionToHome()
                     
-                    
-                    
-                    
                 }
                 
             }
@@ -1319,7 +1205,7 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
         view.window?.rootViewController = volunteerHomeViewController
         view.window?.makeKeyAndVisible()
     }
-    
+
     @IBAction func onPressedOK(_ sender: Any) {
         popupView.isHidden = true
         blurredView.isHidden = true

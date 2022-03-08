@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="W1R-Tc-kPc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1CO-Fa-MFY">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -1936,7 +1936,7 @@
                                                     </attributedString>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="FmO-bT-bfr" kind="push" id="JbY-5U-55b"/>
+                                                    <segue destination="W1R-Tc-kPc" kind="show" id="9tl-3c-cZM"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ليس لديك حساب؟" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EW0-oC-hFD">
@@ -2829,16 +2829,16 @@
             </objects>
             <point key="canvasLocation" x="1196" y="4258"/>
         </scene>
-        <!--VolunteerProfileViewController-->
+        <!--VSignUpViewController-->
         <scene sceneID="xk1-Qu-ZBQ">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="W1R-Tc-kPc" userLabel="VolunteerProfileViewController" customClass="VSignUpViewController" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="W1R-Tc-kPc" userLabel="VSignUpViewController" customClass="VSignUpViewController" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hNG-iI-PtW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="US7-6Y-UX8">
-                                <rect key="frame" x="0.0" y="59" width="414" height="1441"/>
+                                <rect key="frame" x="0.0" y="103" width="414" height="1397"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Yj-0u-Glr">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1426"/>
@@ -3373,6 +3373,7 @@
                             <constraint firstAttribute="trailing" secondItem="7C3-RE-ijr" secondAttribute="trailing" constant="50" id="pVE-gr-0IX"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="إنشاء حساب" id="qNx-Kr-vs5"/>
                     <size key="freeformSize" width="414" height="1500"/>
                     <connections>
                         <outlet property="backView" destination="3Yj-0u-Glr" id="6Fy-yX-vKV"/>
