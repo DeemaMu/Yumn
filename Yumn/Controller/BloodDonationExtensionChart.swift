@@ -40,6 +40,10 @@ extension BloodDonationViewController {
 
                     currentUserCity = document[Constants.FStore.cityField] as! String
                     getDataBasedOnUserCity(currentUserCity: currentUserCity)
+                    self.cityOfUser.isHidden = false
+                    self.blurredView.isHidden = true
+                    // Show Loading indicator
+                    self.loadingGif.isHidden = true
 
                   } else {
 

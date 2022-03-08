@@ -35,7 +35,8 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
     @IBOutlet weak var viewPie: UIView!
     @IBOutlet weak var viewPieWhole: UIView!
     @IBOutlet weak var cityOfUser: UILabel!
-    
+    @IBOutlet weak var blurredView: UIView!
+    @IBOutlet weak var loadingGif: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +47,13 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
         viewPieWhole.isHidden = false
         viewPie.isHidden = false
         pieChart.isHidden = false
+        // for loading gif
+        loadingGif.superview?.bringSubviewToFront(loadingGif)
+        loadingGif.loadGif(name: "yumnLoading")
+        // Blur the background
+        blurredView.isHidden = false
+        // Show Loading indicator
+        loadingGif.isHidden = false
         //        print("\(String(describing: userLocation))")
         //        let control = BetterSegmentedControl(frame: CGRect(x: 0, y: 0,width: seg2.frame.width,        height: 50.0))
         //        let control = BetterSegmentedControl.init(frame: CGRect(x: 0, y: 0, width:                    seg2.frame.width, height: 50), segments: , index: , options: )
