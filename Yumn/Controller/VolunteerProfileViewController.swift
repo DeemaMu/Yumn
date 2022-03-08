@@ -13,6 +13,7 @@ import UIKit
 class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
     
     let database = Firestore.firestore()
+    let style = styles()
     var points = 0
     
     @IBOutlet weak var barTitle: UINavigationItem!
@@ -65,11 +66,6 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
         viewWillAppear(true)
 
     }
-//    override func willMove(toParent parent: UIViewController?) {
-//        self.navigationController?.navigationBar.tintColor = UIColor.white
-//        self.navigationController?.navigationBar.backgroundColor = blue
-//    }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         subscribeToKeyboardNotifications()
@@ -192,8 +188,8 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
         // Today's Date
         datePicker.maximumDate = Date()
         birthdateTextField.inputView = datePicker
-        
     }
+    
     func formaDate(date: Date) -> String {
         
         let formatter = DateFormatter()
@@ -269,30 +265,16 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
     
     func style(TextField : UITextField){
         TextField.delegate = self
-        normalStyle(TextField: TextField)
+        style.normalStyle(TextField: TextField)
     }
-    
+     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        let bottomLine = CALayer()
-        bottomLine.frame = CGRect(x: 0, y: textField.frame.height - 1, width: textField.frame.width, height: 1)
-        bottomLine.backgroundColor = UIColor.init(red: 56/255, green: 97/255, blue: 93/255, alpha: 1).cgColor
-        textField.borderStyle = .none
-        textField.layer.addSublayer(bottomLine)
+        style.activeModeStyle(TextField: textField)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        normalStyle(TextField: textField)
+        style.normalStyle(TextField: textField)
     }
-    
-    func normalStyle(TextField : UITextField){
-        let bottomLine = CALayer()
-        bottomLine.frame = CGRect(x: 0, y: TextField.frame.height - 1, width: TextField.frame.width, height: 1)
-        bottomLine.backgroundColor = UIColor.init(red: 134/255, green: 202/255, blue: 195/255, alpha: 1).cgColor
-        TextField.borderStyle = .none
-        TextField.layer.addSublayer(bottomLine)
-    }
-    
-    
     
     
     // Get Profile info
