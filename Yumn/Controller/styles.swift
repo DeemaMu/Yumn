@@ -32,7 +32,7 @@ class styles: UIViewController {
     public func turnTextFieldToRed(textfield: UITextField){
         let bottomLine = CALayer()
         
-        bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width , height: 2)
+        bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 1, width: textfield.frame.width , height: 1)
         
         bottomLine.backgroundColor = UIColor.red.cgColor
         

@@ -70,7 +70,7 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
     var gender = "f"
     
     //    @IBOutlet weak var topNavBar: UINavigationBar!
-    //    @IBOutlet weak var eyeButton: UIButton!
+    @IBOutlet weak var eyeButton: UIButton!
     
     
     @IBOutlet weak var passwordStrength: UIProgressView!
@@ -134,21 +134,21 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
         
         setUpElements()
         
-//        popupStack.superview?.bringSubviewToFront(popupStack)
-//        popupView.layer.cornerRadius = 35
-//        popupButton.layer.cornerRadius = 20
-//
-//        loadingGif.loadGif(name: "yumnLoading")
+        //        popupStack.superview?.bringSubviewToFront(popupStack)
+        //        popupView.layer.cornerRadius = 35
+        //        popupButton.layer.cornerRadius = 20
+        //
+        //        loadingGif.loadGif(name: "yumnLoading")
         
         //validator links
-        firstNameTextField.addTarget(self, action: #selector(validateFirstName(textfield:)), for: .editingChanged)
-        lastNameTextField.addTarget(self, action: #selector(validateLastName(textfield:)), for: .editingChanged)
-        idTextField.addTarget(self, action: #selector(validateID(textfield:)), for: .editingChanged)
-        emailTextField.addTarget(self, action: #selector(validateEmail(textfield:)), for: .editingChanged)
-        phoneTextField.addTarget(self, action: #selector(validatePhone(textfield:)), for: .editingChanged)
-        passwordTextField.addTarget(self, action: #selector(validatePassword(textfield:)), for: .editingChanged)
+        firstNameTextField.addTarget(self, action: #selector(validateFirstName(textfield:)), for: .allEvents)
+        lastNameTextField.addTarget(self, action: #selector(validateLastName(textfield:)), for: .allEvents)
+        idTextField.addTarget(self, action: #selector(validateID(textfield:)), for: .allEvents)
+        emailTextField.addTarget(self, action: #selector(validateEmail(textfield:)), for: .allEvents)
+        phoneTextField.addTarget(self, action: #selector(validatePhone(textfield:)), for: .allEvents)
+        passwordTextField.addTarget(self, action: #selector(validatePassword(textfield:)), for: .allEvents)
         
-        dateTextField.addTarget(self, action: #selector(validateDate(textfield:)), for: .allEditingEvents)
+        dateTextField.addTarget(self, action: #selector(validateDate(textfield:)), for: .allEvents)
         bloodTypeTexfield.addTarget(self, action: #selector(validateBlood(textfield:)), for: .allEvents)
         weightTextfield.addTarget(self, action: #selector(validateWeight(textfield:)), for: .allEvents)
         cityTextfield.addTarget(self, action: #selector(validateCity(textfield:)), for: .allEvents)
@@ -156,7 +156,7 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
         genderButtons(button: femaleButton)
         genderButtons(button: maleButton)
     }
-   
+    
     
     // added for top bar
     
@@ -194,28 +194,26 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
     //        nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(named: "mainLight")!, NSAttributedString.Key.font: customFont]
     //    }
     
-    // why string?
-    @objc func dateChange(datePicker: UIDatePicker){
-        dateTextField.text = String(formaDate(date: datePicker.date))
-    }
+    
     // MARK: - SETUP
     
     func setUpElements(){
         backView.layer.cornerRadius = 45
         dateTextField.text = ""
         thePicker.delegate = self
+        hideErrorMSGs()
         
         contButton.layer.cornerRadius = 45
         contButton.layer.backgroundColor = UIColor(red: 56/225, green: 97/225, blue: 93/225, alpha: 1).cgColor
         
         
-        //        eyeButton.bringSubviewToFront(eyeButton)
+        eyeButton.bringSubviewToFront(eyeButton)
         
-        //            //styling the eye toggle button
-        //        let icon = UIImage(systemName: "eye.slash")
-        //        eyeButton.setImage(icon, for: .normal)
-        //        eyeButton.tintColor = UIColor(red:137/255, green: 191/255, blue: 186/255, alpha: 1.00)
-  
+        //styling the eye toggle button
+        let icon = UIImage(systemName: "eye.slash")
+        eyeButton.setImage(icon, for: .normal)
+        eyeButton.tintColor = UIColor(red:137/255, green: 191/255, blue: 186/255, alpha: 1.00)
+        
         
         passwordTextField.sendSubviewToBack(passwordTextField)
         passwordTextField.backgroundColor = UIColor(white: 1, alpha: 0)
@@ -259,6 +257,20 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    func hideErrorMSGs(){
+        firstNameError.isHidden = true
+        lastNameError.isHidden = true
+        idError.isHidden = true
+        emailError.isHidden = true
+        phoneNumberError.isHidden = true
+        passwordError.isHidden = true
+        
+        dateError.isHidden = true
+        cityError.isHidden = true
+        bloodError.isHidden = true
+        weightError.isHidden = true
+    }
+    
     
     func addToolBar(_ textField : UITextField){
         // ToolBar
@@ -294,7 +306,6 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
         //  cityTextField.resignFirstResponder()
         self.view.endEditing(true)
     }
-
     
     func formaDate(date: Date) -> String {
         
@@ -303,6 +314,10 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
         return formatter.string(from: date)
     }
     
+    // why string?
+    @objc func dateChange(datePicker: UIDatePicker){
+        dateTextField.text = String(formaDate(date: datePicker.date))
+    }
     
     // MARK: - Style
     
@@ -323,18 +338,19 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
     @objc func turnTextFieldTextfieldToRed(textfield: UITextField){
         style.turnTextFieldToRed(textfield: textfield)
     }
- 
+    
     func turnTextFieldTextfieldToNormal(textfield: UITextField){
         style.normalStyle(TextField: textfield)
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-//        if textField == self.bloodTypeTexfield {
-//            self.thePicker.isHidden = false
-//            //if you don't want the users to se the keyboard type:
-//
-//            textField.endEditing(true)
-//        }
+        
+        //        if textField == self.bloodTypeTexfield {
+        //            self.thePicker.isHidden = false
+        //            //if you don't want the users to se the keyboard type:
+        //
+        //            textField.endEditing(true)
+        //        }
     }
     
     @IBAction func femaleSelected(_ sender: Any) {
@@ -358,63 +374,9 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
         gender = "m"
         Constants.Globals.gender = "m"
     }
-
+    
     
     // MARK: - Validation
-    
-    // Check the fields and validate that the data is correct. If everything is correct return nil, otherwise return the error message
-//    func validateFields() -> String? {
-//
-//
-//        // Don't forget to add an astericks on the required fields to prevent errors
-//
-//
-//        // Check that all fields are filled in
-//        if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
-//            || lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
-//            || idTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
-//            || emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
-//            || phoneTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
-//            || passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
-//
-//
-//        {
-//            return "Please fill in all fields."
-//        }
-//
-//
-//
-//        // Check if the password is secure, change it later
-//        let cleanedPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-//
-//
-//        if isPasswordValid(cleanedPassword) == false {
-//            // Password isn't secure enough
-//            return "Please make sure that your password ..."
-//        }
-//
-//        return nil
-//    }
-
-    
-    // Change this method and replace it with a visible validator
-    func isPasswordValid(_ password : String) -> Bool{
-        let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
-        return passwordTest.evaluate(with: password)
-    }
-    
-    
-    //
-    //    // Change this function to pop up message
-    //    func showError(_ message: String){
-    //
-    //        errorLabel.text = message
-    //        errorLabel.alpha = 1
-    //
-    //
-    //
-    //    }
-    
     
     
     // First name validation
@@ -422,6 +384,7 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
         
         // Maximum Length
         if (textfield.text!.count >= 16) {
+            firstNameError.isHidden = false
             firstNameError.text = "الاسم الأول يجب أن لا يتجاوز ١٦ حرفا"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: firstNameTextField)
@@ -429,6 +392,7 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
         }
         // Required
         else if (textfield.text!.count == 0) {
+            firstNameError.isHidden = false
             firstNameError.text = "اجباري"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: firstNameTextField)
@@ -437,6 +401,7 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
         
         // Only letters
         else if (!isNameValid(textfield.text!)){
+            firstNameError.isHidden = false
             firstNameError.text = "الاسم الأول يجب أن يتكون من أحرف فقط"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: firstNameTextField)
@@ -445,6 +410,7 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
         
         // Everything is fine
         else {
+            firstNameError.isHidden = true
             // White space so that the layout is not affected; however, trim it in the validation
             //            firstNameError.text="  "
             turnTextFieldTextfieldToNormal(textfield: firstNameTextField)
@@ -456,38 +422,34 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
     // Last name validation
     @objc func validateLastName(textfield: UITextField){
         
-        
         // Maximum Length
         if (textfield.text!.count >= 16) {
+            lastNameError.isHidden = false
             lastNameError.text = "اسم العائلة يجب أن لا يتجاوز ١٦ حرفا"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: lastNameTextField)
-            //            lastNameLabel.alpha = 1
         }
         
         // Required
         else if (textfield.text!.count == 0) {
+            lastNameError.isHidden = false
             lastNameError.text = "اجباري"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: lastNameTextField)
-            //            lastNameLabel.alpha = 0
-            
         }
         // ONly letters
         else if (!isNameValid(textfield.text!)){
+            lastNameError.isHidden = false
             lastNameError.text = "اسم العائلة يجب أن يتكون من أحرف فقط"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: lastNameTextField)
-            //            lastNameLabel.alpha = 1
-            
         }
         
         // Everything is fine
         else {
-            // White space so that the layout is not affected; however, trim it in the validation
-            //            lastNameError.text="  "
-            style(textfield: lastNameTextField)
-            //            lastNameLabel.alpha = 1
+            lastNameError.isHidden = true
+            // Turn the textfield to Normal
+            turnTextFieldTextfieldToNormal(textfield: lastNameTextField)
             Constants.Globals.lastName = textfield.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         }
     }
@@ -497,48 +459,183 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
     @objc func validateID(textfield: UITextField){
         // Required
         if (textfield.text!.count == 0) {
+            idError.isHidden = false
             idError.text = "اجباري"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: idTextField)
-            //                idLabel.alpha = 0
-            
         }
         // Only numbers
         else if (!isStringAnInt(textfield.text!)){
+            idError.isHidden = false
             idError.text = "رقم الأحوال المدنية/الإقامة يجب أن يتكون من أرقام فقط"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: idTextField)
-            //                idLabel.alpha = 1
         }
         
         // Maximum Length
         else if (textfield.text!.count >= 11) {
+            idError.isHidden = false
             idError.text = "رقم الأحوال المدنية/الإقامة يجب أن لا يتجاوز ١٠ أرقام"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: idTextField)
-            //            idLabel.alpha = 1
             
         }
         
+        // Minimum Length
+        else if (textfield.text!.count < 10) {
+            idError.isHidden = false
+            idError.text = "رقم الأحوال المدنية/الإقامة يجب أن لا يقل عن ١٠ أرقام"
+            // Turn the textfield to red
+            turnTextFieldTextfieldToRed(textfield: idTextField)
+        }
+        // Everything is fine
+        else {
+            idError.isHidden = true
+            style(textfield: idTextField)
+            Constants.Globals.id = textfield.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+    }
+    
+    // Email validation
+    @objc func validateEmail(textfield: UITextField){
+        
+        
+        // Required
+        if (textfield.text!.count == 0) {
+            emailError.isHidden = false
+            emailError.text = "اجباري"
+            // Turn the textfield to red
+            turnTextFieldTextfieldToRed(textfield: emailTextField)
+        }
+        // Email format
+        else if (!isEmailValid(textfield.text!)){
+            emailError.isHidden = false
+            emailError.text = "البريد الالكتروني غير صالح"
+            // Turn the textfield to red
+            turnTextFieldTextfieldToRed(textfield: emailTextField)
+        }
+        else
+        {
+            isEmailTaken()
+            emailError.isHidden = true
+            turnTextFieldTextfieldToNormal(textfield: emailTextField)
+            Constants.Globals.email = textfield.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+        }
+        
+        
+    }
+    
+    // Date validation
+    @objc func validateDate(textfield: UITextField){
+        
+        
+        // Required
+        if (textfield.text!.isEmpty) {
+            dateError.isHidden = false
+            dateError.text = "اجباري"
+            // Turn the textfield to red
+            turnTextFieldTextfieldToRed(textfield: dateTextField)
+        }
+        
+        
+        // Everything is fine
+        else {
+            dateError.isHidden = true
+            style(textfield: dateTextField)
+            let date = dateTextField.text!.prefix(10)
+            Constants.Globals.birthdate = date.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+    }
+    
+    
+    // Phone validation
+    @objc func validatePhone(textfield: UITextField){
+        
+        // Required
+        if (textfield.text!.count == 0) {
+            phoneNumberError.isHidden = false
+            phoneNumberError.text = "اجباري"
+            // Turn the textfield to red
+            turnTextFieldTextfieldToRed(textfield: phoneTextField)
+            //            phoneLabel.alpha = 0
+            
+        }
+        // Phone number should start with 05
+        if ((!(textfield.text!.prefix(2) == "05")) && (!(textfield.text!.prefix(2) == "٠٥"))){
+            phoneNumberError.isHidden = false
+            phoneNumberError.text = "رقم الجوال يجب أن يبدأ ب ٠٥"
+            // Turn the textfield to red
+            turnTextFieldTextfieldToRed(textfield: phoneTextField)
+            //            phoneLabel.alpha = 1
+            
+        }
+        // Only numbers
+        else if (!isStringAnInt(textfield.text!)){
+            phoneNumberError.isHidden = false
+            phoneNumberError.text = "رقم الجوال يجب أن يتكون من أرقام فقط"
+            // Turn the textfield to red
+            turnTextFieldTextfieldToRed(textfield: phoneTextField)
+            //            phoneLabel.alpha = 1
+            
+        }
+        
+        
+        // Maximum Length
+        else if (textfield.text!.count >= 11) {
+            phoneNumberError.isHidden = false
+            phoneNumberError.text = "رقم الجوال يجب أن لا يتجاوز ١٠ أرقام"
+            // Turn the textfield to red
+            turnTextFieldTextfieldToRed(textfield: phoneTextField)
+            //            phoneLabel.alpha = 1
+            
+        }
         
         
         // Minimum Length
         else if (textfield.text!.count < 10) {
-            idError.text = "رقم الأحوال المدنية/الإقامة يجب أن لا يقل عن ١٠ أرقام"
+            phoneNumberError.isHidden = false
+            phoneNumberError.text = "رقم الجوال يجب أن لا يقل عن ١٠ أرقام"
             // Turn the textfield to red
-            turnTextFieldTextfieldToRed(textfield: idTextField)
-            //                idLabel.alpha = 1
+            turnTextFieldTextfieldToRed(textfield: phoneTextField)
+            //            phoneLabel.alpha = 1
             
         }
+        
         // Everything is fine
         else {
+            phoneNumberError.isHidden = true
             // White space so that the layout is not affected; however, trim it in the validation
-            //                idError.text="  "
-            style(textfield: idTextField)
-            //                idLabel.alpha = 1
-            Constants.Globals.id = textfield.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            phoneNumberError.text="  "
+            style(textfield: phoneTextField)
+            //            phoneLabel.alpha = 1
+            
+            Constants.Globals.phone = textfield.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         }
         
+    }
+    
+    
+    @objc func isEmailTaken(){
+        
+        Auth.auth().fetchSignInMethods(forEmail: self.emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines), completion: {
+            (providers, error) in
+            
+            if let error = error {
+                self.emailError.isHidden = true
+                print ("email doesn't exist")
+                print(error.localizedDescription)
+                
+            } else if let providers = providers {
+                print(providers)
+                
+                print("email exists")
+                self.emailError.isHidden = false
+                self.emailError.text = "البريد الالكتروني مستخدم"
+                // Turn the textfield to red
+                self.turnTextFieldTextfieldToRed(textfield: self.emailTextField)
+            }
+        } )
     }
     
     
@@ -556,196 +653,11 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
     
     
     
-    
-    // Email validation
-    @objc func validateEmail(textfield: UITextField){
-        
-        
-        // Required
-        if (textfield.text!.count == 0) {
-            emailError.text = "اجباري"
-            // Turn the textfield to red
-            turnTextFieldTextfieldToRed(textfield: emailTextField)
-            //            emailLabel.alpha = 0
-        }
-        // Email format
-        else if (!isEmailValid(textfield.text!)){
-            emailError.text = "البريد الالكتروني غير صالح"
-            // Turn the textfield to red
-            turnTextFieldTextfieldToRed(textfield: emailTextField)
-            //            emailLabel.alpha = 1
-        }
-        /* else if (isEmailTaken()){
-         emailError.text = "البريد الالكتروني مستخدم"
-         // Turn the textfield to red
-         turnTextFieldTextfieldToRed(textfield: emailTextField)
-         emailLabel.alpha = 1
-         
-         
-         
-         }*/
-        
-        
-        
-        // Everything is fine
-        
-        
-        else
-        {
-            isEmailTaken()
-            /* print("HHHHHH" + String(Constants.Globals.isEmailUsed))
-             if (Constants.Globals.isEmailUsed){
-             print ("i came here")
-             emailError.text = "البريد الالكتروني مستخدم"
-             // Turn the textfield to red
-             turnTextFieldTextfieldToRed(textfield: emailTextField)
-             emailLabel.alpha = 1
-             
-             
-             
-             }
-             
-             
-             // email is not taken
-             
-             // White space so that the layout is not affected; however, trim it in the validation
-             
-             else{*/
-            //            emailError.text="  "
-            style(textfield: emailTextField)
-            //            emailLabel.alpha = 1
-            Constants.Globals.email = textfield.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            
-        }
-        
-        
-    }
-    
-    
-    @objc func isEmailTaken(){
-        
-        Auth.auth().fetchSignInMethods(forEmail: self.emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines), completion: {
-            (providers, error) in
-            
-            if let error = error {
-                print ("email doesn't exist")
-                print(error.localizedDescription)
-                
-            } else if let providers = providers {
-                print(providers)
-                
-                print("email exists")
-                
-                self.emailError.text = "البريد الالكتروني مستخدم"
-                // Turn the textfield to red
-                self.turnTextFieldTextfieldToRed(textfield: self.emailTextField)
-                //                self.emailLabel.alpha = 1
-                
-            }
-        } )
-    }
-    
-    
-    
-    
-    // Date validation
-    @objc func validateDate(textfield: UITextField){
-        
-        
-        // Required
-        if (textfield.text!.isEmpty) {
-            dateError.text = "اجباري"
-            // Turn the textfield to red
-            turnTextFieldTextfieldToRed(textfield: dateTextField)
-            //            dateLabel.alpha = 0
-        }
-        
-        
-        // Everything is fine
-        else {
-            // White space so that the layout is not affected; however, trim it in the validation
-            dateError.text="  "
-            style(textfield: dateTextField)
-            let date = dateTextField.text!.prefix(10)
-            Constants.Globals.birthdate = date.trimmingCharacters(in: .whitespacesAndNewlines)
-            //            dateLabel.alpha = 1
-        }
-    }
-    
-
-    
     // Email format validation
     func isEmailValid(_ email : String) -> Bool{
         let emailTest = NSPredicate(format: "SELF MATCHES %@", "[A-Z0-9a-z.-_]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,3}")
         return emailTest.evaluate(with: email)
     }
-    
-    // Phone validation
-    @objc func validatePhone(textfield: UITextField){
-        
-        // Required
-        if (textfield.text!.count == 0) {
-            phoneNumberError.text = "اجباري"
-            // Turn the textfield to red
-            turnTextFieldTextfieldToRed(textfield: phoneTextField)
-            //            phoneLabel.alpha = 0
-            
-        }
-        // Phone number should start with 05
-        if ((!(textfield.text!.prefix(2) == "05")) && (!(textfield.text!.prefix(2) == "٠٥"))){
-            
-            phoneNumberError.text = "رقم الجوال يجب أن يبدأ ب ٠٥"
-            // Turn the textfield to red
-            turnTextFieldTextfieldToRed(textfield: phoneTextField)
-            //            phoneLabel.alpha = 1
-            
-        }
-        // Only numbers
-        else if (!isStringAnInt(textfield.text!)){
-            phoneNumberError.text = "رقم الجوال يجب أن يتكون من أرقام فقط"
-            // Turn the textfield to red
-            turnTextFieldTextfieldToRed(textfield: phoneTextField)
-            //            phoneLabel.alpha = 1
-            
-        }
-        
-        
-        // Maximum Length
-        else if (textfield.text!.count >= 11) {
-            phoneNumberError.text = "رقم الجوال يجب أن لا يتجاوز ١٠ أرقام"
-            // Turn the textfield to red
-            turnTextFieldTextfieldToRed(textfield: phoneTextField)
-            //            phoneLabel.alpha = 1
-            
-        }
-        
-        
-        // Minimum Length
-        else if (textfield.text!.count < 10) {
-            phoneNumberError.text = "رقم الجوال يجب أن لا يقل عن ١٠ أرقام"
-            // Turn the textfield to red
-            turnTextFieldTextfieldToRed(textfield: phoneTextField)
-            //            phoneLabel.alpha = 1
-            
-        }
-        
-        // Everything is fine
-        else {
-            // White space so that the layout is not affected; however, trim it in the validation
-            phoneNumberError.text="  "
-            style(textfield: phoneTextField)
-            //            phoneLabel.alpha = 1
-            
-            Constants.Globals.phone = textfield.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            
-            
-        }
-        
-    }
-    
-    
-    
-    
     
     var passordCriteria = [0,0,0,0]
     var isPasswordStrong = false
@@ -757,7 +669,7 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
         
         // Required
         if (textfield.text!.isEmpty) {
-            
+            passwordError.isHidden = false
             passwordError.text = "اجباري"
             //            passwordLabel.alpha = 0
             passordCriteria[0] = 0
@@ -769,14 +681,15 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
             
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: passwordTextField)
+            
             containsNumLabel.textColor = UIColor.red
             containsCharLabel.textColor = UIColor.red
             charNumLabel.textColor = UIColor.red
             containsCapAndSmallLabel.textColor = UIColor.red
-            containsNumsIcon.image = UIImage(systemName: "multiply.circle")
+            
+            capAndSmallLetterIcon.tintColor = UIColor.red
             containsNumsIcon.tintColor = UIColor.red
             containsSpecialIcon.tintColor = UIColor.red
-            containsSpecialIcon.image = UIImage(systemName: "multiply.circle")
             charNumIcon.tintColor = UIColor.red
             
         }
@@ -784,9 +697,6 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
         
         // Not Empty
         else if (!(textfield.text!.isEmpty)){
-            //            passwordLabel.alpha = 1
-            
-            
             
             // Minimum Length
             if (textfield.text!.count < 8) {
@@ -820,9 +730,6 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
                 
                 
             }
-            
-            
-            
             
             
             // Check if the password contains numbers
@@ -967,9 +874,11 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
         }
         
         
-        else {            passwordStrength.progress = 0
-            passwordError.text="الرقم السري ضعيف"
-            
+        else {
+            passwordStrength.progress = 0
+            if(!(textfield.text!.isEmpty)){
+                passwordError.text = "الرقم السري ضعيف"
+            }
         }
         
     }
@@ -1003,6 +912,7 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
         
         // Required
         if (textfield.text!.isEmpty) {
+            cityError.isHidden = false
             cityError.text = "اجباري"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: cityTextfield)
@@ -1011,15 +921,10 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
         
         // Everything is fine
         else {
-            // White space so that the layout is not affected; however, trim it in the validation
-            cityError.text="  "
+            cityError.isHidden = true
             style(textfield: cityTextfield)
             let city = textfield.text!.prefix(8)
             Constants.Globals.city = city.trimmingCharacters(in: .whitespacesAndNewlines)
-            //            cityLabel.alpha = 1
-            
-            
-            
         }
     }
     
@@ -1031,410 +936,381 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
         
         // Required
         if (textfield.text!.isEmpty) {
+            weightError.isHidden = false
             weightError.text = "اجباري"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: weightTextfield)
-            //            weightLabel.alpha = 0
         }
         
         // Everything is fine
         else {
-            // White space so that the layout is not affected; however, trim it in the validation
             weightError.isHidden = true
             style(textfield: weightTextfield)
             let weight = textfield.text!.prefix(14)
             Constants.Globals.weight = weight.trimmingCharacters(in: .whitespacesAndNewlines)
-            //            weightLabel.alpha = 1
-            
-            
-            
         }
     }
     
     // blood type validation
     @objc func validateBlood(textfield: UITextField){
         
-        
         // Required
         if (textfield.text!.isEmpty) {
+            bloodError.isHidden = false
             bloodError.text = "اجباري"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: bloodTypeTexfield)
-            //            bloodTypeLabel.alpha = 0
         }
         // White space so that the layout is not affected; however, trim it in the validation
         else {
-            bloodError.text="  "
+            bloodError.isHidden = true
             style(textfield: bloodTypeTexfield)
             let blood = textfield.text!.prefix(2)
             Constants.Globals.bloodType = blood.trimmingCharacters(in: .whitespacesAndNewlines)
-            //            bloodTypeLabel.alpha = 1
+        }
+    }
+    
+    
+    @IBAction func onEyeTapped(_ sender: Any) {
+        
+        
+        if (eyeButton.currentImage == UIImage(systemName: "eye.slash")){
+            
+            eyeButton.setImage(UIImage(systemName: "eye")
+                               , for: .normal)
+            passwordTextField.isSecureTextEntry = false}
+        else {
+            eyeButton.setImage(UIImage(systemName: "eye.slash")
+                               , for: .normal)
+            passwordTextField.isSecureTextEntry = true
+            
             
         }
-        
-        
-        
     }
     
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    //    @IBAction func onEyeTapped(_ sender: Any) {
-    //
-    //
-    //    if (eyeButton.currentImage == UIImage(systemName: "eye.slash")){
-    //
-    //        eyeButton.setImage(UIImage(systemName: "eye")
-    //        , for: .normal)
-    //        passwordTextField.isSecureTextEntry = false}
-    //    else {
-    //        eyeButton.setImage(UIImage(systemName: "eye.slash")
-    //        , for: .normal)
-    //        passwordTextField.isSecureTextEntry = true
-    //
-    //
-    //    }
-    //    }
-    
-    //     // Go tot the previous page
-    //    @IBAction func onBackTapped(_ sender: Any) {
-    //
-    //        _ = navigationController?.popViewController(animated: true)
-    //
-    //    }
-    
-    
-    
-    
     // MARK: - Backend
-//
-//    @IBAction func onPressedCont(_ sender: Any) {
-//
-//
-//        // Empty First name
-//        if (firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
-//        {
-//            firstNameError.text = "اجباري"
-//            turnTextFieldTextfieldToRed(textfield: firstNameTextField)
-//
-//        }
-//
-//        // Empty last name
-//        if (lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
-//        {
-//            lastNameError.text = "اجباري"
-//            turnTextFieldTextfieldToRed(textfield: lastNameTextField)
-//
-//        }
-//
-//
-//
-//        // Empty id
-//        if (idTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
-//        {
-//            idError.text = "اجباري"
-//            turnTextFieldTextfieldToRed(textfield: idTextField)
-//
-//        }
-//
-//        // Empty email
-//        if (emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
-//        {
-//            emailError.text = "اجباري"
-//            turnTextFieldTextfieldToRed(textfield: emailTextField)
-//
-//        }
-//
-//
-//
-//        // Empty phone
-//        if (phoneTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
-//        {
-//            phoneNumberError.text = "اجباري"
-//            turnTextFieldTextfieldToRed(textfield: phoneTextField)
-//
-//        }
-//
-//
-//
-//
-//        // Empty birthdate
-//        if (dateTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
-//        {
-//            dateError.text = "اجباري"
-//            turnTextFieldTextfieldToRed(textfield: dateTextField)
-//
-//        }
-//
-//
-//
-//        // Empty password
-//        if (passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
-//        {
-//            passwordError.text = "اجباري"
-//            turnTextFieldTextfieldToRed(textfield: passwordTextField)
-//
-//        }
-//
-//        // Cont...
-//    }
-//
-//
-//    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-//
-//        var allValidations = firstNameError.text! + lastNameError.text! + idError.text! + emailError.text! + phoneNumberError.text!
-//
-//
-//        // Did not include the password here since I will check it down
-//        allValidations += dateError.text!
-//
-//
-//        // Just for testing
-//        let check = ((allValidations.trimmingCharacters(in: .whitespacesAndNewlines)))
-//        print (check)
-//
-//
-//
-//        // If all the fields are filled and valid and the password is strong
-//        if (isPasswordStrong == true && check == ""){
-//            return true
-//        }
-//
-//        // If all the fields are filled and valid but the password is weak/empty
-//        else if (isPasswordStrong == false && check == "")
-//        {
-//
-//
-//            return false
-//
-//
-//
-//
-//        }
-//
-//        else {
-//            // Textfields are not valid or password is weak/empty
-//            print ("Weak/empty pass or some textfields are not valid")
-//
-//
-//
-//            return false
-//        }
-//
-//    }
-//
-//    @IBAction func onPressedSignUp(_ sender: Any) {
-//
-//        // let check = cityError.text!.trimmingCharacters(in: .whitespacesAndNewlines) + bloodError.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-//
-//
-//        // City not validated
-//        if (cityTextfield.text!.prefix(8).trimmingCharacters(in: .whitespacesAndNewlines) == "")
-//
-//        {
-//
-//            cityError.text! = "إجباري"
-//            turnTextFieldTextfieldToRed(textfield: cityTextfield)
-//        }
-//
-//        //Blood type not selected
-//        if (bloodTypeTexfield.text!.prefix(2).trimmingCharacters(in: .whitespacesAndNewlines) == "")
-//
-//        {
-//            bloodError.text! = "إجباري"
-//            turnTextFieldTextfieldToRed(textfield: bloodTypeTexfield)
-//
-//
-//        }
-//
-//        // Weight not selected
-//        if (weightTextfield.text!.prefix(14).trimmingCharacters(in: .whitespacesAndNewlines) == "")
-//
-//
-//        {
-//
-//            weightError.text! = "إجباري"
-//            turnTextFieldTextfieldToRed(textfield: weightTextfield)
-//
-//        }
-//
-//
-//        else if (cityError.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "" && bloodError.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "") {
-//
-//
-//            // Create the User
-//
-//
-//            Auth.auth().createUser(withEmail: Constants.Globals.email, password: Constants.Globals.password) { (result, err) in
-//
-//
-//                // Blur the background
-//                self.blurredView.isHidden = false
-//                // Show Loading indicator
-//                self.loadingGif.isHidden = false
-//
-//
-//                // Check for errors
-//
-//                if err != nil {
-//
-//
-//
-//
-//                    // There was an error creating the user
-//
-//                    // If an error occurs hide the blurred view
-//                    self.blurredView.isHidden = true
-//                    // If an error occurs hide the loading indicator
-//                    self.loadingGif.isHidden = true
-//
-//
-//                    print (err!.localizedDescription)
-//
-//
-//                    // Print the exact message to customize the error mesage later
-//                    print(err?.localizedDescription as Any)
-//
-//
-//                    // Show pop up message to the user
-//
-//
-//
-//
-//                    //Network error
-//
-//                    if (err!.localizedDescription == "Network error (such as timeout, interrupted connection or unreachable host) has occurred.")
-//                    {
-//
-//                        self.blackBlurredView.isHidden = false
-//                        self.popupView.isHidden = false
-//                        self.popupTitle.text = "خطأ في الشبكة"
-//                        self.popupMessage.text = "الرجاء التحقق من الاتصال بالشبكة"
-//                    }
-//
-//                    // Couldn't create the user
-//                    else {
-//
-//                        self.blackBlurredView.isHidden = false
-//                        self.popupView.isHidden = false
-//                        self.popupTitle.text = "حصل خطأ"
-//                        self.popupMessage.text = "حصل خطأ أثناء إنشاء الحساب الرجاء المحاولة لاحقا"
-//                    }
-//
-//
-//                    print ("error in creating the user")
-//
-//                }
-//
-//
-//
-//                else {
-//
-//                    // User was creted successfully, store the information
-//
-//                    let db = Firestore.firestore()
-//
-//
-//
-//                    // User collection
-//
-//
-//                    db.collection("users").document(result!.user.uid).setData([
-//                        "name":Constants.Globals.firstName + "" + Constants.Globals.lastName,
-//                        "userType": "volunteer",
-//                        "email": Constants.Globals.email,
-//                        "uid": result!.user.uid]){ error in
-//
-//                            if error != nil {
-//
-//                                print(error?.localizedDescription as Any)
-//
-//                                // Show error message or pop up message
-//
-//
-//                                print ("error in saving the user data")
-//
-//
-//                            }
-//                        }
-//
-//
-//
-//                    // Volunteer collection
-//                    db.collection("volunteer").document(result!.user.uid).setData([
-//                        "firstName":Constants.Globals.firstName,
-//                        "lastName": Constants.Globals.firstName,
-//                        "nationalID": Constants.Globals.id,
-//                        "email": Constants.Globals.email,
-//                        "phone": Constants.Globals.phone,
-//                        "gender": Constants.Globals.gender,
-//                        "birthDate": Constants.Globals.birthdate,
-//                        "weight": Constants.Globals.weight,
-//                        "city": Constants.Globals.city,
-//                        "bloodType": Constants.Globals.bloodType,
-//                        "points": 0,
-//                        "uid": result!.user.uid]){ error in
-//
-//                            if error != nil {
-//
-//                                print(error?.localizedDescription as Any)
-//
-//                                // Show error message or pop up message
-//
-//
-//                                print ("error in saving the volunteer data")
-//
-//
-//                            }
-//                        }
-//
-//
-//                    // If volunteer is created remove the blurred view
-//                    self.blurredView.isHidden = true
-//                    // If volunteer is created remove the loading indicator
-//                    self.loadingGif.isHidden = true
-//
-//
-//
-//
-//                    // Transition to the home screen
-//
-//                    self.transitionToHome()
-//
-//
-//
-//
-//                }
-//
-//            }
-//
-//        }
-//
-//    }
-//
-//    func transitionToHome(){
-//
-//        // I have to check if the user is volunteer or hospital, in the log in
-//        let volunteerHomeViewController =  storyboard?.instantiateViewController(identifier: Constants.Storyboard.volunteerHomeViewController) as? TabBarController
-//
-//        view.window?.rootViewController = volunteerHomeViewController
-//        view.window?.makeKeyAndVisible()
-//    }
-//
-//    //    @IBAction func onPressedOK(_ sender: Any) {
-//    //        popupView.isHidden = true
-//    //        blackBlurredView.isHidden = true
-//    //    }
-//
+    //
+    //    @IBAction func onPressedCont(_ sender: Any) {
+    //
+    //
+    //        // Empty First name
+    //        if (firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
+    //        {
+    //            firstNameError.text = "اجباري"
+    //            turnTextFieldTextfieldToRed(textfield: firstNameTextField)
+    //
+    //        }
+    //
+    //        // Empty last name
+    //        if (lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
+    //        {
+    //            lastNameError.text = "اجباري"
+    //            turnTextFieldTextfieldToRed(textfield: lastNameTextField)
+    //
+    //        }
+    //
+    //
+    //
+    //        // Empty id
+    //        if (idTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
+    //        {
+    //            idError.text = "اجباري"
+    //            turnTextFieldTextfieldToRed(textfield: idTextField)
+    //
+    //        }
+    //
+    //        // Empty email
+    //        if (emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
+    //        {
+    //            emailError.text = "اجباري"
+    //            turnTextFieldTextfieldToRed(textfield: emailTextField)
+    //
+    //        }
+    //
+    //
+    //
+    //        // Empty phone
+    //        if (phoneTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
+    //        {
+    //            phoneNumberError.text = "اجباري"
+    //            turnTextFieldTextfieldToRed(textfield: phoneTextField)
+    //
+    //        }
+    //
+    //
+    //
+    //
+    //        // Empty birthdate
+    //        if (dateTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
+    //        {
+    //            dateError.text = "اجباري"
+    //            turnTextFieldTextfieldToRed(textfield: dateTextField)
+    //
+    //        }
+    //
+    //
+    //
+    //        // Empty password
+    //        if (passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
+    //        {
+    //            passwordError.text = "اجباري"
+    //            turnTextFieldTextfieldToRed(textfield: passwordTextField)
+    //
+    //        }
+    //
+    //        // Cont...
+    //    }
+    //
+    //
+    //    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+    //
+    //        var allValidations = firstNameError.text! + lastNameError.text! + idError.text! + emailError.text! + phoneNumberError.text!
+    //
+    //
+    //        // Did not include the password here since I will check it down
+    //        allValidations += dateError.text!
+    //
+    //
+    //        // Just for testing
+    //        let check = ((allValidations.trimmingCharacters(in: .whitespacesAndNewlines)))
+    //        print (check)
+    //
+    //
+    //
+    //        // If all the fields are filled and valid and the password is strong
+    //        if (isPasswordStrong == true && check == ""){
+    //            return true
+    //        }
+    //
+    //        // If all the fields are filled and valid but the password is weak/empty
+    //        else if (isPasswordStrong == false && check == "")
+    //        {
+    //
+    //
+    //            return false
+    //
+    //
+    //
+    //
+    //        }
+    //
+    //        else {
+    //            // Textfields are not valid or password is weak/empty
+    //            print ("Weak/empty pass or some textfields are not valid")
+    //
+    //
+    //
+    //            return false
+    //        }
+    //
+    //    }
+    //
+    //    @IBAction func onPressedSignUp(_ sender: Any) {
+    //
+    //        // let check = cityError.text!.trimmingCharacters(in: .whitespacesAndNewlines) + bloodError.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+    //
+    //
+    //        // City not validated
+    //        if (cityTextfield.text!.prefix(8).trimmingCharacters(in: .whitespacesAndNewlines) == "")
+    //
+    //        {
+    //
+    //            cityError.text! = "إجباري"
+    //            turnTextFieldTextfieldToRed(textfield: cityTextfield)
+    //        }
+    //
+    //        //Blood type not selected
+    //        if (bloodTypeTexfield.text!.prefix(2).trimmingCharacters(in: .whitespacesAndNewlines) == "")
+    //
+    //        {
+    //            bloodError.text! = "إجباري"
+    //            turnTextFieldTextfieldToRed(textfield: bloodTypeTexfield)
+    //
+    //
+    //        }
+    //
+    //        // Weight not selected
+    //        if (weightTextfield.text!.prefix(14).trimmingCharacters(in: .whitespacesAndNewlines) == "")
+    //
+    //
+    //        {
+    //
+    //            weightError.text! = "إجباري"
+    //            turnTextFieldTextfieldToRed(textfield: weightTextfield)
+    //
+    //        }
+    //
+    //
+    //        else if (cityError.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "" && bloodError.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "") {
+    //
+    //
+    //            // Create the User
+    //
+    //
+    //            Auth.auth().createUser(withEmail: Constants.Globals.email, password: Constants.Globals.password) { (result, err) in
+    //
+    //
+    //                // Blur the background
+    //                self.blurredView.isHidden = false
+    //                // Show Loading indicator
+    //                self.loadingGif.isHidden = false
+    //
+    //
+    //                // Check for errors
+    //
+    //                if err != nil {
+    //
+    //
+    //
+    //
+    //                    // There was an error creating the user
+    //
+    //                    // If an error occurs hide the blurred view
+    //                    self.blurredView.isHidden = true
+    //                    // If an error occurs hide the loading indicator
+    //                    self.loadingGif.isHidden = true
+    //
+    //
+    //                    print (err!.localizedDescription)
+    //
+    //
+    //                    // Print the exact message to customize the error mesage later
+    //                    print(err?.localizedDescription as Any)
+    //
+    //
+    //                    // Show pop up message to the user
+    //
+    //
+    //
+    //
+    //                    //Network error
+    //
+    //                    if (err!.localizedDescription == "Network error (such as timeout, interrupted connection or unreachable host) has occurred.")
+    //                    {
+    //
+    //                        self.blackBlurredView.isHidden = false
+    //                        self.popupView.isHidden = false
+    //                        self.popupTitle.text = "خطأ في الشبكة"
+    //                        self.popupMessage.text = "الرجاء التحقق من الاتصال بالشبكة"
+    //                    }
+    //
+    //                    // Couldn't create the user
+    //                    else {
+    //
+    //                        self.blackBlurredView.isHidden = false
+    //                        self.popupView.isHidden = false
+    //                        self.popupTitle.text = "حصل خطأ"
+    //                        self.popupMessage.text = "حصل خطأ أثناء إنشاء الحساب الرجاء المحاولة لاحقا"
+    //                    }
+    //
+    //
+    //                    print ("error in creating the user")
+    //
+    //                }
+    //
+    //
+    //
+    //                else {
+    //
+    //                    // User was creted successfully, store the information
+    //
+    //                    let db = Firestore.firestore()
+    //
+    //
+    //
+    //                    // User collection
+    //
+    //
+    //                    db.collection("users").document(result!.user.uid).setData([
+    //                        "name":Constants.Globals.firstName + "" + Constants.Globals.lastName,
+    //                        "userType": "volunteer",
+    //                        "email": Constants.Globals.email,
+    //                        "uid": result!.user.uid]){ error in
+    //
+    //                            if error != nil {
+    //
+    //                                print(error?.localizedDescription as Any)
+    //
+    //                                // Show error message or pop up message
+    //
+    //
+    //                                print ("error in saving the user data")
+    //
+    //
+    //                            }
+    //                        }
+    //
+    //
+    //
+    //                    // Volunteer collection
+    //                    db.collection("volunteer").document(result!.user.uid).setData([
+    //                        "firstName":Constants.Globals.firstName,
+    //                        "lastName": Constants.Globals.firstName,
+    //                        "nationalID": Constants.Globals.id,
+    //                        "email": Constants.Globals.email,
+    //                        "phone": Constants.Globals.phone,
+    //                        "gender": Constants.Globals.gender,
+    //                        "birthDate": Constants.Globals.birthdate,
+    //                        "weight": Constants.Globals.weight,
+    //                        "city": Constants.Globals.city,
+    //                        "bloodType": Constants.Globals.bloodType,
+    //                        "points": 0,
+    //                        "uid": result!.user.uid]){ error in
+    //
+    //                            if error != nil {
+    //
+    //                                print(error?.localizedDescription as Any)
+    //
+    //                                // Show error message or pop up message
+    //
+    //
+    //                                print ("error in saving the volunteer data")
+    //
+    //
+    //                            }
+    //                        }
+    //
+    //
+    //                    // If volunteer is created remove the blurred view
+    //                    self.blurredView.isHidden = true
+    //                    // If volunteer is created remove the loading indicator
+    //                    self.loadingGif.isHidden = true
+    //
+    //
+    //
+    //
+    //                    // Transition to the home screen
+    //
+    //                    self.transitionToHome()
+    //
+    //
+    //
+    //
+    //                }
+    //
+    //            }
+    //
+    //        }
+    //
+    //    }
+    //
+    //    func transitionToHome(){
+    //
+    //        // I have to check if the user is volunteer or hospital, in the log in
+    //        let volunteerHomeViewController =  storyboard?.instantiateViewController(identifier: Constants.Storyboard.volunteerHomeViewController) as? TabBarController
+    //
+    //        view.window?.rootViewController = volunteerHomeViewController
+    //        view.window?.makeKeyAndVisible()
+    //    }
+    //
+    //    //    @IBAction func onPressedOK(_ sender: Any) {
+    //    //        popupView.isHidden = true
+    //    //        blackBlurredView.isHidden = true
+    //    //    }
+    //
     
 }
 
@@ -1444,8 +1320,6 @@ extension VSignUpViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     public func numberOfComponents(in pickerView: UIPickerView) -> Int{
         return 1
     }
-    
-    
     
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
         
