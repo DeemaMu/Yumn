@@ -17,8 +17,6 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var blurredView: UIView!
     
-    @IBOutlet weak var blackBlurredView: UIView!
-    
     @IBOutlet weak var popupView: UIView!
     
     @IBOutlet weak var popupTitle: UILabel!
@@ -113,8 +111,8 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var maleButton: UIButton!
     @IBOutlet weak var femaleButton: UIButton!
     
-    @IBOutlet weak var contButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
+    
     
     let thePicker = UIPickerView()
     //    let thePicker2 = UIPickerView()
@@ -134,11 +132,11 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
         
         setUpElements()
         
-        //        popupStack.superview?.bringSubviewToFront(popupStack)
-        //        popupView.layer.cornerRadius = 35
-        //        popupButton.layer.cornerRadius = 20
-        //
-        //        loadingGif.loadGif(name: "yumnLoading")
+        popupStack.superview?.bringSubviewToFront(popupStack)
+        popupView.layer.cornerRadius = 35
+        popupButton.layer.cornerRadius = 20
+        
+        loadingGif.loadGif(name: "yumnLoading")
         
         //validator links
         firstNameTextField.addTarget(self, action: #selector(validateFirstName(textfield:)), for: .allEvents)
@@ -203,8 +201,8 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
         thePicker.delegate = self
         hideErrorMSGs()
         
-        contButton.layer.cornerRadius = 45
-        contButton.layer.backgroundColor = UIColor(red: 56/225, green: 97/225, blue: 93/225, alpha: 1).cgColor
+        signUpButton.layer.cornerRadius = 45
+        signUpButton.layer.backgroundColor = UIColor(red: 56/225, green: 97/225, blue: 93/225, alpha: 1).cgColor
         
         
         eyeButton.bringSubviewToFront(eyeButton)
@@ -996,75 +994,12 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
     //    @IBAction func onPressedCont(_ sender: Any) {
     //
     //
-    //        // Empty First name
-    //        if (firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
-    //        {
-    //            firstNameError.text = "اجباري"
-    //            turnTextFieldTextfieldToRed(textfield: firstNameTextField)
-    //
-    //        }
-    //
-    //        // Empty last name
-    //        if (lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
-    //        {
-    //            lastNameError.text = "اجباري"
-    //            turnTextFieldTextfieldToRed(textfield: lastNameTextField)
-    //
-    //        }
-    //
-    //
-    //
-    //        // Empty id
-    //        if (idTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
-    //        {
-    //            idError.text = "اجباري"
-    //            turnTextFieldTextfieldToRed(textfield: idTextField)
-    //
-    //        }
-    //
-    //        // Empty email
-    //        if (emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
-    //        {
-    //            emailError.text = "اجباري"
-    //            turnTextFieldTextfieldToRed(textfield: emailTextField)
-    //
-    //        }
-    //
-    //
-    //
-    //        // Empty phone
-    //        if (phoneTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
-    //        {
-    //            phoneNumberError.text = "اجباري"
-    //            turnTextFieldTextfieldToRed(textfield: phoneTextField)
-    //
-    //        }
-    //
-    //
-    //
-    //
-    //        // Empty birthdate
-    //        if (dateTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
-    //        {
-    //            dateError.text = "اجباري"
-    //            turnTextFieldTextfieldToRed(textfield: dateTextField)
-    //
-    //        }
-    //
-    //
-    //
-    //        // Empty password
-    //        if (passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
-    //        {
-    //            passwordError.text = "اجباري"
-    //            turnTextFieldTextfieldToRed(textfield: passwordTextField)
-    //
-    //        }
+    //        //chc if not empty
     //
     //        // Cont...
     //    }
-    //
-    //
+    
+    
     //    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
     //
     //        var allValidations = firstNameError.text! + lastNameError.text! + idError.text! + emailError.text! + phoneNumberError.text!
@@ -1107,210 +1042,289 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
     //        }
     //
     //    }
-    //
-    //    @IBAction func onPressedSignUp(_ sender: Any) {
-    //
-    //        // let check = cityError.text!.trimmingCharacters(in: .whitespacesAndNewlines) + bloodError.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-    //
-    //
-    //        // City not validated
-    //        if (cityTextfield.text!.prefix(8).trimmingCharacters(in: .whitespacesAndNewlines) == "")
-    //
-    //        {
-    //
-    //            cityError.text! = "إجباري"
-    //            turnTextFieldTextfieldToRed(textfield: cityTextfield)
-    //        }
-    //
-    //        //Blood type not selected
-    //        if (bloodTypeTexfield.text!.prefix(2).trimmingCharacters(in: .whitespacesAndNewlines) == "")
-    //
-    //        {
-    //            bloodError.text! = "إجباري"
-    //            turnTextFieldTextfieldToRed(textfield: bloodTypeTexfield)
-    //
-    //
-    //        }
-    //
-    //        // Weight not selected
-    //        if (weightTextfield.text!.prefix(14).trimmingCharacters(in: .whitespacesAndNewlines) == "")
-    //
-    //
-    //        {
-    //
-    //            weightError.text! = "إجباري"
-    //            turnTextFieldTextfieldToRed(textfield: weightTextfield)
-    //
-    //        }
-    //
-    //
-    //        else if (cityError.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "" && bloodError.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "") {
-    //
-    //
-    //            // Create the User
-    //
-    //
-    //            Auth.auth().createUser(withEmail: Constants.Globals.email, password: Constants.Globals.password) { (result, err) in
-    //
-    //
-    //                // Blur the background
-    //                self.blurredView.isHidden = false
-    //                // Show Loading indicator
-    //                self.loadingGif.isHidden = false
-    //
-    //
-    //                // Check for errors
-    //
-    //                if err != nil {
-    //
-    //
-    //
-    //
-    //                    // There was an error creating the user
-    //
-    //                    // If an error occurs hide the blurred view
-    //                    self.blurredView.isHidden = true
-    //                    // If an error occurs hide the loading indicator
-    //                    self.loadingGif.isHidden = true
-    //
-    //
-    //                    print (err!.localizedDescription)
-    //
-    //
-    //                    // Print the exact message to customize the error mesage later
-    //                    print(err?.localizedDescription as Any)
-    //
-    //
-    //                    // Show pop up message to the user
-    //
-    //
-    //
-    //
-    //                    //Network error
-    //
-    //                    if (err!.localizedDescription == "Network error (such as timeout, interrupted connection or unreachable host) has occurred.")
-    //                    {
-    //
-    //                        self.blackBlurredView.isHidden = false
-    //                        self.popupView.isHidden = false
-    //                        self.popupTitle.text = "خطأ في الشبكة"
-    //                        self.popupMessage.text = "الرجاء التحقق من الاتصال بالشبكة"
-    //                    }
-    //
-    //                    // Couldn't create the user
-    //                    else {
-    //
-    //                        self.blackBlurredView.isHidden = false
-    //                        self.popupView.isHidden = false
-    //                        self.popupTitle.text = "حصل خطأ"
-    //                        self.popupMessage.text = "حصل خطأ أثناء إنشاء الحساب الرجاء المحاولة لاحقا"
-    //                    }
-    //
-    //
-    //                    print ("error in creating the user")
-    //
-    //                }
-    //
-    //
-    //
-    //                else {
-    //
-    //                    // User was creted successfully, store the information
-    //
-    //                    let db = Firestore.firestore()
-    //
-    //
-    //
-    //                    // User collection
-    //
-    //
-    //                    db.collection("users").document(result!.user.uid).setData([
-    //                        "name":Constants.Globals.firstName + "" + Constants.Globals.lastName,
-    //                        "userType": "volunteer",
-    //                        "email": Constants.Globals.email,
-    //                        "uid": result!.user.uid]){ error in
-    //
-    //                            if error != nil {
-    //
-    //                                print(error?.localizedDescription as Any)
-    //
-    //                                // Show error message or pop up message
-    //
-    //
-    //                                print ("error in saving the user data")
-    //
-    //
-    //                            }
-    //                        }
-    //
-    //
-    //
-    //                    // Volunteer collection
-    //                    db.collection("volunteer").document(result!.user.uid).setData([
-    //                        "firstName":Constants.Globals.firstName,
-    //                        "lastName": Constants.Globals.firstName,
-    //                        "nationalID": Constants.Globals.id,
-    //                        "email": Constants.Globals.email,
-    //                        "phone": Constants.Globals.phone,
-    //                        "gender": Constants.Globals.gender,
-    //                        "birthDate": Constants.Globals.birthdate,
-    //                        "weight": Constants.Globals.weight,
-    //                        "city": Constants.Globals.city,
-    //                        "bloodType": Constants.Globals.bloodType,
-    //                        "points": 0,
-    //                        "uid": result!.user.uid]){ error in
-    //
-    //                            if error != nil {
-    //
-    //                                print(error?.localizedDescription as Any)
-    //
-    //                                // Show error message or pop up message
-    //
-    //
-    //                                print ("error in saving the volunteer data")
-    //
-    //
-    //                            }
-    //                        }
-    //
-    //
-    //                    // If volunteer is created remove the blurred view
-    //                    self.blurredView.isHidden = true
-    //                    // If volunteer is created remove the loading indicator
-    //                    self.loadingGif.isHidden = true
-    //
-    //
-    //
-    //
-    //                    // Transition to the home screen
-    //
-    //                    self.transitionToHome()
-    //
-    //
-    //
-    //
-    //                }
-    //
-    //            }
-    //
-    //        }
-    //
-    //    }
-    //
-    //    func transitionToHome(){
-    //
-    //        // I have to check if the user is volunteer or hospital, in the log in
-    //        let volunteerHomeViewController =  storyboard?.instantiateViewController(identifier: Constants.Storyboard.volunteerHomeViewController) as? TabBarController
-    //
-    //        view.window?.rootViewController = volunteerHomeViewController
-    //        view.window?.makeKeyAndVisible()
-    //    }
-    //
-    //    //    @IBAction func onPressedOK(_ sender: Any) {
-    //    //        popupView.isHidden = true
-    //    //        blackBlurredView.isHidden = true
-    //    //    }
-    //
+    
+    
+    @IBAction func onPressedSignUp(_ sender: Any) {
+        
+        // let check = cityError.text!.trimmingCharacters(in: .whitespacesAndNewlines) + bloodError.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        // Empty First name
+        if (firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
+        {
+            firstNameError.isHidden = false
+            firstNameError.text = "اجباري"
+            turnTextFieldTextfieldToRed(textfield: firstNameTextField)
+            
+        }
+        
+        // Empty last name
+        if (lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
+        {
+            lastNameError.isHidden = false
+            lastNameError.text = "اجباري"
+            turnTextFieldTextfieldToRed(textfield: lastNameTextField)
+            
+        }
+        
+        
+        
+        // Empty id
+        if (idTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
+        {
+            idError.isHidden = false
+            idError.text = "اجباري"
+            turnTextFieldTextfieldToRed(textfield: idTextField)
+            
+        }
+        
+        // Empty email
+        if (emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
+        {
+            emailError.isHidden = false
+            emailError.text = "اجباري"
+            turnTextFieldTextfieldToRed(textfield: emailTextField)
+            
+        }
+        
+        
+        
+        // Empty phone
+        if (phoneTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
+        {
+            phoneNumberError.isHidden = false
+            phoneNumberError.text = "اجباري"
+            turnTextFieldTextfieldToRed(textfield: phoneTextField)
+            
+        }
+        
+        
+        
+        
+        // Empty birthdate
+        if (dateTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
+        {
+            dateError.isHidden = false
+            dateError.text = "اجباري"
+            turnTextFieldTextfieldToRed(textfield: dateTextField)
+            
+        }
+        
+        
+        
+        // Empty password
+        if (passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
+        {
+            passwordError.isHidden = false
+            passwordError.text = "اجباري"
+            turnTextFieldTextfieldToRed(textfield: passwordTextField)
+            
+        }
+        
+        // If all the fields are filled and valid but the password is weak/empty
+        if (isPasswordStrong == false)
+        {
+            // just in case...
+        }
+        
+        // City not validated
+        if (cityTextfield.text!.prefix(8).trimmingCharacters(in: .whitespacesAndNewlines) == "")
+            
+        {
+            cityError.isHidden = false
+            cityError.text! = "إجباري"
+            turnTextFieldTextfieldToRed(textfield: cityTextfield)
+        }
+        
+        //Blood type not selected
+        if (bloodTypeTexfield.text!.prefix(2).trimmingCharacters(in: .whitespacesAndNewlines) == "")
+            
+        {
+            bloodError.isHidden = false
+            bloodError.text! = "إجباري"
+            turnTextFieldTextfieldToRed(textfield: bloodTypeTexfield)
+            
+            
+        }
+        
+        // Weight not selected
+        if (weightTextfield.text!.prefix(14).trimmingCharacters(in: .whitespacesAndNewlines) == "")
+            
+            
+        {
+            weightError.isHidden = false
+            weightError.text! = "إجباري"
+            turnTextFieldTextfieldToRed(textfield: weightTextfield)
+            
+        }
+        
+        
+        else if (cityError.isHidden && bloodError.isHidden) {
+            
+            
+            // Create the User
+            
+            
+            Auth.auth().createUser(withEmail: Constants.Globals.email, password: Constants.Globals.password) { (result, err) in
+                
+                
+                // Blur the background
+                self.blurredView.isHidden = false
+                // Show Loading indicator
+                self.loadingGif.isHidden = false
+                
+                
+                // Check for errors
+                
+                if err != nil {
+                    
+                    
+                    
+                    
+                    // There was an error creating the user
+                    
+                    // If an error occurs hide the blurred view
+                    self.blurredView.isHidden = true
+                    // If an error occurs hide the loading indicator
+                    self.loadingGif.isHidden = true
+                    
+                    
+                    print (err!.localizedDescription)
+                    
+                    
+                    // Print the exact message to customize the error mesage later
+                    print(err?.localizedDescription as Any)
+                    
+                    
+                    // Show pop up message to the user
+                    
+                    
+                    
+                    
+                    //Network error
+                    
+                    if (err!.localizedDescription == "Network error (such as timeout, interrupted connection or unreachable host) has occurred.")
+                    {
+                        
+                        self.blurredView.isHidden = false
+                        self.popupView.isHidden = false
+                        self.popupTitle.text = "خطأ في الشبكة"
+                        self.popupMessage.text = "الرجاء التحقق من الاتصال بالشبكة"
+                    }
+                    
+                    // Couldn't create the user
+                    else {
+                        
+                        self.blurredView.isHidden = false
+                        self.popupView.isHidden = false
+                        self.popupTitle.text = "حصل خطأ"
+                        self.popupMessage.text = "حصل خطأ أثناء إنشاء الحساب الرجاء المحاولة لاحقا"
+                    }
+                    
+                    
+                    print ("error in creating the user")
+                    
+                }
+                
+                
+                
+                else {
+                    
+                    // User was creted successfully, store the information
+                    
+                    let db = Firestore.firestore()
+                    
+                    
+                    
+                    // User collection
+                    
+                    
+                    db.collection("users").document(result!.user.uid).setData([
+                        "name":Constants.Globals.firstName + "" + Constants.Globals.lastName,
+                        "userType": "volunteer",
+                        "email": Constants.Globals.email,
+                        "uid": result!.user.uid]){ error in
+                            
+                            if error != nil {
+                                
+                                print(error?.localizedDescription as Any)
+                                
+                                // Show error message or pop up message
+                                
+                                
+                                print ("error in saving the user data")
+                                
+                                
+                            }
+                        }
+                    
+                    
+                    
+                    // Volunteer collection
+                    db.collection("volunteer").document(result!.user.uid).setData([
+                        "firstName":Constants.Globals.firstName,
+                        "lastName": Constants.Globals.firstName,
+                        "nationalID": Constants.Globals.id,
+                        "email": Constants.Globals.email,
+                        "phone": Constants.Globals.phone,
+                        "gender": Constants.Globals.gender,
+                        "birthDate": Constants.Globals.birthdate,
+                        "weight": Constants.Globals.weight,
+                        "city": Constants.Globals.city,
+                        "bloodType": Constants.Globals.bloodType,
+                        "points": 0,
+                        "uid": result!.user.uid]){ error in
+                            
+                            if error != nil {
+                                
+                                print(error?.localizedDescription as Any)
+                                
+                                // Show error message or pop up message
+                                
+                                
+                                print ("error in saving the volunteer data")
+                                
+                                
+                            }
+                        }
+                    
+                    
+                    // If volunteer is created remove the blurred view
+                    self.blurredView.isHidden = true
+                    // If volunteer is created remove the loading indicator
+                    self.loadingGif.isHidden = true
+                    
+                    
+                    
+                    
+                    // Transition to the home screen
+                    
+                    self.transitionToHome()
+                    
+                    
+                    
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
+    
+    func transitionToHome(){
+        
+        // I have to check if the user is volunteer or hospital, in the log in
+        let volunteerHomeViewController =  storyboard?.instantiateViewController(identifier: Constants.Storyboard.volunteerHomeViewController) as? TabBarController
+        
+        view.window?.rootViewController = volunteerHomeViewController
+        view.window?.makeKeyAndVisible()
+    }
+    
+    @IBAction func onPressedOK(_ sender: Any) {
+        popupView.isHidden = true
+        blurredView.isHidden = true
+    }
+    
     
 }
 
