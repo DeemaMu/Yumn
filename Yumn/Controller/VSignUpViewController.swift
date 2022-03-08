@@ -12,62 +12,66 @@ import UIKit
 
 class VSignUpViewController: UIViewController, UITextFieldDelegate {
     
-//    @IBOutlet weak var popUpStack: UIStackView!
-//
-//    @IBOutlet weak var blackBlurredView: UIView!
-//
-//    @IBOutlet weak var popUpView: UIView!
-//
-//    @IBOutlet weak var popUpButton: UIButton!
-//
-//    @IBOutlet weak var popUpMessage: UILabel!
-//
-//    @IBOutlet weak var popUpTitle: UILabel!
+    @IBOutlet weak var loadingGif: UIImageView!
     
-//    @IBOutlet weak var firstNamelabel: UILabel!
-//
-//    @IBOutlet weak var lastNameLabel: UILabel!
-//
-//
-//    @IBOutlet weak var emailLabel: UILabel!
-//
-//
-//    @IBOutlet weak var phoneLabel: UILabel!
-//
-//
-//    @IBOutlet weak var dateLabel: UILabel!
-//
-//    @IBOutlet weak var passwordLabel: UILabel!
-//
-//
-//    @IBOutlet weak var idLabel: UILabel!
+    
+    @IBOutlet weak var blurredView: UIView!
+    
+    @IBOutlet weak var blackBlurredView: UIView!
+    
+    @IBOutlet weak var popupView: UIView!
+    
+    @IBOutlet weak var popupTitle: UILabel!
+    
+    @IBOutlet weak var popupMessage: UILabel!
+    
+    @IBOutlet weak var popupButton: UIButton!
+    
+    @IBOutlet weak var popupStack: UIStackView!
+    
+    
+    
+    //    @IBOutlet weak var firstNamelabel: UILabel!
+    //
+    //    @IBOutlet weak var lastNameLabel: UILabel!
+    //
+    //
+    //    @IBOutlet weak var emailLabel: UILabel!
+    //
+    //
+    //    @IBOutlet weak var phoneLabel: UILabel!
+    //
+    //
+    //    @IBOutlet weak var dateLabel: UILabel!
+    //
+    //    @IBOutlet weak var passwordLabel: UILabel!
+    //
+    //
+    //    @IBOutlet weak var idLabel: UILabel!
     
     //    @IBOutlet weak var errorLabel: UILabel!
-       
-        
-       
+    
+    
+    
     //    @IBOutlet weak var stackView: UIStackView!
     
     
-//    @IBOutlet weak var backButton: UIButton!
-//
+    //    @IBOutlet weak var backButton: UIButton!
+    //
     //    @IBOutlet weak var scrollView: UIScrollView!
     
-//    //The new interface trial
-//    @IBOutlet weak var whiteView: UITextField!
-    //    @IBOutlet weak var stepper1: UIImageView!
+    //    //The new interface trial
+    //    @IBOutlet weak var whiteView: UITextField!
     
     @IBOutlet weak var backView: UIView!
     
-
+    
     let style = styles()
     var gender = "f"
     
-//    @IBOutlet weak var topNavBar: UINavigationBar!
+    //    @IBOutlet weak var topNavBar: UINavigationBar!
+    //    @IBOutlet weak var eyeButton: UIButton!
     
-    
-//    @IBOutlet weak var eyeButton: UIButton!
-  
     
     @IBOutlet weak var passwordStrength: UIProgressView!
     
@@ -87,7 +91,12 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    
+    // With Picker
     @IBOutlet weak var dateTextField: UITextField!
+    @IBOutlet weak var cityTextfield: UITextField!
+    @IBOutlet weak var weightTextfield: UITextField!
+    @IBOutlet weak var bloodTypeTexfield: UITextField!
     
     @IBOutlet weak var firstNameError: UILabel!
     @IBOutlet weak var lastNameError: UILabel!
@@ -95,95 +104,161 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailError: UILabel!
     @IBOutlet weak var phoneNumberError: UILabel!
     @IBOutlet weak var passwordError: UILabel!
+    
     @IBOutlet weak var dateError: UILabel!
+    @IBOutlet weak var cityError: UILabel!
+    @IBOutlet weak var bloodError: UILabel!
+    @IBOutlet weak var weightError: UILabel!
     
     @IBOutlet weak var maleButton: UIButton!
     @IBOutlet weak var femaleButton: UIButton!
+    
     @IBOutlet weak var contButton: UIButton!
+    @IBOutlet weak var signUpButton: UIButton!
+    
+    let thePicker = UIPickerView()
+    //    let thePicker2 = UIPickerView()
+    
+    let bloodList = ["","O+", "O-", "AB+", "AB-", "B-", "B+", "A+", "A-" , "لا أعلم"]
+    let cityList = ["الرياض", "مكة المكرمة","المدينة المنورة","جدة","تبوك","نجران","الطائف","ينبع","الخبر","الدمام","حائل","الباحة","ضباء","الأحساء", "جازان"]
+    let weightList = ["", "أقل من ٥٠ كج", "٥٠ كج أو أعلى"]
+    
+    
+    
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        stepper1.image = UIImage(named: "stepper 1:2")
-//        self.navigationController?.navigationBar.layer.shadowOpacity = 0
-  
+        // self.navigationController?.navigationBar.layer.shadowOpacity = 0
+        
         setUpElements()
-
         
-//        popUpStack.superview?.bringSubviewToFront(popUpStack)
-//        popUpView.layer.cornerRadius = 20
-//        popUpButton.layer.cornerRadius = 20
-
+//        popupStack.superview?.bringSubviewToFront(popupStack)
+//        popupView.layer.cornerRadius = 35
+//        popupButton.layer.cornerRadius = 20
+//
+//        loadingGif.loadGif(name: "yumnLoading")
         
-        // First name validator link
+        //validator links
         firstNameTextField.addTarget(self, action: #selector(validateFirstName(textfield:)), for: .editingChanged)
-        
-        
-        // Last name validator link
         lastNameTextField.addTarget(self, action: #selector(validateLastName(textfield:)), for: .editingChanged)
-        
-        
-        // ID validator link
         idTextField.addTarget(self, action: #selector(validateID(textfield:)), for: .editingChanged)
-        
-        
-        // Email validator link
         emailTextField.addTarget(self, action: #selector(validateEmail(textfield:)), for: .editingChanged)
-        
-        // Phone validator link
         phoneTextField.addTarget(self, action: #selector(validatePhone(textfield:)), for: .editingChanged)
-        
-        // Password validator link
         passwordTextField.addTarget(self, action: #selector(validatePassword(textfield:)), for: .editingChanged)
         
-        
-        // Date validator link
         dateTextField.addTarget(self, action: #selector(validateDate(textfield:)), for: .allEditingEvents)
+        bloodTypeTexfield.addTarget(self, action: #selector(validateBlood(textfield:)), for: .allEvents)
+        weightTextfield.addTarget(self, action: #selector(validateWeight(textfield:)), for: .allEvents)
+        cityTextfield.addTarget(self, action: #selector(validateCity(textfield:)), for: .allEvents)
         
         genderButtons(button: femaleButton)
         genderButtons(button: maleButton)
-
-//        stackView.setCustomSpacing(60, after: phoneTextField)
-
     }
-    
+   
     
     // added for top bar
     
-//    override func viewWillAppear(_ animated: Bool) {
-////        self.navigationController?.navigationBar.tintColor = UIColor.white
-//        super.viewWillAppear(animated)
-//
-//        var nav = self.navigationController?.navigationBar
-//        guard let customFont = UIFont(name: "Tajawal-Bold", size: 25) else {
-//            fatalError("""
-//                Failed to load the "Tajawal" font.
-//                Make sure the font file is included in the project and the font name is spelled correctly.
-//                """
-//            )
-//        }
-//
-//        nav?.tintColor = UIColor.white
-//        nav?.barTintColor = UIColor.init(named: "mainLight")
-//        nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: customFont]
-//        navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-//
-//    }
-//
-//    override func viewWillDisappear(_ animated: Bool) {
-//        var nav = self.navigationController?.navigationBar
-//        guard let customFont = UIFont(name: "Tajawal-Bold", size: 25) else {
-//            fatalError("""
-//                Failed to load the "Tajawal" font.
-//                Make sure the font file is included in the project and the font name is spelled correctly.
-//                """
-//            )
-//        }
-//        nav?.tintColor = UIColor.init(named: "mainLight")
-//        nav?.barTintColor = UIColor.init(named: "mainLight")
-//        nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(named: "mainLight")!, NSAttributedString.Key.font: customFont]
-//    }
+    //    override func viewWillAppear(_ animated: Bool) {
+    ////        self.navigationController?.navigationBar.tintColor = UIColor.white
+    //        super.viewWillAppear(animated)
+    //
+    //        var nav = self.navigationController?.navigationBar
+    //        guard let customFont = UIFont(name: "Tajawal-Bold", size: 25) else {
+    //            fatalError("""
+    //                Failed to load the "Tajawal" font.
+    //                Make sure the font file is included in the project and the font name is spelled correctly.
+    //                """
+    //            )
+    //        }
+    //
+    //        nav?.tintColor = UIColor.white
+    //        nav?.barTintColor = UIColor.init(named: "mainLight")
+    //        nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: customFont]
+    //        navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    //
+    //    }
+    //
+    //    override func viewWillDisappear(_ animated: Bool) {
+    //        var nav = self.navigationController?.navigationBar
+    //        guard let customFont = UIFont(name: "Tajawal-Bold", size: 25) else {
+    //            fatalError("""
+    //                Failed to load the "Tajawal" font.
+    //                Make sure the font file is included in the project and the font name is spelled correctly.
+    //                """
+    //            )
+    //        }
+    //        nav?.tintColor = UIColor.init(named: "mainLight")
+    //        nav?.barTintColor = UIColor.init(named: "mainLight")
+    //        nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(named: "mainLight")!, NSAttributedString.Key.font: customFont]
+    //    }
+    
+    // why string?
+    @objc func dateChange(datePicker: UIDatePicker){
+        dateTextField.text = String(formaDate(date: datePicker.date))
+    }
+    // MARK: - SETUP
+    
+    func setUpElements(){
+        backView.layer.cornerRadius = 45
+        dateTextField.text = ""
+        thePicker.delegate = self
+        
+        contButton.layer.cornerRadius = 45
+        contButton.layer.backgroundColor = UIColor(red: 56/225, green: 97/225, blue: 93/225, alpha: 1).cgColor
+        
+        
+        //        eyeButton.bringSubviewToFront(eyeButton)
+        
+        //            //styling the eye toggle button
+        //        let icon = UIImage(systemName: "eye.slash")
+        //        eyeButton.setImage(icon, for: .normal)
+        //        eyeButton.tintColor = UIColor(red:137/255, green: 191/255, blue: 186/255, alpha: 1.00)
+  
+        
+        passwordTextField.sendSubviewToBack(passwordTextField)
+        passwordTextField.backgroundColor = UIColor(white: 1, alpha: 0)
+        
+        createDatePicker()
+        
+        bloodTypeTexfield.inputView = thePicker
+        cityTextfield.inputView = thePicker
+        weightTextfield.inputView = thePicker
+        
+        
+        // Styling up the textfields
+        style(textfield: firstNameTextField)
+        style(textfield: lastNameTextField)
+        style(textfield: idTextField)
+        style(textfield: emailTextField)
+        style(textfield: phoneTextField)
+        style(textfield: passwordTextField)
+        
+        style(textfield: dateTextField)
+        style(textfield: cityTextfield)
+        style(textfield: bloodTypeTexfield)
+        style(textfield: weightTextfield)
+        
+        
+        //Set the icons of the password validation
+        capAndSmallLetterIcon.image = UIImage(systemName: "multiply.circle")
+        capAndSmallLetterIcon.tintColor = UIColor.lightGray
+        
+        charNumIcon.image = UIImage(systemName: "multiply.circle")
+        charNumIcon.tintColor = UIColor.lightGray
+        
+        containsNumsIcon.image = UIImage(systemName: "multiply.circle")
+        containsNumsIcon.tintColor = UIColor.lightGray
+        
+        containsSpecialIcon.image = UIImage(systemName: "multiply.circle")
+        containsSpecialIcon.tintColor = UIColor.lightGray
+        
+        //        //The new view
+        //        whiteView.layer.cornerRadius = 35
+        
+    }
+    
     
     func addToolBar(_ textField : UITextField){
         // ToolBar
@@ -200,10 +275,9 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    
     func createDatePicker(){
-        
         addToolBar(dateTextField)
-        
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
         datePicker.addTarget(self, action: #selector(dateChange(datePicker:)), for: UIControl.Event.valueChanged)
@@ -213,261 +287,28 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
         // Today's Date
         datePicker.maximumDate = Date()
         dateTextField.inputView = datePicker
-
+        
     }
     
     @objc func donePressed(){
         //  cityTextField.resignFirstResponder()
         self.view.endEditing(true)
     }
-    
-    
+
     
     func formaDate(date: Date) -> String {
         
-    let formatter = DateFormatter()
-    formatter.dateFormat = "dd/MM/YYYY"
-    return formatter.string(from: date)
-    }
-    
-    // why string?
-    @objc func dateChange(datePicker: UIDatePicker){
-        dateTextField.text = String(formaDate(date: datePicker.date))
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/YYYY"
+        return formatter.string(from: date)
     }
     
     
-    func setUpElements(){
-        backView.layer.cornerRadius = 45
-        dateTextField.text = ""
-        
-//        //Email icon
-//        emailTextField.rightViewMode = UITextField.ViewMode.always
-//        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
-//        let image = UIImage(named: "mail")
-//        imageView.tintColor = (UIColor(red:137/255, green: 191/255, blue: 186/255, alpha: 1.00))
-//        imageView.image = image
-//        emailTextField.rightView = imageView
-//
-//
-//        // Password icon
-//        passwordTextField.rightViewMode = UITextField.ViewMode.always
-//        let imageView2 = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
-//        let image2 = UIImage(named:  "lock")
-//        imageView2.tintColor = (UIColor(red:137/255, green: 191/255, blue: 186/255, alpha: 1.00))
-//        imageView2.image = image2
-//        passwordTextField.rightView = imageView2
-//
-//
-//        // Phone icon
-//
-//        phoneTextField.rightViewMode = UITextField.ViewMode.always
-//        let imageView3 = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
-//        let image3 = UIImage(named: "phone")
-//        imageView3.tintColor = (UIColor(red:137/255, green: 191/255, blue: 186/255, alpha: 1.00))
-//        imageView3.image = image3
-//        phoneTextField.rightView = imageView3
-//
-//
-//        // id icon
-//
-//        idTextField.rightViewMode = UITextField.ViewMode.always
-//        let imageView4 = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
-//        let image4 = UIImage(named: "id")
-//        imageView4.tintColor = (UIColor(red:137/255, green: 191/255, blue: 186/255, alpha: 1.00))
-//        imageView4.image = image4
-//        idTextField.rightView = imageView4
-
-        
-        
-        contButton.layer.cornerRadius = 45
-        contButton.layer.backgroundColor = UIColor(red: 56/225, green: 97/225, blue: 93/225, alpha: 1).cgColor
-        
-
-//        eyeButton.bringSubviewToFront(eyeButton)
-        
-        
-        passwordTextField.sendSubviewToBack(passwordTextField)
-        passwordTextField.backgroundColor = UIColor(white: 1, alpha: 0)
-
-        
-        
-        createDatePicker()
-        
-        //Hiding the error label just for now, convert it to a popup message later
-//        errorLabel.alpha = 0
-        
-        // Styling up the textfields
-        style(textfield: firstNameTextField)
-        style(textfield: lastNameTextField)
-        style(textfield: idTextField)
-        style(textfield: emailTextField)
-        style(textfield: phoneTextField)
-        style(textfield: passwordTextField)
-        style(textfield: dateTextField)
-        
-        
-//
-//        // Set up the back button
-//        backButton.setImage(UIImage(systemName: "arrow.forward", withConfiguration: UIImage.SymbolConfiguration(pointSize: 19, weight: .bold))
-//        , for: .normal)
-//        backButton.tintColor = UIColor.white
-
-        
-        
-//            //styling the eye toggle button
-//        let icon = UIImage(systemName: "eye.slash")
-//        eyeButton.setImage(icon, for: .normal)
-//        eyeButton.tintColor = UIColor(red:137/255, green: 191/255, blue: 186/255, alpha: 1.00)
-//
-//
-        
-        //Set the icons of the password validation
-        capAndSmallLetterIcon.image = UIImage(systemName: "multiply.circle")
-        capAndSmallLetterIcon.tintColor = UIColor.lightGray
-
-        
-        charNumIcon.image = UIImage(systemName: "multiply.circle")
-        charNumIcon.tintColor = UIColor.lightGray
-        
-        
-        containsNumsIcon.image = UIImage(systemName: "multiply.circle")
-        containsNumsIcon.tintColor = UIColor.lightGray
-        
-        containsSpecialIcon.image = UIImage(systemName: "multiply.circle")
-        containsSpecialIcon.tintColor = UIColor.lightGray
-        
-        
-        
-        
-//        //The new view
-//        whiteView.layer.cornerRadius = 35
-
-    }
+    // MARK: - Style
     
     func style(textfield : UITextField){
         textfield.delegate = self
         style.normalStyle(TextField: textfield)
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    
-    
-    
-    
-    
-    // Check the fields and validate that the data is correct. If everything is correct return nil, otherwise return the error message
-    
-    
-    func validateFields() -> String? {
-        
-        
-        // Don't forget to add an astericks on the required fields to prevent errors
-        
-        
-        // Check that all fields are filled in
-        if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
-        || lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
-        || idTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
-        || emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
-        || phoneTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
-        || passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
-
-        
-        {
-            return "Please fill in all fields."
-        }
-        
-        
-        
-        // Check if the password is secure, change it later
-        let cleanedPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        
-        if isPasswordValid(cleanedPassword) == false {
-            // Password isn't secure enough
-            return "Please make sure that your password ..."
-        }
-        
-        
-        
-        
-        return nil
-    }
-    
-    // Change this method and replace it with a visible validator
-    func isPasswordValid(_ password : String) -> Bool{
-        let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
-        return passwordTest.evaluate(with: password)
-    }
-
-    
-    
-//
-//    // Change this function to pop up message
-//    func showError(_ message: String){
-//
-//        errorLabel.text = message
-//        errorLabel.alpha = 1
-//
-//
-//
-//    }
-    
-    
-    
-    func transitionToHome(){
-        
-        // I have to check if the user is volunteer or hospital, but for now I will just try a single home
-        
-       let volunteerHomeViewController =  storyboard?.instantiateViewController(identifier: Constants.Storyboard.volunteerHomeViewController) as? HomeViewController
-        
-        view.window?.rootViewController = volunteerHomeViewController
-        view.window?.makeKeyAndVisible()
-    }
-    
-
-    
-    @objc func turnTextFieldTextfieldToRed(textfield: UITextField){
-        style.turnTextFieldToRed(textfield: textfield)
-    }
-    
-
-    
-    @IBAction func femaleSelected(_ sender: Any) {
-        femaleSELECTED()
-    }
-    
-    @IBAction func maleSelected(_ sender: Any) {
-        maleSELECTED()
-    }
-    
-    func maleSELECTED(){
-        maleButton.isSelected = true
-        maleButton.backgroundColor = UIColor.init(red: 182/255, green: 218/255, blue: 214/255, alpha: 1)
-        
-        femaleButton.isSelected = false
-        femaleButton.backgroundColor = UIColor.white
-        gender = "m"
-        Constants.Globals.gender = "m"
-    }
-    func femaleSELECTED(){
-        femaleButton.isSelected = true
-        femaleButton.backgroundColor = UIColor.init(red: 182/255, green: 218/255, blue: 214/255, alpha: 1)
-        
-        maleButton.isSelected = false
-        maleButton.backgroundColor = UIColor.white
-        gender = "f"
-        Constants.Globals.gender = "f"
     }
     
     func genderButtons(button : UIButton){
@@ -479,89 +320,138 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-//    // Styling the textfields
-//    @objc func styleTextFields(textfield: UITextField){
+    @objc func turnTextFieldTextfieldToRed(textfield: UITextField){
+        style.turnTextFieldToRed(textfield: textfield)
+    }
+ 
+    func turnTextFieldTextfieldToNormal(textfield: UITextField){
+        style.normalStyle(TextField: textfield)
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+//        if textField == self.bloodTypeTexfield {
+//            self.thePicker.isHidden = false
+//            //if you don't want the users to se the keyboard type:
 //
-//        let bottomLine = CALayer()
+//            textField.endEditing(true)
+//        }
+    }
+    
+    @IBAction func femaleSelected(_ sender: Any) {
+        femaleButton.isSelected = true
+        femaleButton.backgroundColor = UIColor.init(red: 182/255, green: 218/255, blue: 214/255, alpha: 1)
+        
+        maleButton.isSelected = false
+        maleButton.backgroundColor = UIColor.white
+        
+        gender = "f"
+        Constants.Globals.gender = "f"
+    }
+    
+    @IBAction func maleSelected(_ sender: Any) {
+        maleButton.isSelected = true
+        maleButton.backgroundColor = UIColor.init(red: 182/255, green: 218/255, blue: 214/255, alpha: 1)
+        
+        femaleButton.isSelected = false
+        femaleButton.backgroundColor = UIColor.white
+        
+        gender = "m"
+        Constants.Globals.gender = "m"
+    }
+
+    
+    // MARK: - Validation
+    
+    // Check the fields and validate that the data is correct. If everything is correct return nil, otherwise return the error message
+//    func validateFields() -> String? {
 //
-//        bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width , height: 2)
 //
-//        bottomLine.backgroundColor = UIColor(red:137/255, green: 191/255, blue: 186/255, alpha: 1.00).cgColor
+//        // Don't forget to add an astericks on the required fields to prevent errors
 //
-//        textfield.borderStyle = .none
 //
-//        textfield.layer.addSublayer(bottomLine)
+//        // Check that all fields are filled in
+//        if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
+//            || lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
+//            || idTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
+//            || emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
+//            || phoneTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
+//            || passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
 //
+//
+//        {
+//            return "Please fill in all fields."
+//        }
+//
+//
+//
+//        // Check if the password is secure, change it later
+//        let cleanedPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+//
+//
+//        if isPasswordValid(cleanedPassword) == false {
+//            // Password isn't secure enough
+//            return "Please make sure that your password ..."
+//        }
+//
+//        return nil
 //    }
+
+    
+    // Change this method and replace it with a visible validator
+    func isPasswordValid(_ password : String) -> Bool{
+        let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
+        return passwordTest.evaluate(with: password)
+    }
     
     
-    // Styling the textfields with pickers
-//    @objc func styleTextFieldsWithPicker(textfield: UITextField){
-//
-//        let bottomLine = CALayer()
-//
-//        bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 20, width: textfield.frame.width , height: 2)
-//
-//        bottomLine.backgroundColor = UIColor(red:137/255, green: 191/255, blue: 186/255, alpha: 1.00).cgColor
-//
-//        textfield.borderStyle = .none
-//
-//        textfield.layer.addSublayer(bottomLine)
-//
-//    }
-    
-    
-    
+    //
+    //    // Change this function to pop up message
+    //    func showError(_ message: String){
+    //
+    //        errorLabel.text = message
+    //        errorLabel.alpha = 1
+    //
+    //
+    //
+    //    }
     
     
     
     // First name validation
     @objc func validateFirstName(textfield: UITextField){
         
-        
         // Maximum Length
         if (textfield.text!.count >= 16) {
             firstNameError.text = "الاسم الأول يجب أن لا يتجاوز ١٦ حرفا"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: firstNameTextField)
-//            firstNamelabel.alpha = 1
-
+            //            firstNamelabel.alpha = 1
         }
         // Required
         else if (textfield.text!.count == 0) {
             firstNameError.text = "اجباري"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: firstNameTextField)
-//            firstNamelabel.alpha = 0
-
-
+            //            firstNamelabel.alpha = 0
         }
+        
         // Only letters
         else if (!isNameValid(textfield.text!)){
             firstNameError.text = "الاسم الأول يجب أن يتكون من أحرف فقط"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: firstNameTextField)
-//            firstNamelabel.alpha = 1
-
-
-
+            //            firstNamelabel.alpha = 1
         }
         
         // Everything is fine
         else {
             // White space so that the layout is not affected; however, trim it in the validation
-//            firstNameError.text="  "
-            style(textfield: firstNameTextField)
-//            firstNamelabel.alpha = 1
-
+            //            firstNameError.text="  "
+            turnTextFieldTextfieldToNormal(textfield: firstNameTextField)
+            //            firstNamelabel.alpha = 1
             Constants.Globals.firstName = textfield.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         }
-        
     }
-    
-    
-    
-    
     
     // Last name validation
     @objc func validateLastName(textfield: UITextField){
@@ -572,7 +462,7 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
             lastNameError.text = "اسم العائلة يجب أن لا يتجاوز ١٦ حرفا"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: lastNameTextField)
-//            lastNameLabel.alpha = 1
+            //            lastNameLabel.alpha = 1
         }
         
         // Required
@@ -580,91 +470,76 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
             lastNameError.text = "اجباري"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: lastNameTextField)
-//            lastNameLabel.alpha = 0
-
+            //            lastNameLabel.alpha = 0
+            
         }
         // ONly letters
         else if (!isNameValid(textfield.text!)){
             lastNameError.text = "اسم العائلة يجب أن يتكون من أحرف فقط"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: lastNameTextField)
-//            lastNameLabel.alpha = 1
-
+            //            lastNameLabel.alpha = 1
+            
         }
         
         // Everything is fine
         else {
             // White space so that the layout is not affected; however, trim it in the validation
-//            lastNameError.text="  "
+            //            lastNameError.text="  "
             style(textfield: lastNameTextField)
-//            lastNameLabel.alpha = 1
-
+            //            lastNameLabel.alpha = 1
             Constants.Globals.lastName = textfield.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-
-
         }
     }
+    
+    
+    // ID validation
+    @objc func validateID(textfield: UITextField){
+        // Required
+        if (textfield.text!.count == 0) {
+            idError.text = "اجباري"
+            // Turn the textfield to red
+            turnTextFieldTextfieldToRed(textfield: idTextField)
+            //                idLabel.alpha = 0
+            
+        }
+        // Only numbers
+        else if (!isStringAnInt(textfield.text!)){
+            idError.text = "رقم الأحوال المدنية/الإقامة يجب أن يتكون من أرقام فقط"
+            // Turn the textfield to red
+            turnTextFieldTextfieldToRed(textfield: idTextField)
+            //                idLabel.alpha = 1
+        }
+        
+        // Maximum Length
+        else if (textfield.text!.count >= 11) {
+            idError.text = "رقم الأحوال المدنية/الإقامة يجب أن لا يتجاوز ١٠ أرقام"
+            // Turn the textfield to red
+            turnTextFieldTextfieldToRed(textfield: idTextField)
+            //            idLabel.alpha = 1
+            
+        }
         
         
-        // ID validation
-        @objc func validateID(textfield: UITextField){
-            // Required
-             if (textfield.text!.count == 0) {
-                idError.text = "اجباري"
-                // Turn the textfield to red
-                turnTextFieldTextfieldToRed(textfield: idTextField)
-//                idLabel.alpha = 0
-
-            }
-            // Only numbers
-            else if (!isStringAnInt(textfield.text!)){
-                idError.text = "رقم الأحوال المدنية/الإقامة يجب أن يتكون من أرقام فقط"
-                // Turn the textfield to red
-                turnTextFieldTextfieldToRed(textfield: idTextField)
-//                idLabel.alpha = 1
-            }
+        
+        // Minimum Length
+        else if (textfield.text!.count < 10) {
+            idError.text = "رقم الأحوال المدنية/الإقامة يجب أن لا يقل عن ١٠ أرقام"
+            // Turn the textfield to red
+            turnTextFieldTextfieldToRed(textfield: idTextField)
+            //                idLabel.alpha = 1
             
-            // Maximum Length
-           else if (textfield.text!.count >= 11) {
-                idError.text = "رقم الأحوال المدنية/الإقامة يجب أن لا يتجاوز ١٠ أرقام"
-                // Turn the textfield to red
-                turnTextFieldTextfieldToRed(textfield: idTextField)
-//            idLabel.alpha = 1
-
-            }
-            
-          
-            
-            // Minimum Length
-            else if (textfield.text!.count < 10) {
-                idError.text = "رقم الأحوال المدنية/الإقامة يجب أن لا يقل عن ١٠ أرقام"
-                // Turn the textfield to red
-                turnTextFieldTextfieldToRed(textfield: idTextField)
-//                idLabel.alpha = 1
-
-            }
-            
-           
-            
-            // Everything is fine
-            else {
-                // White space so that the layout is not affected; however, trim it in the validation
-//                idError.text="  "
-                style(textfield: idTextField)
-//                idLabel.alpha = 1
-
-                Constants.Globals.id = textfield.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-
-
-            }
+        }
+        // Everything is fine
+        else {
+            // White space so that the layout is not affected; however, trim it in the validation
+            //                idError.text="  "
+            style(textfield: idTextField)
+            //                idLabel.alpha = 1
+            Constants.Globals.id = textfield.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
         
     }
-    
-   
-    
-    
-    
- 
     
     
     // Name validation
@@ -672,121 +547,119 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
         let nameTest = NSPredicate(format: "SELF MATCHES %@", "^[A-Za-zء-ي]+$")
         return nameTest.evaluate(with: name)
     }
-              
-        // Vlidation for Arabic or English Numbers used for ID and Phone
-        func isStringAnInt(_ id: String) -> Bool {
-            
-            let idTest = NSPredicate(format: "SELF MATCHES %@", "^[٠-٩]+$")
-            
-            return idTest.evaluate(with: id) || Int(id) != nil
-            
-        }
+    
+    // Vlidation for Arabic or English Numbers used for ID and Phone
+    func isStringAnInt(_ id: String) -> Bool {
+        let idTest = NSPredicate(format: "SELF MATCHES %@", "^[٠-٩]+$")
+        return idTest.evaluate(with: id) || Int(id) != nil
+    }
     
     
-
+    
     
     // Email validation
     @objc func validateEmail(textfield: UITextField){
-                 
+        
         
         // Required
         if (textfield.text!.count == 0) {
             emailError.text = "اجباري"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: emailTextField)
-//            emailLabel.alpha = 0
+            //            emailLabel.alpha = 0
         }
         // Email format
         else if (!isEmailValid(textfield.text!)){
             emailError.text = "البريد الالكتروني غير صالح"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: emailTextField)
-//            emailLabel.alpha = 1
+            //            emailLabel.alpha = 1
         }
-       /* else if (isEmailTaken()){
-            emailError.text = "البريد الالكتروني مستخدم"
-            // Turn the textfield to red
-            turnTextFieldTextfieldToRed(textfield: emailTextField)
-            emailLabel.alpha = 1
-
-            
-            
-        }*/
-        
-        
-   
-        // Everything is fine
-            
-            
-            else
-            {
-                isEmailTaken()
-               /* print("HHHHHH" + String(Constants.Globals.isEmailUsed))
-                if (Constants.Globals.isEmailUsed){
-                    print ("i came here")
-                    emailError.text = "البريد الالكتروني مستخدم"
-                    // Turn the textfield to red
-                    turnTextFieldTextfieldToRed(textfield: emailTextField)
-                    emailLabel.alpha = 1
-
-                    
-                    
-                }
-                
-            
-            // email is not taken
-            
-            // White space so that the layout is not affected; however, trim it in the validation
-                
-                else{*/
-//            emailError.text="  "
-            style(textfield: emailTextField)
-//            emailLabel.alpha = 1
-
-                    Constants.Globals.email = textfield.text!.trimmingCharacters(in: .whitespacesAndNewlines)}
-            
-
-        }
-    
-
-    @objc func isEmailTaken(){
+        /* else if (isEmailTaken()){
+         emailError.text = "البريد الالكتروني مستخدم"
+         // Turn the textfield to red
+         turnTextFieldTextfieldToRed(textfield: emailTextField)
+         emailLabel.alpha = 1
          
-            Auth.auth().fetchSignInMethods(forEmail: self.emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines), completion: {
-               (providers, error) in
-
-               if let error = error {
-                   print ("email doesn't exist")
-                   print(error.localizedDescription)
-                   
-               } else if let providers = providers {
-                   print(providers)
-                   
-                   print("email exists")
+         
+         
+         }*/
+        
+        
+        
+        // Everything is fine
+        
+        
+        else
+        {
+            isEmailTaken()
+            /* print("HHHHHH" + String(Constants.Globals.isEmailUsed))
+             if (Constants.Globals.isEmailUsed){
+             print ("i came here")
+             emailError.text = "البريد الالكتروني مستخدم"
+             // Turn the textfield to red
+             turnTextFieldTextfieldToRed(textfield: emailTextField)
+             emailLabel.alpha = 1
+             
+             
+             
+             }
+             
+             
+             // email is not taken
+             
+             // White space so that the layout is not affected; however, trim it in the validation
+             
+             else{*/
+            //            emailError.text="  "
+            style(textfield: emailTextField)
+            //            emailLabel.alpha = 1
+            Constants.Globals.email = textfield.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+        }
+        
+        
+    }
+    
+    
+    @objc func isEmailTaken(){
+        
+        Auth.auth().fetchSignInMethods(forEmail: self.emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines), completion: {
+            (providers, error) in
+            
+            if let error = error {
+                print ("email doesn't exist")
+                print(error.localizedDescription)
+                
+            } else if let providers = providers {
+                print(providers)
+                
+                print("email exists")
                 
                 self.emailError.text = "البريد الالكتروني مستخدم"
                 // Turn the textfield to red
                 self.turnTextFieldTextfieldToRed(textfield: self.emailTextField)
-//                self.emailLabel.alpha = 1
+                //                self.emailLabel.alpha = 1
                 
-              }
-            } )
-        }
+            }
+        } )
+    }
     
-
+    
     
     
     // Date validation
     @objc func validateDate(textfield: UITextField){
         
-    
+        
         // Required
         if (textfield.text!.isEmpty) {
             dateError.text = "اجباري"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: dateTextField)
-//            dateLabel.alpha = 0
+            //            dateLabel.alpha = 0
         }
-       
+        
         
         // Everything is fine
         else {
@@ -795,14 +668,11 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
             style(textfield: dateTextField)
             let date = dateTextField.text!.prefix(10)
             Constants.Globals.birthdate = date.trimmingCharacters(in: .whitespacesAndNewlines)
-//            dateLabel.alpha = 1
-
-
+            //            dateLabel.alpha = 1
         }
     }
     
-    
-    
+
     
     // Email format validation
     func isEmailValid(_ email : String) -> Bool{
@@ -810,28 +680,24 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
         return emailTest.evaluate(with: email)
     }
     
-    
-    
-    
-    
     // Phone validation
     @objc func validatePhone(textfield: UITextField){
         
         // Required
-          if (textfield.text!.count == 0) {
+        if (textfield.text!.count == 0) {
             phoneNumberError.text = "اجباري"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: phoneTextField)
-//            phoneLabel.alpha = 0
-
+            //            phoneLabel.alpha = 0
+            
         }
         // Phone number should start with 05
-         if ((!(textfield.text!.prefix(2) == "05")) && (!(textfield.text!.prefix(2) == "٠٥"))){
+        if ((!(textfield.text!.prefix(2) == "05")) && (!(textfield.text!.prefix(2) == "٠٥"))){
             
             phoneNumberError.text = "رقم الجوال يجب أن يبدأ ب ٠٥"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: phoneTextField)
-//            phoneLabel.alpha = 1
+            //            phoneLabel.alpha = 1
             
         }
         // Only numbers
@@ -839,18 +705,18 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
             phoneNumberError.text = "رقم الجوال يجب أن يتكون من أرقام فقط"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: phoneTextField)
-//            phoneLabel.alpha = 1
-
+            //            phoneLabel.alpha = 1
+            
         }
-       
+        
         
         // Maximum Length
         else if (textfield.text!.count >= 11) {
             phoneNumberError.text = "رقم الجوال يجب أن لا يتجاوز ١٠ أرقام"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: phoneTextField)
-//            phoneLabel.alpha = 1
-
+            //            phoneLabel.alpha = 1
+            
         }
         
         
@@ -859,32 +725,23 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
             phoneNumberError.text = "رقم الجوال يجب أن لا يقل عن ١٠ أرقام"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: phoneTextField)
-//            phoneLabel.alpha = 1
-
+            //            phoneLabel.alpha = 1
+            
         }
         
-        
-        
-        
-       
-        
-      
-        
-        
-    
         // Everything is fine
         else {
             // White space so that the layout is not affected; however, trim it in the validation
             phoneNumberError.text="  "
             style(textfield: phoneTextField)
-//            phoneLabel.alpha = 1
-
+            //            phoneLabel.alpha = 1
+            
             Constants.Globals.phone = textfield.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-
-
+            
+            
         }
-    
-}
+        
+    }
     
     
     
@@ -900,16 +757,16 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
         
         // Required
         if (textfield.text!.isEmpty) {
-
+            
             passwordError.text = "اجباري"
-//            passwordLabel.alpha = 0
+            //            passwordLabel.alpha = 0
             passordCriteria[0] = 0
             passordCriteria[1] = 0
             passordCriteria[2] = 0
             passordCriteria[3] = 0
-
-
-
+            
+            
+            
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: passwordTextField)
             containsNumLabel.textColor = UIColor.red
@@ -921,90 +778,81 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
             containsSpecialIcon.tintColor = UIColor.red
             containsSpecialIcon.image = UIImage(systemName: "multiply.circle")
             charNumIcon.tintColor = UIColor.red
-
-
-
-            
             
         }
-         
-         
-         // Not Empty
+        
+        
+        // Not Empty
         else if (!(textfield.text!.isEmpty)){
-//            passwordLabel.alpha = 1
-
-        
-        
-        
-        
-
-        
-        
-        // Minimum Length
-         if (textfield.text!.count < 8) {
-            // Change the x label to red
-
-               //Remove the label
-               passwordError.text="  "
-               //Change the label and the icon to red
-               charNumIcon.image = UIImage(systemName: "multiply.circle")
-               charNumIcon.tintColor = UIColor.red
-               charNumLabel.textColor = UIColor.red
-
-
-
-
-              // Turn the textfield to red
-              turnTextFieldTextfieldToRed(textfield: passwordTextField)
-              // change the count of the password strength
-              passordCriteria[0] = 0
-              }
-        
-              else {
-              //Change the label to green
-              charNumLabel.textColor = UIColor(red: 0, green: 150/255, blue: 0, alpha: 1)
-              // change the count of the password strength
+            //            passwordLabel.alpha = 1
+            
+            
+            
+            // Minimum Length
+            if (textfield.text!.count < 8) {
+                // Change the x label to red
+                
+                //Remove the label
+                passwordError.text="  "
+                //Change the label and the icon to red
+                charNumIcon.image = UIImage(systemName: "multiply.circle")
+                charNumIcon.tintColor = UIColor.red
+                charNumLabel.textColor = UIColor.red
+                
+                
+                
+                
+                // Turn the textfield to red
+                turnTextFieldTextfieldToRed(textfield: passwordTextField)
+                // change the count of the password strength
+                passordCriteria[0] = 0
+            }
+            
+            else {
+                //Change the label to green
+                charNumLabel.textColor = UIColor(red: 0, green: 150/255, blue: 0, alpha: 1)
+                // change the count of the password strength
                 passordCriteria[0] = 1
-              // Change the icon to check
+                // Change the icon to check
                 charNumIcon.image = UIImage(systemName: "checkmark.circle")
                 charNumIcon.tintColor = UIColor(red: 0, green: 150/255, blue: 0, alpha: 1)
-
-
-
-             }
-        
+                
+                
+                
+            }
             
             
-
-        
-        // Check if the password contains numbers
-        let decimalCharacters = CharacterSet.decimalDigits
-
-        let decimalRange = textfield.text!.rangeOfCharacter(from: decimalCharacters)
-
-        if (decimalRange == nil){
-            //Remove the label
-            passwordError.text="الرقم السري ضعيف"
-            //Change the label to red
-            containsNumLabel.textColor = UIColor.red
-           // Turn the textfield to green
-           turnTextFieldTextfieldToRed(textfield: passwordTextField)
-            // change the count of the password strength
-              passordCriteria[1] = 0
-            //Change the icon to red
-            containsNumsIcon.image = UIImage(systemName: "multiply.circle")
-            containsNumsIcon.tintColor = UIColor.red
-           }
-     
-           else {
-           //Change the label to green
-            containsNumLabel.textColor = UIColor(red: 0, green: 150/255, blue: 0, alpha: 1)
-            // change the count of the password strength
-              passordCriteria[1] = 1
-            // Change the icon to check
-            containsNumsIcon.image = UIImage(systemName: "checkmark.circle")
-            containsNumsIcon.tintColor = UIColor(red: 0, green: 150/255, blue: 0, alpha: 1)
-          }
+            
+            
+            
+            // Check if the password contains numbers
+            let decimalCharacters = CharacterSet.decimalDigits
+            
+            let decimalRange = textfield.text!.rangeOfCharacter(from: decimalCharacters)
+            
+            if (decimalRange == nil){
+                //Remove the label
+                passwordError.text="الرقم السري ضعيف"
+                //Change the label to red
+                containsNumLabel.textColor = UIColor.red
+                // Turn the textfield to green
+                turnTextFieldTextfieldToRed(textfield: passwordTextField)
+                // change the count of the password strength
+                passordCriteria[1] = 0
+                //Change the icon to red
+                containsNumsIcon.image = UIImage(systemName: "multiply.circle")
+                containsNumsIcon.tintColor = UIColor.red
+            }
+            
+            else {
+                //Change the label to green
+                containsNumLabel.textColor = UIColor(red: 0, green: 150/255, blue: 0, alpha: 1)
+                // change the count of the password strength
+                passordCriteria[1] = 1
+                // Change the icon to check
+                containsNumsIcon.image = UIImage(systemName: "checkmark.circle")
+                containsNumsIcon.tintColor = UIColor(red: 0, green: 150/255, blue: 0, alpha: 1)
+            }
             
             
             
@@ -1015,25 +863,25 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
                 passwordError.text="  "
                 //Change the label to red
                 containsCharLabel.textColor = UIColor.red
-               // Turn the textfield to green
-               turnTextFieldTextfieldToRed(textfield: passwordTextField)
+                // Turn the textfield to green
+                turnTextFieldTextfieldToRed(textfield: passwordTextField)
                 // change the count of the password strength
-                  passordCriteria[2] = 0
+                passordCriteria[2] = 0
                 //Change the icon to red
                 containsSpecialIcon.image = UIImage(systemName: "multiply.circle")
                 containsSpecialIcon.tintColor = UIColor.red
-               }
-         
-               else {
-               //Change the label to green
+            }
+            
+            else {
+                //Change the label to green
                 containsCharLabel.textColor = UIColor(red: 0, green: 150/255, blue: 0, alpha: 1)
                 // change the count of the password strength
-                  passordCriteria[2] = 1
+                passordCriteria[2] = 1
                 // Change the icon to check
                 containsSpecialIcon.image = UIImage(systemName: "checkmark.circle")
                 containsSpecialIcon.tintColor = UIColor(red: 0, green: 150/255, blue: 0, alpha: 1)
-              }
-              
+            }
+            
             
             
             
@@ -1045,45 +893,29 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
                 passwordError.text="  "
                 //Change the label to green
                 containsCapAndSmallLabel.textColor = UIColor.red
-               // Turn the textfield to green
-               turnTextFieldTextfieldToRed(textfield: passwordTextField)
+                // Turn the textfield to green
+                turnTextFieldTextfieldToRed(textfield: passwordTextField)
                 // change the count of the password strength
-                  passordCriteria[3] = 0
+                passordCriteria[3] = 0
                 //Change the icon to red
                 capAndSmallLetterIcon.image = UIImage(systemName: "multiply.circle")
                 capAndSmallLetterIcon.tintColor = UIColor.red
-               }
-         
-               else {
-               //Change the label to green
+            }
+            
+            else {
+                //Change the label to green
                 containsCapAndSmallLabel.textColor = UIColor(red: 0, green: 150/255, blue: 0, alpha: 1)
                 // change the count of the password strength
-                  passordCriteria[3] = 1
+                passordCriteria[3] = 1
                 // Change the icon to check
                 capAndSmallLetterIcon.image = UIImage(systemName: "checkmark.circle")
                 capAndSmallLetterIcon.tintColor = UIColor(red: 0, green: 150/255, blue: 0, alpha: 1)
-              }
-                
-                
-                
-                
-            
-    
+            }
             
             
-            
-            
-            
-            
-          } // Password criteria validation
-            
-            
-         
-            
-
-         
-         
-         
+        } // Password criteria validation
+        
+        
         // Everything is fine and the password is strong
         else {
             // White space so that the layout is not affected; however, trim it in the validation
@@ -1102,11 +934,11 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
         
         
         if (passordCriteria[0]+passordCriteria[1]+passordCriteria[2]+passordCriteria[3] == 1){
-        passwordStrength.progress = 0.25
-        passwordStrength.progressTintColor = .red
+            passwordStrength.progress = 0.25
+            passwordStrength.progressTintColor = .red
             isPasswordStrong = false
             passwordError.text="الرقم السري ضعيف"
-
+            
             
         }
         
@@ -1115,7 +947,7 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
             passwordStrength.progressTintColor = .orange
             isPasswordStrong = false
             passwordError.text="الرقم السري ضعيف"
-
+            
         }
         
         
@@ -1124,222 +956,561 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
             passwordStrength.progressTintColor = .yellow
             isPasswordStrong = false
             passwordError.text="الرقم السري ضعيف"
-
+            
         }
         
         else if  (passordCriteria[0]+passordCriteria[1]+passordCriteria[2]+passordCriteria[3] == 4){
             passwordStrength.progress = 1
             passwordStrength.progressTintColor = UIColor(red: 0, green: 150/255, blue: 0, alpha: 1)
             isPasswordStrong = true
-
+            
         }
         
         
         else {            passwordStrength.progress = 0
             passwordError.text="الرقم السري ضعيف"
-
-}
+            
+        }
         
-        
-        
-        
-        
-        
-        
-        
-
-        
-       
-}
-
+    }
+    
     
     
     // Check if the password constains capital and small letters
     func containsLowerAndUpper(_ pass : String) -> Bool{
-    let capitalLetterRegEx  = ".*[A-Z]+.*"
+        let capitalLetterRegEx  = ".*[A-Z]+.*"
         let texttest = NSPredicate(format:"SELF MATCHES %@", capitalLetterRegEx)
         
         let smallLetterRegEx  = ".*[a-z]+.*"
-            let texttest2 = NSPredicate(format:"SELF MATCHES %@", smallLetterRegEx)
+        let texttest2 = NSPredicate(format:"SELF MATCHES %@", smallLetterRegEx)
         
         
         
         return texttest.evaluate(with: pass) && texttest2.evaluate(with: pass)
     }
     
-        // Check if the password constains special character
-        func containsSpecialCharacter(_ pass : String) -> Bool{
-          let regex = ".*[^A-Za-z0-9].*"
-          let testString = NSPredicate(format:"SELF MATCHES %@", regex)
-          return testString.evaluate(with: pass)
+    // Check if the password constains special character
+    func containsSpecialCharacter(_ pass : String) -> Bool{
+        let regex = ".*[^A-Za-z0-9].*"
+        let testString = NSPredicate(format:"SELF MATCHES %@", regex)
+        return testString.evaluate(with: pass)
     }
     
     
-    
-    
-    
- 
-    
-    
-  
-        
-
+    // City validation
+    @objc func validateCity(textfield: UITextField){
         
         
-        
-//    @IBAction func onEyeTapped(_ sender: Any) {
-//
-//
-//    if (eyeButton.currentImage == UIImage(systemName: "eye.slash")){
-//
-//        eyeButton.setImage(UIImage(systemName: "eye")
-//        , for: .normal)
-//        passwordTextField.isSecureTextEntry = false}
-//    else {
-//        eyeButton.setImage(UIImage(systemName: "eye.slash")
-//        , for: .normal)
-//        passwordTextField.isSecureTextEntry = true
-//
-//
-//    }
-//    }
-    
-//     // Go tot the previous page
-//    @IBAction func onBackTapped(_ sender: Any) {
-//
-//        _ = navigationController?.popViewController(animated: true)
-//
-//    }
-    
-    
-   
-    
-    
-    
-    
-    @IBAction func onPressedCont(_ sender: Any) {
-    
-        
-        // Empty First name
-        if (firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
-        {
-            firstNameError.text = "اجباري"
-            turnTextFieldTextfieldToRed(textfield: firstNameTextField)
-        
+        // Required
+        if (textfield.text!.isEmpty) {
+            cityError.text = "اجباري"
+            // Turn the textfield to red
+            turnTextFieldTextfieldToRed(textfield: cityTextfield)
+            //            cityLabel.alpha = 0
         }
         
-        // Empty last name
-        if (lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
-        {
-            lastNameError.text = "اجباري"
-            turnTextFieldTextfieldToRed(textfield: lastNameTextField)
-        
-        }
-        
-        
-        
-        // Empty id
-        if (idTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
-        {
-            idError.text = "اجباري"
-            turnTextFieldTextfieldToRed(textfield: idTextField)
-        
-        }
-        
-        // Empty email
-        if (emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
-        {
-            emailError.text = "اجباري"
-            turnTextFieldTextfieldToRed(textfield: emailTextField)
-        
-        }
-        
-        
-        
-        // Empty phone
-        if (phoneTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
-        {
-            phoneNumberError.text = "اجباري"
-            turnTextFieldTextfieldToRed(textfield: phoneTextField)
-        
-        }
-        
-        
-        
-        
-        // Empty birthdate
-        if (dateTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
-        {
-            dateError.text = "اجباري"
-            turnTextFieldTextfieldToRed(textfield: dateTextField)
-        
-        }
-        
-        
-        
-        // Empty password
-        if (passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
-        {
-            passwordError.text = "اجباري"
-            turnTextFieldTextfieldToRed(textfield: passwordTextField)
-        
-        }
-        
-        // Cont...
-    }
-    
-    
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        
-        var allValidations = firstNameError.text! + lastNameError.text! + idError.text! + emailError.text! + phoneNumberError.text!
-        
-        
-         // Did not include the password here since I will check it down
-          allValidations += dateError.text!
-        
-        
-        // Just for testing
-        let check = ((allValidations.trimmingCharacters(in: .whitespacesAndNewlines)))
-        print (check)
-
-        
-        
-        // If all the fields are filled and valid and the password is strong
-         if (isPasswordStrong == true && check == ""){
-            return true
-        }
-        
-        // If all the fields are filled and valid but the password is weak/empty
-        else if (isPasswordStrong == false && check == "")
-        {
-            
-            
-            return false
-            
-            
-            
-            
-        }
-        
+        // Everything is fine
         else {
-            // Textfields are not valid or password is weak/empty
-            print ("Weak/empty pass or some textfields are not valid")
-                        
-           
-
-            return false
+            // White space so that the layout is not affected; however, trim it in the validation
+            cityError.text="  "
+            style(textfield: cityTextfield)
+            let city = textfield.text!.prefix(8)
+            Constants.Globals.city = city.trimmingCharacters(in: .whitespacesAndNewlines)
+            //            cityLabel.alpha = 1
+            
+            
+            
         }
+    }
+    
+    
+    
+    // weight validation
+    @objc func validateWeight(textfield: UITextField){
+        
+        
+        // Required
+        if (textfield.text!.isEmpty) {
+            weightError.text = "اجباري"
+            // Turn the textfield to red
+            turnTextFieldTextfieldToRed(textfield: weightTextfield)
+            //            weightLabel.alpha = 0
+        }
+        
+        // Everything is fine
+        else {
+            // White space so that the layout is not affected; however, trim it in the validation
+            weightError.isHidden = true
+            style(textfield: weightTextfield)
+            let weight = textfield.text!.prefix(14)
+            Constants.Globals.weight = weight.trimmingCharacters(in: .whitespacesAndNewlines)
+            //            weightLabel.alpha = 1
+            
+            
+            
+        }
+    }
+    
+    // blood type validation
+    @objc func validateBlood(textfield: UITextField){
+        
+        
+        // Required
+        if (textfield.text!.isEmpty) {
+            bloodError.text = "اجباري"
+            // Turn the textfield to red
+            turnTextFieldTextfieldToRed(textfield: bloodTypeTexfield)
+            //            bloodTypeLabel.alpha = 0
+        }
+        // White space so that the layout is not affected; however, trim it in the validation
+        else {
+            bloodError.text="  "
+            style(textfield: bloodTypeTexfield)
+            let blood = textfield.text!.prefix(2)
+            Constants.Globals.bloodType = blood.trimmingCharacters(in: .whitespacesAndNewlines)
+            //            bloodTypeLabel.alpha = 1
+            
+        }
+        
+        
         
     }
     
     
     
     
-//    @IBAction func onPressedOk(_ sender: Any) {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //    @IBAction func onEyeTapped(_ sender: Any) {
+    //
+    //
+    //    if (eyeButton.currentImage == UIImage(systemName: "eye.slash")){
+    //
+    //        eyeButton.setImage(UIImage(systemName: "eye")
+    //        , for: .normal)
+    //        passwordTextField.isSecureTextEntry = false}
+    //    else {
+    //        eyeButton.setImage(UIImage(systemName: "eye.slash")
+    //        , for: .normal)
+    //        passwordTextField.isSecureTextEntry = true
+    //
+    //
+    //    }
+    //    }
+    
+    //     // Go tot the previous page
+    //    @IBAction func onBackTapped(_ sender: Any) {
+    //
+    //        _ = navigationController?.popViewController(animated: true)
+    //
+    //    }
+    
+    
+    
+    
+    // MARK: - Backend
 //
-//        self.popUpView.isHidden = true
-//        self.blackBlurredView.isHidden = true
+//    @IBAction func onPressedCont(_ sender: Any) {
+//
+//
+//        // Empty First name
+//        if (firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
+//        {
+//            firstNameError.text = "اجباري"
+//            turnTextFieldTextfieldToRed(textfield: firstNameTextField)
+//
+//        }
+//
+//        // Empty last name
+//        if (lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
+//        {
+//            lastNameError.text = "اجباري"
+//            turnTextFieldTextfieldToRed(textfield: lastNameTextField)
+//
+//        }
+//
+//
+//
+//        // Empty id
+//        if (idTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
+//        {
+//            idError.text = "اجباري"
+//            turnTextFieldTextfieldToRed(textfield: idTextField)
+//
+//        }
+//
+//        // Empty email
+//        if (emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
+//        {
+//            emailError.text = "اجباري"
+//            turnTextFieldTextfieldToRed(textfield: emailTextField)
+//
+//        }
+//
+//
+//
+//        // Empty phone
+//        if (phoneTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
+//        {
+//            phoneNumberError.text = "اجباري"
+//            turnTextFieldTextfieldToRed(textfield: phoneTextField)
+//
+//        }
+//
+//
+//
+//
+//        // Empty birthdate
+//        if (dateTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
+//        {
+//            dateError.text = "اجباري"
+//            turnTextFieldTextfieldToRed(textfield: dateTextField)
+//
+//        }
+//
+//
+//
+//        // Empty password
+//        if (passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "")
+//        {
+//            passwordError.text = "اجباري"
+//            turnTextFieldTextfieldToRed(textfield: passwordTextField)
+//
+//        }
+//
+//        // Cont...
+//    }
+//
+//
+//    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+//
+//        var allValidations = firstNameError.text! + lastNameError.text! + idError.text! + emailError.text! + phoneNumberError.text!
+//
+//
+//        // Did not include the password here since I will check it down
+//        allValidations += dateError.text!
+//
+//
+//        // Just for testing
+//        let check = ((allValidations.trimmingCharacters(in: .whitespacesAndNewlines)))
+//        print (check)
+//
+//
+//
+//        // If all the fields are filled and valid and the password is strong
+//        if (isPasswordStrong == true && check == ""){
+//            return true
+//        }
+//
+//        // If all the fields are filled and valid but the password is weak/empty
+//        else if (isPasswordStrong == false && check == "")
+//        {
+//
+//
+//            return false
+//
+//
+//
+//
+//        }
+//
+//        else {
+//            // Textfields are not valid or password is weak/empty
+//            print ("Weak/empty pass or some textfields are not valid")
+//
+//
+//
+//            return false
+//        }
 //
 //    }
+//
+//    @IBAction func onPressedSignUp(_ sender: Any) {
+//
+//        // let check = cityError.text!.trimmingCharacters(in: .whitespacesAndNewlines) + bloodError.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+//
+//
+//        // City not validated
+//        if (cityTextfield.text!.prefix(8).trimmingCharacters(in: .whitespacesAndNewlines) == "")
+//
+//        {
+//
+//            cityError.text! = "إجباري"
+//            turnTextFieldTextfieldToRed(textfield: cityTextfield)
+//        }
+//
+//        //Blood type not selected
+//        if (bloodTypeTexfield.text!.prefix(2).trimmingCharacters(in: .whitespacesAndNewlines) == "")
+//
+//        {
+//            bloodError.text! = "إجباري"
+//            turnTextFieldTextfieldToRed(textfield: bloodTypeTexfield)
+//
+//
+//        }
+//
+//        // Weight not selected
+//        if (weightTextfield.text!.prefix(14).trimmingCharacters(in: .whitespacesAndNewlines) == "")
+//
+//
+//        {
+//
+//            weightError.text! = "إجباري"
+//            turnTextFieldTextfieldToRed(textfield: weightTextfield)
+//
+//        }
+//
+//
+//        else if (cityError.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "" && bloodError.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "") {
+//
+//
+//            // Create the User
+//
+//
+//            Auth.auth().createUser(withEmail: Constants.Globals.email, password: Constants.Globals.password) { (result, err) in
+//
+//
+//                // Blur the background
+//                self.blurredView.isHidden = false
+//                // Show Loading indicator
+//                self.loadingGif.isHidden = false
+//
+//
+//                // Check for errors
+//
+//                if err != nil {
+//
+//
+//
+//
+//                    // There was an error creating the user
+//
+//                    // If an error occurs hide the blurred view
+//                    self.blurredView.isHidden = true
+//                    // If an error occurs hide the loading indicator
+//                    self.loadingGif.isHidden = true
+//
+//
+//                    print (err!.localizedDescription)
+//
+//
+//                    // Print the exact message to customize the error mesage later
+//                    print(err?.localizedDescription as Any)
+//
+//
+//                    // Show pop up message to the user
+//
+//
+//
+//
+//                    //Network error
+//
+//                    if (err!.localizedDescription == "Network error (such as timeout, interrupted connection or unreachable host) has occurred.")
+//                    {
+//
+//                        self.blackBlurredView.isHidden = false
+//                        self.popupView.isHidden = false
+//                        self.popupTitle.text = "خطأ في الشبكة"
+//                        self.popupMessage.text = "الرجاء التحقق من الاتصال بالشبكة"
+//                    }
+//
+//                    // Couldn't create the user
+//                    else {
+//
+//                        self.blackBlurredView.isHidden = false
+//                        self.popupView.isHidden = false
+//                        self.popupTitle.text = "حصل خطأ"
+//                        self.popupMessage.text = "حصل خطأ أثناء إنشاء الحساب الرجاء المحاولة لاحقا"
+//                    }
+//
+//
+//                    print ("error in creating the user")
+//
+//                }
+//
+//
+//
+//                else {
+//
+//                    // User was creted successfully, store the information
+//
+//                    let db = Firestore.firestore()
+//
+//
+//
+//                    // User collection
+//
+//
+//                    db.collection("users").document(result!.user.uid).setData([
+//                        "name":Constants.Globals.firstName + "" + Constants.Globals.lastName,
+//                        "userType": "volunteer",
+//                        "email": Constants.Globals.email,
+//                        "uid": result!.user.uid]){ error in
+//
+//                            if error != nil {
+//
+//                                print(error?.localizedDescription as Any)
+//
+//                                // Show error message or pop up message
+//
+//
+//                                print ("error in saving the user data")
+//
+//
+//                            }
+//                        }
+//
+//
+//
+//                    // Volunteer collection
+//                    db.collection("volunteer").document(result!.user.uid).setData([
+//                        "firstName":Constants.Globals.firstName,
+//                        "lastName": Constants.Globals.firstName,
+//                        "nationalID": Constants.Globals.id,
+//                        "email": Constants.Globals.email,
+//                        "phone": Constants.Globals.phone,
+//                        "gender": Constants.Globals.gender,
+//                        "birthDate": Constants.Globals.birthdate,
+//                        "weight": Constants.Globals.weight,
+//                        "city": Constants.Globals.city,
+//                        "bloodType": Constants.Globals.bloodType,
+//                        "points": 0,
+//                        "uid": result!.user.uid]){ error in
+//
+//                            if error != nil {
+//
+//                                print(error?.localizedDescription as Any)
+//
+//                                // Show error message or pop up message
+//
+//
+//                                print ("error in saving the volunteer data")
+//
+//
+//                            }
+//                        }
+//
+//
+//                    // If volunteer is created remove the blurred view
+//                    self.blurredView.isHidden = true
+//                    // If volunteer is created remove the loading indicator
+//                    self.loadingGif.isHidden = true
+//
+//
+//
+//
+//                    // Transition to the home screen
+//
+//                    self.transitionToHome()
+//
+//
+//
+//
+//                }
+//
+//            }
+//
+//        }
+//
+//    }
+//
+//    func transitionToHome(){
+//
+//        // I have to check if the user is volunteer or hospital, in the log in
+//        let volunteerHomeViewController =  storyboard?.instantiateViewController(identifier: Constants.Storyboard.volunteerHomeViewController) as? TabBarController
+//
+//        view.window?.rootViewController = volunteerHomeViewController
+//        view.window?.makeKeyAndVisible()
+//    }
+//
+//    //    @IBAction func onPressedOK(_ sender: Any) {
+//    //        popupView.isHidden = true
+//    //        blackBlurredView.isHidden = true
+//    //    }
+//
     
+}
+
+
+extension VSignUpViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    public func numberOfComponents(in pickerView: UIPickerView) -> Int{
+        return 1
+    }
+    
+    
+    
+    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
+        
+        //Blood Type Texfield
+        if bloodTypeTexfield.isFirstResponder{
+            return bloodList.count}
+        
+        // City texfield
+        else if (cityTextfield.isFirstResponder)
+        {
+            return cityList.count
+        }
+        
+        // weight texfield
+        else if (weightTextfield.isFirstResponder)
+        {
+            return weightList.count
+        }
+        
+        return 0
+        
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        //Blood Type Texfield
+        if bloodTypeTexfield.isFirstResponder{
+            return bloodList[row]
+        }
+        
+        // City texfield
+        else if (cityTextfield.isFirstResponder)
+        {
+            return cityList[row]
+        }
+        
+        // Weight texfield
+        else if (weightTextfield.isFirstResponder)
+        {
+            return weightList[row]
+        }
+        return nil
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        //Blood Type Texfield
+        if bloodTypeTexfield.isFirstResponder{
+            self.bloodTypeTexfield.text! = self.bloodList[row]
+            self.view.endEditing(true)
+        }
+        //City Textfield
+        else if (cityTextfield.isFirstResponder){
+            self.cityTextfield.text! =  self.cityList[row]
+            self.view.endEditing(true)
+            
+        }
+        
+        //weight Textfield
+        else if (weightTextfield.isFirstResponder){
+            self.weightTextfield.text! =  self.weightList[row]
+            self.view.endEditing(true)
+        }
+        
+    }
 }
