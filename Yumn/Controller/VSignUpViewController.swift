@@ -1049,6 +1049,10 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
         
         else if (cityError.isHidden && bloodError.isHidden) {
             
+            // Blur the background
+            self.blurredView.isHidden = false
+            // Show Loading indicator
+            self.loadingGif.isHidden = false
             
             // Create the User
             
@@ -1056,10 +1060,7 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
             Auth.auth().createUser(withEmail: Constants.Globals.email, password: Constants.Globals.password) { (result, err) in
                 
                 
-                // Blur the background
-                self.blurredView.isHidden = false
-                // Show Loading indicator
-                self.loadingGif.isHidden = false
+            
                 
                 
                 // Check for errors
@@ -1197,6 +1198,15 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    
+    
+    @IBAction func okPressed(_ sender: Any) {
+        
+        self.popupView.isHidden = true
+        self.blurredView.isHidden = true
+        
+
+    }
     func transitionToHome(){
         
         // I have to check if the user is volunteer or hospital, in the log in
@@ -1244,6 +1254,8 @@ extension VSignUpViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         
     }
     
+    
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
         //Blood Type Texfield
@@ -1287,4 +1299,6 @@ extension VSignUpViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         }
         
     }
+    
+    
 }
