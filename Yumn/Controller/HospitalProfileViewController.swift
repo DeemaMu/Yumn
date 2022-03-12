@@ -10,9 +10,10 @@ import Foundation
 import FirebaseFirestore
 import FirebaseAuth
 import UIKit
+import SwiftUI
 
 class HospitalProfileViewController: UIViewController, UITextFieldDelegate {
-    
+    let style = styles()
     let database = Firestore.firestore()
     let blue = UIColor.init(red: 134/255, green: 202/255, blue: 195/255, alpha: 1)
     @IBOutlet weak var backView: UIView!
@@ -74,6 +75,10 @@ class HospitalProfileViewController: UIViewController, UITextFieldDelegate {
     
     func saveButton(enabeld : Bool){
         saveButton.isEnabled = enabeld
+        if(!enabeld){
+            saveButton.layer.cornerRadius = 29
+            saveButton.layer.backgroundColor = UIColor.lightGray.cgColor
+        }
     }
     
     func hideErrorMSGs(){
@@ -83,37 +88,28 @@ class HospitalProfileViewController: UIViewController, UITextFieldDelegate {
     
     func style(TextField : UITextField){
         TextField.delegate = self
-        normalStyle(TextField: TextField)
+        normalStyle(TextField)
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        let bottomLine = CALayer()
-        
-        bottomLine.frame = CGRect(x: 0, y: textField.frame.height - 2, width: textField.frame.width, height: 1)
-        
-        bottomLine.backgroundColor = UIColor.init(red: 56/255, green: 97/255, blue: 93/255, alpha: 1).cgColor
-        
-        textField.borderStyle = .none
-        
-        textField.layer.addSublayer(bottomLine)
+        style.activeModeStyle(TextField: textField)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        normalStyle(TextField: textField)
+        normalStyle(textField)
     }
     
-    func normalStyle(TextField : UITextField){
-        let bottomLine = CALayer()
-        
-        bottomLine.frame = CGRect(x: 0, y: TextField.frame.height - 2, width: TextField.frame.width, height: 1)
-        
-        bottomLine.backgroundColor = UIColor.init(red: 134/255, green: 202/255, blue: 195/255, alpha: 1).cgColor
-        
-        TextField.borderStyle = .none
-        
-        TextField.layer.addSublayer(bottomLine)
+    func normalStyle(_ TextField : UITextField){
+        style.normalStyle(TextField: TextField)
     }
     
+    func activeStyle(_ TextField : UITextField){
+        style.activeModeStyle(TextField: TextField)
+    }
+    
+    func turnTextFieldTextfieldToRed(_ textfield: UITextField){
+        style.turnTextFieldToRed(textfield: textfield)
+    }
     
     @IBAction func hospitalNameChanged(_ sender: Any) {
         if let hospitalName = hospitalTextField.text
@@ -122,10 +118,12 @@ class HospitalProfileViewController: UIViewController, UITextFieldDelegate {
             {
                 nameErrorMSG.text = errorMessage
                 nameErrorMSG.isHidden = false
+                turnTextFieldTextfieldToRed(hospitalTextField)
             }
             else
             {
                 nameErrorMSG.isHidden = true
+                activeStyle(hospitalTextField)
             }
         }
         
@@ -139,10 +137,13 @@ class HospitalProfileViewController: UIViewController, UITextFieldDelegate {
             {
                 phoneErrorMSG.text = errorMessage
                 phoneErrorMSG.isHidden = false
+                turnTextFieldTextfieldToRed(phoneTextField)
+
             }
             else
             {
                 phoneErrorMSG.isHidden = true
+                activeStyle(phoneTextField)
             }
         }
         checkForValidForm()
@@ -224,7 +225,7 @@ class HospitalProfileViewController: UIViewController, UITextFieldDelegate {
         let docRef = database.document("users/Mw9h0hFX20vyTKuplNdv")
         
         // save data
-        docRef.setData(["hospitalName": hospitalTextField.text!,
+        docRef.updateData(["hospitalName": hospitalTextField.text!,
                         "phone": Int(phoneTextField.text!)!,
                         "uid":"Mw9h0hFX20vyTKuplNdv",
                         "userType":"Hospital"
