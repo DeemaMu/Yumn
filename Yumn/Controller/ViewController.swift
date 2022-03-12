@@ -10,7 +10,7 @@ import FirebaseFirestore
 import FirebaseAuth
 class HospitalHomeMainViewController: UIViewController {
     
-    @IBOutlet weak var shortageNeed: UILabel!
+//    @IBOutlet weak var shortageNeed: UILabel!
     @IBOutlet weak var bloodShortageNeed: UILabel!
     
     @IBOutlet weak var organShortageNeed: UILabel!
@@ -169,9 +169,9 @@ class HospitalHomeMainViewController: UIViewController {
         organShortageNeed.font = organShortageNeed.font.withSize(24)
         
         // font style for shortage need
-        shortageNeed.font = UIFontMetrics.default.scaledFont(for: customFont)
-        shortageNeed.adjustsFontForContentSizeCategory = true
-        shortageNeed.font = shortageNeed.font.withSize(32)
+//        shortageNeed.font = UIFontMetrics.default.scaledFont(for: customFont)
+//        shortageNeed.adjustsFontForContentSizeCategory = true
+//        shortageNeed.font = shortageNeed.font.withSize(32)
 
         bloodUpdateBtn.titleLabel?.font =  UIFont(name: "Tajawal-Regular", size: 24)
         //bloodUpdateBtn.contentHorizontalAlignment = .center
@@ -181,6 +181,39 @@ class HospitalHomeMainViewController: UIViewController {
         organUpdateBtn.titleLabel?.font =  UIFont(name: "Tajawal-Regular", size: 24)
     }
 
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        var nav = self.navigationController?.navigationBar
+        guard let customFont = UIFont(name: "Tajawal-Bold", size: 30) else {
+            fatalError("""
+                Failed to load the "Tajawal" font.
+                Make sure the font file is included in the project and the font name is spelled correctly.
+                """
+            )
+        }
+        
+        nav?.tintColor = UIColor.init(named: "mainDark")
+        nav?.barTintColor = UIColor.white
+        nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(named: "mainDark"), NSAttributedString.Key.font: customFont]
+        navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        var nav = self.navigationController?.navigationBar
+        guard let customFont = UIFont(name: "Tajawal-Bold", size: 30) else {
+            fatalError("""
+                Failed to load the "Tajawal" font.
+                Make sure the font file is included in the project and the font name is spelled correctly.
+                """
+            )
+        }
+        nav?.tintColor = UIColor.init(named: "mainDark")
+        nav?.barTintColor = UIColor.init(named: "mainDark")
+        nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(named: "mainDark")!, NSAttributedString.Key.font: customFont]
+    }
     
     func getOrganShortageByMap(userID:String){
         

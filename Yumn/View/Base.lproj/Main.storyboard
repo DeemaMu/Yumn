@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1CO-Fa-MFY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MaB-3z-c2z">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -906,7 +906,7 @@
         <!--HospitalProfileViewController-->
         <scene sceneID="d4j-sU-Jig">
             <objects>
-                <viewController id="cJC-8l-dUH" userLabel="HospitalProfileViewController" customClass="HospitalProfileViewController" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="cJC-8l-dUH" userLabel="HospitalProfileViewController" customClass="HospitalProfileViewController" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pk2-il-yzz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1025,15 +1025,6 @@
                                     <constraint firstItem="eMW-rq-9Ix" firstAttribute="top" secondItem="vIU-cr-odn" secondAttribute="top" id="u5s-CW-Kam"/>
                                 </constraints>
                             </scrollView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ملف المستشفى" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNO-dC-6yB">
-                                <rect key="frame" x="112" y="57" width="172" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="25"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zr9-TC-H9e"/>
                         <color key="backgroundColor" red="0.21960784310000001" green="0.3803921569" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -1041,11 +1032,11 @@
                             <constraint firstAttribute="bottom" secondItem="vIU-cr-odn" secondAttribute="bottom" id="4Iy-Dw-BDz"/>
                             <constraint firstItem="vIU-cr-odn" firstAttribute="trailing" secondItem="zr9-TC-H9e" secondAttribute="trailing" id="7Uh-hZ-OjU"/>
                             <constraint firstItem="vIU-cr-odn" firstAttribute="leading" secondItem="zr9-TC-H9e" secondAttribute="leading" id="I9B-EZ-2dN"/>
-                            <constraint firstItem="vIU-cr-odn" firstAttribute="top" secondItem="zr9-TC-H9e" secondAttribute="top" constant="60" id="be7-WM-b0c"/>
+                            <constraint firstItem="vIU-cr-odn" firstAttribute="top" secondItem="zr9-TC-H9e" secondAttribute="top" constant="16" id="be7-WM-b0c"/>
                             <constraint firstItem="eMW-rq-9Ix" firstAttribute="width" secondItem="Pk2-il-yzz" secondAttribute="width" id="mVZ-T0-YLA"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="RW0-FG-tIq"/>
+                    <navigationItem key="navigationItem" title="ملف المستشفى" id="RW0-FG-tIq"/>
                     <connections>
                         <outlet property="backView" destination="eMW-rq-9Ix" id="eHv-hg-vmE"/>
                         <outlet property="hospitalTextField" destination="uDU-s3-tCF" id="8Ov-yD-pJH"/>
@@ -1057,7 +1048,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vgx-g0-ZjQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1641" y="2565"/>
+            <point key="canvasLocation" x="1640.5797101449277" y="2564.7321428571427"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="Ltd-a2-bq5">
@@ -1068,15 +1059,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="bUr-Dn-K3x">
-                                <rect key="frame" x="60" y="338" width="294" height="378"/>
+                                <rect key="frame" x="60" y="338" width="192.5" height="378"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QGh-Ph-ygQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="294" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="192.5" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="البريد الالكتروني" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RVZ-sN-39i">
-                                        <rect key="frame" x="0.0" y="61" width="294" height="40"/>
+                                        <rect key="frame" x="0.0" y="61" width="192.5" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="OAK-I6-rCI"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="nNl-0v-7V0"/>
@@ -1086,13 +1077,13 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="      " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOA-JH-hAW">
-                                        <rect key="frame" x="0.0" y="128" width="294" height="11"/>
+                                        <rect key="frame" x="0.0" y="128" width="192.5" height="11"/>
                                         <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="11"/>
                                         <color key="textColor" systemColor="systemRedColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="الرفم السري" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cf6-qC-69o">
-                                        <rect key="frame" x="0.0" y="166" width="294" height="40"/>
+                                        <rect key="frame" x="0.0" y="166" width="192.5" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="0bY-XD-bbj"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="Xmy-dd-WSh"/>
@@ -1102,7 +1093,7 @@
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="      " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yqk-hm-8cc">
-                                        <rect key="frame" x="0.0" y="233" width="294" height="11"/>
+                                        <rect key="frame" x="0.0" y="233" width="192.5" height="11"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="163" id="q1j-UX-cgf"/>
                                         </constraints>
@@ -1111,7 +1102,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xcn-nb-pFg">
-                                        <rect key="frame" x="0.0" y="271" width="294" height="40"/>
+                                        <rect key="frame" x="0.0" y="271" width="192.5" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="RaY-ej-ixo"/>
                                             <constraint firstAttribute="width" constant="120" id="hDV-gW-JCH"/>
@@ -1125,10 +1116,10 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="fAo-VE-PYa">
-                                        <rect key="frame" x="0.0" y="338" width="294" height="40"/>
+                                        <rect key="frame" x="0.0" y="338" width="192.5" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yDO-MX-4p3">
-                                                <rect key="frame" x="0.0" y="0.0" width="175.5" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="74" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="7Mn-os-Jrx"/>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="py3-sB-VXU"/>
@@ -1149,7 +1140,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ليس لديك حساب؟" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EW0-oC-hFD">
-                                                <rect key="frame" x="178.5" y="0.0" width="115.5" height="40"/>
+                                                <rect key="frame" x="77" y="0.0" width="115.5" height="40"/>
                                                 <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="15"/>
                                                 <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
@@ -1204,7 +1195,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vql-oT-9a8">
-                                <rect key="frame" x="364" y="300" width="0.0" height="0.0"/>
+                                <rect key="frame" x="262.5" y="300" width="0.0" height="0.0"/>
                                 <subviews>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fuq-rU-Lgc">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="180"/>
@@ -1365,7 +1356,7 @@
             </objects>
             <point key="canvasLocation" x="1102.8985507246377" y="-404.46428571428572"/>
         </scene>
-        <!--Hospital Home Main View Controller-->
+        <!--الاحتياج-->
         <scene sceneID="dez-We-2KK">
             <objects>
                 <viewController id="dA3-Ya-KWu" customClass="HospitalHomeMainViewController" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
@@ -1374,7 +1365,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bbj-03-AFT">
-                                <rect key="frame" x="0.0" y="111" width="414" height="702"/>
+                                <rect key="frame" x="0.0" y="108" width="414" height="705"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="vKn-c0-rAl">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="995"/>
@@ -1695,37 +1686,26 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="O1b-TE-WLa"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="BFT-Rv-JL9"/>
                             </scrollView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الاحتياج" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FF6-7V-X8C">
-                                <rect key="frame" x="156.5" y="51" width="101" height="38.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
-                                <color key="textColor" red="0.21960784310000001" green="0.3803921569" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Qr-fl-hFC">
-                                <rect key="frame" x="341.5" y="49" width="35" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="35" id="Yro-ac-zEz"/>
-                                    <constraint firstAttribute="height" constant="35" id="uow-KE-pTO"/>
-                                </constraints>
-                                <state key="normal" image="pofileHospital"/>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kVu-AC-25D"/>
                         <color key="backgroundColor" red="0.92549019610000005" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="4Qr-fl-hFC" firstAttribute="leading" secondItem="FF6-7V-X8C" secondAttribute="trailing" constant="84" id="7e8-a7-g6i"/>
                             <constraint firstItem="Bbj-03-AFT" firstAttribute="bottom" secondItem="kVu-AC-25D" secondAttribute="bottom" id="IYL-L8-TWq"/>
                             <constraint firstItem="Bbj-03-AFT" firstAttribute="leading" secondItem="kVu-AC-25D" secondAttribute="leading" id="NdJ-A5-PqZ"/>
                             <constraint firstItem="Bbj-03-AFT" firstAttribute="trailing" secondItem="kVu-AC-25D" secondAttribute="trailing" id="OcJ-hj-Mv1"/>
-                            <constraint firstItem="FF6-7V-X8C" firstAttribute="centerX" secondItem="55J-SS-rx3" secondAttribute="centerX" id="Pjm-Bo-2J4"/>
-                            <constraint firstItem="4Qr-fl-hFC" firstAttribute="top" secondItem="kVu-AC-25D" secondAttribute="top" constant="5" id="Ry1-ZQ-rN8"/>
-                            <constraint firstItem="FF6-7V-X8C" firstAttribute="top" secondItem="kVu-AC-25D" secondAttribute="top" constant="7" id="Wfi-i3-1uG"/>
-                            <constraint firstItem="Bbj-03-AFT" firstAttribute="top" secondItem="kVu-AC-25D" secondAttribute="top" constant="67" id="t5x-rL-KLj"/>
+                            <constraint firstItem="Bbj-03-AFT" firstAttribute="top" secondItem="kVu-AC-25D" secondAttribute="top" constant="20" id="t5x-rL-KLj"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="shortagePic" id="kzo-jY-e0w">
                         <inset key="imageInsets" minX="0.0" minY="12" maxX="0.0" maxY="-12"/>
                     </tabBarItem>
+                    <navigationItem key="navigationItem" title="الاحتياج" id="KT4-Kg-THh">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="Profile" id="G6m-Hy-nzR">
+                            <connections>
+                                <segue destination="cJC-8l-dUH" kind="show" id="zks-SQ-gth"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="aNegative" destination="C4C-YH-nC7" id="Axr-Vu-TWk"/>
                         <outlet property="aPositive" destination="zyT-iH-TgK" id="jmj-3X-Mmq"/>
@@ -1755,12 +1735,11 @@
                         <outlet property="organUpdateBtn" destination="XJr-wS-SaG" id="CE3-fy-6oD"/>
                         <outlet property="pancreas" destination="8PQ-Lf-qqu" id="q0k-5p-Wiv"/>
                         <outlet property="pancreasLb" destination="goa-Gg-knU" id="1Nn-ph-pBU"/>
-                        <outlet property="shortageNeed" destination="FF6-7V-X8C" id="84T-wo-Uv9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ovp-gx-9rp" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7" y="3530"/>
+            <point key="canvasLocation" x="1017" y="3530"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="sOh-MI-QhH">
@@ -1784,6 +1763,7 @@
         <scene sceneID="jXN-LG-3FA">
             <objects>
                 <tabBarController restorationIdentifier="hospitalHome" storyboardIdentifier="navToHospitalHome" id="MaB-3z-c2z" customClass="customTabBarVC" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="HqU-62-ZxT"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="00V-mc-4r4" customClass="TabBarVC" customModule="Yumn" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1800,9 +1780,9 @@
                         </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
-                        <segue destination="dA3-Ya-KWu" kind="relationship" relationship="viewControllers" id="IR9-OU-Ut8"/>
-                        <segue destination="B9b-Az-KE4" kind="relationship" relationship="viewControllers" id="EgF-Cf-APu"/>
-                        <segue destination="dqu-Hh-Wh5" kind="relationship" relationship="viewControllers" id="HKQ-Rn-vJQ"/>
+                        <segue destination="P6l-mI-xBq" kind="relationship" relationship="viewControllers" id="INB-if-cWW"/>
+                        <segue destination="B9b-Az-KE4" kind="relationship" relationship="viewControllers" id="sGW-q3-Vx2"/>
+                        <segue destination="dqu-Hh-Wh5" kind="relationship" relationship="viewControllers" id="SQK-27-doi"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gQN-cG-aSy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1933,18 +1913,35 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gjp-En-nMf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1196" y="3530"/>
+            <point key="canvasLocation" x="2207" y="3530"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dJW-oI-7mi">
+            <objects>
+                <navigationController id="P6l-mI-xBq" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="shortagePic" id="Y3Z-Gz-oNF"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iK4-vU-uIa">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="dA3-Ya-KWu" kind="relationship" relationship="rootViewController" id="dKg-k1-Lv3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uTo-UQ-462" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-148" y="3638"/>
         </scene>
         <!--Update Organ ShortageVC-->
         <scene sceneID="G8s-OV-TO0">
             <objects>
                 <viewController id="d5C-2a-6Q1" customClass="updateOrganShortageVC" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f0I-zY-cQh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hJS-2F-bLk">
-                                <rect key="frame" x="37" y="142" width="340" height="460"/>
+                                <rect key="frame" x="37" y="230" width="340" height="460"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الاحتياج للأعضاء" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="INi-tb-BEZ">
                                         <rect key="frame" x="93.5" y="25" width="158.5" height="29"/>
@@ -2036,7 +2033,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BYa-0o-LIp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1196" y="4258"/>
+            <point key="canvasLocation" x="2207" y="4258"/>
         </scene>
         <!--VSignUpViewController-->
         <scene sceneID="xk1-Qu-ZBQ">
@@ -2665,7 +2662,6 @@
         <image name="logo2" width="362" height="262"/>
         <image name="packages-grey" width="30" height="30"/>
         <image name="people" width="42" height="27"/>
-        <image name="pofileHospital" width="40" height="39"/>
         <image name="shortagePic" width="55" height="55"/>
         <namedColor name="mainDark">
             <color red="0.2199999988079071" green="0.37999999523162842" blue="0.36500000953674316" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
