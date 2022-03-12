@@ -49,7 +49,6 @@ struct Constants {
     struct FStore {
         static let hospitalCollection = "hospitalsInformation"
         static let usersCollection = "users"
-        static let volunteerCollection = "volunteer"
         
         static let cityField = "city"
         static let bShField = "bloodShortage"

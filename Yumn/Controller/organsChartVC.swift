@@ -119,10 +119,10 @@ class organsChartVC: UIViewController, ChartViewDelegate {
     func setUpChart(){
         
         pieChart.frame = CGRect(x: 0, y: 0,
-                                width: self.organPieWholeContainer.frame.size.width,
-                                height: self.organPieWholeContainer.frame.size.width)
-       // pieChart.center = organPieWholeContainer.center
-        viewOrganPie.addSubview(pieChart)
+                                width: self.viewOrganPie.frame.size.width,
+                                height: self.viewOrganPie.frame.size.width)
+        pieChart.center = organPieWholeContainer.center
+        view.addSubview(pieChart)
         
     }
     
