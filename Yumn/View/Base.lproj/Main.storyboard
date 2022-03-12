@@ -628,15 +628,14 @@
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oVs-HM-hAp">
                                                 <rect key="frame" x="57" y="1125" width="301" height="52"/>
-                                                <color key="tintColor" red="0.52549019610000003" green="0.79215686269999996" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="حفظ" cornerStyle="capsule">
-                                                    <backgroundConfiguration key="background">
-                                                        <color key="backgroundColor" red="0.21960784310000001" green="0.3803921569" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    </backgroundConfiguration>
-                                                    <fontDescription key="titleFontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="19"/>
+                                                    <backgroundConfiguration key="background"/>
+                                                    <fontDescription key="titleFontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="25"/>
                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="baseBackgroundColor" name="mainDark"/>
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="Update:" destination="jGt-ZN-hwX" eventType="touchUpInside" id="hIb-cb-h28"/>
@@ -902,7 +901,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5hv-Mh-Laj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1788" y="-99"/>
+            <point key="canvasLocation" x="-843" y="-198"/>
         </scene>
         <!--HospitalProfileViewController-->
         <scene sceneID="d4j-sU-Jig">
@@ -942,7 +941,7 @@
                                                     <action selector="hospitalNameChanged:" destination="cJC-8l-dUH" eventType="editingChanged" id="6CK-fw-0w9"/>
                                                 </connections>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="رقم الجوال" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbg-rg-ueW">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="رقم الهاتف" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbg-rg-ueW">
                                                 <rect key="frame" x="57" y="275" width="301" height="18"/>
                                                 <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="18"/>
                                                 <color key="textColor" red="0.21960784310000001" green="0.3803921569" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -954,7 +953,7 @@
                                                 <color key="textColor" red="0.64609696049999998" green="0.1048829421" blue="0.032010463310000001" alpha="0.62572787220000003" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ادخل رقم الجوال" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Um-5Z-ioK">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ادخل رقم الهاتف" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Um-5Z-ioK">
                                                 <rect key="frame" x="57" y="298" width="301" height="34"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="18"/>
@@ -1522,7 +1521,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jrb-6k-mzp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-778.26086956521749" y="1323.8839285714284"/>
+            <point key="canvasLocation" x="-2765" y="2093"/>
         </scene>
         <!--Continue View Controller-->
         <scene sceneID="PkC-5c-aqj">
@@ -3073,7 +3072,7 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="18"/>
-                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jzm-b7-0y7">
                                                 <rect key="frame" x="57" y="531" width="301" height="112"/>
@@ -3432,7 +3431,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hTz-dt-p8o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1894.2028985507247" y="1239.5089285714284"/>
+            <point key="canvasLocation" x="-207" y="952"/>
         </scene>
     </scenes>
     <resources>
@@ -3464,6 +3463,9 @@
         <image name="pofileHospital" width="40" height="39"/>
         <image name="shortagePic" width="55" height="55"/>
         <image name="weight" width="512" height="512"/>
+        <namedColor name="mainDark">
+            <color red="0.2199999988079071" green="0.37999999523162842" blue="0.36500000953674316" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="mainLight">
             <color red="0.52499997615814209" green="0.79199999570846558" blue="0.76499998569488525" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

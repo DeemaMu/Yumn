@@ -253,6 +253,10 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
     
     func saveButton(enabeld : Bool){
         saveButton.isEnabled = enabeld
+        if(!enabeld){
+            saveButton.layer.cornerRadius = 29
+            saveButton.layer.backgroundColor = UIColor.lightGray.cgColor
+        }
     }
     func hideErrorMSGs(){
         firstNameMSG.isHidden = true
@@ -276,7 +280,16 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
         style.normalStyle(TextField: textField)
     }
     
+    func activeStyle(textfield : UITextField){
+        style.activeModeStyle(TextField: textfield)
+    }
     
+    func turnTextFieldTextfieldToRed(textfield: UITextField){
+        style.turnTextFieldToRed(textfield: textfield)
+    }
+    func turnTextFieldTextfieldToNormal(textfield: UITextField){
+        style.normalStyle(TextField: textfield)
+    }
     // Get Profile info
     func profileInfo(){
         
@@ -368,7 +381,7 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
             let docRef = database.collection("volunteer").document(uid!)
         
             // save data
-            docRef.setData(["firstName": nameTextField.text!,
+            docRef.updateData(["firstName": nameTextField.text!,
                             "lastName": familyTextField.text!,
                             "nationalID": nationalIDTextField.text!,
                             "email": emailTextField.text!,
@@ -384,12 +397,18 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
 
                 if error != nil {
                     print(error?.localizedDescription as Any)
-
                     // Show error message or pop up message
                     print ("error in saving the volunteer data")
 
-
                 }
+            }
+            if (emailTextField.text != user?.email){
+                user?.updateEmail(to: emailTextField.text!) { error in
+                    if let error = error {
+                        print(error)
+                    }
+                }
+                
             }
         } else {
           // No user is signed in.
@@ -434,10 +453,13 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
             {
                 firstNameMSG.text = errorMessage
                 firstNameMSG.isHidden = false
+                turnTextFieldTextfieldToRed(textfield: nameTextField)
             }
             else
             {
                 firstNameMSG.isHidden = true
+                activeStyle(textfield: nameTextField)
+                
             }
         }
         
@@ -451,10 +473,12 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
             {
                 lastNameMSG.text = errorMessage
                 lastNameMSG.isHidden = false
+                turnTextFieldTextfieldToRed(textfield: familyTextField)
             }
             else
             {
                 lastNameMSG.isHidden = true
+                activeStyle(textfield: familyTextField)
             }
         }
         
@@ -468,10 +492,12 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
             {
                 nationalIDMSG.text = errorMessage
                 nationalIDMSG.isHidden = false
+                turnTextFieldTextfieldToRed(textfield: nationalIDTextField)
             }
             else
             {
                 nationalIDMSG.isHidden = true
+                activeStyle(textfield: nationalIDTextField)
             }
         }
         checkForValidForm()
@@ -484,16 +510,33 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
             {
                 emailMSG.text = errorMessage
                 emailMSG.isHidden = false
+                turnTextFieldTextfieldToRed(textfield: emailTextField)
             }
             else
             {
+                isEmailTaken()
                 emailMSG.isHidden = true
+                activeStyle(textfield: emailTextField)
             }
         }
         
         checkForValidForm()
     }
     
+    @objc func isEmailTaken(){
+        
+        Auth.auth().fetchSignInMethods(forEmail: self.emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines), completion: {
+            (providers, error) in
+            
+            if let error = error {
+                self.emailMSG.isHidden = true
+            } else if let providers = providers {
+                self.emailMSG.isHidden = false
+                self.emailMSG.text = "البريد الالكتروني مستخدم"
+                self.turnTextFieldTextfieldToRed(textfield: self.emailTextField)
+            }
+        } )
+    }
     
     @IBAction func phoneChanged(_ sender: Any) {
         if let phoneNumber = phoneTextField.text
@@ -502,10 +545,12 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
             {
                 phoneMSG.text = errorMessage
                 phoneMSG.isHidden = false
+                turnTextFieldTextfieldToRed(textfield: phoneTextField)
             }
             else
             {
                 phoneMSG.isHidden = true
+                activeStyle(textfield: phoneTextField)
             }
         }
         checkForValidForm()
