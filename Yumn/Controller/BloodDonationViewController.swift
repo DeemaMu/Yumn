@@ -11,8 +11,9 @@ import SwiftUI
 import MapKit
 import CoreLocation
 import Firebase
+import Charts
 
-class BloodDonationViewController: UIViewController, CustomSegmentedControlDelegate {
+class BloodDonationViewController: UIViewController, CustomSegmentedControlDelegate, ChartViewDelegate {
     
     var location:CLLocation?
     var userLocation:CLLocationCoordinate2D?
@@ -26,11 +27,33 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
     
     let db = Firestore.firestore()
     
+    
+    
+    // By Modhi
+    var pieChart = PieChartView()
+    let user = Auth.auth().currentUser
+    @IBOutlet weak var viewPie: UIView!
+    @IBOutlet weak var viewPieWhole: UIView!
+    @IBOutlet weak var cityOfUser: UILabel!
+    @IBOutlet weak var blurredView: UIView!
+    @IBOutlet weak var loadingGif: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableMain.isHidden = true
-        
+        // By Modhi
+        pieChart.delegate = self
+        viewPieWhole.isHidden = false
+        viewPie.isHidden = false
+        pieChart.isHidden = false
+        // for loading gif
+        loadingGif.superview?.bringSubviewToFront(loadingGif)
+        loadingGif.loadGif(name: "yumnLoading")
+        // Blur the background
+        blurredView.isHidden = false
+        // Show Loading indicator
+        loadingGif.isHidden = false
         //        print("\(String(describing: userLocation))")
         //        let control = BetterSegmentedControl(frame: CGRect(x: 0, y: 0,width: seg2.frame.width,        height: 50.0))
         //        let control = BetterSegmentedControl.init(frame: CGRect(x: 0, y: 0, width:                    seg2.frame.width, height: 50), segments: , index: , options: )
@@ -70,6 +93,55 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
     override func viewWillDisappear(_ animated: Bool) {
     }
     
+    // By Modhi
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+
+        guard let customFont2 = UIFont(name: "Tajawal-Regular", size: UIFont.labelFontSize) else {
+            fatalError("""
+                Failed to load the "CustomFont-Light" font.
+                Make sure the font file is included in the project and the font name is spelled correctly.
+                """
+            )
+        }
+        
+        
+        
+        // updated
+        cityOfUser.font = UIFontMetrics.default.scaledFont(for: customFont2)
+        cityOfUser.adjustsFontForContentSizeCategory = true
+        cityOfUser.font = cityOfUser.font.withSize(24)
+        
+       
+        // for rounded top corners (view)
+        if #available(iOS 11.0, *) {
+                self.viewPie.clipsToBounds = true
+            viewPie.layer.cornerRadius = 35
+            viewPie.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+            } else {
+                // Fallback on earlier versions
+            }
+        
+        
+        //loadingIndicator(loadingTag: 1)
+        
+        setUpChart() // in extension
+        
+        getTotalBloodShortage(completion: { totalBloodDict in
+            if let TBS = totalBloodDict {
+                //use the return value
+                self.populateChart(TBS: TBS)
+             } else {
+                 //handle nil response
+                 print("couldn't build pie chart")
+             }
+               
+            })
+        
+    }
+    
     
     func change(to index: Int) {
         print("segmentedControl index changed to \(index)")
@@ -78,6 +150,18 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
         }
         if(index != 0){
             tableMain.isHidden = true
+        }
+        
+        // By Modhi
+        if(index==2){
+            viewPieWhole.isHidden = false
+            viewPie.isHidden = false
+            pieChart.isHidden = false
+        }
+        if(index != 2){
+            viewPieWhole.isHidden = true
+            viewPie.isHidden = true
+            pieChart.isHidden = true
         }
     }
     
