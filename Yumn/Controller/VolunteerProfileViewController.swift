@@ -87,7 +87,7 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
         super.viewWillAppear(animated)
         
         var nav = self.navigationController?.navigationBar
-        guard let customFont = UIFont(name: "Tajawal-Bold", size: 30) else {
+        guard let customFont = UIFont(name: "Tajawal-Bold", size: 25) else {
             fatalError("""
                 Failed to load the "Tajawal" font.
                 Make sure the font file is included in the project and the font name is spelled correctly.
@@ -105,7 +105,7 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         unsubscribeFromKeyboardNotifications()
         var nav = self.navigationController?.navigationBar
-        guard let customFont = UIFont(name: "Tajawal-Bold", size: 30) else {
+        guard let customFont = UIFont(name: "Tajawal-Bold", size: 25) else {
             fatalError("""
                 Failed to load the "Tajawal" font.
                 Make sure the font file is included in the project and the font name is spelled correctly.

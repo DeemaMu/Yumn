@@ -13,6 +13,7 @@ class HospitalHomeViewController: UIViewController {
     
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         
         let seconds = 1.0
         DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
@@ -21,13 +22,8 @@ class HospitalHomeViewController: UIViewController {
                     self.showToast(message: mssg, font: .systemFont(ofSize: 20), image: (UIImage(named: "yumn") ?? UIImage(named: "")! ))
         }
                 
-  
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.layoutIfNeeded()
-        super.viewDidLoad()
+        self.navigationController?.hideHairline()
 
-        // Do any additional setup after loading the view.
     }
     
 
@@ -57,6 +53,10 @@ class HospitalHomeViewController: UIViewController {
         nav?.barTintColor = UIColor.init(named: "mainDark")
         nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: customFont]
         navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.layoutIfNeeded()
 
     }
     
@@ -72,6 +72,9 @@ class HospitalHomeViewController: UIViewController {
         nav?.tintColor = UIColor.init(named: "mainDark")
         nav?.barTintColor = UIColor.init(named: "mainDark")
         nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(named: "mainDark")!, NSAttributedString.Key.font: customFont]
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.layoutIfNeeded()
     }
     
     @IBAction func signOutOnPressed(_ sender: Any) {
@@ -109,3 +112,28 @@ class HospitalHomeViewController: UIViewController {
     
 
 }
+
+extension UINavigationController {
+    func hideHairline() {
+        if let hairline = findHairlineImageViewUnder(navigationBar) {
+            hairline.isHidden = true
+        }
+    }
+    func restoreHairline() {
+        if let hairline = findHairlineImageViewUnder(navigationBar) {
+            hairline.isHidden = false
+        }
+    }
+    func findHairlineImageViewUnder(_ view: UIView) -> UIImageView? {
+        if view is UIImageView && view.bounds.size.height <= 1.0 {
+            return view as? UIImageView
+        }
+        for subview in view.subviews {
+            if let imageView = self.findHairlineImageViewUnder(subview) {
+                return imageView
+            }
+        }
+        return nil
+    }
+}
+

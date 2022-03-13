@@ -17,12 +17,16 @@ class TabBarVC: UITabBar {
 
         override func draw(_ rect: CGRect) {
             self.addShape()
+//            self.layer.shadowOffset = CGSize(width: 0, height: 10)
+//            self.layer.shadowRadius = 10
+//            self.layer.shadowColor = #colorLiteral(red: 0.504814744, green: 0.5049032569, blue: 0.5048031211, alpha: 1)
+//            self.layer.shadowOpacity = 0.8
         }
 
         private func addShape() {
             let shapeLayer = CAShapeLayer()
             shapeLayer.path = createPath()
-            shapeLayer.strokeColor = UIColor.lightGray.cgColor
+            shapeLayer.strokeColor = #colorLiteral(red: 0.8700879812, green: 0.8649161458, blue: 0.8740638494, alpha: 1)
             shapeLayer.fillColor = #colorLiteral(red: 0.9782002568, green: 0.9782230258, blue: 0.9782107472, alpha: 1)
             shapeLayer.lineWidth = 0.5
             shapeLayer.shadowOffset = CGSize(width:0, height:0)
