@@ -1153,16 +1153,16 @@
                                     <constraint firstAttribute="trailing" secondItem="yqk-hm-8cc" secondAttribute="trailing" constant="8" id="Rc6-b2-kik"/>
                                     <constraint firstItem="Cf6-qC-69o" firstAttribute="top" secondItem="TOA-JH-hAW" secondAttribute="bottom" constant="90" id="Str-2n-Gvl"/>
                                     <constraint firstItem="TOA-JH-hAW" firstAttribute="top" secondItem="RVZ-sN-39i" secondAttribute="bottom" constant="5" id="at9-8K-hTa"/>
-                                    <constraint firstAttribute="trailing" secondItem="xcn-nb-pFg" secondAttribute="trailing" constant="60" id="c2g-ox-5FK"/>
+                                    <constraint firstAttribute="trailing" secondItem="xcn-nb-pFg" secondAttribute="trailing" constant="50" id="c2g-ox-5FK"/>
                                     <constraint firstItem="yqk-hm-8cc" firstAttribute="top" secondItem="Cf6-qC-69o" secondAttribute="bottom" constant="5" id="ivQ-qX-p52"/>
                                     <constraint firstItem="fAo-VE-PYa" firstAttribute="leading" secondItem="bUr-Dn-K3x" secondAttribute="leading" constant="35" id="jI7-fu-fxC"/>
                                     <constraint firstAttribute="trailing" secondItem="TOA-JH-hAW" secondAttribute="trailing" constant="8" id="kS5-ON-tsE"/>
                                     <constraint firstAttribute="trailing" secondItem="fAo-VE-PYa" secondAttribute="trailing" constant="35" id="oMD-N7-Nfo"/>
-                                    <constraint firstItem="xcn-nb-pFg" firstAttribute="leading" secondItem="bUr-Dn-K3x" secondAttribute="leading" constant="45" id="yoS-19-Jll"/>
+                                    <constraint firstItem="xcn-nb-pFg" firstAttribute="leading" secondItem="bUr-Dn-K3x" secondAttribute="leading" constant="50" id="yoS-19-Jll"/>
                                 </constraints>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo2" translatesAutoresizingMaskIntoConstraints="NO" id="nYZ-4J-WiR">
-                                <rect key="frame" x="35" y="93" width="329" height="215"/>
+                                <rect key="frame" x="40" y="93" width="329" height="215"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="البريد الالكتروني:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OyW-uK-kGt">
@@ -1252,8 +1252,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NJQ-l9-eY5">
-                                <rect key="frame" x="207" y="448" width="0.0" height="0.0"/>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NJQ-l9-eY5">
+                                <rect key="frame" x="40" y="330" width="320" height="220"/>
                                 <subviews>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VSc-sb-D7Y">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="180"/>
@@ -1298,6 +1298,11 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="VSc-sb-D7Y" firstAttribute="centerX" secondItem="NJQ-l9-eY5" secondAttribute="centerX" constant="-20" id="Ank-XN-Q9W"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="RjG-HH-bZP"/>
+                                    <constraint firstAttribute="height" constant="220" id="kul-yq-fUM"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Tt8-pn-opD"/>
@@ -1305,9 +1310,11 @@
                         <constraints>
                             <constraint firstItem="bUr-Dn-K3x" firstAttribute="leading" secondItem="Tt8-pn-opD" secondAttribute="leading" constant="60" id="3Sw-8p-iS9"/>
                             <constraint firstItem="vql-oT-9a8" firstAttribute="top" secondItem="VhY-WV-5Eg" secondAttribute="top" constant="300" id="5f0-mT-e9q"/>
+                            <constraint firstItem="NJQ-l9-eY5" firstAttribute="leading" secondItem="Tt8-pn-opD" secondAttribute="leading" constant="40" id="Aax-2R-n7u"/>
                             <constraint firstItem="bUr-Dn-K3x" firstAttribute="top" secondItem="Tt8-pn-opD" secondAttribute="top" constant="250" id="I9u-2t-Kd7"/>
                             <constraint firstAttribute="trailing" secondItem="vql-oT-9a8" secondAttribute="trailing" constant="50" id="K8K-FR-t3e"/>
                             <constraint firstItem="Tt8-pn-opD" firstAttribute="trailing" secondItem="bUr-Dn-K3x" secondAttribute="trailing" constant="60" id="PJF-Do-PvH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NJQ-l9-eY5" secondAttribute="trailing" constant="51" id="bwf-hP-34z"/>
                             <constraint firstItem="Tt8-pn-opD" firstAttribute="trailing" secondItem="bUr-Dn-K3x" secondAttribute="trailing" constant="60" id="lTz-nV-dtL"/>
                             <constraint firstItem="bUr-Dn-K3x" firstAttribute="leading" secondItem="Tt8-pn-opD" secondAttribute="leading" constant="60" id="szC-TW-z6u"/>
                         </constraints>

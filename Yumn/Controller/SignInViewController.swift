@@ -66,7 +66,6 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
 
-        self.view.semanticContentAttribute = .forceRightToLeft
         setUpElements()
 
         // Do any additional setup after loading the view.
