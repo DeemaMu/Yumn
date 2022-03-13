@@ -231,12 +231,12 @@ class HospitalProfileViewController: UIViewController, UITextFieldDelegate {
         let set = CharacterSet(charactersIn: value)
         if !CharacterSet.decimalDigits.isSuperset(of: set)
         {
-            return "الرجاء ادخال رقم جوال صحيح"
+            return "الرجاء ادخال رقم هاتف صحيح"
         }
         
-        if value.count != 10
+        if value.count != 7
         {
-            return "الرجاء ادخال رقم جوال صحيح"
+            return "الرجاء ادخال رقم هاتف صحيح"
         }
         return nil
     }
