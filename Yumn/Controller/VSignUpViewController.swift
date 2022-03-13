@@ -112,6 +112,19 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
         
         genderButtons(button: femaleButton)
         genderButtons(button: maleButton)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.layoutIfNeeded()
+        
+        guard let customFont = UIFont(name: "Tajawal", size: 19) else {
+            fatalError("""
+                Failed to load the "Tajawal" font.
+                Make sure the font file is included in the project and the font name is spelled correctly.
+                """
+            )
+        }
+        
+        signUpButton.setAttributedTitle(NSAttributedString(string: "إنشاء حساب", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: customFont]), for: .normal)
     }
     
     

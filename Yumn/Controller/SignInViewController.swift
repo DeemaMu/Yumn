@@ -12,6 +12,8 @@ class SignInViewController: UIViewController {
     
    // @IBOutlet weak var pView: UIView!
     
+    @IBOutlet var mainView: UIView!
+    
     @IBOutlet weak var popUpStack: UIStackView!
     
     @IBOutlet weak var blackBlurredView: UIView!
@@ -64,7 +66,7 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
 
-        
+        self.view.semanticContentAttribute = .forceRightToLeft
         setUpElements()
 
         // Do any additional setup after loading the view.

@@ -22,7 +22,9 @@ class HospitalHomeViewController: UIViewController {
         }
                 
   
-
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.layoutIfNeeded()
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
