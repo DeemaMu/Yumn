@@ -64,6 +64,7 @@ class VolunteerProfileViewController: UIViewController, UITextFieldDelegate {
         // Hide keyboard
         self.hideKeyboardWhenTappedAround()
         viewWillAppear(true)
+        
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.layoutIfNeeded()
