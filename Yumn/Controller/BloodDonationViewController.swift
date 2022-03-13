@@ -57,6 +57,7 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.layoutIfNeeded()
+        self.tabBarController?.tabBar.backgroundColor = UIColor.white
         
     }
     
