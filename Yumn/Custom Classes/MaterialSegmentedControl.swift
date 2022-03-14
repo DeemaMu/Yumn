@@ -134,8 +134,8 @@ open class MaterialSegmentedControlR: UIControl {
                             textColor: UIColor?, font: UIFont? = nil, rippleColor: UIColor,
                             cornerRadius: CGFloat = 12.0) {
 //        let button = MaterialButton(icon: icon, text: text, textColor: textColor, bgColor: rippleColor, cornerRadius: cornerRadius)
-        let button = MaterialButton(icon: icon, text: text, font: font, textColor: textColor, bgColor: rippleColor, cornerRadius: cornerRadius, withShadow: false)
-        button.rippleLayerAlpha = 0.15
+        let button = MaterialButton(icon: icon, text: text, font: font, textColor: textColor, bgColor:  #colorLiteral(red: 0.5695531964, green: 0.7023338675, blue: 0.657315135, alpha: 0.63), cornerRadius: cornerRadius, withShadow: false)
+        button.rippleLayerAlpha = 0.03
         self.segments.append(button)
     }
     
@@ -154,7 +154,7 @@ open class MaterialSegmentedControlR: UIControl {
         }
         
         // Create a StackView
-        stackView = UIStackView(arrangedSubviews: segments, axis: .horizontal, distribution: .fillEqually, spacing: 10.0)
+        stackView = UIStackView(arrangedSubviews: segments, axis: .horizontal, distribution: .fillEqually, spacing: 5)
         stackView.alignment = .fill
         
 //        let start:Double = Double((self.superview?.frame.width)!)

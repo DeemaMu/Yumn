@@ -73,7 +73,7 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
     
     func addSegments(){
         
-        let segments = ["مراكز التبرع", "الإحتياج", "إرشادات"]
+        let segments = ["مراكز التبرع","الإرشادات","الإحتياج"]
         
         let sgLine = MaterialSegmentedControlR(selectorStyle: .line, fgColor: .gray, selectedFgColor: UIColor.init(named: "mainLight")!, selectorColor: UIColor.init(named: "mainLight")!, bgColor: .white)
         
@@ -90,7 +90,8 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
         segmentsView.addSubview(sgLine)
         
         for i in 0..<3 {
-            sgLine.appendTextSegment(text: segments[i], textColor: .gray, font: customFont, rippleColor: UIColor.init(named: "mainLight")!, cornerRadius: CGFloat(0))
+            sgLine.appendTextSegment(text: segments[i], textColor: .gray, font: customFont, rippleColor: #colorLiteral(red: 0.4438726306, green: 0.7051679492, blue: 0.6503567696, alpha: 0.5) , cornerRadius: CGFloat(0))
+           
         }
         
         sgLine.frame = CGRect(x: 2, y: 2, width: segmentsView.frame.width - 4 , height: segmentsView.frame.height - 4)
