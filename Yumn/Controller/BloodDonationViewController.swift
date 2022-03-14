@@ -75,7 +75,9 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
         
         let segments = ["مراكز التبرع", "الإحتياج", "إرشادات"]
         
-        let sgLine = MaterialSegmentedControl(selectorStyle: .line, fgColor: .gray, selectedFgColor: UIColor.init(named: "mainLight")!, selectorColor: UIColor.init(named: "mainLight")!, bgColor: .white)
+        let sgLine = MaterialSegmentedControlR(selectorStyle: .line, fgColor: .gray, selectedFgColor: UIColor.init(named: "mainLight")!, selectorColor: UIColor.init(named: "mainLight")!, bgColor: .white)
+        
+//        sgLine.viewWidth =
         
         guard let customFont = UIFont(name: "Tajawal", size: 15) else {
             fatalError("""
@@ -84,6 +86,8 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
                              """
             )
         }
+        
+        segmentsView.addSubview(sgLine)
         
         for i in 0..<3 {
             sgLine.appendTextSegment(text: segments[i], textColor: .gray, font: customFont, rippleColor: UIColor.init(named: "mainLight")!, cornerRadius: CGFloat(0))
