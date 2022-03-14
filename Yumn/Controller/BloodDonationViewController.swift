@@ -96,6 +96,8 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
         
         sgLine.frame = CGRect(x: 2, y: 2, width: segmentsView.frame.width - 4 , height: segmentsView.frame.height - 4)
                 
+        sgLine.addTarget(self, action: #selector(selectedSegment), for: .valueChanged)
+        
         segmentsView.addSubview(sgLine)
         segmentsView.semanticContentAttribute = .forceRightToLeft
     }
@@ -109,6 +111,18 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
             tableMain.isHidden = true
         }
     }
+    
+    @objc func selectedSegment(_ sender: MaterialSegmentedControlR) {
+           switch sender.selectedSegmentIndex {
+           case 0:
+               tableMain.isHidden = false
+           case 1:
+               tableMain.isHidden = true
+           default:
+               tableMain.isHidden = true
+
+           }
+       }
     
 }
 
