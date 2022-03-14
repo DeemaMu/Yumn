@@ -85,29 +85,36 @@ class HospitalProfileViewController: UIViewController, UITextFieldDelegate {
     }
     
     func profileInfo(){
-        // 1. get the Doc
-        let docRef = database.document("users/Mw9h0hFX20vyTKuplNdv")
         
-        // 2. to get live data
-        docRef.addSnapshotListener { [weak self] snapshot, error in
-            guard let data = snapshot?.data(), error == nil else{
-                return
-            }
-            
-            guard let hospitalName = data["hospitalName"] as? String else {
-                return
-            }
-            guard let phone = data["phone"] as? Int else {
-                return
-            }
-            
-            DispatchQueue.main.async {
-                // Assign the values here
-                self?.hospitalTextField.text = hospitalName
-                self?.phoneTextField.text = String(phone)
+            let user = Auth.auth().currentUser
+            let uid = user?.uid
+
+
+            // get the Doc
+            let docRef = database.collection("hospitalsInformation").document(uid!)
+        
+            // 2. to get live data
+            docRef.addSnapshotListener { [weak self] snapshot, error in
+                guard let data = snapshot?.data(), error == nil else{
+                    return
+                }
                 
+                guard let hospitalName = data["name"] as? String else {
+                    return
+                }
+                guard let phone = data["phone"] as? String else {
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    // Assign the values here
+                    self?.hospitalTextField.text = hospitalName
+                    self?.phoneTextField.text = phone
+                    
+                }
             }
-        }
+
+       
     }
     
     func setUP(){
@@ -265,15 +272,34 @@ class HospitalProfileViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func Update(_ sender: Any) {
-        //         get the Doc
-        let docRef = database.document("users/Mw9h0hFX20vyTKuplNdv")
         
-        // save data
-        docRef.updateData(["hospitalName": hospitalTextField.text!,
-                        "phone": Int(phoneTextField.text!)!,
-                        "uid":"Mw9h0hFX20vyTKuplNdv",
-                        "userType":"Hospital"
-                       ])
+        if Auth.auth().currentUser != nil {
+            // User is signed in.
+
+            let user = Auth.auth().currentUser
+            let uid = user?.uid
+
+
+            // get the Doc
+            let docRef = database.collection("hospitalsInformation").document(uid!)
+        
+            // save data
+            docRef.updateData(["name": hospitalTextField.text!,
+                            "phone": Int(phoneTextField.text!)!,
+                           ]){ error in
+
+                if error != nil {
+                    print(error?.localizedDescription as Any)
+                    // Show error message or pop up message
+                    print ("error in saving the volunteer data")
+
+                }
+            }
+        } else {
+          // No user is signed in.
+          print("No user")
+        }
+        
         
         let color = blue
         let white = UIColor.white
