@@ -16,6 +16,11 @@ import MaterialDesignWidgets
 
 class BloodDonationViewController: UIViewController, CustomSegmentedControlDelegate {
     
+    func change(to index: Int) {
+        
+    }
+    
+    
     var location:CLLocation?
     var userLocation:CLLocationCoordinate2D?
     @IBOutlet weak var segmentsView: UIView!
@@ -25,6 +30,8 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
     
     var sortedHospitals:[Location]?
     var hController = HospitalsController()
+    
+    @IBOutlet weak var chartsView: UIView!
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
@@ -102,24 +109,18 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
         segmentsView.semanticContentAttribute = .forceRightToLeft
     }
     
-    func change(to index: Int) {
-        print("segmentedControl index changed to \(index)")
-        if(index==0){
-            tableMain.isHidden = false
-        }
-        if(index != 0){
-            tableMain.isHidden = true
-        }
-    }
     
     @objc func selectedSegment(_ sender: MaterialSegmentedControlR) {
            switch sender.selectedSegmentIndex {
            case 0:
                tableMain.isHidden = false
+               chartsView.isHidden = true
            case 1:
                tableMain.isHidden = true
+               chartsView.isHidden = true
            default:
                tableMain.isHidden = true
+               chartsView.isHidden = false
 
            }
        }
