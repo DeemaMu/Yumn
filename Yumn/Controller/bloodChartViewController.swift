@@ -1,77 +1,16 @@
 //
-//  bloodChartViewController.swift
+//  BloodDonationExtensionChart.swift
 //  Yumn
 //
-//  Created by Modhi Abdulaziz on 12/07/1443 AH.
+//  Created by Modhi Abdulaziz on 05/08/1443 AH.
 //
-
+import Foundation
 import UIKit
 import FirebaseFirestore
 import Charts
 
 
-class bloodChartViewController: UIViewController, ChartViewDelegate {
-    
-    let db = Firestore.firestore()
-    var pieChart = PieChartView()
-    
-    @IBOutlet weak var viewPie: UIView!
-    @IBOutlet weak var viewPieWhole: UIView!
-    @IBOutlet weak var cityOfUser: UILabel!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        pieChart.delegate = self
-        
-        
-    }
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-
-        guard let customFont2 = UIFont(name: "Tajawal-Regular", size: UIFont.labelFontSize) else {
-            fatalError("""
-                Failed to load the "CustomFont-Light" font.
-                Make sure the font file is included in the project and the font name is spelled correctly.
-                """
-            )
-        }
-        
-        
-        
-        // updated
-        cityOfUser.font = UIFontMetrics.default.scaledFont(for: customFont2)
-        cityOfUser.adjustsFontForContentSizeCategory = true
-        cityOfUser.font = cityOfUser.font.withSize(24)
-        
-       
-        // for rounded top corners (view)
-        if #available(iOS 11.0, *) {
-                self.viewPie.clipsToBounds = true
-            viewPie.layer.cornerRadius = 35
-            viewPie.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-            } else {
-                // Fallback on earlier versions
-            }
-        
-        
-        //loadingIndicator(loadingTag: 1)
-        
-        setUpChart()
-        
-        getTotalBloodShortage(completion: { totalBloodDict in
-            if let TBS = totalBloodDict {
-                //use the return value
-                self.populateChart(TBS: TBS)
-             } else {
-                 //handle nil response
-                 print("couldn't build pie chart")
-             }
-               
-            })
-        
-    }
+extension BloodDonationViewController {
     
     
     func getTotalBloodShortage( completion: @escaping ([String:Int]?)->())  {
@@ -88,18 +27,21 @@ class bloodChartViewController: UIViewController, ChartViewDelegate {
         
         ]
         // this will be diff for organs, since in organs we want it from all the cities in SA, unlike the blood it's based on the city of the user
-
         // important
-        // bring the current user city, make it voulnteer collection instead of users
-        /*
-         let currentUserCity : String
-         db.collection(Constants.FStore.usersCollection).document(currentUser.uid)
+        // bring the current user city
+        
+        var currentUserCity : String = ""
+         db.collection(Constants.FStore.volunteerCollection).document(user!.uid)
             .getDocument { (snapshot, error ) in
 
-                 if let document = snapshot.data() {
+                if let document = snapshot!.data() {
 
-         currentUserCity = document![Constants.FStore.cityField] as! String
-                
+                    currentUserCity = document[Constants.FStore.cityField] as! String
+                    getDataBasedOnUserCity(currentUserCity: currentUserCity)
+                    self.cityOfUser.isHidden = false
+                                         self.blurredView.isHidden = true
+                                         // Show Loading indicator
+                                         self.loadingGif.isHidden = true
 
                   } else {
 
@@ -107,12 +49,13 @@ class bloodChartViewController: UIViewController, ChartViewDelegate {
 
                  }
          }
-         */
+            
         
+        func getDataBasedOnUserCity(currentUserCity : String) {
         // updated
-        let currentUserCityArabic = "الرياض"
-        let currentUserCity = "الرياض" // will be changed to current user doc
-        cityOfUser.text = "رسم بياني لاحتياج الدم في مدينة \(currentUserCityArabic)"
+       // let currentUserCityArabic = "الرياض"
+       // let currentUserCity = "الرياض" // will be changed to current user doc
+        cityOfUser.text = "رسم بياني لاحتياج الدم في مدينة \(currentUserCity)"
         
         db.collection(Constants.FStore.hospitalCollection).whereField(Constants.FStore.cityField, isEqualTo: currentUserCity).addSnapshotListener { (QuerySnapshot, error) in
             if let e = error{
@@ -151,6 +94,9 @@ class bloodChartViewController: UIViewController, ChartViewDelegate {
             completion(totalBloodDict)
             }
           
+    }// end of func
+        
+        
     }
     
    /*
@@ -187,11 +133,14 @@ class bloodChartViewController: UIViewController, ChartViewDelegate {
         
         // updated
         pieChart.frame = CGRect(x: 0, y: 0,
-                                width: self.viewPie.frame.size.width,
-                                height: self.viewPie.frame.size.width)
+                                width: self.viewPieWhole.frame.size.width,
+                                height: self.viewPieWhole.frame.size.width)
         
-        pieChart.center = viewPieWhole.center
-        view.addSubview(pieChart)
+       // pieChart.center = viewPieWhole.center
+      //  pieChart.setExtraOffsets(left: 0, top: -30, right:25, bottom: 0)
+        
+// I changed some of the const in the storyboard so that I can control the positioning
+        viewPie.addSubview(pieChart) // view.addSubview(pieChart)
         
     }
     
