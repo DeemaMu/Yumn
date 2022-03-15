@@ -10,7 +10,8 @@ import UIKit
 
 class SignInViewController: UIViewController {
     
-   // @IBOutlet weak var pView: UIView!
+    let isUserLoggedIn:Bool = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
+    // @IBOutlet weak var pView: UIView!
     
     @IBOutlet var mainView: UIView!
     
@@ -37,7 +38,7 @@ class SignInViewController: UIViewController {
     
     @IBOutlet weak var eyeButton: UIButton!
     
-  //  @IBOutlet weak var signInStack: UIStackView!
+    //  @IBOutlet weak var signInStack: UIStackView!
     
     @IBOutlet weak var emailLabel: UILabel!
     
@@ -61,20 +62,43 @@ class SignInViewController: UIViewController {
     
     @IBOutlet weak var errorLabel: UILabel!
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        let db = Firestore.firestore()
+        if (isUserLoggedIn){
+            let docRef = db.collection("volunteer").document(Auth.auth().currentUser?.uid ?? "")
+
+            docRef.getDocument { [self] (document, error) in
+                if let document = document, document.exists {
+
+                    print("Vol")
+                    DispatchQueue.main.async {
+                        transitionToHome()
+                    }
+
+
+                } else {
+                    print("Man")
+                    DispatchQueue.main.async {
+                        transitionToHospitalHome()
+                    }
+                }
+
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
-
+        
         setUpElements()
-
+        
         // Do any additional setup after loading the view.
     }
     
     func setUpElements(){
         
-       
-
+        
+        
         
         loadingGif.superview?.bringSubviewToFront(loadingGif)
         
@@ -83,19 +107,19 @@ class SignInViewController: UIViewController {
         //The line below removes the top navigation bar however it alters the textfields when the pop up appears
         
         
-      //  navigationController?.hidesBarsOnTap = true
+        //  navigationController?.hidesBarsOnTap = true
         
         popUpStack.superview?.bringSubviewToFront(popUpStack)
-
         
         
         
         
-
         
-     
-
-       
+        
+        
+        
+        
+        
         styleTextFields(textfield: emailTextField)
         styleTextFields(textfield: passwordTextField)
         
@@ -104,7 +128,7 @@ class SignInViewController: UIViewController {
         
         loadingGif.loadGif(name: "yumnLoading")
         
-
+        
         emailTextField.rightViewMode = UITextField.ViewMode.always
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
         let image = UIImage(named: "mail")
@@ -119,11 +143,11 @@ class SignInViewController: UIViewController {
         imageView2.tintColor = (UIColor(red:137/255, green: 191/255, blue: 186/255, alpha: 1.00))
         imageView2.image = image2
         passwordTextField.rightView = imageView2
-
-
-     
         
-      //  signInStack.setCustomSpacing(20, after: emailError)
+        
+        
+        
+        //  signInStack.setCustomSpacing(20, after: emailError)
         
         // Email validator link
         emailTextField.addTarget(self, action: #selector(validateEmail(textfield:)), for: .editingChanged)
@@ -133,9 +157,9 @@ class SignInViewController: UIViewController {
         
         
         //styling the eye toggle button
-    let icon = UIImage(systemName: "eye.slash")
+        let icon = UIImage(systemName: "eye.slash")
         eyeButton.setImage(icon, for: .normal)
-    eyeButton.tintColor = UIColor(red:137/255, green: 191/255, blue: 186/255, alpha: 1.00)
+        eyeButton.tintColor = UIColor(red:137/255, green: 191/255, blue: 186/255, alpha: 1.00)
         
         popUpView.layer.cornerRadius = 35
         popUpButton.layer.cornerRadius = 20
@@ -144,18 +168,18 @@ class SignInViewController: UIViewController {
         
         
         
-       
+        
         
         
         logInButton.layer.cornerRadius = 20
         logInButton.layer.backgroundColor = UIColor(red: 56/225, green: 97/225, blue: 93/225, alpha: 1).cgColor
-
-            }
+        
+    }
     
     
- 
-
-   
+    
+    
+    
     
     
     @objc func turnTextFieldTextfieldToRed(textfield: UITextField){
@@ -180,25 +204,25 @@ class SignInViewController: UIViewController {
         
         
         
-           let bottomLine = CALayer()
-           
-           
-           if (textfield.text!.isEmpty){
-           bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width + 95, height: 2)
-           } //was width + 120
-           else {
-              bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width  , height: 2)
-
-               
-           }
-           
-           bottomLine.backgroundColor = UIColor(red:137/255, green: 191/255, blue: 186/255, alpha: 1.00).cgColor
-           
-           textfield.borderStyle = .none
-           
-           textfield.layer.addSublayer(bottomLine)
-           
-    
+        let bottomLine = CALayer()
+        
+        
+        if (textfield.text!.isEmpty){
+            bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width + 95, height: 2)
+        } //was width + 120
+        else {
+            bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width  , height: 2)
+            
+            
+        }
+        
+        bottomLine.backgroundColor = UIColor(red:137/255, green: 191/255, blue: 186/255, alpha: 1.00).cgColor
+        
+        textfield.borderStyle = .none
+        
+        textfield.layer.addSublayer(bottomLine)
+        
+        
     }
     
     
@@ -208,15 +232,15 @@ class SignInViewController: UIViewController {
     @objc func validateEmail(textfield: UITextField){
         
         
-       
-    
+        
+        
         // Required
         if (textfield.text!.count == 0) {
             emailError.text = "اجباري"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: emailTextField)
             emailLabel.alpha = 0
-
+            
         }
         // Email format
         else if (!isEmailValid(textfield.text!)){
@@ -224,7 +248,7 @@ class SignInViewController: UIViewController {
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: emailTextField)
             emailLabel.alpha = 1
-
+            
         }
         
         
@@ -234,7 +258,7 @@ class SignInViewController: UIViewController {
             emailError.text="  "
             styleTextFields(textfield: emailTextField)
             emailLabel.alpha = 1
-
+            
         }
     }
     
@@ -243,16 +267,16 @@ class SignInViewController: UIViewController {
     // Pawordss validation
     @objc func validatePassword(textfield: UITextField){
         
-     
+        
         // Required
         if (textfield.text!.count == 0) {
             passwordError.text = "اجباري"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: passwordTextField)
             passwordLabel.alpha = 0
-
+            
         }
-   
+        
         
         
         // Everything is fine
@@ -261,8 +285,8 @@ class SignInViewController: UIViewController {
             passwordError.text="  "
             styleTextFields(textfield: passwordTextField)
             passwordLabel.alpha = 1
-
-
+            
+            
         }
     }
     
@@ -274,19 +298,19 @@ class SignInViewController: UIViewController {
         return emailTest.evaluate(with: email)
     }
     
-   
     
-
+    
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
- 
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
     @IBAction func logInTapped(_ sender: Any) {
         
         
@@ -304,183 +328,184 @@ class SignInViewController: UIViewController {
         // Email and password are filled and validated
         
         else if (emailError.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "" && passwordError.text!.trimmingCharacters(in: .whitespacesAndNewlines) == ""){
-      
-
-        
-        
-        let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        
-        let check = emailError.text!.trimmingCharacters(in: .whitespacesAndNewlines) + passwordError.text!.trimmingCharacters(in: .whitespaces)
-        
-        // Empty or not valid fields
-        if (check != "")
-        {
-            
-            // Do nothing
-        }
-        
-        
-        else {
             
             
-            // Log in
             
-            Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            
+            let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            
+            let check = emailError.text!.trimmingCharacters(in: .whitespacesAndNewlines) + passwordError.text!.trimmingCharacters(in: .whitespaces)
+            
+            // Empty or not valid fields
+            if (check != "")
+            {
                 
-                // Blur the background
-                self.blurredView.isHidden = false
-                // Show Loading indicator
-                self.loadingGif.isHidden = false
-
+                // Do nothing
+            }
+            
+            
+            else {
                 
-                if (error != nil)
-                {
+                
+                // Log in
+                
+                Auth.auth().signIn(withEmail: email, password: password) { result, error in
                     
-                    // If an error occurs hide the blurred view
-                     self.blurredView.isHidden = true
-                    // If an error occurs hide the loading indicator
-                     self.loadingGif.isHidden = true
-                    print (error!.localizedDescription)
-
+                    // Blur the background
+                    self.blurredView.isHidden = false
+                    // Show Loading indicator
+                    self.loadingGif.isHidden = false
                     
-                    //Network error
                     
-                    if (error!.localizedDescription == "Network error (such as timeout, interrupted connection or unreachable host) has occurred.")
+                    if (error != nil)
                     {
                         
-                        self.blackBlurredView.isHidden = false
-                        self.popUpView.isHidden = false
-                        self.popUpTitle.text = "خطأ في الشبكة"
-                        self.popUpMessage.text = "الرجاء التحقق من الاتصال بالشبكة"
+                        // If an error occurs hide the blurred view
+                        self.blurredView.isHidden = true
+                        // If an error occurs hide the loading indicator
+                        self.loadingGif.isHidden = true
+                        print (error!.localizedDescription)
                         
                         
-                    }
-                
-                    
-        
-                    
-                    // Invalid credentials
-                    else {
+                        //Network error
                         
-                    self.blackBlurredView.isHidden = false
-                    self.popUpView.isHidden = false
-                    self.popUpTitle.text = "مدخلات غير صالحة"
-                    self.popUpMessage.text = "البريد الالكتروني أو الرقم السري غير صحيح"
-                    }
+                        if (error!.localizedDescription == "Network error (such as timeout, interrupted connection or unreachable host) has occurred.")
+                        {
+                            
+                            self.blackBlurredView.isHidden = false
+                            self.popUpView.isHidden = false
+                            self.popUpTitle.text = "خطأ في الشبكة"
+                            self.popUpMessage.text = "الرجاء التحقق من الاتصال بالشبكة"
+                            
+                            
+                        }
+                        
+                        
+                        
+                        
+                        // Invalid credentials
+                        else {
+                            
+                            self.blackBlurredView.isHidden = false
+                            self.popUpView.isHidden = false
+                            self.popUpTitle.text = "مدخلات غير صالحة"
+                            self.popUpMessage.text = "البريد الالكتروني أو الرقم السري غير صحيح"
+                        }
+                        
+                        
+                    } // no error
                     
                     
-                } // no error
-                
-                
-                else
-                
-                // There exists a user and signed in
-            {
-                    
-                    // Check which user
-                    let db = Firestore.firestore()
-                    
-                    
-                    // Check if the user is a volunteer by using the uid
-                    
-                    let docRef = db.collection("volunteer").document(Auth.auth().currentUser?.uid ?? "")
-
-                    docRef.getDocument { (document, error) in
-                        if let document = document, document.exists {
-                            
-                            
-                            // If volunteer is found remove the blurred view
-                             self.blurredView.isHidden = true
-                            // If volunteer is found remove the loading indicator
-                            self.loadingGif.isHidden = true
-
-
-                            
-                            print("Document exists in volunteer")
-                            
-                            // Transition to volunteer home
-                            
-                            self.transitionToHome()
-                            
-                        } else {
-                            
-                            // Else the user is hospital
-                            
-                            
-                            /*
-                            db.collection("hospital").whereField("email", isEqualTo: email)
-                                .getDocuments() { (querySnapshot, err) in
-                                    if let err = err {
-                                        
-                                        
-                                        // Show a pop up msg
-                                        
-                                        print (err)
-                                        
-                                    } else {
-                                        
-                                        
-                                        
-                                        for document in querySnapshot!.documents {
-                                            print("\(document.documentID) => \(document.data())")
-                                          */
-                                            print("User is hospital")
-
-                                      
-
+                    else
+                        
+                        // There exists a user and signed in
+                    {
+                        UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
+                        UserDefaults.standard.synchronize()
+                        // Check which user
+                        let db = Firestore.firestore()
+                        
+                        
+                        // Check if the user is a volunteer by using the uid
+                        
+                        let docRef = db.collection("volunteer").document(Auth.auth().currentUser?.uid ?? "")
+                        
+                        docRef.getDocument { (document, error) in
+                            if let document = document, document.exists {
+                                
+                                
+                                // If volunteer is found remove the blurred view
+                                self.blurredView.isHidden = true
+                                // If volunteer is found remove the loading indicator
+                                self.loadingGif.isHidden = true
+                                
+                                
+                                
+                                print("Document exists in volunteer")
+                                
+                                // Transition to volunteer home
+                                
+                                self.transitionToHome()
+                                
+                            } else {
+                                
+                                // Else the user is hospital
+                                
+                                
+                                /*
+                                 db.collection("hospital").whereField("email", isEqualTo: email)
+                                 .getDocuments() { (querySnapshot, err) in
+                                 if let err = err {
                                  
-                                            // The User is Hospital remove the blurred view
-                                             self.blurredView.isHidden = true
-                                            // The User is Hospital remove the loading indicator
-                                            self.loadingGif.isHidden = true
-
-
-                                            
-                                        // Transition to hospital home page
-                                            self.transitionToHospitalHome()
-                                            
-                                            
-                                        // flushbar
+                                 
+                                 // Show a pop up msg
+                                 
+                                 print (err)
+                                 
+                                 } else {
+                                 
+                                 
+                                 
+                                 for document in querySnapshot!.documents {
+                                 print("\(document.documentID) => \(document.data())")
+                                 */
+                                print("User is hospital")
+                                
+                                
+                                
+                                
+                                // The User is Hospital remove the blurred view
+                                self.blurredView.isHidden = true
+                                // The User is Hospital remove the loading indicator
+                                self.loadingGif.isHidden = true
+                                
+                                
+                                
+                                // Transition to hospital home page
+                                self.transitionToHospitalHome()
+                                
+                                
+                                // flushbar
+                                
+                            } // Else The user is hospital
                             
-                                        } // Else The user is hospital
+                            
+                        } // check if the user is volunteer
                         
                         
-                    } // check if the user is volunteer
-                
-                
-            } // There exists a user and signed in
+                    } // There exists a user and signed in
                     
-    } // Log in
+                } // Log in
+                
+                
+                
+            } // Fields are not empty and validated
             
             
             
-} // Fields are not empty and validated
-                   
-                    
-                    
-                    
-
-                    
-                    
-                    
-                    
-                    
-
-                    
-                    
-                    
-                
-                }  // Email and password are filled and validated
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        }  // Email and password are filled and validated
         
     } // On pressed log in
-            
-            
-            
-     
-            
+    
+    
+    
+    
+    
     
     
     
@@ -491,21 +516,21 @@ class SignInViewController: UIViewController {
         
         
         // I have to check if the user is volunteer or hospital, in the log in
-       let volunteerHomeViewController =  storyboard?.instantiateViewController(identifier: Constants.Storyboard.volunteerHomeViewController) as? TabBarController
+        let volunteerHomeViewController =  storyboard?.instantiateViewController(identifier: Constants.Storyboard.volunteerHomeViewController) as? TabBarController
         
         view.window?.rootViewController = volunteerHomeViewController
         view.window?.makeKeyAndVisible()
         
         
-
+        
     }
     
     
-
+    
     func transitionToHospitalHome(){
         
         // I have to check if the user is volunteer or hospital, in the log in
-       let hospitalHomeViewController =  storyboard?.instantiateViewController(identifier: Constants.Storyboard.hospitalHomeViewController) as? customTabBarVC
+        let hospitalHomeViewController =  storyboard?.instantiateViewController(identifier: Constants.Storyboard.hospitalHomeViewController) as? customTabBarVC
         
         view.window?.rootViewController = hospitalHomeViewController
         view.window?.makeKeyAndVisible()
@@ -519,14 +544,14 @@ class SignInViewController: UIViewController {
         if (eyeButton.currentImage == UIImage(systemName: "eye.slash")){
             
             eyeButton.setImage(UIImage(systemName: "eye")
-            , for: .normal)
+                               , for: .normal)
             passwordTextField.isSecureTextEntry = false}
         else {
             eyeButton.setImage(UIImage(systemName: "eye.slash")
-            , for: .normal)
+                               , for: .normal)
             passwordTextField.isSecureTextEntry = true
             
-        
+            
         }
     }
     
