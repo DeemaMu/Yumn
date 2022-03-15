@@ -13,6 +13,9 @@ import Firebase
 class HomeViewController: UIViewController {
     @IBOutlet weak var logOutButton: UIButton!
     
+   
+    
+    
     override func viewDidLoad() {
         
         let db = Firestore.firestore()
@@ -54,29 +57,9 @@ class HomeViewController: UIViewController {
     }
     
     
-    @IBAction func onPressedLogOut(_ sender: Any) {
-        do
-            {
-        try Auth.auth().signOut()
-                transitionToLogIn()
-                
-                
-                // add a flushbar
-               
-            }
-            catch let error as NSError
-            {
-                print(error.localizedDescription)
-                
-                // Show pop up message
-            }
-
-        
-        
-        
-    }
     
     
+        
     
     func transitionToLogIn(){
         

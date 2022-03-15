@@ -16,7 +16,7 @@ struct Constants {
 
       static let volunteerHomeViewController = "navToVHome"
       static let contSignUpViewController = "contSignUp"
-      static let signInViewController = "SignIn"
+      static let signInViewController = "SignIn1"
       static let hospitalHomeViewController = "navToHospitalHome"
 
     }
