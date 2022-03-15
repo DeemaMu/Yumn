@@ -10,7 +10,14 @@ import FirebaseFirestore
 import FirebaseAuth
 class HospitalHomeMainViewController: UIViewController {
     
-//    @IBOutlet weak var shortageNeed: UILabel!
+    @IBOutlet weak var logoutBtn: UIBarButtonItem!
+    @IBOutlet weak var blurredView: UIView!
+    @IBOutlet weak var confirmBtn: UIButton!
+    @IBOutlet weak var cancelBtn: UIButton!
+    @IBOutlet weak var popupMsg: UILabel!
+    @IBOutlet weak var popupTitle: UILabel!
+    @IBOutlet weak var popupView: UIView!
+    //    @IBOutlet weak var shortageNeed: UILabel!
     @IBOutlet weak var bloodShortageNeed: UILabel!
     
     @IBOutlet weak var organShortageNeed: UILabel!
@@ -58,6 +65,11 @@ class HospitalHomeMainViewController: UIViewController {
       
     
     override func viewDidLoad() {
+        
+        popupView.layer.cornerRadius = 35
+        cancelBtn.layer.cornerRadius = 20
+        confirmBtn.layer.cornerRadius = 20
+
         
         
         let seconds = 1.0
@@ -383,8 +395,63 @@ class HospitalHomeMainViewController: UIViewController {
         }
         
 }
-    
+    @IBAction func onPressedLogout(_ sender: Any) {
+   
 
+    
+        popupTitle.text = "تأكيد تسجيل الخروج"
+        popupMsg.text = "هل أنت متأكد من أنك تريد تسجيل الخروج؟"
+        
+        popupView.isHidden = false
+        blurredView.isHidden = false
+
+    }
+    
+    
+    
+    @IBAction func onPressedCancel(_ sender: Any) {
+        
+        popupView.isHidden = true
+        blurredView.isHidden = true
+
+    }
+    
+  
+        
+    @IBAction func onPressedConfirm(_ sender: Any) {
+    
+    
+            do
+                {
+            try Auth.auth().signOut()
+                    transitionToLogIn()
+                    
+                    
+                    // add a flushbar
+                   
+                }
+                catch let error as NSError
+                {
+                    print(error.localizedDescription)
+                    
+                    // Show pop up message
+                }
+        
+        
+    }
+    
+    
+    func transitionToLogIn(){
+        
+        // I have to check if the user is volunteer or hospital, in the log in
+       let signInViewController =  storyboard?.instantiateViewController(identifier: Constants.Storyboard.signInViewController) as? SignInViewController
+        
+        view.window?.rootViewController = signInViewController
+        view.window?.makeKeyAndVisible()
+        
+       // SignInViewController.showToast(message: "تم تسجي لالخروج بنجاح", font: .systemFont(ofSize: 20), image: (UIImage(named: "yumn") ?? UIImage(named: "")! ))}
+
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
