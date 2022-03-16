@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8D5FD4A827D3A321008A266F /* Al%20Majeed%20Quranic%20Font_shiped.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D5FD4A727D3A321008A266F /* Al%20Majeed%20Quranic%20Font_shiped.ttf */; };
 		8D7D721C27E131280088AC98 /* BloodDonationInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7D721B27E131280088AC98 /* BloodDonationInfoViewController.swift */; };
+		8D7D721E27E1E2240088AC98 /* BloodDonationInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7D721D27E1E2240088AC98 /* BloodDonationInformationViewController.swift */; };
 		8D7F152227D25DD200E1EB1A /* GIfCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7F152127D25DD200E1EB1A /* GIfCode.swift */; };
 		8D7F152527D25EF200E1EB1A /* yumnLoading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8D7F152427D25EF200E1EB1A /* yumnLoading.gif */; };
 		8D7F152727D25F3B00E1EB1A /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7F152627D25F3B00E1EB1A /* SignInViewController.swift */; };
@@ -49,6 +50,7 @@
 		45F81A78310778538A1A5633 /* Pods-Yumn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.release.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.release.xcconfig"; sourceTree = "<group>"; };
 		8D5FD4A727D3A321008A266F /* Al%20Majeed%20Quranic%20Font_shiped.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Al%20Majeed%20Quranic%20Font_shiped.ttf"; sourceTree = "<group>"; };
 		8D7D721B27E131280088AC98 /* BloodDonationInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationInfoViewController.swift; sourceTree = "<group>"; };
+		8D7D721D27E1E2240088AC98 /* BloodDonationInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationInformationViewController.swift; sourceTree = "<group>"; };
 		8D7F152127D25DD200E1EB1A /* GIfCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIfCode.swift; sourceTree = "<group>"; };
 		8D7F152427D25EF200E1EB1A /* yumnLoading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = yumnLoading.gif; sourceTree = "<group>"; };
 		8D7F152627D25F3B00E1EB1A /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				B97A380127BA9EA000718079 /* BloodDonationViewController.swift */,
 				B9C7969427C7A839006A78A3 /* TabBarController.swift */,
 				8D7D721B27E131280088AC98 /* BloodDonationInfoViewController.swift */,
+				8D7D721D27E1E2240088AC98 /* BloodDonationInformationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D7D721E27E1E2240088AC98 /* BloodDonationInformationViewController.swift in Sources */,
 				B9503D8827BAE4E500E312B8 /* CustomSegmentedControl.swift in Sources */,
 				8D7F152B27D299C100E1EB1A /* Constants.swift in Sources */,
 				B9419DFC27C52D9C00962A1B /* HospitalCellTableViewCell.swift in Sources */,

@@ -40,9 +40,12 @@ class BloodDonationInfoViewController: UIViewController, UITableViewDelegate, UI
 
     override func viewDidLoad() {
         
+        self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+
+        
         sections = [
-            Section(title: "Section 1", options: [1,2,3].compactMap({return "Cell \($0)"})),
-            Section(title: "Section 2", options: [1,2,3].compactMap({return "Cell \($0)"})),
+            Section(title: "Section 1", options: [1].compactMap({return "Hi1 \($0)"})),
+            Section(title: "Section 2", options: [1].compactMap({return "Hi2 \($0)"})),
         
 
         
@@ -74,24 +77,37 @@ class BloodDonationInfoViewController: UIViewController, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+              
         if indexPath.row == 0{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
                   
             cell.textLabel?.text=sections[indexPath.section].title
-                    return cell
 
         }
-        return UITableViewCell()
-            }
+        
+        else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+                      
+            cell.textLabel?.text=sections[indexPath.section].options[indexPath.row - 1]
+        }
+        
+        return cell
+        
+    }
 
 
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        sections[indexPath.section].isOpened = !sections[indexPath.section].isOpened
-        tableView.reloadSections([indexPath.section], with: .none)
+        if indexPath.row == 0{
+            sections[indexPath.section].isOpened = !sections[indexPath.section].isOpened
+            tableView.reloadSections([indexPath.section], with: .none)
+        }
+        
+        else {
+            print ("tapped sub cells")
+        }
     }    /*
     // MARK: - Navigation
 
