@@ -1,11 +1,8 @@
-<<<<<<< HEAD
 # v8.11.0
 - [changed] Added a `X-Firebase-GMPID` header to network requests. (#9046)
 - [fixed] Added multi-tenancy support to generic OAuth providers. (#7990)
 - [fixed] macOS Extension access to Shared Keychain by adding kSecUseDataProtectionKeychain recommended key (#6876)
 
-=======
->>>>>>> c4733e95829478edf9945333e0b1a155f4ef2d22
 # 8.9.0
 - [changed] Improved error logging. (#8704)
 - [added] Added MFA support for email link sign-in. (#8705)

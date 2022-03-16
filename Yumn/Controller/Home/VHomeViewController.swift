@@ -20,6 +20,7 @@ class VHomeViewController: UIViewController {
     
     @IBOutlet weak var logoutButton: UIBarButtonItem!
     
+    
     @IBOutlet weak var cancelButton: UIButton!
     
     @IBOutlet weak var confirmBtn: UIButton!
@@ -106,6 +107,7 @@ class VHomeViewController: UIViewController {
     
     
     @IBAction func onPressedLogout(_ sender: Any) {
+    
         
         popupTitle.text = "تأكيد تسجيل الخروج"
         popupMsg.text = "هل أنت متأكد من أنك تريد تسجيل الخروج؟"
