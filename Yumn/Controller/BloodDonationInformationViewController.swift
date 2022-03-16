@@ -13,6 +13,9 @@ import Foundation
 class BloodDonationInformationViewController: UIViewController{
     
     
+    @IBOutlet weak var typeStack: UIStackView!
+    
+    @IBOutlet weak var bloodArrow: UIButton!
     
     @IBOutlet weak var typeText: UILabel!
     
@@ -24,16 +27,22 @@ class BloodDonationInformationViewController: UIViewController{
     
     @IBOutlet weak var donInfo: UILabel!
     
+  
+  
     @IBOutlet weak var typeBtn: UIButton!
     
+    @IBOutlet weak var typeArrow: UIButton!
     
-  
+    
+    
     override func viewDidLoad() {
+       // stackView.setCustomSpacing(20, after: btn)
         
-       
+        typeStack.isHidden = true
      
+        typeArrow.contentHorizontalAlignment = .left
 
-        
+        bloodArrow.contentHorizontalAlignment = .left
         donBtn.contentHorizontalAlignment = .right
         typeBtn.contentHorizontalAlignment = .right
         
@@ -50,18 +59,40 @@ class BloodDonationInformationViewController: UIViewController{
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func onPressedDonBtn(_ sender: Any) {
+   @IBAction func onPressedDonBtn(_ sender: Any) {
     
         
         donInfo.isHidden = !donInfo.isHidden
+       
+       if (donInfo.isHidden == false){
+        bloodArrow.setImage(UIImage(systemName: "chevron.up"), for: .normal)
+       }
+       
+       else{
+           bloodArrow.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+
+           
+       }
     }
     
-    @IBAction func onPressedType(_ sender: Any) {
-        typeText.isHidden = !typeText.isHidden
-    }
+  
 
         
+    @IBAction func onPresssedTypeBtn(_ sender: Any) {
+        typeStack.isHidden = !typeStack.isHidden
         
+        if (donInfo.isHidden == false){
+         typeArrow.setImage(UIImage(systemName: "chevron.up"), for: .normal)
+        }
+        
+        else{
+            typeArrow.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+
+            
+        }
+
+    }
+    
     }
     
     
@@ -76,4 +107,4 @@ class BloodDonationInformationViewController: UIViewController{
     }
     */
 
-}
+
