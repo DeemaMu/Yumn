@@ -7,11 +7,14 @@
 
 import UIKit
 import Foundation
+import Firebase
+import SwiftUI
 
 
 
 class BloodDonationInformationViewController: UIViewController{
     
+    @IBOutlet weak var label1: UILabel!
     
     @IBOutlet weak var typeStack: UIStackView!
     
@@ -36,6 +39,28 @@ class BloodDonationInformationViewController: UIViewController{
     
     
     override func viewDidLoad() {
+        
+        let db = Firestore.firestore()
+
+        let infoRef = db.collection("information").document("blood")
+        
+            
+        infoRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+
+                    let info = document.get("information") as! String
+    
+
+                    
+                    print (info)
+                } else {
+                    print("error")
+                }
+
+                
+           
+            }
+
        // stackView.setCustomSpacing(20, after: btn)
         
         typeStack.isHidden = true
@@ -49,7 +74,7 @@ class BloodDonationInformationViewController: UIViewController{
         super.viewDidLoad()
         
         donInfo.clipsToBounds = true
-        donInfo.text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te legum odioque civiuda."
+        donInfo.text = "هو إجراء طبي تطوعي يتم بنقل الدم أو أحد مركباته من شخص سليم معافى إلى شخص مريض يحتاج للدم. وهذا الإجراء يحتاج إليه الملايين من الناس كل عام. فيستخدم أثناء الجراحة أو الحوادث أو بعض الأمراض التي تتطلب نقل بعض مكونات الدم."
         
         typeText.text = "hi hi hi hi "
 
@@ -81,7 +106,7 @@ class BloodDonationInformationViewController: UIViewController{
     @IBAction func onPresssedTypeBtn(_ sender: Any) {
         typeStack.isHidden = !typeStack.isHidden
         
-        if (donInfo.isHidden == false){
+        if (typeStack.isHidden == false){
          typeArrow.setImage(UIImage(systemName: "chevron.up"), for: .normal)
         }
         
