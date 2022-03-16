@@ -21,7 +21,7 @@ class customTabBarVC: UITabBarController, UITabBarControllerDelegate {
         self.delegate = self
         if self.restorationIdentifier == "hospitalHome" {
             
-            self.selectedIndex = 0 // make it 0 so it starts at shortage in hospital home
+            self.selectedIndex = 1 // make it 0 so it starts at shortage in hospital home
             
         }
         
