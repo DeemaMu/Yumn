@@ -14,20 +14,24 @@ import Firebase
 
 class VHomeViewController: UIViewController {
     
+    @IBOutlet weak var popupTitle: UILabel!
+    
+  
     @IBOutlet weak var popupView: UIView!
+    
     
     @IBOutlet weak var blurredView: UIView!
     
     @IBOutlet weak var logoutButton: UIBarButtonItem!
     
+    @IBOutlet weak var popupMsg: UILabel!
     
     @IBOutlet weak var cancelButton: UIButton!
     
     @IBOutlet weak var confirmBtn: UIButton!
     
-    @IBOutlet weak var popupTitle: UILabel!
     
-    @IBOutlet weak var popupMsg: UILabel!
+
     
     
     @ObservedObject var lm = LocationManager()
@@ -67,6 +71,12 @@ class VHomeViewController: UIViewController {
         popupView.layer.cornerRadius = 35
         cancelButton.layer.cornerRadius = 20
         confirmBtn.layer.cornerRadius = 20
+        
+       blurredView.superview?.bringSubviewToFront(blurredView)
+
+        self.view.bringSubviewToFront(popupView)
+
+       // popupView.superview?.bringSubviewToFront(popupView)
 
         
         
@@ -82,8 +92,10 @@ class VHomeViewController: UIViewController {
         }
     }
     
-
+    
+    
     @IBAction func onPressedConfirmBtn(_ sender: Any) {
+   
     
     
         do
@@ -118,7 +130,9 @@ class VHomeViewController: UIViewController {
     }
     
     
+    
     @IBAction func onPressedCancel(_ sender: Any) {
+   
         
         popupView.isHidden = true
         blurredView.isHidden = true

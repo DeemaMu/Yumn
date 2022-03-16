@@ -76,6 +76,79 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view hidden="YES" alpha="0.30000001192092896" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c7b-sO-kpJ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Spe-Do-4p8">
+                                <rect key="frame" x="207" y="446" width="0.0" height="0.0"/>
+                                <subviews>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u2k-Yq-TF4">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="180"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P8x-zg-bss">
+                                                <rect key="frame" x="122.5" y="25" width="35" height="15"/>
+                                                <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="15"/>
+                                                <color key="textColor" red="0.56862747670000002" green="0.79215681550000006" blue="0.76862752440000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JH6-zk-s56">
+                                                <rect key="frame" x="123.5" y="80" width="33.5" height="15"/>
+                                                <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="15"/>
+                                                <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="5HV-Be-Aob">
+                                                <rect key="frame" x="47" y="120" width="173" height="40"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fnd-n2-rzD">
+                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
+                                                        <color key="backgroundColor" red="0.2901961207" green="0.42745098469999998" blue="0.41176474089999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="80" id="dVR-Iq-VLD"/>
+                                                            <constraint firstAttribute="height" constant="40" id="kj8-P5-pFv"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="12"/>
+                                                        <state key="normal" title="إلغاء">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="onPressedCancel:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MAn-L5-waO"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QG4-ID-aJu">
+                                                        <rect key="frame" x="93" y="0.0" width="80" height="40"/>
+                                                        <color key="backgroundColor" red="0.2901961207" green="0.42745098469999998" blue="0.41176474089999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="80" id="Cem-ul-i8V"/>
+                                                            <constraint firstAttribute="height" constant="40" id="JD2-sK-dgS"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="12"/>
+                                                        <state key="normal" title="تأكيد">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="onPressedConfirmBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1PQ-54-KIV"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="P8x-zg-bss" firstAttribute="centerX" secondItem="u2k-Yq-TF4" secondAttribute="centerX" id="57H-h5-mMN"/>
+                                            <constraint firstItem="P8x-zg-bss" firstAttribute="top" secondItem="u2k-Yq-TF4" secondAttribute="top" constant="25" id="82x-bD-AOz"/>
+                                            <constraint firstAttribute="height" constant="180" id="Iv0-c8-AUP"/>
+                                            <constraint firstAttribute="width" constant="280" id="Ts5-6T-2R9"/>
+                                            <constraint firstItem="JH6-zk-s56" firstAttribute="top" secondItem="u2k-Yq-TF4" secondAttribute="top" constant="80" id="dNT-dm-lhW"/>
+                                            <constraint firstAttribute="trailing" secondItem="5HV-Be-Aob" secondAttribute="trailing" constant="60" id="gLh-BQ-Kui"/>
+                                            <constraint firstItem="5HV-Be-Aob" firstAttribute="top" secondItem="u2k-Yq-TF4" secondAttribute="top" constant="120" id="uVL-wa-ink"/>
+                                            <constraint firstItem="JH6-zk-s56" firstAttribute="centerX" secondItem="u2k-Yq-TF4" secondAttribute="centerX" id="yIv-aA-h0N"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="EGJ-P8-wum">
                                 <rect key="frame" x="0.0" y="98" width="414" height="779.5"/>
                                 <subviews>
@@ -380,7 +453,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="blurredView" destination="c7b-sO-kpJ" id="8UX-hS-bv3"/>
+                        <outlet property="cancelButton" destination="fnd-n2-rzD" id="6AO-6n-Mj6"/>
+                        <outlet property="confirmBtn" destination="QG4-ID-aJu" id="KP8-i5-J7U"/>
                         <outlet property="logoutButton" destination="dFa-58-fwi" id="3Yk-tS-cyw"/>
+                        <outlet property="popupMsg" destination="JH6-zk-s56" id="LHz-q9-x5u"/>
+                        <outlet property="popupTitle" destination="P8x-zg-bss" id="vhu-Jn-EEJ"/>
+                        <outlet property="popupView" destination="u2k-Yq-TF4" id="OvB-Ht-V8L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
