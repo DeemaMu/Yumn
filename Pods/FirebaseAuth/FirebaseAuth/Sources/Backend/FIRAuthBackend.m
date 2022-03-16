@@ -88,11 +88,6 @@ static NSString *const kIosBundleIdentifierHeader = @"X-Ios-Bundle-Identifier";
  */
 static NSString *const kFirebaseLocalHeader = @"X-Firebase-Locale";
 
-/** @var kFirebaseAppIDHeader
-    @brief HTTP header name for the Firebase app ID.
- */
-static NSString *const kFirebaseAppIDHeader = @"X-Firebase-GMPID";
-
 /** @var kFirebaseAuthCoreFrameworkMarker
     @brief The marker in the HTTP header that indicates the request comes from Firebase Auth Core.
  */
@@ -645,8 +640,6 @@ static id<FIRAuthBackendImplementation> gBackendImplementation;
   [request setValue:clientVersion forHTTPHeaderField:kClientVersionHeader];
   NSString *bundleID = [[NSBundle mainBundle] bundleIdentifier];
   [request setValue:bundleID forHTTPHeaderField:kIosBundleIdentifierHeader];
-  NSString *appID = requestConfiguration.appID;
-  [request setValue:appID forHTTPHeaderField:kFirebaseAppIDHeader];
 
   NSArray<NSString *> *preferredLocalizations = [NSBundle mainBundle].preferredLocalizations;
   if (preferredLocalizations.count) {

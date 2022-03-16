@@ -10,7 +10,11 @@ import UIKit
 
 class SignInViewController: UIViewController {
     
+<<<<<<< HEAD:Yumn/Controller/SignInViewController.swift
    // let isUserLoggedIn:Bool = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
+=======
+//    let isUserLoggedIn:Bool = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
+>>>>>>> c4733e95829478edf9945333e0b1a155f4ef2d22:Yumn/Controller/Signing/SignInViewController.swift
     // @IBOutlet weak var pView: UIView!
     
     @IBOutlet var mainView: UIView!
@@ -62,6 +66,7 @@ class SignInViewController: UIViewController {
     
     @IBOutlet weak var errorLabel: UILabel!
     
+<<<<<<< HEAD:Yumn/Controller/SignInViewController.swift
   /*  override func viewWillAppear(_ animated: Bool) {
         let db = Firestore.firestore()
         if (isUserLoggedIn){
@@ -86,6 +91,32 @@ class SignInViewController: UIViewController {
             }
         }
     }*/
+=======
+//    override func viewWillAppear(_ animated: Bool) {
+//        let db = Firestore.firestore()
+//        if (isUserLoggedIn){
+//            let docRef = db.collection("volunteer").document(Auth.auth().currentUser?.uid ?? "")
+//
+//            docRef.getDocument { [self] (document, error) in
+//                if let document = document, document.exists {
+//
+//                    print("Vol")
+//                    DispatchQueue.main.async {
+//                        transitionToHome()
+//                    }
+//
+//
+//                } else {
+//                    print("Man")
+//                    DispatchQueue.main.async {
+//                        transitionToHospitalHome()
+//                    }
+//                }
+//
+//            }
+//        }
+//    }
+>>>>>>> c4733e95829478edf9945333e0b1a155f4ef2d22:Yumn/Controller/Signing/SignInViewController.swift
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
@@ -403,9 +434,14 @@ class SignInViewController: UIViewController {
                         
                         // There exists a user and signed in
                     {
+<<<<<<< HEAD:Yumn/Controller/SignInViewController.swift
                 // UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
                //  UserDefaults.standard.synchronize()
                         
+=======
+//                        UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
+//                        UserDefaults.standard.synchronize()
+>>>>>>> c4733e95829478edf9945333e0b1a155f4ef2d22:Yumn/Controller/Signing/SignInViewController.swift
                         // Check which user
                         let db = Firestore.firestore()
                         
