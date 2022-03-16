@@ -1932,10 +1932,85 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L19-1h-Z8t" customClass="RoundedView" customModule="Yumn" customModuleProvider="target">
+                            <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="L19-1h-Z8t" customClass="RoundedView" customModule="Yumn" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="109" width="414" height="787"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Jg4-rf-xNQ">
+                                        <rect key="frame" x="23" y="24" width="366" height="675"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4BL-Wo-MBR">
+                                                <rect key="frame" x="0.0" y="0.0" width="366" height="269"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rj2-Eb-ZwB">
+                                                <rect key="frame" x="0.0" y="279" width="366" height="396"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="saJ-y3-RxQ">
+                                                        <rect key="frame" x="8" y="8" width="350" height="382"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ItV-lr-rPz">
+                                                                <rect key="frame" x="0.0" y="0.0" width="350" height="186"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="الأوقات المعروضة للتبرع بالدم" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fgc-jG-due">
+                                                                        <rect key="frame" x="103" y="8" width="239" height="18"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="18"/>
+                                                                        <color key="textColor" name="mainDark"/>
+                                                                        <color key="highlightedColor" red="0.21960784310000001" green="0.3803921569" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <size key="shadowOffset" width="0.0" height="0.0"/>
+                                                                    </label>
+                                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" sectionIndexMinimumDisplayRowCount="3" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="bjO-Zn-WJR">
+                                                                        <rect key="frame" x="7" y="34" width="335" height="144"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <color key="sectionIndexColor" red="0.21960784310000001" green="0.3803921569" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <color key="sectionIndexBackgroundColor" red="0.21960784310000001" green="0.3803921569" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <color key="sectionIndexTrackingBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    </tableView>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aC6-9x-mVO">
+                                                                <rect key="frame" x="0.0" y="196" width="350" height="186"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="الأوقات المعروضة للتبرع بالدم" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kD-lp-pgM">
+                                                                        <rect key="frame" x="103" y="8" width="239" height="18"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="18"/>
+                                                                        <color key="textColor" name="mainDark"/>
+                                                                        <color key="highlightedColor" red="0.21960784310000001" green="0.3803921569" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <size key="shadowOffset" width="0.0" height="0.0"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            </view>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="aC6-9x-mVO" firstAttribute="top" secondItem="saJ-y3-RxQ" secondAttribute="top" constant="196" id="VFb-fm-4QF"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="saJ-y3-RxQ" secondAttribute="bottom" constant="6" id="E8b-af-L64"/>
+                                                    <constraint firstItem="saJ-y3-RxQ" firstAttribute="trailing" secondItem="rj2-Eb-ZwB" secondAttribute="trailingMargin" id="EZ2-wU-li1"/>
+                                                    <constraint firstItem="saJ-y3-RxQ" firstAttribute="top" secondItem="rj2-Eb-ZwB" secondAttribute="topMargin" id="hNr-9r-X0V"/>
+                                                    <constraint firstItem="saJ-y3-RxQ" firstAttribute="leading" secondItem="rj2-Eb-ZwB" secondAttribute="leadingMargin" id="zi5-6H-Yht"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="rj2-Eb-ZwB" firstAttribute="top" secondItem="Jg4-rf-xNQ" secondAttribute="top" constant="279" id="Rxr-MC-aco"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="Jg4-rf-xNQ" firstAttribute="leading" secondItem="L19-1h-Z8t" secondAttribute="leading" constant="23" id="IKl-JF-edn"/>
+                                    <constraint firstItem="Jg4-rf-xNQ" firstAttribute="top" secondItem="L19-1h-Z8t" secondAttribute="top" constant="24" id="Qjw-vD-wJP"/>
+                                    <constraint firstAttribute="trailing" secondItem="Jg4-rf-xNQ" secondAttribute="trailing" constant="25" id="VrH-Pa-3Fr"/>
+                                    <constraint firstAttribute="bottom" secondItem="Jg4-rf-xNQ" secondAttribute="bottom" constant="88" id="jLk-3u-UHM"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusV">
                                         <real key="value" value="40"/>
@@ -1951,6 +2026,12 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iQd-Pf-01D"/>
                         <color key="backgroundColor" red="0.92549019607843142" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="L19-1h-Z8t" secondAttribute="bottom" id="2ez-fT-fkv"/>
+                            <constraint firstItem="L19-1h-Z8t" firstAttribute="leading" secondItem="iQd-Pf-01D" secondAttribute="leading" id="oIh-no-JBt"/>
+                            <constraint firstItem="L19-1h-Z8t" firstAttribute="top" secondItem="iQd-Pf-01D" secondAttribute="top" constant="21" id="wiH-cr-lzM"/>
+                            <constraint firstItem="L19-1h-Z8t" firstAttribute="centerX" secondItem="hgd-Cw-hTn" secondAttribute="centerX" id="yAb-Ml-Wdd"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="إدارة المواعيد" leftItemsSupplementBackButton="YES" id="cwC-D8-9xf">
