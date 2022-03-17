@@ -38,6 +38,7 @@
 		B97A380227BA9EA000718079 /* BloodDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A380127BA9EA000718079 /* BloodDonationViewController.swift */; };
 		B9AD3F2A27E2CF81001AB734 /* ManageAppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD3F2927E2CF81001AB734 /* ManageAppointmentsViewController.swift */; };
 		B9AD3F2C27E2D4E6001AB734 /* CalenderAndAppointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD3F2B27E2D4E6001AB734 /* CalenderAndAppointments.swift */; };
+		B9AD3F2E27E2E005001AB734 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD3F2D27E2E005001AB734 /* CustomDatePicker.swift */; };
 		B9C7969527C7A83A006A78A3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C7969427C7A839006A78A3 /* TabBarController.swift */; };
 		B9DA61CE27C10C2900359487 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9DA61CD27C10C2800359487 /* GoogleService-Info.plist */; };
 		B9DA61DA27C10FCC00359487 /* LocationManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DA61D927C10FCC00359487 /* LocationManger.swift */; };
@@ -97,6 +98,7 @@
 		B97A380127BA9EA000718079 /* BloodDonationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationViewController.swift; sourceTree = "<group>"; };
 		B9AD3F2927E2CF81001AB734 /* ManageAppointmentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageAppointmentsViewController.swift; sourceTree = "<group>"; };
 		B9AD3F2B27E2D4E6001AB734 /* CalenderAndAppointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderAndAppointments.swift; sourceTree = "<group>"; };
+		B9AD3F2D27E2E005001AB734 /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
 		B9C7969427C7A839006A78A3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B9DA61CD27C10C2800359487 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B9DA61D927C10FCC00359487 /* LocationManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManger.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 			children = (
 				B9AD3F2927E2CF81001AB734 /* ManageAppointmentsViewController.swift */,
 				B9AD3F2B27E2D4E6001AB734 /* CalenderAndAppointments.swift */,
+				B9AD3F2D27E2E005001AB734 /* CustomDatePicker.swift */,
 			);
 			path = HAppointments;
 			sourceTree = "<group>";
@@ -474,6 +477,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9AD3F2E27E2E005001AB734 /* CustomDatePicker.swift in Sources */,
 				D195443A27D499C700B03DFF /* bloodChartViewController.swift in Sources */,
 				D195444227D49A1700B03DFF /* bloodShortage.swift in Sources */,
 				D195443627D4998F00B03DFF /* bloodShortageViewController.swift in Sources */,
