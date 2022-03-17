@@ -39,6 +39,7 @@
 		B9AD3F2A27E2CF81001AB734 /* ManageAppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD3F2927E2CF81001AB734 /* ManageAppointmentsViewController.swift */; };
 		B9AD3F2C27E2D4E6001AB734 /* CalenderAndAppointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD3F2B27E2D4E6001AB734 /* CalenderAndAppointments.swift */; };
 		B9AD3F2E27E2E005001AB734 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD3F2D27E2E005001AB734 /* CustomDatePicker.swift */; };
+		B9AD3F3027E335B3001AB734 /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD3F2F27E335B3001AB734 /* DateValue.swift */; };
 		B9C7969527C7A83A006A78A3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C7969427C7A839006A78A3 /* TabBarController.swift */; };
 		B9DA61CE27C10C2900359487 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9DA61CD27C10C2800359487 /* GoogleService-Info.plist */; };
 		B9DA61DA27C10FCC00359487 /* LocationManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DA61D927C10FCC00359487 /* LocationManger.swift */; };
@@ -99,6 +100,7 @@
 		B9AD3F2927E2CF81001AB734 /* ManageAppointmentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageAppointmentsViewController.swift; sourceTree = "<group>"; };
 		B9AD3F2B27E2D4E6001AB734 /* CalenderAndAppointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderAndAppointments.swift; sourceTree = "<group>"; };
 		B9AD3F2D27E2E005001AB734 /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
+		B9AD3F2F27E335B3001AB734 /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
 		B9C7969427C7A839006A78A3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B9DA61CD27C10C2800359487 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B9DA61D927C10FCC00359487 /* LocationManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManger.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				D195444327D49A2400B03DFF /* organShortage.swift */,
 				D195444527D49A2F00B03DFF /* totalBloodShortage.swift */,
 				D195444727D49A3900B03DFF /* totalOrgansShortage.swift */,
+				B9AD3F2F27E335B3001AB734 /* DateValue.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				B9C7969527C7A83A006A78A3 /* TabBarController.swift in Sources */,
 				95062D9F27CADE9E00D63911 /* ConvertingColors.swift in Sources */,
 				D195443427D4996700B03DFF /* ViewController.swift in Sources */,
+				B9AD3F3027E335B3001AB734 /* DateValue.swift in Sources */,
 				D195443C27D499D900B03DFF /* organsChartVC.swift in Sources */,
 				95C5967727D75A8D00A5572C /* styles.swift in Sources */,
 				B9570C2F27DFA828000D1B8B /* MaterialSegmentedControl.swift in Sources */,

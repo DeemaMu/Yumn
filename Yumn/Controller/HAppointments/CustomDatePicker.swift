@@ -11,6 +11,9 @@ struct CustomDatePicker: View {
     
     @Binding var currentDate: Date
     
+    // month update on button clicks
+    @State var currentMonth: Int = 0
+    
     var body: some View {
         
         VStack(spacing: 35){
@@ -50,12 +53,53 @@ struct CustomDatePicker: View {
                     Text(day).font(.callout).fontWeight(.semibold).frame(maxWidth: .infinity)
                 }
             }
+            
+            // dates
+            // lazygrid
+            let columns = Array(repeating: GridItem(.flexible()), count: 7)
+            
+            LazyVGrid(columns: columns, spacing: 10){
+                ForEach(extractDate()){ value in
+                    Text("\(value.day)")
+                }
+            }
         }
+    }
+    
+    func extractDate() -> [DateValue] {
+        let calender = Calendar.current
+        
+        // getting current month
+        guard let currentMonth = calender.date(byAdding: .month, value: self.currentMonth, to: Date()) else {
+            return[]
+        }
+        
+        return currentMonth.getAllDates().compactMap { date -> DateValue in
+            
+            // getting day
+            let day = calender.component(.day, from: date)
+            
+            return DateValue(day: day, date: date)
+        }
+        
     }
 }
 
 struct CustomDatePicker_Previews: PreviewProvider {
     static var previews: some View {
         CalenderAndAppointments()
+    }
+}
+
+// get all months dates
+extension Date{
+    
+    func getAllDates()->[Date]{
+        let calender = Calendar.current
+        let range = calender.range(of: .day, in: .month, for: self)!
+        
+        return range.compactMap { day -> Date in
+            return calender.date(byAdding: .day, value: day, to: self)!
+        }
     }
 }
