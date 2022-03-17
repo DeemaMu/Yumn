@@ -36,6 +36,8 @@
 		B9570C2F27DFA828000D1B8B /* MaterialSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9570C2E27DFA826000D1B8B /* MaterialSegmentedControl.swift */; };
 		B97A37FE27B9D32A00718079 /* RoundedShadowedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A37FD27B9D32A00718079 /* RoundedShadowedView.swift */; };
 		B97A380227BA9EA000718079 /* BloodDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A380127BA9EA000718079 /* BloodDonationViewController.swift */; };
+		B9AD3F2A27E2CF81001AB734 /* ManageAppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD3F2927E2CF81001AB734 /* ManageAppointmentsViewController.swift */; };
+		B9AD3F2C27E2D4E6001AB734 /* CalenderAndAppointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD3F2B27E2D4E6001AB734 /* CalenderAndAppointments.swift */; };
 		B9C7969527C7A83A006A78A3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C7969427C7A839006A78A3 /* TabBarController.swift */; };
 		B9DA61CE27C10C2900359487 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9DA61CD27C10C2800359487 /* GoogleService-Info.plist */; };
 		B9DA61DA27C10FCC00359487 /* LocationManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DA61D927C10FCC00359487 /* LocationManger.swift */; };
@@ -93,6 +95,8 @@
 		B9570C2E27DFA826000D1B8B /* MaterialSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialSegmentedControl.swift; sourceTree = "<group>"; };
 		B97A37FD27B9D32A00718079 /* RoundedShadowedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowedView.swift; sourceTree = "<group>"; };
 		B97A380127BA9EA000718079 /* BloodDonationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationViewController.swift; sourceTree = "<group>"; };
+		B9AD3F2927E2CF81001AB734 /* ManageAppointmentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageAppointmentsViewController.swift; sourceTree = "<group>"; };
+		B9AD3F2B27E2D4E6001AB734 /* CalenderAndAppointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderAndAppointments.swift; sourceTree = "<group>"; };
 		B9C7969427C7A839006A78A3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B9DA61CD27C10C2800359487 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B9DA61D927C10FCC00359487 /* LocationManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManger.swift; sourceTree = "<group>"; };
@@ -218,6 +222,7 @@
 		B930F85627B8548900E70860 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B9AD3F2827E2CF1E001AB734 /* HAppointments */,
 				B9CC6E9227E1498E0005C160 /* HOrganShortage */,
 				B9CC6E9127E148620005C160 /* Profile */,
 				B9CC6E9027E147B10005C160 /* Controls */,
@@ -244,6 +249,15 @@
 				8D7F152127D25DD200E1EB1A /* GIfCode.swift */,
 			);
 			path = "Custom Classes";
+			sourceTree = "<group>";
+		};
+		B9AD3F2827E2CF1E001AB734 /* HAppointments */ = {
+			isa = PBXGroup;
+			children = (
+				B9AD3F2927E2CF81001AB734 /* ManageAppointmentsViewController.swift */,
+				B9AD3F2B27E2D4E6001AB734 /* CalenderAndAppointments.swift */,
+			);
+			path = HAppointments;
 			sourceTree = "<group>";
 		};
 		B9CC6E8C27E147460005C160 /* Home */ = {
@@ -467,6 +481,7 @@
 				B9503D8827BAE4E500E312B8 /* CustomSegmentedControl.swift in Sources */,
 				D195444627D49A2F00B03DFF /* totalBloodShortage.swift in Sources */,
 				D195444427D49A2400B03DFF /* organShortage.swift in Sources */,
+				B9AD3F2A27E2CF81001AB734 /* ManageAppointmentsViewController.swift in Sources */,
 				D195444C27D49AA300B03DFF /* components.swift in Sources */,
 				8D7F152B27D299C100E1EB1A /* constants.swift in Sources */,
 				D195443E27D499ED00B03DFF /* customTabBar.swift in Sources */,
@@ -492,6 +507,7 @@
 				B930F86827B85D5F00E70860 /* RoundedView.swift in Sources */,
 				8D7F152D27D299F300E1EB1A /* HomeViewController.swift in Sources */,
 				D195444027D499FA00B03DFF /* tabBarVC.swift in Sources */,
+				B9AD3F2C27E2D4E6001AB734 /* CalenderAndAppointments.swift in Sources */,
 				B97A37FE27B9D32A00718079 /* RoundedShadowedView.swift in Sources */,
 				8D7F152F27D29A6500E1EB1A /* HospitalHomeViewController.swift in Sources */,
 				95062D9D27CADE1300D63911 /* VolunteerProfileViewController.swift in Sources */,
