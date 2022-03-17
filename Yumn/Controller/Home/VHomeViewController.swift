@@ -16,20 +16,23 @@ class VHomeViewController: UIViewController {
     
     @IBOutlet weak var popupTitle: UILabel!
     
-  
+    @IBOutlet weak var whiteView: RoundedView!
+    
     @IBOutlet weak var popupView: UIView!
     
+    @IBOutlet weak var popupStack: UIStackView!
     
     @IBOutlet weak var blurredView: UIView!
     
     @IBOutlet weak var logoutButton: UIBarButtonItem!
     
-    @IBOutlet weak var popupMsg: UILabel!
-    
     @IBOutlet weak var cancelButton: UIButton!
     
-    @IBOutlet weak var confirmBtn: UIButton!
+    @IBOutlet weak var popupMsg: UILabel!
     
+    
+    
+    @IBOutlet weak var confirmBtn: UIButton!
     
 
     
@@ -37,6 +40,13 @@ class VHomeViewController: UIViewController {
     @ObservedObject var lm = LocationManager()
 
     override func viewDidLoad() {
+        
+     
+      //  whiteView.layer.zPosition = -8
+        //blurredView.layer.zPosition = 1
+       // popupView.layer.zPosition = 9
+
+
         
         let db = Firestore.firestore()
                
@@ -72,11 +82,9 @@ class VHomeViewController: UIViewController {
         cancelButton.layer.cornerRadius = 20
         confirmBtn.layer.cornerRadius = 20
         
-       blurredView.superview?.bringSubviewToFront(blurredView)
-
-        self.view.bringSubviewToFront(popupView)
-
-       // popupView.superview?.bringSubviewToFront(popupView)
+      
+        popupStack.superview?.bringSubviewToFront(popupStack)
+        
 
         
         
