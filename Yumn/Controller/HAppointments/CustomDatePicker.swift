@@ -60,8 +60,9 @@ struct CustomDatePicker: View {
             
             LazyVGrid(columns: columns, spacing: 10){
                 ForEach(extractDate()){ value in
-                    Text("\(value.day)")
-                        .font(.title3.bold())
+//                    Text("\(value.day)")
+//                        .font(.title3.bold())
+                    CardView(value: value)
                 }
             }
         }.onChange(of: currentMonth) {
@@ -70,6 +71,17 @@ struct CustomDatePicker: View {
             currentDate = getCurrentMonth()
         }
     }
+    
+    @ViewBuilder
+    func CardView(value: DateValue)-> some View{
+        VStack{
+            if value.day != -1 {
+                Text("\(value.day)").font(.title3.bold())
+            }
+        }
+        
+    }
+    
     
     // extracting year and month for display
     func extraDate()-> [String]{
@@ -132,11 +144,10 @@ extension Date{
         // getting start date
         let startDate = calender.date(from: Calendar.current.dateComponents([.year, .month], from: self))!
         
-        var range = calender.range(of: .day, in: .month, for: startDate)!
-        range.removeLast()
+        let range = calender.range(of: .day, in: .month, for: startDate)!
         
         return range.compactMap { day -> Date in
-            return calender.date(byAdding: .day, value: day == 1 ? 0 : day, to: startDate)!
+            return calender.date(byAdding: .day, value: day - 1, to: startDate)!
         }
     }
 }
