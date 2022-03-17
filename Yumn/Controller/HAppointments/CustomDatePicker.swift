@@ -61,6 +61,7 @@ struct CustomDatePicker: View {
             LazyVGrid(columns: columns, spacing: 10){
                 ForEach(extractDate()){ value in
                     Text("\(value.day)")
+                        .font(.title3.bold())
                 }
             }
         }
@@ -96,10 +97,15 @@ extension Date{
     
     func getAllDates()->[Date]{
         let calender = Calendar.current
-        let range = calender.range(of: .day, in: .month, for: self)!
+        
+        // getting start date
+        let startDate = calender.date(from: Calendar.current.dateComponents([.year, .month], from: self))!
+        
+        var range = calender.range(of: .day, in: .month, for: startDate)!
+        range.removeLast()
         
         return range.compactMap { day -> Date in
-            return calender.date(byAdding: .day, value: day, to: self)!
+            return calender.date(byAdding: .day, value: day == 1 ? 0 : day, to: startDate)!
         }
     }
 }
