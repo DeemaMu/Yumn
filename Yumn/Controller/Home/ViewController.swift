@@ -10,18 +10,13 @@ import FirebaseFirestore
 import FirebaseAuth
 class HospitalHomeMainViewController: UIViewController {
     
-    @IBOutlet weak var popupView: UIView!
-    
-    @IBOutlet weak var popupTitle: UILabel!
-
-
-    @IBOutlet weak var confirmBtn: UIButton!
-    
-    @IBOutlet weak var blurredView: UIView!
-    @IBOutlet weak var cancelBtn: UIButton!
-    
-    @IBOutlet weak var popupMsg: UILabel!
-    
+    //    @IBOutlet weak var logoutBtn: UIBarButtonItem!
+    //    @IBOutlet weak var blurredView: UIView!
+    //    @IBOutlet weak var confirmBtn: UIButton!
+    //    @IBOutlet weak var cancelBtn: UIButton!
+    //    @IBOutlet weak var popupMsg: UILabel!
+    //    @IBOutlet weak var popupTitle: UILabel!
+    //    @IBOutlet weak var popupView: UIView!
     //    @IBOutlet weak var shortageNeed: UILabel!
     @IBOutlet weak var bloodShortageNeed: UILabel!
     
@@ -59,7 +54,6 @@ class HospitalHomeMainViewController: UIViewController {
     @IBOutlet weak var boneMarrowLb: UILabel!
     
     
-    @IBOutlet weak var popupStack: UIStackView!
     
     let db = Firestore.firestore()
     var bloodRow = [bloodTypeAndValue]()
@@ -72,11 +66,9 @@ class HospitalHomeMainViewController: UIViewController {
     
     override func viewDidLoad() {
         
-             popupStack.superview?.bringSubviewToFront(popupStack)
-
-                popupView.layer.cornerRadius = 35
-                cancelBtn.layer.cornerRadius = 20
-                confirmBtn.layer.cornerRadius = 20
+        //        popupView.layer.cornerRadius = 35
+        //        cancelBtn.layer.cornerRadius = 20
+        //        confirmBtn.layer.cornerRadius = 20
         
         
         
@@ -412,31 +404,29 @@ class HospitalHomeMainViewController: UIViewController {
         
     }
     @IBAction func onPressedLogout(_ sender: Any) {
-
         
         
         
-                popupTitle.text = "تأكيد تسجيل الخروج"
-                popupMsg.text = "هل أنت متأكد من أنك تريد تسجيل الخروج؟"
-        
-               popupView.isHidden = false
-               blurredView.isHidden = false
+        //        popupTitle.text = "تأكيد تسجيل الخروج"
+        //        popupMsg.text = "هل أنت متأكد من أنك تريد تسجيل الخروج؟"
+        //
+        //        popupView.isHidden = false
+        //        blurredView.isHidden = false
         
     }
     
     
+    
     @IBAction func onPressedCancel(_ sender: Any) {
-   
         
-                popupView.isHidden = true
-               blurredView.isHidden = true
+        //        popupView.isHidden = true
+        //        blurredView.isHidden = true
         
     }
     
     
     
     @IBAction func onPressedConfirm(_ sender: Any) {
-   
         
         
         do
