@@ -28,7 +28,6 @@
 		95785065279E1918004F3D8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95785063279E1918004F3D8F /* LaunchScreen.storyboard */; };
 		95C5967727D75A8D00A5572C /* styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C5967627D75A8D00A5572C /* styles.swift */; };
 		95C5967927D767FE00A5572C /* VSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C5967827D767FE00A5572C /* VSignUpViewController.swift */; };
-		9952FE9476F64769FADCE805 /* Pods_Yumn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D15F4D6C65B1F0ABEB4460 /* Pods_Yumn.framework */; };
 		B930F86827B85D5F00E70860 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B930F86727B85D5E00E70860 /* RoundedView.swift */; };
 		B9419DFC27C52D9C00962A1B /* HospitalCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9419DFA27C52D9C00962A1B /* HospitalCellTableViewCell.swift */; };
 		B9419DFD27C52D9C00962A1B /* HospitalCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9419DFB27C52D9C00962A1B /* HospitalCellTableViewCell.xib */; };
@@ -37,6 +36,10 @@
 		B9570C2F27DFA828000D1B8B /* MaterialSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9570C2E27DFA826000D1B8B /* MaterialSegmentedControl.swift */; };
 		B97A37FE27B9D32A00718079 /* RoundedShadowedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A37FD27B9D32A00718079 /* RoundedShadowedView.swift */; };
 		B97A380227BA9EA000718079 /* BloodDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A380127BA9EA000718079 /* BloodDonationViewController.swift */; };
+		B9AD3F2A27E2CF81001AB734 /* ManageAppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD3F2927E2CF81001AB734 /* ManageAppointmentsViewController.swift */; };
+		B9AD3F2C27E2D4E6001AB734 /* CalenderAndAppointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD3F2B27E2D4E6001AB734 /* CalenderAndAppointments.swift */; };
+		B9AD3F2E27E2E005001AB734 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD3F2D27E2E005001AB734 /* CustomDatePicker.swift */; };
+		B9AD3F3027E335B3001AB734 /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD3F2F27E335B3001AB734 /* DateValue.swift */; };
 		B9C7969527C7A83A006A78A3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C7969427C7A839006A78A3 /* TabBarController.swift */; };
 		B9DA61CE27C10C2900359487 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9DA61CD27C10C2800359487 /* GoogleService-Info.plist */; };
 		B9DA61DA27C10FCC00359487 /* LocationManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DA61D927C10FCC00359487 /* LocationManger.swift */; };
@@ -58,11 +61,11 @@
 		D195445227D49B1600B03DFF /* organCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D195445127D49B1600B03DFF /* organCell.xib */; };
 		D195445427D49B2100B03DFF /* organCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D195445327D49B2100B03DFF /* organCell.swift */; };
 		D195445827D49B4800B03DFF /* charts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D195445727D49B4800B03DFF /* charts.storyboard */; };
+		E05F8D73282625635E125275 /* Pods_Yumn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0833571A2DB66463421288B /* Pods_Yumn.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5B4D2E1AFA97FD137C0F82F9 /* Pods-Yumn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.debug.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.debug.xcconfig"; sourceTree = "<group>"; };
-		7C9CC10025196FAD7E195DFD /* Pods-Yumn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.release.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.release.xcconfig"; sourceTree = "<group>"; };
+		69D19C896659B527EE673C2E /* Pods-Yumn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.release.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.release.xcconfig"; sourceTree = "<group>"; };
 		8D7F152127D25DD200E1EB1A /* GIfCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIfCode.swift; sourceTree = "<group>"; };
 		8D7F152427D25EF200E1EB1A /* yumnLoading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = yumnLoading.gif; sourceTree = "<group>"; };
 		8D7F152627D25F3B00E1EB1A /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -86,7 +89,6 @@
 		95785066279E1918004F3D8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95C5967627D75A8D00A5572C /* styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = styles.swift; sourceTree = "<group>"; };
 		95C5967827D767FE00A5572C /* VSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VSignUpViewController.swift; sourceTree = "<group>"; };
-		A9D15F4D6C65B1F0ABEB4460 /* Pods_Yumn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yumn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B930F86727B85D5E00E70860 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		B9419DFA27C52D9C00962A1B /* HospitalCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalCellTableViewCell.swift; sourceTree = "<group>"; };
 		B9419DFB27C52D9C00962A1B /* HospitalCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HospitalCellTableViewCell.xib; sourceTree = "<group>"; };
@@ -95,10 +97,16 @@
 		B9570C2E27DFA826000D1B8B /* MaterialSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialSegmentedControl.swift; sourceTree = "<group>"; };
 		B97A37FD27B9D32A00718079 /* RoundedShadowedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowedView.swift; sourceTree = "<group>"; };
 		B97A380127BA9EA000718079 /* BloodDonationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationViewController.swift; sourceTree = "<group>"; };
+		B9AD3F2927E2CF81001AB734 /* ManageAppointmentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageAppointmentsViewController.swift; sourceTree = "<group>"; };
+		B9AD3F2B27E2D4E6001AB734 /* CalenderAndAppointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderAndAppointments.swift; sourceTree = "<group>"; };
+		B9AD3F2D27E2E005001AB734 /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
+		B9AD3F2F27E335B3001AB734 /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
 		B9C7969427C7A839006A78A3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B9DA61CD27C10C2800359487 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B9DA61D927C10FCC00359487 /* LocationManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManger.swift; sourceTree = "<group>"; };
 		B9DA61DB27C1100B00359487 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		C8BF01BA83FFBAB2F75925F9 /* Pods-Yumn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.debug.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.debug.xcconfig"; sourceTree = "<group>"; };
+		D0833571A2DB66463421288B /* Pods_Yumn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yumn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D195443327D4996600B03DFF /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D195443527D4998F00B03DFF /* bloodShortageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bloodShortageViewController.swift; sourceTree = "<group>"; };
 		D195443727D499A200B03DFF /* organShortageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = organShortageVC.swift; sourceTree = "<group>"; };
@@ -123,21 +131,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9952FE9476F64769FADCE805 /* Pods_Yumn.framework in Frameworks */,
+				E05F8D73282625635E125275 /* Pods_Yumn.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		13505D6AE7CA106008989D7C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				A9D15F4D6C65B1F0ABEB4460 /* Pods_Yumn.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		8D7F152327D25EC900E1EB1A /* GIF */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,7 +163,7 @@
 				95785057279E1917004F3D8F /* Yumn */,
 				95785056279E1917004F3D8F /* Products */,
 				FB3A4FC32329E4399DABC3B5 /* Pods */,
-				13505D6AE7CA106008989D7C /* Frameworks */,
+				BB46A07A5565206535A93DDE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -204,6 +204,7 @@
 				D195444327D49A2400B03DFF /* organShortage.swift */,
 				D195444527D49A2F00B03DFF /* totalBloodShortage.swift */,
 				D195444727D49A3900B03DFF /* totalOrgansShortage.swift */,
+				B9AD3F2F27E335B3001AB734 /* DateValue.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -226,6 +227,7 @@
 		B930F85627B8548900E70860 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B9AD3F2827E2CF1E001AB734 /* HAppointments */,
 				B9CC6E9227E1498E0005C160 /* HOrganShortage */,
 				B9CC6E9127E148620005C160 /* Profile */,
 				B9CC6E9027E147B10005C160 /* Controls */,
@@ -252,6 +254,16 @@
 				8D7F152127D25DD200E1EB1A /* GIfCode.swift */,
 			);
 			path = "Custom Classes";
+			sourceTree = "<group>";
+		};
+		B9AD3F2827E2CF1E001AB734 /* HAppointments */ = {
+			isa = PBXGroup;
+			children = (
+				B9AD3F2927E2CF81001AB734 /* ManageAppointmentsViewController.swift */,
+				B9AD3F2B27E2D4E6001AB734 /* CalenderAndAppointments.swift */,
+				B9AD3F2D27E2E005001AB734 /* CustomDatePicker.swift */,
+			);
+			path = HAppointments;
 			sourceTree = "<group>";
 		};
 		B9CC6E8C27E147460005C160 /* Home */ = {
@@ -326,11 +338,19 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		BB46A07A5565206535A93DDE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D0833571A2DB66463421288B /* Pods_Yumn.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FB3A4FC32329E4399DABC3B5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				5B4D2E1AFA97FD137C0F82F9 /* Pods-Yumn.debug.xcconfig */,
-				7C9CC10025196FAD7E195DFD /* Pods-Yumn.release.xcconfig */,
+				C8BF01BA83FFBAB2F75925F9 /* Pods-Yumn.debug.xcconfig */,
+				69D19C896659B527EE673C2E /* Pods-Yumn.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -342,11 +362,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 95785069279E1918004F3D8F /* Build configuration list for PBXNativeTarget "Yumn" */;
 			buildPhases = (
-				2BE4FB83BBEE61C5254D01F3 /* [CP] Check Pods Manifest.lock */,
+				D04CFCC308EF7D62950EB503 /* [CP] Check Pods Manifest.lock */,
 				95785051279E1917004F3D8F /* Sources */,
 				95785052279E1917004F3D8F /* Frameworks */,
 				95785053279E1917004F3D8F /* Resources */,
-				EB4BAA5B8B1A8F91736EDC62 /* [CP] Embed Pods Frameworks */,
+				C06CF326FBEC6E604CD94619 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -414,7 +434,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2BE4FB83BBEE61C5254D01F3 /* [CP] Check Pods Manifest.lock */ = {
+		C06CF326FBEC6E604CD94619 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Yumn/Pods-Yumn-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Yumn/Pods-Yumn-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Yumn/Pods-Yumn-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D04CFCC308EF7D62950EB503 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -436,23 +473,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EB4BAA5B8B1A8F91736EDC62 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Yumn/Pods-Yumn-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Yumn/Pods-Yumn-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Yumn/Pods-Yumn-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -460,6 +480,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9AD3F2E27E2E005001AB734 /* CustomDatePicker.swift in Sources */,
 				D195443A27D499C700B03DFF /* bloodChartViewController.swift in Sources */,
 				D195444227D49A1700B03DFF /* bloodShortage.swift in Sources */,
 				D195443627D4998F00B03DFF /* bloodShortageViewController.swift in Sources */,
@@ -467,6 +488,7 @@
 				B9503D8827BAE4E500E312B8 /* CustomSegmentedControl.swift in Sources */,
 				D195444627D49A2F00B03DFF /* totalBloodShortage.swift in Sources */,
 				D195444427D49A2400B03DFF /* organShortage.swift in Sources */,
+				B9AD3F2A27E2CF81001AB734 /* ManageAppointmentsViewController.swift in Sources */,
 				D195444C27D49AA300B03DFF /* components.swift in Sources */,
 				8D7F152B27D299C100E1EB1A /* constants.swift in Sources */,
 				D195443E27D499ED00B03DFF /* customTabBar.swift in Sources */,
@@ -477,6 +499,7 @@
 				B9C7969527C7A83A006A78A3 /* TabBarController.swift in Sources */,
 				95062D9F27CADE9E00D63911 /* ConvertingColors.swift in Sources */,
 				D195443427D4996700B03DFF /* ViewController.swift in Sources */,
+				B9AD3F3027E335B3001AB734 /* DateValue.swift in Sources */,
 				D195443C27D499D900B03DFF /* organsChartVC.swift in Sources */,
 				95C5967727D75A8D00A5572C /* styles.swift in Sources */,
 				B9570C2F27DFA828000D1B8B /* MaterialSegmentedControl.swift in Sources */,
@@ -492,6 +515,7 @@
 				B930F86827B85D5F00E70860 /* RoundedView.swift in Sources */,
 				8D7F152D27D299F300E1EB1A /* HomeViewController.swift in Sources */,
 				D195444027D499FA00B03DFF /* tabBarVC.swift in Sources */,
+				B9AD3F2C27E2D4E6001AB734 /* CalenderAndAppointments.swift in Sources */,
 				B97A37FE27B9D32A00718079 /* RoundedShadowedView.swift in Sources */,
 				8D7F152F27D29A6500E1EB1A /* HospitalHomeViewController.swift in Sources */,
 				95062D9D27CADE1300D63911 /* VolunteerProfileViewController.swift in Sources */,
@@ -640,7 +664,7 @@
 		};
 		9578506A279E1918004F3D8F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B4D2E1AFA97FD137C0F82F9 /* Pods-Yumn.debug.xcconfig */;
+			baseConfigurationReference = C8BF01BA83FFBAB2F75925F9 /* Pods-Yumn.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -674,7 +698,7 @@
 		};
 		9578506B279E1918004F3D8F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7C9CC10025196FAD7E195DFD /* Pods-Yumn.release.xcconfig */;
+			baseConfigurationReference = 69D19C896659B527EE673C2E /* Pods-Yumn.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

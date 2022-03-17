@@ -10,13 +10,13 @@ import FirebaseFirestore
 import FirebaseAuth
 class HospitalHomeMainViewController: UIViewController {
     
-    @IBOutlet weak var logoutBtn: UIBarButtonItem!
-    @IBOutlet weak var blurredView: UIView!
-    @IBOutlet weak var confirmBtn: UIButton!
-    @IBOutlet weak var cancelBtn: UIButton!
-    @IBOutlet weak var popupMsg: UILabel!
-    @IBOutlet weak var popupTitle: UILabel!
-    @IBOutlet weak var popupView: UIView!
+    //    @IBOutlet weak var logoutBtn: UIBarButtonItem!
+    //    @IBOutlet weak var blurredView: UIView!
+    //    @IBOutlet weak var confirmBtn: UIButton!
+    //    @IBOutlet weak var cancelBtn: UIButton!
+    //    @IBOutlet weak var popupMsg: UILabel!
+    //    @IBOutlet weak var popupTitle: UILabel!
+    //    @IBOutlet weak var popupView: UIView!
     //    @IBOutlet weak var shortageNeed: UILabel!
     @IBOutlet weak var bloodShortageNeed: UILabel!
     
@@ -58,48 +58,56 @@ class HospitalHomeMainViewController: UIViewController {
     let db = Firestore.firestore()
     var bloodRow = [bloodTypeAndValue]()
     var organsRow = [organsAndValue]()
-   
     
     
- 
-      
+    
+    
+    
     
     override func viewDidLoad() {
         
-        popupView.layer.cornerRadius = 35
-        cancelBtn.layer.cornerRadius = 20
-        confirmBtn.layer.cornerRadius = 20
-
+        //        popupView.layer.cornerRadius = 35
+        //        cancelBtn.layer.cornerRadius = 20
+        //        confirmBtn.layer.cornerRadius = 20
+        
         
         
         let seconds = 1.0
         DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-
-                    let mssg = "حياك الله، تو ما نور يُمْن"
             
-                    self.showToastHome(message: mssg, font: .systemFont(ofSize: 20), image: (UIImage(named: "yumn-1") ?? UIImage(named: "")! ))}
+            guard let mainFont = UIFont(name: "Tajawal", size: 18) else {
+                fatalError("""
+                    Failed to load the "CustomFont-Light" font.
+                    Make sure the font file is included in the project and the font name is spelled correctly.
+                    """
+                )
+            }
+            
+            let mssg = "حياك الله، تو ما نور يُمْن"
+            
+            self.showToastHome(message: mssg, font: mainFont, image: (UIImage(named: "yumn-1") ?? UIImage(named: "")! ))}
         
-
+        
         
         
         super.viewDidLoad()
         
         if Auth.auth().currentUser != nil {
-          // User is signed in.
-          let user = Auth.auth().currentUser
+            // User is signed in.
+            let user = Auth.auth().currentUser
             
             getBloodShortage(userID:user!.uid)
-
+            
             getOrganShortageByMap(userID:user!.uid)
             
             
         } else {
-          // No user is signed in.
+            // No user is signed in.
             print("No user is signed in")
-          // ...
+            // ...
         }
         
-
+        
         
         
         guard let customFont = UIFont(name: "Tajawal-Bold", size: UIFont.labelFontSize) else {
@@ -193,10 +201,10 @@ class HospitalHomeMainViewController: UIViewController {
         organShortageNeed.font = organShortageNeed.font.withSize(24)
         
         // font style for shortage need
-//        shortageNeed.font = UIFontMetrics.default.scaledFont(for: customFont)
-//        shortageNeed.adjustsFontForContentSizeCategory = true
-//        shortageNeed.font = shortageNeed.font.withSize(32)
-
+        //        shortageNeed.font = UIFontMetrics.default.scaledFont(for: customFont)
+        //        shortageNeed.adjustsFontForContentSizeCategory = true
+        //        shortageNeed.font = shortageNeed.font.withSize(32)
+        
         bloodUpdateBtn.titleLabel?.font =  UIFont(name: "Tajawal-Regular", size: 24)
         //bloodUpdateBtn.contentHorizontalAlignment = .center
         //bloodUpdateBtn.contentVerticalAlignment = .center
@@ -208,9 +216,9 @@ class HospitalHomeMainViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.layoutIfNeeded()
         self.navigationController?.hideHairline()
-
+        
     }
-
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -228,7 +236,7 @@ class HospitalHomeMainViewController: UIViewController {
         nav?.barTintColor = UIColor.white
         nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(named: "mainDark"), NSAttributedString.Key.font: customFont]
         navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -256,17 +264,17 @@ class HospitalHomeMainViewController: UIViewController {
                     let data = snapshotDocuments.data()
                     
                     if let organShortageMapField = data?[Constants.FStore.oShField] as? [String : Int]{
-                    
+                        
                         print("lung from map \(organShortageMapField[Constants.FStore.lung]!)")
                         
-                       let heartData = (organShortageMapField[Constants.FStore.heart]!)
-                       let lungData = (organShortageMapField[Constants.FStore.lung]!)
-                       let kidneyData = (organShortageMapField[Constants.FStore.kidney]!)
-                       let liverData = (organShortageMapField[Constants.FStore.liver]!)
-                       let corneaData = (organShortageMapField[Constants.FStore.cornea]!)
-                       let pancreasData = (organShortageMapField[Constants.FStore.pancreas]!)
-                       let boneMarrowData = (organShortageMapField[Constants.FStore.boneMarrow]!)
-                       let intestineData = (organShortageMapField[Constants.FStore.intestine]!)
+                        let heartData = (organShortageMapField[Constants.FStore.heart]!)
+                        let lungData = (organShortageMapField[Constants.FStore.lung]!)
+                        let kidneyData = (organShortageMapField[Constants.FStore.kidney]!)
+                        let liverData = (organShortageMapField[Constants.FStore.liver]!)
+                        let corneaData = (organShortageMapField[Constants.FStore.cornea]!)
+                        let pancreasData = (organShortageMapField[Constants.FStore.pancreas]!)
+                        let boneMarrowData = (organShortageMapField[Constants.FStore.boneMarrow]!)
+                        let intestineData = (organShortageMapField[Constants.FStore.intestine]!)
                         
                         // for updating organ shortage
                         self.organsRow = [
@@ -307,20 +315,20 @@ class HospitalHomeMainViewController: UIViewController {
                         self.cornea.text = corneaArabic
                         self.pancreas.text = pancreasArabic
                         self.boneMarrow.text = boneMarroArabic
-                      
-                    
+                        
+                        
                     }
                 }
             }
             
             
         }
-     
-}
-
+        
+    }
+    
     func getBloodShortage(userID:String){
         //current user
-         db.collection(Constants.FStore.hospitalCollection).document(userID).addSnapshotListener{(QuerySnapshot,error) in // addSnapshotListener instead of getDocuments
+        db.collection(Constants.FStore.hospitalCollection).document(userID).addSnapshotListener{(QuerySnapshot,error) in // addSnapshotListener instead of getDocuments
             if let e = error{
                 print("there was an issue fetching blood shortage from firestore. \(e)")
             }else {
@@ -328,21 +336,21 @@ class HospitalHomeMainViewController: UIViewController {
                     
                     let data = snapshotDocuments.data()
                     
-                   // var bloodShortageMapField = [String : Int]()
+                    // var bloodShortageMapField = [String : Int]()
                     if let bloodShortageMapField = data?[Constants.FStore.bShField] as? [String : Int]{
-                    
-                    
-                    
+                        
+                        
+                        
                         let aPos = (bloodShortageMapField[Constants.FStore.aPos]!)
-                       let bPos = (bloodShortageMapField[Constants.FStore.bPos]!)
-                       let oPos = (bloodShortageMapField[Constants.FStore.oPos]!)
-                       let abPos = (bloodShortageMapField[Constants.FStore.abPos]!)
-                       
-                       let aNeg = (bloodShortageMapField[Constants.FStore.aNeg]!)
-                       let bNeg = (bloodShortageMapField[Constants.FStore.bNeg]!)
-                       let oNeg = (bloodShortageMapField[Constants.FStore.oNeg]!)
-                       let abNeg = (bloodShortageMapField[Constants.FStore.abNeg]!)
-                    
+                        let bPos = (bloodShortageMapField[Constants.FStore.bPos]!)
+                        let oPos = (bloodShortageMapField[Constants.FStore.oPos]!)
+                        let abPos = (bloodShortageMapField[Constants.FStore.abPos]!)
+                        
+                        let aNeg = (bloodShortageMapField[Constants.FStore.aNeg]!)
+                        let bNeg = (bloodShortageMapField[Constants.FStore.bNeg]!)
+                        let oNeg = (bloodShortageMapField[Constants.FStore.oNeg]!)
+                        let abNeg = (bloodShortageMapField[Constants.FStore.abNeg]!)
+                        
                         // for updating blood shortage
                         self.bloodRow = [
                             bloodTypeAndValue(bloodType: "A+",value: aPos),
@@ -356,7 +364,7 @@ class HospitalHomeMainViewController: UIViewController {
                             
                             bloodTypeAndValue(bloodType: "AB+",value: abPos),
                             bloodTypeAndValue(bloodType: "AB-",value: abNeg)
-                        
+                            
                         ]
                         
                         
@@ -373,7 +381,7 @@ class HospitalHomeMainViewController: UIViewController {
                         let bNegArabic =  String(bloodShort.bNeg).convertedDigitsToLocale(Locale(identifier: "AR"))
                         let oNegArabic =  String(bloodShort.oNeg).convertedDigitsToLocale(Locale(identifier: "AR"))
                         let abNegArabic =  String(bloodShort.abNeg).convertedDigitsToLocale(Locale(identifier: "AR"))
-                    
+                        
                         
                         
                         
@@ -386,7 +394,7 @@ class HospitalHomeMainViewController: UIViewController {
                         self.oNegative.text = "\(oNegArabic) وحدة"
                         self.bNegative.text = "\(bNegArabic) وحدة"
                         self.abNegative.text = "\(abNegArabic) وحدة"
-                    
+                        
                     }
                 }
             }
@@ -394,48 +402,48 @@ class HospitalHomeMainViewController: UIViewController {
             
         }
         
-}
+    }
     @IBAction func onPressedLogout(_ sender: Any) {
-   
-
-    
-        popupTitle.text = "تأكيد تسجيل الخروج"
-        popupMsg.text = "هل أنت متأكد من أنك تريد تسجيل الخروج؟"
         
-        popupView.isHidden = false
-        blurredView.isHidden = false
-
+        
+        
+        //        popupTitle.text = "تأكيد تسجيل الخروج"
+        //        popupMsg.text = "هل أنت متأكد من أنك تريد تسجيل الخروج؟"
+        //
+        //        popupView.isHidden = false
+        //        blurredView.isHidden = false
+        
     }
     
     
     
     @IBAction func onPressedCancel(_ sender: Any) {
         
-        popupView.isHidden = true
-        blurredView.isHidden = true
-
+        //        popupView.isHidden = true
+        //        blurredView.isHidden = true
+        
     }
     
-  
-        
+    
+    
     @IBAction func onPressedConfirm(_ sender: Any) {
-    
-    
-            do
-                {
+        
+        
+        do
+        {
             try Auth.auth().signOut()
-                    transitionToLogIn()
-                    
-                    
-                    // add a flushbar
-                   
-                }
-                catch let error as NSError
-                {
-                    print(error.localizedDescription)
-                    
-                    // Show pop up message
-                }
+            transitionToLogIn()
+            
+            
+            // add a flushbar
+            
+        }
+        catch let error as NSError
+        {
+            print(error.localizedDescription)
+            
+            // Show pop up message
+        }
         
         
     }
@@ -444,13 +452,13 @@ class HospitalHomeMainViewController: UIViewController {
     func transitionToLogIn(){
         
         // I have to check if the user is volunteer or hospital, in the log in
-       let signInViewController =  storyboard?.instantiateViewController(identifier: Constants.Storyboard.signInViewController) as? SignInViewController
+        let signInViewController =  storyboard?.instantiateViewController(identifier: Constants.Storyboard.signInViewController) as? SignInViewController
         
         view.window?.rootViewController = signInViewController
         view.window?.makeKeyAndVisible()
         
-       // SignInViewController.showToast(message: "تم تسجي لالخروج بنجاح", font: .systemFont(ofSize: 20), image: (UIImage(named: "yumn") ?? UIImage(named: "")! ))}
-
+        // SignInViewController.showToast(message: "تم تسجي لالخروج بنجاح", font: .systemFont(ofSize: 20), image: (UIImage(named: "yumn") ?? UIImage(named: "")! ))}
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -462,24 +470,24 @@ class HospitalHomeMainViewController: UIViewController {
             destinationVC.delegate=self
             destinationVC.bloodTypeArray = bloodRow
             destinationVC.oldBloodTypeArray = bloodRow
-         
+            
         }
         
         
-       if segue.identifier == Constants.Segue.updateOrgansShSegue { // make sure it matches the segue id
+        if segue.identifier == Constants.Segue.updateOrgansShSegue { // make sure it matches the segue id
             
             // Create a new variable to store the instance of updateBloodShortageVC
             let destinationVC = segue.destination as! updateOrganShortageVC
             destinationVC.delegate=self
             destinationVC.organsArray = organsRow
             destinationVC.oldOrgansArray = organsRow
-         //updateOrganShortageVC
+            //updateOrganShortageVC
         }
         
     }
     
     
-
+    
     
 } // end of class
 
@@ -511,24 +519,24 @@ struct organsAndValue {
 // extension to convert digits from any language to any language
 extension String {
     private static let formatter = NumberFormatter()
-
+    
     func clippingCharacters(in characterSet: CharacterSet) -> String {
         components(separatedBy: characterSet).joined()
     }
-
+    
     func convertedDigitsToLocale(_ locale: Locale = .current) -> String {
         let digits = Set(clippingCharacters(in: CharacterSet.decimalDigits.inverted))
         guard !digits.isEmpty else { return self }
-
+        
         Self.formatter.locale = locale
-
+        
         let maps: [(original: String, converted: String)] = digits.map {
             let original = String($0)
             let digit = Self.formatter.number(from: original)!
             let localized = Self.formatter.string(from: digit)!
             return (original, localized)
         }
-
+        
         return maps.reduce(self) { converted, map in
             converted.replacingOccurrences(of: map.original, with: map.converted)
         }
@@ -538,7 +546,7 @@ extension String {
 
 
 extension HospitalHomeMainViewController : BloodShortageDelegate,  OrganShortageDelegate{
-   
+    
     
     
     func onOrganUpdateCompletion(toastType: String) {
@@ -566,61 +574,61 @@ extension HospitalHomeMainViewController : BloodShortageDelegate,  OrganShortage
             components().showToast(message: "حدثت مشكلة اثناء تحديث احتياج الدم، لم يتم تحديث احتياج  الدم", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!,viewC: self)
         }
         
-
-    }
-    
- //end f extension
-    func showToastHome(message : String, font: UIFont, image: UIImage){
-
-        let toastLabel = UILabel(frame: CGRect(x: 5, y: 45, width: self.view.frame.size.width-10, height: 70))
-            
-
-            toastLabel.backgroundColor = UIColor.gray.withAlphaComponent(1)
-            toastLabel.textColor = UIColor.white
-            toastLabel.font = font
-            toastLabel.textAlignment = .center;
-            toastLabel.text = message
-            toastLabel.alpha = 1.0
-            toastLabel.layer.cornerRadius = 10;
-            toastLabel.clipsToBounds  =  true
-            self.view.addSubview(toastLabel)
-       
-
-            
-        let imageView = UIImageView(frame: CGRect(x: self.view.frame.size.width-70, y: 10, width: 45, height: 45))
-            imageView.layer.masksToBounds = true
-
-        imageView.image = image
-            imageView.layer.cornerRadius = 10
-            
-     
-
-            toastLabel.addSubview(imageView)
-            
-            self.navigationController?.view.addSubview(toastLabel)
-
-        UIView.animate(withDuration: 10, delay: 5, options:
-                        
-                        
-                        .transitionFlipFromTop, animations: {
-
-                            
-             toastLabel.alpha = 0.0
-
-        }, completion: {(isCompleted) in
-            
-            
-
-            toastLabel.removeFromSuperview()
-
-
-
-        })
-    }
         
     }
     
+    //end f extension
+    func showToastHome(message : String, font: UIFont, image: UIImage){
+        
+        let toastLabel = UILabel(frame: CGRect(x: 5, y: 45, width: self.view.frame.size.width-10, height: 70))
+        
+        
+        toastLabel.backgroundColor = UIColor.gray.withAlphaComponent(1)
+        toastLabel.textColor = UIColor.white
+        toastLabel.font = font
+        toastLabel.textAlignment = .center;
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10;
+        toastLabel.clipsToBounds  =  true
+        self.view.addSubview(toastLabel)
+        
+        
+        
+        let imageView = UIImageView(frame: CGRect(x: self.view.frame.size.width-70, y: 10, width: 45, height: 45))
+        imageView.layer.masksToBounds = true
+        
+        imageView.image = image
+        imageView.layer.cornerRadius = 10
+        
+        
+        
+        toastLabel.addSubview(imageView)
+        
+        self.navigationController?.view.addSubview(toastLabel)
+        
+        UIView.animate(withDuration: 6, delay: 5, options:
+                        
+                        
+                            .transitionFlipFromTop, animations: {
+            
+            
+            toastLabel.alpha = 0.0
+            
+        }, completion: {(isCompleted) in
+            
+            
+            
+            toastLabel.removeFromSuperview()
+            
+            
+            
+        })
+    }
     
+}
+
+
 
 
 
