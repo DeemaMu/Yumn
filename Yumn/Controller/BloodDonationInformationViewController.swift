@@ -14,7 +14,7 @@ import SwiftUI
 
 class BloodDonationInformationViewController: UIViewController{
     
-    @IBOutlet weak var label1: UILabel!
+ //   @IBOutlet weak var label1: UILabel!
     
     @IBOutlet weak var typeStack: UIStackView!
     

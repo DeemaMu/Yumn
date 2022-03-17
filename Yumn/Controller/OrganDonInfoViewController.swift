@@ -20,7 +20,11 @@ import SwiftUI
 
 class OrganDonInfoViewController: UIViewController{
     
-    @IBOutlet weak var label1: UILabel!
+    @IBOutlet weak var organLabel2: UILabel!
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var stack1: UIStackView!
+    @IBOutlet weak var stackView: UIStackView!
     
     @IBOutlet weak var typeStack: UIStackView!
     
@@ -28,9 +32,9 @@ class OrganDonInfoViewController: UIViewController{
     @IBOutlet weak var bloodArrow: UIButton!
     
     @IBOutlet weak var typeText: UILabel!
-    @IBOutlet weak var donInfo: UIStackView!
+  
     
-    @IBOutlet weak var stackView: UIStackView!
+   // @IBOutlet weak var stackView: UIStackView!
     
    
     @IBOutlet weak var donBtn: UIButton!
@@ -38,10 +42,12 @@ class OrganDonInfoViewController: UIViewController{
    
   
     
+    @IBOutlet weak var donInfo: UIStackView!
     
-  //  @IBOutlet weak var donInfo: UIStackView!
+  
     
-   
+    @IBOutlet weak var organLabel: UILabel!
+    
     
     @IBOutlet weak var typeBtn: UIButton!
     
@@ -51,30 +57,16 @@ class OrganDonInfoViewController: UIViewController{
     
     override func viewDidLoad() {
         
-        let db = Firestore.firestore()
-
-        let infoRef = db.collection("information").document("blood")
+        //organLabel.isHidden = true
+       // organLabel2.isHidden = true
+       // titleLabel.isHidden = true
         
+      
             
-        infoRef.getDocument { (document, error) in
-            if let document = document, document.exists {
 
-                    let info = document.get("information") as! String
-    
-
-                    
-                    print (info)
-                } else {
-                    print("error")
-                }
-
-                
-           
-            }
-
-       // stackView.setCustomSpacing(20, after: btn)
+      //  stackView.setCustomSpacing(20, after: stack1)
         
-        donInfo.isHidden = true
+       // donInfo.isHidden = true
      
         typeArrow.contentHorizontalAlignment = .left
 
@@ -84,10 +76,12 @@ class OrganDonInfoViewController: UIViewController{
         
         super.viewDidLoad()
         
-     //   donInfo.clipsToBounds = true
+        organLabel.clipsToBounds = true
      
         
-        typeText.text = "hi hi hi hi "
+        organLabel.text = "جزء من الكبد"
+        organLabel2.text = "إحدى الكليتين"
+        titleLabel.text = "يمكن التبرع بـ:"
 
        // donInfo.isHidden = true
         typeText.isHidden = true
@@ -95,12 +89,14 @@ class OrganDonInfoViewController: UIViewController{
         // Do any additional setup after loading the view.
     }
     
-  /* @IBAction func onPressedDonBtn(_ sender: Any) {
+ @IBAction func onPressedDonBtn(_ sender: Any) {
     
         
-        donInfo.isHidden = !donInfo.isHidden
+        organLabel.isHidden = !organLabel.isHidden
+        titleLabel.isHidden = !titleLabel.isHidden
+        organLabel2.isHidden = !organLabel2.isHidden
        
-       if (donInfo.isHidden == false){
+       if (organLabel.isHidden == false){
         bloodArrow.setImage(UIImage(systemName: "chevron.up"), for: .normal)
        }
        
@@ -110,7 +106,7 @@ class OrganDonInfoViewController: UIViewController{
            
        }
     }
-    */
+    
   
 
         
