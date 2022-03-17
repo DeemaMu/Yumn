@@ -24,21 +24,21 @@ struct CustomDatePicker: View {
             HStack(spacing: 20){
                 
                 VStack(alignment: .leading, spacing: 10){
-                    Text("2022").font(.caption).fontWeight(.semibold)
-                    Text("March").font(.title.bold())
+                    Text(extraDate()[0]).font(.caption).fontWeight(.semibold)
+                    Text(extraDate()[1]).font(.title.bold())
                 }
                 
                 Spacer(minLength: 0)
                 
                 Button {
-                    
+                    withAnimation{currentMonth -=  1}
                 } label: {
                     Image(systemName: "chevron.left")
                         .font(.title2)
                 }
                 
                 Button {
-                    
+                    withAnimation{currentMonth +=  1}
                 } label: {
                     Image(systemName: "chevron.right")
                         .font(.title2)
@@ -64,18 +64,40 @@ struct CustomDatePicker: View {
                         .font(.title3.bold())
                 }
             }
+        }.onChange(of: currentMonth) {
+            newValue in
+            // updating month
+            currentDate = getCurrentMonth()
         }
+    }
+    
+    // extracting year and month for display
+    func extraDate()-> [String]{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY MMMM"
+        
+        let date = formatter.string(from: currentDate)
+        
+        return date.components(separatedBy: " ")
+    }
+    
+    func getCurrentMonth() -> Date{
+        let calender = Calendar.current
+        
+        // getting current month
+        guard let currentMonth = calender.date(byAdding: .month, value: self.currentMonth, to: Date()) else {
+            return Date()
+        }
+        return currentMonth
     }
     
     func extractDate() -> [DateValue] {
         let calender = Calendar.current
         
         // getting current month
-        guard let currentMonth = calender.date(byAdding: .month, value: self.currentMonth, to: Date()) else {
-            return[]
-        }
+        let currentMonth = getCurrentMonth()
         
-        return currentMonth.getAllDates().compactMap { date -> DateValue in
+        var days = currentMonth.getAllDates().compactMap { date -> DateValue in
             
             // getting day
             let day = calender.component(.day, from: date)
@@ -83,6 +105,15 @@ struct CustomDatePicker: View {
             return DateValue(day: day, date: date)
         }
         
+        // adding dates offset
+        
+        let firstWeekday = calender.component(.weekday, from: days.first?.date ?? Date())
+        
+        for _ in 0..<firstWeekday - 1 {
+            days.insert(DateValue(day: -1, date: Date()), at: 0)
+        }
+        
+        return days
     }
 }
 
