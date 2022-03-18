@@ -107,6 +107,7 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
         genderButtons(button: maleButton)
         
         dateTextField.inputView = dateTimePicker.inputView
+        workHoursTextField.inputView = timePicker.inputView
         
     }
     
@@ -228,14 +229,24 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
     
     
     
-    // MARK: - Date textfield
+    // MARK: - Date and Time textfield
     
     private lazy var dateTimePicker : DateTimePicker = {
         let picker = DateTimePicker()
         picker.setup()
         picker.didSelectDates = { [ weak self ] (startDate , endDate) in
-            let text = Date.buildTimeRangeString(startDate: startDate, endDate: endDate)
+            let text = Date.buildDateRangeString(startDate: startDate, endDate: endDate)
             self?.dateTextField.text = text
+        }
+        return picker
+    }()
+    
+    private lazy var timePicker : TimePicker = {
+        let picker = TimePicker()
+        picker.setup()
+        picker.didSelectTimes = { [ weak self ] (startTime , endTime) in
+            let text = Date.buildTimeRangeString(startTime: startTime, endTime: endTime)
+            self?.workHoursTextField.text = text
         }
         return picker
     }()

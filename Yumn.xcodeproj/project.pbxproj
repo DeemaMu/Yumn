@@ -31,6 +31,7 @@
 		95785060279E1917004F3D8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9578505E279E1917004F3D8F /* Main.storyboard */; };
 		95785062279E1918004F3D8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95785061279E1918004F3D8F /* Assets.xcassets */; };
 		95785065279E1918004F3D8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95785063279E1918004F3D8F /* LaunchScreen.storyboard */; };
+		95A64FCF27E540F80004F830 /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A64FCE27E540F80004F830 /* TimePicker.swift */; };
 		95C5967727D75A8D00A5572C /* styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C5967627D75A8D00A5572C /* styles.swift */; };
 		95C5967927D767FE00A5572C /* VSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C5967827D767FE00A5572C /* VSignUpViewController.swift */; };
 		B930F86827B85D5F00E70860 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B930F86727B85D5E00E70860 /* RoundedView.swift */; };
@@ -95,6 +96,7 @@
 		95785061279E1918004F3D8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95785064279E1918004F3D8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		95785066279E1918004F3D8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95A64FCE27E540F80004F830 /* TimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
 		95C5967627D75A8D00A5572C /* styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = styles.swift; sourceTree = "<group>"; };
 		95C5967827D767FE00A5572C /* VSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VSignUpViewController.swift; sourceTree = "<group>"; };
 		B930F86727B85D5E00E70860 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				9520693827E3A5D100D5DC11 /* addVolunteeringOpp.swift */,
 				9520693B27E3A5FF00D5DC11 /* VolunteeringOpportunities.swift */,
 				952C5D1127E4CF4800DF6537 /* DateTimePicker.swift */,
+				95A64FCE27E540F80004F830 /* TimePicker.swift */,
 			);
 			path = VolunteeringOpp;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 				D195444427D49A2400B03DFF /* organShortage.swift in Sources */,
 				B9AD3F2A27E2CF81001AB734 /* ManageAppointmentsViewController.swift in Sources */,
 				D195444C27D49AA300B03DFF /* components.swift in Sources */,
+				95A64FCF27E540F80004F830 /* TimePicker.swift in Sources */,
 				8D7F152B27D299C100E1EB1A /* constants.swift in Sources */,
 				D195443E27D499ED00B03DFF /* customTabBar.swift in Sources */,
 				B9419DFC27C52D9C00962A1B /* HospitalCellTableViewCell.swift in Sources */,
