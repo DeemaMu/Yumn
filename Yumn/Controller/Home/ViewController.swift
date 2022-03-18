@@ -80,21 +80,7 @@ class HospitalHomeMainViewController: UIViewController {
         
         
         
-        let seconds = 1.0
-        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-            
-            guard let mainFont = UIFont(name: "Tajawal", size: 18) else {
-                fatalError("""
-                    Failed to load the "CustomFont-Light" font.
-                    Make sure the font file is included in the project and the font name is spelled correctly.
-                    """
-                )
-            }
-            
-            let mssg = "حياك الله، تو ما نور يُمْن"
-            
-            self.showToastHome(message: mssg, font: mainFont, image: (UIImage(named: "yumn-1") ?? UIImage(named: "")! ))}
-        
+       
         
         
         
@@ -445,14 +431,14 @@ class HospitalHomeMainViewController: UIViewController {
             transitionToLogIn()
             
             
-            // add a flushbar
+
             
         }
         catch let error as NSError
         {
             print(error.localizedDescription)
             
-            // Show pop up message
+       
         }
         
         
@@ -462,14 +448,13 @@ class HospitalHomeMainViewController: UIViewController {
     func transitionToLogIn(){
         Constants.Globals.isLoggingOut = true
 
-        // I have to check if the user is volunteer or hospital, in the log in
+   
         let signInViewController =  storyboard?.instantiateViewController(identifier: Constants.Storyboard.signInViewController) as? SignInViewController
         
         view.window?.rootViewController = signInViewController
         view.window?.makeKeyAndVisible()
         
-        // SignInViewController.showToast(message: "تم تسجي لالخروج بنجاح", font: .systemFont(ofSize: 20), image: (UIImage(named: "yumn") ?? UIImage(named: "")! ))}
-        
+     
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -594,54 +579,6 @@ extension HospitalHomeMainViewController : BloodShortageDelegate,  OrganShortage
     
     
     //end f extension
-    func showToastHome(message : String, font: UIFont, image: UIImage){
-        
-        let toastLabel = UILabel(frame: CGRect(x: 5, y: 45, width: self.view.frame.size.width-10, height: 70))
-        
-        
-        toastLabel.backgroundColor = UIColor.gray.withAlphaComponent(1)
-        toastLabel.textColor = UIColor.white
-        toastLabel.font = font
-        toastLabel.textAlignment = .center;
-        toastLabel.text = message
-        toastLabel.alpha = 1.0
-        toastLabel.layer.cornerRadius = 10;
-        toastLabel.clipsToBounds  =  true
-        self.view.addSubview(toastLabel)
-        
-        
-        
-        let imageView = UIImageView(frame: CGRect(x: self.view.frame.size.width-70, y: 10, width: 45, height: 45))
-        imageView.layer.masksToBounds = true
-        
-        imageView.image = image
-        imageView.layer.cornerRadius = 10
-        
-        
-        
-        toastLabel.addSubview(imageView)
-        
-        self.navigationController?.view.addSubview(toastLabel)
-        
-        UIView.animate(withDuration: 6, delay: 5, options:
-                        
-                        
-                            .transitionFlipFromTop, animations: {
-            
-            
-            toastLabel.alpha = 0.0
-            
-        }, completion: {(isCompleted) in
-            
-            
-            
-            toastLabel.removeFromSuperview()
-            
-            
-            
-        })
-    }
-    
 }
 
 

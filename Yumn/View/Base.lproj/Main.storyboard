@@ -2146,11 +2146,88 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view hidden="YES" alpha="0.30000001192092896" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zbJ-8C-7Yd">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8AJ-ej-E7v">
+                                <rect key="frame" x="207" y="448" width="0.0" height="0.0"/>
+                                <subviews>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SPu-Cm-OYh">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="180"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V79-fQ-H2W">
+                                                <rect key="frame" x="122.5" y="25" width="35" height="15"/>
+                                                <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="15"/>
+                                                <color key="textColor" red="0.56862747670000002" green="0.79215681550000006" blue="0.76862752440000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CdU-Cj-Bpy">
+                                                <rect key="frame" x="123.5" y="80" width="33.5" height="15"/>
+                                                <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="15"/>
+                                                <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="ZT8-qc-KQT">
+                                                <rect key="frame" x="47" y="120" width="173" height="40"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Fg-be-UCw">
+                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
+                                                        <color key="backgroundColor" red="0.2901961207" green="0.42745098469999998" blue="0.41176474089999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="UtU-FE-XcF"/>
+                                                            <constraint firstAttribute="width" constant="80" id="pph-bi-gjW"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="12"/>
+                                                        <state key="normal" title="إلغاء">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="onPressedCancel:" destination="B9b-Az-KE4" eventType="touchUpInside" id="tqz-dn-joh"/>
+                                                            <action selector="onPressedCancel:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uBE-Ay-on7"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QRm-3K-9Xm">
+                                                        <rect key="frame" x="93" y="0.0" width="80" height="40"/>
+                                                        <color key="backgroundColor" red="0.2901961207" green="0.42745098469999998" blue="0.41176474089999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="abT-Vl-AnC"/>
+                                                            <constraint firstAttribute="width" constant="80" id="trt-JP-mIx"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="12"/>
+                                                        <state key="normal" title="تأكيد">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="onPressedConfirm:" destination="B9b-Az-KE4" eventType="touchUpInside" id="dMy-yg-AWW"/>
+                                                            <action selector="onPressedConfirmBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gnf-JT-QBE"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="280" id="Dhg-x3-KhT"/>
+                                            <constraint firstAttribute="height" constant="180" id="Yd5-Pg-Ehe"/>
+                                            <constraint firstItem="CdU-Cj-Bpy" firstAttribute="centerX" secondItem="SPu-Cm-OYh" secondAttribute="centerX" id="ZYA-b5-KVo"/>
+                                            <constraint firstItem="V79-fQ-H2W" firstAttribute="top" secondItem="SPu-Cm-OYh" secondAttribute="top" constant="25" id="a6n-L1-CRa"/>
+                                            <constraint firstItem="CdU-Cj-Bpy" firstAttribute="top" secondItem="SPu-Cm-OYh" secondAttribute="top" constant="80" id="gky-XK-dSD"/>
+                                            <constraint firstAttribute="trailing" secondItem="ZT8-qc-KQT" secondAttribute="trailing" constant="60" id="mwm-uo-zOj"/>
+                                            <constraint firstItem="ZT8-qc-KQT" firstAttribute="top" secondItem="SPu-Cm-OYh" secondAttribute="top" constant="120" id="oNF-1t-rmZ"/>
+                                            <constraint firstItem="V79-fQ-H2W" firstAttribute="centerX" secondItem="SPu-Cm-OYh" secondAttribute="centerX" id="q9u-d4-o5u"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iQd-Pf-01D"/>
                         <color key="backgroundColor" red="0.92549019607843142" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="L19-1h-Z8t" secondAttribute="bottom" id="2ez-fT-fkv"/>
+                            <constraint firstItem="8AJ-ej-E7v" firstAttribute="top" secondItem="hgd-Cw-hTn" secondAttribute="top" constant="300" id="R13-yJ-mqo"/>
+                            <constraint firstAttribute="trailing" secondItem="8AJ-ej-E7v" secondAttribute="trailing" constant="50" id="SXC-H9-T6W"/>
                             <constraint firstItem="L19-1h-Z8t" firstAttribute="leading" secondItem="iQd-Pf-01D" secondAttribute="leading" id="oIh-no-JBt"/>
                             <constraint firstItem="L19-1h-Z8t" firstAttribute="top" secondItem="iQd-Pf-01D" secondAttribute="top" constant="21" id="wiH-cr-lzM"/>
                             <constraint firstItem="L19-1h-Z8t" firstAttribute="centerX" secondItem="hgd-Cw-hTn" secondAttribute="centerX" id="yAb-Ml-Wdd"/>
@@ -2158,6 +2235,12 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="إدارة المواعيد" leftItemsSupplementBackButton="YES" id="cwC-D8-9xf">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="logout" id="MVz-Jl-a0C">
+                            <color key="tintColor" name="mainDark"/>
+                            <connections>
+                                <action selector="onPressedLogout:" destination="B9b-Az-KE4" id="QRy-yT-YWR"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="Profile" width="20" id="vBO-bj-w7J">
                             <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-4"/>
                             <connections>
@@ -2167,7 +2250,15 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="blurredView" destination="zbJ-8C-7Yd" id="R3q-h5-i3z"/>
+                        <outlet property="cancelBtn" destination="1Fg-be-UCw" id="4EE-Yk-D7n"/>
+                        <outlet property="confirmBtn" destination="QRm-3K-9Xm" id="mw3-U7-ZWk"/>
                         <outlet property="container" destination="31P-bs-PUI" id="Gsm-Tk-k8z"/>
+                        <outlet property="logoutBtn" destination="MVz-Jl-a0C" id="hXH-Gs-PXs"/>
+                        <outlet property="popupMsg" destination="CdU-Cj-Bpy" id="PCu-Dk-Es6"/>
+                        <outlet property="popupStack" destination="8AJ-ej-E7v" id="gQF-Vx-1m9"/>
+                        <outlet property="popupTitle" destination="V79-fQ-H2W" id="il5-Ga-53D"/>
+                        <outlet property="popupView" destination="SPu-Cm-OYh" id="2yK-CF-zOS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zdc-MU-SJ3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3376,7 +3467,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Huj-OT-y0s"/>
+        <segue reference="O1h-b2-P26"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ABm" width="45" height="38"/>
