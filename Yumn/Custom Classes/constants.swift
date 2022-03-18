@@ -34,6 +34,7 @@ struct Constants {
          static var weight = ""
          static var  bloodType = ""
          static var firstNameFromdb = ""
+         static var isLoggingOut = false
     }
 
     static let cellNibName = "bloodTypeCell"

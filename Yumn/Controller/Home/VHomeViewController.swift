@@ -151,6 +151,7 @@ class VHomeViewController: UIViewController {
     
     func transitionToLogIn(){
         
+        Constants.Globals.isLoggingOut = true
         // I have to check if the user is volunteer or hospital, in the log in
        let signInViewController =  storyboard?.instantiateViewController(identifier: Constants.Storyboard.signInViewController) as? SignInViewController
         
