@@ -22,7 +22,12 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
         
     }
     
-    @IBOutlet weak var bloodDonInfo: UIView!
+    @IBOutlet weak var bloodImg: UIImageView!
+    
+    @IBOutlet weak var bloodStack: UIStackView!
+    
+    @IBOutlet weak var bloodStack2: UIStackView!
+    
     
     var location:CLLocation?
     var userLocation:CLLocationCoordinate2D?
@@ -235,6 +240,9 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
     @objc func selectedSegment(_ sender: MaterialSegmentedControlR) {
         switch sender.selectedSegmentIndex {
         case 0:
+            bloodImg.isHidden = true
+            stackView.isHidden = true
+           
             tableMain.isHidden = false
             chartsView.isHidden = true
             viewPieWhole.isHidden = true
@@ -242,7 +250,9 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
             pieChart.isHidden = true
             break
         case 1:
-            bloodDonInfo.isHidden = false
+            bloodImg.isHidden = false
+            stackView.isHidden = false
+        
             tableMain.isHidden = true
             chartsView.isHidden = true
             viewPieWhole.isHidden = true
@@ -250,6 +260,9 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
             pieChart.isHidden = true
             break
         default:
+            bloodImg.isHidden = true
+            stackView.isHidden = true
+        
             tableMain.isHidden = true
             chartsView.isHidden = false
             viewPieWhole.isHidden = false
