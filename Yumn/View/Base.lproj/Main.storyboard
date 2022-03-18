@@ -687,7 +687,6 @@
                     <navigationItem key="navigationItem" id="Qg4-EE-MPQ"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Saa-ff-Z73">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <edgeInsets key="layoutMargins" top="20" left="8" bottom="0.0" right="0.0"/>
                         <color key="tintColor" red="0.52549019610000003" green="0.79215686269999996" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -724,7 +723,7 @@
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="jGt-ZN-hwX" userLabel="VolunteerProfileViewController" customClass="VolunteerProfileViewController" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ifk-4t-x2z">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1350"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZIw-4L-2X3">
@@ -1570,7 +1569,6 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1CO-Fa-MFY" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xyz-MA-siX">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2315,7 +2313,7 @@
             <objects>
                 <viewController id="d5C-2a-6Q1" customClass="updateOrganShortageVC" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f0I-zY-cQh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hJS-2F-bLk">
@@ -2900,7 +2898,7 @@
                             <view hidden="YES" alpha="0.30000001192092896" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iTJ-UO-pdM">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="1500"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7C3-RE-ijr">
                                 <rect key="frame" x="364" y="300" width="0.0" height="0.0"/>
@@ -2951,7 +2949,7 @@
                                 </subviews>
                             </stackView>
                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VBY-yy-R5u">
-                                <rect key="frame" x="117" y="660" width="180" height="180"/>
+                                <rect key="frame" x="116" y="398" width="180" height="180"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -3353,7 +3351,6 @@
                     <tabBarItem key="tabBarItem" title="" id="PBw-1R-01N"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="I8n-uo-EY8">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.21960784310000001" green="0.3803921569" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="titleTextAttributes">
