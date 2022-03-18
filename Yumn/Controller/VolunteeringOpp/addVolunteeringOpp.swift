@@ -37,6 +37,7 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var addButton: UIButton!
     
+    // MARK: - SETUP
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,6 +102,12 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
         style(TextField: durationTextField)
         style(TextField: workHoursTextField)
         style(TextField: locationTextField)
+        
+        genderButtons(button: femaleButton)
+        genderButtons(button: maleButton)
+        
+        dateTextField.inputView = dateTimePicker.inputView
+        
     }
     
     func style(TextField : UITextField){
@@ -110,6 +117,14 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
     
     func normalStyle(_ TextField : UITextField){
         style.normalStyle(TextField: TextField)
+    }
+    
+    func genderButtons(button : UIButton){
+        
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 16
+        button.layer.borderColor = UIColor.init(red: 134/255, green: 202/255, blue: 195/255, alpha: 1).cgColor
+        
     }
     
     func hideErrorMSGs(){
@@ -127,5 +142,50 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
             addButton.layer.backgroundColor = UIColor.lightGray.cgColor
         }
     }
+    
+    func genderSELECTED(button : UIButton){
+        button.isSelected = true
+        button.backgroundColor = UIColor.init(red: 182/255, green: 218/255, blue: 214/255, alpha: 1)
+    }
+    func genderNotSELECTED(button : UIButton){
+        button.isSelected = false
+        button.backgroundColor = UIColor.white
+    }
+    
+    @IBAction func FemaleSelected(_ sender: Any) {
+        if(!femaleButton.isSelected){
+            genderSELECTED(button: femaleButton)
+        }
+        else {
+            genderNotSELECTED(button: femaleButton)
+        }
+    }
+    
+    @IBAction func MaleSelected(_ sender: Any) {
+        if(!maleButton.isSelected){
+            genderSELECTED(button: maleButton)
+        }
+        else {
+            genderNotSELECTED(button: maleButton)
+            
+        }
+    }
+    
+    
+    // MARK: - Validation
+    
+    // MARK: - Date textfield
+    
+    private lazy var dateTimePicker : DateTimePicker = {
+        let picker = DateTimePicker()
+        picker.setup()
+        picker.didSelectDates = { [ weak self ] (startDate , endDate) in
+            let text = Date.buildTimeRangeString(startDate: startDate, endDate: endDate)
+            self?.dateTextField.text = text
+            
+        }
+        return picker
+    }()
+    
     
 }
