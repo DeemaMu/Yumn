@@ -119,6 +119,14 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
         style.normalStyle(TextField: TextField)
     }
     
+    func activeStyle(_ TextField : UITextField){
+        style.activeModeStyle(TextField: TextField)
+    }
+    
+    func turnTextFieldTextfieldToRed(_ textfield: UITextField){
+        style.turnTextFieldToRed(textfield: textfield)
+    }
+    
     func genderButtons(button : UIButton){
         
         button.layer.borderWidth = 1
@@ -173,6 +181,52 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
     
     
     // MARK: - Validation
+    
+    //Title validation
+    
+    @IBAction func titleChanged(_ sender: Any) {
+        if let title = titleTextField.text
+        {
+            if let errorMessage = invalidTitle(title)
+            {
+                titleErrorMSG.text = errorMessage
+                titleErrorMSG.isHidden = false
+                turnTextFieldTextfieldToRed(titleTextField)
+            }
+            else
+            {
+                titleErrorMSG.isHidden = true
+                activeStyle(titleTextField)
+            }
+        }
+        
+        func invalidTitle(_ value: String) -> String?
+        {
+            let set = CharacterSet(charactersIn: value)
+            
+            // Empty
+            if value.count == 0
+            {
+                return "مطلوب"
+            }
+            
+            // Not TEXT
+            if CharacterSet.decimalDigits.isSuperset(of: set)
+            {
+                return "يجب ان يحتوي على احرف فقط"
+            }
+            
+            // Invalid length
+            if value.count < 4 || value.count > 50
+            {
+                return "الرجاء ادخال عنوان صحيح"
+            }
+            return nil
+        }
+        //        checkForValidForm()
+    }
+    
+    
     
     // MARK: - Date textfield
     
