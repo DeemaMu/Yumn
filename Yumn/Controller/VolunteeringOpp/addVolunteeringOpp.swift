@@ -236,7 +236,6 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
         picker.didSelectDates = { [ weak self ] (startDate , endDate) in
             let text = Date.buildTimeRangeString(startDate: startDate, endDate: endDate)
             self?.dateTextField.text = text
-            
         }
         return picker
     }()
