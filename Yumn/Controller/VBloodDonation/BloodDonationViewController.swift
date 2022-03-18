@@ -22,6 +22,7 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
         
     }
     
+    @IBOutlet weak var bloodDonInfo: UIView!
     
     var location:CLLocation?
     var userLocation:CLLocationCoordinate2D?
@@ -31,6 +32,43 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
     // By Modhi
     var pieChart = PieChartView()
     let user = Auth.auth().currentUser
+    
+    
+   
+   
+
+    
+ 
+    
+    
+    @IBOutlet weak var bloodArrow: UIButton!
+    
+ 
+    @IBOutlet weak var donBtn: UIButton!
+    
+    
+    @IBOutlet weak var typeStack: UIStackView!
+    
+    
+    @IBOutlet weak var stackView: UIStackView!
+    
+    
+   
+    
+    @IBOutlet weak var donInfo: UILabel!
+    
+  
+    
+ 
+    @IBOutlet weak var typeArrow: UIButton!
+    
+  
+    @IBOutlet weak var typeBtn: UIButton!
+    
+    
+
+    
+    
     @IBOutlet weak var viewPie: UIView!
     @IBOutlet weak var viewPieWhole: UIView!
     @IBOutlet weak var cityOfUser: UILabel!
@@ -50,6 +88,18 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Blood Donation Information
+        typeStack.isHidden = true
+        typeArrow.contentHorizontalAlignment = .left
+        bloodArrow.contentHorizontalAlignment = .left
+        donBtn.contentHorizontalAlignment = .right
+        typeBtn.contentHorizontalAlignment = .right
+        donInfo.clipsToBounds = true
+        donInfo.text = "هو إجراء طبي تطوعي يتم بنقل الدم أو أحد مركباته من شخص سليم معافى إلى شخص مريض يحتاج للدم. وهذا الإجراء يحتاج إليه الملايين من الناس كل عام. فيستخدم أثناء الجراحة أو الحوادث أو بعض الأمراض التي تتطلب نقل بعض مكونات الدم."
+        donInfo.isHidden = true
+
+
         
         tableMain.isHidden = true
         
@@ -192,6 +242,7 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
             pieChart.isHidden = true
             break
         case 1:
+            bloodDonInfo.isHidden = false
             tableMain.isHidden = true
             chartsView.isHidden = true
             viewPieWhole.isHidden = true
@@ -208,7 +259,86 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
         }
     }
     
-}
+    
+   
+    @IBAction func onPressedTypeBtn(_ sender: Any) {
+        
+        typeStack.isHidden = !typeStack.isHidden
+        
+        if (typeStack.isHidden == false){
+         typeArrow.setImage(UIImage(systemName: "chevron.up"), for: .normal)
+        }
+        
+        else{
+            typeArrow.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+
+            
+        }
+
+
+    }
+    
+
+    
+    @IBAction func onPressedDonInfo(_ sender: Any) {
+        
+        
+        donInfo.isHidden = !donInfo.isHidden
+       
+       if (donInfo.isHidden == false){
+        bloodArrow.setImage(UIImage(systemName: "chevron.up"), for: .normal)
+       }
+       
+       else{
+           bloodArrow.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+
+           
+       }
+    }
+    
+  
+    @IBAction func onPressedBloodArrow(_ sender: Any) {
+        
+        donInfo.isHidden = !donInfo.isHidden
+       
+       if (donInfo.isHidden == false){
+        bloodArrow.setImage(UIImage(systemName: "chevron.up"), for: .normal)
+       }
+       
+       else{
+           bloodArrow.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+
+           
+       }
+
+    }
+    
+    @IBAction func onPressedTypeArrow(_ sender: Any) {
+        
+        typeStack.isHidden = !typeStack.isHidden
+        
+        if (typeStack.isHidden == false){
+         typeArrow.setImage(UIImage(systemName: "chevron.up"), for: .normal)
+        }
+        
+        else{
+            typeArrow.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+
+            
+        
+
+
+       }
+    }
+    
+    
+    }
+
+    
+    
+    
+    
+
 
 
 extension BloodDonationViewController: UITableViewDataSource {
@@ -326,6 +456,21 @@ extension UISegmentedControl {
     }
     
 }
+
+//Blood Information
+extension BloodDonationViewController{
+    
+    
+   
+
+         
+            
+        
+        
+     
+     }
+     
+
 
 //
 //struct BloodDonationViewController_Previews: PreviewProvider {

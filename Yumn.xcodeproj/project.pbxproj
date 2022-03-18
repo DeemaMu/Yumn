@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D0E9A1F27E5339C00890AC0 /* BloodDonationInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0E9A1E27E5339C00890AC0 /* BloodDonationInformationViewController.swift */; };
 		8D7F152227D25DD200E1EB1A /* GIfCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7F152127D25DD200E1EB1A /* GIfCode.swift */; };
 		8D7F152527D25EF200E1EB1A /* yumnLoading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8D7F152427D25EF200E1EB1A /* yumnLoading.gif */; };
 		8D7F152727D25F3B00E1EB1A /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7F152627D25F3B00E1EB1A /* SignInViewController.swift */; };
@@ -66,6 +67,7 @@
 
 /* Begin PBXFileReference section */
 		69D19C896659B527EE673C2E /* Pods-Yumn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.release.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.release.xcconfig"; sourceTree = "<group>"; };
+		8D0E9A1E27E5339C00890AC0 /* BloodDonationInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationInformationViewController.swift; sourceTree = "<group>"; };
 		8D7F152127D25DD200E1EB1A /* GIfCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIfCode.swift; sourceTree = "<group>"; };
 		8D7F152427D25EF200E1EB1A /* yumnLoading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = yumnLoading.gif; sourceTree = "<group>"; };
 		8D7F152627D25F3B00E1EB1A /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +140,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D0E9A1D27E5337900890AC0 /* Information */ = {
+			isa = PBXGroup;
+			children = (
+				8D0E9A1E27E5339C00890AC0 /* BloodDonationInformationViewController.swift */,
+			);
+			path = Information;
+			sourceTree = "<group>";
+		};
 		8D7F152327D25EC900E1EB1A /* GIF */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +237,7 @@
 		B930F85627B8548900E70860 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8D0E9A1D27E5337900890AC0 /* Information */,
 				B9AD3F2827E2CF1E001AB734 /* HAppointments */,
 				B9CC6E9227E1498E0005C160 /* HOrganShortage */,
 				B9CC6E9127E148620005C160 /* Profile */,
@@ -510,6 +521,7 @@
 				B9DA61DC27C1100B00359487 /* Location.swift in Sources */,
 				8D7F152227D25DD200E1EB1A /* GIfCode.swift in Sources */,
 				95C5967927D767FE00A5572C /* VSignUpViewController.swift in Sources */,
+				8D0E9A1F27E5339C00890AC0 /* BloodDonationInformationViewController.swift in Sources */,
 				D195445427D49B2100B03DFF /* organCell.swift in Sources */,
 				B952BB1227C641B80049D81B /* HospitalsController.swift in Sources */,
 				B930F86827B85D5F00E70860 /* RoundedView.swift in Sources */,
