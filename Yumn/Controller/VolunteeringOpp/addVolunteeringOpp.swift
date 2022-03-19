@@ -5,12 +5,15 @@
 //  Created by Deema Almutairi on 15/03/2022.
 //
 
-import Foundation
+import SwiftUI
 import UIKit
+import FirebaseFirestore
+import FirebaseAuth
 
 class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
     
     let style = styles()
+    var hospitalName = ""
     
     @IBOutlet weak var backView: UIView!
     
@@ -20,8 +23,7 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var workHoursTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
     
-    //Need Style
-    @IBOutlet weak var descriptionTextBox: UITextField!
+    @IBOutlet weak var descriptionView : UIView!
     
     @IBOutlet weak var femaleButton: UIButton!
     @IBOutlet weak var maleButton: UIButton!
@@ -43,6 +45,16 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
         super.viewDidLoad()
         setUP()
         
+        
+        // Description textbox
+        let obs = observed()
+        let root = descriptionTextbox()
+        let controller = UIHostingController(rootView: root.environmentObject(obs))
+        controller.view.translatesAutoresizingMaskIntoConstraints = false
+        self.addChild(controller)
+        controller.view.frame = descriptionView.bounds
+        
+        descriptionView.addSubview(controller.view)
         //Hide
         addButton(enabeld: false)
         hideErrorMSGs()
@@ -197,36 +209,50 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
             else
             {
                 titleErrorMSG.isHidden = true
+                Constants.VolunteeringOpp.title = titleTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
                 activeStyle(titleTextField)
+                print(Constants.VolunteeringOpp.description)
             }
         }
-        
-        func invalidTitle(_ value: String) -> String?
-        {
-            let set = CharacterSet(charactersIn: value)
-            
-            // Empty
-            if value.count == 0
-            {
-                return "مطلوب"
-            }
-            
-            // Not TEXT
-            if CharacterSet.decimalDigits.isSuperset(of: set)
-            {
-                return "يجب ان يحتوي على احرف فقط"
-            }
-            
-            // Invalid length
-            if value.count < 4 || value.count > 50
-            {
-                return "الرجاء ادخال عنوان صحيح"
-            }
-            return nil
-        }
-        //        checkForValidForm()
+                checkForValidForm()
     }
     
+    func invalidTitle(_ value: String) -> String?
+    {
+        let set = CharacterSet(charactersIn: value)
+        
+        // Empty
+        if value.count == 0
+        {
+            return "مطلوب"
+        }
+        
+        // Not TEXT
+        if CharacterSet.decimalDigits.isSuperset(of: set)
+        {
+            return "يجب ان يحتوي على احرف فقط"
+        }
+        
+        // Invalid length
+        if value.count < 4 || value.count > 50
+        {
+            return "الرجاء ادخال عنوان صحيح"
+        }
+        return nil
+    }
+    
+    // Final Validation
+    func checkForValidForm()
+    {
+        if titleErrorMSG.isHidden && dateErrorMSG.isHidden && durationErrorMSG.isHidden && workHoursErrorMSG.isHidden && locationErrorMSG.isHidden
+        {
+            addButton.isEnabled = true
+        }
+        else
+        {
+            addButton.isEnabled = false
+        }
+    }
     
     
     // MARK: - Date and Time textfield
@@ -250,6 +276,76 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
         }
         return picker
     }()
+    
+    // MARK: - Backend
+    
+    @IBAction func add(_ sender: Any) {
+        // User was creted successfully, store the information
+        
+        let db = Firestore.firestore()
+        let user = Auth.auth().currentUser
+        let uid = user?.uid
+
+        // 1. get the Doc
+        let docRef = db.collection("hospitalsInformation").document(uid!)
+        
+        // 2. to get live data
+        docRef.addSnapshotListener { [weak self] snapshot, error in
+            guard let data = snapshot?.data(), error == nil else{
+                return
+            }
+            
+            guard let hospitalName = data["name"] as? String else {
+                return
+            }
+//            guard let phone = data["phone"] as? String else {
+//                return
+//            }
+            
+            DispatchQueue.main.async {
+                self?.hospitalName = hospitalName
+//                self?.hospitalPhone = phone
+                
+            }
+        }
+        
+        
+        
+        
+        var gender = ""
+        if (femaleButton.isSelected){
+            gender = "F"
+            
+            if (maleButton.isSelected){
+                gender += "& M"
+            }
+        } else {
+            gender = "M"
+        }
+        
+        
+
+        // Volunteer collection
+        db.collection("volunteeringOpp").document().setData([
+            "title":Constants.VolunteeringOpp.title,
+            "date": Constants.VolunteeringOpp.date,
+            "duration": Constants.VolunteeringOpp.duration,
+            "workingHours": Constants.VolunteeringOpp.workingHours,
+            "location": Constants.VolunteeringOpp.location,
+            "description": Constants.VolunteeringOpp.description,
+            "gender": gender,
+            "hospitalName": hospitalName,
+            "posted_by": uid!]){ error in
+                
+                if error != nil {
+                    print(error?.localizedDescription as Any)
+                    print ("error in adding the data")
+                }
+            }
+        
+    
+    }
+    
     
     
 }
