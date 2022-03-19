@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8D0E9A2127E609B500890AC0 /* BloodDonQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0E9A2027E609B400890AC0 /* BloodDonQuestionsViewController.swift */; };
 		8D5FD4A827D3A321008A266F /* Al%20Majeed%20Quranic%20Font_shiped.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D5FD4A727D3A321008A266F /* Al%20Majeed%20Quranic%20Font_shiped.ttf */; };
 		8D7D721C27E131280088AC98 /* BloodDonationInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7D721B27E131280088AC98 /* BloodDonationInfoViewController.swift */; };
 		8D7D721E27E1E2240088AC98 /* BloodDonationInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7D721D27E1E2240088AC98 /* BloodDonationInformationViewController.swift */; };
@@ -20,6 +19,7 @@
 		8D7F152F27D29A6500E1EB1A /* HospitalHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7F152E27D29A6500E1EB1A /* HospitalHomeViewController.swift */; };
 		8D7F153A27D2C5BE00E1EB1A /* ContinueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7F153927D2C5BE00E1EB1A /* ContinueViewController.swift */; };
 		8DAB1E4527E3556F00BE45DB /* OrganDonInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAB1E4427E3556F00BE45DB /* OrganDonInfoViewController.swift */; };
+		8DE1796127E65DAA00D8CEA6 /* BloodDonQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE1796027E65DAA00D8CEA6 /* BloodDonQuestionsViewController.swift */; };
 		947FF56BA4936985B11C4116 /* Pods_Yumn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC0BC66019C4D1F5FD76092 /* Pods_Yumn.framework */; };
 		95062D9627CADC0500D63911 /* Tajawal-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95062D9227CADC0400D63911 /* Tajawal-Light.ttf */; };
 		95062D9727CADC0500D63911 /* Tajawal-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95062D9327CADC0500D63911 /* Tajawal-Medium.ttf */; };
@@ -50,7 +50,6 @@
 /* Begin PBXFileReference section */
 		2DC0BC66019C4D1F5FD76092 /* Pods_Yumn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yumn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45F81A78310778538A1A5633 /* Pods-Yumn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.release.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.release.xcconfig"; sourceTree = "<group>"; };
-		8D0E9A2027E609B400890AC0 /* BloodDonQuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonQuestionsViewController.swift; sourceTree = "<group>"; };
 		8D5FD4A727D3A321008A266F /* Al%20Majeed%20Quranic%20Font_shiped.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Al%20Majeed%20Quranic%20Font_shiped.ttf"; sourceTree = "<group>"; };
 		8D7D721B27E131280088AC98 /* BloodDonationInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationInfoViewController.swift; sourceTree = "<group>"; };
 		8D7D721D27E1E2240088AC98 /* BloodDonationInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationInformationViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +62,7 @@
 		8D7F152E27D29A6500E1EB1A /* HospitalHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HospitalHomeViewController.swift; sourceTree = "<group>"; };
 		8D7F153927D2C5BE00E1EB1A /* ContinueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContinueViewController.swift; sourceTree = "<group>"; };
 		8DAB1E4427E3556F00BE45DB /* OrganDonInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganDonInfoViewController.swift; sourceTree = "<group>"; };
+		8DE1796027E65DAA00D8CEA6 /* BloodDonQuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BloodDonQuestionsViewController.swift; path = ../../../../Desktop/BloodDonQuestionsViewController.swift; sourceTree = "<group>"; };
 		95062D9227CADC0400D63911 /* Tajawal-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tajawal-Light.ttf"; sourceTree = "<group>"; };
 		95062D9327CADC0500D63911 /* Tajawal-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tajawal-Medium.ttf"; sourceTree = "<group>"; };
 		95062D9427CADC0500D63911 /* Tajawal-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tajawal-Regular.ttf"; sourceTree = "<group>"; };
@@ -205,7 +205,7 @@
 				8D7D721B27E131280088AC98 /* BloodDonationInfoViewController.swift */,
 				8D7D721D27E1E2240088AC98 /* BloodDonationInformationViewController.swift */,
 				8DAB1E4427E3556F00BE45DB /* OrganDonInfoViewController.swift */,
-				8D0E9A2027E609B400890AC0 /* BloodDonQuestionsViewController.swift */,
+				8DE1796027E65DAA00D8CEA6 /* BloodDonQuestionsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -368,11 +368,11 @@
 				8D7F152B27D299C100E1EB1A /* Constants.swift in Sources */,
 				B9419DFC27C52D9C00962A1B /* HospitalCellTableViewCell.swift in Sources */,
 				9578505D279E1917004F3D8F /* VHomeViewController.swift in Sources */,
+				8DE1796127E65DAA00D8CEA6 /* BloodDonQuestionsViewController.swift in Sources */,
 				95062D9C27CADE1300D63911 /* HospitalProfileViewController.swift in Sources */,
 				B9C7969527C7A83A006A78A3 /* TabBarController.swift in Sources */,
 				8DAB1E4527E3556F00BE45DB /* OrganDonInfoViewController.swift in Sources */,
 				95062D9F27CADE9E00D63911 /* ConvertingColors.swift in Sources */,
-				8D0E9A2127E609B500890AC0 /* BloodDonQuestionsViewController.swift in Sources */,
 				8D7F152927D2612800E1EB1A /* SignUpViewController.swift in Sources */,
 				B9DA61DA27C10FCC00359487 /* LocationManger.swift in Sources */,
 				8D7F152727D25F3B00E1EB1A /* SignInViewController.swift in Sources */,
