@@ -50,9 +50,11 @@ class BloodDonQuestionsViewController: UIViewController {
     
     @IBOutlet weak var okBtn: UIButton!
     
+    var questions = [false, false,false, false, false, false, false]
+    
     override func viewDidLoad() {
         
-        contBtn.layer.cornerRadius = 30
+        contBtn.layer.cornerRadius = 25
         okBtn.layer.cornerRadius = 30
         popupView.layer.cornerRadius = 30
         q1Btn.contentHorizontalAlignment = .right
@@ -66,6 +68,9 @@ class BloodDonQuestionsViewController: UIViewController {
        
         
         super.viewDidLoad()
+        
+        q1Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+
 
         // Do any additional setup after loading the view.
     }
@@ -73,9 +78,46 @@ class BloodDonQuestionsViewController: UIViewController {
     
     
     @IBAction func onPressedQ1(_ sender: Any) {
-        q1Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
+      
+        
+        questions[0] = !questions[0]
+        print (questions[0])
 
+        if (q1Radio.currentImage == UIImage(named: "fullRadio")){
+            
+            
+                q1Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            
+        }
+        else {
+            
+            q1Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
+            
+
+        }
+    
     }
+    
+    @IBAction func onPressedQ1Radio(_ sender: Any) {
+      
+        questions[0] = !questions[0]
+        print (questions[0])
+        if (q1Radio.currentImage == UIImage(named: "fullRadio")){
+            
+            
+                q1Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            
+        }
+        else {
+            
+            q1Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
+            
+
+        }
+    }
+    
+    
+    
     
     @IBAction func onPressedCont(_ sender: Any) {
     }

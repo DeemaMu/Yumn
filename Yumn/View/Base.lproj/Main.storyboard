@@ -3876,31 +3876,15 @@
         <scene sceneID="8OD-IR-FD3">
             <objects>
                 <viewController id="s8R-AU-cFP" customClass="BloodDonQuestionsViewController" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="6V7-9Y-0Zl">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="6V7-9Y-0Zl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="jDq-WE-T7Q">
-                                <rect key="frame" x="0.0" y="54" width="414" height="842"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="jDq-WE-T7Q">
+                                <rect key="frame" x="0.0" y="47" width="414" height="842"/>
                                 <subviews>
-                                    <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CzS-ee-2rz">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
-                                        <color key="barTintColor" red="0.53333336109999996" green="0.79215681550000006" blue="0.76470589639999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <textAttributes key="titleTextAttributes">
-                                            <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="20"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </textAttributes>
-                                        <items>
-                                            <navigationItem title="حجز موعد للتبرع بالدم" id="Vp0-g6-ES2">
-                                                <barButtonItem key="rightBarButtonItem" image="arrow.right" catalog="system" width="20" id="1BM-tG-sTh">
-                                                    <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-4"/>
-                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </barButtonItem>
-                                            </navigationItem>
-                                        </items>
-                                    </navigationBar>
-                                    <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="fvS-Y0-k43" customClass="RoundedView" customModule="Yumn" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="66" width="414" height="776"/>
+                                    <view contentMode="center" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fvS-Y0-k43" customClass="RoundedView" customModule="Yumn" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="59" width="414" height="773"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="jn4-wG-cfr">
                                                 <rect key="frame" x="15" y="30" width="384" height="635"/>
@@ -3919,6 +3903,9 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="62" height="50"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
+                                                                <connections>
+                                                                    <action selector="onPressedQ1Radio:" destination="s8R-AU-cFP" eventType="touchUpInside" id="nEa-d8-87p"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Td3-y2-4ij">
                                                                 <rect key="frame" x="139" y="0.0" width="200" height="50"/>
@@ -3951,8 +3938,15 @@
                                                                 </constraints>
                                                                 <color key="tintColor" name="textGrey"/>
                                                                 <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" title="مر على آخر عملية تبرع بالدم قمت بها ٦٠ يوم أو أكثر">
-                                                                    <fontDescription key="titleFontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="18"/>
+                                                                <buttonConfiguration key="configuration" style="plain">
+                                                                    <attributedString key="attributedTitle">
+                                                                        <fragment content="مر على آخر عملية تبرع بالدم قمت بها ٦٠ يوم أو أكثر">
+                                                                            <attributes>
+                                                                                <font key="NSFont" size="18" name="Tajawal-Regular"/>
+                                                                                <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                            </attributes>
+                                                                        </fragment>
+                                                                    </attributedString>
                                                                 </buttonConfiguration>
                                                             </button>
                                                         </subviews>
@@ -3972,8 +3966,15 @@
                                                                 </constraints>
                                                                 <color key="tintColor" name="textGrey"/>
                                                                 <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" title="لا تعاني من أمراض مزمنة مثل السكري، ارتفاع ضغط الدم، السرطان">
-                                                                    <fontDescription key="titleFontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="18"/>
+                                                                <buttonConfiguration key="configuration" style="plain">
+                                                                    <attributedString key="attributedTitle">
+                                                                        <fragment content="لا تعاني من أمراض مزمنة مثل السكري، ارتفاع ضغط الدم، السرطان">
+                                                                            <attributes>
+                                                                                <font key="NSFont" size="18" name="Tajawal-Regular"/>
+                                                                                <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                            </attributes>
+                                                                        </fragment>
+                                                                    </attributedString>
                                                                 </buttonConfiguration>
                                                             </button>
                                                         </subviews>
@@ -3993,8 +3994,15 @@
                                                                 </constraints>
                                                                 <color key="tintColor" name="textGrey"/>
                                                                 <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" title="لا تعاني من أمراض مزمنة معدية مثل الأيدز، التهاب الكبد، الزهري، الملاريا">
-                                                                    <fontDescription key="titleFontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="18"/>
+                                                                <buttonConfiguration key="configuration" style="plain">
+                                                                    <attributedString key="attributedTitle">
+                                                                        <fragment content="لا تعاني من أمراض مزمنة معدية مثل الأيدز، التهاب الكبد، الزهري، الملاريا">
+                                                                            <attributes>
+                                                                                <font key="NSFont" size="18" name="Tajawal-Regular"/>
+                                                                                <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                            </attributes>
+                                                                        </fragment>
+                                                                    </attributedString>
                                                                 </buttonConfiguration>
                                                             </button>
                                                         </subviews>
@@ -4069,7 +4077,7 @@
                                                         <rect key="frame" x="97" y="585" width="190" height="50"/>
                                                         <color key="backgroundColor" name="mainDark"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="190" id="JS0-ZA-EU3"/>
+                                                            <constraint firstAttribute="width" constant="230" id="JS0-ZA-EU3"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="المتابعة">
@@ -4089,8 +4097,8 @@
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
-                                            <constraint firstItem="jn4-wG-cfr" firstAttribute="top" secondItem="fvS-Y0-k43" secondAttribute="top" constant="30" id="NW8-qa-P4G"/>
-                                            <constraint firstAttribute="height" constant="776" id="jDd-ke-54A"/>
+                                            <constraint firstItem="jn4-wG-cfr" firstAttribute="top" secondItem="fvS-Y0-k43" secondAttribute="top" constant="15" id="NW8-qa-P4G"/>
+                                            <constraint firstAttribute="height" constant="720" id="jDd-ke-54A"/>
                                             <constraint firstItem="jn4-wG-cfr" firstAttribute="centerX" secondItem="fvS-Y0-k43" secondAttribute="centerX" id="nBP-c9-LLH"/>
                                             <constraint firstAttribute="width" constant="414" id="uJc-K4-oAL"/>
                                         </constraints>
@@ -4111,7 +4119,7 @@
                                     <constraint firstItem="fvS-Y0-k43" firstAttribute="leading" secondItem="jDq-WE-T7Q" secondAttribute="leading" id="HWk-iV-yA4"/>
                                     <constraint firstAttribute="bottom" secondItem="fvS-Y0-k43" secondAttribute="bottom" id="Kju-7H-Xeu"/>
                                     <constraint firstAttribute="trailing" secondItem="fvS-Y0-k43" secondAttribute="trailing" id="Y2y-R8-pcI"/>
-                                    <constraint firstItem="fvS-Y0-k43" firstAttribute="top" secondItem="jDq-WE-T7Q" secondAttribute="top" constant="66" id="pm6-JC-Bav"/>
+                                    <constraint firstAttribute="height" secondItem="fvS-Y0-k43" secondAttribute="height" multiplier="1.08926" id="sYL-CI-Mrh"/>
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Oia-3V-ddM">
@@ -4167,6 +4175,22 @@
                                     </view>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="حجز موعد للتبرع بالدم" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUQ-Qf-5Nj">
+                                <rect key="frame" x="86" y="67" width="282" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Tajawal-Medium" family="Tajawal Medium" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BHy-eU-8nn">
+                                <rect key="frame" x="327" y="42" width="67" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="arrow.right" catalog="system" title="">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="bold"/>
+                                </buttonConfiguration>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0Hp-jb-sNc"/>
                         <color key="backgroundColor" name="mainLight"/>
@@ -4177,7 +4201,7 @@
                             <constraint firstItem="Oia-3V-ddM" firstAttribute="top" secondItem="6V7-9Y-0Zl" secondAttribute="top" constant="300" id="kAl-n3-4xU"/>
                             <constraint firstAttribute="trailing" secondItem="Oia-3V-ddM" secondAttribute="trailing" constant="50" id="kws-40-H72"/>
                             <constraint firstItem="jDq-WE-T7Q" firstAttribute="leading" secondItem="0Hp-jb-sNc" secondAttribute="leading" id="oiU-PJ-Tb4"/>
-                            <constraint firstItem="jDq-WE-T7Q" firstAttribute="top" secondItem="0Hp-jb-sNc" secondAttribute="top" constant="10" id="xC0-fJ-lIp"/>
+                            <constraint firstItem="jDq-WE-T7Q" firstAttribute="top" secondItem="0Hp-jb-sNc" secondAttribute="top" id="xC0-fJ-lIp"/>
                             <constraint firstAttribute="bottom" secondItem="jDq-WE-T7Q" secondAttribute="bottom" id="zWo-gE-Y8T"/>
                         </constraints>
                     </view>
