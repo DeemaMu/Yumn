@@ -34,6 +34,8 @@
 		95A64FCF27E540F80004F830 /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A64FCE27E540F80004F830 /* TimePicker.swift */; };
 		95C5967727D75A8D00A5572C /* styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C5967627D75A8D00A5572C /* styles.swift */; };
 		95C5967927D767FE00A5572C /* VSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C5967827D767FE00A5572C /* VSignUpViewController.swift */; };
+		95EED9CB27E6602C009AFDAC /* VOCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EED9CA27E6602C009AFDAC /* VOCollectionViewCell.swift */; };
+		95EED9CD27E682DB009AFDAC /* VolunteeringOpp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EED9CC27E682DB009AFDAC /* VolunteeringOpp.swift */; };
 		B930F86827B85D5F00E70860 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B930F86727B85D5E00E70860 /* RoundedView.swift */; };
 		B9419DFC27C52D9C00962A1B /* HospitalCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9419DFA27C52D9C00962A1B /* HospitalCellTableViewCell.swift */; };
 		B9419DFD27C52D9C00962A1B /* HospitalCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9419DFB27C52D9C00962A1B /* HospitalCellTableViewCell.xib */; };
@@ -99,6 +101,8 @@
 		95A64FCE27E540F80004F830 /* TimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
 		95C5967627D75A8D00A5572C /* styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = styles.swift; sourceTree = "<group>"; };
 		95C5967827D767FE00A5572C /* VSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VSignUpViewController.swift; sourceTree = "<group>"; };
+		95EED9CA27E6602C009AFDAC /* VOCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VOCollectionViewCell.swift; sourceTree = "<group>"; };
+		95EED9CC27E682DB009AFDAC /* VolunteeringOpp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolunteeringOpp.swift; sourceTree = "<group>"; };
 		B930F86727B85D5E00E70860 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		B9419DFA27C52D9C00962A1B /* HospitalCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalCellTableViewCell.swift; sourceTree = "<group>"; };
 		B9419DFB27C52D9C00962A1B /* HospitalCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HospitalCellTableViewCell.xib; sourceTree = "<group>"; };
@@ -234,6 +238,7 @@
 				D195444527D49A2F00B03DFF /* totalBloodShortage.swift */,
 				D195444727D49A3900B03DFF /* totalOrgansShortage.swift */,
 				B9AD3F2F27E335B3001AB734 /* DateValue.swift */,
+				95EED9CC27E682DB009AFDAC /* VolunteeringOpp.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -250,6 +255,7 @@
 				D195445127D49B1600B03DFF /* organCell.xib */,
 				D195445727D49B4800B03DFF /* charts.storyboard */,
 				9565D0FC27E3E1FE00E02AC7 /* descriptionTextbox.swift */,
+				95EED9CA27E6602C009AFDAC /* VOCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -259,8 +265,8 @@
 			children = (
 				9520693727E3A5B500D5DC11 /* VolunteeringOpp */,
 				B9AD3F2827E2CF1E001AB734 /* HAppointments */,
-				B9CC6E9227E1498E0005C160 /* HOrganShortage */,
 				B9CC6E9127E148620005C160 /* Profile */,
+				B9CC6E9227E1498E0005C160 /* HOrganShortage */,
 				B9CC6E9027E147B10005C160 /* Controls */,
 				B9CC6E8F27E1478B0005C160 /* Signing */,
 				B9CC6E8E27E147780005C160 /* HBloodDonation */,
@@ -504,8 +510,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9AD3F2E27E2E005001AB734 /* CustomDatePicker.swift in Sources */,
+				95EED9CD27E682DB009AFDAC /* VolunteeringOpp.swift in Sources */,
 				D195443A27D499C700B03DFF /* bloodChartViewController.swift in Sources */,
 				D195444227D49A1700B03DFF /* bloodShortage.swift in Sources */,
+				95EED9CB27E6602C009AFDAC /* VOCollectionViewCell.swift in Sources */,
 				D195443627D4998F00B03DFF /* bloodShortageViewController.swift in Sources */,
 				D195444827D49A3900B03DFF /* totalOrgansShortage.swift in Sources */,
 				B9503D8827BAE4E500E312B8 /* CustomSegmentedControl.swift in Sources */,

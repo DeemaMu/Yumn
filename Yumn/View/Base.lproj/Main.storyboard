@@ -8,6 +8,7 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -77,19 +78,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="EGJ-P8-wum">
-                                <rect key="frame" x="0.0" y="98" width="414" height="779.5"/>
+                                <rect key="frame" x="0.0" y="98" width="414" height="798"/>
                                 <subviews>
                                     <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="det-XD-85J" customClass="RoundedView" customModule="Yumn" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="779.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="798"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Lr9-9u-T5Q" userLabel="sectionsStack">
-                                                <rect key="frame" x="20" y="30" width="374" height="619.5"/>
+                                                <rect key="frame" x="20" y="30" width="379.5" height="638"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" restorationIdentifier="section1" translatesAutoresizingMaskIntoConstraints="NO" id="Pcq-CD-zD8" userLabel="section1">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="196.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="379.5" height="202.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EYf-Ok-fH4" userLabel="BloodDonation" customClass="RoundedShadowedView" customModule="Yumn" customModuleProvider="target">
-                                                                <rect key="frame" x="17" y="8" width="340" height="174"/>
+                                                                <rect key="frame" x="17" y="8" width="340" height="180"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bn-fD-hri" userLabel="bdBtn">
                                                                         <rect key="frame" x="0.0" y="0.0" width="340" height="174"/>
@@ -167,18 +168,18 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QX9-cG-7n6" userLabel="section2">
-                                                        <rect key="frame" x="0.0" y="211.5" width="374" height="196.5"/>
+                                                        <rect key="frame" x="0.0" y="217.5" width="379.5" height="203"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b7f-48-aWc" userLabel="OrganDonation" customClass="RoundedShadowedView" customModule="Yumn" customModuleProvider="target">
-                                                                <rect key="frame" x="17" y="7.5" width="340" height="174"/>
+                                                                <rect key="frame" x="17" y="7.5" width="345.5" height="180.5"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohk-hz-Uhs" userLabel="odBtn">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="340" height="174"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="345.5" height="180.5"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain" title=""/>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تبرع بالأعضاء" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hqx-pO-75t">
-                                                                        <rect key="frame" x="100" y="72" width="232" height="30"/>
+                                                                        <rect key="frame" x="100" y="75.5" width="232" height="30"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="232" id="EkC-Dj-E3G"/>
                                                                         </constraints>
@@ -187,7 +188,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart icon" translatesAutoresizingMaskIntoConstraints="NO" id="1ey-kz-44t">
-                                                                        <rect key="frame" x="-6" y="20" width="120" height="133"/>
+                                                                        <rect key="frame" x="-6" y="20" width="125.5" height="139.5"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="1ey-kz-44t" secondAttribute="height" multiplier="120:133" id="nXN-ET-c7i"/>
                                                                         </constraints>
@@ -239,13 +240,13 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xom-dG-vju" userLabel="section3">
-                                                        <rect key="frame" x="0.0" y="423" width="374" height="196.5"/>
+                                                        <rect key="frame" x="0.0" y="435.5" width="379.5" height="202.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2gV-1d-cyZ" userLabel="VolunteeringOportunity" customClass="RoundedShadowedView" customModule="Yumn" customModuleProvider="target">
-                                                                <rect key="frame" x="17" y="7" width="340" height="174"/>
+                                                                <rect key="frame" x="17" y="7" width="345.5" height="180"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6pX-vg-oWI" userLabel="odBtn">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="340" height="174"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="345.5" height="180"/>
                                                                         <color key="tintColor" red="0.82352941180000006" green="0.81960784310000001" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain">
@@ -259,7 +260,7 @@
                                                                         </buttonConfiguration>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الفرص التطوعية" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKN-0b-weh">
-                                                                        <rect key="frame" x="100" y="72" width="232" height="30"/>
+                                                                        <rect key="frame" x="105.5" y="75" width="232" height="30"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="232" id="kHL-BU-Br7"/>
                                                                         </constraints>
@@ -268,7 +269,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="help" translatesAutoresizingMaskIntoConstraints="NO" id="sDo-vb-iL2">
-                                                                        <rect key="frame" x="8" y="40" width="93" height="93"/>
+                                                                        <rect key="frame" x="8" y="40" width="99" height="99"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="sDo-vb-iL2" secondAttribute="height" multiplier="1:1" id="Ysk-L3-qgh"/>
                                                                         </constraints>
@@ -1277,15 +1278,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="bUr-Dn-K3x">
-                                <rect key="frame" x="60" y="338" width="192.5" height="378"/>
+                                <rect key="frame" x="60" y="338" width="294" height="378"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QGh-Ph-ygQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="192.5" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="294" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="البريد الالكتروني" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RVZ-sN-39i">
-                                        <rect key="frame" x="0.0" y="61" width="192.5" height="40"/>
+                                        <rect key="frame" x="0.0" y="61" width="294" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="OAK-I6-rCI"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="nNl-0v-7V0"/>
@@ -1295,13 +1296,13 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="      " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOA-JH-hAW">
-                                        <rect key="frame" x="0.0" y="128" width="192.5" height="11"/>
+                                        <rect key="frame" x="0.0" y="128" width="294" height="11"/>
                                         <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="11"/>
                                         <color key="textColor" systemColor="systemRedColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="الرفم السري" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cf6-qC-69o">
-                                        <rect key="frame" x="0.0" y="166" width="192.5" height="40"/>
+                                        <rect key="frame" x="0.0" y="166" width="294" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="0bY-XD-bbj"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="Xmy-dd-WSh"/>
@@ -1311,7 +1312,7 @@
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="      " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yqk-hm-8cc">
-                                        <rect key="frame" x="0.0" y="233" width="192.5" height="11"/>
+                                        <rect key="frame" x="0.0" y="233" width="294" height="11"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="163" id="q1j-UX-cgf"/>
                                         </constraints>
@@ -1320,7 +1321,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xcn-nb-pFg">
-                                        <rect key="frame" x="0.0" y="271" width="192.5" height="40"/>
+                                        <rect key="frame" x="0.0" y="271" width="294" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="RaY-ej-ixo"/>
                                             <constraint firstAttribute="width" constant="120" id="hDV-gW-JCH"/>
@@ -1334,10 +1335,10 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="fAo-VE-PYa">
-                                        <rect key="frame" x="0.0" y="338" width="192.5" height="40"/>
+                                        <rect key="frame" x="0.0" y="338" width="294" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yDO-MX-4p3">
-                                                <rect key="frame" x="0.0" y="0.0" width="74" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="175.5" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="7Mn-os-Jrx"/>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="py3-sB-VXU"/>
@@ -1358,7 +1359,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ليس لديك حساب؟" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EW0-oC-hFD">
-                                                <rect key="frame" x="77" y="0.0" width="115.5" height="40"/>
+                                                <rect key="frame" x="178.5" y="0.0" width="115.5" height="40"/>
                                                 <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="15"/>
                                                 <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
@@ -1413,7 +1414,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vql-oT-9a8">
-                                <rect key="frame" x="262.5" y="300" width="0.0" height="0.0"/>
+                                <rect key="frame" x="364" y="300" width="0.0" height="0.0"/>
                                 <subviews>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fuq-rU-Lgc">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="180"/>
@@ -3039,62 +3040,33 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0s9-aE-6Ku">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="mainDark"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="25"/>
+                            <color key="textColor" name="mainDark"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" name="mainDark"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="D8C-17-UGX" kind="relationship" relationship="rootViewController" id="2dt-FP-G0F"/>
+                        <segue destination="i1N-qt-Jb1" kind="relationship" relationship="rootViewController" id="fo1-1o-dyD"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L41-2b-P7r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1252" y="3882"/>
         </scene>
-        <!--الفرص التطوعية-->
-        <scene sceneID="Ydk-6e-muK">
-            <objects>
-                <viewController id="D8C-17-UGX" customClass="VolunteeringOpportunities" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="faW-pd-RXk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2RK-Vc-dyi">
-                                <rect key="frame" x="162" y="425.5" width="90.5" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Wao-FR-hzd"/>
-                                </constraints>
-                                <color key="tintColor" name="mainLight"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="اضافة فرصة"/>
-                                <connections>
-                                    <segue destination="aVd-sL-8Qw" kind="show" id="vu1-E3-edS"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="YO0-un-TTu"/>
-                        <color key="backgroundColor" name="bgGrey"/>
-                        <constraints>
-                            <constraint firstItem="2RK-Vc-dyi" firstAttribute="centerY" secondItem="YO0-un-TTu" secondAttribute="centerY" id="QEh-Xn-2Zn"/>
-                            <constraint firstItem="2RK-Vc-dyi" firstAttribute="centerX" secondItem="YO0-un-TTu" secondAttribute="centerX" id="UJa-0b-pBO"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="" image="people" id="8vh-Kd-5sW">
-                        <inset key="imageInsets" minX="0.0" minY="12" maxX="0.0" maxY="-12"/>
-                    </tabBarItem>
-                    <navigationItem key="navigationItem" title="الفرص التطوعية" id="chq-zC-opO"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NNL-Gc-uu9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-339" y="3933"/>
-        </scene>
-        <!--VolunteerProfileViewController-->
+        <!--VolunteeringOppViewController-->
         <scene sceneID="kpv-nP-Blc">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="aVd-sL-8Qw" userLabel="VolunteerProfileViewController" customClass="addVolunteeringOpp" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="aVd-sL-8Qw" userLabel="VolunteeringOppViewController" customClass="addVolunteeringOpp" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D1g-Zz-DWc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1057"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1010"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IkK-8L-Pej">
-                                <rect key="frame" x="0.0" y="103" width="414" height="954"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IkK-8L-Pej">
+                                <rect key="frame" x="0.0" y="59" width="414" height="955"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IEv-jJ-aXh">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="955"/>
@@ -3392,7 +3364,7 @@
                     <navigationItem key="navigationItem" title="إضافة فرصة تطوعية" id="dwy-VI-BTC">
                         <barButtonItem key="backBarButtonItem" title=" " id="6UD-I0-Urc"/>
                     </navigationItem>
-                    <size key="freeformSize" width="414" height="1057"/>
+                    <size key="freeformSize" width="414" height="1010"/>
                     <connections>
                         <outlet property="addButton" destination="FFH-mA-Cyw" id="Qwt-xJ-IOZ"/>
                         <outlet property="backView" destination="IEv-jJ-aXh" id="2KC-AG-hib"/>
@@ -3413,11 +3385,253 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o6V-T9-eVz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="753.62318840579712" y="4067.0758928571427"/>
+            <point key="canvasLocation" x="753.62318840579712" y="4051.3392857142853"/>
+        </scene>
+        <!--الفرص التطوعية-->
+        <scene sceneID="pgK-e9-FeQ">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pir-mx-yjl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController id="i1N-qt-Jb1" customClass="VolunteeringOpportunities" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Lu3-Bd-sAS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l9z-V3-Gcd" customClass="RoundedView" customModule="Yumn" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="113" width="414" height="787"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uAn-hK-sya">
+                                        <rect key="frame" x="8" y="99" width="398" height="591"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="11" id="9E5-R5-VVl">
+                                            <size key="itemSize" width="370" height="300"/>
+                                            <size key="headerReferenceSize" width="0.0" height="10"/>
+                                            <size key="footerReferenceSize" width="0.0" height="30"/>
+                                            <inset key="sectionInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VOCell" id="hxx-Qy-R9q" customClass="VOCollectionViewCell" customModule="Yumn" customModuleProvider="target">
+                                                <rect key="frame" x="15" y="10" width="368" height="300"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6pW-7c-mjn">
+                                                    <rect key="frame" x="0.0" y="0.0" width="368" height="300"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="تنظيم مركز اللقاحات" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWU-yt-YkW">
+                                                            <rect key="frame" x="76" y="23" width="241" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="18"/>
+                                                            <color key="textColor" name="mainDark"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="الموقع:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gow-mG-Uo9">
+                                                            <rect key="frame" x="269" y="65" width="48" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="15"/>
+                                                            <color key="textColor" name="mainDark"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="جامعة الملك سعود" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1G-1Z-n40">
+                                                            <rect key="frame" x="79" y="65" width="185" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="15"/>
+                                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="20/12/2020 - 20/10/2020" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5AX-SO-pWY">
+                                                            <rect key="frame" x="83" y="94" width="185" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="15"/>
+                                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5 ايام" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9lc-wp-4zl">
+                                                            <rect key="frame" x="89" y="123" width="185" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="15"/>
+                                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5:00 AM - 12:00 PM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTI-Iz-uAt">
+                                                            <rect key="frame" x="34" y="152" width="185" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="15"/>
+                                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="التاريخ:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EjO-42-H5y">
+                                                            <rect key="frame" x="271" y="94" width="46" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="15"/>
+                                                            <color key="textColor" name="mainDark"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="المدة:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vux-yJ-9fv">
+                                                            <rect key="frame" x="278" y="123" width="39" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="15"/>
+                                                            <color key="textColor" name="mainDark"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ساعات العمل:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j22-4c-hI4">
+                                                            <rect key="frame" x="223" y="152" width="94" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="15"/>
+                                                            <color key="textColor" name="mainDark"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="الجنس:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4E-G8-xdf">
+                                                            <rect key="frame" x="262" y="181" width="55" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="15"/>
+                                                            <color key="textColor" name="mainDark"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="تنظيم مركز اللقاحات في جامعة الملك سعود متاح لفترة محدودة" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ux6-0c-s8r">
+                                                            <rect key="frame" x="54" y="202" width="263" height="50"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="12"/>
+                                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b7A-VU-4K7">
+                                                            <rect key="frame" x="5" y="16" width="50" height="28"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="tintColor" name="mainLight"/>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="plain" title="">
+                                                                <imageReference key="image" image="delete.left.fill" catalog="system" symbolScale="large"/>
+                                                                <color key="baseForegroundColor" name="mainLight"/>
+                                                            </buttonConfiguration>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kEK-j7-21N">
+                                                            <rect key="frame" x="8" y="260" width="134" height="28"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="filled" title="عرض المتقدمين" cornerStyle="capsule">
+                                                                <backgroundConfiguration key="background"/>
+                                                                <fontDescription key="titleFontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="11"/>
+                                                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="baseBackgroundColor" name="mainLight"/>
+                                                            </buttonConfiguration>
+                                                            <connections>
+                                                                <action selector="add:" destination="aVd-sL-8Qw" eventType="touchUpInside" id="dTg-oD-ekb"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fjc-yc-Bbh">
+                                                            <rect key="frame" x="252" y="260" width="71" height="28"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="filled" title="تعديل" cornerStyle="capsule">
+                                                                <backgroundConfiguration key="background"/>
+                                                                <fontDescription key="titleFontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="11"/>
+                                                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="baseBackgroundColor" name="mainLight"/>
+                                                            </buttonConfiguration>
+                                                            <connections>
+                                                                <action selector="add:" destination="aVd-sL-8Qw" eventType="touchUpInside" id="rO7-mq-qqL"/>
+                                                            </connections>
+                                                        </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="اناث فقط" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="417-Tq-3Kc">
+                                                            <rect key="frame" x="180" y="181" width="83" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="15"/>
+                                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </collectionViewCellContentView>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <size key="customSize" width="368" height="300"/>
+                                                <connections>
+                                                    <outlet property="date" destination="5AX-SO-pWY" id="Cjb-vz-dhh"/>
+                                                    <outlet property="des" destination="ux6-0c-s8r" id="oMd-uU-ymk"/>
+                                                    <outlet property="duration" destination="9lc-wp-4zl" id="0b3-zi-qRj"/>
+                                                    <outlet property="gender" destination="417-Tq-3Kc" id="PuV-mC-xON"/>
+                                                    <outlet property="hours" destination="zTI-Iz-uAt" id="HWc-nX-TwX"/>
+                                                    <outlet property="location" destination="v1G-1Z-n40" id="9Ug-VJ-DDg"/>
+                                                    <outlet property="title" destination="jWU-yt-YkW" id="Bw3-xP-Hal"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="T4F-hV-TOQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="398" height="10"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionReusableView>
+                                        <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="4lU-hJ-rUj">
+                                            <rect key="frame" x="0.0" y="310" width="398" height="30"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionReusableView>
+                                        <connections>
+                                            <outlet property="dataSource" destination="i1N-qt-Jb1" id="LZg-Mk-jgS"/>
+                                            <outlet property="delegate" destination="i1N-qt-Jb1" id="R1f-YQ-Vwx"/>
+                                        </connections>
+                                    </collectionView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RPU-pm-PtU">
+                                        <rect key="frame" x="116" y="29" width="182" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" cornerStyle="capsule">
+                                            <backgroundConfiguration key="background"/>
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="إضافة فرصة تطوعية">
+                                                    <attributes>
+                                                        <font key="NSFont" size="18" name="Tajawal-Regular"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="baseBackgroundColor" name="mainLight"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <segue destination="aVd-sL-8Qw" kind="show" id="Ls2-Na-gpp"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusV">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidthV">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColorV">
+                                        <color key="value" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5jU-4y-BYl"/>
+                        <color key="backgroundColor" name="bgGrey"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="people" id="d80-on-MsR">
+                        <inset key="imageInsets" minX="0.0" minY="12" maxX="0.0" maxY="-12"/>
+                    </tabBarItem>
+                    <navigationItem key="navigationItem" title="الفرص التطوعية" id="aDL-8a-2Kq">
+                        <barButtonItem key="rightBarButtonItem" image="Profile" width="20" id="slh-lI-UfK">
+                            <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-4"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="VolunteeringOppsList" destination="uAn-hK-sya" id="Lb6-T0-3yN"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-252.17391304347828" y="3881.9196428571427"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Huj-OT-y0s"/>
+        <segue reference="O1h-b2-P26"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ABm" width="45" height="38"/>
@@ -3435,6 +3649,7 @@
         <image name="bottom" width="586" height="336"/>
         <image name="calender-grey" width="30" height="30"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
+        <image name="delete.left.fill" catalog="system" width="128" height="104"/>
         <image name="heart icon" width="2048" height="2048"/>
         <image name="help" width="256" height="256"/>
         <image name="logo2" width="362" height="262"/>
