@@ -54,6 +54,17 @@ class BloodDonQuestionsViewController: UIViewController {
     
     override func viewDidLoad() {
         
+        guard let customFont = UIFont(name: "Tajawal", size: 19) else {
+            fatalError("""
+                Failed to load the "Tajawal" font.
+                Make sure the font file is included in the project and the font name is spelled correctly.
+                """
+            )
+        }
+      
+        
+        q1Btn.titleLabel?.font = customFont
+        
         contBtn.layer.cornerRadius = 25
         okBtn.layer.cornerRadius = 30
         popupView.layer.cornerRadius = 30
