@@ -4274,8 +4274,15 @@
                                                                 </constraints>
                                                                 <color key="tintColor" name="textGrey"/>
                                                                 <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" title="وزنك أعلى من ٥٠ كجم">
-                                                                    <fontDescription key="titleFontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="18"/>
+                                                                <buttonConfiguration key="configuration" style="plain">
+                                                                    <attributedString key="attributedTitle">
+                                                                        <fragment content="وزنك أعلى من ٥٠ كجم">
+                                                                            <attributes>
+                                                                                <font key="NSFont" size="18" name="Tajawal-Regular"/>
+                                                                                <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                            </attributes>
+                                                                        </fragment>
+                                                                    </attributedString>
                                                                 </buttonConfiguration>
                                                                 <connections>
                                                                     <action selector="onPressedQ1:" destination="kPd-lr-gTK" eventType="touchUpInside" id="lmF-BH-Usn"/>
@@ -4290,6 +4297,9 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="62" height="50"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
+                                                                <connections>
+                                                                    <action selector="onPressedRadio2:" destination="kPd-lr-gTK" eventType="touchUpInside" id="hXu-SL-Y0m"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpO-Ax-gCr">
                                                                 <rect key="frame" x="71" y="0.0" width="270" height="50"/>
@@ -4308,6 +4318,9 @@
                                                                         </fragment>
                                                                     </attributedString>
                                                                 </buttonConfiguration>
+                                                                <connections>
+                                                                    <action selector="onPressedQ2:" destination="kPd-lr-gTK" eventType="touchUpInside" id="CtE-g4-CFE"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -4318,6 +4331,9 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="62" height="50"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
+                                                                <connections>
+                                                                    <action selector="onPressedRadio3:" destination="kPd-lr-gTK" eventType="touchUpInside" id="0OM-TM-75z"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KPL-HI-YaY">
                                                                 <rect key="frame" x="62" y="0.0" width="280" height="50"/>
@@ -4336,6 +4352,9 @@
                                                                         </fragment>
                                                                     </attributedString>
                                                                 </buttonConfiguration>
+                                                                <connections>
+                                                                    <action selector="onPressedQ3:" destination="kPd-lr-gTK" eventType="touchUpInside" id="wPf-j3-LSx"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -4346,6 +4365,9 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="62" height="50"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
+                                                                <connections>
+                                                                    <action selector="onPressedRadio4:" destination="kPd-lr-gTK" eventType="touchUpInside" id="ENy-Zn-cyp"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H2H-aR-cfT">
                                                                 <rect key="frame" x="62" y="0.0" width="280" height="50"/>
@@ -4364,6 +4386,9 @@
                                                                         </fragment>
                                                                     </attributedString>
                                                                 </buttonConfiguration>
+                                                                <connections>
+                                                                    <action selector="onPrssedQ4:" destination="kPd-lr-gTK" eventType="touchUpInside" id="vLD-yo-1mn"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -4382,9 +4407,19 @@
                                                                 </constraints>
                                                                 <color key="tintColor" name="textGrey"/>
                                                                 <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" title="عمرك أكبر من ١٨ سنة">
-                                                                    <fontDescription key="titleFontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="18"/>
+                                                                <buttonConfiguration key="configuration" style="plain">
+                                                                    <attributedString key="attributedTitle">
+                                                                        <fragment content="عمرك أكبر من ١٨ سنة">
+                                                                            <attributes>
+                                                                                <font key="NSFont" size="18" name="Tajawal-Regular"/>
+                                                                                <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                            </attributes>
+                                                                        </fragment>
+                                                                    </attributedString>
                                                                 </buttonConfiguration>
+                                                                <connections>
+                                                                    <action selector="onPressedRadio5:" destination="kPd-lr-gTK" eventType="touchUpInside" id="y1J-Fs-ICF"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -4395,6 +4430,9 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="62" height="50"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
+                                                                <connections>
+                                                                    <action selector="onPressedRadio6:" destination="kPd-lr-gTK" eventType="touchUpInside" id="ABA-mE-VgB"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KM6-6m-Rli">
                                                                 <rect key="frame" x="129" y="0.0" width="210" height="50"/>
@@ -4403,9 +4441,19 @@
                                                                 </constraints>
                                                                 <color key="tintColor" name="textGrey"/>
                                                                 <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" title="غير مصاب بفقر الدم الحاد">
-                                                                    <fontDescription key="titleFontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="18"/>
+                                                                <buttonConfiguration key="configuration" style="plain">
+                                                                    <attributedString key="attributedTitle">
+                                                                        <fragment content="غير مصاب بفقر الدم الحاد">
+                                                                            <attributes>
+                                                                                <font key="NSFont" size="18" name="Tajawal-Regular"/>
+                                                                                <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                            </attributes>
+                                                                        </fragment>
+                                                                    </attributedString>
                                                                 </buttonConfiguration>
+                                                                <connections>
+                                                                    <action selector="onPressedQ6:" destination="kPd-lr-gTK" eventType="touchUpInside" id="ifU-jO-tdY"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -4416,6 +4464,9 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="62" height="50"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
+                                                                <connections>
+                                                                    <action selector="onPressedRadio7:" destination="kPd-lr-gTK" eventType="touchUpInside" id="vet-j1-Yil"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wS1-Le-sYK">
                                                                 <rect key="frame" x="79" y="0.0" width="260" height="50"/>
@@ -4424,9 +4475,19 @@
                                                                 </constraints>
                                                                 <color key="tintColor" name="textGrey"/>
                                                                 <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" title="غير مصاب بأمراض الدم الوراثية">
-                                                                    <fontDescription key="titleFontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="18"/>
+                                                                <buttonConfiguration key="configuration" style="plain">
+                                                                    <attributedString key="attributedTitle">
+                                                                        <fragment content="غير مصاب بأمراض الدم الوراثية">
+                                                                            <attributes>
+                                                                                <font key="NSFont" size="18" name="Tajawal-Regular"/>
+                                                                                <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                            </attributes>
+                                                                        </fragment>
+                                                                    </attributedString>
                                                                 </buttonConfiguration>
+                                                                <connections>
+                                                                    <action selector="onPressedQ7:" destination="kPd-lr-gTK" eventType="touchUpInside" id="pNt-r0-BzW"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -4440,8 +4501,15 @@
                                                             <constraint firstAttribute="width" constant="230" id="RtQ-81-abc"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="المتابعة">
-                                                            <fontDescription key="titleFontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="20"/>
+                                                        <buttonConfiguration key="configuration" style="plain">
+                                                            <attributedString key="attributedTitle">
+                                                                <fragment content="المتابعة">
+                                                                    <attributes>
+                                                                        <font key="NSFont" size="20" name="Tajawal-Regular"/>
+                                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                            </attributedString>
                                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </buttonConfiguration>
                                                         <connections>

@@ -78,10 +78,9 @@ class BloodDonQuestionsViewController: UIViewController {
     
     
     @IBAction func onPressedQ1(_ sender: Any) {
-      
         
         questions[0] = !questions[0]
-        print (questions[0])
+        print (questions)
 
         if (q1Radio.currentImage == UIImage(named: "fullRadio")){
             
@@ -101,7 +100,8 @@ class BloodDonQuestionsViewController: UIViewController {
     @IBAction func onPressedQ1Radio(_ sender: Any) {
       
         questions[0] = !questions[0]
-        print (questions[0])
+        print (questions)
+
         if (q1Radio.currentImage == UIImage(named: "fullRadio")){
             
             
@@ -117,9 +117,245 @@ class BloodDonQuestionsViewController: UIViewController {
     }
     
     
+    @IBAction func onPressedQ2(_ sender: Any) {
+        
+        questions[1] = !questions[1]
+        print (questions)
+
+        if (q2Radio.currentImage == UIImage(named: "fullRadio")){
+            
+            
+                q2Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            
+        }
+        else {
+            
+            q2Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
+            
+
+        }
+        
+        
+    }
+    
+    
+    @IBAction func onPressedRadio2(_ sender: Any) {
+        questions[1] = !questions[1]
+        print (questions)
+
+        if (q2Radio.currentImage == UIImage(named: "fullRadio")){
+            
+            
+                q2Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            
+        }
+        else {
+            
+            q2Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
+            
+
+        }
+    }
+    
+    
+    @IBAction func onPressedRadio3(_ sender: Any) {
+        questions[2] = !questions[2]
+        print (questions)
+
+        if (q3Radio.currentImage == UIImage(named: "fullRadio")){
+            
+            
+                q3Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            
+        }
+        else {
+            
+            q3Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
+            
+
+        }
+    }
+    
+    
+    
+    @IBAction func onPressedQ3(_ sender: Any) {
+        
+        questions[2] = !questions[2]
+        print (questions)
+
+        if (q3Radio.currentImage == UIImage(named: "fullRadio")){
+            
+            
+                q3Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            
+        }
+        else {
+            
+            q3Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
+            
+
+        }
+    }
+    
+    
+    @IBAction func onPressedRadio4(_ sender: Any) {
+        
+        questions[3] = !questions[3]
+        print (questions)
+
+        if (q4Radio.currentImage == UIImage(named: "fullRadio")){
+            
+            
+                q4Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            
+        }
+        else {
+            
+            q4Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
+            
+
+        }
+    }
+    
+    
+    @IBAction func onPrssedQ4(_ sender: Any) {
+        questions[3] = !questions[3]
+        print (questions)
+
+        if (q4Radio.currentImage == UIImage(named: "fullRadio")){
+            
+            
+                q4Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            
+        }
+        else {
+            
+            q4Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
+            
+
+        }
+    }
+    
+    
+    @IBAction func onPressedQ5(_ sender: Any) {
+        
+        questions[4] = !questions[4]
+        print (questions)
+
+        if (q5Radio.currentImage == UIImage(named: "fullRadio")){
+            
+            
+                q5Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            
+        }
+        else {
+            
+            q5Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
+            
+
+        }
+    }
+    
+    
+    @IBAction func onPressedRadio5(_ sender: Any) {
+        questions[4] = !questions[4]
+        print (questions)
+
+        if (q5Radio.currentImage == UIImage(named: "fullRadio")){
+            
+            
+                q5Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            
+        }
+        else {
+            
+            q5Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
+            
+
+        }
+    }
+    
+    @IBAction func onPressedRadio6(_ sender: Any) {
+    }
     
     
     @IBAction func onPressedCont(_ sender: Any) {
+        
+        questions[5] = !questions[5]
+        print (questions)
+
+        if (q6Radio.currentImage == UIImage(named: "fullRadio")){
+            
+            
+                q6Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            
+        }
+        else {
+            
+            q6Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
+            
+
+        }
+    }
+    
+    
+    @IBAction func onPressedQ6(_ sender: Any) {
+        questions[5] = !questions[5]
+        print (questions)
+
+        if (q6Radio.currentImage == UIImage(named: "fullRadio")){
+            
+            
+                q6Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            
+        }
+        else {
+            
+            q6Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
+            
+
+        }
+    }
+    
+    
+    @IBAction func onPressedRadio7(_ sender: Any) {
+        
+        questions[6] = !questions[6]
+        print (questions)
+
+        if (q7Radio.currentImage == UIImage(named: "fullRadio")){
+            
+            
+                q7Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            
+        }
+        else {
+            
+            q7Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
+            
+
+        }
+    }
+    
+    
+    
+    @IBAction func onPressedQ7(_ sender: Any) {
+        
+
+        
+        questions[6] = !questions[6]
+        print (questions)
+
+        if (q7Radio.currentImage == UIImage(named: "fullRadio")){
+            
+            
+                q7Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            
+        }
+        else {
+            
+            q7Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
+        }
     }
     
  
