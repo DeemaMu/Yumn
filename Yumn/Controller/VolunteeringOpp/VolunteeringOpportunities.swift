@@ -16,10 +16,12 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
     
     var VolunteeringOpps = [VolunteeringOpp]()
     
+    @IBOutlet weak var noVolunteeringOPPLabel: UILabel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        noVolunteeringOPPLabel.isHidden = true
     }
     
     
@@ -29,35 +31,47 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
         let user = Auth.auth().currentUser
         let uid = user?.uid
         
-        db.collection("volunteeringOpp").whereField("posted_by", isEqualTo: uid!).getDocuments() { (querySnapshot, error) in
+        db.collection("volunteeringOpp").order(by: "postDate", descending: false).getDocuments() { (querySnapshot, error) in
             
             guard let documents = querySnapshot?.documents else {
                 print("No documents")
                 return
             }
-            for document in querySnapshot!.documents {
-                let data = document.data()
-                //                        print("\(document.documentID) => \(document.data())")
-                let title = data["title"] as? String ?? ""
-                let date = data["date"] as? String ?? ""
-                let duration = data["duration"] as? String ?? ""
-                let workingHours = data["workingHours"] as? String ?? ""
-                let location = data["location"] as? String ?? ""
-                let gender = data["gender"] as? String ?? ""
-                let description = data["description"] as? String ?? ""
-                let docID = document.documentID as? String ?? ""
-                var vop = VolunteeringOpp(title: title, date: date, duration: duration, workingHours: workingHours, location: location, gender: gender, description: description, id :docID)
-                
-                self.VolunteeringOpps.append(vop)
-//                let row = self.VolunteeringOpps.count
-//                let indexPath = IndexPath(row: row-1, section: 0)
-//                self.VolunteeringOppsList.insertItems(at: [indexPath])
-                
+            
+            if documents.isEmpty {
+                print("No documents 2")
                 DispatchQueue.main.async {
                     self.VolunteeringOppsList.reloadData()
                 }
                 
+                self.noVolunteeringOPPLabel.isHidden = false
+            } else {
                 
+                
+                self.noVolunteeringOPPLabel.isHidden = true
+                
+                for document in querySnapshot!.documents {
+                    let data = document.data()
+                    let postedBy = data["posted_by"] as? String ?? ""
+                    let title = data["title"] as? String ?? ""
+                    let date = data["date"] as? String ?? ""
+                    let workingHours = data["workingHours"] as? String ?? ""
+                    let location = data["location"] as? String ?? ""
+                    let gender = data["gender"] as? String ?? ""
+                    let description = data["description"] as? String ?? ""
+                    let docID = document.documentID
+                    
+                    var vop = VolunteeringOpp(title: title, date: date, workingHours: workingHours, location: location, gender: gender, description: description, id :docID)
+                    
+                    if (postedBy == uid){
+                        self.VolunteeringOpps.append(vop)
+                    }
+                    DispatchQueue.main.async {
+                        self.VolunteeringOppsList.reloadData()
+                    }
+                    
+                    
+                }
             }
         }
     }
@@ -75,7 +89,6 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
         cell.date.text = VOP.date
         cell.gender.text = VOP.gender
         cell.hours.text = VOP.workingHours
-        cell.duration.text = VOP.duration
         cell.des.text = VOP.description
         cell.location.text = VOP.location
         
@@ -99,7 +112,7 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
     }
     
     @objc func deleteVOP(_ sender : UIButton) {
-       let indexPath = IndexPath(row: sender.tag, section: 0)
+        let indexPath = IndexPath(row: sender.tag, section: 0)
         
         let cell = VolunteeringOpps[indexPath.row]
         
@@ -109,7 +122,7 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
         let db = Firestore.firestore()
         db.collection("volunteeringOpp").document(cell.id).delete()
         
-//        VolunteeringOppsList.deleteItems(at: [indexPath])
+        //        VolunteeringOppsList.deleteItems(at: [indexPath])
         loadOPP()
         
         
@@ -140,7 +153,7 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
         self.navigationController?.navigationBar.layoutIfNeeded()
         
         loadOPP()
-    
+        
         
     }
     

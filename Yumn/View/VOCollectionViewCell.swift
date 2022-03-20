@@ -15,8 +15,6 @@ class VOCollectionViewCell : UICollectionViewCell {
     
     @IBOutlet weak var date: UILabel!
     
-    @IBOutlet weak var duration: UILabel!
-    
     @IBOutlet weak var hours: UILabel!
     
     @IBOutlet weak var gender: UILabel!

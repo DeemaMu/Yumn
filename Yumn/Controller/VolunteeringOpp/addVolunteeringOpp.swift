@@ -19,7 +19,6 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
-    @IBOutlet weak var durationTextField: UITextField!
     @IBOutlet weak var workHoursTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
     
@@ -30,9 +29,9 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var titleErrorMSG: UILabel!
     @IBOutlet weak var dateErrorMSG: UILabel!
-    @IBOutlet weak var durationErrorMSG: UILabel!
     @IBOutlet weak var workHoursErrorMSG: UILabel!
     @IBOutlet weak var locationErrorMSG: UILabel!
+    @IBOutlet weak var genderErrorMSG: UILabel!
     
     
     
@@ -111,7 +110,6 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
         addButton.layer.cornerRadius = 45
         style(TextField: titleTextField)
         style(TextField: dateTextField)
-        style(TextField: durationTextField)
         style(TextField: workHoursTextField)
         style(TextField: locationTextField)
         
@@ -151,9 +149,9 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
     func hideErrorMSGs(){
         titleErrorMSG.isHidden = true
         dateErrorMSG.isHidden = true
-        durationErrorMSG.isHidden = true
         workHoursErrorMSG.isHidden = true
         locationErrorMSG.isHidden = true
+        genderErrorMSG.isHidden = true
     }
     
     func addButton(enabeld : Bool){
@@ -213,7 +211,7 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
                 print(Constants.VolunteeringOpp.description)
             }
         }
-                checkForValidForm()
+        checkForValidForm()
     }
     
     func invalidTitle(_ value: String) -> String? {
@@ -246,7 +244,7 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
     // Final Validation
     func checkForValidForm()
     {
-        if titleErrorMSG.isHidden && dateErrorMSG.isHidden && durationErrorMSG.isHidden && workHoursErrorMSG.isHidden && locationErrorMSG.isHidden
+        if titleErrorMSG.isHidden && dateErrorMSG.isHidden && workHoursErrorMSG.isHidden && locationErrorMSG.isHidden
         {
             addButton.isEnabled = true
         }
@@ -287,7 +285,7 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
         let db = Firestore.firestore()
         let user = Auth.auth().currentUser
         let uid = user?.uid
-
+        
         // 1. get the Doc
         let docRef = db.collection("hospitalsInformation").document(uid!)
         
@@ -300,54 +298,46 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
             guard let hospitalName = data["name"] as? String else {
                 return
             }
-//            guard let phone = data["phone"] as? String else {
-//                return
-//            }
-
+            //            guard let phone = data["phone"] as? String else {
+            //                return
+            //            }
+            
             DispatchQueue.main.async {
                 self?.hospitalName = hospitalName
-//                self?.hospitalPhone = phone
+                //                self?.hospitalPhone = phone
                 
             }
         }
-        
-        
-        
+
         
         var gender = ""
         if (femaleButton.isSelected){
-            gender = "F"
-            
-            if (maleButton.isSelected){
-                gender += "& M"
-            }
-        } else {
-            gender = "M"
+            gender = "اناث فقط"
         }
+        if (maleButton.isSelected){
+            gender = "ذكور فقط"
+        }
+        if (femaleButton.isSelected && maleButton.isSelected) {
+            gender = "اناث وذكور"
+        }
+        let today = Date()
         
         
-
         // Volunteer collection
         db.collection("volunteeringOpp").document().setData([
             "title":Constants.VolunteeringOpp.title,
             "date": Constants.VolunteeringOpp.date,
-            "duration": Constants.VolunteeringOpp.duration,
             "workingHours": Constants.VolunteeringOpp.workingHours,
             "location": Constants.VolunteeringOpp.location,
             "description": Constants.VolunteeringOpp.description,
             "gender": gender,
             "hospitalName": hospitalName,
+            "postDate": today,
             "posted_by": uid!]){ error in
-                
                 if error != nil {
                     print(error?.localizedDescription as Any)
                     print ("error in adding the data")
                 }
             }
-        
-    
     }
-    
-    
-    
 }

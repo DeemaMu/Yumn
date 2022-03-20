@@ -8,12 +8,11 @@
 import Foundation
 
 struct VolunteeringOpp {
-      var title = ""
-      var date = ""
-      var duration = ""
-      var workingHours = ""
-      var location  = ""
-      var gender = ""
-      var description = ""
+    var title = ""
+    var date = ""
+    var workingHours = ""
+    var location  = ""
+    var gender = ""
+    var description = ""
     var id = ""
 }
