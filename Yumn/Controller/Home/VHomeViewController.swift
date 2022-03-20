@@ -18,21 +18,25 @@ class VHomeViewController: UIViewController {
     
     @IBOutlet weak var whiteView: RoundedView!
     
+    
     @IBOutlet weak var popupView: UIView!
     
     @IBOutlet weak var popupStack: UIStackView!
+    
     
     @IBOutlet weak var blurredView: UIView!
     
     @IBOutlet weak var logoutButton: UIBarButtonItem!
     
-    @IBOutlet weak var cancelButton: UIButton!
+  
+    
     
     @IBOutlet weak var popupMsg: UILabel!
     
-    
+    @IBOutlet weak var cancelButton: UIButton!
     
     @IBOutlet weak var confirmBtn: UIButton!
+    
     
 
     
@@ -103,6 +107,7 @@ class VHomeViewController: UIViewController {
     
     
     @IBAction func onPressedConfirmBtn(_ sender: Any) {
+ 
    
     
     
@@ -125,8 +130,8 @@ class VHomeViewController: UIViewController {
         
     }
     
-    
     @IBAction func onPressedLogout(_ sender: Any) {
+   
     
         
         popupTitle.text = "تأكيد تسجيل الخروج"
@@ -138,9 +143,9 @@ class VHomeViewController: UIViewController {
     }
     
     
-    
     @IBAction func onPressedCancel(_ sender: Any) {
-   
+    
+    
         
         popupView.isHidden = true
         blurredView.isHidden = true
