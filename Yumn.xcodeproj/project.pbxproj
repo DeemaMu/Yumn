@@ -14,6 +14,7 @@
 		8D7F152B27D299C100E1EB1A /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7F152A27D299C100E1EB1A /* constants.swift */; };
 		8D7F152D27D299F300E1EB1A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7F152C27D299F300E1EB1A /* HomeViewController.swift */; };
 		8D7F152F27D29A6500E1EB1A /* HospitalHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7F152E27D29A6500E1EB1A /* HospitalHomeViewController.swift */; };
+		8DC80B7427E7A72600A1DF6E /* OrganDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC80B7327E7A72600A1DF6E /* OrganDonationViewController.swift */; };
 		95062D9627CADC0500D63911 /* Tajawal-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95062D9227CADC0400D63911 /* Tajawal-Light.ttf */; };
 		95062D9727CADC0500D63911 /* Tajawal-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95062D9327CADC0500D63911 /* Tajawal-Medium.ttf */; };
 		95062D9827CADC0500D63911 /* Tajawal-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95062D9427CADC0500D63911 /* Tajawal-Regular.ttf */; };
@@ -74,6 +75,7 @@
 		8D7F152A27D299C100E1EB1A /* constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		8D7F152C27D299F300E1EB1A /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8D7F152E27D29A6500E1EB1A /* HospitalHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HospitalHomeViewController.swift; sourceTree = "<group>"; };
+		8DC80B7327E7A72600A1DF6E /* OrganDonationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganDonationViewController.swift; sourceTree = "<group>"; };
 		95062D9227CADC0400D63911 /* Tajawal-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tajawal-Light.ttf"; sourceTree = "<group>"; };
 		95062D9327CADC0500D63911 /* Tajawal-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tajawal-Medium.ttf"; sourceTree = "<group>"; };
 		95062D9427CADC0500D63911 /* Tajawal-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tajawal-Regular.ttf"; sourceTree = "<group>"; };
@@ -154,6 +156,14 @@
 				8D7F152427D25EF200E1EB1A /* yumnLoading.gif */,
 			);
 			path = GIF;
+			sourceTree = "<group>";
+		};
+		8DC80B7227E7A70100A1DF6E /* VOrganDonation */ = {
+			isa = PBXGroup;
+			children = (
+				8DC80B7327E7A72600A1DF6E /* OrganDonationViewController.swift */,
+			);
+			path = VOrganDonation;
 			sourceTree = "<group>";
 		};
 		95062D9127CADBE800D63911 /* Fonts */ = {
@@ -237,6 +247,7 @@
 		B930F85627B8548900E70860 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8DC80B7227E7A70100A1DF6E /* VOrganDonation */,
 				8D0E9A1D27E5337900890AC0 /* Information */,
 				B9AD3F2827E2CF1E001AB734 /* HAppointments */,
 				B9CC6E9227E1498E0005C160 /* HOrganShortage */,
@@ -528,6 +539,7 @@
 				8D7F152D27D299F300E1EB1A /* HomeViewController.swift in Sources */,
 				D195444027D499FA00B03DFF /* tabBarVC.swift in Sources */,
 				B9AD3F2C27E2D4E6001AB734 /* CalenderAndAppointments.swift in Sources */,
+				8DC80B7427E7A72600A1DF6E /* OrganDonationViewController.swift in Sources */,
 				B97A37FE27B9D32A00718079 /* RoundedShadowedView.swift in Sources */,
 				8D7F152F27D29A6500E1EB1A /* HospitalHomeViewController.swift in Sources */,
 				95062D9D27CADE1300D63911 /* VolunteerProfileViewController.swift in Sources */,
