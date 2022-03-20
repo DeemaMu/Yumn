@@ -34,7 +34,11 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var genderErrorMSG: UILabel!
     
     
-    
+    // FOR VALIDATION
+    var startDate = ""
+    var endDate = ""
+    var startTime = ""
+    var endTime = ""
     
     @IBOutlet weak var addButton: UIButton!
     
@@ -56,7 +60,7 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
         descriptionView.addSubview(controller.view)
         //Hide
         addButton(enabeld: false)
-        hideErrorMSGs()
+        //        hideErrorMSGs()
         
         // Hide keyboard
         self.hideKeyboardWhenTappedAround()
@@ -178,6 +182,7 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
         else {
             genderNotSELECTED(button: femaleButton)
         }
+        genderValidation()
     }
     
     @IBAction func MaleSelected(_ sender: Any) {
@@ -186,9 +191,11 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
         }
         else {
             genderNotSELECTED(button: maleButton)
-            
         }
+        genderValidation()
     }
+    
+    
     
     
     // MARK: - Validation
@@ -239,12 +246,178 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
     
     // Date Validation
     
+    func dateChanged() {
+        if let date = dateTextField.text
+        {
+            if let errorMessage = invalidDate(date)
+            {
+                dateErrorMSG.text = errorMessage
+                dateErrorMSG.isHidden = false
+                turnTextFieldTextfieldToRed(dateTextField)
+            }
+            else
+            {
+                dateErrorMSG.isHidden = true
+                Constants.VolunteeringOpp.date = dateTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                activeStyle(dateTextField)
+            }
+        }
+        checkForValidForm()
+    }
     
+    func invalidDate(_ value: String) -> String? {
+        // Empty
+        if value.count == 0
+        {
+            return "مطلوب"
+        }
+        
+        // End date is before start date
+        if (startDate > endDate){
+            return "تاريخ النهاية يجب ان يكون بعد البداية"
+        }
+        
+        return nil
+    }
+    
+    // Time Validation
+    func timeChanged() {
+        if let time = workHoursTextField.text
+        {
+            if let errorMessage = invalidtime(time)
+            {
+                workHoursErrorMSG.text = errorMessage
+                workHoursErrorMSG.isHidden = false
+                turnTextFieldTextfieldToRed(workHoursTextField)
+            }
+            else
+            {
+                workHoursErrorMSG.isHidden = true
+                Constants.VolunteeringOpp.workingHours = workHoursTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                activeStyle(workHoursTextField)
+            }
+        }
+        checkForValidForm()
+    }
+    
+    func invalidtime(_ value: String) -> String? {
+        // Empty
+        if value.count == 0
+        {
+            return "مطلوب"
+        }
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        
+        // End time is before start time
+        if (formatter.date(from: startTime)! > formatter.date(from: endTime)!){
+            
+            return "وقت النهاية يجب ان يكون بعد البداية"
+        }
+        
+        // End time is before start time
+        if (formatter.date(from: startTime)! == formatter.date(from: endTime)!){
+            
+            return "وقت النهاية يجب ان لا يساوي البداية"
+        }
+        
+        let today = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/YYYY"
+        
+        let timeFormatter = DateFormatter()
+          timeFormatter.dateFormat = "HH:mm"
+      
+        
+        let todayDate = String(format: "%@", dateFormatter.string(from: today))
+        let todaytime = String(format: "%@", timeFormatter.string(from: today))
+        
+        // if the chosen date is today, is the time valid ?
+        if (startDate == todayDate){
+            print ("امبيييه")
+
+            // start time is before current time
+            if (formatter.date(from: startTime)! < formatter.date(from: todaytime)!){
+                
+                return "هذا الوقت غير متاح"
+            }
+            
+            // start time is equal to current time
+            if (formatter.date(from: startTime)! == formatter.date(from: todaytime)!){
+                
+                return "هذا الوقت غير متاح"
+            }
+            
+        }
+        
+        return nil
+    }
+    
+    // location Validation
+    @IBAction func locationChanged(_ sender: Any) {
+        if let location = locationTextField.text
+        {
+            if let errorMessage = invalidLocation(location)
+            {
+                locationErrorMSG.text = errorMessage
+                locationErrorMSG.isHidden = false
+                turnTextFieldTextfieldToRed(locationTextField)
+            }
+            else
+            {
+                locationErrorMSG.isHidden = true
+                Constants.VolunteeringOpp.location = locationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                activeStyle(locationTextField)
+            }
+        }
+        checkForValidForm()
+    }
+    
+    func invalidLocation(_ value: String) -> String? {
+        // Empty
+        if value.count == 0
+        {
+            return "مطلوب"
+        }
+        
+        // Contains special char
+        if containsSpecialCharacter(value)
+        {
+            return "يجب ان يحتوي على احرف او ارقام فقط"
+        }
+        
+        // Invalid length
+        if value.count < 4 || value.count > 50
+        {
+            return "الرجاء ادخال موقع صحيح"
+        }
+        return nil
+    }
+    
+    func containsSpecialCharacter(_ value : String) -> Bool{
+        let regex = ".*[^A-Za-z0-9].*"
+        let testString = NSPredicate(format:"SELF MATCHES %@", regex)
+        return testString.evaluate(with: value)
+    }
+    
+    // gender Validation
+    func genderValidation(){
+        if(maleButton.isSelected){
+            genderErrorMSG.isHidden = true
+        }
+        else if(femaleButton.isSelected){
+            genderErrorMSG.isHidden = true
+            
+        } else {
+            genderErrorMSG.isHidden = false
+        }
+    }
     
     // Final Validation
     func checkForValidForm()
     {
-        if titleErrorMSG.isHidden && dateErrorMSG.isHidden && workHoursErrorMSG.isHidden && locationErrorMSG.isHidden
+        if titleErrorMSG.isHidden && dateErrorMSG.isHidden && workHoursErrorMSG.isHidden && locationErrorMSG.isHidden && genderErrorMSG.isHidden
         {
             addButton.isEnabled = true
         }
@@ -261,8 +434,15 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
         let picker = DateTimePicker()
         picker.setup()
         picker.didSelectDates = { [ weak self ] (startDate , endDate) in
+            
+            self?.startDate = Date.dateFormatter(date: startDate)
+            self?.endDate = Date.dateFormatter(date: endDate)
+            
             let text = Date.buildDateRangeString(startDate: startDate, endDate: endDate)
             self?.dateTextField.text = text
+            
+            // Validation Method
+            self?.dateChanged()
         }
         return picker
     }()
@@ -271,8 +451,15 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
         let picker = TimePicker()
         picker.setup()
         picker.didSelectTimes = { [ weak self ] (startTime , endTime) in
+            
+            self?.startTime = Date.timeFormatter(time: startTime)
+            self?.endTime = Date.timeFormatter(time: endTime)
+            
             let text = Date.buildTimeRangeString(startTime: startTime, endTime: endTime)
             self?.workHoursTextField.text = text
+            
+            // Validation Method
+            self?.timeChanged()
         }
         return picker
     }()
@@ -308,7 +495,7 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
                 
             }
         }
-
+        
         
         var gender = ""
         if (femaleButton.isSelected){

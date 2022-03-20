@@ -31,7 +31,7 @@ class TimePicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
       }
       
       func setup() {
-        timeFormatter.timeStyle = .short
+        timeFormatter.dateFormat = "HH:mm"
         startTimes = setStartTimes()
         endTimes = setEndTimes()
       }
@@ -118,7 +118,6 @@ class TimePicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
           
           nextDiff = interval - calendar.component(.minute, from: nextDate) % interval
           nextDate = calendar.date(byAdding: .minute, value: nextDiff, to: nextDate) ?? Date()
-          
           hour = Calendar.current.component(.hour, from: nextDate)
         }
         
@@ -135,7 +134,6 @@ class TimePicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
         let today = Date()
         return getTimes(of: today)
       }
-      
       
       private func getTimeString(from: Date) -> String {
         return timeFormatter.string(from: from)

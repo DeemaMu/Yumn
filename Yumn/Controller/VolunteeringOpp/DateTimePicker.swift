@@ -86,10 +86,10 @@ class DateTimePicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        if (component == 0){
-            endDate.removeAll()
-            endDate = setEndDate()
-        }
+//        if (component == 0){
+//            endDate.removeAll()
+//            endDate = setEndDate()
+//        }
         
         let startDateIndex = pickerView.selectedRow(inComponent: 0)
         let endDateIndex = pickerView.selectedRow(inComponent: 1)
@@ -154,9 +154,10 @@ class DateTimePicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
         return getDays(of: today)
     }
     private func setEndDate() -> [Date] {
-        let startDateIndex = pickerView.selectedRow(inComponent: 0)
-        let startDate = startDate[startDateIndex]
-        return getDays(of: startDate)
+//        let startDateIndex = pickerView.selectedRow(inComponent: 0)
+//        let startDate = startDate[startDateIndex]
+        let today = Date()
+        return getDays(of: today)
     }
     private func getDayString(from: Date) -> String {
         return dayFormatter.string(from: from)
@@ -179,6 +180,15 @@ extension Date {
                       startDateFormatter.string(from: startDate),
                       endDateFormatter.string(from: endDate))
     }
+    
+    static func dateFormatter(date: Date) -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/YYYY"
+    
+        return String(format: "%@", dateFormatter.string(from: date))
+    }
+    
     static func buildTimeRangeString(startTime: Date, endTime: Date) -> String {
 
       let startTimeFormatter = DateFormatter()
@@ -190,6 +200,14 @@ extension Date {
       return String(format: "%@ - %@",
                     startTimeFormatter.string(from: startTime),
                     endTimeFormatter.string(from: endTime))
+    }
+    
+    static func timeFormatter(time: Date) -> String {
+
+      let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "HH:mm"
+    
+      return String(format: "%@", timeFormatter.string(from: time))
     }
     
 }
