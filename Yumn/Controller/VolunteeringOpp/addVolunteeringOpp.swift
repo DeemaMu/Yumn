@@ -196,7 +196,6 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
     // MARK: - Validation
     
     //Title validation
-    
     @IBAction func titleChanged(_ sender: Any) {
         if let title = titleTextField.text
         {
@@ -217,8 +216,7 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
                 checkForValidForm()
     }
     
-    func invalidTitle(_ value: String) -> String?
-    {
+    func invalidTitle(_ value: String) -> String? {
         let set = CharacterSet(charactersIn: value)
         
         // Empty
@@ -240,6 +238,10 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
         }
         return nil
     }
+    
+    // Date Validation
+    
+    
     
     // Final Validation
     func checkForValidForm()

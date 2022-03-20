@@ -29,7 +29,7 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
         let user = Auth.auth().currentUser
         let uid = user?.uid
         
-        db.collection("volunteeringOpp").whereField("posted_by", isEqualTo: uid!).addSnapshotListener { (querySnapshot, error) in
+        db.collection("volunteeringOpp").whereField("posted_by", isEqualTo: uid!).getDocuments() { (querySnapshot, error) in
             
             guard let documents = querySnapshot?.documents else {
                 print("No documents")

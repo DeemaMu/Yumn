@@ -182,10 +182,10 @@ extension Date {
     static func buildTimeRangeString(startTime: Date, endTime: Date) -> String {
 
       let startTimeFormatter = DateFormatter()
-      startTimeFormatter.dateFormat = "h:mm a"
+      startTimeFormatter.dateFormat = "HH:mm"
       
       let endTimeFormatter = DateFormatter()
-      endTimeFormatter.dateFormat = "h:mm a"
+      endTimeFormatter.dateFormat = "HH:mm"
       
       return String(format: "%@ - %@",
                     startTimeFormatter.string(from: startTime),

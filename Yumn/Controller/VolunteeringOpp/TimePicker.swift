@@ -102,7 +102,7 @@ class TimePicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
         var times = [Date]()
         var currentDate = date
         
-        currentDate = Calendar.current.date(bySetting: .hour, value: 7, of: currentDate)!
+        currentDate = Calendar.current.date(bySetting: .hour, value: 00, of: currentDate)!
         currentDate = Calendar.current.date(bySetting: .minute, value: 00, of: currentDate)!
         
         let calendar = Calendar.current
