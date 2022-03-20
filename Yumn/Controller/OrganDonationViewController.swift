@@ -16,16 +16,19 @@ class OrganDonationViewController: UIViewController, CustomSegmentedControlDeleg
     
     var location:CLLocation?
     var userLocation:CLLocationCoordinate2D?
-    @IBOutlet weak var segmentsView: UIView!
-    @IBOutlet weak var tableMain: UITableView!
     @IBOutlet weak var seg2: UIView!
     var codeSegmented:CustomSegmentedControl? = nil
+    @IBOutlet weak var segmentsView: UIView!
     
-   
+    @IBOutlet weak var roundView: UIView!
+    
     
     let db = Firestore.firestore()
     
     override func viewDidLoad() {
+        
+      //  roundView.layer.cornerRadius = 30
+        
         super.viewDidLoad()
         
         

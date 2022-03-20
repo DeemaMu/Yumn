@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dBl-PG-rEO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BL2-hD-VpD">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -449,12 +449,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4685.507246376812" y="174.77678571428569"/>
+            <point key="canvasLocation" x="4593" y="179"/>
         </scene>
         <!--التبرع بالدم-->
         <scene sceneID="6gY-a2-cUA">
             <objects>
-                <viewController storyboardIdentifier="bdVC" id="cN7-Xz-3Ny" customClass="BloodDonationViewController" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cN7-Xz-3Ny" customClass="BloodDonationViewController" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cLK-Fh-usT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -536,7 +536,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xgd-Zx-D9c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5544.9275362318849" y="174.77678571428569"/>
+            <point key="canvasLocation" x="5452" y="179"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="XYe-np-HCK">
@@ -1969,15 +1969,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="bUr-Dn-K3x">
-                                <rect key="frame" x="60" y="338" width="192.5" height="378"/>
+                                <rect key="frame" x="60" y="338" width="294" height="378"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QGh-Ph-ygQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="192.5" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="294" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="البريد الالكتروني" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RVZ-sN-39i">
-                                        <rect key="frame" x="0.0" y="61" width="192.5" height="40"/>
+                                        <rect key="frame" x="0.0" y="61" width="294" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="OAK-I6-rCI"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="nNl-0v-7V0"/>
@@ -1987,13 +1987,13 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="      " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOA-JH-hAW">
-                                        <rect key="frame" x="0.0" y="128" width="192.5" height="11"/>
+                                        <rect key="frame" x="0.0" y="128" width="294" height="11"/>
                                         <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="11"/>
                                         <color key="textColor" systemColor="systemRedColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="الرفم السري" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cf6-qC-69o">
-                                        <rect key="frame" x="0.0" y="166" width="192.5" height="40"/>
+                                        <rect key="frame" x="0.0" y="166" width="294" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="0bY-XD-bbj"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="Xmy-dd-WSh"/>
@@ -2003,7 +2003,7 @@
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="      " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yqk-hm-8cc">
-                                        <rect key="frame" x="0.0" y="233" width="192.5" height="11"/>
+                                        <rect key="frame" x="0.0" y="233" width="294" height="11"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="163" id="q1j-UX-cgf"/>
                                         </constraints>
@@ -2012,7 +2012,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xcn-nb-pFg">
-                                        <rect key="frame" x="0.0" y="271" width="192.5" height="40"/>
+                                        <rect key="frame" x="0.0" y="271" width="294" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="RaY-ej-ixo"/>
                                             <constraint firstAttribute="width" constant="120" id="hDV-gW-JCH"/>
@@ -2026,10 +2026,10 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="fAo-VE-PYa">
-                                        <rect key="frame" x="0.0" y="338" width="192.5" height="40"/>
+                                        <rect key="frame" x="0.0" y="338" width="294" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yDO-MX-4p3">
-                                                <rect key="frame" x="0.0" y="0.0" width="74" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="175.5" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="7Mn-os-Jrx"/>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="py3-sB-VXU"/>
@@ -2050,7 +2050,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ليس لديك حساب؟" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EW0-oC-hFD">
-                                                <rect key="frame" x="77" y="0.0" width="115.5" height="40"/>
+                                                <rect key="frame" x="178.5" y="0.0" width="115.5" height="40"/>
                                                 <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="15"/>
                                                 <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
@@ -2105,7 +2105,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vql-oT-9a8">
-                                <rect key="frame" x="262.5" y="300" width="0.0" height="0.0"/>
+                                <rect key="frame" x="364" y="300" width="0.0" height="0.0"/>
                                 <subviews>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fuq-rU-Lgc">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="180"/>
@@ -3708,13 +3708,13 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="351" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIv-7s-JXx">
-                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="206.5" height="50"/>
                                                         <fontDescription key="fontDescription" name="Tajawal-Medium" family="Tajawal Medium" pointSize="21"/>
                                                         <color key="textColor" name="mainLight"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="يتم التبرع بـ:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pa4-sp-Ts4">
-                                                        <rect key="frame" x="267" y="0.0" width="84" height="50"/>
+                                                        <rect key="frame" x="266.5" y="0.0" width="84.5" height="50"/>
                                                         <fontDescription key="fontDescription" name="Tajawal-Medium" family="Tajawal Medium" pointSize="18"/>
                                                         <color key="textColor" name="mainLight"/>
                                                         <nil key="highlightedColor"/>
@@ -3876,14 +3876,14 @@
         <scene sceneID="8OD-IR-FD3">
             <objects>
                 <viewController id="s8R-AU-cFP" customClass="BloodDonQuestionsViewController" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="6V7-9Y-0Zl">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="6V7-9Y-0Zl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="jDq-WE-T7Q">
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="jDq-WE-T7Q">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
-                                    <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="fvS-Y0-k43" customClass="RoundedView" customModule="Yumn" customModuleProvider="target">
+                                    <view contentMode="center" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fvS-Y0-k43" customClass="RoundedView" customModule="Yumn" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="jn4-wG-cfr">
@@ -4380,10 +4380,10 @@
             </objects>
             <point key="canvasLocation" x="7315.9420289855079" y="105.80357142857143"/>
         </scene>
-        <!--View Controller-->
+        <!--Organ Donation View Controller-->
         <scene sceneID="bXt-r4-0qg">
             <objects>
-                <viewController id="dBl-PG-rEO" sceneMemberID="viewController">
+                <viewController id="dBl-PG-rEO" customClass="OrganDonationViewController" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wWE-Bt-AQx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4397,11 +4397,17 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CwO-LP-ByZ">
+                                        <rect key="frame" x="32" y="438" width="350" height="0.0"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
                                     <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aEz-JT-4c5">
                                         <rect key="frame" x="0.0" y="52" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="barTintColor" name="mainLight"/>
                                         <textAttributes key="titleTextAttributes">
+                                            <fontDescription key="fontDescription" name="Tajawal-Medium" family="Tajawal Medium" pointSize="25"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </textAttributes>
                                         <textAttributes key="largeTitleTextAttributes">
@@ -4409,7 +4415,11 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </textAttributes>
                                         <items>
-                                            <navigationItem title="التبرع بالأعضاء" id="gKW-Xv-4Ec"/>
+                                            <navigationItem title="التبرع بالأعضاء" id="gKW-Xv-4Ec">
+                                                <barButtonItem key="rightBarButtonItem" title="Item" image="arrow.right" catalog="system" id="Jy3-Ma-BqI">
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </barButtonItem>
+                                            </navigationItem>
                                         </items>
                                     </navigationBar>
                                 </subviews>
@@ -4419,6 +4429,10 @@
                         <viewLayoutGuide key="safeArea" id="1Ou-rF-3Rd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="roundView" destination="pYo-k4-JqG" id="Iw4-vf-Ki1"/>
+                        <outlet property="segmentsView" destination="CwO-LP-ByZ" id="lrG-hd-8hU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u74-tS-Mpo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -4438,6 +4452,99 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eFT-xX-bxf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7246" y="-1599"/>
+        </scene>
+        <!--Organ Donation View Controller-->
+        <scene sceneID="ZaG-qe-adZ">
+            <objects>
+                <viewController id="BL2-hD-VpD" customClass="OrganDonationViewController" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ihp-ux-fed">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="nsl-Bn-clC">
+                                <rect key="frame" x="0.0" y="54" width="414" height="842.5"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XGe-qE-UgA">
+                                        <rect key="frame" x="87" y="0.0" width="240" height="5.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="5.5" id="ciC-83-vk8"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="Cbm-tO-BPg" customClass="RoundedView" customModule="Yumn" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="21.5" width="414" height="821"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tL8-ha-eTz">
+                                                <rect key="frame" x="32" y="8" width="350" height="87"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstItem="tL8-ha-eTz" firstAttribute="top" secondItem="Cbm-tO-BPg" secondAttribute="top" constant="8" id="Axh-T0-nLN"/>
+                                            <constraint firstItem="tL8-ha-eTz" firstAttribute="centerX" secondItem="Cbm-tO-BPg" secondAttribute="centerX" id="QVA-sX-jSN"/>
+                                            <constraint firstAttribute="bottom" secondItem="tL8-ha-eTz" secondAttribute="bottom" constant="726" id="QgI-UI-21y"/>
+                                            <constraint firstItem="tL8-ha-eTz" firstAttribute="leading" secondItem="Cbm-tO-BPg" secondAttribute="leading" constant="32" id="awP-SS-wQw"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusV">
+                                                <real key="value" value="40"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidthV">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColorV">
+                                                <color key="value" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Cbm-tO-BPg" firstAttribute="leading" secondItem="nsl-Bn-clC" secondAttribute="leading" id="GFQ-NA-luX"/>
+                                    <constraint firstAttribute="bottom" secondItem="Cbm-tO-BPg" secondAttribute="bottom" id="WcA-I9-I0m"/>
+                                    <constraint firstAttribute="trailing" secondItem="Cbm-tO-BPg" secondAttribute="trailing" id="eP1-tO-p2J"/>
+                                </constraints>
+                            </stackView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZAf-ya-MJy">
+                                <rect key="frame" x="0.0" y="37" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" name="Tajawal-Medium" family="Tajawal Medium" pointSize="25"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </textAttributes>
+                                <textAttributes key="largeTitleTextAttributes">
+                                    <fontDescription key="fontDescription" name="Tajawal-Medium" family="Tajawal Medium" pointSize="15"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="التبرع بالأعضاء" id="Hkj-rU-sMF">
+                                        <barButtonItem key="rightBarButtonItem" title="Item" image="arrow.right" catalog="system" id="hGn-F8-1Rb">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="m69-i2-nly"/>
+                        <color key="backgroundColor" name="mainLight"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nsl-Bn-clC" firstAttribute="centerX" secondItem="ihp-ux-fed" secondAttribute="centerX" id="3zq-aq-T5N"/>
+                            <constraint firstAttribute="bottom" secondItem="nsl-Bn-clC" secondAttribute="bottom" constant="-0.5" id="9h1-PE-LXC"/>
+                            <constraint firstItem="nsl-Bn-clC" firstAttribute="top" secondItem="m69-i2-nly" secondAttribute="top" constant="10" id="NG3-kj-pmS"/>
+                            <constraint firstItem="nsl-Bn-clC" firstAttribute="top" secondItem="m69-i2-nly" secondAttribute="top" constant="10" id="Pvb-BU-e6Q"/>
+                            <constraint firstItem="nsl-Bn-clC" firstAttribute="leading" secondItem="m69-i2-nly" secondAttribute="leading" id="ey2-Tj-8c8"/>
+                            <constraint firstItem="nsl-Bn-clC" firstAttribute="trailing" secondItem="m69-i2-nly" secondAttribute="trailing" id="uUT-BB-GX2"/>
+                            <constraint firstItem="nsl-Bn-clC" firstAttribute="leading" secondItem="m69-i2-nly" secondAttribute="leading" id="v8f-Kw-TIT"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="segmentsView" destination="tL8-ha-eTz" id="9s3-SM-3tv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o62-zk-lAd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8863.7681159420299" y="125.89285714285714"/>
         </scene>
     </scenes>
     <resources>
