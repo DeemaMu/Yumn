@@ -93,7 +93,7 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        /*
         // Blood Donation Information
         typeStack.isHidden = true
         typeArrow.contentHorizontalAlignment = .left
@@ -103,7 +103,7 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
         donInfo.clipsToBounds = true
         donInfo.text = "هو إجراء طبي تطوعي يتم بنقل الدم أو أحد مركباته من شخص سليم معافى إلى شخص مريض يحتاج للدم. وهذا الإجراء يحتاج إليه الملايين من الناس كل عام. فيستخدم أثناء الجراحة أو الحوادث أو بعض الأمراض التي تتطلب نقل بعض مكونات الدم."
         donInfo.isHidden = true
-
+*/
 
         
         tableMain.isHidden = true
@@ -240,8 +240,8 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
     @objc func selectedSegment(_ sender: MaterialSegmentedControlR) {
         switch sender.selectedSegmentIndex {
         case 0:
-            bloodImg.isHidden = true
-            stackView.isHidden = true
+           // bloodImg.isHidden = true
+          //  stackView.isHidden = true
            
             tableMain.isHidden = false
             chartsView.isHidden = true
@@ -250,8 +250,8 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
             pieChart.isHidden = true
             break
         case 1:
-            bloodImg.isHidden = false
-            stackView.isHidden = false
+           // bloodImg.isHidden = false
+          //  stackView.isHidden = false
         
             tableMain.isHidden = true
             chartsView.isHidden = true
@@ -260,8 +260,8 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
             pieChart.isHidden = true
             break
         default:
-            bloodImg.isHidden = true
-            stackView.isHidden = true
+          //  bloodImg.isHidden = true
+          //  stackView.isHidden = true
         
             tableMain.isHidden = true
             chartsView.isHidden = false
@@ -273,7 +273,7 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
     }
     
     
-   
+   /*
     @IBAction func onPressedTypeBtn(_ sender: Any) {
         
         typeStack.isHidden = !typeStack.isHidden
@@ -342,7 +342,7 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
 
 
        }
-    }
+    }*/
     
     
     }
