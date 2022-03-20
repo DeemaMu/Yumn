@@ -20,12 +20,11 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        loadOPP()
     }
     
     
     func loadOPP(){
-                VolunteeringOpps.removeAll()
+        VolunteeringOpps.removeAll()
         let db = Firestore.firestore()
         let user = Auth.auth().currentUser
         let uid = user?.uid
@@ -46,8 +45,8 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
                 let location = data["location"] as? String ?? ""
                 let gender = data["gender"] as? String ?? ""
                 let description = data["description"] as? String ?? ""
-                
-                var vop = VolunteeringOpp(title: title, date: date, duration: duration, workingHours: workingHours, location: location, gender: gender, description: description)
+                let docID = document.documentID as? String ?? ""
+                var vop = VolunteeringOpp(title: title, date: date, duration: duration, workingHours: workingHours, location: location, gender: gender, description: description, id :docID)
                 
                 self.VolunteeringOpps.append(vop)
 //                let row = self.VolunteeringOpps.count
@@ -62,8 +61,6 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
             }
         }
     }
-    
-    
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -82,6 +79,9 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
         cell.des.text = VOP.description
         cell.location.text = VOP.location
         
+        cell.delete.tag = indexPath.row
+        cell.delete.addTarget(self, action: #selector(deleteVOP), for: .touchUpInside)
+        
         //This creates the shadows and modifies the cards a little bit
         cell.contentView.layer.cornerRadius = 20.0
         cell.contentView.layer.borderWidth = 1.0
@@ -95,6 +95,23 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
         cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.contentView.layer.cornerRadius).cgPath
         
         return cell
+        
+    }
+    
+    @objc func deleteVOP(_ sender : UIButton) {
+       let indexPath = IndexPath(row: sender.tag, section: 0)
+        
+        let cell = VolunteeringOpps[indexPath.row]
+        
+        // confirmation pop up
+        
+        
+        let db = Firestore.firestore()
+        db.collection("volunteeringOpp").document(cell.id).delete()
+        
+//        VolunteeringOppsList.deleteItems(at: [indexPath])
+        loadOPP()
+        
         
     }
     

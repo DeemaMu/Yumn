@@ -23,5 +23,12 @@ class VOCollectionViewCell : UICollectionViewCell {
     
     @IBOutlet weak var des: UILabel!
     
+    @IBOutlet weak var delete: UIButton!
+    
+    override class func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+
     
 }

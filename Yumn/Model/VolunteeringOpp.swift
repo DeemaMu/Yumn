@@ -15,4 +15,5 @@ struct VolunteeringOpp {
       var location  = ""
       var gender = ""
       var description = ""
+    var id = ""
 }
