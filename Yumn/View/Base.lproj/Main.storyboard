@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s8R-AU-cFP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dBl-PG-rEO">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -3708,13 +3708,13 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="351" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIv-7s-JXx">
-                                                        <rect key="frame" x="0.0" y="0.0" width="206.5" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="50"/>
                                                         <fontDescription key="fontDescription" name="Tajawal-Medium" family="Tajawal Medium" pointSize="21"/>
                                                         <color key="textColor" name="mainLight"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="يتم التبرع بـ:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pa4-sp-Ts4">
-                                                        <rect key="frame" x="266.5" y="0.0" width="84.5" height="50"/>
+                                                        <rect key="frame" x="267" y="0.0" width="84" height="50"/>
                                                         <fontDescription key="fontDescription" name="Tajawal-Medium" family="Tajawal Medium" pointSize="18"/>
                                                         <color key="textColor" name="mainLight"/>
                                                         <nil key="highlightedColor"/>
@@ -3876,14 +3876,14 @@
         <scene sceneID="8OD-IR-FD3">
             <objects>
                 <viewController id="s8R-AU-cFP" customClass="BloodDonQuestionsViewController" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="6V7-9Y-0Zl">
+                    <view key="view" contentMode="scaleToFill" id="6V7-9Y-0Zl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="jDq-WE-T7Q">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="jDq-WE-T7Q">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
-                                    <view contentMode="center" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fvS-Y0-k43" customClass="RoundedView" customModule="Yumn" customModuleProvider="target">
+                                    <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="fvS-Y0-k43" customClass="RoundedView" customModule="Yumn" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="jn4-wG-cfr">
@@ -4307,6 +4307,137 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TJi-yK-ZSy" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6513.04347826087" y="125.89285714285714"/>
+        </scene>
+        <!--التبرع بالأعضاء-->
+        <scene sceneID="6NI-2n-gd5">
+            <objects>
+                <viewController storyboardIdentifier="organVC" id="YVF-tr-n2j" customClass="OrganDonationViewController" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="U2K-eE-QXQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="151" translatesAutoresizingMaskIntoConstraints="NO" id="ccl-Kv-AN6">
+                                <rect key="frame" x="0.0" y="-1" width="414" height="845.5"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fBA-mS-kJH">
+                                        <rect key="frame" x="87" y="0.0" width="240" height="5.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="5.5" id="jBx-zw-c4o"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="L7p-BY-b2U" customClass="RoundedView" customModule="Yumn" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="156.5" width="414" height="689"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MY5-U0-2oY">
+                                                <rect key="frame" x="32" y="8" width="350" height="0.0"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstItem="MY5-U0-2oY" firstAttribute="leading" secondItem="L7p-BY-b2U" secondAttribute="leading" constant="32" id="Qf3-gf-3bY"/>
+                                            <constraint firstItem="MY5-U0-2oY" firstAttribute="top" secondItem="L7p-BY-b2U" secondAttribute="top" constant="8" id="Vu8-pu-1Fk"/>
+                                            <constraint firstAttribute="bottom" secondItem="MY5-U0-2oY" secondAttribute="bottom" constant="726" id="e8e-b0-5h4"/>
+                                            <constraint firstItem="MY5-U0-2oY" firstAttribute="centerX" secondItem="L7p-BY-b2U" secondAttribute="centerX" id="tje-RI-yU6"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusV">
+                                                <real key="value" value="40"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidthV">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColorV">
+                                                <color key="value" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" name="mainLight"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="L7p-BY-b2U" secondAttribute="bottom" id="1qi-IK-ti7"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hrb-rT-3TU"/>
+                        <color key="backgroundColor" red="0.92549019610000005" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="ccl-Kv-AN6" firstAttribute="leading" secondItem="hrb-rT-3TU" secondAttribute="leading" id="6lS-SN-Wt8"/>
+                            <constraint firstItem="ccl-Kv-AN6" firstAttribute="centerX" secondItem="U2K-eE-QXQ" secondAttribute="centerX" id="AF2-Qq-bEP"/>
+                            <constraint firstItem="ccl-Kv-AN6" firstAttribute="height" secondItem="U2K-eE-QXQ" secondAttribute="height" multiplier="0.943638" id="Arc-i5-dpM"/>
+                            <constraint firstItem="ccl-Kv-AN6" firstAttribute="leading" secondItem="hrb-rT-3TU" secondAttribute="leading" id="EYj-Wn-fqQ"/>
+                            <constraint firstItem="ccl-Kv-AN6" firstAttribute="trailing" secondItem="hrb-rT-3TU" secondAttribute="trailing" id="mBD-Mb-JeH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="التبرع بالأعضاء" leftItemsSupplementBackButton="YES" id="csB-mg-tfC">
+                        <barButtonItem key="backBarButtonItem" title=" " id="a3N-0Z-pad"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="segmentsView" destination="MY5-U0-2oY" id="Zym-KF-K1V"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zyN-5l-ola" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7315.9420289855079" y="105.80357142857143"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="bXt-r4-0qg">
+            <objects>
+                <viewController id="dBl-PG-rEO" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wWE-Bt-AQx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qz3-lu-9ST">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pYo-k4-JqG">
+                                        <rect key="frame" x="0.0" y="103" width="414" height="793"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                    <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aEz-JT-4c5">
+                                        <rect key="frame" x="0.0" y="52" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="barTintColor" name="mainLight"/>
+                                        <textAttributes key="titleTextAttributes">
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </textAttributes>
+                                        <textAttributes key="largeTitleTextAttributes">
+                                            <fontDescription key="fontDescription" name="Tajawal-Medium" family="Tajawal Medium" pointSize="15"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </textAttributes>
+                                        <items>
+                                            <navigationItem title="التبرع بالأعضاء" id="gKW-Xv-4Ec"/>
+                                        </items>
+                                    </navigationBar>
+                                </subviews>
+                                <color key="backgroundColor" name="mainLight"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="1Ou-rF-3Rd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u74-tS-Mpo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8126.0869565217399" y="125.89285714285714"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="IQO-1n-nvb">
+            <objects>
+                <viewController id="0uY-Gc-mew" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0VF-Ng-kBh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="PRt-Gb-X4u"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eFT-xX-bxf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7246" y="-1599"/>
         </scene>
     </scenes>
     <resources>
