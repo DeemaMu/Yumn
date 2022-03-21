@@ -465,7 +465,7 @@ class editVolunteeringOpp: UIViewController, UITextFieldDelegate , UITextViewDel
             else
             {
                 desErrorMSG.isHidden = true
-                Constants.VolunteeringOpp.location = locationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                Constants.VolunteeringOpp.description = descriptionTextView.text!.trimmingCharacters(in: .whitespacesAndNewlines)
                 textView.setCornerBorder(color: UIColor.init(named: "mainLight"), cornerRadius: 20.0, borderWidth: 1)
             }
         }
@@ -606,7 +606,14 @@ class editVolunteeringOpp: UIViewController, UITextFieldDelegate , UITextViewDel
                 Constants.VolunteeringOpp.gender = "اناث وذكور"
             }
             
-//            performSegue(withIdentifier: "addPOPup", sender: self)
+            performSegue(withIdentifier: "updatePopup", sender: self)
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "updatePopup"){
+            let controller = segue.destination as! updatePopoup
+            controller.docID = self.docemntID
+        }
     }
 }

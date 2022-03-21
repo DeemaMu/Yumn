@@ -448,7 +448,7 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate , UITextViewDele
             else
             {
                 desErrorMSG.isHidden = true
-                Constants.VolunteeringOpp.location = locationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                Constants.VolunteeringOpp.description = descriptionTextView.text!.trimmingCharacters(in: .whitespacesAndNewlines)
                 textView.setCornerBorder(color: UIColor.init(named: "mainLight"), cornerRadius: 20.0, borderWidth: 1)
             }
         }

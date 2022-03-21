@@ -40,7 +40,7 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
         let user = Auth.auth().currentUser
         let uid = user?.uid
         
-        db.collection("volunteeringOpp").order(by: "postDate", descending: false).getDocuments() { (querySnapshot, error) in
+        db.collection("volunteeringOpp").order(by: "postDate", descending: true).getDocuments() { (querySnapshot, error) in
             
             guard let documents = querySnapshot?.documents else {
                 print("No documents")

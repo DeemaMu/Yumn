@@ -55,31 +55,31 @@ class addPopup: UIViewController{
             //            }
 
             DispatchQueue.main.async {
-                hospital_name = hospitalName
+//                hospital_name = hospitalName
                 //                self?.hospitalPhone = phone
 
+                let today = Date()
+
+
+                // Volunteer collection
+                db.collection("volunteeringOpp").document().setData([
+                    "title":Constants.VolunteeringOpp.title,
+                    "date": Constants.VolunteeringOpp.date,
+                    "workingHours": Constants.VolunteeringOpp.workingHours,
+                    "location": Constants.VolunteeringOpp.location,
+                    "description": Constants.VolunteeringOpp.description,
+                    "gender": Constants.VolunteeringOpp.gender,
+                    "hospitalName": hospitalName,
+                    "postDate": today,
+                    "posted_by": uid!]){ error in
+                        if error != nil {
+                            print(error?.localizedDescription as Any)
+                            print ("error in adding the data")
+                        }
+                    }
             }
         }
 
-        let today = Date()
-
-
-        // Volunteer collection
-        db.collection("volunteeringOpp").document().setData([
-            "title":Constants.VolunteeringOpp.title,
-            "date": Constants.VolunteeringOpp.date,
-            "workingHours": Constants.VolunteeringOpp.workingHours,
-            "location": Constants.VolunteeringOpp.location,
-            "description": Constants.VolunteeringOpp.description,
-            "gender": Constants.VolunteeringOpp.gender,
-            "hospitalName": hospital_name,
-            "postDate": today,
-            "posted_by": uid!]){ error in
-                if error != nil {
-                    print(error?.localizedDescription as Any)
-                    print ("error in adding the data")
-                }
-            }
         // Update collections
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotification"), object: nil)
         
