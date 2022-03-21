@@ -64,31 +64,31 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var logInButton: UIButton!
     
     @IBOutlet weak var errorLabel: UILabel!
+
+//    override func viewWillAppear(_ animated: Bool) {
+//        let db = Firestore.firestore()
+//        if (isUserLoggedIn){
+//            let docRef = db.collection("volunteer").document(Auth.auth().currentUser?.uid ?? "")
 //
-    override func viewWillAppear(_ animated: Bool) {
-        let db = Firestore.firestore()
-        if (isUserLoggedIn){
-            let docRef = db.collection("volunteer").document(Auth.auth().currentUser?.uid ?? "")
-
-            docRef.getDocument { [self] (document, error) in
-                if let document = document, document.exists {
-
-                    print("Vol")
-                    DispatchQueue.main.async {
-                        transitionToHome()
-                    }
-
-
-                } else {
-                    print("Man")
-                    DispatchQueue.main.async {
-                        transitionToHospitalHome()
-                    }
-                }
-
-            }
-        }
-    }
+//            docRef.getDocument { [self] (document, error) in
+//                if let document = document, document.exists {
+//
+//                    print("Vol")
+//                    DispatchQueue.main.async {
+//                        transitionToHome()
+//                    }
+//
+//
+//                } else {
+//                    print("Man")
+//                    DispatchQueue.main.async {
+//                        transitionToHospitalHome()
+//                    }
+//                }
+//
+//            }
+//        }
+//    }
     override func viewDidLoad() {
         
         
