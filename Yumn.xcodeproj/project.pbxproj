@@ -24,6 +24,8 @@
 		9520693927E3A5D100D5DC11 /* addVolunteeringOpp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9520693827E3A5D100D5DC11 /* addVolunteeringOpp.swift */; };
 		9520693C27E3A5FF00D5DC11 /* VolunteeringOpportunities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9520693B27E3A5FF00D5DC11 /* VolunteeringOpportunities.swift */; };
 		952C5D1227E4CF4800DF6537 /* DateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952C5D1127E4CF4800DF6537 /* DateTimePicker.swift */; };
+		954F2DB327E80C4100A3DFB1 /* ViewVolunteeringOpportunities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954F2DB227E80C4100A3DFB1 /* ViewVolunteeringOpportunities.swift */; };
+		954F2DB527E80CD200A3DFB1 /* ViewVOCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954F2DB427E80CD200A3DFB1 /* ViewVOCollectionViewCell.swift */; };
 		9565D0FD27E3E1FE00E02AC7 /* descriptionTextbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9565D0FC27E3E1FE00E02AC7 /* descriptionTextbox.swift */; };
 		95785059279E1917004F3D8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95785058279E1917004F3D8F /* AppDelegate.swift */; };
 		9578505B279E1917004F3D8F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9578505A279E1917004F3D8F /* SceneDelegate.swift */; };
@@ -89,6 +91,8 @@
 		9520693827E3A5D100D5DC11 /* addVolunteeringOpp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addVolunteeringOpp.swift; sourceTree = "<group>"; };
 		9520693B27E3A5FF00D5DC11 /* VolunteeringOpportunities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolunteeringOpportunities.swift; sourceTree = "<group>"; };
 		952C5D1127E4CF4800DF6537 /* DateTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimePicker.swift; sourceTree = "<group>"; };
+		954F2DB227E80C4100A3DFB1 /* ViewVolunteeringOpportunities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewVolunteeringOpportunities.swift; sourceTree = "<group>"; };
+		954F2DB427E80CD200A3DFB1 /* ViewVOCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewVOCollectionViewCell.swift; sourceTree = "<group>"; };
 		9565D0FC27E3E1FE00E02AC7 /* descriptionTextbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = descriptionTextbox.swift; sourceTree = "<group>"; };
 		95785055279E1917004F3D8F /* Yumn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yumn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95785058279E1917004F3D8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -186,6 +190,7 @@
 				9520693B27E3A5FF00D5DC11 /* VolunteeringOpportunities.swift */,
 				952C5D1127E4CF4800DF6537 /* DateTimePicker.swift */,
 				95A64FCE27E540F80004F830 /* TimePicker.swift */,
+				954F2DB227E80C4100A3DFB1 /* ViewVolunteeringOpportunities.swift */,
 			);
 			path = VolunteeringOpp;
 			sourceTree = "<group>";
@@ -256,6 +261,7 @@
 				D195445727D49B4800B03DFF /* charts.storyboard */,
 				9565D0FC27E3E1FE00E02AC7 /* descriptionTextbox.swift */,
 				95EED9CA27E6602C009AFDAC /* VOCollectionViewCell.swift */,
+				954F2DB427E80CD200A3DFB1 /* ViewVOCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -521,6 +527,7 @@
 				D195444427D49A2400B03DFF /* organShortage.swift in Sources */,
 				B9AD3F2A27E2CF81001AB734 /* ManageAppointmentsViewController.swift in Sources */,
 				D195444C27D49AA300B03DFF /* components.swift in Sources */,
+				954F2DB527E80CD200A3DFB1 /* ViewVOCollectionViewCell.swift in Sources */,
 				95A64FCF27E540F80004F830 /* TimePicker.swift in Sources */,
 				8D7F152B27D299C100E1EB1A /* constants.swift in Sources */,
 				D195443E27D499ED00B03DFF /* customTabBar.swift in Sources */,
@@ -542,6 +549,7 @@
 				8D7F152727D25F3B00E1EB1A /* SignInViewController.swift in Sources */,
 				B97A380227BA9EA000718079 /* BloodDonationViewController.swift in Sources */,
 				B9DA61DC27C1100B00359487 /* Location.swift in Sources */,
+				954F2DB327E80C4100A3DFB1 /* ViewVolunteeringOpportunities.swift in Sources */,
 				8D7F152227D25DD200E1EB1A /* GIfCode.swift in Sources */,
 				95C5967927D767FE00A5572C /* VSignUpViewController.swift in Sources */,
 				D195445427D49B2100B03DFF /* organCell.swift in Sources */,
