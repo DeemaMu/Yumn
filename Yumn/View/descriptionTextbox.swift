@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+
 struct descriptionTextbox: View {
     @EnvironmentObject var obj : observed
     var body: some View {
@@ -15,7 +16,7 @@ struct descriptionTextbox: View {
             MultiTextField()
                 .frame( width: 300 , height: 100)
                 .background(Color.white)
-                .cornerRadius(15)
+                .cornerRadius(15);
         }.padding()
         
     }
@@ -60,10 +61,24 @@ struct MultiTextField: UIViewRepresentable {
         return view
         
     }
-
+    
     func updateUIView(_ uiView: UIViewType, context: UIViewRepresentableContext<MultiTextField>) {
-         
+        
     }
+    
+//    func validateDescription(_ error : String){
+//        if (error == "limits") {
+//
+//
+//        }
+//        if (error == "specailChar"){
+//
+//        }
+//        if (error == "pass"){
+//
+//        }
+//
+//    }
     
     class Coordinator : NSObject,UITextViewDelegate {
         var parent : MultiTextField
@@ -71,19 +86,32 @@ struct MultiTextField: UIViewRepresentable {
             parent = parent1
         }
         
+
         func textViewDidChange(_ textView: UITextView) {
-        
+            if (textView.text.count > 10){
+                textView.setCornerBorder(color: UIColor.red, cornerRadius: 20.0, borderWidth: 1)
+                Constants.VolunteeringOpp.DesError = "limits"
+                Constants.VolunteeringOpp.isValidDes = false
+            }
+//            if (containsSpecialCharacter(textView.text)){
+//                textView.setCornerBorder(color: UIColor.red, cornerRadius: 20.0, borderWidth: 1)
+//                parent.validateDescription("specailChar")
+//                Constants.VolunteeringOpp.DesError = "specailChar"
+//                Constants.VolunteeringOpp.isValidDes = false
+//            }
+            else if (textView.text.count <= 10){
+                textView.setCornerBorder(color: UIColor.init(named: "mainLight"), cornerRadius: 20.0, borderWidth: 1)
+                Constants.VolunteeringOpp.DesError = "pass"
+                Constants.VolunteeringOpp.isValidDes = true
+            }
+        }
+
+        func containsSpecialCharacter(_ value : String) -> Bool{
+            let regex = ".*[^A-Za-z0-9].*"
+            let testString = NSPredicate(format:"SELF MATCHES %@", regex)
+            return testString.evaluate(with: value)
         }
         
-        private func textLimit(existingText: String?, newText: String, limit: Int) -> Bool {
-            let text = existingText ?? ""
-            let isAtLimit = text.count + newText.count <= limit
-            return isAtLimit
-        }
-        
-        func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-            return self.textLimit(existingText: textField.text, newText: string, limit: 10)
-        }
         func textViewDidEndEditing(_ textView: UITextView) {
             Constants.VolunteeringOpp.description = textView.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         }

@@ -32,7 +32,8 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var workHoursErrorMSG: UILabel!
     @IBOutlet weak var locationErrorMSG: UILabel!
     @IBOutlet weak var genderErrorMSG: UILabel!
-    
+
+    @IBOutlet weak var desErrorMSG: UILabel!
     
     // FOR VALIDATION
     var startDate = ""
@@ -56,8 +57,9 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
         controller.view.translatesAutoresizingMaskIntoConstraints = false
         self.addChild(controller)
         controller.view.frame = descriptionView.bounds
-        
         descriptionView.addSubview(controller.view)
+        desErrorMSG.isHidden = true
+        
         //Hide
         addButton(enabeld: false)
         //        hideErrorMSGs()
@@ -405,19 +407,24 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
     func genderValidation(){
         if(maleButton.isSelected){
             genderErrorMSG.isHidden = true
+            checkForValidForm()
         }
         else if(femaleButton.isSelected){
             genderErrorMSG.isHidden = true
-            
+            checkForValidForm()
         } else {
             genderErrorMSG.isHidden = false
+            checkForValidForm()
         }
     }
-    
+    func descriptionValidation() {
+        desErrorMSG.isHidden = false
+        desErrorMSG.text = Constants.VolunteeringOpp.desErrorMSG
+    }
     // Final Validation
     func checkForValidForm()
     {
-        if titleErrorMSG.isHidden && dateErrorMSG.isHidden && workHoursErrorMSG.isHidden && locationErrorMSG.isHidden && genderErrorMSG.isHidden
+        if titleErrorMSG.isHidden && dateErrorMSG.isHidden && workHoursErrorMSG.isHidden && locationErrorMSG.isHidden && genderErrorMSG.isHidden && Constants.VolunteeringOpp.isValidDes
         {
             addButton.isEnabled = true
         }
@@ -467,6 +474,9 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
     // MARK: - Backend
     
     @IBAction func add(_ sender: Any) {
+        descriptionValidation()
+        if(Constants.VolunteeringOpp.isValidDes){
+           
         // User was creted successfully, store the information
         
         let db = Firestore.firestore()
@@ -495,8 +505,6 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
                 
             }
         }
-        
-        
         var gender = ""
         if (femaleButton.isSelected){
             gender = "اناث فقط"
@@ -526,5 +534,6 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
                     print ("error in adding the data")
                 }
             }
+        }
     }
 }
