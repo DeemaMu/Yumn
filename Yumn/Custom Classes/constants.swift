@@ -85,6 +85,16 @@ struct Constants {
         static let pink = UIColor(red: 0.70, green: 0.21, blue: 0.33, alpha: 1.00)
         
     }
-
+    
+    struct VolunteeringOpp {
+         static var title = ""
+         static var date = ""
+         static var workingHours = ""
+         static var location  = ""
+         static var gender = ""
+         static var description = ""
+        
+    }
+    
 
 }

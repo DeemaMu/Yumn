@@ -89,7 +89,7 @@ class updateBloodShortageVC: UIViewController {
         super.viewDidLoad()
 
 
-//        tableView.register(UINib(nibName: Constants.cellNibName, bundle: nil), forCellReuseIdentifier: Constants.cellIdentifier)
+        tableView.register(UINib(nibName: Constants.cellNibName, bundle: nil), forCellReuseIdentifier: Constants.cellIdentifier)
 
         guard let customFont = UIFont(name: "Tajawal-Bold", size: UIFont.labelFontSize) else {
             fatalError("""
