@@ -170,10 +170,10 @@ extension Date {
     static func buildDateRangeString(startDate: Date, endDate: Date) -> String {
         
         let startDateFormatter = DateFormatter()
-        startDateFormatter.dateFormat = "dd/MM/YYYY"
+        startDateFormatter.dateFormat = "dd/MM/yyyy"
         
         let endDateFormatter = DateFormatter()
-        endDateFormatter.dateFormat = "dd/MM/YYYY"
+        endDateFormatter.dateFormat = "dd/MM/yyyy"
         
     
         return String(format: "%@ - %@",
@@ -184,7 +184,7 @@ extension Date {
     static func dateFormatter(date: Date) -> String {
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/YYYY"
+        dateFormatter.dateFormat = "dd/MM/yyyy"
     
         return String(format: "%@", dateFormatter.string(from: date))
     }

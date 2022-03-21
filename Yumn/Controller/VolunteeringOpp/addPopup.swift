@@ -37,7 +37,7 @@ class addPopup: UIViewController{
         let db = Firestore.firestore()
         let user = Auth.auth().currentUser
         let uid = user?.uid
-        var hospital_name = ""
+        
         // 1. get the Doc
         let docRef = db.collection("hospitalsInformation").document(uid!)
 
@@ -55,12 +55,9 @@ class addPopup: UIViewController{
             //            }
 
             DispatchQueue.main.async {
-//                hospital_name = hospitalName
-                //                self?.hospitalPhone = phone
 
                 let today = Date()
-
-
+                
                 // Volunteer collection
                 db.collection("volunteeringOpp").document().setData([
                     "title":Constants.VolunteeringOpp.title,

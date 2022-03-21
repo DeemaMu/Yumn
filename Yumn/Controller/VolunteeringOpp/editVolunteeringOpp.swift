@@ -306,8 +306,13 @@ class editVolunteeringOpp: UIViewController, UITextFieldDelegate , UITextViewDel
             return "مطلوب"
         }
         
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        let start = formatter.date(from: startDate)
+        let end = formatter.date(from: endDate)
+        
         // End date is before start date
-        if (startDate > endDate){
+        if (end?.compare(start!) == .orderedAscending){
             return "تاريخ النهاية يجب ان يكون بعد البداية"
         }
         
@@ -359,7 +364,7 @@ class editVolunteeringOpp: UIViewController, UITextFieldDelegate , UITextViewDel
         
         let today = Date()
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/YYYY"
+        dateFormatter.dateFormat = "dd/MM/yyyy"
         
         let timeFormatter = DateFormatter()
           timeFormatter.dateFormat = "HH:mm"
