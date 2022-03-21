@@ -93,8 +93,8 @@ class ViewVolunteeringOpportunities: UIViewController, UICollectionViewDelegate,
         cell.des.text = VOP.description
         cell.location.text = VOP.location
         
-                cell.apply.tag = indexPath.row
-                cell.apply.addTarget(self, action: #selector(applytoVO), for: .touchUpInside)
+        cell.apply.tag = indexPath.row
+        cell.apply.addTarget(self, action: #selector(applytoVO), for: .touchUpInside)
         
         
         //This creates the shadows and modifies the cards a little bit
@@ -115,69 +115,51 @@ class ViewVolunteeringOpportunities: UIViewController, UICollectionViewDelegate,
     
     @objc func applytoVO(_ sender : UIButton) {
         
+        let db = Firestore.firestore()
+        let uid = Auth.auth().currentUser?.uid
+        
         let indexPath = IndexPath(row: sender.tag, section: 0)
-
         let cell = VolunteeringOpps[indexPath.row]
+        var applied = false
+        
+        // Check if already applied
 
-        // confirmation pop up
-
-
-//        let db = Firestore.firestore()
-//        db.collection("volunteeringOpp").document(cell.id).delete()
-
-        //        VolunteeringOppsList.deleteItems(at: [indexPath])
-        loadOPP()
-
+        DispatchQueue.main.async {
+            
+            db.collection("volunteeringOpp").document(cell.id).collection("applicants").document(uid!).getDocument() { (querySnapshot, error) in
+                
+                guard let documents = querySnapshot?.data() else {
+                    db.collection("volunteeringOpp").document(cell.id).collection("applicants").document(uid!).setData([
+                        "uid": uid!]){ error in
+                            if error != nil {
+                                print(error?.localizedDescription as Any)
+                                print ("Error in Apply")
+                            }
+                            
+                            // Success msg
+                        }
+                    return
+                }
+                // Show Message
+            print("YOU CANt")
+            }
+            
+            
+            
+        }
+            // confirmation pop up
+            
+            
+        
+        
 
     }
-    
-    
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        //        var nav = self.navigationController?.navigationBar
-        //        guard let customFont = UIFont(name: "Tajawal-Bold", size: 25) else {
-        //            fatalError("""
-        //                Failed to load the "Tajawal" font.
-        //                Make sure the font file is included in the project and the font name is spelled correctly.
-        //                """
-        //            )
-        //        }
-        //
-        //        nav?.tintColor = UIColor.init(named: "mainDark")
-        //        nav?.barTintColor = UIColor.init(named: "mainDark")
-        //        nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(named: "mainDark"), NSAttributedString.Key.font: customFont]
-        //        navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        //
-        //        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
-        //        self.navigationController?.navigationBar.shadowImage = UIImage()
-        //        self.navigationController?.navigationBar.layoutIfNeeded()
-        //
         loadOPP()
         
-        
     }
-    
-    //    override func viewWillDisappear(_ animated: Bool) {
-    //        var nav = self.navigationController?.navigationBar
-    //        guard let customFont = UIFont(name: "Tajawal-Bold", size: 25) else {
-    //            fatalError("""
-    //                Failed to load the "Tajawal" font.
-    //                Make sure the font file is included in the project and the font name is spelled correctly.
-    //                """
-    //            )
-    //        }
-    //        nav?.tintColor = UIColor.init(named: "mainDark")
-    //        nav?.barTintColor = UIColor.init(named: "mainDark")
-    //        nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(named: "mainDark")!, NSAttributedString.Key.font: customFont]
-    //        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
-    //        self.navigationController?.navigationBar.shadowImage = UIImage()
-    //        self.navigationController?.navigationBar.layoutIfNeeded()
-    //
-    //    }
-    
-    
     
 }
