@@ -1643,7 +1643,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o8B-Fw-ltp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="t1q-ED-OoI" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="224.63768115942031" y="4665.4017857142853"/>
+            <point key="canvasLocation" x="771" y="4688"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HkO-jI-eRg">
@@ -3666,6 +3666,12 @@
                                         <color key="textColor" name="textGrey"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RaD-DL-SJb">
+                                        <rect key="frame" x="45" y="51" width="24" height="14"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title=""/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <userDefinedRuntimeAttributes>
@@ -3695,6 +3701,9 @@
                     <connections>
                         <outlet property="VolunteeringOppsList" destination="uAn-hK-sya" id="Lb6-T0-3yN"/>
                         <outlet property="noVolunteeringOPPLabel" destination="PVq-1X-tRk" id="HNo-RJ-7sb"/>
+                        <segue destination="vUJ-3y-XsL" kind="popoverPresentation" identifier="cancelPopUP" popoverAnchorView="RaD-DL-SJb" id="yS8-AS-JOt">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pir-mx-yjl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3886,6 +3895,81 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D5d-WX-ixn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4382.608695652174" y="-688.39285714285711"/>
+        </scene>
+        <!--Cancel Popup-->
+        <scene sceneID="QE2-U5-NqK">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="vUJ-3y-XsL" customClass="cancelPopup" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LqI-a7-jVi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cTV-iA-Uzk">
+                                <rect key="frame" x="64" y="308.5" width="286" height="191"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="تاكيد الحذف" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i6L-BL-u0z">
+                                        <rect key="frame" x="90.5" y="25" width="89" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="17"/>
+                                        <color key="textColor" red="0.56862747670000002" green="0.79215681550000006" blue="0.76862752440000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="هل انت متاكد من رغبتك في حذف هذه الفرصة؟" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7tZ-21-GJM">
+                                        <rect key="frame" x="22" y="60" width="236" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="15"/>
+                                        <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nLY-rI-oli">
+                                        <rect key="frame" x="146" y="120" width="120" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.2901961207" green="0.42745098469999998" blue="0.41176474089999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="15"/>
+                                        <state key="normal" title="نعم">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="confirm:" destination="vUJ-3y-XsL" eventType="touchUpInside" id="rRR-5y-Qk1"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9w5-Xf-Q9k">
+                                        <rect key="frame" x="22" y="120" width="120" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="15"/>
+                                        <state key="normal" title="الغاء">
+                                            <color key="titleColor" name="mainDark"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancel:" destination="vUJ-3y-XsL" eventType="touchUpInside" id="K38-fj-Zvq"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="286" id="Jt8-Sn-jgu"/>
+                                    <constraint firstAttribute="height" constant="191" id="OV3-vc-kbF"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="JFI-CK-do6"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cTV-iA-Uzk" firstAttribute="centerX" secondItem="JFI-CK-do6" secondAttribute="centerX" id="3wp-Uk-rvM"/>
+                            <constraint firstItem="cTV-iA-Uzk" firstAttribute="centerY" secondItem="JFI-CK-do6" secondAttribute="centerY" id="ZRl-v8-bKk"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <connections>
+                        <outlet property="backView" destination="cTV-iA-Uzk" id="KFc-Ai-eov"/>
+                        <outlet property="cancelButton" destination="9w5-Xf-Q9k" id="8XG-W7-4ea"/>
+                        <outlet property="confirmButton" destination="nLY-rI-oli" id="ABv-Rm-11t"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ys8-r1-y3e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-252.17391304347828" y="4687.5"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

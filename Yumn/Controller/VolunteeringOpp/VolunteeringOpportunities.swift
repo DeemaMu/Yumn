@@ -18,12 +18,20 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
     
     @IBOutlet weak var noVolunteeringOPPLabel: UILabel!
     
+    var passDocID = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
         noVolunteeringOPPLabel.isHidden = true
     }
     
+    @objc func refresh() {
+
+        self.loadOPP() // a refresh the collectionView.
+
+   }
     @IBAction func unwindToViewControllerA(segue: UIStoryboardSegue) {}
     
     func loadOPP(){
@@ -113,24 +121,23 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
     }
     
     @objc func deleteVOP(_ sender : UIButton) {
-        let indexPath = IndexPath(row: sender.tag, section: 0)
         
+        let indexPath = IndexPath(row: sender.tag, section: 0)
         let cell = VolunteeringOpps[indexPath.row]
         
-        // confirmation pop up
-        
-        
-        let db = Firestore.firestore()
-        db.collection("volunteeringOpp").document(cell.id).delete()
-        
-        //        VolunteeringOppsList.deleteItems(at: [indexPath])
-        loadOPP()
-        
+        //        loadOPP()
+
+        self.passDocID = cell.id
+        performSegue(withIdentifier: "cancelPopUP", sender: self)
         
     }
     
-    
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "cancelPopUP"){
+            let controller = segue.destination as! cancelPopup
+            controller.docID = self.passDocID
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
