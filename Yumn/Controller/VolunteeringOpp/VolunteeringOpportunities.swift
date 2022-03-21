@@ -106,6 +106,9 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
         cell.delete.tag = indexPath.row
         cell.delete.addTarget(self, action: #selector(deleteVOP), for: .touchUpInside)
         
+        cell.edit.tag = indexPath.row
+        cell.edit.addTarget(self, action: #selector(editVOP), for: .touchUpInside)
+        
         //This creates the shadows and modifies the cards a little bit
         cell.contentView.layer.cornerRadius = 20.0
         cell.contentView.layer.borderWidth = 1.0
@@ -134,11 +137,27 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
         
     }
     
+    @objc func editVOP(_ sender : UIButton) {
+        
+        let indexPath = IndexPath(row: sender.tag, section: 0)
+        let cell = VolunteeringOpps[indexPath.row]
+        
+        //        loadOPP()
+        
+        self.passDocID = cell.id
+        performSegue(withIdentifier: "editVOP", sender: self)
+        
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "cancelPopUP"){
             let controller = segue.destination as! cancelPopup
             controller.docID = self.passDocID
+        } else if (segue.identifier == "editVOP"){
+            let controller = segue.destination as! editVolunteeringOpp
+            controller.docemntID = self.passDocID
         }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -23,6 +23,9 @@ class VOCollectionViewCell : UICollectionViewCell {
     
     @IBOutlet weak var delete: UIButton!
     
+    @IBOutlet weak var edit: UIButton!
+    
+    
     override class func awakeFromNib() {
         super.awakeFromNib()
     }
