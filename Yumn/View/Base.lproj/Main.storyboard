@@ -4101,7 +4101,7 @@
                                                 <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
-                                                    <action selector="titleChanged:" destination="Bhq-8w-sw3" eventType="editingDidEnd" id="BTq-hx-bje"/>
+                                                    <action selector="titleChanged:" destination="Bhq-8w-sw3" eventType="editingChanged" id="D9Y-DR-peu"/>
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="التاريخ" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sih-Yk-UNN">
@@ -4140,6 +4140,7 @@
                                                 <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
+                                                    <action selector="locationChanged:" destination="Bhq-8w-sw3" eventType="editingChanged" id="1ND-2g-2UH"/>
                                                     <action selector="locationChanged:" destination="Bhq-8w-sw3" eventType="editingDidEnd" id="sRe-3I-aNC"/>
                                                 </connections>
                                             </textField>

@@ -18,7 +18,7 @@ class editVolunteeringOpp: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var backView: UIView!
     
     
-@IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var workHoursTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
@@ -50,9 +50,10 @@ class editVolunteeringOpp: UIViewController, UITextFieldDelegate{
         super.viewDidLoad()
         setUP()
         
+        print(Constants.VolunteeringOpp.description)
         // Load data
         loadInfo()
-        
+        print(Constants.VolunteeringOpp.description)
         // Description textbox
         let obs = observed()
         let root = descriptionTextbox()
@@ -61,9 +62,10 @@ class editVolunteeringOpp: UIViewController, UITextFieldDelegate{
         self.addChild(controller)
         
         controller.view.frame = descriptionView.bounds
-        
+        print(Constants.VolunteeringOpp.description)
         descriptionView.addSubview(controller.view)
-        desErrorMSG.isHidden = true
+        print(Constants.VolunteeringOpp.description)
+        
         
         //Hide
         saveButton(enabeld: false)
@@ -163,6 +165,7 @@ class editVolunteeringOpp: UIViewController, UITextFieldDelegate{
         workHoursErrorMSG.isHidden = true
         locationErrorMSG.isHidden = true
         genderErrorMSG.isHidden = true
+        desErrorMSG.isHidden = true
     }
     
     func saveButton(enabeld : Bool){
@@ -191,6 +194,7 @@ class editVolunteeringOpp: UIViewController, UITextFieldDelegate{
     
     @IBAction func FemaleSelected(_ sender: Any) {
         if(!femaleButton.isSelected){
+            saveButton(enabeld: true)
             genderSELECTED(button: femaleButton)
         }
         else {
@@ -201,6 +205,7 @@ class editVolunteeringOpp: UIViewController, UITextFieldDelegate{
     
     @IBAction func MaleSelected(_ sender: Any) {
         if(!maleButton.isSelected){
+            saveButton(enabeld: true)
             genderSELECTED(button: maleButton)
         }
         else {
@@ -216,7 +221,7 @@ class editVolunteeringOpp: UIViewController, UITextFieldDelegate{
     
     //Title validation
     @IBAction func titleChanged(_ sender: Any) {
-        if let title = titleTextField.text
+    if let title = titleTextField.text
         {
             if let errorMessage = invalidTitle(title)
             {
@@ -226,6 +231,7 @@ class editVolunteeringOpp: UIViewController, UITextFieldDelegate{
             }
             else
             {
+                saveButton(enabeld: true)
                 titleErrorMSG.isHidden = true
                 Constants.VolunteeringOpp.title = titleTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
                 activeStyle(titleTextField)
@@ -271,6 +277,7 @@ class editVolunteeringOpp: UIViewController, UITextFieldDelegate{
             }
             else
             {
+                saveButton(enabeld: true)
                 dateErrorMSG.isHidden = true
                 Constants.VolunteeringOpp.date = dateTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
                 activeStyle(dateTextField)
@@ -306,6 +313,7 @@ class editVolunteeringOpp: UIViewController, UITextFieldDelegate{
             }
             else
             {
+                saveButton(enabeld: true)
                 workHoursErrorMSG.isHidden = true
                 Constants.VolunteeringOpp.workingHours = workHoursTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
                 activeStyle(workHoursTextField)
@@ -370,24 +378,25 @@ class editVolunteeringOpp: UIViewController, UITextFieldDelegate{
     
     // location Validation
     @IBAction func locationChanged(_ sender: Any) {
-        if let location = locationTextField.text
-        {
-            if let errorMessage = invalidLocation(location)
-            {
-                locationErrorMSG.text = errorMessage
-                locationErrorMSG.isHidden = false
-                turnTextFieldTextfieldToRed(locationTextField)
-            }
-            else
-            {
-                locationErrorMSG.isHidden = true
-                Constants.VolunteeringOpp.location = locationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-                activeStyle(locationTextField)
-            }
-        }
-        checkForValidForm()
+             if let location = locationTextField.text
+                {
+                    if let errorMessage = invalidLocation(location)
+                    {
+                        locationErrorMSG.text = errorMessage
+                        locationErrorMSG.isHidden = false
+                        turnTextFieldTextfieldToRed(locationTextField)
+                    }
+                    else
+                    {
+                        saveButton(enabeld: true)
+                        locationErrorMSG.isHidden = true
+                        Constants.VolunteeringOpp.location = locationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                        activeStyle(locationTextField)
+                    }
+                }
+                checkForValidForm()
     }
-    
+
     func invalidLocation(_ value: String) -> String? {
         // Empty
         if value.count == 0

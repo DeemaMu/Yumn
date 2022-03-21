@@ -48,6 +48,7 @@ struct MultiTextField: UIViewRepresentable {
         let view = UITextView()
         view.setCornerBorder(color: UIColor.init(named: "mainLight"), cornerRadius: 20.0, borderWidth: 1)
         view.font = customFont
+        view.text = Constants.VolunteeringOpp.description
         view.textAlignment = .right
         view.textColor = UIColor.black
         view.backgroundColor = .clear
