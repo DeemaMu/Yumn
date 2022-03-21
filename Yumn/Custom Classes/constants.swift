@@ -93,23 +93,6 @@ struct Constants {
          static var gender = ""
          static var description = ""
         
-        static var isValidDes = true
-        static var desErrorMSG = ""
-
-        static var DesError: String = "pass" {
-                didSet {
-                    if (DesError == "pass"){
-                        desErrorMSG = ""
-                    }
-                    if (DesError == "specailChar"){
-                        desErrorMSG = "يجب ان يحتوي على ارقام اواحرف فقط"
-                    }
-                    if (DesError == "limits"){
-                        desErrorMSG = "الحد الاقصى = ١٥٠ حرف"
-                    }
-                }
-            }
-        
     }
     
 

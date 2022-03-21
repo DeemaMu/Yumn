@@ -10,7 +10,7 @@ import UIKit
 import FirebaseFirestore
 import FirebaseAuth
 
-class editVolunteeringOpp: UIViewController, UITextFieldDelegate{
+class editVolunteeringOpp: UIViewController, UITextFieldDelegate , UITextViewDelegate{
     
     let style = styles()
     var hospitalName = ""
@@ -23,7 +23,8 @@ class editVolunteeringOpp: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var workHoursTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
     
-    @IBOutlet weak var descriptionView : UIView!
+    
+    @IBOutlet weak var descriptionTextView: UITextView!
     
     @IBOutlet weak var femaleButton: UIButton!
     @IBOutlet weak var maleButton: UIButton!
@@ -50,21 +51,9 @@ class editVolunteeringOpp: UIViewController, UITextFieldDelegate{
         super.viewDidLoad()
         setUP()
         
-        print(Constants.VolunteeringOpp.description)
         // Load data
         loadInfo()
-        print(Constants.VolunteeringOpp.description)
-        // Description textbox
-        let obs = observed()
-        let root = descriptionTextbox()
-        let controller = UIHostingController(rootView: root.environmentObject(obs))
-        controller.view.translatesAutoresizingMaskIntoConstraints = false
-        self.addChild(controller)
-        
-        controller.view.frame = descriptionView.bounds
-        print(Constants.VolunteeringOpp.description)
-        descriptionView.addSubview(controller.view)
-        print(Constants.VolunteeringOpp.description)
+
         
         
         //Hide
@@ -132,8 +121,32 @@ class editVolunteeringOpp: UIViewController, UITextFieldDelegate{
         dateTextField.inputView = dateTimePicker.inputView
         workHoursTextField.inputView = timePicker.inputView
         
+        designDescription()
+        
     }
-    
+    func designDescription(){
+        guard let customFont = UIFont(name: "Tajawal-Regular", size: 17) else {
+            fatalError("""
+                Failed to load the "Tajawal" font.
+                Make sure the font file is included in the project and the font name is spelled correctly.
+                """
+            )
+        }
+        
+        
+        descriptionTextView.setCornerBorder(color: UIColor.init(named: "mainLight"), cornerRadius: 15.0, borderWidth: 1)
+        descriptionTextView.font = customFont
+        descriptionTextView.text = Constants.VolunteeringOpp.description
+        descriptionTextView.textAlignment = .right
+        descriptionTextView.textColor = UIColor.black
+        descriptionTextView.backgroundColor = UIColor.white
+        descriptionTextView.delegate = self
+        descriptionTextView.textContainer.lineFragmentPadding = 20
+        descriptionTextView.textContainer.maximumNumberOfLines = 4
+        descriptionTextView.isEditable = true
+        descriptionTextView.isUserInteractionEnabled = true
+        descriptionTextView.isScrollEnabled = true
+    }
     func style(TextField : UITextField){
         TextField.delegate = self
         normalStyle(TextField)
@@ -405,10 +418,10 @@ class editVolunteeringOpp: UIViewController, UITextFieldDelegate{
         }
         
         // Contains special char
-        if containsSpecialCharacter(value)
-        {
-            return "يجب ان يحتوي على احرف او ارقام فقط"
-        }
+//        if containsSpecialCharacter(value)
+//        {
+//            return "يجب ان يحتوي على احرف او ارقام فقط"
+//        }
         
         // Invalid length
         if value.count < 4 || value.count > 50
@@ -438,14 +451,42 @@ class editVolunteeringOpp: UIViewController, UITextFieldDelegate{
             checkForValidForm()
         }
     }
-    func descriptionValidation() {
-        desErrorMSG.isHidden = false
-        desErrorMSG.text = Constants.VolunteeringOpp.desErrorMSG
+    
+    //Description Validation
+    func textViewDidChange(_ textView: UITextView) {
+        if let des = textView.text
+        {
+            if let errorMessage = invalidDescription(des)
+            {
+                desErrorMSG.text = errorMessage
+                desErrorMSG.isHidden = false
+                textView.setCornerBorder(color: UIColor.red, cornerRadius: 20.0, borderWidth: 1)
+            }
+            else
+            {
+                desErrorMSG.isHidden = true
+                Constants.VolunteeringOpp.location = locationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                textView.setCornerBorder(color: UIColor.init(named: "mainLight"), cornerRadius: 20.0, borderWidth: 1)
+            }
+        }
+        checkForValidForm()
+        
+    }
+    
+    func invalidDescription (_ value: String) -> String? {
+    
+        // Invalid length
+        if value.count > 150
+        {
+            return "الحد الاقصى = ١٥٠ حرف"
+        }
+        return nil
+        
     }
     // Final Validation
     func checkForValidForm()
     {
-        if titleErrorMSG.isHidden && dateErrorMSG.isHidden && workHoursErrorMSG.isHidden && locationErrorMSG.isHidden && genderErrorMSG.isHidden && Constants.VolunteeringOpp.isValidDes
+        if titleErrorMSG.isHidden && dateErrorMSG.isHidden && workHoursErrorMSG.isHidden && locationErrorMSG.isHidden && genderErrorMSG.isHidden && desErrorMSG.isHidden
         {
             saveButton.isEnabled = true
         }
@@ -535,7 +576,7 @@ class editVolunteeringOpp: UIViewController, UITextFieldDelegate{
                 self?.dateTextField.text = date
                 self?.workHoursTextField.text = workingHours
                 self?.locationTextField.text = location
-                Constants.VolunteeringOpp.description = description
+                self?.descriptionTextView.text = description
                 
                 if (gender == "اناث فقط"){
                     self?.genderSELECTEDString(buttonName: "F")
@@ -554,9 +595,7 @@ class editVolunteeringOpp: UIViewController, UITextFieldDelegate{
     
     // Save
     @IBAction func save(_ sender: Any) {
-        descriptionValidation()
-        if(Constants.VolunteeringOpp.isValidDes){
-            
+       
             if (femaleButton.isSelected){
                 Constants.VolunteeringOpp.gender = "اناث فقط"
             }
@@ -568,6 +607,6 @@ class editVolunteeringOpp: UIViewController, UITextFieldDelegate{
             }
             
 //            performSegue(withIdentifier: "addPOPup", sender: self)
-        }
+        
     }
 }
