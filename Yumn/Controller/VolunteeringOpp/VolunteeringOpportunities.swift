@@ -24,6 +24,7 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
         noVolunteeringOPPLabel.isHidden = true
     }
     
+    @IBAction func unwindToViewControllerA(segue: UIStoryboardSegue) {}
     
     func loadOPP(){
         VolunteeringOpps.removeAll()

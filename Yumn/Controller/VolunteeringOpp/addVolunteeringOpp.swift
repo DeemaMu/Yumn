@@ -476,64 +476,18 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate{
     @IBAction func add(_ sender: Any) {
         descriptionValidation()
         if(Constants.VolunteeringOpp.isValidDes){
-           
-        // User was creted successfully, store the information
-        
-        let db = Firestore.firestore()
-        let user = Auth.auth().currentUser
-        let uid = user?.uid
-        
-        // 1. get the Doc
-        let docRef = db.collection("hospitalsInformation").document(uid!)
-        
-        // 2. to get live data
-        docRef.addSnapshotListener { [weak self] snapshot, error in
-            guard let data = snapshot?.data(), error == nil else{
-                return
+            
+            if (femaleButton.isSelected){
+                Constants.VolunteeringOpp.gender = "اناث فقط"
+            }
+            if (maleButton.isSelected){
+                Constants.VolunteeringOpp.gender = "ذكور فقط"
+            }
+            if (femaleButton.isSelected && maleButton.isSelected) {
+                Constants.VolunteeringOpp.gender = "اناث وذكور"
             }
             
-            guard let hospitalName = data["name"] as? String else {
-                return
-            }
-            //            guard let phone = data["phone"] as? String else {
-            //                return
-            //            }
-            
-            DispatchQueue.main.async {
-                self?.hospitalName = hospitalName
-                //                self?.hospitalPhone = phone
-                
-            }
-        }
-        var gender = ""
-        if (femaleButton.isSelected){
-            gender = "اناث فقط"
-        }
-        if (maleButton.isSelected){
-            gender = "ذكور فقط"
-        }
-        if (femaleButton.isSelected && maleButton.isSelected) {
-            gender = "اناث وذكور"
-        }
-        let today = Date()
-        
-        
-        // Volunteer collection
-        db.collection("volunteeringOpp").document().setData([
-            "title":Constants.VolunteeringOpp.title,
-            "date": Constants.VolunteeringOpp.date,
-            "workingHours": Constants.VolunteeringOpp.workingHours,
-            "location": Constants.VolunteeringOpp.location,
-            "description": Constants.VolunteeringOpp.description,
-            "gender": gender,
-            "hospitalName": hospitalName,
-            "postDate": today,
-            "posted_by": uid!]){ error in
-                if error != nil {
-                    print(error?.localizedDescription as Any)
-                    print ("error in adding the data")
-                }
-            }
+            performSegue(withIdentifier: "addPOPup", sender: self)
         }
     }
 }
