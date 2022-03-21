@@ -31,6 +31,8 @@ class OrganDonationViewController: UIViewController, CustomSegmentedControlDeleg
     // by Modhi
     @IBOutlet weak var organPieWholeContainer: UIView!
     
+    @IBOutlet weak var loadingGif: UIImageView!
+    @IBOutlet weak var blurredView: UIView!
     @IBOutlet weak var cityOfUser: UILabel!
     @IBOutlet weak var viewOrganPie: UIView!
     var pieChart = PieChartView()
@@ -69,6 +71,17 @@ class OrganDonationViewController: UIViewController, CustomSegmentedControlDeleg
 
         // by modhi
         pieChart.delegate = self
+        organPieWholeContainer.isHidden = false
+        viewOrganPie.isHidden = false
+        cityOfUser.isHidden = false
+        
+        // for loading gif
+        loadingGif.superview?.bringSubviewToFront(loadingGif)
+        loadingGif.loadGif(name: "yumnLoading")
+        // Blur the background
+        blurredView.isHidden = false
+        // Show Loading indicator
+        loadingGif.isHidden = false
         
         super.viewDidLoad()
         
@@ -103,6 +116,8 @@ class OrganDonationViewController: UIViewController, CustomSegmentedControlDeleg
             organDonImage.isHidden = true
             stackView.isHidden = true
             organPieWholeContainer.isHidden = true
+            viewOrganPie.isHidden = true
+            cityOfUser.isHidden = true
             
             
         }
@@ -111,7 +126,8 @@ class OrganDonationViewController: UIViewController, CustomSegmentedControlDeleg
             organDonImage.isHidden = false
             stackView.isHidden = false
             organPieWholeContainer.isHidden = true
-            
+            viewOrganPie.isHidden = true
+            cityOfUser.isHidden = true
         }
         
         else {
@@ -119,7 +135,8 @@ class OrganDonationViewController: UIViewController, CustomSegmentedControlDeleg
             organDonImage.isHidden = true
             stackView.isHidden = true
             organPieWholeContainer.isHidden = false
-            
+            viewOrganPie.isHidden = false
+            cityOfUser.isHidden = false
         }
     }
     
@@ -228,6 +245,10 @@ class OrganDonationViewController: UIViewController, CustomSegmentedControlDeleg
         getTotalOrganShortage(completion: { totalOrganShortge in
             if let TOS = totalOrganShortge {
                 
+                self.blurredView.isHidden = true
+                // Show Loading indicator
+                self.loadingGif.isHidden = true
+                
                 self.populateChart(TOS: TOS)
                 
             } else {
@@ -275,10 +296,13 @@ class OrganDonationViewController: UIViewController, CustomSegmentedControlDeleg
     func setUpChart(){
         
         pieChart.frame = CGRect(x: 0, y: 0,
-                                width: self.viewOrganPie.frame.size.width,
-                                height: self.viewOrganPie.frame.size.width)
-        pieChart.center = organPieWholeContainer.center
-        view.addSubview(pieChart)
+                                width: self.organPieWholeContainer.frame.size.width,
+                                height: self.organPieWholeContainer.frame.size.width)
+        
+       // pieChart.center = organPieWholeContainer.center
+        
+        viewOrganPie.addSubview(pieChart)
+     //   view.addSubview(pieChart)
         
     }
     

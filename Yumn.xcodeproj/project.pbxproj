@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		50FAB6656B154713D9338A06 /* Pods_Yumn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3421A6D75001E3100A73AFFD /* Pods_Yumn.framework */; };
+		0BEDDB692804E564FEAF2D18 /* Pods_Yumn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D00ED86DA5639AF706E9CA2 /* Pods_Yumn.framework */; };
 		8D0E9A1F27E5339C00890AC0 /* BloodDonationInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0E9A1E27E5339C00890AC0 /* BloodDonationInformationViewController.swift */; };
 		8D7F152227D25DD200E1EB1A /* GIfCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7F152127D25DD200E1EB1A /* GIfCode.swift */; };
 		8D7F152527D25EF200E1EB1A /* yumnLoading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8D7F152427D25EF200E1EB1A /* yumnLoading.gif */; };
@@ -80,7 +80,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3421A6D75001E3100A73AFFD /* Pods_Yumn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yumn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D00ED86DA5639AF706E9CA2 /* Pods_Yumn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yumn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C18E5202ABAF74C7EA61E7B /* Pods-Yumn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.debug.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.debug.xcconfig"; sourceTree = "<group>"; };
 		8D0E9A1E27E5339C00890AC0 /* BloodDonationInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationInformationViewController.swift; sourceTree = "<group>"; };
 		8D7F152127D25DD200E1EB1A /* GIfCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIfCode.swift; sourceTree = "<group>"; };
 		8D7F152427D25EF200E1EB1A /* yumnLoading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = yumnLoading.gif; sourceTree = "<group>"; };
@@ -119,7 +120,6 @@
 		95C5967827D767FE00A5572C /* VSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VSignUpViewController.swift; sourceTree = "<group>"; };
 		95EED9CA27E6602C009AFDAC /* VOCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VOCollectionViewCell.swift; sourceTree = "<group>"; };
 		95EED9CC27E682DB009AFDAC /* VolunteeringOpp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolunteeringOpp.swift; sourceTree = "<group>"; };
-		B4835ECDB504E16043BC9F2E /* Pods-Yumn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.debug.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.debug.xcconfig"; sourceTree = "<group>"; };
 		B930F86727B85D5E00E70860 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		B9419DFA27C52D9C00962A1B /* HospitalCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalCellTableViewCell.swift; sourceTree = "<group>"; };
 		B9419DFB27C52D9C00962A1B /* HospitalCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HospitalCellTableViewCell.xib; sourceTree = "<group>"; };
@@ -153,7 +153,7 @@
 		D195445127D49B1600B03DFF /* organCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = organCell.xib; sourceTree = "<group>"; };
 		D195445327D49B2100B03DFF /* organCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = organCell.swift; sourceTree = "<group>"; };
 		D195445727D49B4800B03DFF /* charts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = charts.storyboard; sourceTree = "<group>"; };
-		E41A08566F6585CA4F75FC62 /* Pods-Yumn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.release.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.release.xcconfig"; sourceTree = "<group>"; };
+		E0F45B629E6153B488E0036F /* Pods-Yumn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.release.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,17 +161,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50FAB6656B154713D9338A06 /* Pods_Yumn.framework in Frameworks */,
+				0BEDDB692804E564FEAF2D18 /* Pods_Yumn.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3F1C324EDFA10962B56EB53C /* Frameworks */ = {
+		38CC3B3C37CBD5A59D74E10A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3421A6D75001E3100A73AFFD /* Pods_Yumn.framework */,
+				0D00ED86DA5639AF706E9CA2 /* Pods_Yumn.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -234,7 +234,7 @@
 				95785057279E1917004F3D8F /* Yumn */,
 				95785056279E1917004F3D8F /* Products */,
 				FB3A4FC32329E4399DABC3B5 /* Pods */,
-				3F1C324EDFA10962B56EB53C /* Frameworks */,
+				38CC3B3C37CBD5A59D74E10A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -418,8 +418,8 @@
 		FB3A4FC32329E4399DABC3B5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B4835ECDB504E16043BC9F2E /* Pods-Yumn.debug.xcconfig */,
-				E41A08566F6585CA4F75FC62 /* Pods-Yumn.release.xcconfig */,
+				1C18E5202ABAF74C7EA61E7B /* Pods-Yumn.debug.xcconfig */,
+				E0F45B629E6153B488E0036F /* Pods-Yumn.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -431,11 +431,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 95785069279E1918004F3D8F /* Build configuration list for PBXNativeTarget "Yumn" */;
 			buildPhases = (
-				9EBA8F23974CDE54DE29F57F /* [CP] Check Pods Manifest.lock */,
+				85B15ECF3C31BACC6A406595 /* [CP] Check Pods Manifest.lock */,
 				95785051279E1917004F3D8F /* Sources */,
 				95785052279E1917004F3D8F /* Frameworks */,
 				95785053279E1917004F3D8F /* Resources */,
-				1CB72FDEE1986E52B1EBF72D /* [CP] Embed Pods Frameworks */,
+				1C9ECF0755FF53EB9EDB88E3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -503,7 +503,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1CB72FDEE1986E52B1EBF72D /* [CP] Embed Pods Frameworks */ = {
+		1C9ECF0755FF53EB9EDB88E3 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -520,7 +520,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Yumn/Pods-Yumn-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9EBA8F23974CDE54DE29F57F /* [CP] Check Pods Manifest.lock */ = {
+		85B15ECF3C31BACC6A406595 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -748,7 +748,7 @@
 		};
 		9578506A279E1918004F3D8F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B4835ECDB504E16043BC9F2E /* Pods-Yumn.debug.xcconfig */;
+			baseConfigurationReference = 1C18E5202ABAF74C7EA61E7B /* Pods-Yumn.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -783,7 +783,7 @@
 		};
 		9578506B279E1918004F3D8F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E41A08566F6585CA4F75FC62 /* Pods-Yumn.release.xcconfig */;
+			baseConfigurationReference = E0F45B629E6153B488E0036F /* Pods-Yumn.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
