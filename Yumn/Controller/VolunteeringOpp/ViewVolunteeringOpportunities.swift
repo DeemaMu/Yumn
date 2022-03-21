@@ -19,8 +19,8 @@ class ViewVolunteeringOpportunities: UIViewController, UICollectionViewDelegate,
     var VolunteeringOpps = [VolunteeringOpp]()
     
     @IBOutlet weak var noVolunteeringOPPLabel: UILabel!
-    
-    
+    var passDocID = ""
+    var applied = false
     override func viewDidLoad() {
         super.viewDidLoad()
         noVolunteeringOPPLabel.isHidden = true
@@ -115,46 +115,44 @@ class ViewVolunteeringOpportunities: UIViewController, UICollectionViewDelegate,
     
     @objc func applytoVO(_ sender : UIButton) {
         
+        let indexPath = IndexPath(row: sender.tag, section: 0)
+        let cell = VolunteeringOpps[indexPath.row]
+        self.passDocID = cell.id
+        
         let db = Firestore.firestore()
         let uid = Auth.auth().currentUser?.uid
         
-        let indexPath = IndexPath(row: sender.tag, section: 0)
-        let cell = VolunteeringOpps[indexPath.row]
-        var applied = false
-        
         // Check if already applied
-
         DispatchQueue.main.async {
             
-            db.collection("volunteeringOpp").document(cell.id).collection("applicants").document(uid!).getDocument() { (querySnapshot, error) in
+            db.collection("volunteeringOpp").document(self.passDocID).collection("applicants").document(uid!).getDocument() { (querySnapshot, error) in
                 
-                guard let documents = querySnapshot?.data() else {
-                    db.collection("volunteeringOpp").document(cell.id).collection("applicants").document(uid!).setData([
-                        "uid": uid!]){ error in
-                            if error != nil {
-                                print(error?.localizedDescription as Any)
-                                print ("Error in Apply")
-                            }
-                            
-                            // Success msg
-                        }
-                    return
+                let documents = querySnapshot?.data()
+                if (documents == nil){
+                 print("Not an applicant")
+                    self.applied = false
+                    self.performSegue(withIdentifier: "applyPopUP", sender: self)
+                } else{
+                    // Already applied
+                print("he is an applicant")
+                    self.applied = true
+                    self.performSegue(withIdentifier: "applyPopUP", sender: self)
                 }
-                // Show Message
-            print("YOU CANt")
+                
             }
-            
-            
-            
+ 
         }
-            // confirmation pop up
-            
-            
-        
         
 
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "applyPopUP"){
+            let controller = segue.destination as! applyPopup
+            controller.docID = self.passDocID
+            controller.applied = self.applied
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

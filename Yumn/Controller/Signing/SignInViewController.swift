@@ -6,6 +6,7 @@
 //
 import FirebaseAuth
 import Firebase
+import FirebaseFirestore
 import UIKit
 
 class SignInViewController: UIViewController {
