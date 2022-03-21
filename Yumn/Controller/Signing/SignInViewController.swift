@@ -64,7 +64,7 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var logInButton: UIButton!
     
     @IBOutlet weak var errorLabel: UILabel!
-    
+//
     override func viewWillAppear(_ animated: Bool) {
         let db = Firestore.firestore()
         if (isUserLoggedIn){

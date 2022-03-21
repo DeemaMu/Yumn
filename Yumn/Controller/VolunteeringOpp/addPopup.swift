@@ -80,6 +80,8 @@ class addPopup: UIViewController{
                     print ("error in adding the data")
                 }
             }
+        // Update collections
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotification"), object: nil)
         
         // Go back
         performSegue(withIdentifier: "popupSegue", sender: self)

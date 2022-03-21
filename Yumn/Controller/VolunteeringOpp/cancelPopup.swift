@@ -35,8 +35,7 @@ class cancelPopup: UIViewController{
         
         // Update collection
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
-//        let VOP = VolunteeringOpportunities()
-//        VOP.loadOPP()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotification"), object: nil)
         
         // Go back
         self.dismiss(animated: true, completion: nil)

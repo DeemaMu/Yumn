@@ -47,6 +47,8 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
                 return
             }
             
+            self.VolunteeringOpps.removeAll()
+            
             if documents.isEmpty {
                 print("No documents 2")
                 DispatchQueue.main.async {

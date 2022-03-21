@@ -23,22 +23,27 @@ class ViewVolunteeringOpportunities: UIViewController, UICollectionViewDelegate,
     var applied = false
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: NSNotification.Name(rawValue: "newDataNotification"), object: nil)
         noVolunteeringOPPLabel.isHidden = true
     }
     
+    @objc func refresh() {
+// In refresh
+        self.loadOPP() // a refresh the collectionView.
+   }
     
     func loadOPP(){
         VolunteeringOpps.removeAll()
         let db = Firestore.firestore()
         
         
-        db.collection("volunteeringOpp").order(by: "postDate", descending: false).getDocuments() { (querySnapshot, error) in
+        db.collection("volunteeringOpp").order(by: "postDate", descending: true).addSnapshotListener() { (querySnapshot, error) in
             
             guard let documents = querySnapshot?.documents else {
                 print("No documents")
                 return
             }
-            
+            self.VolunteeringOpps.removeAll()
             if documents.isEmpty {
                 print("No documents 2")
                 DispatchQueue.main.async {
@@ -108,6 +113,18 @@ class ViewVolunteeringOpportunities: UIViewController, UICollectionViewDelegate,
         cell.layer.shadowOpacity = 0.8
         cell.layer.masksToBounds = false
         cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.contentView.layer.cornerRadius).cgPath
+        
+        
+        guard let customFont = UIFont(name: "Tajawal", size: 18) else {
+            fatalError("""
+                Failed to load the "Tajawal" font.
+                Make sure the font file is included in the project and the font name is spelled correctly.
+                """
+            )
+        }
+        cell.apply.setAttributedTitle(NSAttributedString(string: "تقديم", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: customFont]), for: .normal)
+
+        
         
         return cell
         
