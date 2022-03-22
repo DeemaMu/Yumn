@@ -23,7 +23,6 @@ class ManageAppointmentsViewController: UIViewController {
     @IBOutlet weak var blurredView: UIView!
     @IBOutlet weak var popupStack: UIStackView!
     @IBOutlet weak var container: UIView!
-//    @IBOutlet weak var blurredView2: UIView!
     @IBOutlet weak var popupContent: UIView!
     
     @IBOutlet weak var popUp: UIView!
