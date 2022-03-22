@@ -583,6 +583,13 @@ class editVolunteeringOpp: UIViewController, UITextFieldDelegate , UITextViewDel
                 self?.locationTextField.text = location
                 self?.descriptionTextView.text = description
                 
+                Constants.VolunteeringOpp.title = title
+                Constants.VolunteeringOpp.date = date
+                Constants.VolunteeringOpp.workingHours = workingHours
+                Constants.VolunteeringOpp.location = location
+                Constants.VolunteeringOpp.description = description
+                Constants.VolunteeringOpp.gender = gender
+                
                 if (gender == "اناث فقط"){
                     self?.genderSELECTEDString(buttonName: "F")
                 }
