@@ -37,15 +37,7 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
     // By Modhi
     var pieChart = PieChartView()
     let user = Auth.auth().currentUser
-    
-    
-   
-   
 
-    
- 
-    
-    
     @IBOutlet weak var bloodArrow: UIButton!
     
  
@@ -56,24 +48,15 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
     
     
     @IBOutlet weak var stackView: UIStackView!
-    
-    
-   
-    
+ 
     @IBOutlet weak var donInfo: UILabel!
-    
-  
-    
+
  
     @IBOutlet weak var typeArrow: UIButton!
     
   
     @IBOutlet weak var typeBtn: UIButton!
-    
-    
 
-    
-    
     @IBOutlet weak var viewPie: UIView!
     @IBOutlet weak var viewPieWhole: UIView!
     @IBOutlet weak var cityOfUser: UILabel!

@@ -13,7 +13,7 @@ import CoreLocation
 import Firebase
 import FirebaseFirestore
 import Charts
-class OrganDonationViewController: UIViewController, CustomSegmentedControlDelegate, ChartViewDelegate{
+class OrganDonationViewController: UIViewController, ChartViewDelegate{
     
     @IBOutlet weak var organBtn2: UIButton!
     @IBOutlet weak var arrow2: UIButton!
@@ -66,6 +66,7 @@ class OrganDonationViewController: UIViewController, CustomSegmentedControlDeleg
         stackView.isHidden = true
         
 
+        addSegments()
         
         
         // by Modhi
@@ -93,11 +94,11 @@ class OrganDonationViewController: UIViewController, CustomSegmentedControlDeleg
         //        segmentedControl.addUnderlineForSelectedSegment()
         //
         
-        codeSegmented = CustomSegmentedControl(frame: CGRect(x: 0, y: 0, width: segmentsView.frame.width, height: 50), buttonTitle: ["نوع التبرع","الإرشادات","الإحتياج"])
-        codeSegmented!.backgroundColor = .clear
-        //        codeSegmented.delegate?.change(to: 2)
-        segmentsView.addSubview(codeSegmented!)
-        codeSegmented?.delegate = self
+//        codeSegmented = CustomSegmentedControl(frame: CGRect(x: 0, y: 0, width: segmentsView.frame.width, height: 50), buttonTitle: ["نوع التبرع","الإرشادات","الإحتياج"])
+//        codeSegmented!.backgroundColor = .clear
+//        //        codeSegmented.delegate?.change(to: 2)
+//        segmentsView.addSubview(codeSegmented!)
+//        codeSegmented?.delegate = self
         
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
@@ -106,10 +107,42 @@ class OrganDonationViewController: UIViewController, CustomSegmentedControlDeleg
         
     }
     
-    func change(to index: Int) {
-        print("segmentedControl index changed to \(index)")
-        if(index==0){
+    
+    func addSegments(){
+        
+        let segments = ["نوع التبرع","الإرشادات","الإحتياج"]
+        
+        let sgLine = MaterialSegmentedControlR(selectorStyle: .line, fgColor: .gray, selectedFgColor: UIColor.init(named: "mainLight")!, selectorColor: UIColor.init(named: "mainLight")!, bgColor: .white)
+        
+        //        sgLine.viewWidth =
+        
+        guard let customFont = UIFont(name: "Tajawal", size: 15) else {
+            fatalError("""
+                             Failed to load the "Tajawal" font.
+                             Make sure the font file is included in the project and the font name is spelled correctly.
+                             """
+            )
+        }
+        
+        segmentsView.addSubview(sgLine)
+        
+        for i in 0..<3 {
+            sgLine.appendTextSegment(text: segments[i], textColor: .gray, font: customFont, rippleColor: #colorLiteral(red: 0.4438726306, green: 0.7051679492, blue: 0.6503567696, alpha: 0.5) , cornerRadius: CGFloat(0))
             
+        }
+        
+        sgLine.frame = CGRect(x: 2, y: 2, width: segmentsView.frame.width - 4 , height: segmentsView.frame.height - 4)
+        
+        sgLine.addTarget(self, action: #selector(selectedSegment), for: .valueChanged)
+        
+        segmentsView.addSubview(sgLine)
+        segmentsView.semanticContentAttribute = .forceRightToLeft
+    }
+    
+    
+    @objc func selectedSegment(_ sender: MaterialSegmentedControlR) {
+        switch sender.selectedSegmentIndex {
+        case 0:
             organDonImage.isHidden = true
             stackView.isHidden = true
             
@@ -119,11 +152,8 @@ class OrganDonationViewController: UIViewController, CustomSegmentedControlDeleg
             cityOfUser.isHidden = true
             loadingGif.isHidden = true
             blurredView.isHidden = true
-            
-            
-        }
-        else if(index == 1){
-            
+            break
+        case 1:
             organDonImage.isHidden = false
             stackView.isHidden = false
             
@@ -134,9 +164,8 @@ class OrganDonationViewController: UIViewController, CustomSegmentedControlDeleg
             loadingGif.isHidden = true
             blurredView.isHidden = true
             
-        }
-        
-        else {
+            break
+        default:
             
             organDonImage.isHidden = true
             stackView.isHidden = true
@@ -150,6 +179,52 @@ class OrganDonationViewController: UIViewController, CustomSegmentedControlDeleg
             
         }
     }
+    
+    
+//    func change(to index: Int) {
+//        print("segmentedControl index changed to \(index)")
+//        if(index==0){
+//
+//            organDonImage.isHidden = true
+//            stackView.isHidden = true
+//
+//            // by Modhi
+//            organPieWholeContainer.isHidden = true
+//            viewOrganPie.isHidden = true
+//            cityOfUser.isHidden = true
+//            loadingGif.isHidden = true
+//            blurredView.isHidden = true
+//
+//
+//        }
+//        else if(index == 1){
+//
+//            organDonImage.isHidden = false
+//            stackView.isHidden = false
+//
+//            // by Modhi
+//            organPieWholeContainer.isHidden = true
+//            viewOrganPie.isHidden = true
+//            cityOfUser.isHidden = true
+//            loadingGif.isHidden = true
+//            blurredView.isHidden = true
+//
+//        }
+//
+//        else {
+//
+//            organDonImage.isHidden = true
+//            stackView.isHidden = true
+//
+//            // by Modhi
+//            organPieWholeContainer.isHidden = false
+//            viewOrganPie.isHidden = false
+//            cityOfUser.isHidden = false
+//            loadingGif.isHidden = false
+//            blurredView.isHidden = false
+//
+//        }
+//    }
     
     
     
