@@ -4185,7 +4185,7 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain"/>
                                             </button>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="placeholder" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="MTs-8b-6OB">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="MTs-8b-6OB">
                                                 <rect key="frame" x="57" y="546" width="301" height="128"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <color key="textColor" systemColor="labelColor"/>
@@ -4426,8 +4426,9 @@
                                                             <color key="tintColor" name="mainLight"/>
                                                             <state key="normal" title="Button"/>
                                                             <buttonConfiguration key="configuration" style="plain" title="">
-                                                                <imageReference key="image" image="delete.left.fill" catalog="system" symbolScale="large"/>
-                                                                <color key="baseForegroundColor" name="mainLight"/>
+                                                                <imageReference key="image" image="cancelBtn2" symbolScale="large"/>
+                                                                <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="default"/>
+                                                                <color key="baseForegroundColor" red="0.52549019607843139" green="0.792156862745098" blue="0.76470588235294112" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </buttonConfiguration>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NtG-ny-yrW">
@@ -4484,6 +4485,7 @@
                                                     <outlet property="hours" destination="K67-6O-9mt" id="dgE-BC-rnn"/>
                                                     <outlet property="location" destination="5DW-jV-isD" id="6fI-Kl-BhV"/>
                                                     <outlet property="title" destination="41u-Yj-NhD" id="TOn-Bb-KyR"/>
+                                                    <outlet property="viewApplicants" destination="NtG-ny-yrW" id="38I-XN-idT"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
@@ -4566,6 +4568,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="VolunteeringOppsList" destination="CkM-LL-rap" id="16O-Ka-19b"/>
+                        <outlet property="addVOPBtn" destination="NT7-dR-9mh" id="nAL-m7-654"/>
                         <outlet property="noVolunteeringOPPLabel" destination="nOW-Ru-sgt" id="BsX-P4-SWX"/>
                         <segue destination="3y2-J9-Bq9" kind="popoverPresentation" identifier="cancelPopUP" popoverAnchorView="Vnp-HS-Ptu" id="bfN-Hp-50v">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -5968,10 +5971,10 @@
         <image name="arrow.right" catalog="system" width="128" height="98"/>
         <image name="blood alt" width="256" height="256"/>
         <image name="bottom" width="586" height="336"/>
+        <image name="cancelBtn2" width="30" height="30"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="chevron.down" catalog="system" width="32" height="32"/>
         <image name="coleredCalendar" width="40" height="40"/>
-        <image name="delete.left.fill" catalog="system" width="128" height="104"/>
         <image name="donatingblood-removebg-" width="528" height="472"/>
         <image name="hands-noBG" width="632" height="395"/>
         <image name="heart icon" width="2048" height="2048"/>

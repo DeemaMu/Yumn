@@ -132,7 +132,6 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate , UITextViewDele
         
         descriptionTextView.setCornerBorder(color: UIColor.init(named: "mainLight"), cornerRadius: 15.0, borderWidth: 1)
         descriptionTextView.font = customFont
-        descriptionTextView.text = Constants.VolunteeringOpp.description
         descriptionTextView.textAlignment = .right
         descriptionTextView.textColor = UIColor.black
         descriptionTextView.backgroundColor = UIColor.white
