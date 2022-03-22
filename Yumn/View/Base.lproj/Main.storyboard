@@ -2355,6 +2355,23 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y2S-cc-WHK">
+                                <rect key="frame" x="20" y="190" width="374" height="516"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LeL-cj-yNd">
+                                        <rect key="frame" x="8" y="29" width="358" height="461"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8AJ-ej-E7v">
                                 <rect key="frame" x="364" y="300" width="0.0" height="0.0"/>
                                 <subviews>
@@ -2459,6 +2476,8 @@
                         <outlet property="confirmBtn" destination="QRm-3K-9Xm" id="mw3-U7-ZWk"/>
                         <outlet property="container" destination="31P-bs-PUI" id="Gsm-Tk-k8z"/>
                         <outlet property="logoutBtn" destination="MVz-Jl-a0C" id="hXH-Gs-PXs"/>
+                        <outlet property="popUp" destination="Y2S-cc-WHK" id="dro-RY-hlw"/>
+                        <outlet property="popupContent" destination="LeL-cj-yNd" id="x4H-Db-XOV"/>
                         <outlet property="popupMsg" destination="CdU-Cj-Bpy" id="PCu-Dk-Es6"/>
                         <outlet property="popupStack" destination="8AJ-ej-E7v" id="gQF-Vx-1m9"/>
                         <outlet property="popupTitle" destination="V79-fQ-H2W" id="il5-Ga-53D"/>
@@ -3452,13 +3471,13 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="351" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ngi-Yt-RAF">
-                                                        <rect key="frame" x="0.0" y="0.0" width="208" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="50"/>
                                                         <fontDescription key="fontDescription" name="Tajawal-Medium" family="Tajawal Medium" pointSize="21"/>
                                                         <color key="textColor" name="mainLight"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="يتم التبرع بـ:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ifr-kf-wnD">
-                                                        <rect key="frame" x="268" y="0.0" width="83" height="50"/>
+                                                        <rect key="frame" x="267" y="0.0" width="84" height="50"/>
                                                         <fontDescription key="fontDescription" name="Tajawal-Medium" family="Tajawal Medium" pointSize="18"/>
                                                         <color key="textColor" name="mainLight"/>
                                                         <nil key="highlightedColor"/>
