@@ -193,6 +193,7 @@ struct CustomDatePicker: View {
                     
                     HStack(){
                         Button(action: {
+                            controller.showOverlay(date: currentDate)
                             print("button tapped")
                         }) {
                             Text("+").foregroundColor(.white).font(.title)
