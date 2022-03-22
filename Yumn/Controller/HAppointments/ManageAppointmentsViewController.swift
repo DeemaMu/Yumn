@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 import SwiftUI
 import FirebaseAuth
+import Combine
+
 
 class ManageAppointmentsViewController: UIViewController {
     @IBOutlet weak var logoutBtn: UIBarButtonItem!
@@ -21,6 +23,18 @@ class ManageAppointmentsViewController: UIViewController {
     @IBOutlet weak var blurredView: UIView!
     @IBOutlet weak var popupStack: UIStackView!
     @IBOutlet weak var container: UIView!
+    @IBOutlet weak var blurredView2: UIView!
+    
+    @IBOutlet weak var popUp: UIView!
+
+    
+    var date: Date = Date()
+    
+    @IBOutlet weak var successPopUp: UIView!
+    @IBOutlet weak var failPopUp: UIView!
+    
+    @IBOutlet weak var OKButton1: UIButton!
+    @IBOutlet weak var OKButton2: UIButton!
     
     override func viewDidLoad() {
         
@@ -55,12 +69,82 @@ class ManageAppointmentsViewController: UIViewController {
            confirmBtn.layer.cornerRadius = 20
         
         
-        
-        let childView = UIHostingController(rootView: CalenderAndAppointments())
+        let childView = UIHostingController(rootView: CalenderAndAppointments(controller: self))
         addChild(childView)
         childView.view.frame = container.bounds
         container.addSubview(childView.view)
+        
+        popUp.layer.cornerRadius = 25
+        
+        createPopUp(view: self.successPopUp, type: "success")
+        createPopUp(view: self.failPopUp, type: "fail")
+//
+//        let childView2 = UIHostingController(rootView: PopupAddForm(controller: self))
+//        addChild(childView2)
+//        childView2.view.frame = popupContent.bounds
+//        popupContent.addSubview(childView2.view)
+        
+        self.hideKeyboardWhenTappedAround()
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.layoutIfNeeded()
     }
+    
+    
+    func createPopUp(view: UIView, type: String){
+        view.layer.cornerRadius = 25
+        view.layer.shadowRadius = 6
+        view.layer.shadowColor = #colorLiteral(red: 0.8235294118, green: 0.8196078431, blue: 0.8274509804, alpha: 1)
+        view.layer.shadowOffset = CGSize(width: 0, height: 6)
+        view.layer.shadowOpacity = 1
+        view.center = container.center
+        view.isHidden = true
+//        OKButton1.center = view.centerXAnchor
+    }
+    
+    @IBAction func okClick(_ sender: UIButton) {
+        successPopUp.isHidden = true
+        self.hideOverlay()
+    }
+    
+    @IBAction func okClick2(_ sender: UIButton) {
+        failPopUp.isHidden = true
+    }
+    
+    
+    
+    
+    func showOverlay(date: Date){
+        print(date.getFormattedDate(format: "YYYY-MM-DD"))
+        
+        let childView2 = UIHostingController(rootView: PopupAddForm(controller: self, date: date))
+        addChild(childView2)
+        childView2.view.frame = popupContent.bounds
+        popupContent.addSubview(childView2.view)
+        
+//        self.date = date
+        blurredView.isHidden = false
+        popUp.isHidden = false
+    }
+    
+    func hideOverlay(){
+        blurredView.isHidden = true
+        popUp.isHidden = true
+    }
+    
+    func showSuccessPopUp(){
+        blurredView.isHidden = false
+        popUp.isHidden = false
+        successPopUp.isHidden = false
+    }
+    
+    func showFailPopUp(){
+        blurredView.isHidden = false
+        popUp.isHidden = false
+        failPopUp.isHidden = false
+    }
+
     
     @IBAction func onPressedLogout(_ sender: Any) {
         
