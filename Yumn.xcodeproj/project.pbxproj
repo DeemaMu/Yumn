@@ -43,6 +43,11 @@
 		95C5967927D767FE00A5572C /* VSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C5967827D767FE00A5572C /* VSignUpViewController.swift */; };
 		95EED9CB27E6602C009AFDAC /* VOCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EED9CA27E6602C009AFDAC /* VOCollectionViewCell.swift */; };
 		95EED9CD27E682DB009AFDAC /* VolunteeringOpp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EED9CC27E682DB009AFDAC /* VolunteeringOpp.swift */; };
+		B91DD28E27E995F200BA9881 /* CalenderAndAppointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91DD28D27E995F200BA9881 /* CalenderAndAppointments.swift */; };
+		B91DD29027E9965F00BA9881 /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91DD28F27E9965F00BA9881 /* Appointment.swift */; };
+		B91DD29227E996CF00BA9881 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91DD29127E996CF00BA9881 /* CustomDatePicker.swift */; };
+		B91DD29427E9976200BA9881 /* PopupAddForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91DD29327E9976200BA9881 /* PopupAddForm.swift */; };
+		B91DD29627E998C000BA9881 /* CustomPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91DD29527E998C000BA9881 /* CustomPopUpView.swift */; };
 		B930F86827B85D5F00E70860 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B930F86727B85D5E00E70860 /* RoundedView.swift */; };
 		B9419DFC27C52D9C00962A1B /* HospitalCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9419DFA27C52D9C00962A1B /* HospitalCellTableViewCell.swift */; };
 		B9419DFD27C52D9C00962A1B /* HospitalCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9419DFB27C52D9C00962A1B /* HospitalCellTableViewCell.xib */; };
@@ -125,6 +130,11 @@
 		95C5967827D767FE00A5572C /* VSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VSignUpViewController.swift; sourceTree = "<group>"; };
 		95EED9CA27E6602C009AFDAC /* VOCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VOCollectionViewCell.swift; sourceTree = "<group>"; };
 		95EED9CC27E682DB009AFDAC /* VolunteeringOpp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolunteeringOpp.swift; sourceTree = "<group>"; };
+		B91DD28D27E995F200BA9881 /* CalenderAndAppointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderAndAppointments.swift; sourceTree = "<group>"; };
+		B91DD28F27E9965F00BA9881 /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
+		B91DD29127E996CF00BA9881 /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
+		B91DD29327E9976200BA9881 /* PopupAddForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupAddForm.swift; sourceTree = "<group>"; };
+		B91DD29527E998C000BA9881 /* CustomPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopUpView.swift; sourceTree = "<group>"; };
 		B930F86727B85D5E00E70860 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		B9419DFA27C52D9C00962A1B /* HospitalCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalCellTableViewCell.swift; sourceTree = "<group>"; };
 		B9419DFB27C52D9C00962A1B /* HospitalCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HospitalCellTableViewCell.xib; sourceTree = "<group>"; };
@@ -288,6 +298,7 @@
 				B9AD3F2F27E335B3001AB734 /* DateValue.swift */,
 				95EED9CC27E682DB009AFDAC /* VolunteeringOpp.swift */,
 				D19B1B4827E95EE500CB3FFA /* BloodAppointment.swift */,
+				B91DD28F27E9965F00BA9881 /* Appointment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -346,6 +357,7 @@
 				B9503D8727BAE4E400E312B8 /* CustomSegmentedControl.swift */,
 				8D7F152127D25DD200E1EB1A /* GIfCode.swift */,
 				D19B1B4627E95ED400CB3FFA /* OpenMapDirections.swift */,
+				B91DD29527E998C000BA9881 /* CustomPopUpView.swift */,
 			);
 			path = "Custom Classes";
 			sourceTree = "<group>";
@@ -354,6 +366,9 @@
 			isa = PBXGroup;
 			children = (
 				B9AD3F2927E2CF81001AB734 /* ManageAppointmentsViewController.swift */,
+				B91DD28D27E995F200BA9881 /* CalenderAndAppointments.swift */,
+				B91DD29127E996CF00BA9881 /* CustomDatePicker.swift */,
+				B91DD29327E9976200BA9881 /* PopupAddForm.swift */,
 			);
 			path = HAppointments;
 			sourceTree = "<group>";
@@ -577,6 +592,7 @@
 				959A52CD27E88883002244A0 /* applyPopup.swift in Sources */,
 				95EED9CD27E682DB009AFDAC /* VolunteeringOpp.swift in Sources */,
 				D195443A27D499C700B03DFF /* bloodChartViewController.swift in Sources */,
+				B91DD29427E9976200BA9881 /* PopupAddForm.swift in Sources */,
 				D195444227D49A1700B03DFF /* bloodShortage.swift in Sources */,
 				95EED9CB27E6602C009AFDAC /* VOCollectionViewCell.swift in Sources */,
 				D195443627D4998F00B03DFF /* bloodShortageViewController.swift in Sources */,
@@ -586,6 +602,7 @@
 				D195444427D49A2400B03DFF /* organShortage.swift in Sources */,
 				B9AD3F2A27E2CF81001AB734 /* ManageAppointmentsViewController.swift in Sources */,
 				D195444C27D49AA300B03DFF /* components.swift in Sources */,
+				B91DD29227E996CF00BA9881 /* CustomDatePicker.swift in Sources */,
 				954F2DB527E80CD200A3DFB1 /* ViewVOCollectionViewCell.swift in Sources */,
 				D19B1B5327E95FCB00CB3FFA /* OrganDonationViewController.swift in Sources */,
 				95A64FCF27E540F80004F830 /* TimePicker.swift in Sources */,
@@ -597,10 +614,12 @@
 				D19B1B4B27E95F1000CB3FFA /* currentBldAppCell.swift in Sources */,
 				959A52CB27E87E51002244A0 /* cancelPopup.swift in Sources */,
 				D195445027D49AFF00B03DFF /* bloodTypeCell.swift in Sources */,
+				B91DD29027E9965F00BA9881 /* Appointment.swift in Sources */,
 				95062D9C27CADE1300D63911 /* HospitalProfileViewController.swift in Sources */,
 				B9C7969527C7A83A006A78A3 /* TabBarController.swift in Sources */,
 				95062D9F27CADE9E00D63911 /* ConvertingColors.swift in Sources */,
 				D195443427D4996700B03DFF /* ViewController.swift in Sources */,
+				B91DD28E27E995F200BA9881 /* CalenderAndAppointments.swift in Sources */,
 				B9AD3F3027E335B3001AB734 /* DateValue.swift in Sources */,
 				D195443C27D499D900B03DFF /* organsChartVC.swift in Sources */,
 				95531DC727E869E30029B490 /* addPopup.swift in Sources */,
@@ -628,6 +647,7 @@
 				B97A37FE27B9D32A00718079 /* RoundedShadowedView.swift in Sources */,
 				8D7F152F27D29A6500E1EB1A /* HospitalHomeViewController.swift in Sources */,
 				95062D9D27CADE1300D63911 /* VolunteerProfileViewController.swift in Sources */,
+				B91DD29627E998C000BA9881 /* CustomPopUpView.swift in Sources */,
 				952C5D1227E4CF4800DF6537 /* DateTimePicker.swift in Sources */,
 				95B7FCCF27E8D53D00865258 /* updatePopoup.swift in Sources */,
 				95785059279E1917004F3D8F /* AppDelegate.swift in Sources */,

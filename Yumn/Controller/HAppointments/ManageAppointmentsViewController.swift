@@ -23,7 +23,8 @@ class ManageAppointmentsViewController: UIViewController {
     @IBOutlet weak var blurredView: UIView!
     @IBOutlet weak var popupStack: UIStackView!
     @IBOutlet weak var container: UIView!
-    @IBOutlet weak var blurredView2: UIView!
+//    @IBOutlet weak var blurredView2: UIView!
+    @IBOutlet weak var popupContent: UIView!
     
     @IBOutlet weak var popUp: UIView!
 
@@ -253,5 +254,29 @@ class ManageAppointmentsViewController: UIViewController {
         })
     }
     
+}
+
+class OverlayControl: ObservableObject {
+    @Published var showOverlay = false
+}
+
+struct overlayView: UIViewRepresentable{
+    
+    @ObservedObject var overlayControl: OverlayControl
+    
+    func makeCoordinator() -> ManageAppointmentsViewController {
+        return ManageAppointmentsViewController()
+    }
+    func makeUIView(context: Context) -> UIView {
+        return UIView()
+    }
+    
+    func updateUIView(_ uiView: UIView, context: Context) {
+        if (overlayControl.showOverlay){
+//            context.coordinator.showOverlay()
+            print("here")
+        }
+    }
+            
 }
 
