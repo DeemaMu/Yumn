@@ -15,7 +15,6 @@
 		8D7F152B27D299C100E1EB1A /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7F152A27D299C100E1EB1A /* constants.swift */; };
 		8D7F152D27D299F300E1EB1A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7F152C27D299F300E1EB1A /* HomeViewController.swift */; };
 		8D7F152F27D29A6500E1EB1A /* HospitalHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7F152E27D29A6500E1EB1A /* HospitalHomeViewController.swift */; };
-		8DC80B7427E7A72600A1DF6E /* OrganDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC80B7327E7A72600A1DF6E /* OrganDonationViewController.swift */; };
 		95062D9627CADC0500D63911 /* Tajawal-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95062D9227CADC0400D63911 /* Tajawal-Light.ttf */; };
 		95062D9727CADC0500D63911 /* Tajawal-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95062D9327CADC0500D63911 /* Tajawal-Medium.ttf */; };
 		95062D9827CADC0500D63911 /* Tajawal-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95062D9427CADC0500D63911 /* Tajawal-Regular.ttf */; };
@@ -77,6 +76,13 @@
 		D195445227D49B1600B03DFF /* organCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D195445127D49B1600B03DFF /* organCell.xib */; };
 		D195445427D49B2100B03DFF /* organCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D195445327D49B2100B03DFF /* organCell.swift */; };
 		D195445827D49B4800B03DFF /* charts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D195445727D49B4800B03DFF /* charts.storyboard */; };
+		D19B1B4727E95ED400CB3FFA /* OpenMapDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19B1B4627E95ED400CB3FFA /* OpenMapDirections.swift */; };
+		D19B1B4927E95EE500CB3FFA /* BloodAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19B1B4827E95EE500CB3FFA /* BloodAppointment.swift */; };
+		D19B1B4B27E95F1000CB3FFA /* currentBldAppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19B1B4A27E95F1000CB3FFA /* currentBldAppCell.swift */; };
+		D19B1B4D27E95F1900CB3FFA /* currentBldAppCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D19B1B4C27E95F1900CB3FFA /* currentBldAppCell.xib */; };
+		D19B1B4F27E95F1D00CB3FFA /* oldBloodAppTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19B1B4E27E95F1D00CB3FFA /* oldBloodAppTableViewCell.swift */; };
+		D19B1B5127E95F2200CB3FFA /* oldBloodAppTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D19B1B5027E95F2200CB3FFA /* oldBloodAppTableViewCell.xib */; };
+		D19B1B5327E95FCB00CB3FFA /* OrganDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19B1B5227E95FCB00CB3FFA /* OrganDonationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,7 +95,6 @@
 		8D7F152A27D299C100E1EB1A /* constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		8D7F152C27D299F300E1EB1A /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8D7F152E27D29A6500E1EB1A /* HospitalHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HospitalHomeViewController.swift; sourceTree = "<group>"; };
-		8DC80B7327E7A72600A1DF6E /* OrganDonationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganDonationViewController.swift; sourceTree = "<group>"; };
 		95062D9227CADC0400D63911 /* Tajawal-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tajawal-Light.ttf"; sourceTree = "<group>"; };
 		95062D9327CADC0500D63911 /* Tajawal-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tajawal-Medium.ttf"; sourceTree = "<group>"; };
 		95062D9427CADC0500D63911 /* Tajawal-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tajawal-Regular.ttf"; sourceTree = "<group>"; };
@@ -153,6 +158,13 @@
 		D195445127D49B1600B03DFF /* organCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = organCell.xib; sourceTree = "<group>"; };
 		D195445327D49B2100B03DFF /* organCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = organCell.swift; sourceTree = "<group>"; };
 		D195445727D49B4800B03DFF /* charts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = charts.storyboard; sourceTree = "<group>"; };
+		D19B1B4627E95ED400CB3FFA /* OpenMapDirections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenMapDirections.swift; sourceTree = "<group>"; };
+		D19B1B4827E95EE500CB3FFA /* BloodAppointment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloodAppointment.swift; sourceTree = "<group>"; };
+		D19B1B4A27E95F1000CB3FFA /* currentBldAppCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = currentBldAppCell.swift; sourceTree = "<group>"; };
+		D19B1B4C27E95F1900CB3FFA /* currentBldAppCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = currentBldAppCell.xib; sourceTree = "<group>"; };
+		D19B1B4E27E95F1D00CB3FFA /* oldBloodAppTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = oldBloodAppTableViewCell.swift; sourceTree = "<group>"; };
+		D19B1B5027E95F2200CB3FFA /* oldBloodAppTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = oldBloodAppTableViewCell.xib; sourceTree = "<group>"; };
+		D19B1B5227E95FCB00CB3FFA /* OrganDonationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganDonationViewController.swift; sourceTree = "<group>"; };
 		E0F45B629E6153B488E0036F /* Pods-Yumn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.release.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -195,7 +207,7 @@
 		8DC80B7227E7A70100A1DF6E /* VOrganDonation */ = {
 			isa = PBXGroup;
 			children = (
-				8DC80B7327E7A72600A1DF6E /* OrganDonationViewController.swift */,
+				D19B1B5227E95FCB00CB3FFA /* OrganDonationViewController.swift */,
 			);
 			path = VOrganDonation;
 			sourceTree = "<group>";
@@ -277,6 +289,7 @@
 				D195444727D49A3900B03DFF /* totalOrgansShortage.swift */,
 				B9AD3F2F27E335B3001AB734 /* DateValue.swift */,
 				95EED9CC27E682DB009AFDAC /* VolunteeringOpp.swift */,
+				D19B1B4827E95EE500CB3FFA /* BloodAppointment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -294,6 +307,10 @@
 				D195445727D49B4800B03DFF /* charts.storyboard */,
 				95EED9CA27E6602C009AFDAC /* VOCollectionViewCell.swift */,
 				954F2DB427E80CD200A3DFB1 /* ViewVOCollectionViewCell.swift */,
+				D19B1B4A27E95F1000CB3FFA /* currentBldAppCell.swift */,
+				D19B1B4C27E95F1900CB3FFA /* currentBldAppCell.xib */,
+				D19B1B4E27E95F1D00CB3FFA /* oldBloodAppTableViewCell.swift */,
+				D19B1B5027E95F2200CB3FFA /* oldBloodAppTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -329,6 +346,7 @@
 				B97A37FD27B9D32A00718079 /* RoundedShadowedView.swift */,
 				B9503D8727BAE4E400E312B8 /* CustomSegmentedControl.swift */,
 				8D7F152127D25DD200E1EB1A /* GIfCode.swift */,
+				D19B1B4627E95ED400CB3FFA /* OpenMapDirections.swift */,
 			);
 			path = "Custom Classes";
 			sourceTree = "<group>";
@@ -484,6 +502,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D19B1B4D27E95F1900CB3FFA /* currentBldAppCell.xib in Resources */,
 				D195444E27D49AF600B03DFF /* bloodTypeCell.xib in Resources */,
 				B9419DFD27C52D9C00962A1B /* HospitalCellTableViewCell.xib in Resources */,
 				95785065279E1918004F3D8F /* LaunchScreen.storyboard in Resources */,
@@ -495,6 +514,7 @@
 				95062D9627CADC0500D63911 /* Tajawal-Light.ttf in Resources */,
 				95062D9927CADC0500D63911 /* Tajawal-Bold.ttf in Resources */,
 				D195445227D49B1600B03DFF /* organCell.xib in Resources */,
+				D19B1B5127E95F2200CB3FFA /* oldBloodAppTableViewCell.xib in Resources */,
 				8D7F152527D25EF200E1EB1A /* yumnLoading.gif in Resources */,
 				B9DA61CE27C10C2900359487 /* GoogleService-Info.plist in Resources */,
 			);
@@ -563,12 +583,14 @@
 				B9AD3F2A27E2CF81001AB734 /* ManageAppointmentsViewController.swift in Sources */,
 				D195444C27D49AA300B03DFF /* components.swift in Sources */,
 				954F2DB527E80CD200A3DFB1 /* ViewVOCollectionViewCell.swift in Sources */,
+				D19B1B5327E95FCB00CB3FFA /* OrganDonationViewController.swift in Sources */,
 				95A64FCF27E540F80004F830 /* TimePicker.swift in Sources */,
 				8D7F152B27D299C100E1EB1A /* constants.swift in Sources */,
 				D195443E27D499ED00B03DFF /* customTabBar.swift in Sources */,
 				B9419DFC27C52D9C00962A1B /* HospitalCellTableViewCell.swift in Sources */,
 				9578505D279E1917004F3D8F /* VHomeViewController.swift in Sources */,
 				959A52D127E8A41F002244A0 /* editVolunteeringOpp.swift in Sources */,
+				D19B1B4B27E95F1000CB3FFA /* currentBldAppCell.swift in Sources */,
 				959A52CB27E87E51002244A0 /* cancelPopup.swift in Sources */,
 				D195445027D49AFF00B03DFF /* bloodTypeCell.swift in Sources */,
 				95062D9C27CADE1300D63911 /* HospitalProfileViewController.swift in Sources */,
@@ -582,14 +604,17 @@
 				95C5967727D75A8D00A5572C /* styles.swift in Sources */,
 				B9570C2F27DFA828000D1B8B /* MaterialSegmentedControl.swift in Sources */,
 				D195443827D499A200B03DFF /* organShortageVC.swift in Sources */,
+				D19B1B4727E95ED400CB3FFA /* OpenMapDirections.swift in Sources */,
 				B9DA61DA27C10FCC00359487 /* LocationManger.swift in Sources */,
 				9520693C27E3A5FF00D5DC11 /* VolunteeringOpportunities.swift in Sources */,
 				8D7F152727D25F3B00E1EB1A /* SignInViewController.swift in Sources */,
 				B97A380227BA9EA000718079 /* BloodDonationViewController.swift in Sources */,
+				D19B1B4927E95EE500CB3FFA /* BloodAppointment.swift in Sources */,
 				B9DA61DC27C1100B00359487 /* Location.swift in Sources */,
 				954F2DB327E80C4100A3DFB1 /* ViewVolunteeringOpportunities.swift in Sources */,
 				8D7F152227D25DD200E1EB1A /* GIfCode.swift in Sources */,
 				95C5967927D767FE00A5572C /* VSignUpViewController.swift in Sources */,
+				D19B1B4F27E95F1D00CB3FFA /* oldBloodAppTableViewCell.swift in Sources */,
 				8D0E9A1F27E5339C00890AC0 /* BloodDonationInformationViewController.swift in Sources */,
 				D195445427D49B2100B03DFF /* organCell.swift in Sources */,
 				B952BB1227C641B80049D81B /* HospitalsController.swift in Sources */,
@@ -597,7 +622,6 @@
 				8D7F152D27D299F300E1EB1A /* HomeViewController.swift in Sources */,
 				D195444027D499FA00B03DFF /* tabBarVC.swift in Sources */,
 				B9AD3F2C27E2D4E6001AB734 /* CalenderAndAppointments.swift in Sources */,
-				8DC80B7427E7A72600A1DF6E /* OrganDonationViewController.swift in Sources */,
 				B97A37FE27B9D32A00718079 /* RoundedShadowedView.swift in Sources */,
 				8D7F152F27D29A6500E1EB1A /* HospitalHomeViewController.swift in Sources */,
 				95062D9D27CADE1300D63911 /* VolunteerProfileViewController.swift in Sources */,
