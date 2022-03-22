@@ -332,17 +332,12 @@ struct PopupAddFormOrgan: View {
         print("hereeeee222222")
         var list = [DAppointment]()
         
-        var currentDate = selectedDate
-        var num = 0
+        let currentDate = selectedDate
         
-        while(currentDate != endDate){
-            num += 1
-            let currentEnd = currentDate.addingTimeInterval(durationPerA * 60)
-            
-            list.append(DAppointment(type: "organ", startTime: currentDate, endTime: currentEnd, donor: "", hName: "mamlakah", confirmed: false, booked: false))
-            
-            currentDate = currentDate.addingTimeInterval(1 * 60)
-        }
+        let currentEnd = currentDate.addingTimeInterval(1 * 60)
+        
+        list.append(DAppointment(type: "organ", startTime: currentDate, endTime: currentEnd, donor: "", hName: "mamlakah", confirmed: false, booked: false))
+        
         
         print("\(list.count)")
         return list
