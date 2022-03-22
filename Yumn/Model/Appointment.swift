@@ -72,6 +72,43 @@ class AppointmentVM: ObservableObject {
         
     } // end of addData
     
+    func addDataOrgan(apt: Appointment) {
+        let db = Firestore.firestore()
+        
+        // Add doc to collection
+        let newDoc = db.collection("appointments").document()
+        newDoc.setData(["type": apt.type,"hospital": apt.hospital, "start_time": apt.startTime,
+                        "end_time": apt.endTime, "date": apt.aptDate, "appointment_duration": 1
+                        , "donors": apt.donors ]) { error in
+            
+            if (error == nil){
+                
+            } else {
+                print(error!)
+                self.added = false
+            }
+        }
+        
+        // add collection to doc
+        
+        for index in 0...(apt.appointments!.count - 1) {
+            let miniApt = apt.appointments![index]
+            newDoc.collection("appointments").addDocument(data: ["type": miniApt.type , "start_time": miniApt.startTime,
+                                                                 "end_time": miniApt.endTime,  "donor": miniApt.donor
+                                                                 , "confirmed": miniApt.confirmed, "booked": miniApt.booked,
+                                                                 "hospital": miniApt.hName]) { error in
+                if (error == nil){
+                    
+                } else {
+                    print(error!)
+                    self.added = false
+                }
+            }
+        }
+        
+    } // end of addData
+
+    
     
     
 }

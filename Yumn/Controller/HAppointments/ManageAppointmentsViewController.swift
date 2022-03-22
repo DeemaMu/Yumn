@@ -128,6 +128,19 @@ class ManageAppointmentsViewController: UIViewController {
         popUp.isHidden = false
     }
     
+    func showOverlayOrgan(date: Date){
+        
+        let childView2 = UIHostingController(rootView: PopupAddFormOrgan(controller: self, date: date))
+        addChild(childView2)
+        childView2.view.frame = popupContent.bounds
+        popupContent.addSubview(childView2.view)
+        
+//        self.date = date
+        blurredView.isHidden = false
+        popUp.isHidden = false
+    }
+
+    
     func hideOverlay(){
         blurredView.isHidden = true
         popUp.isHidden = true
