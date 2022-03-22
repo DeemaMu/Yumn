@@ -52,8 +52,6 @@
 		B97A37FE27B9D32A00718079 /* RoundedShadowedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A37FD27B9D32A00718079 /* RoundedShadowedView.swift */; };
 		B97A380227BA9EA000718079 /* BloodDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A380127BA9EA000718079 /* BloodDonationViewController.swift */; };
 		B9AD3F2A27E2CF81001AB734 /* ManageAppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD3F2927E2CF81001AB734 /* ManageAppointmentsViewController.swift */; };
-		B9AD3F2C27E2D4E6001AB734 /* CalenderAndAppointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD3F2B27E2D4E6001AB734 /* CalenderAndAppointments.swift */; };
-		B9AD3F2E27E2E005001AB734 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD3F2D27E2E005001AB734 /* CustomDatePicker.swift */; };
 		B9AD3F3027E335B3001AB734 /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD3F2F27E335B3001AB734 /* DateValue.swift */; };
 		B9C7969527C7A83A006A78A3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C7969427C7A839006A78A3 /* TabBarController.swift */; };
 		B9DA61CE27C10C2900359487 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9DA61CD27C10C2800359487 /* GoogleService-Info.plist */; };
@@ -136,8 +134,6 @@
 		B97A37FD27B9D32A00718079 /* RoundedShadowedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowedView.swift; sourceTree = "<group>"; };
 		B97A380127BA9EA000718079 /* BloodDonationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationViewController.swift; sourceTree = "<group>"; };
 		B9AD3F2927E2CF81001AB734 /* ManageAppointmentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageAppointmentsViewController.swift; sourceTree = "<group>"; };
-		B9AD3F2B27E2D4E6001AB734 /* CalenderAndAppointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderAndAppointments.swift; sourceTree = "<group>"; };
-		B9AD3F2D27E2E005001AB734 /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
 		B9AD3F2F27E335B3001AB734 /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
 		B9C7969427C7A839006A78A3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B9DA61CD27C10C2800359487 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -358,8 +354,6 @@
 			isa = PBXGroup;
 			children = (
 				B9AD3F2927E2CF81001AB734 /* ManageAppointmentsViewController.swift */,
-				B9AD3F2B27E2D4E6001AB734 /* CalenderAndAppointments.swift */,
-				B9AD3F2D27E2E005001AB734 /* CustomDatePicker.swift */,
 			);
 			path = HAppointments;
 			sourceTree = "<group>";
@@ -581,7 +575,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				959A52CD27E88883002244A0 /* applyPopup.swift in Sources */,
-				B9AD3F2E27E2E005001AB734 /* CustomDatePicker.swift in Sources */,
 				95EED9CD27E682DB009AFDAC /* VolunteeringOpp.swift in Sources */,
 				D195443A27D499C700B03DFF /* bloodChartViewController.swift in Sources */,
 				D195444227D49A1700B03DFF /* bloodShortage.swift in Sources */,
@@ -632,7 +625,6 @@
 				B930F86827B85D5F00E70860 /* RoundedView.swift in Sources */,
 				8D7F152D27D299F300E1EB1A /* HomeViewController.swift in Sources */,
 				D195444027D499FA00B03DFF /* tabBarVC.swift in Sources */,
-				B9AD3F2C27E2D4E6001AB734 /* CalenderAndAppointments.swift in Sources */,
 				B97A37FE27B9D32A00718079 /* RoundedShadowedView.swift in Sources */,
 				8D7F152F27D29A6500E1EB1A /* HospitalHomeViewController.swift in Sources */,
 				95062D9D27CADE1300D63911 /* VolunteerProfileViewController.swift in Sources */,
