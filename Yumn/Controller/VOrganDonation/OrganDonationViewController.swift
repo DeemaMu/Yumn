@@ -139,6 +139,12 @@ class OrganDonationViewController: UIViewController, ChartViewDelegate{
         segmentsView.semanticContentAttribute = .forceRightToLeft
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        //        self.navigationController?.navigationBar.tintColor = UIColor.white
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+    }
     
     @objc func selectedSegment(_ sender: MaterialSegmentedControlR) {
         switch sender.selectedSegmentIndex {
