@@ -25,6 +25,8 @@ class ViewVolunteeringOpportunities: UIViewController, UICollectionViewDelegate,
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: NSNotification.Name(rawValue: "newDataNotification"), object: nil)
         noVolunteeringOPPLabel.isHidden = true
+        
+        
     }
     
     @objc func refresh() {

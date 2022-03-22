@@ -18,6 +18,7 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
     
     @IBOutlet weak var noVolunteeringOPPLabel: UILabel!
     
+    @IBOutlet weak var addVOPBtn: UIButton!
     var passDocID = ""
     
     override func viewDidLoad() {
@@ -25,6 +26,16 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
         noVolunteeringOPPLabel.isHidden = true
+        
+        guard let customFont = UIFont(name: "Tajawal", size: 18) else {
+            fatalError("""
+                Failed to load the "Tajawal" font.
+                Make sure the font file is included in the project and the font name is spelled correctly.
+                """
+            )
+        }
+        
+        addVOPBtn.setAttributedTitle(NSAttributedString(string: "إضافة فرصة تطوع", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: customFont]), for: .normal)
     }
     
     @objc func refresh() {
@@ -121,6 +132,16 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
         cell.layer.masksToBounds = false
         cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.contentView.layer.cornerRadius).cgPath
         
+        guard let customFont = UIFont(name: "Tajawal", size: 14) else {
+            fatalError("""
+                Failed to load the "Tajawal" font.
+                Make sure the font file is included in the project and the font name is spelled correctly.
+                """
+            )
+        }
+        
+        cell.edit.setAttributedTitle(NSAttributedString(string: "تعديل", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: customFont]), for: .normal)
+        cell.viewApplicants.setAttributedTitle(NSAttributedString(string: "عرض المتقدمين", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: customFont]), for: .normal)
         return cell
         
     }
