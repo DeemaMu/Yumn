@@ -158,12 +158,12 @@ struct PopupAddForm: View {
                                     .multilineTextAlignment(.trailing)
                                     .underlineTextField()
                                     .keyboardType(.numberPad)
-//                                    .onReceive( Just( durationText ), perform: {
-//                                            let newValue = self.contentType.filterCharacters( oldValue: $0 )
-//                                            if newValue != self.durationText {
-//                                                self.durationText = newValue
-//                                            }
-//                                        })
+                                //                                    .onReceive( Just( durationText ), perform: {
+                                //                                            let newValue = self.contentType.filterCharacters( oldValue: $0 )
+                                //                                            if newValue != self.durationText {
+                                //                                                self.durationText = newValue
+                                //                                            }
+                                //                                        })
                                     .onChange(of: durationText){newValue in
                                         if(!newValue.isEmpty){
                                             duration = Int(newValue)!
@@ -280,12 +280,12 @@ struct PopupAddForm: View {
                                 }
                             }
                         
-                                            
+                        
                     }
                     .listRowSeparator(.hidden)
                     .padding(.top, 20)
                     
-                    VStack(alignment: .center){
+                    HStack(){
                         Button(action: {
                             saveData()
                         }) {

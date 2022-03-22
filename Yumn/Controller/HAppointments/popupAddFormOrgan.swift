@@ -109,54 +109,54 @@ struct PopupAddFormOrgan: View {
                     
                     
                     
-//                    VStack(alignment: .trailing, spacing: 5){
-//
-//                        createLabel(label: "مدة فترة المواعيد")
-//
-//                        HStack(){
-//                            Spacer()
-//                            ZStack(){
-//                                //                        Spacer()
-//
-//                                //                            createLabel(label: "دقيقة")
-//                                HStack(){
-//                                    Text("ساعة").font(Font.custom("Tajawal", size: 17)).foregroundColor(mainDark).multilineTextAlignment(.leading)
-//                                    Spacer()
-//                                    //                            .frame(maxWidth: .infinity)
-//
-//                                }
-//
-//
-//                                TextField("", text: $durationText)
-//                                    .placeholder(when: durationText.isEmpty){
-//                                        Text("المدة").font(Font.custom("Tajawal", size: 15)).foregroundColor(lightGray)
-//                                    }
-//                                    .frame(maxWidth: .infinity)
-//                                    .multilineTextAlignment(.trailing)
-//                                    .underlineTextField()
-//                                    .keyboardType(.numberPad)
-////                                    .onReceive( Just( durationText ), perform: {
-////                                            let newValue = self.contentType.filterCharacters( oldValue: $0 )
-////                                            if newValue != self.durationText {
-////                                                self.durationText = newValue
-////                                            }
-////                                        })
-//                                    .onChange(of: durationText){newValue in
-//                                        if(!newValue.isEmpty){
-//                                            duration = Int(newValue)!
-//                                        }
-//                                    }
-//
-//                            }
-//                            //                            .padding(.leading, UIScreen.screenWidth / 2.5 )
-//
-//
-//                        }
-//
-//
-//
-//                    }.listRowSeparator(.hidden)
-//                        .padding(.top, 20)
+                    //                    VStack(alignment: .trailing, spacing: 5){
+                    //
+                    //                        createLabel(label: "مدة فترة المواعيد")
+                    //
+                    //                        HStack(){
+                    //                            Spacer()
+                    //                            ZStack(){
+                    //                                //                        Spacer()
+                    //
+                    //                                //                            createLabel(label: "دقيقة")
+                    //                                HStack(){
+                    //                                    Text("ساعة").font(Font.custom("Tajawal", size: 17)).foregroundColor(mainDark).multilineTextAlignment(.leading)
+                    //                                    Spacer()
+                    //                                    //                            .frame(maxWidth: .infinity)
+                    //
+                    //                                }
+                    //
+                    //
+                    //                                TextField("", text: $durationText)
+                    //                                    .placeholder(when: durationText.isEmpty){
+                    //                                        Text("المدة").font(Font.custom("Tajawal", size: 15)).foregroundColor(lightGray)
+                    //                                    }
+                    //                                    .frame(maxWidth: .infinity)
+                    //                                    .multilineTextAlignment(.trailing)
+                    //                                    .underlineTextField()
+                    //                                    .keyboardType(.numberPad)
+                    ////                                    .onReceive( Just( durationText ), perform: {
+                    ////                                            let newValue = self.contentType.filterCharacters( oldValue: $0 )
+                    ////                                            if newValue != self.durationText {
+                    ////                                                self.durationText = newValue
+                    ////                                            }
+                    ////                                        })
+                    //                                    .onChange(of: durationText){newValue in
+                    //                                        if(!newValue.isEmpty){
+                    //                                            duration = Int(newValue)!
+                    //                                        }
+                    //                                    }
+                    //
+                    //                            }
+                    //                            //                            .padding(.leading, UIScreen.screenWidth / 2.5 )
+                    //
+                    //
+                    //                        }
+                    //
+                    //
+                    //
+                    //                    }.listRowSeparator(.hidden)
+                    //                        .padding(.top, 20)
                     
                     
                     
@@ -189,78 +189,78 @@ struct PopupAddFormOrgan: View {
                         .padding(.vertical, 30)
                         .listRowSeparator(.hidden)
                     
-//                    VStack(alignment: .trailing, spacing: 20){
-//                        createLabel(label: "مدة الموعد")
-//
-//                        Menu {
-//                            ForEach(dropDownList, id: \.self){ client in
-//                                Button(client) {
-//                                    self.durationPerAText = client
-//                                }.multilineTextAlignment(.trailing)
-//                            }.onChange(of: durationPerAText){newValue in
-//                                if(!newValue.isEmpty){
-//                                    switch newValue{
-//                                    case dropDownList[0]:
-//                                        self.durationPerA = 15
-//                                        break
-//                                    case dropDownList[1]:
-//                                        self.durationPerA = 30
-//                                        break
-//                                    case dropDownList[2]:
-//                                        self.durationPerA = 60
-//                                        break
-//                                    default:
-//                                        self.durationPerA = 0
-//                                    }
-//                                }
-//                            }
-//
-//                        } label: {
-//                            VStack(spacing: 5){
-//                                HStack{
-//                                    Image(systemName: "chevron.down")
-//                                        .foregroundColor(mainDark)
-//                                        .font(Font.system(size: 20, weight: .bold))
-//                                    Spacer()
-//                                    Text(durationPerAText.isEmpty ? placeholder : durationPerAText)
-//                                        .foregroundColor(durationText.isEmpty ? .gray : .black).font(Font.custom("Tajawal", size: 15))
-//                                }
-//                                .padding(.horizontal)
-//                                Rectangle()
-//                                    .fill(mainDark)
-//                                    .frame(height: 1)
-//                                    .padding(.top, 8)
-//                                    .padding(.horizontal , 10)
-//                            }
-//                        }
-//
-//
-//                    }.frame(maxWidth: .infinity)
-//                        .listRowSeparator(.hidden)
-//                    //                        .padding(.top, 10)
-//
-//                    VStack(alignment: .trailing, spacing: 5){
-//
-//                        createLabel(label: "عدد الأشخاص لكل موعد")
-//
-//                        TextField("", text: $peoplePerAText)
-//                            .placeholder(when: peoplePerAText.isEmpty){
-//                                Text("عدد الأشخاص").font(Font.custom("Tajawal", size: 15)).foregroundColor(lightGray)
-//                            }
-//                            .frame(maxWidth: .infinity)
-//                            .multilineTextAlignment(.trailing)
-//                            .underlineTextField()
-//                            .keyboardType(.numberPad)
-//                            .onChange(of: peoplePerAText){newValue in
-//                                if(!newValue.isEmpty){
-//                                    self.peoplePerA = Int(newValue)!
-//                                }
-//                            }
-//
-//
-//                    }
-//                    .listRowSeparator(.hidden)
-//                    .padding(.top, 20)
+                    //                    VStack(alignment: .trailing, spacing: 20){
+                    //                        createLabel(label: "مدة الموعد")
+                    //
+                    //                        Menu {
+                    //                            ForEach(dropDownList, id: \.self){ client in
+                    //                                Button(client) {
+                    //                                    self.durationPerAText = client
+                    //                                }.multilineTextAlignment(.trailing)
+                    //                            }.onChange(of: durationPerAText){newValue in
+                    //                                if(!newValue.isEmpty){
+                    //                                    switch newValue{
+                    //                                    case dropDownList[0]:
+                    //                                        self.durationPerA = 15
+                    //                                        break
+                    //                                    case dropDownList[1]:
+                    //                                        self.durationPerA = 30
+                    //                                        break
+                    //                                    case dropDownList[2]:
+                    //                                        self.durationPerA = 60
+                    //                                        break
+                    //                                    default:
+                    //                                        self.durationPerA = 0
+                    //                                    }
+                    //                                }
+                    //                            }
+                    //
+                    //                        } label: {
+                    //                            VStack(spacing: 5){
+                    //                                HStack{
+                    //                                    Image(systemName: "chevron.down")
+                    //                                        .foregroundColor(mainDark)
+                    //                                        .font(Font.system(size: 20, weight: .bold))
+                    //                                    Spacer()
+                    //                                    Text(durationPerAText.isEmpty ? placeholder : durationPerAText)
+                    //                                        .foregroundColor(durationText.isEmpty ? .gray : .black).font(Font.custom("Tajawal", size: 15))
+                    //                                }
+                    //                                .padding(.horizontal)
+                    //                                Rectangle()
+                    //                                    .fill(mainDark)
+                    //                                    .frame(height: 1)
+                    //                                    .padding(.top, 8)
+                    //                                    .padding(.horizontal , 10)
+                    //                            }
+                    //                        }
+                    //
+                    //
+                    //                    }.frame(maxWidth: .infinity)
+                    //                        .listRowSeparator(.hidden)
+                    //                    //                        .padding(.top, 10)
+                    //
+                    //                    VStack(alignment: .trailing, spacing: 5){
+                    //
+                    //                        createLabel(label: "عدد الأشخاص لكل موعد")
+                    //
+                    //                        TextField("", text: $peoplePerAText)
+                    //                            .placeholder(when: peoplePerAText.isEmpty){
+                    //                                Text("عدد الأشخاص").font(Font.custom("Tajawal", size: 15)).foregroundColor(lightGray)
+                    //                            }
+                    //                            .frame(maxWidth: .infinity)
+                    //                            .multilineTextAlignment(.trailing)
+                    //                            .underlineTextField()
+                    //                            .keyboardType(.numberPad)
+                    //                            .onChange(of: peoplePerAText){newValue in
+                    //                                if(!newValue.isEmpty){
+                    //                                    self.peoplePerA = Int(newValue)!
+                    //                                }
+                    //                            }
+                    //
+                    //
+                    //                    }
+                    //                    .listRowSeparator(.hidden)
+                    //                    .padding(.top, 20)
                     
                     HStack(alignment: .center){
                         Button(action: {
@@ -280,8 +280,8 @@ struct PopupAddFormOrgan: View {
                                 .fill(mainDark)
                         )
                     }
-//                    .padding(.top, 20)
-                        .frame(maxWidth: .infinity)
+                    //                    .padding(.top, 20)
+                    .frame(maxWidth: .infinity)
                     
                     
                 } else {
