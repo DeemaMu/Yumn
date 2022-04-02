@@ -281,7 +281,7 @@ class HospitalProfileViewController: UIViewController, UITextFieldDelegate {
         
             // save data
             docRef.updateData(["name": hospitalTextField.text!,
-                            "phone": Int(phoneTextField.text!)!,
+                            "phone": phoneTextField.text!,
                            ]){ error in
 
                 if error != nil {
