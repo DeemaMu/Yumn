@@ -504,7 +504,32 @@ class editVolunteeringOpp: UIViewController, UITextFieldDelegate , UITextViewDel
     
     // MARK: - Date and Time textfield
     
+    func addToolBar(_ textField : UITextField ,_ start : String  , _ end : String ){
+        // ToolBar
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        
+        // Adding Button ToolBar
+        let startText = UIBarButtonItem(title:start , style: .done, target: self, action: nil)
+        startText.isEnabled = false
+        startText.tintColor = UIColor.init(red: 56/255, green: 97/255, blue: 93/255, alpha: 1)
+        
+        
+        let endText = UIBarButtonItem(title: end, style: .done, target: self, action: nil)
+        endText.tintColor = UIColor.init(red: 56/255, green: 97/255, blue: 93/255, alpha: 1)
+        endText.isEnabled = false
+        
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolBar.setItems([spaceButton,startText,spaceButton, endText,spaceButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        toolBar.backgroundColor = UIColor.white
+        textField.inputAccessoryView = toolBar
+        
+    }
+    
+    
     private lazy var dateTimePicker : DateTimePicker = {
+        self.addToolBar(self.dateTextField,"تاريخ البداية","تاريخ النهاية")
         let picker = DateTimePicker()
         picker.setup()
         picker.didSelectDates = { [ weak self ] (startDate , endDate) in
@@ -522,6 +547,7 @@ class editVolunteeringOpp: UIViewController, UITextFieldDelegate , UITextViewDel
     }()
     
     private lazy var timePicker : TimePicker = {
+        self.addToolBar(self.workHoursTextField ,"وقت البداية","وقت النهاية")
         let picker = TimePicker()
         picker.setup()
         picker.didSelectTimes = { [ weak self ] (startTime , endTime) in
