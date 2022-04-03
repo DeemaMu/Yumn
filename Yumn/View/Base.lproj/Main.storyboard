@@ -3872,10 +3872,10 @@
             </objects>
             <point key="canvasLocation" x="6241" y="-1744"/>
         </scene>
-        <!--Blood Don Questions View Controller-->
+        <!--Blood Donation Questions View Controller-->
         <scene sceneID="8OD-IR-FD3">
             <objects>
-                <viewController id="s8R-AU-cFP" customClass="BloodDonQuestionsViewController" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="s8R-AU-cFP" customClass="BloodDonationQuestionsViewController" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" ambiguous="YES" id="6V7-9Y-0Zl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4074,7 +4074,7 @@
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
                                                                 <connections>
-                                                                    <action selector="onPressedRadio6:" destination="s8R-AU-cFP" eventType="touchUpInside" id="LFF-qC-ZID"/>
+                                                                    <action selector="onPressedRadio6:" destination="s8R-AU-cFP" eventType="touchUpInside" id="hqd-d0-Hvh"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EyK-7M-8Xz">
@@ -4149,8 +4149,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="onPressedCont:" destination="s8R-AU-cFP" eventType="touchUpInside" id="WfR-fZ-q2M"/>
-                                                            <action selector="onPressedSignUp:" destination="nXg-43-4B6" eventType="touchUpInside" id="5tD-fg-3Ml"/>
+                                                            <action selector="onPressedCont:" destination="s8R-AU-cFP" eventType="touchUpInside" id="PF4-Fi-sXq"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -4188,7 +4187,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Oia-3V-ddM">
-                                <rect key="frame" x="364" y="300" width="0.0" height="0.0"/>
+                                <rect key="frame" x="354" y="350" width="0.0" height="0.0"/>
                                 <subviews>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DYj-zO-1cw">
                                         <rect key="frame" x="-140" y="0.0" width="280" height="180"/>
@@ -4268,11 +4267,9 @@
                         <viewLayoutGuide key="safeArea" id="0Hp-jb-sNc"/>
                         <color key="backgroundColor" name="mainLight"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Oia-3V-ddM" secondAttribute="trailing" constant="50" id="I6b-lo-MXW"/>
-                            <constraint firstItem="Oia-3V-ddM" firstAttribute="top" secondItem="6V7-9Y-0Zl" secondAttribute="top" constant="300" id="hRh-Zs-7R2"/>
+                            <constraint firstAttribute="trailing" secondItem="Oia-3V-ddM" secondAttribute="trailing" constant="60" id="I6b-lo-MXW"/>
+                            <constraint firstItem="Oia-3V-ddM" firstAttribute="top" secondItem="6V7-9Y-0Zl" secondAttribute="top" constant="350" id="hRh-Zs-7R2"/>
                             <constraint firstItem="jDq-WE-T7Q" firstAttribute="trailing" secondItem="0Hp-jb-sNc" secondAttribute="trailing" id="jMI-MR-uIa"/>
-                            <constraint firstItem="Oia-3V-ddM" firstAttribute="top" secondItem="6V7-9Y-0Zl" secondAttribute="top" constant="300" id="kAl-n3-4xU"/>
-                            <constraint firstAttribute="trailing" secondItem="Oia-3V-ddM" secondAttribute="trailing" constant="50" id="kws-40-H72"/>
                             <constraint firstItem="jDq-WE-T7Q" firstAttribute="leading" secondItem="0Hp-jb-sNc" secondAttribute="leading" id="oiU-PJ-Tb4"/>
                             <constraint firstItem="jDq-WE-T7Q" firstAttribute="top" secondItem="0Hp-jb-sNc" secondAttribute="top" id="xC0-fJ-lIp"/>
                             <constraint firstAttribute="bottom" secondItem="jDq-WE-T7Q" secondAttribute="bottom" id="zWo-gE-Y8T"/>
@@ -4281,7 +4278,7 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="blackBlurredView" destination="mWX-AI-7Av" id="WHI-Ye-VOw"/>
+                        <outlet property="blackBlurredView" destination="mWX-AI-7Av" id="LCH-df-ea0"/>
                         <outlet property="contBtn" destination="RB6-RR-VLs" id="nwK-0K-Aut"/>
                         <outlet property="okBtn" destination="wS1-iX-Sz1" id="2pZ-JG-kNB"/>
                         <outlet property="popupMsg" destination="5gT-BW-gym" id="Dcb-Cf-9th"/>
@@ -4312,7 +4309,7 @@
         <scene sceneID="6NI-2n-gd5">
             <objects>
                 <viewController storyboardIdentifier="organVC" id="YVF-tr-n2j" customClass="OrganDonationViewController" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="U2K-eE-QXQ">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="U2K-eE-QXQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -4325,7 +4322,7 @@
                                             <constraint firstAttribute="height" constant="5.5" id="jBx-zw-c4o"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="L7p-BY-b2U" customClass="RoundedView" customModule="Yumn" customModuleProvider="target">
+                                    <view contentMode="center" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L7p-BY-b2U" customClass="RoundedView" customModule="Yumn" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="156.5" width="414" height="689"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MY5-U0-2oY">
