@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 struct Constants {
@@ -33,6 +34,7 @@ struct Constants {
          static var weight = ""
          static var  bloodType = ""
          static var firstNameFromdb = ""
+                 
     }
 
     
