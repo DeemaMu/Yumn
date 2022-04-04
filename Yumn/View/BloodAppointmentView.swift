@@ -23,7 +23,7 @@ struct BloodAppointmentView: View {
     
     var body: some View {
         
-            
+        ZStack{
         
         NavigationView {
         
@@ -56,11 +56,29 @@ struct BloodAppointmentView: View {
 
         }.foregroundColor(.white)
         
-        
+        ScrollView {
+            HStack(spacing: 20) {
+                ForEach(0..<10) {
+                    Text("Item \($0)")
+                        .foregroundColor(.white)
+                        .font(.largeTitle)
+                        .frame(width: 200, height: 200)
+                        .background(Color.red)
+                }
+            }
+        }
+        .frame(height: 350)
+        flipsForRightToLeftLayoutDirection(true)
+        .environment(\.layoutDirection, .rightToLeft)
+
+
 
 
 
     }}
+}
+
+
 
 struct BloodAppointmentView_Previews: PreviewProvider {
     static var previews: some View {
