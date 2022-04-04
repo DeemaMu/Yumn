@@ -12,8 +12,7 @@ import Combine
 struct PopupAddFormOrgan: View {
     var controller: ManageAppointmentsViewController = ManageAppointmentsViewController()
     
-    @State var date: Date? = Date()
-    
+    @State var date: Date = Constants.selected.selectedDate
     // colors
     
     let mainDark = Color(UIColor.init(named: "mainDark")!)
@@ -30,12 +29,12 @@ struct PopupAddFormOrgan: View {
     var dropDownList = ["تبرع بكلية", "تبرع بجزء من الكبد"]
     
     
-    @State var selectedDate: Date = Date()
+    @State var selectedDate: Date = Constants.selected.selectedDate
     
     @State var typeText = ""
     
-    @State var endDateTxt = Date().getFormattedDate(format: "HH:mm")
-    @State var endDate: Date = Date()
+    @State var endDateTxt = Constants.selected.selectedDate.addingTimeInterval(60 * 60).getFormattedDate(format: "HH:mm")
+    @State var endDate: Date = Constants.selected.selectedDate.addingTimeInterval(60 * 60)
     
     @State var durationValue: Double = 0
     
@@ -224,9 +223,12 @@ struct PopupAddFormOrgan: View {
     
     func saveData() {
         print("hereeeee1111")
-        var apt = OrganAppointment(type: "organ", startTime: selectedDate, endTime: endDate, aptDate: date!, hospital: Constants.UserInfo.userID, organ: apptType)
-        apt.aptDuration = 60
-        apt.appointments = createAppointmentList()
+        let duration = 60.0
+        let apList = createAppointmentList()
+        
+        let apt = OrganAppointment(appointments: apList, type: "organ",
+                                   startTime: selectedDate, endTime: selectedDate.addingTimeInterval(60 * 60),
+                                   aptDate: date, hospital: Constants.UserInfo.userID, aptDuration: duration, organ: apptType)
         
         aptVM.addDataOrgan(apt: apt)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2 , execute: {

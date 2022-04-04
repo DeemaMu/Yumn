@@ -116,7 +116,7 @@ class ManageAppointmentsViewController: UIViewController {
     
     
     func showOverlay(date: Date){
-        print(date.getFormattedDate(format: "YYYY-MM-DD"))
+        print(date.getFormattedDate(format: "YYYY-MM-dd"))
         
         let childView2 = UIHostingController(rootView: PopupAddForm(controller: self, date: date))
         addChild(childView2)

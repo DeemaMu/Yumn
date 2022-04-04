@@ -10,9 +10,11 @@ import Firebase
 
 struct CustomDatePicker: View {
     
+    @ObservedObject var aptVM = AppointmentVM()
 
     @State var showPopup: Bool = false
     @Binding var currentDate: Date
+
     
         
     @StateObject var overalyControl = OverlayControl()
@@ -98,6 +100,7 @@ struct CustomDatePicker: View {
                         if(!checkAppointmentsForDay()){
                             
                             Button(action: {
+                                Constants.selected.selectedDate = self.currentDate
                                 controller.showOverlay(date: currentDate)
 //                                showPopup.toggle()
 //                                overalyControl.showOverlay.toggle()
@@ -147,7 +150,7 @@ struct CustomDatePicker: View {
                         
                     }
                     
-                    if let appointment = appointments.first(where: { apt in
+                    if let appointment = aptVM.appointments.first(where: { apt in
                         return ( isSameDayBlood(date1: apt.aptDate, date2: currentDate, type: apt.type) && (apt.hospital == Constants.UserInfo.userID))
                         
                     }) {
@@ -195,6 +198,7 @@ struct CustomDatePicker: View {
                     
                     HStack(){
                         Button(action: {
+                            Constants.selected.selectedDate = self.currentDate
                             controller.showOverlayOrgan(date: currentDate)
                             print("button tapped")
                         }) {
@@ -218,7 +222,7 @@ struct CustomDatePicker: View {
                     
                     
                     
-                    if let appointment = appointments.first(where: { apt in
+                    if let appointment = aptVM.appointments.first(where: { apt in
                         return isSameDayOrgan(date1: apt.aptDate, date2: currentDate, type: apt.type)
                         
                     }) {
@@ -265,6 +269,8 @@ struct CustomDatePicker: View {
             }
             .popupNavigationView(show: $showPopup){
                 Text("hi")
+            }.onAppear(){
+                self.aptVM.fetchData()
             }
         } else {
         }
@@ -277,7 +283,7 @@ struct CustomDatePicker: View {
             if value.day != -1 {
                 //                Text("\(value.day)").font(.title3.bold())
                 
-                if let appointment = appointments.first(where: { apt in
+                if let appointment = aptVM.appointments.first(where: { apt in
                     return ( isSameDay(date1: apt.aptDate, date2: value.date) && (apt.hospital == Constants.UserInfo.userID) )
                     
                 }) {
@@ -290,7 +296,8 @@ struct CustomDatePicker: View {
                         .fill(isSameDay(date1: appointment.aptDate, date2: currentDate) ? .white : mainDark)
                         .frame(width: 8, height: 8)
                     
-                } else {
+                }
+                else {
                     
                     Text("\(value.day)").font(Font.custom("Tajawal", size: 20))
                         .foregroundColor(isSameDay(date1: value.date, date2: currentDate) ? .white : .black)
@@ -370,11 +377,13 @@ struct CustomDatePicker: View {
     
     func checkAppointmentsForDay()-> Bool {
         var thereIs = false
-        for index in 0...(appointments.count - 1) {
-            let apt = appointments[index]
-            
-            if (isSameDay(date1: apt.aptDate, date2: currentDate) && apt.type == "blood" && apt.hospital == Constants.UserInfo.userID) {
-                thereIs = true
+        if (!aptVM.appointments.isEmpty) {
+            for index in 0...(aptVM.appointments.count - 1) {
+                let apt = aptVM.appointments[index]
+                
+                if (isSameDay(date1: apt.aptDate, date2: currentDate) && apt.type == "blood" && apt.hospital == Constants.UserInfo.userID) {
+                    thereIs = true
+                }
             }
         }
         return thereIs

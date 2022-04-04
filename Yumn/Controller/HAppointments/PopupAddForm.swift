@@ -11,9 +11,10 @@ import Combine
 
 
 struct PopupAddForm: View {
+    
     var controller: ManageAppointmentsViewController = ManageAppointmentsViewController()
     
-    @State var date: Date? = Date()
+    @State var date: Date = Constants.selected.selectedDate
 
     
     // colors
@@ -32,7 +33,7 @@ struct PopupAddForm: View {
     var dropDownList = ["15 دقيقة", "30 دقيقة", "1 ساعة"]
     
     
-    @State var selectedDate: Date = Date()
+    @State var selectedDate: Date = Constants.selected.selectedDate
     
     @State var durationText = ""
     @State var duration: Int = 0
@@ -40,8 +41,8 @@ struct PopupAddForm: View {
     @State var isDurationValid = false
     
     
-    @State var endDateTxt = Date().getFormattedDate(format: "HH:mm")
-    @State var endDate: Date = Date()
+    @State var endDateTxt = Constants.selected.selectedDate.getFormattedDate(format: "HH:mm")
+    @State var endDate: Date = Constants.selected.selectedDate
     
     
     @State var peoplePerAText = ""
@@ -343,9 +344,10 @@ struct PopupAddForm: View {
     
     func saveData() {
         print("hereeeee1111")
-        var apt = Appointment(type: "blood", startTime: selectedDate, endTime: endDate, aptDate: date!, hospital: Constants.UserInfo.userID, donors: peoplePerA)
-        apt.aptDuration = 30
-        apt.appointments = createAppointmentList()
+        let duration = 30.0
+        let apList = createAppointmentList()
+        
+        let apt = BloodAppointment(appointments: apList, type: "blood", startTime: selectedDate, endTime: endDate, aptDate: date, hospital: Constants.UserInfo.userID, aptDuration: duration, donors: peoplePerA)
         
         aptVM.addData(apt: apt)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2 , execute: {

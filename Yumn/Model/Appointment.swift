@@ -9,15 +9,21 @@ import SwiftUI
 import Firebase
 //
 
-struct OrganAppointment {
-    var appointments: [DAppointment]?
-    var type: String
-    var startTime: Date
-    var endTime: Date
-    var aptDate: Date
-    var hospital: String
-    var aptDuration: Double?
-    var organ: String
+class OrganAppointment: Appointment {
+    var organ: String = ""
+    
+    init(appointments: [DAppointment], type: String, startTime: Date, endTime: Date,
+                  aptDate: Date, hospital: String, aptDuration: Double, organ: String) {
+        super.init()
+        self.appointments = appointments
+        self.type = type
+        self.startTime = startTime
+        self.endTime = endTime
+        self.aptDate = aptDate
+        self.hospital = hospital
+        self.aptDuration = aptDuration
+        self.organ = organ
+    }
 }
 
 struct DAppointment: Identifiable {
@@ -31,26 +37,142 @@ struct DAppointment: Identifiable {
     var booked: Bool = false
 }
 
-struct Appointment {
+class Appointment {
     var appointments: [DAppointment]?
-    var type: String
-    var startTime: Date
-    var endTime: Date
-    var aptDate: Date
-    var hospital: String
-    var aptDuration: Double?
-    //    var totalDonors: Int
-    var donors: Int
-    //    var donorsList: [String]?
+    var type: String = ""
+    var startTime: Date = Date()
+    var endTime: Date = Date()
+    var aptDate: Date = Date()
+    var hospital: String = ""
+    var aptDuration: Double = 0
+}
+
+class BloodAppointment: Appointment {
+    var donors: Int?
+    
+    init(appointments: [DAppointment], type: String, startTime: Date, endTime: Date,
+                  aptDate: Date, hospital: String, aptDuration: Double, donors: Int) {
+        super.init()
+        self.appointments = appointments
+        self.type = type
+        self.startTime = startTime
+        self.endTime = endTime
+        self.aptDate = aptDate
+        self.hospital = hospital
+        self.aptDuration = aptDuration
+        self.donors = donors
+    }
 }
 
 class AppointmentVM: ObservableObject {
     @Published var appointments = [Appointment]()
     @Published var added = true
+    @Published var appointmentsWithin = [DAppointment]()
     
-    func addData(apt: Appointment) {
-        let db = Firestore.firestore()
+    let db = Firestore.firestore()
+    
+    func fetchData() {
+        db.collection("appointments").addSnapshotListener { (querySnapshot, error) in
+            guard let documents = querySnapshot?.documents else {
+                print("no documents")
+                return
+            }
+            
+            self.appointments = documents.map { (queryDocumentSnapshot) -> Appointment in
+                
+                let data = queryDocumentSnapshot.data()
+                let type = data["type"] as? String ?? ""
+                let appointments: [DAppointment] = self.fetchAppointmentsData(doc: queryDocumentSnapshot)
+                
+                let stamp1 = data["start_time"] as? Timestamp
+                let startTime = stamp1!.dateValue()
+                
+                let stamp2 = data["end_time"] as? Timestamp
+                let endTime = stamp2!.dateValue()
+
+                let stamp3 = data["date"] as? Timestamp
+                let aptDate = stamp3?.dateValue()
+                
+                let hospital = data["hospital"] as? String ?? ""
+                
+                if (type == "blood"){
+                let aptDuration = 30.0
+                let donors = data["donors"] as? Int ?? 0
+                
+                return BloodAppointment(appointments: appointments, type: type, startTime: startTime, endTime: endTime,
+                                   aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, donors: donors)
+                }
+                else {
+                    let organ = data["organ"] as? String ?? ""
+                    let aptDuration = 60.0
+                    return OrganAppointment(appointments: appointments, type: type, startTime: startTime, endTime: endTime,
+                                       aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, organ: organ)
+                }
+            }
+        }
         
+//        db.collection("appointments").whereField("type", in: ["organ"]).addSnapshotListener { (querySnapshot, error) in
+//            guard let documents = querySnapshot?.documents else {
+//                print("no documents")
+//                return
+//            }
+//
+//            self.appointments = documents.map { (queryDocumentSnapshot) -> OrganAppointment in
+//                let data = queryDocumentSnapshot.data()
+//                let type = data["type"] as? String ?? ""
+//                let appointments: [DAppointment] = self.fetchAppointmentsData(doc: queryDocumentSnapshot)
+//
+//                let stamp1 = data["start_time"] as? Timestamp
+//                let startTime = stamp1!.dateValue()
+//
+//                let stamp2 = data["end_time"] as? Timestamp
+//                let endTime = stamp2!.dateValue()
+//
+//                let stamp3 = data["date"] as? Timestamp
+//                let aptDate = stamp3?.dateValue()
+//
+//                let hospital = data["hospital"] as? String ?? ""
+//                let aptDuration = 60.0
+//                let organ = data["organ"] as? String ?? ""
+//
+//                return OrganAppointment(appointments: appointments, type: type, startTime: startTime, endTime: endTime,
+//                                   aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, organ: organ)
+//            }
+//        }
+
+        
+    }
+    
+    func fetchAppointmentsData(doc: QueryDocumentSnapshot) -> [DAppointment] {
+        let docID = doc.documentID
+        db.collection("appointments").document(docID).collection("appointments").addSnapshotListener { (querySnapshot, error) in
+            guard let documents = querySnapshot?.documents else {
+                print("no documents")
+                return
+            }
+            
+            self.appointmentsWithin = documents.map { (queryDocumentSnapshot) -> DAppointment in
+                let data = queryDocumentSnapshot.data()
+                let type = data["type"] as? String ?? ""
+                let donor = data["donor"] as? String ?? ""
+                let hName = data["hospital"] as? String ?? ""
+                let confirmed = data["confirmed"] as? Bool ?? false
+                let booked = data["booked"] as? Bool ?? false
+                
+                let stamp1 = data["start_time"] as? Timestamp
+                let startTime = stamp1!.dateValue()
+                
+                let stamp2 = data["end_time"] as? Timestamp
+                let endTime = stamp2!.dateValue()
+
+                return DAppointment(type: type, startTime: startTime, endTime: endTime, donor: donor, hName: hName, confirmed: confirmed, booked: booked)
+            }
+        }
+        
+        return self.appointmentsWithin
+    }
+    
+    func addData(apt: BloodAppointment) {
         // Add doc to collection
         let newDoc = db.collection("appointments").document()
         newDoc.setData(["type": apt.type,"hospital": apt.hospital, "start_time": apt.startTime,
@@ -85,8 +207,6 @@ class AppointmentVM: ObservableObject {
     } // end of addData
     
     func addDataOrgan(apt: OrganAppointment) {
-        let db = Firestore.firestore()
-        
         // Add doc to collection
         let newDoc = db.collection("appointments").document()
         newDoc.setData(["type": apt.type,"hospital": apt.hospital, "start_time": apt.startTime,
@@ -130,13 +250,13 @@ func getSampleDate(offset: Int) -> Date{
     return date ?? Date()
 }
 
-var appointments: [Appointment] =
-[
-    Appointment(type: "blood", startTime: Date(), endTime: Date().addingTimeInterval(30 * 60), aptDate: getSampleDate(offset: 1), hospital: Constants.UserInfo.userID, donors: 4),
-    Appointment(type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(30 * 60), aptDate: getSampleDate(offset: -3), hospital: Constants.UserInfo.userID, donors: 6),
-    Appointment(type: "blood", startTime: Date(), endTime: Date().addingTimeInterval(30 * 60), aptDate: getSampleDate(offset: 4), hospital: "center", donors: 7),
-    Appointment(type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(30 * 60), aptDate: getSampleDate(offset: 1), hospital: Constants.UserInfo.userID, donors: 4),
-    Appointment(type: "blood", startTime: Date(), endTime: Date().addingTimeInterval(30 * 60), aptDate: getSampleDate(offset: -10), hospital: Constants.UserInfo.userID, donors: 2),
-    
-]
+//var appointments: [Appointment] =
+//[
+//    Appointment(type: "blood", startTime: Date(), endTime: Date().addingTimeInterval(30 * 60), aptDate: getSampleDate(offset: 1), hospital: Constants.UserInfo.userID, donors: 4),
+//    Appointment(type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(30 * 60), aptDate: getSampleDate(offset: -3), hospital: Constants.UserInfo.userID, donors: 6),
+//    Appointment(type: "blood", startTime: Date(), endTime: Date().addingTimeInterval(30 * 60), aptDate: getSampleDate(offset: 4), hospital: "center", donors: 7),
+//    Appointment(type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(30 * 60), aptDate: getSampleDate(offset: 1), hospital: Constants.UserInfo.userID, donors: 4),
+//    Appointment(type: "blood", startTime: Date(), endTime: Date().addingTimeInterval(30 * 60), aptDate: getSampleDate(offset: -10), hospital: Constants.UserInfo.userID, donors: 2),
+//
+//]
 

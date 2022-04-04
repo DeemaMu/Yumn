@@ -100,5 +100,8 @@ struct Constants {
         
     }
     
+    struct selected {
+        static var selectedDate: Date = Date()
+    }
 
 }
