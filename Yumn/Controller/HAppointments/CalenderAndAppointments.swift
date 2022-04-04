@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct CalenderAndAppointments: View {
     
@@ -19,6 +20,7 @@ struct CalenderAndAppointments: View {
             }
         }
     }
+    
 }
 
 //struct CalenderAndAppointments_Previews: PreviewProvider {

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct CustomDatePicker: View {
     
@@ -13,8 +14,7 @@ struct CustomDatePicker: View {
     @State var showPopup: Bool = false
     @Binding var currentDate: Date
     
-//    var dispatch : DispatchFunction
-    
+        
     @StateObject var overalyControl = OverlayControl()
     @Binding var controller: ManageAppointmentsViewController
 
@@ -25,10 +25,12 @@ struct CustomDatePicker: View {
     let mainLight = Color(UIColor.init(named: "mainLight")!)
     let lightGray = Color(UIColor.lightGray)
     
+    
     var body: some View {
         
         
         if #available(iOS 15.0, *) {
+            
             VStack(spacing: 10){
                 
                 //days
@@ -146,7 +148,7 @@ struct CustomDatePicker: View {
                     }
                     
                     if let appointment = appointments.first(where: { apt in
-                        return ( isSameDayBlood(date1: apt.aptDate, date2: currentDate, type: apt.type) && (apt.hospital == "mamlakah"))
+                        return ( isSameDayBlood(date1: apt.aptDate, date2: currentDate, type: apt.type) && (apt.hospital == Constants.UserInfo.userID))
                         
                     }) {
                         
@@ -267,6 +269,7 @@ struct CustomDatePicker: View {
         } else {
         }
     }
+
     
     @ViewBuilder
     func CardView(value: DateValue)-> some View{
@@ -275,7 +278,7 @@ struct CustomDatePicker: View {
                 //                Text("\(value.day)").font(.title3.bold())
                 
                 if let appointment = appointments.first(where: { apt in
-                    return ( isSameDay(date1: apt.aptDate, date2: value.date) && (apt.hospital == "mamlakah") )
+                    return ( isSameDay(date1: apt.aptDate, date2: value.date) && (apt.hospital == Constants.UserInfo.userID) )
                     
                 }) {
                     
@@ -370,7 +373,7 @@ struct CustomDatePicker: View {
         for index in 0...(appointments.count - 1) {
             let apt = appointments[index]
             
-            if (isSameDay(date1: apt.aptDate, date2: currentDate) && apt.type == "blood" && apt.hospital == "mamlakah") {
+            if (isSameDay(date1: apt.aptDate, date2: currentDate) && apt.type == "blood" && apt.hospital == Constants.UserInfo.userID) {
                 thereIs = true
             }
         }

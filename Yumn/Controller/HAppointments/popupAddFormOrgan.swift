@@ -24,27 +24,20 @@ struct PopupAddFormOrgan: View {
     
     // dropdown variables
     
-    @State var durationPerAText = ""
-    @State var durationPerA: Double = 0
-    var placeholder = "اختر مدة الموعد"
-    var dropDownList = ["15 دقيقة", "30 دقيقة", "1 ساعة"]
+    @State var apptTypeText = ""
+    @State var apptType = ""
+    var placeholder = "اختر العضو"
+    var dropDownList = ["تبرع بكلية", "تبرع بجزء من الكبد"]
     
     
     @State var selectedDate: Date = Date()
     
-    @State var durationText = ""
+    @State var typeText = ""
     
-    @State var duration: Int = 0
-    
-    @State var endDateTxt = ""
-    
+    @State var endDateTxt = Date().getFormattedDate(format: "HH:mm")
     @State var endDate: Date = Date()
     
-    @State var peoplePerAText = ""
-    @State var peoplePerA: Int = 0
-    
     @State var durationValue: Double = 0
-    
     
     @ObservedObject var aptVM = AppointmentVM()
     
@@ -52,6 +45,8 @@ struct PopupAddFormOrgan: View {
     init(controller: ManageAppointmentsViewController, date: Date){
         self.date = date
         self.controller = controller
+        self.selectedDate = date
+        self.endDate = date
     }
     
     var body: some View {
@@ -71,7 +66,7 @@ struct PopupAddFormOrgan: View {
                     
                 }.padding(.leading, 20)
                 
-                Text("إضافة موعد").font(Font.custom("Tajawal", size: 20))
+                Text("إضافة موعد فحص مبدئي").font(Font.custom("Tajawal", size: 20))
                     .foregroundColor(mainDark)
                     .frame(maxWidth: .infinity)
                 //                    .padding(.leading, -25)
@@ -88,11 +83,8 @@ struct PopupAddFormOrgan: View {
                     
                     VStack(alignment: .trailing, spacing: 20){
                         createLabel(label: "وقت بداية الموعد:")
-                        //                    DatePickerInputView(date: $date ,placeholder: "here")
-                        
                         DatePicker("",
                                    selection: $selectedDate, displayedComponents: [.hourAndMinute])
-                        //                        .datePickerStyle(CompactDatePickerStyle())
                             .accentColor(.white)
                             .background(mainDark.colorInvert())
                             .cornerRadius(15)
@@ -107,59 +99,6 @@ struct PopupAddFormOrgan: View {
                     }.listRowSeparator(.hidden)
                     
                     
-                    
-                    
-                    //                    VStack(alignment: .trailing, spacing: 5){
-                    //
-                    //                        createLabel(label: "مدة فترة المواعيد")
-                    //
-                    //                        HStack(){
-                    //                            Spacer()
-                    //                            ZStack(){
-                    //                                //                        Spacer()
-                    //
-                    //                                //                            createLabel(label: "دقيقة")
-                    //                                HStack(){
-                    //                                    Text("ساعة").font(Font.custom("Tajawal", size: 17)).foregroundColor(mainDark).multilineTextAlignment(.leading)
-                    //                                    Spacer()
-                    //                                    //                            .frame(maxWidth: .infinity)
-                    //
-                    //                                }
-                    //
-                    //
-                    //                                TextField("", text: $durationText)
-                    //                                    .placeholder(when: durationText.isEmpty){
-                    //                                        Text("المدة").font(Font.custom("Tajawal", size: 15)).foregroundColor(lightGray)
-                    //                                    }
-                    //                                    .frame(maxWidth: .infinity)
-                    //                                    .multilineTextAlignment(.trailing)
-                    //                                    .underlineTextField()
-                    //                                    .keyboardType(.numberPad)
-                    ////                                    .onReceive( Just( durationText ), perform: {
-                    ////                                            let newValue = self.contentType.filterCharacters( oldValue: $0 )
-                    ////                                            if newValue != self.durationText {
-                    ////                                                self.durationText = newValue
-                    ////                                            }
-                    ////                                        })
-                    //                                    .onChange(of: durationText){newValue in
-                    //                                        if(!newValue.isEmpty){
-                    //                                            duration = Int(newValue)!
-                    //                                        }
-                    //                                    }
-                    //
-                    //                            }
-                    //                            //                            .padding(.leading, UIScreen.screenWidth / 2.5 )
-                    //
-                    //
-                    //                        }
-                    //
-                    //
-                    //
-                    //                    }.listRowSeparator(.hidden)
-                    //                        .padding(.top, 20)
-                    
-                    
-                    
                     HStack(alignment: .center){
                         TextField("", text: $endDateTxt)
                             .disabled(true)
@@ -167,17 +106,7 @@ struct PopupAddFormOrgan: View {
                             .frame(maxWidth: .infinity)
                             .multilineTextAlignment(.trailing)
                         //                        .underlineTextField()
-                            .onChange(of: durationText){newValue in
-                                if(!newValue.isEmpty){
-                                    self.durationValue = Double(newValue)!
-                                    endDate = selectedDate.addingTimeInterval(1 * 60 * 60)
-                                    endDateTxt = endDate.getFormattedDate(format: "HH:mm")
-                                } else {
-                                    endDateTxt = ""
-                                }
-                            }
                             .onChange(of: selectedDate){newValue in
-                                //                                    let value = Double(newValue)!
                                 endDate = newValue.addingTimeInterval(1 * 60 * 60)
                                 endDateTxt = endDate.getFormattedDate(format: "HH:mm")
                             }
@@ -186,81 +115,58 @@ struct PopupAddFormOrgan: View {
                         
                         
                     }.frame(maxWidth: .infinity)
-                        .padding(.vertical, 30)
+                        .padding(.top, 20)
+                        .padding(.bottom, 10)
                         .listRowSeparator(.hidden)
                     
-                    //                    VStack(alignment: .trailing, spacing: 20){
-                    //                        createLabel(label: "مدة الموعد")
-                    //
-                    //                        Menu {
-                    //                            ForEach(dropDownList, id: \.self){ client in
-                    //                                Button(client) {
-                    //                                    self.durationPerAText = client
-                    //                                }.multilineTextAlignment(.trailing)
-                    //                            }.onChange(of: durationPerAText){newValue in
-                    //                                if(!newValue.isEmpty){
-                    //                                    switch newValue{
-                    //                                    case dropDownList[0]:
-                    //                                        self.durationPerA = 15
-                    //                                        break
-                    //                                    case dropDownList[1]:
-                    //                                        self.durationPerA = 30
-                    //                                        break
-                    //                                    case dropDownList[2]:
-                    //                                        self.durationPerA = 60
-                    //                                        break
-                    //                                    default:
-                    //                                        self.durationPerA = 0
-                    //                                    }
-                    //                                }
-                    //                            }
-                    //
-                    //                        } label: {
-                    //                            VStack(spacing: 5){
-                    //                                HStack{
-                    //                                    Image(systemName: "chevron.down")
-                    //                                        .foregroundColor(mainDark)
-                    //                                        .font(Font.system(size: 20, weight: .bold))
-                    //                                    Spacer()
-                    //                                    Text(durationPerAText.isEmpty ? placeholder : durationPerAText)
-                    //                                        .foregroundColor(durationText.isEmpty ? .gray : .black).font(Font.custom("Tajawal", size: 15))
-                    //                                }
-                    //                                .padding(.horizontal)
-                    //                                Rectangle()
-                    //                                    .fill(mainDark)
-                    //                                    .frame(height: 1)
-                    //                                    .padding(.top, 8)
-                    //                                    .padding(.horizontal , 10)
-                    //                            }
-                    //                        }
-                    //
-                    //
-                    //                    }.frame(maxWidth: .infinity)
-                    //                        .listRowSeparator(.hidden)
-                    //                    //                        .padding(.top, 10)
-                    //
-                    //                    VStack(alignment: .trailing, spacing: 5){
-                    //
-                    //                        createLabel(label: "عدد الأشخاص لكل موعد")
-                    //
-                    //                        TextField("", text: $peoplePerAText)
-                    //                            .placeholder(when: peoplePerAText.isEmpty){
-                    //                                Text("عدد الأشخاص").font(Font.custom("Tajawal", size: 15)).foregroundColor(lightGray)
-                    //                            }
-                    //                            .frame(maxWidth: .infinity)
-                    //                            .multilineTextAlignment(.trailing)
-                    //                            .underlineTextField()
-                    //                            .keyboardType(.numberPad)
-                    //                            .onChange(of: peoplePerAText){newValue in
-                    //                                if(!newValue.isEmpty){
-                    //                                    self.peoplePerA = Int(newValue)!
-                    //                                }
-                    //                            }
-                    //
-                    //
-                    //                    }
-                    //                    .listRowSeparator(.hidden)
-                    //                    .padding(.top, 20)
+                    VStack(alignment: .trailing, spacing: 20){
+                        createLabel(label: "موعد فحص مبدئي لـ")
+                        
+                        Menu {
+                            ForEach(dropDownList, id: \.self){ client in
+                                Button(client) {
+                                    self.apptTypeText = client
+                                }.multilineTextAlignment(.trailing)
+                            }
+                            .onChange(of: apptTypeText){newValue in
+                                if(!newValue.isEmpty){
+                                    switch newValue{
+                                    case dropDownList[0]:
+                                        self.apptType = "liver"
+                                        break
+                                    case dropDownList[1]:
+                                        self.apptType = "kidney"
+                                        break
+                                    default:
+                                        self.apptType = "none"
+                                    }
+                                }
+                            }
+                            
+                        } label: {
+                            VStack(spacing: 5){
+                                HStack{
+                                    Image(systemName: "chevron.down")
+                                        .foregroundColor(mainDark)
+                                        .font(Font.system(size: 20, weight: .bold))
+                                    Spacer()
+                                    Text(apptTypeText.isEmpty ? placeholder : apptTypeText)
+                                        .foregroundColor(typeText.isEmpty ? .gray : .black).font(Font.custom("Tajawal", size: 15))
+                                }
+                                .padding(.horizontal)
+                                Rectangle()
+                                    .fill(mainDark)
+                                    .frame(height: 1)
+                                    .padding(.top, 8)
+                                    .padding(.horizontal , 10)
+                            }
+                        }
+                        
+                        
+                    }.frame(maxWidth: .infinity)
+                        .listRowSeparator(.hidden)
+                        .padding(.bottom, 30)
+                    
                     
                     HStack(alignment: .center){
                         Button(action: {
@@ -277,15 +183,14 @@ struct PopupAddFormOrgan: View {
                                 cornerRadius: 20,
                                 style: .continuous
                             )
-                                .fill(mainDark)
+                                .fill(buttonColor())
                         )
                     }
-                    //                    .padding(.top, 20)
                     .frame(maxWidth: .infinity)
                     
                     
                 } else {
-                    // Fallback on earlier versions
+                    
                 }
                 
             }.padding(0)
@@ -309,14 +214,21 @@ struct PopupAddFormOrgan: View {
         return Text(label).font(Font.custom("Tajawal", size: 17)).foregroundColor(mainDark)
     }
     
+    func buttonColor()-> Color {
+        if (!apptTypeText.isEmpty){
+            return mainDark
+        } else {
+            return .gray
+        }
+    }
     
     func saveData() {
         print("hereeeee1111")
-        var apt = Appointment(type: "organ", startTime: selectedDate, endTime: endDate, aptDate: date!, hospital: "mamlakah", donors: 1)
-        apt.aptDuration = 1
+        var apt = OrganAppointment(type: "organ", startTime: selectedDate, endTime: endDate, aptDate: date!, hospital: Constants.UserInfo.userID, organ: apptType)
+        apt.aptDuration = 60
         apt.appointments = createAppointmentList()
         
-        aptVM.addData(apt: apt)
+        aptVM.addDataOrgan(apt: apt)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2 , execute: {
             if(aptVM.added){
                 self.controller.showSuccessPopUp()
@@ -334,9 +246,9 @@ struct PopupAddFormOrgan: View {
         
         let currentDate = selectedDate
         
-        let currentEnd = currentDate.addingTimeInterval(1 * 60)
+        let currentEnd = currentDate.addingTimeInterval(60 * 60)
         
-        list.append(DAppointment(type: "organ", startTime: currentDate, endTime: currentEnd, donor: "", hName: "mamlakah", confirmed: false, booked: false))
+        list.append(DAppointment(type: "organ", startTime: currentDate, endTime: currentEnd, donor: "", hName: Constants.UserInfo.userID, confirmed: false, booked: false))
         
         
         print("\(list.count)")

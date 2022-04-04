@@ -9,10 +9,12 @@ import SwiftUI
 import UIKit
 import Combine
 
+
 struct PopupAddForm: View {
     var controller: ManageAppointmentsViewController = ManageAppointmentsViewController()
     
     @State var date: Date? = Date()
+
     
     // colors
     
@@ -33,18 +35,24 @@ struct PopupAddForm: View {
     @State var selectedDate: Date = Date()
     
     @State var durationText = ""
-    
     @State var duration: Int = 0
+    @State var durationError = ""
+    @State var isDurationValid = false
     
-    @State var endDateTxt = ""
     
+    @State var endDateTxt = Date().getFormattedDate(format: "HH:mm")
     @State var endDate: Date = Date()
+    
     
     @State var peoplePerAText = ""
     @State var peoplePerA: Int = 0
+    @State var pplPerAError = ""
+    @State var isPplNValid = false
+    @State var underlineColor2: Color = Color(UIColor.init(named: "mainDark")!)
     
     @State var durationValue: Double = 0
     
+    @State var underlineColor: Color = Color(UIColor.init(named: "mainDark")!)
     
     @ObservedObject var aptVM = AppointmentVM()
     
@@ -52,6 +60,8 @@ struct PopupAddForm: View {
     init(controller: ManageAppointmentsViewController, date: Date){
         self.date = date
         self.controller = controller
+        self.selectedDate = date
+        self.endDate = date
     }
     
     var body: some View {
@@ -71,7 +81,7 @@ struct PopupAddForm: View {
                     
                 }.padding(.leading, 20)
                 
-                Text("إضافة موعد").font(Font.custom("Tajawal", size: 20))
+                Text("إضافة فترة مواعيد").font(Font.custom("Tajawal", size: 20))
                     .foregroundColor(mainDark)
                     .frame(maxWidth: .infinity)
                 //                    .padding(.leading, -25)
@@ -88,11 +98,9 @@ struct PopupAddForm: View {
                     
                     VStack(alignment: .trailing, spacing: 20){
                         createLabel(label: "وقت بداية فترة المواعيد")
-                        //                    DatePickerInputView(date: $date ,placeholder: "here")
                         
                         DatePicker("",
                                    selection: $selectedDate, displayedComponents: [.hourAndMinute])
-                        //                        .datePickerStyle(CompactDatePickerStyle())
                             .accentColor(.white)
                             .background(mainDark.colorInvert())
                             .cornerRadius(15)
@@ -108,30 +116,6 @@ struct PopupAddForm: View {
                     
                     
                     
-                    //                    VStack(alignment: .trailing){
-                    //                        createLabel(label: "وقت انتهاء الموعد")
-                    //                        //                    DatePickerInputView(date: $date ,placeholder: "here")
-                    //
-                    //                        var endTimepicker = DatePicker("",
-                    //                                                       selection: $selectedDate, displayedComponents: [.hourAndMinute])
-                    //                        //                        .datePickerStyle(CompactDatePickerStyle())
-                    //                            .accentColor(.white)
-                    //                            .background(mainDark.colorInvert())
-                    //                            .cornerRadius(15)
-                    //                            .foregroundColor(.white)
-                    //                            .preferredColorScheme(.light)
-                    //                            .colorInvert()
-                    //                            .labelsHidden()
-                    //                            .buttonStyle(BorderlessButtonStyle())
-                    //                            .frame(maxWidth: .infinity)
-                    //
-                    //                        endTimepicker
-                    //
-                    //
-                    //                    }.listRowSeparator(.hidden)
-                    //                        .padding(.top)
-                    
-                    
                     VStack(alignment: .trailing, spacing: 5){
                         
                         createLabel(label: "مدة فترة المواعيد")
@@ -139,13 +123,9 @@ struct PopupAddForm: View {
                         HStack(){
                             Spacer()
                             ZStack(){
-                                //                        Spacer()
-                                
-                                //                            createLabel(label: "دقيقة")
                                 HStack(){
-                                    Text("ساعة").font(Font.custom("Tajawal", size: 17)).foregroundColor(mainDark).multilineTextAlignment(.leading)
+                                    Text("ساعة").font(Font.custom("Tajawal", size: 17)).foregroundColor(underlineColor).multilineTextAlignment(.leading)
                                     Spacer()
-                                    //                            .frame(maxWidth: .infinity)
                                     
                                 }
                                 
@@ -156,27 +136,46 @@ struct PopupAddForm: View {
                                     }
                                     .frame(maxWidth: .infinity)
                                     .multilineTextAlignment(.trailing)
-                                    .underlineTextField()
+                                    .underlineTextField(color: $underlineColor)
                                     .keyboardType(.numberPad)
-                                //                                    .onReceive( Just( durationText ), perform: {
-                                //                                            let newValue = self.contentType.filterCharacters( oldValue: $0 )
-                                //                                            if newValue != self.durationText {
-                                //                                                self.durationText = newValue
-                                //                                            }
-                                //                                        })
                                     .onChange(of: durationText){newValue in
+                                        if(newValue.isEmpty || newValue.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty){
+                                            self.underlineColor = Color.red
+                                            self.durationError = "أدخل قيمة عددية مقبولة"
+                                            self.isDurationValid = false
+                                            duration = 0
+                                        }
                                         if(!newValue.isEmpty){
-                                            duration = Int(newValue)!
+                                            if(!newValue.trimmingCharacters(in: .letters).isEmpty &&
+                                               !newValue.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && !newValue.trimmingCharacters(in: .symbols).isEmpty){
+                                                if(Int(newValue)! > 24 || Int(newValue)! <= 0){
+                                                    duration = 0
+                                                    self.underlineColor = Color.red
+                                                    self.durationError = "أدخل قيمة عددية مقبولة"
+                                                    self.isDurationValid = false
+                                                }
+                                                else {
+                                                    self.isDurationValid = true
+                                                    self.durationError = ""
+                                                    self.duration = Int(newValue)!
+                                                    self.underlineColor = Color(UIColor.init(named: "mainDark")!)
+                                                }
+                                            }
+                                            else {
+                                                duration = 0
+                                                self.underlineColor = Color.red
+                                                self.durationError = "أدخل قيمة عددية مقبولة"
+                                                self.isDurationValid = false
+                                            }
                                         }
                                     }
-                                
                             }
-                            //                            .padding(.leading, UIScreen.screenWidth / 2.5 )
-                            
-                            
                         }
                         
-                        
+                        TextField("", text: $durationError).font(Font.custom("Tajawal", size: 13)).foregroundColor(.red)
+                            .disabled(true).multilineTextAlignment(.trailing)
+                            .padding(.trailing, 10)
+                            .fixedSize(horizontal: false, vertical: true)
                         
                     }.listRowSeparator(.hidden)
                         .padding(.top, 20)
@@ -189,18 +188,39 @@ struct PopupAddForm: View {
                             .font(Font.custom("Tajawal", size: 17))
                             .frame(maxWidth: .infinity)
                             .multilineTextAlignment(.trailing)
-                        //                        .underlineTextField()
                             .onChange(of: durationText){newValue in
-                                if(!newValue.isEmpty){
-                                    self.durationValue = Double(newValue)!
+                                if(newValue.isEmpty || newValue.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty){
+                                    self.durationValue = 0
                                     endDate = selectedDate.addingTimeInterval(durationValue * 60 * 60)
                                     endDateTxt = endDate.getFormattedDate(format: "HH:mm")
+                                }
+                                if(!newValue.isEmpty){
+                                    if(!newValue.trimmingCharacters(in: .letters).isEmpty &&
+                                       !newValue.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && !newValue.trimmingCharacters(in: .symbols).isEmpty) {
+                                        if(Int(newValue)! > 24 || Int(newValue)! <= 0){
+                                            self.durationValue = 0
+                                            endDate = selectedDate.addingTimeInterval(durationValue * 60 * 60)
+                                            endDateTxt = endDate.getFormattedDate(format: "HH:mm")
+                                        }
+                                        else {
+                                            self.durationValue = Double(newValue)!
+                                            endDate = selectedDate.addingTimeInterval(durationValue * 60 * 60)
+                                            endDateTxt = endDate.getFormattedDate(format: "HH:mm")
+                                        }
+                                    }
+                                    else {
+                                        self.durationValue = 0
+                                        endDate = selectedDate.addingTimeInterval(durationValue * 60 * 60)
+                                        endDateTxt = endDate.getFormattedDate(format: "HH:mm")
+                                    }
+                                    
                                 } else {
-                                    endDateTxt = ""
+                                    self.durationValue = 0
+                                    endDate = selectedDate.addingTimeInterval(durationValue * 60 * 60)
+                                    endDateTxt = endDate.getFormattedDate(format: "HH:mm")
                                 }
                             }
                             .onChange(of: selectedDate){newValue in
-                                //                                    let value = Double(newValue)!
                                 endDate = newValue.addingTimeInterval(durationValue * 60 * 60)
                                 endDateTxt = endDate.getFormattedDate(format: "HH:mm")
                             }
@@ -209,102 +229,84 @@ struct PopupAddForm: View {
                         
                         
                     }.frame(maxWidth: .infinity)
-                        .padding(.vertical, 30)
+                        .padding(.bottom, 30)
+                        .padding(.top, 10)
                         .listRowSeparator(.hidden)
                     
-                    VStack(alignment: .trailing, spacing: 20){
-                        createLabel(label: "مدة الموعد")
-                        
-                        Menu {
-                            ForEach(dropDownList, id: \.self){ client in
-                                Button(client) {
-                                    self.durationPerAText = client
-                                }.multilineTextAlignment(.trailing)
-                            }.onChange(of: durationPerAText){newValue in
-                                if(!newValue.isEmpty){
-                                    switch newValue{
-                                    case dropDownList[0]:
-                                        self.durationPerA = 15
-                                        break
-                                    case dropDownList[1]:
-                                        self.durationPerA = 30
-                                        break
-                                    case dropDownList[2]:
-                                        self.durationPerA = 60
-                                        break
-                                    default:
-                                        self.durationPerA = 0
-                                    }
-                                }
-                            }
-                            
-                        } label: {
-                            VStack(spacing: 5){
-                                HStack{
-                                    Image(systemName: "chevron.down")
-                                        .foregroundColor(mainDark)
-                                        .font(Font.system(size: 20, weight: .bold))
-                                    Spacer()
-                                    Text(durationPerAText.isEmpty ? placeholder : durationPerAText)
-                                        .foregroundColor(durationText.isEmpty ? .gray : .black).font(Font.custom("Tajawal", size: 15))
-                                }
-                                .padding(.horizontal)
-                                Rectangle()
-                                    .fill(mainDark)
-                                    .frame(height: 1)
-                                    .padding(.top, 8)
-                                    .padding(.horizontal , 10)
-                            }
-                        }
-                        
-                        
-                    }.frame(maxWidth: .infinity)
-                        .listRowSeparator(.hidden)
-                    //                        .padding(.top, 10)
                     
                     VStack(alignment: .trailing, spacing: 5){
                         
-                        createLabel(label: "عدد الأشخاص لكل موعد")
+                        createLabel(label: "عدد المواعيد لكل 30 دقيقة")
                         
                         TextField("", text: $peoplePerAText)
                             .placeholder(when: peoplePerAText.isEmpty){
-                                Text("عدد الأشخاص").font(Font.custom("Tajawal", size: 15)).foregroundColor(lightGray)
+                                Text("عدد المواعيد").font(Font.custom("Tajawal", size: 15)).foregroundColor(lightGray)
                             }
                             .frame(maxWidth: .infinity)
                             .multilineTextAlignment(.trailing)
-                            .underlineTextField()
+                            .underlineTextField(color: $underlineColor2)
                             .keyboardType(.numberPad)
                             .onChange(of: peoplePerAText){newValue in
+                                if(newValue.isEmpty || newValue.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty){
+                                    self.underlineColor2 = Color.red
+                                    self.pplPerAError = "أدخل قيمة عددية مقبولة"
+                                    self.isPplNValid = false
+                                }
                                 if(!newValue.isEmpty){
-                                    self.peoplePerA = Int(newValue)!
+                                    if(!newValue.trimmingCharacters(in: .letters).isEmpty &&
+                                       !newValue.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && !newValue.trimmingCharacters(in: .symbols).isEmpty){
+                                        if(Int(newValue)! > 100 || Int(newValue)! <= 0){
+                                            self.underlineColor2 = Color.red
+                                            self.pplPerAError = "أدخل قيمة عددية مقبولة"
+                                            self.isPplNValid = false
+                                        }
+                                        else {
+                                            self.isPplNValid = true
+                                            self.pplPerAError = ""
+                                            self.peoplePerA = Int(newValue)!
+                                            self.underlineColor2 = Color(UIColor.init(named: "mainDark")!)
+                                        }
+                                    }
+                                    else {
+                                        self.underlineColor2 = Color.red
+                                        self.pplPerAError = "أدخل قيمة عددية مقبولة"
+                                        self.isPplNValid = false
+                                    }
                                 }
                             }
+                        
+                        TextField("", text: $pplPerAError).font(Font.custom("Tajawal", size: 13)).foregroundColor(.red)
+                            .disabled(true).multilineTextAlignment(.trailing)
+                            .padding(.trailing, 10)
                         
                         
                     }
                     .listRowSeparator(.hidden)
-                    .padding(.top, 20)
+                    .padding(.top, 10)
+                    .padding(.bottom, 10)
                     
-                    HStack(){
-                        Button(action: {
-                            saveData()
-                        }) {
-                            Text("إضافة").font(Font.custom("Tajawal", size: 20))
-                                .foregroundColor(.white)
-                                .padding(.horizontal, 75)
-                                .padding(.vertical, 10)
-                            
-                        }
-                        .background(
-                            RoundedRectangle(
-                                cornerRadius: 20,
-                                style: .continuous
+                    VStack(alignment: .center) {
+                        HStack(alignment: .center){
+                            Button(action: {
+                                saveData()
+                            }) {
+                                Text("إضافة").font(Font.custom("Tajawal", size: 20))
+                                    .foregroundColor(.white)
+                                    .padding(.horizontal, 75)
+                                    .padding(.vertical, 10)
+                                
+                            }
+                            .background(
+                                RoundedRectangle(
+                                    cornerRadius: 20,
+                                    style: .continuous
+                                )
+                                    .fill(buttonColor())
                             )
-                                .fill(mainDark)
-                        )
-                    }.padding(.top, 20)
-                        .frame(maxWidth: .infinity)
-                    
+                        }
+                        //                    .padding(.top, 20)
+                        .disabled(!isDurationValid || !isPplNValid)
+                    }.frame(maxWidth: .infinity)
                     
                 } else {
                     // Fallback on earlier versions
@@ -331,11 +333,18 @@ struct PopupAddForm: View {
         return Text(label).font(Font.custom("Tajawal", size: 17)).foregroundColor(mainDark)
     }
     
+    func buttonColor()-> Color {
+        if (isDurationValid && isPplNValid){
+            return mainDark
+        } else {
+            return .gray
+        }
+    }
     
     func saveData() {
         print("hereeeee1111")
-        var apt = Appointment(type: "blood", startTime: selectedDate, endTime: endDate, aptDate: date!, hospital: "mamlakah", donors: 5)
-        apt.aptDuration = durationPerA
+        var apt = Appointment(type: "blood", startTime: selectedDate, endTime: endDate, aptDate: date!, hospital: Constants.UserInfo.userID, donors: peoplePerA)
+        apt.aptDuration = 30
         apt.appointments = createAppointmentList()
         
         aptVM.addData(apt: apt)
@@ -349,6 +358,8 @@ struct PopupAddForm: View {
         })
     }
     
+    
+    
     func createAppointmentList() -> [DAppointment] {
         
         print("hereeeee222222")
@@ -359,11 +370,11 @@ struct PopupAddForm: View {
         
         while(currentDate != endDate){
             num += 1
-            let currentEnd = currentDate.addingTimeInterval(durationPerA * 60)
+            let currentEnd = currentDate.addingTimeInterval(30 * 60)
             
-            list.append(DAppointment(type: "blood", startTime: currentDate, endTime: currentEnd, donor: "", hName: "mamlakah", confirmed: false, booked: false))
+            list.append(DAppointment(type: "blood", startTime: currentDate, endTime: currentEnd, donor: "", hName: Constants.UserInfo.userID, confirmed: false, booked: false))
             
-            currentDate = currentDate.addingTimeInterval(durationPerA * 60)
+            currentDate = currentDate.addingTimeInterval(30 * 60)
         }
         
         print("\(list.count)")
@@ -393,11 +404,10 @@ extension View {
             }
         }
     
-    func underlineTextField() -> some View {
+    func underlineTextField(color: Binding<Color>) -> some View {
         self
-        //            .padding(.vertical, 10)
             .overlay(Rectangle().frame(height: 1).padding(.top, 35))
-            .foregroundColor(Color(UIColor.init(named: "mainDark")!))
+            .foregroundColor(color.wrappedValue)
             .padding(10)
     }
     

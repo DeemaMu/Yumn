@@ -109,6 +109,9 @@ class VHomeViewController: UIViewController {
         do
             {
         try Auth.auth().signOut()
+                
+                Constants.UserInfo.userID = ""
+                
                 transitionToLogIn()
                 
                 
