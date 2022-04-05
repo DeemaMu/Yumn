@@ -44,9 +44,11 @@ class RewardsViewController: UIViewController {
         }
         
         roundview.layer.cornerRadius = 35
-        pointsBox.layer.cornerRadius = 20
+        pointsBox.layer.cornerRadius = 30
 
-        navigationController?.navigationBar.barTintColor = UIColor.green
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+
 
         super.viewDidLoad()
 
