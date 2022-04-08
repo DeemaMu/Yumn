@@ -13,7 +13,9 @@ class RewardsViewController: UIViewController {
     @IBOutlet weak var points: UILabel!
     @IBOutlet weak var roundview: UIView!
    
+    @IBOutlet weak var redCircle: UIImageView!
     @IBOutlet weak var pointsBox: UIView!
+    @IBOutlet weak var confetti: UIImageView!
     
     override func viewDidLoad() {
         
@@ -48,9 +50,16 @@ class RewardsViewController: UIViewController {
 
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        
+        pointsBox.superview?.bringSubviewToFront(pointsBox)
+        points.superview?.bringSubviewToFront(points)
+        
+
 
 
         super.viewDidLoad()
+        
+        
 
         // Do any additional setup after loading the view.
     }
