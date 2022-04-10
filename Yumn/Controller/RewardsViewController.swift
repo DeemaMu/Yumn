@@ -12,7 +12,10 @@ import FirebaseAuth
 class RewardsViewController: UIViewController {
     @IBOutlet weak var points: UILabel!
     @IBOutlet weak var roundview: UIView!
-   
+    
+    @IBOutlet weak var sarLabel: UILabel!
+    @IBOutlet weak var sarBox: UIView!
+    
     @IBOutlet weak var getQRButton: UIButton!
     @IBOutlet weak var redeemLabel: UILabel!
     @IBOutlet weak var errorLabel: UILabel!
@@ -31,7 +34,7 @@ class RewardsViewController: UIViewController {
         
         let docRef = db.collection("volunteer").document(Auth.auth().currentUser!.uid)
 
-        docRef.getDocument { (document, error) in
+        docRef.getDocument { [self] (document, error) in
             if let document = document, document.exists {
                 
                
@@ -43,6 +46,10 @@ class RewardsViewController: UIViewController {
                  
 
                 self.points.text = self.convertEngToArabic(num: vPoints)
+                
+                self.sarLabel.text = "تكافئ " + String(self.convertEngToArabic(num: Int(floor(Double(vPoints/5))))) + " ريال سعودي"
+                                                                        
+            
 
 
                 
@@ -53,6 +60,7 @@ class RewardsViewController: UIViewController {
         
         roundview.layer.cornerRadius = 35
         pointsBox.layer.cornerRadius = 30
+        sarBox.layer.cornerRadius = 15
         storesButton.layer.cornerRadius = 25
         getQRButton.layer.cornerRadius = 25
         
@@ -72,6 +80,8 @@ class RewardsViewController: UIViewController {
         
         pointsBox.superview?.bringSubviewToFront(pointsBox)
         points.superview?.bringSubviewToFront(points)
+        sarBox.superview?.bringSubviewToFront(sarBox)
+        sarLabel.superview?.bringSubviewToFront(sarLabel)
         
         redCircle.isHidden = true
         
@@ -181,7 +191,11 @@ class RewardsViewController: UIViewController {
     // Amount validation
     @objc func validateAmount(textfield: UITextField){
         
-        let pointsRedeemed = ceil(((amountTextfield.text! as NSString).doubleValue)/5)
+        let pointsRedeemed = ceil(((amountTextfield.text! as NSString).doubleValue)*5)
+        
+        let v = (amountTextfield.text! as NSString).doubleValue
+        
+        let isLessThanZero = textfield.text! == "0" || textfield.text! == "٠" || v < 0
 
         // Required
          if (textfield.text!.count == 0) {
@@ -192,6 +206,37 @@ class RewardsViewController: UIViewController {
 
 
         }
+        
+        else if (pointsRedeemed > (points.text! as NSString).doubleValue){
+            
+            if (pointsRedeemed > 10){
+            errorLabel.text = "نقاطك لا تكفي لاستبدال " + convertEngToArabic(num: Int(pointsRedeemed)) + " نقطة"
+            }
+            else {
+                errorLabel.text = "نقاطك لا تكفي لاستبدال " + convertEngToArabic(num: Int(pointsRedeemed)) + " نقاط"
+            }
+            // Turn the textfield to red
+            turnTextFieldTextfieldToRed(textfield: amountTextfield)
+            redeemLabel.text = ""
+
+            
+        }
+      
+        
+        // zero and negative  is not allowed
+        
+        else if (isLessThanZero){
+            errorLabel.text = "المبلغ يجب أن يكون أكبر من صفر"
+            // Turn the textfield to red
+            turnTextFieldTextfieldToRed(textfield: amountTextfield)
+            redeemLabel.text = ""
+        }
+        
+        
+        
+        
+       
+        
         // Only numbers
         else if (!isStringAnInt(textfield.text!)){
             errorLabel.text = "المبلغ يجب أن يتكون من أرقام فقط"
@@ -199,17 +244,6 @@ class RewardsViewController: UIViewController {
             turnTextFieldTextfieldToRed(textfield: amountTextfield)
             redeemLabel.text = ""
 
-        }
-        
-        else if (pointsRedeemed > (points.text! as NSString).doubleValue){
-            
-            
-            errorLabel.text = "نقاطك لا تكفي لاستبدال " + convertEngToArabic(num: Int(pointsRedeemed)) + " نقطة"
-            // Turn the textfield to red
-            turnTextFieldTextfieldToRed(textfield: amountTextfield)
-            redeemLabel.text = ""
-
-            
         }
         
        
@@ -221,8 +255,14 @@ class RewardsViewController: UIViewController {
         else {
             // White space so that the layout is not affected; however, trim it in the validation
             
-            
-            redeemLabel.text = "سوف يتم استبدال " + convertEngToArabic(num: Int(pointsRedeemed)) + " نقطة"
+            if (pointsRedeemed > 10){
+                redeemLabel.text = "سوف يتم استبدال " + convertEngToArabic(num: Int(pointsRedeemed)) + " نقطة"
+
+            }
+            else {
+                redeemLabel.text = "سوف يتم استبدال " + convertEngToArabic(num: Int(pointsRedeemed)) + " نقاط"
+            }
+           
 
             errorLabel.text="  "
             styleTextFields(textfield: amountTextfield)
