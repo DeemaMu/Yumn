@@ -13,6 +13,12 @@ class RewardsViewController: UIViewController {
     @IBOutlet weak var points: UILabel!
     @IBOutlet weak var roundview: UIView!
    
+    @IBOutlet weak var getQRButton: UIButton!
+    @IBOutlet weak var redeemLabel: UILabel!
+    @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var amountTextfield: UITextField!
+    @IBOutlet weak var storesButton: UIButton!
+    @IBOutlet weak var qrButton: UIBarButtonItem!
     @IBOutlet weak var redCircle: UIImageView!
     @IBOutlet weak var pointsBox: UIView!
     @IBOutlet weak var confetti: UIImageView!
@@ -47,12 +53,27 @@ class RewardsViewController: UIViewController {
         
         roundview.layer.cornerRadius = 35
         pointsBox.layer.cornerRadius = 30
+        storesButton.layer.cornerRadius = 25
+        getQRButton.layer.cornerRadius = 25
+        
+        styleTextFields(textfield: amountTextfield)
+
+        
+        errorLabel.text = ""
+        redeemLabel.text = ""
+        
+        
+        amountTextfield.addTarget(self, action: #selector(validateAmount(textfield:)), for: .editingChanged)
+
+        
 
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         
         pointsBox.superview?.bringSubviewToFront(pointsBox)
         points.superview?.bringSubviewToFront(points)
+        
+        redCircle.isHidden = true
         
 
 
@@ -63,6 +84,17 @@ class RewardsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func onPressedQr(_ sender: Any) {
+        
+        redCircle.isHidden = true
+        
+        
+    }
+    
+    @IBAction func generateQRCode(_ sender: Any) {
+    }
+    
     
     
     func  convertEngToArabic(num: Int)-> String{
@@ -102,6 +134,119 @@ class RewardsViewController: UIViewController {
         return arabicString
     }
 
+    
+    
+    
+    @objc func turnTextFieldTextfieldToRed(textfield: UITextField){
+        let bottomLine = CALayer()
+        
+        bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width , height: 2)
+        
+        bottomLine.backgroundColor = UIColor.red.cgColor
+        
+        textfield.borderStyle = .none
+        
+        textfield.layer.addSublayer(bottomLine)
+        
+    }
+    
+    
+    // Styling the textfields
+    @objc func styleTextFields(textfield: UITextField){
+        
+        
+        // It only worked this way in this page
+        
+        
+        
+           let bottomLine = CALayer()
+           
+           
+          
+              bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width  , height: 2)
+
+               
+           
+           
+           bottomLine.backgroundColor = UIColor(red:137/255, green: 191/255, blue: 186/255, alpha: 1.00).cgColor
+           
+           textfield.borderStyle = .none
+           
+           textfield.layer.addSublayer(bottomLine)
+           
+    
+    }
+    
+    
+    // Amount validation
+    @objc func validateAmount(textfield: UITextField){
+        
+        let pointsRedeemed = ceil(((amountTextfield.text! as NSString).doubleValue)/5)
+
+        // Required
+         if (textfield.text!.count == 0) {
+            errorLabel.text = "مطلوب"
+            // Turn the textfield to red
+            turnTextFieldTextfieldToRed(textfield: amountTextfield)
+             redeemLabel.text = ""
+
+
+        }
+        // Only numbers
+        else if (!isStringAnInt(textfield.text!)){
+            errorLabel.text = "المبلغ يجب أن يتكون من أرقام فقط"
+            // Turn the textfield to red
+            turnTextFieldTextfieldToRed(textfield: amountTextfield)
+            redeemLabel.text = ""
+
+        }
+        
+        else if (pointsRedeemed > (points.text! as NSString).doubleValue){
+            
+            
+            errorLabel.text = "نقاطك لا تكفي لاستبدال " + convertEngToArabic(num: Int(pointsRedeemed)) + " نقطة"
+            // Turn the textfield to red
+            turnTextFieldTextfieldToRed(textfield: amountTextfield)
+            redeemLabel.text = ""
+
+            
+        }
+        
+       
+        // Add a validation that it shouldn't exceed the points
+        
+       
+        
+        // Everything is fine
+        else {
+            // White space so that the layout is not affected; however, trim it in the validation
+            
+            
+            redeemLabel.text = "سوف يتم استبدال " + convertEngToArabic(num: Int(pointsRedeemed)) + " نقطة"
+
+            errorLabel.text="  "
+            styleTextFields(textfield: amountTextfield)
+
+           
+
+
+        }
+    
+}
+    
+    
+    // Vlidation for Arabic or English Numbers used for ID and Phone
+    func isStringAnInt(_ id: String) -> Bool {
+        
+        let idTest = NSPredicate(format: "SELF MATCHES %@", "^[٠-٩]+$")
+        
+        return idTest.evaluate(with: id) || Int(id) != nil
+        
+    }
+
+    
+    
+    
     /*
     // MARK: - Navigation
 

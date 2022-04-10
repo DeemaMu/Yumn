@@ -1019,6 +1019,86 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="210"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7R0-3K-NhY">
+                                        <rect key="frame" x="16" y="237" width="379" height="56"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" name="mainDark"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" subtitle="">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="استعرض المتاجر حيث يمكنك استبدال نقاطك              ">
+                                                    <attributes>
+                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <color key="baseForegroundColor" name="Color"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="store" translatesAutoresizingMaskIntoConstraints="NO" id="rxn-ca-XU8">
+                                        <rect key="frame" x="344" y="248" width="32" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="أدخل مبلغ الريالات التي تريد استخدامها" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FrX-TO-dFF">
+                                        <rect key="frame" x="76" y="314" width="313" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="20"/>
+                                        <color key="textColor" name="mainDark"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="سوف يتم استبدال " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHC-7g-Ei2">
+                                        <rect key="frame" x="102" y="494" width="282" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="20"/>
+                                        <color key="textColor" name="mainDark"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="يرجى ملاحظة أنه يمكن استخدام رمز ال QR (مسحه ضوئيًا) مرة " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Smz-i4-sro">
+                                        <rect key="frame" x="18" y="354" width="576" height="18"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="15"/>
+                                        <color key="textColor" systemColor="systemRedColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="واحدة فقط، لذا يرجى تحديد حاجتك بدقة" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYL-Pi-1vf">
+                                        <rect key="frame" x="155" y="380" width="576" height="18"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="15"/>
+                                        <color key="textColor" systemColor="systemRedColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="مطلوب" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hC-N7-yXa">
+                                        <rect key="frame" x="102" y="455" width="283" height="27"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="15"/>
+                                        <color key="textColor" systemColor="systemRedColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="المبلغ بالريال السعودي" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VIk-Wp-qzH">
+                                        <rect key="frame" x="18" y="416" width="371" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tGo-uU-dR5">
+                                        <rect key="frame" x="137" y="547" width="159" height="56"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" name="mainDark"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" subtitle="">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="احصل على رمز QR">
+                                                    <attributes>
+                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <color key="baseForegroundColor" name="Color"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="generateQRCode:" destination="dRe-bn-Fdu" eventType="touchUpInside" id="Cq2-Uk-jTi"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
@@ -1041,6 +1121,9 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" image="Profile" id="mE8-BQ-jIS">
                                             <color key="tintColor" name="mainLight"/>
+                                            <connections>
+                                                <action selector="onPressedQr:" destination="dRe-bn-Fdu" id="ocY-BR-Xmu"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -1057,11 +1140,17 @@
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="wCS-em-Vuh"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="amountTextfield" destination="VIk-Wp-qzH" id="r6i-nK-1Lj"/>
                         <outlet property="confetti" destination="0vY-wt-ZNn" id="aNR-Ub-Q8D"/>
+                        <outlet property="errorLabel" destination="4hC-N7-yXa" id="2qp-L9-0SM"/>
+                        <outlet property="getQRButton" destination="tGo-uU-dR5" id="NCe-NH-9aj"/>
                         <outlet property="points" destination="6Gp-h6-nsX" id="gpI-QT-Jhi"/>
                         <outlet property="pointsBox" destination="rOK-ss-ALk" id="uMT-eY-XYf"/>
+                        <outlet property="qrButton" destination="mE8-BQ-jIS" id="4F8-Od-yyr"/>
                         <outlet property="redCircle" destination="Y5G-iW-NzV" id="zwf-q3-2wG"/>
+                        <outlet property="redeemLabel" destination="BHC-7g-Ei2" id="uMd-K8-q1S"/>
                         <outlet property="roundview" destination="wlN-dX-Vr2" id="qCL-Ti-aLz"/>
+                        <outlet property="storesButton" destination="7R0-3K-NhY" id="JTA-28-Yr1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FAY-dG-Utv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -4376,7 +4465,7 @@
         <scene sceneID="6NI-2n-gd5">
             <objects>
                 <viewController storyboardIdentifier="organVC" id="YVF-tr-n2j" customClass="OrganDonationViewController" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="U2K-eE-QXQ">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="U2K-eE-QXQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -4389,7 +4478,7 @@
                                             <constraint firstAttribute="height" constant="5.5" id="jBx-zw-c4o"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="L7p-BY-b2U" customClass="RoundedView" customModule="Yumn" customModuleProvider="target">
+                                    <view contentMode="center" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L7p-BY-b2U" customClass="RoundedView" customModule="Yumn" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="156.5" width="414" height="689"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MY5-U0-2oY">
@@ -4970,6 +5059,7 @@
         <image name="redCircle" width="1280" height="1280"/>
         <image name="stepper 1:2" width="546" height="130"/>
         <image name="stepper 2:2" width="526" height="118"/>
+        <image name="store" width="535" height="500"/>
         <image name="weight" width="512" height="512"/>
         <namedColor name="Color">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
