@@ -19,6 +19,10 @@
 		8D7F152F27D29A6500E1EB1A /* HospitalHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7F152E27D29A6500E1EB1A /* HospitalHomeViewController.swift */; };
 		8D7F153A27D2C5BE00E1EB1A /* ContinueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7F153927D2C5BE00E1EB1A /* ContinueViewController.swift */; };
 		8DA7D5282804B1D8007F6416 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA7D5272804B1D7007F6416 /* QRCodeViewController.swift */; };
+		8DA7D52A2804C706007F6416 /* greySquare.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8DA7D5292804C705007F6416 /* greySquare.gif */; };
+		8DA7D52C2804CBA9007F6416 /* this2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8DA7D52B2804CBA9007F6416 /* this2.gif */; };
+		8DA7D52E2804D26C007F6416 /* this2-2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8DA7D52D2804D26B007F6416 /* this2-2.gif */; };
+		8DA7D5302804D385007F6416 /* grey.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8DA7D52F2804D382007F6416 /* grey.gif */; };
 		8DAB1E4527E3556F00BE45DB /* OrganDonInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAB1E4427E3556F00BE45DB /* OrganDonInfoViewController.swift */; };
 		8DB504E727E72E6700254D8B /* OrganDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB504E627E72E6700254D8B /* OrganDonationViewController.swift */; };
 		8DC80B7627F9B2FA00A1DF6E /* BloodDonationQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC80B7527F9B2FA00A1DF6E /* BloodDonationQuestionsViewController.swift */; };
@@ -67,6 +71,10 @@
 		8D7F152E27D29A6500E1EB1A /* HospitalHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HospitalHomeViewController.swift; sourceTree = "<group>"; };
 		8D7F153927D2C5BE00E1EB1A /* ContinueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContinueViewController.swift; sourceTree = "<group>"; };
 		8DA7D5272804B1D7007F6416 /* QRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
+		8DA7D5292804C705007F6416 /* greySquare.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = greySquare.gif; sourceTree = "<group>"; };
+		8DA7D52B2804CBA9007F6416 /* this2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = this2.gif; sourceTree = "<group>"; };
+		8DA7D52D2804D26B007F6416 /* this2-2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "this2-2.gif"; sourceTree = "<group>"; };
+		8DA7D52F2804D382007F6416 /* grey.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = grey.gif; sourceTree = "<group>"; };
 		8DAB1E4427E3556F00BE45DB /* OrganDonInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganDonInfoViewController.swift; sourceTree = "<group>"; };
 		8DB504E627E72E6700254D8B /* OrganDonationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganDonationViewController.swift; sourceTree = "<group>"; };
 		8DC80B7527F9B2FA00A1DF6E /* BloodDonationQuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationQuestionsViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +134,10 @@
 			isa = PBXGroup;
 			children = (
 				8D7F152427D25EF200E1EB1A /* yumnLoading.gif */,
+				8DA7D5292804C705007F6416 /* greySquare.gif */,
+				8DA7D52B2804CBA9007F6416 /* this2.gif */,
+				8DA7D52D2804D26B007F6416 /* this2-2.gif */,
+				8DA7D52F2804D382007F6416 /* grey.gif */,
 			);
 			path = GIF;
 			sourceTree = "<group>";
@@ -317,8 +329,12 @@
 			files = (
 				B9419DFD27C52D9C00962A1B /* HospitalCellTableViewCell.xib in Resources */,
 				95785065279E1918004F3D8F /* LaunchScreen.storyboard in Resources */,
+				8DA7D52E2804D26C007F6416 /* this2-2.gif in Resources */,
+				8DA7D52C2804CBA9007F6416 /* this2.gif in Resources */,
+				8DA7D52A2804C706007F6416 /* greySquare.gif in Resources */,
 				95062D9827CADC0500D63911 /* Tajawal-Regular.ttf in Resources */,
 				95785062279E1918004F3D8F /* Assets.xcassets in Resources */,
+				8DA7D5302804D385007F6416 /* grey.gif in Resources */,
 				95785060279E1917004F3D8F /* Main.storyboard in Resources */,
 				95062D9727CADC0500D63911 /* Tajawal-Medium.ttf in Resources */,
 				95062D9627CADC0500D63911 /* Tajawal-Light.ttf in Resources */,

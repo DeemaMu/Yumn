@@ -1296,21 +1296,29 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="المبلغ: " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pge-Dp-E71">
-                                        <rect key="frame" x="52" y="363" width="269" height="25"/>
+                                        <rect key="frame" x="32" y="391" width="269" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="25"/>
                                         <color key="textColor" name="textGrey"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="تم إنشاؤه في: " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWE-x1-ffg">
-                                        <rect key="frame" x="52" y="396" width="269" height="25"/>
+                                        <rect key="frame" x="32" y="424" width="269" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="25"/>
                                         <color key="textColor" name="textGrey"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ccz-gj-0Xi">
+                                        <rect key="frame" x="60" y="125" width="232" height="232"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="test" translatesAutoresizingMaskIntoConstraints="NO" id="88A-3a-AKx">
+                                        <rect key="frame" x="76" y="142" width="200" height="200"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="Color"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="UgI-1N-ZXE"/>
@@ -1319,6 +1327,8 @@
                     <connections>
                         <outlet property="backgroundView" destination="1Uj-jN-Ivc" id="qjf-Ea-NdP"/>
                         <outlet property="bottomImage" destination="Qui-es-jAJ" id="Jgb-WC-BFn"/>
+                        <outlet property="qrImage" destination="88A-3a-AKx" id="0P4-9L-jqz"/>
+                        <outlet property="squareGif" destination="Ccz-gj-0Xi" id="xAf-bT-jBf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2VQ-U5-isk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -4200,14 +4210,14 @@
         <scene sceneID="8OD-IR-FD3">
             <objects>
                 <viewController id="s8R-AU-cFP" customClass="BloodDonationQuestionsViewController" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="6V7-9Y-0Zl">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="6V7-9Y-0Zl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="jDq-WE-T7Q">
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="jDq-WE-T7Q">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
-                                    <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="fvS-Y0-k43" customClass="RoundedView" customModule="Yumn" customModuleProvider="target">
+                                    <view contentMode="center" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fvS-Y0-k43" customClass="RoundedView" customModule="Yumn" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="jn4-wG-cfr">
@@ -5230,6 +5240,7 @@
         <image name="stepper 1:2" width="546" height="130"/>
         <image name="stepper 2:2" width="526" height="118"/>
         <image name="store" width="535" height="500"/>
+        <image name="test" width="512" height="512"/>
         <image name="weight" width="512" height="512"/>
         <namedColor name="Color">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
