@@ -118,7 +118,14 @@ class RewardsViewController: UIViewController {
     
     @IBAction func generateQRCode(_ sender: Any) {
         
-        //validate the textfield first
+        
+        if (amountTextfield.text?.isEmpty == true){
+            
+            errorLabel.text = "مطلوب"
+            turnTextFieldTextfieldToRed(textfield: amountTextfield)
+        }
+        
+        else if (errorLabel.text!.trimmingCharacters(in: .whitespacesAndNewlines) == "") {
         
         popupView.isHidden = false
 
@@ -127,6 +134,14 @@ class RewardsViewController: UIViewController {
         
         popupTitle.text = "تأكيد استبدال النقاط"
         popupMsg.text = "هل أنت متأكد من رغبتك في استبدال نقاطك"
+    }
+        
+        else {
+            
+            //Do nothing just show the error message
+        }
+        
+        
     }
     
     
