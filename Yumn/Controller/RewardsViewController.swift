@@ -16,6 +16,8 @@ class RewardsViewController: UIViewController {
     @IBOutlet weak var sarLabel: UILabel!
     @IBOutlet weak var sarBox: UIView!
     
+    @IBOutlet weak var blackBlurredView: UIView!
+    @IBOutlet weak var popupStack: UIStackView!
     @IBOutlet weak var getQRButton: UIButton!
     @IBOutlet weak var redeemLabel: UILabel!
     @IBOutlet weak var errorLabel: UILabel!
@@ -26,6 +28,11 @@ class RewardsViewController: UIViewController {
     @IBOutlet weak var pointsBox: UIView!
     @IBOutlet weak var confetti: UIImageView!
     
+    @IBOutlet weak var confirmBtn: UIButton!
+    @IBOutlet weak var cancelBtn: UIButton!
+    @IBOutlet weak var popupMsg: UILabel!
+    @IBOutlet weak var popupTitle: UILabel!
+    @IBOutlet weak var popupView: UIView!
     override func viewDidLoad() {
         
         
@@ -63,6 +70,9 @@ class RewardsViewController: UIViewController {
         sarBox.layer.cornerRadius = 15
         storesButton.layer.cornerRadius = 25
         getQRButton.layer.cornerRadius = 25
+        popupView.layer.cornerRadius = 35
+        cancelBtn.layer.cornerRadius = 20
+        confirmBtn.layer.cornerRadius = 20
         
         styleTextFields(textfield: amountTextfield)
 
@@ -82,6 +92,9 @@ class RewardsViewController: UIViewController {
         points.superview?.bringSubviewToFront(points)
         sarBox.superview?.bringSubviewToFront(sarBox)
         sarLabel.superview?.bringSubviewToFront(sarLabel)
+        popupStack.superview?.bringSubviewToFront(popupStack)
+        popupView.superview?.bringSubviewToFront(popupView)
+        
         
         redCircle.isHidden = true
         
@@ -100,9 +113,20 @@ class RewardsViewController: UIViewController {
         redCircle.isHidden = true
         
         
+        
     }
     
     @IBAction func generateQRCode(_ sender: Any) {
+        
+        //validate the textfield first
+        
+        popupView.isHidden = false
+
+        blackBlurredView.isHidden = false
+        popupView.isHidden = false
+        
+        popupTitle.text = "تأكيد استبدال النقاط"
+        popupMsg.text = "هل أنت متأكد من رغبتك في استبدال نقاطك"
     }
     
     
@@ -286,6 +310,17 @@ class RewardsViewController: UIViewController {
 
     
     
+    @IBAction func onPressedCancel(_ sender: Any) {
+        
+        popupStack.isHidden = true
+        blackBlurredView.isHidden = true
+    }
+    
+    
+    
+    @IBAction func onPressedConfirm(_ sender: Any) {
+        //Generate QR
+    }
     
     /*
     // MARK: - Navigation
