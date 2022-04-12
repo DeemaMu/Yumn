@@ -16,6 +16,7 @@ class QRCodeViewController: UIViewController {
     @IBOutlet weak var squareGif: UIImageView!
     @IBOutlet weak var dateCreated: UILabel!
     
+    @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var amount: UILabel!
     @IBOutlet weak var qrImage: UIImageView!
     @IBOutlet weak var bottomImage: UIImageView!
@@ -78,6 +79,38 @@ class QRCodeViewController: UIViewController {
         super.viewDidLoad()
 
     }
+    @IBAction func onPressedBack(_ sender: Any) {
+        
+        transitionToHome()
+        
+    }
+    func transitionToHome(){
+        
+        
+        
+       let volunteerHomeViewController =  storyboard?.instantiateViewController(identifier: Constants.Storyboard.volunteerHomeViewController) as? TabBarController
+        
+        view.window?.rootViewController = volunteerHomeViewController
+        view.window?.makeKeyAndVisible()
+        
+        
+
+    }
+
+    
+    func transitionToQr(){
+        
+        
+        
+       let QRViewController =  storyboard?.instantiateViewController(identifier: Constants.Storyboard.qrViewController) as? QRCodeViewController
+        
+        view.window?.rootViewController = QRViewController
+        view.window?.makeKeyAndVisible()
+        
+        
+
+    }
+
     
     
     

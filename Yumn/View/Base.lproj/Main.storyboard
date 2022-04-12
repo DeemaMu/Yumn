@@ -411,9 +411,6 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="Profile" width="20" id="o1w-JF-rTM">
                             <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-4"/>
-                            <connections>
-                                <segue destination="jGt-ZN-hwX" kind="show" id="mCX-oJ-ejz"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -587,7 +584,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZIw-4L-2X3">
-                                <rect key="frame" x="0.0" y="103" width="414" height="1247"/>
+                                <rect key="frame" x="0.0" y="59" width="414" height="1291"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NYA-Dn-g5e">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1247"/>
@@ -984,7 +981,7 @@
         <!--المكافآت-->
         <scene sceneID="LLJ-dI-0Nd">
             <objects>
-                <viewController id="dRe-bn-Fdu" userLabel="المكافآت" customClass="RewardsViewController" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="rewards" id="dRe-bn-Fdu" userLabel="المكافآت" customClass="RewardsViewController" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qNf-hN-NoI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1265,7 +1262,7 @@
         <!--Code View Controller-->
         <scene sceneID="lD5-5D-QY1">
             <objects>
-                <viewController id="bgn-j2-xPe" customClass="QRCodeViewController" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QR" id="bgn-j2-xPe" customClass="QRCodeViewController" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eRy-xX-g2D">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1280,7 +1277,15 @@
                                     <color key="textColor" name="mainLight"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="رمز QR" id="cC0-Fd-g10"/>
+                                    <navigationItem title="رمز QR" id="cC0-Fd-g10">
+                                        <barButtonItem key="rightBarButtonItem" id="Aur-KG-4BC">
+                                            <imageReference key="image" image="arrow.right" catalog="system" symbolScale="large"/>
+                                            <color key="tintColor" name="mainLight"/>
+                                            <connections>
+                                                <action selector="onPressedBack:" destination="bgn-j2-xPe" id="S6t-aS-HRN"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Uj-jN-Ivc">
@@ -1327,6 +1332,7 @@
                     <navigationItem key="navigationItem" id="dfK-N9-Vah"/>
                     <connections>
                         <outlet property="amount" destination="pge-Dp-E71" id="Awy-8C-5U3"/>
+                        <outlet property="backButton" destination="Aur-KG-4BC" id="bcl-8h-xQB"/>
                         <outlet property="backgroundView" destination="1Uj-jN-Ivc" id="qjf-Ea-NdP"/>
                         <outlet property="bottomImage" destination="Qui-es-jAJ" id="Jgb-WC-BFn"/>
                         <outlet property="dateCreated" destination="GWE-x1-ffg" id="7KE-Z2-e9f"/>
@@ -5191,7 +5197,7 @@
         <!--Navigation Controller-->
         <scene sceneID="SR9-1I-Jz6">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ehw-5c-qDP" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="transtionToReward" automaticallyAdjustsScrollViewInsets="NO" id="ehw-5c-qDP" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" id="CPI-MM-j1l">
                         <imageReference key="image" image="packages-grey" symbolScale="large"/>
                         <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="-2"/>

@@ -130,7 +130,6 @@ class RewardsViewController: UIViewController {
         popupView.isHidden = false
 
         blackBlurredView.isHidden = false
-        popupView.isHidden = false
         
         popupTitle.text = "تأكيد استبدال النقاط"
         popupMsg.text = "هل أنت متأكد من رغبتك في استبدال نقاطك"
@@ -328,7 +327,7 @@ class RewardsViewController: UIViewController {
     
     @IBAction func onPressedCancel(_ sender: Any) {
         
-        popupStack.isHidden = true
+        popupView.isHidden = true
         blackBlurredView.isHidden = true
     }
     
@@ -337,6 +336,19 @@ class RewardsViewController: UIViewController {
     func randomString(length: Int) -> String {
       let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
       return String((0..<length).map{ _ in letters.randomElement()! })
+    }
+
+    func transitionToQr(){
+        
+        
+        
+       let QRViewController =  storyboard?.instantiateViewController(identifier: Constants.Storyboard.qrViewController) as? QRCodeViewController
+        
+        view.window?.rootViewController = QRViewController
+        view.window?.makeKeyAndVisible()
+        
+        
+
     }
 
     
@@ -400,19 +412,26 @@ class RewardsViewController: UIViewController {
                 
                 
             }
+            
+            
         }
         
-        func formaDate(date: Date) -> String {
-            
-        let formatter = DateFormatter()
+            transitionToQr()
         
-        formatter.dateFormat = "dd/MM/YYYY"
-            
-            return formatter.string(from: date)
-        }
+    
         
 
         
+        
+    }
+    
+    func formaDate(date: Date) -> String {
+        
+    let formatter = DateFormatter()
+    
+    formatter.dateFormat = "dd/MM/YYYY"
+        
+        return formatter.string(from: date)
     }
     
     /*

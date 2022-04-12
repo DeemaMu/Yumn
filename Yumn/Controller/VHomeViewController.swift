@@ -55,9 +55,20 @@ class VHomeViewController: UIViewController {
                 let name = document.get("firstName") as! String
                     let mssg = "حياك الله " + name  + "، تو ما نور يُمْن"
                     
-
-                    self.showToast(message: mssg, font: .systemFont(ofSize: 20), image: (UIImage(named: "yumn-1") ?? UIImage(named: "")! ))}
-
+                    if (Constants.Globals.isLoggingIn == true){
+                        
+                        self.showToast(message: mssg, font: .systemFont(ofSize: 20), image: (UIImage(named: "yumn-1") ?? UIImage(named: "")! ))
+                        
+                        //To avoid showing the toast allover again while navigating
+                        Constants.Globals.isLoggingIn = false
+                        
+                        
+                    }
+                else{
+                    
+                    //Don't show toast
+                }
+                }
                 
                 print (Constants.Globals.firstNameFromdb)
             } else {
@@ -68,6 +79,8 @@ class VHomeViewController: UIViewController {
         
         super.viewDidLoad()
         print("\(String(describing: lm.location))")
+        
+        
         
     }
     

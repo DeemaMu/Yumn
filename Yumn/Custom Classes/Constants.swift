@@ -18,6 +18,7 @@ struct Constants {
       static let contSignUpViewController = "contSignUp"
       static let signInViewController = "SignIn"
       static let hospitalHomeViewController = "HospitalHome"
+      static let qrViewController = "QR"
 
     }
     
@@ -35,6 +36,7 @@ struct Constants {
          static var  bloodType = ""
          static var firstNameFromdb = ""
          static var currentQRID = "Zgtw52fTlum4bv7zpIlY"
+         static var isLoggingIn = true
                  
     }
 
