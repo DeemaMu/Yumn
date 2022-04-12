@@ -175,6 +175,7 @@ class RewardsViewController: UIViewController {
                 arabicString+="٢"
             case "1":
                 arabicString+="١"
+           
                 
             default:
                 arabicString="٠"

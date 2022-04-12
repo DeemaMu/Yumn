@@ -34,6 +34,7 @@ struct Constants {
          static var weight = ""
          static var  bloodType = ""
          static var firstNameFromdb = ""
+         static var currentQRID = "Zgtw52fTlum4bv7zpIlY"
                  
     }
 

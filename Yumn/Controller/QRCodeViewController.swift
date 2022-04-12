@@ -8,12 +8,15 @@
 import UIKit
 import SwiftUI
 import Foundation
+import Firebase
 
 class QRCodeViewController: UIViewController {
     
     
     @IBOutlet weak var squareGif: UIImageView!
+    @IBOutlet weak var dateCreated: UILabel!
     
+    @IBOutlet weak var amount: UILabel!
     @IBOutlet weak var qrImage: UIImageView!
     @IBOutlet weak var bottomImage: UIImageView!
     
@@ -21,6 +24,32 @@ class QRCodeViewController: UIViewController {
     
     
     override func viewDidLoad() {
+        
+        let db = Firestore.firestore()
+        
+        
+        
+        
+        let docRef = db.collection("code").document(Constants.Globals.currentQRID)
+
+        docRef.getDocument { [self] (document, error) in
+            if let document = document, document.exists {
+                    
+                    
+                let amount:Double = document.get("amount") as! Double
+                 
+
+                self.amount.text = "المبلغ: " + self.convertEngToArabic(num: amount) + " ريال سعودي"
+                
+                let date:String = document.get("dateCreated") as! String? ?? ""
+
+                self.dateCreated.text = "تم إنشاؤه في: " + date
+                
+            } else {
+                print("Document does not exist")
+            }
+        }
+
         
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
@@ -41,7 +70,7 @@ class QRCodeViewController: UIViewController {
         let logo = UIImage(named: "logo4")!
         let color = UIColor(red:128/250, green:128/250, blue:128/250, alpha:1.00)
         
-         guard let qrURLImage = URL(string: "https://www.google.com")?.qrImage(using: color) else { return }
+        guard let qrURLImage = URL(string: Constants.Globals.currentQRID)?.qrImage(using: color) else { return }
          qrImage.image = UIImage(ciImage: qrURLImage)
          logo.addToCenter(of: qrImage)
        
@@ -50,16 +79,48 @@ class QRCodeViewController: UIViewController {
 
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    
+    func  convertEngToArabic(num: Double)-> String{
+        
+        let points=String(num)
+        var arabicString=""
+        
+        for ch in points{
+            
+            switch ch {
+                
+            case "0":
+                arabicString+="٠"
+            case "9":
+                arabicString+="٩"
+            case "8":
+                arabicString+="٨"
+            case "7":
+                arabicString+="٧"
+            case "6":
+                arabicString+="٦"
+            case "5":
+                arabicString+="٥"
+            case "4":
+                arabicString+="٤"
+            case "3":
+                arabicString+="٣"
+            case "2":
+                arabicString+="٢"
+            case "1":
+                arabicString+="١"
+            case ".":
+                arabicString+="."
+                
+            default:
+                arabicString="٠"
+            }
+        }
+        return arabicString
     }
-    */
+
+
     
     
 
