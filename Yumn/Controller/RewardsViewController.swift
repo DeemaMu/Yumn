@@ -334,8 +334,85 @@ class RewardsViewController: UIViewController {
     
     
     
+    func randomString(length: Int) -> String {
+      let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+      return String((0..<length).map{ _ in letters.randomElement()! })
+    }
+
+    
+    
     @IBAction func onPressedConfirm(_ sender: Any) {
-        //Generate QR
+        
+        var amountNum = 0.0
+        
+        let isArabicNum = String(amountTextfield.text!.prefix(0)) == "٠" ||
+        String(amountTextfield.text!.prefix(0)) == "١" ||
+        String(amountTextfield.text!.prefix(0)) == "٢" ||
+        String(amountTextfield.text!.prefix(0)) == "٣" ||
+        String(amountTextfield.text!.prefix(0)) == "٤" ||
+        String(amountTextfield.text!.prefix(0)) == "٥" ||
+        String(amountTextfield.text!.prefix(0)) == "٦" ||
+        String(amountTextfield.text!.prefix(0)) == "٧" ||
+        String(amountTextfield.text!.prefix(0)) == "٨" ||
+        String(amountTextfield.text!.prefix(0)) == "٩"
+        
+        
+        if (isArabicNum){
+          
+         let amountEngString = convertArabicToEng(num: (amountTextfield.text! as NSString).doubleValue)
+            
+         amountNum = (amountEngString as NSString).doubleValue
+        }
+        
+        else {
+         amountNum = (amountTextfield.text! as NSString).doubleValue
+        }
+        
+        
+        let currentDateTime = Date()
+        
+        let dateString = formaDate(date: currentDateTime)
+        
+        
+        let code = randomString(length: 10)
+        
+        Constants.Globals.currentQRID = code
+        
+        
+        let db = Firestore.firestore()
+        
+        db.collection("code").document(code).setData([
+        "amount": amountNum,
+        "status": "valid",
+        "createdAt": currentDateTime,
+        "id": code,
+        "dateCreated": dateString,
+        "uid": Auth.auth().currentUser!.uid]){ error in
+        
+            if error != nil {
+                
+                print(error?.localizedDescription as Any)
+                
+            // Show error message or pop up message
+
+                
+                print ("error in saving the user data")
+                
+                
+            }
+        }
+        
+        func formaDate(date: Date) -> String {
+            
+        let formatter = DateFormatter()
+        
+        formatter.dateFormat = "dd/MM/YYYY"
+            
+            return formatter.string(from: date)
+        }
+        
+
+        
     }
     
     /*
@@ -347,5 +424,49 @@ class RewardsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+        func  convertArabicToEng(num: Double)-> String{
+            
+            let points=String(num)
+            var arabicString=""
+            
+            for ch in points{
+                
+                switch ch {
+                    
+                case "٠":
+                    arabicString+="1"
+                case "٩":
+                    arabicString+="9"
+                case "٨":
+                    arabicString+="8"
+                case "٧":
+                    arabicString+="7"
+                case "٦":
+                    arabicString+="6"
+                case "٥":
+                    arabicString+="5"
+                case "٤":
+                    arabicString+="4"
+                case "٣":
+                    arabicString+="3"
+                case "٢":
+                    arabicString+="2"
+                case "١":
+                    arabicString+="1"
+                case ".":
+                    arabicString+="."
+                    
+                default:
+                    arabicString="٠"
+                }
+            }
+            return arabicString
+        }
+
+    
+    
+
+
+        
 
 }
