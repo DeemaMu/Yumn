@@ -408,14 +408,34 @@ class RewardsViewController: UIViewController {
             // Show error message or pop up message
 
                 
-                print ("error in saving the user data")
+                print ("error in saving the QR code data")
                 
                 
-            }
+            }}
             
-            
-        }
+        let pointsRedeemed = Int(ceil(((amountTextfield.text! as NSString).doubleValue)*5))
         
+ 
+            db.collection("volunteer").document(Auth.auth().currentUser!.uid).updateData([
+                "points": (Int((points.text! as NSString).intValue) - pointsRedeemed),
+                
+                
+                ]){ error in
+            
+                if error != nil {
+                    
+                    print(error?.localizedDescription as Any)
+                    
+                    print ("error in updating the points")
+                    
+                    
+                }
+            
+            
+           }
+        
+        
+    
             transitionToQr()
         
     
