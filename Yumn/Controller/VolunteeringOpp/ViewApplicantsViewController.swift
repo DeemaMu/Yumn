@@ -90,6 +90,7 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
         
         
         getCurrentApplicants(docID: "4duFZ8QsjfxWDqzoRhpq")
+        getAcceptedApplicants(docID: "4duFZ8QsjfxWDqzoRhpq")
         
 
     }
@@ -126,7 +127,7 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
                     
                 }
                     
-                self.bringApplicantData(applicantsUIDs: applicantsUIDs)
+                self.bringApplicantData(applicantsUIDs: applicantsUIDs,  applicantType: "current")
 
                /* DispatchQueue.main.async {
                     self.currentApplicantsTable.reloadData()
@@ -150,10 +151,45 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
     
     // docID fron segue
     func getAcceptedApplicants(docID:String){
+        
+        var applicantsUIDs : [String] = []
+        
+        db.collection("volunteeringOpp").document(docID).collection("applicants").whereField("status", isEqualTo: "accepted").getDocuments() { [self] (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                
+                if querySnapshot!.documents.count != 0 {
+                    self.noApplicantsLabel.isHidden = true
+                    self.currentApplicantsTable.isHidden = false
+                for document in querySnapshot!.documents {
+                    let doc = document.data()
+                    let uid : String = doc["uid"] as! String
+                    applicantsUIDs.append(uid)
+                    
+                }
+                    
+                    self.bringApplicantData(applicantsUIDs: applicantsUIDs, applicantType: "accepted")
+
+               /* DispatchQueue.main.async {
+                    self.currentApplicantsTable.reloadData()
+                }*/
+                
+            }// end if stm
+                
+                else {
+                    self.currentApplicantsTable.isHidden = true
+                    self.noApplicantsLabel.text = "لا يوجد متقدمين مقبولين"
+                    self.noApplicantsLabel.isHidden = false
+                    print("no available accepted applicants")
+                }
+                
+            } // end else
+        }
     }
     
     
-    func bringApplicantData(applicantsUIDs : [String] ){
+    func bringApplicantData(applicantsUIDs : [String] , applicantType : String){
         
         for docID in applicantsUIDs {
         db.collection("volunteer").document(docID).getDocument { (document, error) in
@@ -167,7 +203,11 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
                      let email : String = docData!["email"] as! String
                      let ciry : String = docData!["city"] as! String
                      
-                     self.currentApplicants.append(applicant(firstName: firstName, lastName: lastName, DOB: DOB, email: email, city: ciry))
+                     if  applicantType == "current"{
+                         self.currentApplicants.append(applicant(firstName: firstName, lastName: lastName, DOB: DOB, email: email, city: ciry))}
+                     else {
+                         self.acceptedApplicants.append(applicant(firstName: firstName, lastName: lastName, DOB: DOB, email: email, city: ciry))
+                     }
                  } else {
                      print("Volunteer document does not exist")
 
@@ -272,7 +312,7 @@ extension ViewApplicantsViewController: UITableViewDataSource {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "currentApplicantCell", for: indexPath) as! currentApplicantTableViewCell
             
-            let name = "\(currentApplicants[indexPath.row].lastName) - \(currentApplicants[indexPath.row].firstName)"
+            let name = "\(currentApplicants[indexPath.row].firstName) \(currentApplicants[indexPath.row].lastName)"
             cell.name.text = name
         //    cell.age.text = String(currentApplicants[indexPath.row].age) // must be calculated frpm DOB
             cell.age.text = "22" // must be removed
@@ -306,6 +346,22 @@ extension ViewApplicantsViewController: UITableViewDataSource {
     
     }
     
+    
+    
+}
+
+
+extension ViewApplicantsViewController{
+    
+    
+    @IBAction func segmentedControlDidChange(_ sender: UISegmentedControl){
+        segmentedControl.changeUnderlinePosition()
+        print("index changed")
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        segmentedControl.setupSegment()
+    }
     
     
 }
