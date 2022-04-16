@@ -230,7 +230,7 @@ class RewardsViewController: UIViewController {
     // Amount validation
     @objc func validateAmount(textfield: UITextField){
         
-        let pointsRedeemed = ceil(((amountTextfield.text! as NSString).doubleValue)*5)
+        let pointsRedeemed = ceil(((amountTextfield.text! as NSString).doubleValue))*5
         
         let v = (amountTextfield.text! as NSString).doubleValue
         
@@ -277,7 +277,7 @@ class RewardsViewController: UIViewController {
        
         
         // Only numbers
-        else if (!isStringAnInt(textfield.text!)){
+        else if ((!isStringADouble(textfield.text!) && !isStringAnInt(textfield.text!))){
             errorLabel.text = "المبلغ يجب أن يتكون من أرقام فقط"
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: amountTextfield)
@@ -314,7 +314,21 @@ class RewardsViewController: UIViewController {
 }
     
     
-    // Vlidation for Arabic or English Numbers used for ID and Phone
+    func isStringADouble(_ numberString: String) -> Bool {
+        
+     
+       
+
+        
+        let idTest = NSPredicate(format: "SELF MATCHES %@", "^[٠-٩]+.[٠-٩]+$")
+        
+        let engTest = NSPredicate(format: "SELF MATCHES %@", "^[0-9]+.[0-9]+$")
+
+        return idTest.evaluate(with: numberString) || engTest.evaluate(with: numberString)
+        
+    }
+    
+    // Validation for Arabic or English Numbers used for amount
     func isStringAnInt(_ id: String) -> Bool {
         
         let idTest = NSPredicate(format: "SELF MATCHES %@", "^[٠-٩]+$")
@@ -352,22 +366,30 @@ class RewardsViewController: UIViewController {
     }
 
     
+    func isArabicNum(num: String) -> Bool{
+        
+        let isArabicNumber = String(num.prefix(0)) == "٠" ||
+        String(num.prefix(0)) == "١" ||
+        String(num.prefix(0)) == "٢" ||
+        String(num.prefix(0)) == "٣" ||
+        String(num.prefix(0)) == "٤" ||
+        String(num.prefix(0)) == "٥" ||
+        String(num.prefix(0)) == "٦" ||
+        String(num.prefix(0)) == "٧" ||
+        String(num.prefix(0)) == "٨" ||
+        String(num.prefix(0)) == "٩"
+
+        
+        return isArabicNumber
+    }
+    
     
     @IBAction func onPressedConfirm(_ sender: Any) {
         
         var amountNum = 0.0
         
-        let isArabicNum = String(amountTextfield.text!.prefix(0)) == "٠" ||
-        String(amountTextfield.text!.prefix(0)) == "١" ||
-        String(amountTextfield.text!.prefix(0)) == "٢" ||
-        String(amountTextfield.text!.prefix(0)) == "٣" ||
-        String(amountTextfield.text!.prefix(0)) == "٤" ||
-        String(amountTextfield.text!.prefix(0)) == "٥" ||
-        String(amountTextfield.text!.prefix(0)) == "٦" ||
-        String(amountTextfield.text!.prefix(0)) == "٧" ||
-        String(amountTextfield.text!.prefix(0)) == "٨" ||
-        String(amountTextfield.text!.prefix(0)) == "٩"
-        
+        let isArabicNum = isArabicNum(num: amountTextfield.text!)
+     
         
         if (isArabicNum){
           
