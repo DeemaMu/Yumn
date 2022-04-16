@@ -17,9 +17,9 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
     var VolunteeringOpps = [VolunteeringOpp]()
     
     @IBOutlet weak var noVolunteeringOPPLabel: UILabel!
+    
     @IBOutlet weak var addVOPBtn: UIButton!
     var passDocID = ""
-    var notEditable = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,10 +39,10 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
     }
     
     @objc func refresh() {
-        
+
         self.loadOPP() // a refresh the collectionView.
-        
-    }
+
+   }
     @IBAction func unwindToViewControllerA(segue: UIStoryboardSegue) {}
     
     func loadOPP(){
@@ -139,8 +139,8 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
                 """
             )
         }
-        cell.edit.setAttributedTitle(NSAttributedString(string: "تعديل", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: customFont]), for: .normal)
         
+        cell.edit.setAttributedTitle(NSAttributedString(string: "تعديل", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: customFont]), for: .normal)
         cell.viewApplicants.setAttributedTitle(NSAttributedString(string: "عرض المتقدمين", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: customFont]), for: .normal)
         return cell
         
@@ -162,30 +162,11 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
         
         let indexPath = IndexPath(row: sender.tag, section: 0)
         let cell = VolunteeringOpps[indexPath.row]
+        
+        //        loadOPP()
+        
         self.passDocID = cell.id
-        
-        DispatchQueue.main.async {
-            
-            let db = Firestore.firestore()
-            db.collection("volunteeringOpp").document(cell.id).collection("applicants").getDocuments(){ (querySnapshot, error) in
-                
-                guard let documents = querySnapshot?.documents else {
-                    return
-                }
-                
-                if documents.isEmpty {
-                    print("No applicants")
-                    self.performSegue(withIdentifier: "editVOP", sender: self)
-                    
-                }else {
-                    print("You cant edit there is applicants")
-                    self.notEditable = true
-                    self.performSegue(withIdentifier: "cancelPopUP", sender: self)
-                }
-            }
-        }
-        
-       
+        performSegue(withIdentifier: "editVOP", sender: self)
         
     }
     
@@ -193,7 +174,6 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
         if (segue.identifier == "cancelPopUP"){
             let controller = segue.destination as! cancelPopup
             controller.docID = self.passDocID
-            controller.notEditable = self.notEditable
         } else if (segue.identifier == "editVOP"){
             let controller = segue.destination as! editVolunteeringOpp
             controller.docemntID = self.passDocID

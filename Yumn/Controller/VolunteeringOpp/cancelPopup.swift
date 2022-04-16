@@ -17,29 +17,15 @@ class cancelPopup: UIViewController{
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     var docID = ""
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var desLabel: UILabel!
-    
-    @IBOutlet weak var okayButton: UIButton!
-    var notEditable = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUp(notEditable)
+        setUp()
     }
     
-    func setUp(_ notEditable : Bool){
+    func setUp(){
         backView.layer.cornerRadius = 40
         confirmButton.layer.cornerRadius = 20
-        okayButton.layer.cornerRadius = 20
-        
-        if (notEditable){
-            titleLabel.text = "لا يمكن التعديل"
-            desLabel.text = "عذراً، يوجد متقدمين على هذه الفرصة لذلك لايمكن تعديل المعلومات"
-            confirmButton.isHidden = true
-            cancelButton.isHidden = true
-            okayButton.isHidden = false
-        }
     }
     
     @IBAction func confirm(_ sender: Any) {
@@ -58,12 +44,6 @@ class cancelPopup: UIViewController{
     @IBAction func cancel(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-    @IBAction func okay(_ sender: Any) {
-        // dismiss view
-        self.dismiss(animated: true, completion: nil)
-    }
-    
     
 }
 

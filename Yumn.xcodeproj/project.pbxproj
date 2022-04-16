@@ -88,14 +88,11 @@
 		D19B1B5127E95F2200CB3FFA /* oldBloodAppTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D19B1B5027E95F2200CB3FFA /* oldBloodAppTableViewCell.xib */; };
 		D19B1B5327E95FCB00CB3FFA /* OrganDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19B1B5227E95FCB00CB3FFA /* OrganDonationViewController.swift */; };
 		D19B1B5927E962BC00CB3FFA /* VolunteerBloodAppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19B1B5827E962BC00CB3FFA /* VolunteerBloodAppointmentsViewController.swift */; };
-		D4575F18E114595CF1D46C5E /* Pods_Yumn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C647BCF03E9B2E8AAA54249 /* Pods_Yumn.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		17B61F31268BA1669D50E33F /* Pods-Yumn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.release.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.release.xcconfig"; sourceTree = "<group>"; };
 		54C6007FE967AD5D2DA2930F /* Pods_Yumn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yumn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0403D4EC0B8593F71EF89203 /* Pods-Yumn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.debug.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.debug.xcconfig"; sourceTree = "<group>"; };
-		6C647BCF03E9B2E8AAA54249 /* Pods_Yumn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yumn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D0E9A1E27E5339C00890AC0 /* BloodDonationInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationInformationViewController.swift; sourceTree = "<group>"; };
 		8D7F152127D25DD200E1EB1A /* GIfCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIfCode.swift; sourceTree = "<group>"; };
 		8D7F152427D25EF200E1EB1A /* yumnLoading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = yumnLoading.gif; sourceTree = "<group>"; };
@@ -179,7 +176,6 @@
 		D19B1B5027E95F2200CB3FFA /* oldBloodAppTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = oldBloodAppTableViewCell.xib; sourceTree = "<group>"; };
 		D19B1B5227E95FCB00CB3FFA /* OrganDonationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganDonationViewController.swift; sourceTree = "<group>"; };
 		D19B1B5827E962BC00CB3FFA /* VolunteerBloodAppointmentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolunteerBloodAppointmentsViewController.swift; sourceTree = "<group>"; };
-		D52D933E88C814542BC4B64C /* Pods-Yumn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.release.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,7 +184,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4292D8DF2F063E1F8C526D60 /* Pods_Yumn.framework in Frameworks */,
-				D4575F18E114595CF1D46C5E /* Pods_Yumn.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,10 +194,6 @@
 			isa = PBXGroup;
 			children = (
 				54C6007FE967AD5D2DA2930F /* Pods_Yumn.framework */,
-		42D005F50D1899AED71899E9 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				6C647BCF03E9B2E8AAA54249 /* Pods_Yumn.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -266,7 +257,6 @@
 				95785056279E1917004F3D8F /* Products */,
 				FB3A4FC32329E4399DABC3B5 /* Pods */,
 				854E97D8A09A65ECAD38B59F /* Frameworks */,
-				42D005F50D1899AED71899E9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -471,8 +461,6 @@
 			children = (
 				9720651FEC4652C469331842 /* Pods-Yumn.debug.xcconfig */,
 				17B61F31268BA1669D50E33F /* Pods-Yumn.release.xcconfig */,
-				0403D4EC0B8593F71EF89203 /* Pods-Yumn.debug.xcconfig */,
-				D52D933E88C814542BC4B64C /* Pods-Yumn.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -489,11 +477,6 @@
 				95785052279E1917004F3D8F /* Frameworks */,
 				95785053279E1917004F3D8F /* Resources */,
 				BA15343A5AAD70299C66A1D0 /* [CP] Embed Pods Frameworks */,
-				861BFFBCB91CBFD0BF35C852 /* [CP] Check Pods Manifest.lock */,
-				95785051279E1917004F3D8F /* Sources */,
-				95785052279E1917004F3D8F /* Frameworks */,
-				95785053279E1917004F3D8F /* Resources */,
-				80D9C7492A54C3CB7CE99C56 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -564,7 +547,6 @@
 
 /* Begin PBXShellScriptBuildPhase section */
 		40D103458A8952202293972E /* [CP] Check Pods Manifest.lock */ = {
-		80D9C7492A54C3CB7CE99C56 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -587,7 +569,6 @@
 			showEnvVarsInLog = 0;
 		};
 		BA15343A5AAD70299C66A1D0 /* [CP] Embed Pods Frameworks */ = {
-		861BFFBCB91CBFD0BF35C852 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -820,7 +801,6 @@
 		9578506A279E1918004F3D8F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9720651FEC4652C469331842 /* Pods-Yumn.debug.xcconfig */;
-			baseConfigurationReference = 0403D4EC0B8593F71EF89203 /* Pods-Yumn.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -856,7 +836,6 @@
 		9578506B279E1918004F3D8F /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 17B61F31268BA1669D50E33F /* Pods-Yumn.release.xcconfig */;
-			baseConfigurationReference = D52D933E88C814542BC4B64C /* Pods-Yumn.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
