@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D123A70280DF6CE00E1828F /* AllQRCodesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D123A6F280DF6CE00E1828F /* AllQRCodesViewController.swift */; };
+		8D123A72280DFA3800E1828F /* CustomSegmentedControl2Btns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D123A71280DFA3800E1828F /* CustomSegmentedControl2Btns.swift */; };
+		8D123A76280E08D200E1828F /* QRCodeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D123A75280E08D200E1828F /* QRCodeTableViewCell.xib */; };
+		8D123A78280E0BBD00E1828F /* QRCodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D123A77280E0BBD00E1828F /* QRCodeTableViewCell.swift */; };
+		8D123A7A280E140300E1828F /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D123A79280E140300E1828F /* QRCode.swift */; };
 		8D5FD4A827D3A321008A266F /* Al%20Majeed%20Quranic%20Font_shiped.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D5FD4A727D3A321008A266F /* Al%20Majeed%20Quranic%20Font_shiped.ttf */; };
 		8D7D721C27E131280088AC98 /* BloodDonationInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7D721B27E131280088AC98 /* BloodDonationInfoViewController.swift */; };
 		8D7D721E27E1E2240088AC98 /* BloodDonationInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7D721D27E1E2240088AC98 /* BloodDonationInformationViewController.swift */; };
@@ -59,6 +64,11 @@
 /* Begin PBXFileReference section */
 		2DC0BC66019C4D1F5FD76092 /* Pods_Yumn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yumn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45F81A78310778538A1A5633 /* Pods-Yumn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.release.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.release.xcconfig"; sourceTree = "<group>"; };
+		8D123A6F280DF6CE00E1828F /* AllQRCodesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllQRCodesViewController.swift; sourceTree = "<group>"; };
+		8D123A71280DFA3800E1828F /* CustomSegmentedControl2Btns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl2Btns.swift; sourceTree = "<group>"; };
+		8D123A75280E08D200E1828F /* QRCodeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QRCodeTableViewCell.xib; sourceTree = "<group>"; };
+		8D123A77280E0BBD00E1828F /* QRCodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeTableViewCell.swift; sourceTree = "<group>"; };
+		8D123A79280E140300E1828F /* QRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCode.swift; sourceTree = "<group>"; };
 		8D5FD4A727D3A321008A266F /* Al%20Majeed%20Quranic%20Font_shiped.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Al%20Majeed%20Quranic%20Font_shiped.ttf"; sourceTree = "<group>"; };
 		8D7D721B27E131280088AC98 /* BloodDonationInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationInfoViewController.swift; sourceTree = "<group>"; };
 		8D7D721D27E1E2240088AC98 /* BloodDonationInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationInformationViewController.swift; sourceTree = "<group>"; };
@@ -208,6 +218,8 @@
 				B9419DFA27C52D9C00962A1B /* HospitalCellTableViewCell.swift */,
 				B9419DFB27C52D9C00962A1B /* HospitalCellTableViewCell.xib */,
 				8DC80B7927FA24B400A1DF6E /* BloodAppointmentView.swift */,
+				8D123A75280E08D200E1828F /* QRCodeTableViewCell.xib */,
+				8D123A77280E0BBD00E1828F /* QRCodeTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -233,6 +245,7 @@
 				8DC80B7727F9BDA300A1DF6E /* BloodDonationAppointmentViewController.swift */,
 				8DC80B7B27FB169F00A1DF6E /* RewardsViewController.swift */,
 				8DA7D5272804B1D7007F6416 /* QRCodeViewController.swift */,
+				8D123A6F280DF6CE00E1828F /* AllQRCodesViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -246,6 +259,8 @@
 				B97A37FD27B9D32A00718079 /* RoundedShadowedView.swift */,
 				B9503D8727BAE4E400E312B8 /* CustomSegmentedControl.swift */,
 				8D7F152127D25DD200E1EB1A /* GIfCode.swift */,
+				8D123A71280DFA3800E1828F /* CustomSegmentedControl2Btns.swift */,
+				8D123A79280E140300E1828F /* QRCode.swift */,
 			);
 			path = "Custom Classes";
 			sourceTree = "<group>";
@@ -336,6 +351,7 @@
 				95785062279E1918004F3D8F /* Assets.xcassets in Resources */,
 				8DA7D5302804D385007F6416 /* grey.gif in Resources */,
 				95785060279E1917004F3D8F /* Main.storyboard in Resources */,
+				8D123A76280E08D200E1828F /* QRCodeTableViewCell.xib in Resources */,
 				95062D9727CADC0500D63911 /* Tajawal-Medium.ttf in Resources */,
 				95062D9627CADC0500D63911 /* Tajawal-Light.ttf in Resources */,
 				8D5FD4A827D3A321008A266F /* Al%20Majeed%20Quranic%20Font_shiped.ttf in Resources */,
@@ -396,6 +412,7 @@
 			files = (
 				8D7D721E27E1E2240088AC98 /* BloodDonationInformationViewController.swift in Sources */,
 				B9503D8827BAE4E500E312B8 /* CustomSegmentedControl.swift in Sources */,
+				8D123A70280DF6CE00E1828F /* AllQRCodesViewController.swift in Sources */,
 				8D7F152B27D299C100E1EB1A /* Constants.swift in Sources */,
 				B9419DFC27C52D9C00962A1B /* HospitalCellTableViewCell.swift in Sources */,
 				9578505D279E1917004F3D8F /* VHomeViewController.swift in Sources */,
@@ -406,9 +423,12 @@
 				B9C7969527C7A83A006A78A3 /* TabBarController.swift in Sources */,
 				8DAB1E4527E3556F00BE45DB /* OrganDonInfoViewController.swift in Sources */,
 				95062D9F27CADE9E00D63911 /* ConvertingColors.swift in Sources */,
+				8D123A78280E0BBD00E1828F /* QRCodeTableViewCell.swift in Sources */,
+				8D123A7A280E140300E1828F /* QRCode.swift in Sources */,
 				8D7F152927D2612800E1EB1A /* SignUpViewController.swift in Sources */,
 				B9DA61DA27C10FCC00359487 /* LocationManger.swift in Sources */,
 				8D7F152727D25F3B00E1EB1A /* SignInViewController.swift in Sources */,
+				8D123A72280DFA3800E1828F /* CustomSegmentedControl2Btns.swift in Sources */,
 				8DC80B7C27FB16A000A1DF6E /* RewardsViewController.swift in Sources */,
 				B97A380227BA9EA000718079 /* BloodDonationViewController.swift in Sources */,
 				8D7D721C27E131280088AC98 /* BloodDonationInfoViewController.swift in Sources */,
