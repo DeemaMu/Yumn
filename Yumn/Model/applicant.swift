@@ -9,7 +9,8 @@ import Foundation
 
 
 struct applicant {
-    
+   
+   let uid : String
    let firstName : String
    let lastName : String
    let DOB  : String
