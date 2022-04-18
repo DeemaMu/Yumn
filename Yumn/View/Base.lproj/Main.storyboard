@@ -81,19 +81,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="EGJ-P8-wum">
-                                <rect key="frame" x="0.0" y="98" width="414" height="798"/>
+                                <rect key="frame" x="0.0" y="98" width="414" height="779.5"/>
                                 <subviews>
                                     <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="det-XD-85J" customClass="RoundedView" customModule="Yumn" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="798"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="779.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Lr9-9u-T5Q" userLabel="sectionsStack">
-                                                <rect key="frame" x="20" y="30" width="379.5" height="638"/>
+                                                <rect key="frame" x="20" y="30" width="374" height="619.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" restorationIdentifier="section1" translatesAutoresizingMaskIntoConstraints="NO" id="Pcq-CD-zD8" userLabel="section1">
-                                                        <rect key="frame" x="0.0" y="0.0" width="379.5" height="202.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="196.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EYf-Ok-fH4" userLabel="BloodDonation" customClass="RoundedShadowedView" customModule="Yumn" customModuleProvider="target">
-                                                                <rect key="frame" x="17" y="8" width="340" height="180"/>
+                                                                <rect key="frame" x="17" y="8" width="340" height="174"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bn-fD-hri" userLabel="bdBtn">
                                                                         <rect key="frame" x="0.0" y="0.0" width="340" height="174"/>
@@ -171,13 +171,13 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QX9-cG-7n6" userLabel="section2">
-                                                        <rect key="frame" x="0.0" y="217.5" width="379.5" height="203"/>
+                                                        <rect key="frame" x="0.0" y="211.5" width="374" height="196.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b7f-48-aWc" userLabel="OrganDonation" customClass="RoundedShadowedView" customModule="Yumn" customModuleProvider="target">
-                                                                <rect key="frame" x="17" y="7.5" width="345.5" height="180.5"/>
+                                                                <rect key="frame" x="17" y="7.5" width="340" height="174"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohk-hz-Uhs" userLabel="odBtn">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="345.5" height="180.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="340" height="174"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain" title=""/>
                                                                         <connections>
@@ -185,7 +185,7 @@
                                                                         </connections>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تبرع بالأعضاء" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hqx-pO-75t">
-                                                                        <rect key="frame" x="100" y="75.5" width="232" height="30"/>
+                                                                        <rect key="frame" x="100" y="72" width="232" height="30"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="232" id="EkC-Dj-E3G"/>
                                                                         </constraints>
@@ -194,7 +194,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart icon" translatesAutoresizingMaskIntoConstraints="NO" id="1ey-kz-44t">
-                                                                        <rect key="frame" x="-6" y="20" width="125.5" height="139.5"/>
+                                                                        <rect key="frame" x="-6" y="20" width="120" height="133"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="1ey-kz-44t" secondAttribute="height" multiplier="120:133" id="nXN-ET-c7i"/>
                                                                         </constraints>
@@ -246,13 +246,13 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xom-dG-vju" userLabel="section3">
-                                                        <rect key="frame" x="0.0" y="435.5" width="379.5" height="202.5"/>
+                                                        <rect key="frame" x="0.0" y="423" width="374" height="196.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2gV-1d-cyZ" userLabel="VolunteeringOportunity" customClass="RoundedShadowedView" customModule="Yumn" customModuleProvider="target">
-                                                                <rect key="frame" x="17" y="7" width="345.5" height="180"/>
+                                                                <rect key="frame" x="17" y="7" width="340" height="174"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6pX-vg-oWI" userLabel="odBtn">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="345.5" height="180"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="340" height="174"/>
                                                                         <color key="tintColor" red="0.82352941180000006" green="0.81960784310000001" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain">
@@ -269,7 +269,7 @@
                                                                         </connections>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الفرص التطوعية" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKN-0b-weh">
-                                                                        <rect key="frame" x="105.5" y="75" width="232" height="30"/>
+                                                                        <rect key="frame" x="100" y="72" width="232" height="30"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="232" id="kHL-BU-Br7"/>
                                                                         </constraints>
@@ -278,7 +278,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="help" translatesAutoresizingMaskIntoConstraints="NO" id="sDo-vb-iL2">
-                                                                        <rect key="frame" x="8" y="40" width="99" height="99"/>
+                                                                        <rect key="frame" x="8" y="40" width="93" height="93"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="sDo-vb-iL2" secondAttribute="height" multiplier="1:1" id="Ysk-L3-qgh"/>
                                                                         </constraints>
@@ -5942,7 +5942,7 @@
         <!--التبرع بعد الوفاة-->
         <scene sceneID="F0I-Vu-jbd">
             <objects>
-                <viewController id="94l-kr-sNL" customClass="OrganDonationViewController" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="94l-kr-sNL" customClass="AfterDeathODFirstController" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nV3-zR-Tfe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -5959,251 +5959,235 @@
                                     <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="DSQ-hz-p7d" customClass="RoundedView" customModule="Yumn" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="5.5" width="414" height="793"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Ib-XQ-hgy">
-                                                <rect key="frame" x="32" y="8" width="350" height="59"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ggh-b9-TBG">
+                                                <rect key="frame" x="23" y="8" width="368" height="668"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stepper 1:2" translatesAutoresizingMaskIntoConstraints="NO" id="Fw2-YT-6eG">
-                                                        <rect key="frame" x="56" y="14" width="239" height="32"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="32" id="aeM-hy-dvR"/>
-                                                            <constraint firstAttribute="width" constant="239" id="jhs-rM-Bvt"/>
-                                                        </constraints>
-                                                    </imageView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="cX4-Tf-DF4">
+                                                        <rect key="frame" x="8" y="8" width="350" height="651"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Ib-XQ-hgy">
+                                                                <rect key="frame" x="0.0" y="0.0" width="350" height="59"/>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stepper 1:2" translatesAutoresizingMaskIntoConstraints="NO" id="Fw2-YT-6eG">
+                                                                        <rect key="frame" x="56" y="14" width="239" height="32"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="32" id="aeM-hy-dvR"/>
+                                                                            <constraint firstAttribute="width" constant="239" id="jhs-rM-Bvt"/>
+                                                                        </constraints>
+                                                                    </imageView>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="Fw2-YT-6eG" firstAttribute="top" secondItem="4Ib-XQ-hgy" secondAttribute="top" constant="14" id="BU8-d9-KWy"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="Fw2-YT-6eG" secondAttribute="trailing" constant="55" id="BnE-40-Geg"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="Fw2-YT-6eG" secondAttribute="bottom" constant="13" id="DXR-sC-XDl"/>
+                                                                    <constraint firstItem="Fw2-YT-6eG" firstAttribute="leading" secondItem="4Ib-XQ-hgy" secondAttribute="leading" constant="56" id="cHK-78-EA9"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="bzU-RP-gPR">
+                                                                <rect key="frame" x="4.5" y="74" width="341" height="59"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UfP-Oq-kaW">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="62" height="59"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
+                                                                        <connections>
+                                                                            <action selector="onPressedQ1Radio:" destination="94l-kr-sNL" eventType="touchUpInside" id="dbN-qA-TGm"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PlX-tm-dql">
+                                                                        <rect key="frame" x="71" y="0.0" width="270" height="59"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="270" id="i6k-ye-PQU"/>
+                                                                        </constraints>
+                                                                        <color key="tintColor" name="textGrey"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain">
+                                                                            <attributedString key="attributedTitle">
+                                                                                <fragment content="التبرع صادر عن رضا واقتناع وبإرادة حرة">
+                                                                                    <attributes>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
+                                                                                        <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                    </attributes>
+                                                                                </fragment>
+                                                                            </attributedString>
+                                                                        </buttonConfiguration>
+                                                                        <connections>
+                                                                            <action selector="onPressedQ1:" destination="94l-kr-sNL" eventType="touchUpInside" id="Bfr-RE-kve"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pdb-zN-6VR">
+                                                                <rect key="frame" x="4" y="148" width="342" height="59"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z3m-Aj-GLa">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="62" height="59"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
+                                                                        <connections>
+                                                                            <action selector="onPressedRadio2:" destination="94l-kr-sNL" eventType="touchUpInside" id="yql-NT-kUD"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YtC-iZ-Okg">
+                                                                        <rect key="frame" x="62" y="0.0" width="280" height="59"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="280" id="38g-Eo-XNn"/>
+                                                                        </constraints>
+                                                                        <color key="tintColor" name="textGrey"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain">
+                                                                            <attributedString key="attributedTitle">
+                                                                                <fragment content="لا تعاني من أمراض مزمنة مثل السكري، ارتفاع ضغط الدم، السرطان">
+                                                                                    <attributes>
+                                                                                        <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
+                                                                                        <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                    </attributes>
+                                                                                </fragment>
+                                                                            </attributedString>
+                                                                            <color key="baseForegroundColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        </buttonConfiguration>
+                                                                        <connections>
+                                                                            <action selector="onPressedQ2:" destination="94l-kr-sNL" eventType="touchUpInside" id="UFc-3P-946"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cmK-av-Hr9">
+                                                                <rect key="frame" x="4" y="222" width="342" height="59"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZV-8O-ob3">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="62" height="59"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
+                                                                        <connections>
+                                                                            <action selector="onPressedQ3:" destination="94l-kr-sNL" eventType="touchUpInside" id="RPT-cd-66Z"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qu6-AY-krE">
+                                                                        <rect key="frame" x="62" y="0.0" width="280" height="59"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="280" id="L1v-xa-8SQ"/>
+                                                                        </constraints>
+                                                                        <color key="tintColor" name="textGrey"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain">
+                                                                            <attributedString key="attributedTitle">
+                                                                                <fragment content="لا تعاني من أمراض مزمنة معدية مثل الأيدز، التهاب الكبد، الزهري، الملاريا">
+                                                                                    <attributes>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
+                                                                                        <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                    </attributes>
+                                                                                </fragment>
+                                                                            </attributedString>
+                                                                        </buttonConfiguration>
+                                                                        <connections>
+                                                                            <action selector="onPressedRadio3:" destination="94l-kr-sNL" eventType="touchUpInside" id="22y-ae-3PN"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="77" translatesAutoresizingMaskIntoConstraints="NO" id="3lb-TK-7fu">
+                                                                <rect key="frame" x="5.5" y="296" width="339" height="59"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HyO-LX-aii">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="62" height="59"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
+                                                                        <connections>
+                                                                            <action selector="onPressedRadio4:" destination="94l-kr-sNL" eventType="touchUpInside" id="TSx-0D-PZW"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="feZ-sT-iOv">
+                                                                        <rect key="frame" x="139" y="0.0" width="200" height="59"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="200" id="eNB-va-9TZ"/>
+                                                                        </constraints>
+                                                                        <color key="tintColor" name="textGrey"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain">
+                                                                            <attributedString key="attributedTitle">
+                                                                                <fragment content="عمرك أكبر من ١٨ سنة">
+                                                                                    <attributes>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
+                                                                                        <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                    </attributes>
+                                                                                </fragment>
+                                                                            </attributedString>
+                                                                        </buttonConfiguration>
+                                                                        <connections>
+                                                                            <action selector="onPrssedQ4:" destination="94l-kr-sNL" eventType="touchUpInside" id="TRg-f6-Wh4"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="67" translatesAutoresizingMaskIntoConstraints="NO" id="hXr-Pp-66R">
+                                                                <rect key="frame" x="5.5" y="370" width="339" height="59"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b0q-EF-lpX">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="62" height="59"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
+                                                                        <connections>
+                                                                            <action selector="onPressedRadio5:" destination="94l-kr-sNL" eventType="touchUpInside" id="RDn-6g-xVV"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ch1-IF-WiS">
+                                                                        <rect key="frame" x="129" y="0.0" width="210" height="59"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="210" id="i3L-FS-6sq"/>
+                                                                        </constraints>
+                                                                        <color key="tintColor" name="textGrey"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain">
+                                                                            <attributedString key="attributedTitle">
+                                                                                <fragment content="لست مدخنًا">
+                                                                                    <attributes>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
+                                                                                        <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                    </attributes>
+                                                                                </fragment>
+                                                                            </attributedString>
+                                                                        </buttonConfiguration>
+                                                                        <connections>
+                                                                            <action selector="onPressedQ5:" destination="94l-kr-sNL" eventType="touchUpInside" id="QFK-iS-u9t"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="cSv-IA-Nrs">
+                                                                <rect key="frame" x="70" y="444" width="210" height="59"/>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="DZs-uv-t8p">
+                                                                <rect key="frame" x="70" y="518" width="210" height="59"/>
+                                                            </stackView>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1u-1I-Eq6" userLabel="Cont Button">
+                                                                <rect key="frame" x="60" y="592" width="230" height="59"/>
+                                                                <color key="backgroundColor" name="mainDark"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="230" id="HNS-TD-SEd"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="21"/>
+                                                                <color key="tintColor" name="mainDark"/>
+                                                                <state key="normal" title="المتابعة">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstItem="Fw2-YT-6eG" firstAttribute="top" secondItem="4Ib-XQ-hgy" secondAttribute="top" constant="14" id="BU8-d9-KWy"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Fw2-YT-6eG" secondAttribute="trailing" constant="55" id="BnE-40-Geg"/>
-                                                    <constraint firstAttribute="bottom" secondItem="Fw2-YT-6eG" secondAttribute="bottom" constant="13" id="DXR-sC-XDl"/>
-                                                    <constraint firstItem="Fw2-YT-6eG" firstAttribute="leading" secondItem="4Ib-XQ-hgy" secondAttribute="leading" constant="56" id="cHK-78-EA9"/>
+                                                    <constraint firstAttribute="width" secondItem="Ggh-b9-TBG" secondAttribute="height" multiplier="369:670" id="lQ2-9S-4yL"/>
                                                 </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ggh-b9-TBG">
-                                                <rect key="frame" x="19" y="75" width="369" height="603"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aoq-4L-BEL" userLabel="Cont Button">
-                                                        <rect key="frame" x="48" y="386" width="230" height="50"/>
-                                                        <color key="backgroundColor" name="mainDark"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="230" id="VTH-Ar-ukq"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="21"/>
-                                                        <color key="tintColor" name="mainDark"/>
-                                                        <state key="normal" title="المتابعة">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                    </button>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mIN-NH-BtB">
-                                                        <rect key="frame" x="-8" y="386" width="342" height="68"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6cL-gO-s4C">
-                                                                <rect key="frame" x="0.0" y="0.0" width="62" height="68"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="is7-s2-h7u">
-                                                                <rect key="frame" x="62" y="0.0" width="280" height="68"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="280" id="tIJ-JE-bMh"/>
-                                                                </constraints>
-                                                                <color key="tintColor" name="textGrey"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain">
-                                                                    <attributedString key="attributedTitle">
-                                                                        <fragment content="لا تعاني من أمراض مزمنة معدية مثل الأيدز، التهاب الكبد، الزهري، الملاريا">
-                                                                            <attributes>
-                                                                                <font key="NSFont" size="18" name="Tajawal-Regular"/>
-                                                                                <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                            </attributes>
-                                                                        </fragment>
-                                                                    </attributedString>
-                                                                </buttonConfiguration>
-                                                            </button>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="77" translatesAutoresizingMaskIntoConstraints="NO" id="VQo-qn-nSM">
-                                                        <rect key="frame" x="-7" y="386" width="339" height="52"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="03u-kU-Tn5">
-                                                                <rect key="frame" x="0.0" y="0.0" width="62" height="52"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MNT-0o-BfV">
-                                                                <rect key="frame" x="139" y="0.0" width="200" height="52"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="200" id="zlB-0m-ACh"/>
-                                                                </constraints>
-                                                                <color key="tintColor" name="textGrey"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain">
-                                                                    <attributedString key="attributedTitle">
-                                                                        <fragment content="عمرك أكبر من ١٨ سنة">
-                                                                            <attributes>
-                                                                                <font key="NSFont" size="18" name="Tajawal-Regular"/>
-                                                                                <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                            </attributes>
-                                                                        </fragment>
-                                                                    </attributedString>
-                                                                </buttonConfiguration>
-                                                            </button>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="67" translatesAutoresizingMaskIntoConstraints="NO" id="kKW-Xw-2KD">
-                                                        <rect key="frame" x="-7" y="386" width="339" height="52"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Fl-6X-aLT">
-                                                                <rect key="frame" x="0.0" y="0.0" width="62" height="52"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLa-cG-fld">
-                                                                <rect key="frame" x="129" y="0.0" width="210" height="52"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="210" id="IwW-bo-hqb"/>
-                                                                </constraints>
-                                                                <color key="tintColor" name="textGrey"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain">
-                                                                    <attributedString key="attributedTitle">
-                                                                        <fragment content="غير مصاب بفقر الدم الحاد">
-                                                                            <attributes>
-                                                                                <font key="NSFont" size="18" name="Tajawal-Regular"/>
-                                                                                <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                            </attributes>
-                                                                        </fragment>
-                                                                    </attributedString>
-                                                                </buttonConfiguration>
-                                                            </button>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="fKE-uM-VRJ">
-                                                        <rect key="frame" x="-6" y="386" width="337" height="52"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Suq-Qc-yPM">
-                                                                <rect key="frame" x="0.0" y="0.0" width="62" height="52"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PgB-7n-fgm">
-                                                                <rect key="frame" x="87" y="0.0" width="250" height="52"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="250" id="JS8-jm-248"/>
-                                                                </constraints>
-                                                                <color key="tintColor" name="textGrey"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain">
-                                                                    <attributedString key="attributedTitle">
-                                                                        <fragment content="غير مصاب بأمراض الدم الوراثية">
-                                                                            <attributes>
-                                                                                <font key="NSFont" size="18" name="Tajawal-Regular"/>
-                                                                                <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                            </attributes>
-                                                                        </fragment>
-                                                                    </attributedString>
-                                                                </buttonConfiguration>
-                                                            </button>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="hmO-Fm-tgP">
-                                                        <rect key="frame" x="54" y="462" width="260" height="50"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="5ci-ws-yOR">
-                                                        <rect key="frame" x="10" y="92" width="351" height="68"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kbr-aD-wAs">
-                                                                <rect key="frame" x="0.0" y="0.0" width="62" height="68"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3M-qd-YiD">
-                                                                <rect key="frame" x="71" y="0.0" width="280" height="68"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="280" id="6UY-cx-j0D"/>
-                                                                </constraints>
-                                                                <color key="tintColor" name="textGrey"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain">
-                                                                    <attributedString key="attributedTitle">
-                                                                        <fragment content="لا تعاني من أمراض مزمنة مثل السكري، ارتفاع ضغط الدم، السرطان">
-                                                                            <attributes>
-                                                                                <font key="NSFont" size="18" name="Tajawal-Regular"/>
-                                                                                <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                            </attributes>
-                                                                        </fragment>
-                                                                    </attributedString>
-                                                                </buttonConfiguration>
-                                                            </button>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="UNI-SD-CdE">
-                                                        <rect key="frame" x="8" y="32" width="353" height="52"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="71p-JB-5M0">
-                                                                <rect key="frame" x="0.0" y="0.0" width="62" height="52"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="amg-py-QFx">
-                                                                <rect key="frame" x="83" y="0.0" width="270" height="52"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="270" id="fi5-k6-ouW"/>
-                                                                </constraints>
-                                                                <color key="tintColor" name="textGrey"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain">
-                                                                    <attributedString key="attributedTitle">
-                                                                        <fragment content="مر على آخر عملية تبرع بالدم قمت بها ٦٠ يوم أو أكثر">
-                                                                            <attributes>
-                                                                                <font key="NSFont" size="18" name="Tajawal-Regular"/>
-                                                                                <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                            </attributes>
-                                                                        </fragment>
-                                                                    </attributedString>
-                                                                </buttonConfiguration>
-                                                            </button>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="89" translatesAutoresizingMaskIntoConstraints="NO" id="t3h-u9-LY8">
-                                                        <rect key="frame" x="10" y="168" width="351" height="52"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iqk-O7-qk0">
-                                                                <rect key="frame" x="0.0" y="0.0" width="62" height="52"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3MU-cI-fB6">
-                                                                <rect key="frame" x="151" y="0.0" width="200" height="52"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="200" id="e0E-AK-kyk"/>
-                                                                </constraints>
-                                                                <color key="tintColor" name="textGrey"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain">
-                                                                    <attributedString key="attributedTitle">
-                                                                        <fragment content="وزنك أعلى من ٥٠ كجم">
-                                                                            <attributes>
-                                                                                <font key="NSFont" size="18" name="Tajawal-Regular"/>
-                                                                                <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                            </attributes>
-                                                                        </fragment>
-                                                                    </attributedString>
-                                                                </buttonConfiguration>
-                                                            </button>
-                                                        </subviews>
-                                                    </stackView>
-                                                </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
-                                            <constraint firstItem="4Ib-XQ-hgy" firstAttribute="centerX" secondItem="DSQ-hz-p7d" secondAttribute="centerX" id="Bvt-58-l0X"/>
-                                            <constraint firstItem="4Ib-XQ-hgy" firstAttribute="leading" secondItem="DSQ-hz-p7d" secondAttribute="leading" constant="32" id="Ixo-za-321"/>
-                                            <constraint firstItem="4Ib-XQ-hgy" firstAttribute="top" secondItem="DSQ-hz-p7d" secondAttribute="top" constant="8" id="MOK-Bw-BAH"/>
-                                            <constraint firstAttribute="bottom" secondItem="4Ib-XQ-hgy" secondAttribute="bottom" constant="726" id="eEz-WD-8Ps"/>
+                                            <constraint firstItem="Ggh-b9-TBG" firstAttribute="top" secondItem="DSQ-hz-p7d" secondAttribute="top" constant="8" id="USm-wu-nTg"/>
+                                            <constraint firstItem="Ggh-b9-TBG" firstAttribute="leading" secondItem="DSQ-hz-p7d" secondAttribute="leading" constant="23" id="UvR-Xr-I90"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ggh-b9-TBG" secondAttribute="trailing" constant="23" id="WQT-r8-Any"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusV">
@@ -6240,6 +6224,18 @@
                     </view>
                     <navigationItem key="navigationItem" title="التبرع بعد الوفاة" id="KHW-hK-gdk"/>
                     <connections>
+                        <outlet property="contBtn" destination="a1u-1I-Eq6" id="gKg-Cc-le1"/>
+                        <outlet property="q1Btn" destination="PlX-tm-dql" id="WSJ-kj-oed"/>
+                        <outlet property="q1Radio" destination="UfP-Oq-kaW" id="3Yf-H9-09w"/>
+                        <outlet property="q2Btn" destination="YtC-iZ-Okg" id="6tG-FX-mUi"/>
+                        <outlet property="q2Radio" destination="z3m-Aj-GLa" id="8oU-dW-JHq"/>
+                        <outlet property="q3Radio" destination="MZV-8O-ob3" id="RfC-wt-b8g"/>
+                        <outlet property="q3btn" destination="qu6-AY-krE" id="dLY-fl-L0Z"/>
+                        <outlet property="q4Btn" destination="feZ-sT-iOv" id="lOq-cf-1FD"/>
+                        <outlet property="q4Radio" destination="HyO-LX-aii" id="lQS-ap-LnO"/>
+                        <outlet property="q5Btn" destination="ch1-IF-WiS" id="TDZ-s2-3bf"/>
+                        <outlet property="q5Radio" destination="b0q-EF-lpX" id="Tc6-Qg-0Yw"/>
+                        <outlet property="roundedView" destination="DSQ-hz-p7d" id="8VA-4M-i1Y"/>
                         <outlet property="segmentsView" destination="4Ib-XQ-hgy" id="FRn-Vb-Lsi"/>
                     </connections>
                 </viewController>
