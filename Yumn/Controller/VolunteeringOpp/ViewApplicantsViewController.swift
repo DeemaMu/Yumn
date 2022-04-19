@@ -79,10 +79,7 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
         
         
         getCurrentApplicants(docID: VODocID)
-       // getAcceptedApplicants(docID: VODocID)
-       // angilaGetCurrent(docID: VODocID)
-        angilaGetAccepted(docID: VODocID)
-        //acceptedApplicantListener(docID: VODocID)
+        getAcceptedApplicants(docID: VODocID)
         
         
         
@@ -143,20 +140,17 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
                     if let uid : String = doc["uid"] as? String{
                         
                         self.applicantDoc(uid: uid, applicantType: "current")
-                        DispatchQueue.main.async {
-                             self.currentApplicantsTable.reloadData()
-                         }
+                        self.reloadCurrentTable()
                     }
                     
                     
                 } // end for
             }
                 else {
-                    self.noApplicantsLabel.isHidden = false
+                    self.showCurrentAppLbl()
                 }
-                DispatchQueue.main.async {
-                    self.currentApplicantsTable.reloadData()
-                }
+                
+                self.reloadCurrentTable()
                 
             } // end else
         }
@@ -164,14 +158,15 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
         
         
     }// end func
+    
 
     func applicantDoc(uid : String, applicantType : String){
+        
         self.acceptedApplicants = []
-       // self.currentApplicants = []
+       
         db.collection("volunteer").document(uid).getDocument { (document, error) in
                  if let document = document, document.exists {
                      let docData = document.data()
-                     print("Volunteer document exists")
                      
                      let firstName : String = docData!["firstName"] as! String
                      let lastName : String = docData!["lastName"] as! String
@@ -183,9 +178,7 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
                      if  applicantType == "current"{
                          self.currentApplicants.append(applicant(uid: id, firstName: firstName, lastName: lastName, DOB: DOB, email: email, city: ciry))
                          
-                         DispatchQueue.main.async {
-                             self.currentApplicantsTable.reloadData()
-                         }
+                         self.reloadCurrentTable()
                          
                      }
                      else {
@@ -193,9 +186,7 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
                          
                          self.acceptedApplicants.append(applicant(uid: uid, firstName: firstName, lastName: lastName, DOB: DOB, email: email, city: ciry))
                          
-                         DispatchQueue.main.async {
-                             self.acceptedApplicantsTable.reloadData()
-                         }
+                         self.reloadAcceptedTable()
                      }
                  } else {
                      print("Volunteer document does not exist")
@@ -291,7 +282,7 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
     }
     */
     
-    func angilaGetAccepted(docID : String){
+    func getAcceptedApplicants(docID : String){
 
         self.acceptedApplicants = []
         let userRef = db.collection("volunteeringOpp").document(docID).collection("applicants").whereField("status", isEqualTo: "accepted")
@@ -306,11 +297,8 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
                         let data = doc.data()
                         if let uid = data["uid"] as? String{
                             self.applicantDoc(uid: uid, applicantType: "accepted")
-                           // let applicant = applicantDoc(uid: uid, applicantType: "accepted")
                             
-                            DispatchQueue.main.async {
-                                self.acceptedApplicantsTable.reloadData()
-                            }
+                            self.reloadAcceptedTable()
                            
                         }
                         
@@ -323,52 +311,6 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
             
     }// end func
     
-    
-    func angilaGetCurrent(docID : String){
-        
-        //self.currentApplicants = []
-        let userRef = db.collection("volunteeringOpp").document(docID).collection("applicants").whereField("status", isEqualTo: "pending")
-        userRef.addSnapshotListener { (querySnapshot, error) in
-            if let e = error {
-                print ("there was a problem fetching current applicants \(e)")
-            }
-            
-            else {
-                
-                if querySnapshot!.documents.isEmpty == false{
-                    self.noApplicantsLabel.isHidden = true
-                if let snapshotDocuments = querySnapshot?.documents{
-                    
-                    for doc in snapshotDocuments {
-                        let data = doc.data()
-                        if let uid = data["uid"] as? String{
-                            self.applicantDoc(uid: uid, applicantType: "current")
-                            
-                            DispatchQueue.main.async {
-                                self.acceptedApplicantsTable.reloadData()
-                            }
-                           
-                        }
-                        
-                        
-                    }
-                }
-                }
-                else {
-                   // self.currentApplicantsTable.isHidden = true
-                    self.noApplicantsLabel.text = "لا يوجد متقدمين حاليين"
-                    self.noApplicantsLabel.isHidden = false
-                    print("no available current applicants")
-                    
-                }
-                
-            } // else
-           
-        }
-    
-            
-            
-    }
     
     @IBAction func acceptBtnOnPopup(_ sender: Any) {
         
@@ -384,31 +326,20 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
                         
                         components().showToast(message: "تم قبول المتقدم بنجاح", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!, viewC: self)
                         
-                        print("clicked index is \(self.clickedCellIndex)")
                         self.currentApplicants.remove(at: self.clickedCellIndex)
-                       // self.acceptedApplicants.removeAll() // might delete
                         
-                        DispatchQueue.main.async {
-                            self.acceptedApplicantsTable.reloadData()
-                            self.currentApplicantsTable.reloadData()
+                        self.reloadCurrentTable()
+                        self.reloadAcceptedTable()
+                        
+                        self.hidePopupAndBlurredView()
+                        
+                        self.showCurrentAppLbl()
 
-                        }
-                       // self.currentApplicantsTable.reloadData()
-                       // self.acceptedApplicantsTable.reloadData()
                         
-                        self.blurredView.isHidden = true
-                        self.popUp.isHidden = true
-                        
-                        // make it a method 
-                        if self.currentApplicants.count == 0 {
-                            self.noApplicantsLabel.isHidden = false
-                        }
-
-                        print("status updated (accepted)")
                     }else{
                         
                         components().showToast(message: "حدثت مشكلة أثناء قبول المتقدم", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!, viewC: self)
-                        print("status not updated (accepted)")
+                        
                     }
                     
                 }
@@ -425,18 +356,19 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
                         components().showToast(message: "تم رفض المتقدم بنجاح", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!, viewC: self)
                         
                         self.currentApplicants.remove(at: self.clickedCellIndex)
-                     //   self.acceptedApplicants.removeAll() // might delete
-                        self.currentApplicantsTable.reloadData()
-                        self.acceptedApplicantsTable.reloadData()
                         
-                        self.blurredView.isHidden = true
-                        self.popUp.isHidden = true
-                        print("status updated (rejected)")
+                       
+                        self.reloadCurrentTable()
+                        self.reloadAcceptedTable()
+                        
+                        self.hidePopupAndBlurredView()
+                        
+                        self.showCurrentAppLbl()
+                        
                     }else{
                         
                         components().showToast(message: "حدثت مشكلة أثناء رفض المتقدم", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!, viewC: self)
                         
-                        print("status not updated (rejected)")
                     }
                     
                 }
@@ -452,7 +384,48 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
     }
     
     
+    func showCurrentAppLbl(){
+        
+        if currentApplicants.count == 0 {
+            noApplicantsLabel.isHidden = false
+            noAcceptedApplicantsLbl.isHidden = true
+        }
+    }
     
+    func showAcceptedAppLbl(){
+        if acceptedApplicants.count == 0 {
+            noApplicantsLabel.isHidden = true
+            noAcceptedApplicantsLbl.isHidden = false
+        }
+    }
+    
+    func hidePopupAndBlurredView(){
+        self.blurredView.isHidden = true
+        self.popUp.isHidden = true
+
+    }
+    
+    func showPopupAndBlurredView(){
+        self.blurredView.isHidden = false
+        self.popUp.isHidden = false
+    }
+    
+    func reloadCurrentTable(){
+        
+        DispatchQueue.main.async {
+            self.currentApplicantsTable.reloadData()
+
+        }
+        
+    }
+    
+    func reloadAcceptedTable(){
+        DispatchQueue.main.async {
+            self.acceptedApplicantsTable.reloadData()
+
+        }
+        
+    }
     
     // nothing to change
     func addSegments(){
@@ -460,7 +433,7 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
         let segments = ["المتقدمين المقبولين","المتقدمين الحاليين"]
         
         // change color
-        let sgLine = MaterialSegmentedControlR(selectorStyle: .line, fgColor: .gray, selectedFgColor: UIColor.init(named: "mainLight")!, selectorColor: UIColor.init(named: "mainLight")!, bgColor: .white)
+        let sgLine = MaterialSegmentedControlR(selectorStyle: .line, fgColor: .gray, selectedFgColor: UIColor.init(named: "mainDark")!, selectorColor: UIColor.init(named: "mainDark")!, bgColor: .white)
         
         
         guard let customFont = UIFont(name: "Tajawal", size: 15) else {
@@ -498,11 +471,7 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
             acceptedApplicantsTable.isHidden = false
             noApplicantsLabel.isHidden = true
             
-            if acceptedApplicants.count == 0 {
-                noApplicantsLabel.isHidden = true
-                noAcceptedApplicantsLbl.text = "لا يوجد متقدمين مقبولين"
-                noAcceptedApplicantsLbl.isHidden = false
-            }
+            showAcceptedAppLbl()
             
          
             break
@@ -512,11 +481,7 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
             acceptedApplicantsTable.isHidden = true
             noAcceptedApplicantsLbl.isHidden = true
             
-            if currentApplicants.count == 0 {
-                noApplicantsLabel.text = "لا يوجد متقدمين حاليًا"
-                noApplicantsLabel.isHidden = false
-                noAcceptedApplicantsLbl.isHidden = true
-            }
+            showCurrentAppLbl()
 
             break
         default:
@@ -539,11 +504,11 @@ extension ViewApplicantsViewController: UITableViewDataSource {
         
         
         if tableView == currentApplicantsTable {
-            print(currentApplicants.count)
+            
             return currentApplicants.count
         }
         else {
-            print(acceptedApplicants.count)
+            
             return acceptedApplicants.count
         }
     }
@@ -612,13 +577,11 @@ extension ViewApplicantsViewController: UITableViewDataSource {
     func acceptCurrentApplicant(sender: UIButton) {
         
         clickedCellIndex = sender.tag
-        print(clickedCellIndex)
        // let docID = currentApplicants[clickedCellIndex].uid
         let name = "\(currentApplicants[clickedCellIndex].firstName) \(currentApplicants[clickedCellIndex].lastName)"
         acceeptOrRejectHeadline.text = "قبول المتقدم"
         questionLabel.text = "هل أنت متأكد من قبول \(name)؟"
-        blurredView.isHidden = false
-        popUp.isHidden = false
+        showPopupAndBlurredView()
         
         
     }
@@ -634,8 +597,7 @@ extension ViewApplicantsViewController: UITableViewDataSource {
         let name = "\(currentApplicants[clickedCellIndex].firstName) \(currentApplicants[clickedCellIndex].lastName)"
         acceeptOrRejectHeadline.text = "رفض المتقدم"
         questionLabel.text = "هل أنت متأكد من رفض \(name)؟"
-        blurredView.isHidden = false
-        popUp.isHidden = false
+        showPopupAndBlurredView()
         
     }
     
