@@ -58,10 +58,25 @@ struct AfterDeathOrganSelection: View {
                         }
                         LazyHStack {
                             ForEach(organs.suffix(organs.count % 3), id: \.self) { index in
-                                card(organ: index as! String)
+                                card(organ: index)
                             }
                         }
                     }
+            Button(action: {
+            }
+            ) {
+                Text("متابعة").font(Font.custom("Tajawal", size: 20))
+                    .foregroundColor(.white)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(
+                RoundedRectangle(
+                    cornerRadius: 25,
+                    style: .continuous
+                )
+                    .fill(mainDark)
+            )
+            .frame(width: 230, height: 59, alignment: .center)
         }
         
     }
@@ -93,12 +108,12 @@ struct AfterDeathOrganSelection: View {
                 radius: self.organsVM.selected[organ]! ? 0 : 3, x: 0
                 , y:  self.organsVM.selected[organ]! ? 0 : 6)
     }
-    
-//    #colorLiteral(red: 0.8653315902, green: 0.8654771447, blue: 0.8653123975, alpha: 1)
-    
+        
     func buttonPressed(organ: String){
         self.organsVM.selected[organ]?.toggle()
     }
+    
+    
     
 }
 
