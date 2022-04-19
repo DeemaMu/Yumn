@@ -25,6 +25,8 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
 @IBOutlet weak var acceptBtn: UIButton! // make it rounded
 @IBOutlet weak var cancelBtn: UIButton!
 @IBOutlet weak var popUp: UIView!
+    @IBOutlet weak var lbl: UILabel!
+    @IBOutlet weak var viewLbl: UIView!
     // cancel btn
     // pop up
     
@@ -81,9 +83,9 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
         
         
         getCurrentApplicants(docID: VODocID)
-      //  getAcceptedApplicants(docID: VODocID)
+        getAcceptedApplicants(docID: VODocID)
       //  angilaGetCurrent(docID: VODocID)
-        angilaGetAccepted(docID: VODocID)
+       // angilaGetAccepted(docID: VODocID)
         //acceptedApplicantListener(docID: VODocID)
         
         
@@ -133,36 +135,50 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
         
        // var applicantsUIDs : [String] = []
         
-        db.collection("volunteeringOpp").document(docID).collection("applicants").whereField("status", isEqualTo: "pending").getDocuments() { [self] (querySnapshot, err) in
+        db.collection("volunteeringOpp").document(docID).collection("applicants").whereField("status", isEqualTo: "pending").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 
                 if querySnapshot!.documents.isEmpty == false {
+                   // self.noApplicantsLabel.isHidden = true
+                    //self.lbl.isHidden = true
+                    //self.viewLbl.isHidden = true
+                   // self.hideLabel()
+                    print("calling hide label")
                 for document in querySnapshot!.documents {
                     let doc = document.data()
                     if let uid : String = doc["uid"] as? String{
                         
-                        applicantDoc(uid: uid, applicantType: "current")
+                        self.applicantDoc(uid: uid, applicantType: "current")
                         DispatchQueue.main.async {
                              self.currentApplicantsTable.reloadData()
                          }
                     }
                     
                     
-                }
+                } // end for
                     
-               /* DispatchQueue.main.async {
+                DispatchQueue.main.async {
                     self.currentApplicantsTable.reloadData()
-                }*/
+                }
                 
             }// end if stm
                 
-                else {
-                  //  self.currentApplicantsTable.isHidden = true
+                
+                
+                else if querySnapshot!.documents.isEmpty == true{
+                   // self.showLabel()
+                    print("calling show label")
+                   /* self.currentApplicantsTable.isHidden = true
+                    self.acceptedApplicantsTable.isHidden = true
                     self.noApplicantsLabel.text = "لا يوجد متقدمين حاليين"
-                    self.noApplicantsLabel.isHidden = false
+                    self.lbl.text = "no"
+                    self.viewLbl.isHidden = false
+                    self.lbl.isHidden = false*/
+                    //self.noApplicantsLabel.isHidden = false
                     print("no available current applicants")
+                    self.currentApplicantsTable.reloadData()
                 }
                 
             } // end else
@@ -182,9 +198,13 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
                 print("Error getting documents: \(err)")
             } else {
                 
-                if querySnapshot!.documents.count != 0 {
-                    self.noApplicantsLabel.isHidden = true
+                if querySnapshot!.documents.isEmpty == false {
+                   // self.noApplicantsLabel.isHidden = true
+                   // self.lbl.isHidden = true
+                   // self.viewLbl.isHidden = true
                     //self.currentApplicantsTable.isHidden = false
+                   // self.hideLabel()
+                    print("calling hide label")
                 for document in querySnapshot!.documents {
                     let doc = document.data()
                     if let uid : String = doc["uid"] as? String{
@@ -196,21 +216,28 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
                     }
                    // applicantsUIDs.append(uid)
                     
-                }
+                }// end for
                     
                   //  self.bringApplicantData(applicantsUIDs: applicantsUIDs, applicantType: "accepted")
 
-                /*DispatchQueue.main.async {
+                DispatchQueue.main.async {
                     self.acceptedApplicantsTable.reloadData()
-                }*/
+                }
                 
             }// end if stm
                 
-                else {
-                   // self.currentApplicantsTable.isHidden = true
+                else if querySnapshot!.documents.isEmpty == true {
+                   // self.showLabel()
+                    print("calling show label")
+                   /* self.currentApplicantsTable.isHidden = true
+                    self.acceptedApplicantsTable.isHidden = true
                     self.noApplicantsLabel.text = "لا يوجد متقدمين مقبولين"
-                    self.noApplicantsLabel.isHidden = false
+                   // self.noApplicantsLabel.isHidden = false
+                    self.lbl.text = "no"
+                    self.viewLbl.isHidden = false
+                    self.lbl.isHidden = false*/
                     print("no available accepted applicants")
+                    self.acceptedApplicantsTable.reloadData()
                 }
                 
             } // end else
@@ -384,6 +411,15 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
             
     }
     
+    func hideLabel(){
+        self.noApplicantsLabel.isHidden = true
+        
+    }
+    
+    func showLabel(){
+        self.noApplicantsLabel.text = "لا يوجد متقدمين"
+        self.noApplicantsLabel.isHidden = false
+    }
     
     
     func angilaGetCurrent(docID : String){
@@ -544,12 +580,29 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
            
             currentApplicantsTable.isHidden = true
             acceptedApplicantsTable.isHidden = false
+            noApplicantsLabel.isHidden = true
+            if acceptedApplicants.count == 0 {
+                noApplicantsLabel.isHidden = true
+                noAcceptedApplicantsLbl.text = "لا يوجد متقدمين مقبولين"
+                noAcceptedApplicantsLbl.isHidden = false
+            }
+            
          
             break
         case 1:
    
             currentApplicantsTable.isHidden = false
             acceptedApplicantsTable.isHidden = true
+            
+           // noApplicantsLabel.isHidden = true
+            
+            noAcceptedApplicantsLbl.isHidden = true
+            //noApplicantsLabel.isHidden = true
+            if currentApplicants.count == 0 {
+                noApplicantsLabel.text = "لا يوجد متقدمين حاليًا"
+                noApplicantsLabel.isHidden = false
+                noAcceptedApplicantsLbl.isHidden = true
+            }
             
 
             break
@@ -570,6 +623,8 @@ extension ViewApplicantsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+        
+        
         if tableView == currentApplicantsTable {
             print(currentApplicants.count)
             return currentApplicants.count
@@ -584,6 +639,9 @@ extension ViewApplicantsViewController: UITableViewDataSource {
     // calculate age
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
+        
         
         if tableView == currentApplicantsTable {
             
