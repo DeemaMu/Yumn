@@ -69,6 +69,9 @@ struct AfterDeathOrganSelection: View {
     
     @ViewBuilder
     func card(organ: String) -> some View{
+        let shadowColor = Color(#colorLiteral(red: 0.8653315902, green: 0.8654771447, blue: 0.8653123975, alpha: 1))
+//        let raduis = 3
+//        let ySpread = 0
         
         Button(action: {
             buttonPressed(organ: organ)
@@ -86,7 +89,9 @@ struct AfterDeathOrganSelection: View {
                 .fill(self.organsVM.selected[organ]! ? mainDark : .white)
         )
         .frame(width: 90, height: 90, alignment: .center)
-        .shadow(color: Color(#colorLiteral(red: 0.8653315902, green: 0.8654771447, blue: 0.8653123975, alpha: 1)), radius: 3, x: 0, y: 6)
+        .shadow(color: shadowColor,
+                radius: self.organsVM.selected[organ]! ? 0 : 3, x: 0
+                , y:  self.organsVM.selected[organ]! ? 0 : 6)
     }
     
 //    #colorLiteral(red: 0.8653315902, green: 0.8654771447, blue: 0.8653123975, alpha: 1)
