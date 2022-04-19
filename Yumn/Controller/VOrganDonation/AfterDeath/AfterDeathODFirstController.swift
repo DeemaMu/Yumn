@@ -16,7 +16,7 @@ class AfterDeathODFirstController: UIViewController {
     @IBOutlet weak var q1Radio: UIButton!
     
     @IBOutlet weak var q2Btn: UIButton!
-        
+    
     @IBOutlet weak var q2Radio: UIButton!
     
     @IBOutlet weak var q3btn: UIButton!
@@ -34,7 +34,17 @@ class AfterDeathODFirstController: UIViewController {
     @IBOutlet weak var contBtn: UIButton!
     
     @IBOutlet weak var blackBlurredView: UIView!
-
+    
+//    @IBOutlet weak var popupStack: UIStackView!
+    
+    @IBOutlet weak var popupView: UIView!
+    
+    @IBOutlet weak var popupTitle: UILabel!
+    
+    @IBOutlet weak var popupMsg: UILabel!
+    
+    @IBOutlet weak var okBtn: UIButton!
+    
     
     var questions = [false, false,false, false, false]
     
@@ -57,7 +67,6 @@ class AfterDeathODFirstController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        subscribeToKeyboardNotifications()
         //        self.navigationController?.navigationBar.tintColor = UIColor.white
         super.viewWillAppear(animated)
         
@@ -78,7 +87,6 @@ class AfterDeathODFirstController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        unsubscribeFromKeyboardNotifications()
         var nav = self.navigationController?.navigationBar
         guard let customFont = UIFont(name: "Tajawal-Bold", size: 25) else {
             fatalError("""
@@ -97,38 +105,38 @@ class AfterDeathODFirstController: UIViewController {
         
         questions[0] = !questions[0]
         print (questions)
-
+        
         if (q1Radio.currentImage == UIImage(named: "fullRadio")){
             
             
-                q1Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            q1Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
             
         }
         else {
             
             q1Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
             
-
+            
         }
-    
+        
     }
     
     @IBAction func onPressedQ1Radio(_ sender: Any) {
-      
+        
         questions[0] = !questions[0]
         print (questions)
-
+        
         if (q1Radio.currentImage == UIImage(named: "fullRadio")){
             
             
-                q1Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            q1Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
             
         }
         else {
             
             q1Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
             
-
+            
         }
     }
     
@@ -137,18 +145,18 @@ class AfterDeathODFirstController: UIViewController {
         
         questions[1] = !questions[1]
         print (questions)
-
+        
         if (q2Radio.currentImage == UIImage(named: "fullRadio")){
             
             
-                q2Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            q2Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
             
         }
         else {
             
             q2Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
             
-
+            
         }
         
         
@@ -158,18 +166,18 @@ class AfterDeathODFirstController: UIViewController {
     @IBAction func onPressedRadio2(_ sender: Any) {
         questions[1] = !questions[1]
         print (questions)
-
+        
         if (q2Radio.currentImage == UIImage(named: "fullRadio")){
             
             
-                q2Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            q2Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
             
         }
         else {
             
             q2Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
             
-
+            
         }
     }
     
@@ -177,18 +185,18 @@ class AfterDeathODFirstController: UIViewController {
     @IBAction func onPressedRadio3(_ sender: Any) {
         questions[2] = !questions[2]
         print (questions)
-
+        
         if (q3Radio.currentImage == UIImage(named: "fullRadio")){
             
             
-                q3Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            q3Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
             
         }
         else {
             
             q3Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
             
-
+            
         }
     }
     
@@ -198,18 +206,18 @@ class AfterDeathODFirstController: UIViewController {
         
         questions[2] = !questions[2]
         print (questions)
-
+        
         if (q3Radio.currentImage == UIImage(named: "fullRadio")){
             
             
-                q3Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            q3Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
             
         }
         else {
             
             q3Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
             
-
+            
         }
     }
     
@@ -218,18 +226,18 @@ class AfterDeathODFirstController: UIViewController {
         
         questions[3] = !questions[3]
         print (questions)
-
+        
         if (q4Radio.currentImage == UIImage(named: "fullRadio")){
             
             
-                q4Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            q4Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
             
         }
         else {
             
             q4Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
             
-
+            
         }
     }
     
@@ -237,18 +245,18 @@ class AfterDeathODFirstController: UIViewController {
     @IBAction func onPrssedQ4(_ sender: Any) {
         questions[3] = !questions[3]
         print (questions)
-
+        
         if (q4Radio.currentImage == UIImage(named: "fullRadio")){
             
             
-                q4Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            q4Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
             
         }
         else {
             
             q4Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
             
-
+            
         }
     }
     
@@ -257,18 +265,18 @@ class AfterDeathODFirstController: UIViewController {
         
         questions[4] = !questions[4]
         print (questions)
-
+        
         if (q5Radio.currentImage == UIImage(named: "fullRadio")){
             
             
-                q5Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            q5Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
             
         }
         else {
             
             q5Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
             
-
+            
         }
     }
     
@@ -276,18 +284,18 @@ class AfterDeathODFirstController: UIViewController {
     @IBAction func onPressedRadio5(_ sender: Any) {
         questions[4] = !questions[4]
         print (questions)
-
+        
         if (q5Radio.currentImage == UIImage(named: "fullRadio")){
             
             
-                q5Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            q5Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
             
         }
         else {
             
             q5Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
             
-
+            
         }
     }
     
@@ -298,10 +306,10 @@ class AfterDeathODFirstController: UIViewController {
         
         if (!isValidDonor){
             
-//            popupTitle.text = "مقدرين حبك للمساعدة"
-//            popupMsg.text = "للأسف أنت غير مؤهل للتبرع بالدم"
-//            popupView.isHidden = false
-//            blackBlurredView.isHidden = false
+            popupTitle.text = "مقدرين حبك للمساعدة"
+            popupMsg.text = "للأسف، أنت غير مؤهل للتبرع بالأعضاء بعد الوفاة"
+            popupView.isHidden = false
+            blackBlurredView.isHidden = false
         }
         
         else{
