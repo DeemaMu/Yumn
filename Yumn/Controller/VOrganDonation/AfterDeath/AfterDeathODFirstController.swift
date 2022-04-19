@@ -35,7 +35,7 @@ class AfterDeathODFirstController: UIViewController {
     
     @IBOutlet weak var blackBlurredView: UIView!
     
-//    @IBOutlet weak var popupStack: UIStackView!
+    //    @IBOutlet weak var popupStack: UIStackView!
     
     @IBOutlet weak var popupView: UIView!
     
@@ -52,11 +52,14 @@ class AfterDeathODFirstController: UIViewController {
         super.viewDidLoad()
         viewWillAppear(true)
         
+        popupView.superview?.bringSubviewToFront(popupView)
+        
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.layoutIfNeeded()
         
         contBtn.layer.cornerRadius = 25
+        okBtn.layer.cornerRadius = 25
         popupView.layer.cornerRadius = 30
         q1Btn.contentHorizontalAlignment = .right
         q2Btn.contentHorizontalAlignment = .right
