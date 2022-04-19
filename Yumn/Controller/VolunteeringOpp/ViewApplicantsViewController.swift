@@ -25,10 +25,6 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
 @IBOutlet weak var acceptBtn: UIButton! // make it rounded
 @IBOutlet weak var cancelBtn: UIButton!
 @IBOutlet weak var popUp: UIView!
-    @IBOutlet weak var lbl: UILabel!
-    @IBOutlet weak var viewLbl: UIView!
-    // cancel btn
-    // pop up
     
     @IBOutlet weak var segmentsView: UIView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -83,9 +79,9 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
         
         
         getCurrentApplicants(docID: VODocID)
-        getAcceptedApplicants(docID: VODocID)
-      //  angilaGetCurrent(docID: VODocID)
-       // angilaGetAccepted(docID: VODocID)
+       // getAcceptedApplicants(docID: VODocID)
+       // angilaGetCurrent(docID: VODocID)
+        angilaGetAccepted(docID: VODocID)
         //acceptedApplicantListener(docID: VODocID)
         
         
@@ -123,6 +119,7 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
         //        self.navigationController?.navigationBar.tintColor = UIColor.white
         super.viewWillAppear(animated)
         navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+      
         
     }
     
@@ -133,19 +130,14 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
     // sva e the uids in array then bring info
     func getCurrentApplicants(docID:String){
         
-       // var applicantsUIDs : [String] = []
-        
         db.collection("volunteeringOpp").document(docID).collection("applicants").whereField("status", isEqualTo: "pending").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 
+                
                 if querySnapshot!.documents.isEmpty == false {
-                   // self.noApplicantsLabel.isHidden = true
-                    //self.lbl.isHidden = true
-                    //self.viewLbl.isHidden = true
-                   // self.hideLabel()
-                    print("calling hide label")
+                    self.noApplicantsLabel.isHidden = true
                 for document in querySnapshot!.documents {
                     let doc = document.data()
                     if let uid : String = doc["uid"] as? String{
@@ -158,26 +150,11 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
                     
                     
                 } // end for
-                    
-                DispatchQueue.main.async {
-                    self.currentApplicantsTable.reloadData()
+            }
+                else {
+                    self.noApplicantsLabel.isHidden = false
                 }
-                
-            }// end if stm
-                
-                
-                
-                else if querySnapshot!.documents.isEmpty == true{
-                   // self.showLabel()
-                    print("calling show label")
-                   /* self.currentApplicantsTable.isHidden = true
-                    self.acceptedApplicantsTable.isHidden = true
-                    self.noApplicantsLabel.text = "لا يوجد متقدمين حاليين"
-                    self.lbl.text = "no"
-                    self.viewLbl.isHidden = false
-                    self.lbl.isHidden = false*/
-                    //self.noApplicantsLabel.isHidden = false
-                    print("no available current applicants")
+                DispatchQueue.main.async {
                     self.currentApplicantsTable.reloadData()
                 }
                 
@@ -187,65 +164,10 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
         
         
     }// end func
-    
-    // docID fron segue
-    func getAcceptedApplicants(docID:String){
-        
-        //var applicantsUIDs : [String] = []
-        
-        db.collection("volunteeringOpp").document(docID).collection("applicants").whereField("status", isEqualTo: "accepted").getDocuments() { [self]  (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                
-                if querySnapshot!.documents.isEmpty == false {
-                   // self.noApplicantsLabel.isHidden = true
-                   // self.lbl.isHidden = true
-                   // self.viewLbl.isHidden = true
-                    //self.currentApplicantsTable.isHidden = false
-                   // self.hideLabel()
-                    print("calling hide label")
-                for document in querySnapshot!.documents {
-                    let doc = document.data()
-                    if let uid : String = doc["uid"] as? String{
-                        
-                        self.applicantDoc(uid: uid, applicantType: "accepted")
-                        DispatchQueue.main.async {
-                            self.acceptedApplicantsTable.reloadData()
-                        }
-                    }
-                   // applicantsUIDs.append(uid)
-                    
-                }// end for
-                    
-                  //  self.bringApplicantData(applicantsUIDs: applicantsUIDs, applicantType: "accepted")
 
-                DispatchQueue.main.async {
-                    self.acceptedApplicantsTable.reloadData()
-                }
-                
-            }// end if stm
-                
-                else if querySnapshot!.documents.isEmpty == true {
-                   // self.showLabel()
-                    print("calling show label")
-                   /* self.currentApplicantsTable.isHidden = true
-                    self.acceptedApplicantsTable.isHidden = true
-                    self.noApplicantsLabel.text = "لا يوجد متقدمين مقبولين"
-                   // self.noApplicantsLabel.isHidden = false
-                    self.lbl.text = "no"
-                    self.viewLbl.isHidden = false
-                    self.lbl.isHidden = false*/
-                    print("no available accepted applicants")
-                    self.acceptedApplicantsTable.reloadData()
-                }
-                
-            } // end else
-        }
-    }
-    
     func applicantDoc(uid : String, applicantType : String){
-        
+        self.acceptedApplicants = []
+       // self.currentApplicants = []
         db.collection("volunteer").document(uid).getDocument { (document, error) in
                  if let document = document, document.exists {
                      let docData = document.data()
@@ -256,10 +178,10 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
                      let DOB : String = docData!["birthDate"] as! String
                      let email : String = docData!["email"] as! String
                      let ciry : String = docData!["city"] as! String
-                     let uid : String = document.documentID
+                     let id : String = document.documentID
                      
                      if  applicantType == "current"{
-                         self.currentApplicants.append(applicant(uid: uid, firstName: firstName, lastName: lastName, DOB: DOB, email: email, city: ciry))
+                         self.currentApplicants.append(applicant(uid: id, firstName: firstName, lastName: lastName, DOB: DOB, email: email, city: ciry))
                          
                          DispatchQueue.main.async {
                              self.currentApplicantsTable.reloadData()
@@ -267,6 +189,8 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
                          
                      }
                      else {
+                         
+                         
                          self.acceptedApplicants.append(applicant(uid: uid, firstName: firstName, lastName: lastName, DOB: DOB, email: email, city: ciry))
                          
                          DispatchQueue.main.async {
@@ -368,16 +292,14 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
     */
     
     func angilaGetAccepted(docID : String){
-        
-        acceptedApplicants = []
+
+        self.acceptedApplicants = []
         let userRef = db.collection("volunteeringOpp").document(docID).collection("applicants").whereField("status", isEqualTo: "accepted")
         userRef.addSnapshotListener { (querySnapshot, error) in
             if let e = error {
                 print ("there was a problem fetching accepted applicants \(e)")
             }
-            else if querySnapshot!.documents.count != 0 {
                 
-                if querySnapshot!.documents.isEmpty == false{
                 if let snapshotDocuments = querySnapshot?.documents{
                     
                     for doc in snapshotDocuments {
@@ -395,36 +317,16 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
                         
                     }
                 }
-                }
-                else {
-                   // self.currentApplicantsTable.isHidden = true
-                    self.noApplicantsLabel.text = "لا يوجد متقدمين مقبولين"
-                    self.noApplicantsLabel.isHidden = false
-                    print("no available accepted applicants")
-                    
-                }
-            } // else
+                
             
         }
-    
             
-            
-    }
-    
-    func hideLabel(){
-        self.noApplicantsLabel.isHidden = true
-        
-    }
-    
-    func showLabel(){
-        self.noApplicantsLabel.text = "لا يوجد متقدمين"
-        self.noApplicantsLabel.isHidden = false
-    }
+    }// end func
     
     
     func angilaGetCurrent(docID : String){
         
-        currentApplicants = []
+        //self.currentApplicants = []
         let userRef = db.collection("volunteeringOpp").document(docID).collection("applicants").whereField("status", isEqualTo: "pending")
         userRef.addSnapshotListener { (querySnapshot, error) in
             if let e = error {
@@ -434,17 +336,16 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
             else {
                 
                 if querySnapshot!.documents.isEmpty == false{
+                    self.noApplicantsLabel.isHidden = true
                 if let snapshotDocuments = querySnapshot?.documents{
                     
                     for doc in snapshotDocuments {
                         let data = doc.data()
                         if let uid = data["uid"] as? String{
                             self.applicantDoc(uid: uid, applicantType: "current")
-                           // let applicant = applicantDoc(uid: uid, applicantType: "accepted")
                             
                             DispatchQueue.main.async {
                                 self.acceptedApplicantsTable.reloadData()
-                                self.noApplicantsLabel.isHidden = true
                             }
                            
                         }
@@ -483,12 +384,25 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
                         
                         components().showToast(message: "تم قبول المتقدم بنجاح", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!, viewC: self)
                         
+                        print("clicked index is \(self.clickedCellIndex)")
                         self.currentApplicants.remove(at: self.clickedCellIndex)
-                        self.currentApplicantsTable.reloadData()
-                        self.acceptedApplicantsTable.reloadData()
+                       // self.acceptedApplicants.removeAll() // might delete
+                        
+                        DispatchQueue.main.async {
+                            self.acceptedApplicantsTable.reloadData()
+                            self.currentApplicantsTable.reloadData()
+
+                        }
+                       // self.currentApplicantsTable.reloadData()
+                       // self.acceptedApplicantsTable.reloadData()
                         
                         self.blurredView.isHidden = true
                         self.popUp.isHidden = true
+                        
+                        // make it a method 
+                        if self.currentApplicants.count == 0 {
+                            self.noApplicantsLabel.isHidden = false
+                        }
 
                         print("status updated (accepted)")
                     }else{
@@ -500,6 +414,7 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
                 }
             
         }
+        
         // reject
         else {
             let ref = db.collection("volunteeringOpp").document(VODocID).collection("applicants").document(docID)
@@ -510,6 +425,7 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
                         components().showToast(message: "تم رفض المتقدم بنجاح", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!, viewC: self)
                         
                         self.currentApplicants.remove(at: self.clickedCellIndex)
+                     //   self.acceptedApplicants.removeAll() // might delete
                         self.currentApplicantsTable.reloadData()
                         self.acceptedApplicantsTable.reloadData()
                         
@@ -581,6 +497,7 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
             currentApplicantsTable.isHidden = true
             acceptedApplicantsTable.isHidden = false
             noApplicantsLabel.isHidden = true
+            
             if acceptedApplicants.count == 0 {
                 noApplicantsLabel.isHidden = true
                 noAcceptedApplicantsLbl.text = "لا يوجد متقدمين مقبولين"
@@ -593,17 +510,13 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
    
             currentApplicantsTable.isHidden = false
             acceptedApplicantsTable.isHidden = true
-            
-           // noApplicantsLabel.isHidden = true
-            
             noAcceptedApplicantsLbl.isHidden = true
-            //noApplicantsLabel.isHidden = true
+            
             if currentApplicants.count == 0 {
                 noApplicantsLabel.text = "لا يوجد متقدمين حاليًا"
                 noApplicantsLabel.isHidden = false
                 noAcceptedApplicantsLbl.isHidden = true
             }
-            
 
             break
         default:
@@ -700,36 +613,12 @@ extension ViewApplicantsViewController: UITableViewDataSource {
         
         clickedCellIndex = sender.tag
         print(clickedCellIndex)
-        let docID = currentApplicants[clickedCellIndex].uid
+       // let docID = currentApplicants[clickedCellIndex].uid
         let name = "\(currentApplicants[clickedCellIndex].firstName) \(currentApplicants[clickedCellIndex].lastName)"
         acceeptOrRejectHeadline.text = "قبول المتقدم"
         questionLabel.text = "هل أنت متأكد من قبول \(name)؟"
         blurredView.isHidden = false
         popUp.isHidden = false
-        
-        //acceptBtnOnPopup(docID)
-        
-        /*
-        let ref = db.collection("volunteeringOpp").document(VODocID).collection("applicants").document(docID)
-        ref.updateData(["status": "accepted"]) { (error) in
-                if error == nil {
-                    
-                    components().showToast(message: "تم قبول المتقدم بنجاح", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!, viewC: self)
-                    
-                    self.currentApplicants.remove(at: self.clickedCellIndex)
-                    self.currentApplicantsTable.reloadData()
-                    self.acceptedApplicantsTable.reloadData()
-                    
-                    
-                    print("status updated (accepted)")
-                }else{
-                    
-                    components().showToast(message: "حدثت مشكلة أثناء قبول المتقدم", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!, viewC: self)
-                    print("status not updated (accepted)")
-                }
-                
-            }*/
-        
         
         
     }
@@ -741,35 +630,13 @@ extension ViewApplicantsViewController: UITableViewDataSource {
         
         clickedCellIndex = sender.tag
         print(clickedCellIndex)
-        let docID = currentApplicants[clickedCellIndex].uid
+       // let docID = currentApplicants[clickedCellIndex].uid
         let name = "\(currentApplicants[clickedCellIndex].firstName) \(currentApplicants[clickedCellIndex].lastName)"
         acceeptOrRejectHeadline.text = "رفض المتقدم"
         questionLabel.text = "هل أنت متأكد من رفض \(name)؟"
         blurredView.isHidden = false
         popUp.isHidden = false
         
-       /*
-        // in acceptBtn
-        let ref = db.collection("volunteeringOpp").document(VODocID).collection("applicants").document(docID)
-    
-        ref.updateData(["status": "rejected"]) { (error) in
-                if error == nil {
-                    
-                    components().showToast(message: "تم رفض المتقدم بنجاح", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!, viewC: self)
-                    
-                    self.currentApplicants.remove(at: self.clickedCellIndex)
-                    self.currentApplicantsTable.reloadData()
-                    
-                    print("status updated (rejected)")
-                }else{
-                    
-                    components().showToast(message: "حدثت مشكلة أثناء رفض المتقدم", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!, viewC: self)
-                    
-                    print("status not updated (rejected)")
-                }
-                
-            }*/
-    
     }
     
     
