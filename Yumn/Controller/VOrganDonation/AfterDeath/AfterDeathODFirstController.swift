@@ -2,7 +2,7 @@
 //  AfterDeathODFirstController.swift
 //  Yumn
 //
-//  Created by Rawan Mohammed on 19/04/2022.
+//  Created by Rawan Mohammed on 17/04/2022.
 //
 
 import Foundation
@@ -90,17 +90,18 @@ class AfterDeathODFirstController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        var nav = self.navigationController?.navigationBar
-        guard let customFont = UIFont(name: "Tajawal-Bold", size: 25) else {
-            fatalError("""
-                Failed to load the "Tajawal" font.
-                Make sure the font file is included in the project and the font name is spelled correctly.
-                """
-            )
-        }
-        nav?.tintColor = UIColor.init(named: "mainLight")
-        nav?.barTintColor = UIColor.init(named: "mainLight")
-        nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(named: "mainLight")!, NSAttributedString.Key.font: customFont]
+        
+//        var nav = self.navigationController?.navigationBar
+//        guard let customFont = UIFont(name: "Tajawal-Bold", size: 25) else {
+//            fatalError("""
+//                Failed to load the "Tajawal" font.
+//                Make sure the font file is included in the project and the font name is spelled correctly.
+//                """
+//            )
+//        }
+//        nav?.tintColor = UIColor.init(named: "mainLight")
+//        nav?.barTintColor = UIColor.init(named: "mainLight")
+//        nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(named: "mainLight")!, NSAttributedString.Key.font: customFont]
     }
     
     
@@ -319,6 +320,8 @@ class AfterDeathODFirstController: UIViewController {
         }
         
         else{
+            
+            performSegue(withIdentifier: "goToOrganSelection", sender: nil)
             
             //Go to next page
         }

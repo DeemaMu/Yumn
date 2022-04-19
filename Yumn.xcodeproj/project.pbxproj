@@ -51,6 +51,8 @@
 		B930F86827B85D5F00E70860 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B930F86727B85D5E00E70860 /* RoundedView.swift */; };
 		B9419DFC27C52D9C00962A1B /* HospitalCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9419DFA27C52D9C00962A1B /* HospitalCellTableViewCell.swift */; };
 		B9419DFD27C52D9C00962A1B /* HospitalCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9419DFB27C52D9C00962A1B /* HospitalCellTableViewCell.xib */; };
+		B94CB968280EB8B00088470D /* AfterDeathODSecondController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94CB967280EB8AF0088470D /* AfterDeathODSecondController.swift */; };
+		B94CB96A280EBE160088470D /* AfterDeathOrganSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94CB969280EBE160088470D /* AfterDeathOrganSelection.swift */; };
 		B9503D8827BAE4E500E312B8 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9503D8727BAE4E400E312B8 /* CustomSegmentedControl.swift */; };
 		B952BB1227C641B80049D81B /* HospitalsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B952BB1127C641B80049D81B /* HospitalsController.swift */; };
 		B9570C2F27DFA828000D1B8B /* MaterialSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9570C2E27DFA826000D1B8B /* MaterialSegmentedControl.swift */; };
@@ -139,6 +141,8 @@
 		B930F86727B85D5E00E70860 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		B9419DFA27C52D9C00962A1B /* HospitalCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalCellTableViewCell.swift; sourceTree = "<group>"; };
 		B9419DFB27C52D9C00962A1B /* HospitalCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HospitalCellTableViewCell.xib; sourceTree = "<group>"; };
+		B94CB967280EB8AF0088470D /* AfterDeathODSecondController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterDeathODSecondController.swift; sourceTree = "<group>"; };
+		B94CB969280EBE160088470D /* AfterDeathOrganSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterDeathOrganSelection.swift; sourceTree = "<group>"; };
 		B9503D8727BAE4E400E312B8 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		B952BB1127C641B80049D81B /* HospitalsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalsController.swift; sourceTree = "<group>"; };
 		B9570C2E27DFA826000D1B8B /* MaterialSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialSegmentedControl.swift; sourceTree = "<group>"; };
@@ -375,6 +379,8 @@
 			isa = PBXGroup;
 			children = (
 				B9BAC6E9280E0CDF001489A1 /* AfterDeathODFirstController.swift */,
+				B94CB967280EB8AF0088470D /* AfterDeathODSecondController.swift */,
+				B94CB969280EBE160088470D /* AfterDeathOrganSelection.swift */,
 			);
 			path = AfterDeath;
 			sourceTree = "<group>";
@@ -609,9 +615,11 @@
 				B91DD29427E9976200BA9881 /* PopupAddForm.swift in Sources */,
 				D195444227D49A1700B03DFF /* bloodShortage.swift in Sources */,
 				95EED9CB27E6602C009AFDAC /* VOCollectionViewCell.swift in Sources */,
+				B94CB968280EB8B00088470D /* AfterDeathODSecondController.swift in Sources */,
 				D195443627D4998F00B03DFF /* bloodShortageViewController.swift in Sources */,
 				B91DD29827E9BA9200BA9881 /* popupAddFormOrgan.swift in Sources */,
 				D195444827D49A3900B03DFF /* totalOrgansShortage.swift in Sources */,
+				B94CB96A280EBE160088470D /* AfterDeathOrganSelection.swift in Sources */,
 				B9503D8827BAE4E500E312B8 /* CustomSegmentedControl.swift in Sources */,
 				D195444627D49A2F00B03DFF /* totalBloodShortage.swift in Sources */,
 				D195444427D49A2400B03DFF /* organShortage.swift in Sources */,

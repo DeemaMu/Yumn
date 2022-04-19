@@ -82,6 +82,7 @@ class OrganDonationViewController: UIViewController, ChartViewDelegate{
         blurredView.isHidden = false
         
         super.viewDidLoad()
+        viewWillAppear(true)
         
         
         
@@ -143,6 +144,18 @@ class OrganDonationViewController: UIViewController, ChartViewDelegate{
         //        self.navigationController?.navigationBar.tintColor = UIColor.white
         super.viewWillAppear(animated)
         navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        var nav = self.navigationController?.navigationBar
+        guard let customFont = UIFont(name: "Tajawal-Bold", size: 25) else {
+            fatalError("""
+                Failed to load the "Tajawal" font.
+                Make sure the font file is included in the project and the font name is spelled correctly.
+                """
+            )
+        }
+        nav?.tintColor = UIColor.init(named: "mainLight")
+        nav?.barTintColor = UIColor.init(named: "mainLight")
+        nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(named: "mainLight")!, NSAttributedString.Key.font: customFont]
         
     }
     
