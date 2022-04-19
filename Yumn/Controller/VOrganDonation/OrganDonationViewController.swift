@@ -7,12 +7,12 @@
 
 import UIKit
 import SwiftUI
-//import BetterSegmentedControl
 import MapKit
 import CoreLocation
 import Firebase
 import FirebaseFirestore
 import Charts
+
 class OrganDonationViewController: UIViewController, ChartViewDelegate{
     
     @IBOutlet weak var organBtn2: UIButton!
@@ -27,9 +27,7 @@ class OrganDonationViewController: UIViewController, ChartViewDelegate{
     @IBOutlet weak var label2: UILabel!
     @IBOutlet weak var label3: UILabel!
     
-   // var location:CLLocation?
-   // var userLocation:CLLocationCoordinate2D?
- //   @IBOutlet weak var seg2: UIView!
+    
     // by Modhi
     @IBOutlet weak var loadingGif: UIImageView!
     @IBOutlet weak var blurredView: UIView!
@@ -42,6 +40,9 @@ class OrganDonationViewController: UIViewController, ChartViewDelegate{
     @IBOutlet weak var segmentsView: UIView!
     
     @IBOutlet weak var roundView: UIView!
+    
+    
+    @IBOutlet weak var donationTypeView: UIView!
     
     
     let db = Firestore.firestore()
@@ -85,23 +86,6 @@ class OrganDonationViewController: UIViewController, ChartViewDelegate{
         viewWillAppear(true)
         
         
-        
-        //        print("\(String(describing: userLocation))")
-        //        let control = BetterSegmentedControl(frame: CGRect(x: 0, y: 0,width: seg2.frame.width,        height: 50.0))
-        //        let control = BetterSegmentedControl.init(frame: CGRect(x: 0, y: 0, width:                    seg2.frame.width, height: 50), segments: , index: , options: )
-        
-        //        segmentedControl.selectedSegmentIndex = 2
-        //        segmentedControl.removeBorder()
-        //        segmentedControl.addUnderlineForSelectedSegment()
-        //
-        
-//        codeSegmented = CustomSegmentedControl(frame: CGRect(x: 0, y: 0, width: segmentsView.frame.width, height: 50), buttonTitle: ["نوع التبرع","الإرشادات","الإحتياج"])
-//        codeSegmented!.backgroundColor = .clear
-//        //        codeSegmented.delegate?.change(to: 2)
-//        segmentsView.addSubview(codeSegmented!)
-//        codeSegmented?.delegate = self
-        
-        
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.layoutIfNeeded()
@@ -141,7 +125,6 @@ class OrganDonationViewController: UIViewController, ChartViewDelegate{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //        self.navigationController?.navigationBar.tintColor = UIColor.white
         super.viewWillAppear(animated)
         navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
@@ -171,6 +154,10 @@ class OrganDonationViewController: UIViewController, ChartViewDelegate{
             cityOfUser.isHidden = true
             loadingGif.isHidden = true
             blurredView.isHidden = true
+            
+            // organ donation type
+            donationTypeView.isHidden = false
+            
             break
         case 1:
             organDonImage.isHidden = false
@@ -182,6 +169,9 @@ class OrganDonationViewController: UIViewController, ChartViewDelegate{
             cityOfUser.isHidden = true
             loadingGif.isHidden = true
             blurredView.isHidden = true
+            
+            // organ donation type
+            donationTypeView.isHidden = true
             
             break
         default:
@@ -195,6 +185,9 @@ class OrganDonationViewController: UIViewController, ChartViewDelegate{
             cityOfUser.isHidden = false
             loadingGif.isHidden = false
             blurredView.isHidden = false
+            
+            // organ donation type
+            donationTypeView.isHidden = true
             
         }
     }
