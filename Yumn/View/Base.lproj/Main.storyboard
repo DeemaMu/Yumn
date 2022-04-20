@@ -3797,25 +3797,25 @@
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="muT-JZ-3JP">
                                                 <rect key="frame" x="32" y="75" width="350" height="627"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Qft-PT-3nq">
-                                                        <rect key="frame" x="37" y="126" width="276" height="268"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Qft-PT-3nq">
+                                                        <rect key="frame" x="37" y="116" width="276" height="290"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xHu-Sz-FQV" customClass="RoundedShadowedView" customModule="Yumn" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="276" height="118"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="276" height="130"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="التبرع أثناء الحياة" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FlO-1w-PHy">
-                                                                        <rect key="frame" x="135" y="54" width="133" height="23.5"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="التبرع أثناء الحياة" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FlO-1w-PHy">
+                                                                        <rect key="frame" x="135" y="55" width="133" height="20"/>
                                                                         <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="20"/>
                                                                         <color key="textColor" name="mainDark"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2w-Pp-YW2">
-                                                                        <rect key="frame" x="8" y="8" width="260" height="115.5"/>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2w-Pp-YW2">
+                                                                        <rect key="frame" x="8" y="39" width="260" height="52"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain" title="    "/>
                                                                     </button>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alive_organ_donation" translatesAutoresizingMaskIntoConstraints="NO" id="Z5O-Hl-fcq">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="127" height="118"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="127" height="130"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="127" id="Lsf-5z-8ft"/>
                                                                         </constraints>
@@ -3824,6 +3824,7 @@
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
                                                                     <constraint firstItem="u2w-Pp-YW2" firstAttribute="leading" secondItem="xHu-Sz-FQV" secondAttribute="leadingMargin" id="8NG-nd-tRh"/>
+                                                                    <constraint firstAttribute="height" constant="130" id="8yK-ob-haY"/>
                                                                     <constraint firstItem="Z5O-Hl-fcq" firstAttribute="centerY" secondItem="FlO-1w-PHy" secondAttribute="centerY" id="Ieu-R2-FkT"/>
                                                                     <constraint firstItem="Z5O-Hl-fcq" firstAttribute="centerY" secondItem="u2w-Pp-YW2" secondAttribute="centerY" id="Kkc-7f-V5n"/>
                                                                     <constraint firstItem="Z5O-Hl-fcq" firstAttribute="top" secondItem="xHu-Sz-FQV" secondAttribute="top" id="LZY-pd-6Il"/>
@@ -3855,7 +3856,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M3b-SV-n7l" customClass="RoundedShadowedView" customModule="Yumn" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="138" width="276" height="130"/>
+                                                                <rect key="frame" x="0.0" y="160" width="276" height="130"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TLy-yT-SvO">
                                                                         <rect key="frame" x="8" y="7.5" width="276.5" height="186.5"/>
@@ -3872,8 +3873,8 @@
                                                                             <constraint firstAttribute="width" constant="127" id="ko2-YJ-hte"/>
                                                                         </constraints>
                                                                     </imageView>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="التبرع بعد الوفاة" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9RC-7V-cdS">
-                                                                        <rect key="frame" x="137" y="21" width="131" height="87.5"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="التبرع بعد الوفاة" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9RC-7V-cdS">
+                                                                        <rect key="frame" x="137" y="55" width="131" height="20"/>
                                                                         <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="20"/>
                                                                         <color key="textColor" name="mainDark"/>
                                                                         <nil key="highlightedColor"/>
@@ -3881,6 +3882,7 @@
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
+                                                                    <constraint firstAttribute="height" constant="130" id="MZC-hg-9pj"/>
                                                                     <constraint firstItem="kNi-6O-pLS" firstAttribute="leading" secondItem="M3b-SV-n7l" secondAttribute="leading" id="XS3-EX-OzO"/>
                                                                     <constraint firstItem="kNi-6O-pLS" firstAttribute="centerY" secondItem="M3b-SV-n7l" secondAttribute="centerY" id="Xy8-BB-WXw"/>
                                                                     <constraint firstItem="9RC-7V-cdS" firstAttribute="leading" secondItem="kNi-6O-pLS" secondAttribute="trailing" constant="10" id="Ygh-nT-xmp"/>
@@ -3909,12 +3911,9 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                         </subviews>
-                                                        <constraints>
-                                                            <constraint firstItem="M3b-SV-n7l" firstAttribute="top" secondItem="Qft-PT-3nq" secondAttribute="top" constant="138" id="Iwj-so-ewp"/>
-                                                        </constraints>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="التسجيل لـ:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPS-Rx-eCL">
-                                                        <rect key="frame" x="226" y="44" width="116" height="30"/>
+                                                        <rect key="frame" x="226" y="44" width="116" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="116" id="vJV-UA-fr6"/>
                                                         </constraints>
@@ -3926,12 +3925,10 @@
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstItem="Qft-PT-3nq" firstAttribute="leading" secondItem="muT-JZ-3JP" secondAttribute="leading" constant="37" id="8qz-D9-cBQ"/>
-                                                    <constraint firstItem="Qft-PT-3nq" firstAttribute="centerX" secondItem="muT-JZ-3JP" secondAttribute="centerX" id="PaL-gx-7BI"/>
+                                                    <constraint firstItem="Qft-PT-3nq" firstAttribute="centerX" secondItem="muT-JZ-3JP" secondAttribute="centerX" id="DiV-Bd-9D1"/>
                                                     <constraint firstItem="bPS-Rx-eCL" firstAttribute="top" secondItem="muT-JZ-3JP" secondAttribute="top" constant="44" id="T08-Tq-i7g"/>
                                                     <constraint firstItem="bPS-Rx-eCL" firstAttribute="trailing" secondItem="muT-JZ-3JP" secondAttribute="trailingMargin" id="b1x-F9-gee"/>
                                                     <constraint firstItem="Qft-PT-3nq" firstAttribute="top" secondItem="bPS-Rx-eCL" secondAttribute="bottom" constant="52" id="gcb-fT-xcQ"/>
-                                                    <constraint firstAttribute="bottom" secondItem="Qft-PT-3nq" secondAttribute="bottom" constant="233" id="iCg-hi-M0B"/>
-                                                    <constraint firstItem="Qft-PT-3nq" firstAttribute="top" secondItem="muT-JZ-3JP" secondAttribute="top" constant="126" id="opH-xS-SxD"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
