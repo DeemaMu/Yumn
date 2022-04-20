@@ -3506,7 +3506,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ucG-Rx-enr">
-                                <rect key="frame" x="40" y="308" width="351" height="569"/>
+                                <rect key="frame" x="40" y="308" width="351" height="562"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4UT-vd-Sct">
                                         <rect key="frame" x="0.0" y="0.0" width="351" height="40"/>
@@ -3592,7 +3592,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bjH-6A-24B">
-                                        <rect key="frame" x="0.0" y="141" width="351" height="428"/>
+                                        <rect key="frame" x="0.0" y="141" width="351" height="421"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="V64-bJ-fCQ">
                                                 <rect key="frame" x="0.0" y="0.0" width="351" height="50"/>
@@ -3712,7 +3712,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tUU-HJ-5qp">
-                                                <rect key="frame" x="0.0" y="205" width="351" height="223"/>
+                                                <rect key="frame" x="0.0" y="205" width="351" height="216"/>
                                             </stackView>
                                         </subviews>
                                         <constraints>
@@ -3791,17 +3791,17 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xBk-eF-eSH">
-                                                <rect key="frame" x="32" y="8" width="350" height="59"/>
+                                                <rect key="frame" x="32" y="8" width="376.5" height="59"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="muT-JZ-3JP">
-                                                <rect key="frame" x="32" y="75" width="350" height="627"/>
+                                                <rect key="frame" x="32" y="75" width="376.5" height="620"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Qft-PT-3nq">
-                                                        <rect key="frame" x="37" y="116" width="276" height="290"/>
+                                                        <rect key="frame" x="37" y="116" width="302.5" height="290"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xHu-Sz-FQV" customClass="RoundedShadowedView" customModule="Yumn" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="276" height="130"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="302.5" height="130"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="التبرع أثناء الحياة" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FlO-1w-PHy">
                                                                         <rect key="frame" x="135" y="55" width="133" height="20"/>
@@ -3809,28 +3809,34 @@
                                                                         <color key="textColor" name="mainDark"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2w-Pp-YW2">
-                                                                        <rect key="frame" x="8" y="39" width="260" height="52"/>
-                                                                        <state key="normal" title="Button"/>
-                                                                        <buttonConfiguration key="configuration" style="plain" title="    "/>
-                                                                    </button>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alive_organ_donation" translatesAutoresizingMaskIntoConstraints="NO" id="Z5O-Hl-fcq">
                                                                         <rect key="frame" x="0.0" y="0.0" width="127" height="130"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="127" id="Lsf-5z-8ft"/>
                                                                         </constraints>
                                                                     </imageView>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2w-Pp-YW2">
+                                                                        <rect key="frame" x="8" y="0.0" width="286.5" height="130"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" secondItem="u2w-Pp-YW2" secondAttribute="height" multiplier="130:59" id="vhV-jU-sdW"/>
+                                                                        </constraints>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" title="    "/>
+                                                                        <connections>
+                                                                            <segue destination="CE8-vc-3Js" kind="show" id="dFK-9R-jWX"/>
+                                                                        </connections>
+                                                                    </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
-                                                                    <constraint firstItem="u2w-Pp-YW2" firstAttribute="leading" secondItem="xHu-Sz-FQV" secondAttribute="leadingMargin" id="8NG-nd-tRh"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="u2w-Pp-YW2" secondAttribute="bottom" id="8fn-0q-06D"/>
                                                                     <constraint firstAttribute="height" constant="130" id="8yK-ob-haY"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="u2w-Pp-YW2" secondAttribute="trailing" constant="8" id="BoE-vw-Q4x"/>
+                                                                    <constraint firstItem="u2w-Pp-YW2" firstAttribute="top" secondItem="xHu-Sz-FQV" secondAttribute="top" id="Fg8-jq-2hg"/>
                                                                     <constraint firstItem="Z5O-Hl-fcq" firstAttribute="centerY" secondItem="FlO-1w-PHy" secondAttribute="centerY" id="Ieu-R2-FkT"/>
-                                                                    <constraint firstItem="Z5O-Hl-fcq" firstAttribute="centerY" secondItem="u2w-Pp-YW2" secondAttribute="centerY" id="Kkc-7f-V5n"/>
                                                                     <constraint firstItem="Z5O-Hl-fcq" firstAttribute="top" secondItem="xHu-Sz-FQV" secondAttribute="top" id="LZY-pd-6Il"/>
-                                                                    <constraint firstItem="u2w-Pp-YW2" firstAttribute="trailing" secondItem="FlO-1w-PHy" secondAttribute="trailing" id="NkC-lX-Uec"/>
                                                                     <constraint firstItem="Z5O-Hl-fcq" firstAttribute="leading" secondItem="xHu-Sz-FQV" secondAttribute="leading" id="P0R-PO-oCK"/>
-                                                                    <constraint firstItem="u2w-Pp-YW2" firstAttribute="baseline" secondItem="FlO-1w-PHy" secondAttribute="baseline" id="dPT-0S-xtZ"/>
+                                                                    <constraint firstItem="u2w-Pp-YW2" firstAttribute="leading" secondItem="xHu-Sz-FQV" secondAttribute="leading" constant="8" id="deB-XV-s6F"/>
                                                                     <constraint firstItem="FlO-1w-PHy" firstAttribute="leading" secondItem="Z5O-Hl-fcq" secondAttribute="trailing" constant="8" id="ygF-QD-TPd"/>
                                                                     <constraint firstItem="Z5O-Hl-fcq" firstAttribute="centerY" secondItem="xHu-Sz-FQV" secondAttribute="centerY" id="yta-xp-hGH"/>
                                                                 </constraints>
@@ -3856,11 +3862,10 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M3b-SV-n7l" customClass="RoundedShadowedView" customModule="Yumn" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="160" width="276" height="130"/>
+                                                                <rect key="frame" x="0.0" y="160" width="302.5" height="130"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TLy-yT-SvO">
-                                                                        <rect key="frame" x="8" y="7.5" width="276.5" height="186.5"/>
-                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TLy-yT-SvO">
+                                                                        <rect key="frame" x="8" y="8" width="303.5" height="123"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain" title="    "/>
                                                                         <connections>
@@ -3882,12 +3887,16 @@
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
+                                                                    <constraint firstItem="TLy-yT-SvO" firstAttribute="leading" secondItem="M3b-SV-n7l" secondAttribute="leadingMargin" id="8Eb-Ym-kgY"/>
                                                                     <constraint firstAttribute="height" constant="130" id="MZC-hg-9pj"/>
+                                                                    <constraint firstItem="TLy-yT-SvO" firstAttribute="top" secondItem="M3b-SV-n7l" secondAttribute="topMargin" id="WEr-PP-YUg"/>
                                                                     <constraint firstItem="kNi-6O-pLS" firstAttribute="leading" secondItem="M3b-SV-n7l" secondAttribute="leading" id="XS3-EX-OzO"/>
                                                                     <constraint firstItem="kNi-6O-pLS" firstAttribute="centerY" secondItem="M3b-SV-n7l" secondAttribute="centerY" id="Xy8-BB-WXw"/>
                                                                     <constraint firstItem="9RC-7V-cdS" firstAttribute="leading" secondItem="kNi-6O-pLS" secondAttribute="trailing" constant="10" id="Ygh-nT-xmp"/>
                                                                     <constraint firstItem="kNi-6O-pLS" firstAttribute="top" secondItem="M3b-SV-n7l" secondAttribute="top" constant="4" id="fcJ-aB-AP0"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="TLy-yT-SvO" secondAttribute="trailing" constant="-9" id="n6M-sF-9KF"/>
                                                                     <constraint firstItem="kNi-6O-pLS" firstAttribute="centerY" secondItem="9RC-7V-cdS" secondAttribute="centerY" id="q6K-4u-wIb"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="TLy-yT-SvO" secondAttribute="bottom" constant="-1" id="wkU-AM-omr"/>
                                                                 </constraints>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusV">
@@ -3913,7 +3922,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="التسجيل لـ:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPS-Rx-eCL">
-                                                        <rect key="frame" x="226" y="44" width="116" height="20"/>
+                                                        <rect key="frame" x="252.5" y="44" width="116" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="116" id="vJV-UA-fr6"/>
                                                         </constraints>
@@ -6596,6 +6605,736 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yhh-7S-V4H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7176.811594202899" y="46.875"/>
+        </scene>
+        <!--التبرع أثناء الحياة-->
+        <scene sceneID="8lH-B9-frH">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="CE8-vc-3Js" customClass="AfterDeathODFirstController" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZNV-0I-ZCI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OfL-sS-wSU">
+                                <rect key="frame" x="0.0" y="98" width="414" height="798.5"/>
+                                <subviews>
+                                    <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="Lx1-eE-8Vr" customClass="RoundedView" customModule="Yumn" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="798.5"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AyB-7A-O5y">
+                                                <rect key="frame" x="23" y="8" width="368" height="668"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="kzQ-4t-WVe">
+                                                        <rect key="frame" x="8" y="8" width="350" height="651"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GzX-B6-dLi">
+                                                                <rect key="frame" x="0.0" y="0.0" width="350" height="59"/>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stepper 1:2" translatesAutoresizingMaskIntoConstraints="NO" id="YuW-9j-On9">
+                                                                        <rect key="frame" x="56" y="14" width="239" height="32"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="32" id="97J-6j-xlM"/>
+                                                                            <constraint firstAttribute="width" constant="239" id="j5s-Xk-QXX"/>
+                                                                        </constraints>
+                                                                    </imageView>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="YuW-9j-On9" firstAttribute="top" secondItem="GzX-B6-dLi" secondAttribute="top" constant="14" id="NLf-Fa-fMW"/>
+                                                                    <constraint firstItem="YuW-9j-On9" firstAttribute="leading" secondItem="GzX-B6-dLi" secondAttribute="leading" constant="56" id="OFe-IJ-1zb"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="YuW-9j-On9" secondAttribute="bottom" constant="13" id="TfQ-Od-zNv"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="YuW-9j-On9" secondAttribute="trailing" constant="55" id="qpp-iy-WpE"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="2g0-Bs-NUz">
+                                                                <rect key="frame" x="4.5" y="74" width="341" height="59"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bkK-jz-NHt">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="62" height="59"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
+                                                                        <connections>
+                                                                            <action selector="onPressedQ1Radio:" destination="CE8-vc-3Js" eventType="touchUpInside" id="zIP-he-7ix"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xD-9h-SL7">
+                                                                        <rect key="frame" x="71" y="0.0" width="270" height="59"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="270" id="UMY-jj-ruX"/>
+                                                                        </constraints>
+                                                                        <color key="tintColor" name="textGrey"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain">
+                                                                            <attributedString key="attributedTitle">
+                                                                                <fragment content="التبرع صادر عن رضا واقتناع وبإرادة حرة">
+                                                                                    <attributes>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
+                                                                                        <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                    </attributes>
+                                                                                </fragment>
+                                                                            </attributedString>
+                                                                        </buttonConfiguration>
+                                                                        <connections>
+                                                                            <action selector="onPressedQ1:" destination="CE8-vc-3Js" eventType="touchUpInside" id="xYt-AZ-lZX"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SfB-ZL-Qbp">
+                                                                <rect key="frame" x="4" y="148" width="342" height="59"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Sy-VX-1gt">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="62" height="59"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
+                                                                        <connections>
+                                                                            <action selector="onPressedRadio2:" destination="CE8-vc-3Js" eventType="touchUpInside" id="HBw-0q-vcG"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpg-gQ-OMx">
+                                                                        <rect key="frame" x="62" y="0.0" width="280" height="59"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="280" id="hXc-1J-ahA"/>
+                                                                        </constraints>
+                                                                        <color key="tintColor" name="textGrey"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain">
+                                                                            <attributedString key="attributedTitle">
+                                                                                <fragment content="لا تعاني من أمراض مزمنة مثل السكري، ارتفاع ضغط الدم، السرطان">
+                                                                                    <attributes>
+                                                                                        <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
+                                                                                        <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                    </attributes>
+                                                                                </fragment>
+                                                                            </attributedString>
+                                                                            <color key="baseForegroundColor" red="0.54901960780000003" green="0.5568627451" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        </buttonConfiguration>
+                                                                        <connections>
+                                                                            <action selector="onPressedQ2:" destination="CE8-vc-3Js" eventType="touchUpInside" id="PrI-5W-c2g"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vdZ-BV-bYp">
+                                                                <rect key="frame" x="4" y="222" width="342" height="59"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WZp-wa-d5X">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="62" height="59"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
+                                                                        <connections>
+                                                                            <action selector="onPressedQ3:" destination="CE8-vc-3Js" eventType="touchUpInside" id="Bci-ci-ULU"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aIJ-Ol-Rjz">
+                                                                        <rect key="frame" x="62" y="0.0" width="280" height="59"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="280" id="der-DE-3gZ"/>
+                                                                        </constraints>
+                                                                        <color key="tintColor" name="textGrey"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain">
+                                                                            <attributedString key="attributedTitle">
+                                                                                <fragment content="لا تعاني من أمراض مزمنة معدية مثل الأيدز، التهاب الكبد، الزهري، الملاريا">
+                                                                                    <attributes>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
+                                                                                        <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                    </attributes>
+                                                                                </fragment>
+                                                                            </attributedString>
+                                                                        </buttonConfiguration>
+                                                                        <connections>
+                                                                            <action selector="onPressedRadio3:" destination="CE8-vc-3Js" eventType="touchUpInside" id="2RT-IZ-YXa"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="77" translatesAutoresizingMaskIntoConstraints="NO" id="f0h-u2-ELO">
+                                                                <rect key="frame" x="5.5" y="296" width="339" height="59"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lMv-04-bRv">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="62" height="59"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
+                                                                        <connections>
+                                                                            <action selector="onPressedRadio4:" destination="CE8-vc-3Js" eventType="touchUpInside" id="cUz-C4-Oir"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="87L-hn-LOK">
+                                                                        <rect key="frame" x="139" y="0.0" width="200" height="59"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="200" id="r5O-Dy-0F8"/>
+                                                                        </constraints>
+                                                                        <color key="tintColor" name="textGrey"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain">
+                                                                            <attributedString key="attributedTitle">
+                                                                                <fragment content="عمرك أكبر من ١٨ سنة">
+                                                                                    <attributes>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
+                                                                                        <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                    </attributes>
+                                                                                </fragment>
+                                                                            </attributedString>
+                                                                        </buttonConfiguration>
+                                                                        <connections>
+                                                                            <action selector="onPrssedQ4:" destination="CE8-vc-3Js" eventType="touchUpInside" id="rzc-Rn-eZn"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="67" translatesAutoresizingMaskIntoConstraints="NO" id="iB0-Oh-S4T">
+                                                                <rect key="frame" x="5.5" y="370" width="339" height="59"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sIr-Xv-9To">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="62" height="59"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
+                                                                        <connections>
+                                                                            <action selector="onPressedRadio5:" destination="CE8-vc-3Js" eventType="touchUpInside" id="FXh-KJ-ooQ"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z1X-rM-eN8">
+                                                                        <rect key="frame" x="129" y="0.0" width="210" height="59"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="210" id="VGj-7K-dbl"/>
+                                                                        </constraints>
+                                                                        <color key="tintColor" name="textGrey"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain">
+                                                                            <attributedString key="attributedTitle">
+                                                                                <fragment content="لست مدخنًا">
+                                                                                    <attributes>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
+                                                                                        <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                    </attributes>
+                                                                                </fragment>
+                                                                            </attributedString>
+                                                                        </buttonConfiguration>
+                                                                        <connections>
+                                                                            <action selector="onPressedQ5:" destination="CE8-vc-3Js" eventType="touchUpInside" id="3p5-L3-tne"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="yhV-3w-cAP">
+                                                                <rect key="frame" x="70" y="444" width="210" height="59"/>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="l2U-Gh-W2D">
+                                                                <rect key="frame" x="70" y="518" width="210" height="59"/>
+                                                            </stackView>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ox6-n5-FUh" userLabel="Cont Button">
+                                                                <rect key="frame" x="60" y="592" width="230" height="59"/>
+                                                                <color key="backgroundColor" name="mainDark"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="230" id="7ge-Kg-TyI"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="21"/>
+                                                                <color key="tintColor" name="mainDark"/>
+                                                                <state key="normal" title="المتابعة">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="onPressedCont:" destination="CE8-vc-3Js" eventType="touchUpInside" id="ZMo-qO-fai"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="AyB-7A-O5y" secondAttribute="height" multiplier="369:670" id="hV7-ez-xLT"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstItem="AyB-7A-O5y" firstAttribute="leading" secondItem="Lx1-eE-8Vr" secondAttribute="leading" constant="23" id="bEv-tY-CEV"/>
+                                            <constraint firstAttribute="trailing" secondItem="AyB-7A-O5y" secondAttribute="trailing" constant="23" id="n9R-8B-GVq"/>
+                                            <constraint firstItem="AyB-7A-O5y" firstAttribute="top" secondItem="Lx1-eE-8Vr" secondAttribute="top" constant="8" id="rNc-cE-EVX"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusV">
+                                                <real key="value" value="40"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidthV">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColorV">
+                                                <color key="value" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Lx1-eE-8Vr" firstAttribute="leading" secondItem="OfL-sS-wSU" secondAttribute="leading" id="RgF-vC-j21"/>
+                                    <constraint firstAttribute="trailing" secondItem="Lx1-eE-8Vr" secondAttribute="trailing" id="j2z-Yk-FfY"/>
+                                    <constraint firstAttribute="bottom" secondItem="Lx1-eE-8Vr" secondAttribute="bottom" id="ofy-Aa-adV"/>
+                                </constraints>
+                            </stackView>
+                            <view hidden="YES" alpha="0.30000001192092896" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4yX-wl-ikj">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bjQ-Zs-7Oo">
+                                <rect key="frame" x="67" y="358" width="280" height="180"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GlS-ZC-8k1">
+                                        <rect key="frame" x="122.5" y="25" width="35" height="12"/>
+                                        <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="15"/>
+                                        <color key="textColor" red="0.56862747670000002" green="0.79215681550000006" blue="0.76862752440000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="للأسف، أنت غير مؤهل للتبرع بالأعضاء بعد الوفاة" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAH-Dn-CuD">
+                                        <rect key="frame" x="1" y="45" width="278" height="67"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="MAH-Dn-CuD" secondAttribute="height" multiplier="133:32" id="7hc-MA-aYx"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="15"/>
+                                        <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="7WA-tO-q3F">
+                                        <rect key="frame" x="80" y="120" width="120" height="40"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tKU-j5-T9J">
+                                                <rect key="frame" x="0.0" y="0.0" width="120" height="40"/>
+                                                <color key="backgroundColor" red="0.2901961207" green="0.42745098469999998" blue="0.41176474089999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="120" id="0dW-To-x5J"/>
+                                                    <constraint firstAttribute="height" constant="40" id="AU5-7c-QsS"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="12"/>
+                                                <state key="normal" title="إلغاء">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="GlS-ZC-8k1" firstAttribute="top" secondItem="bjQ-Zs-7Oo" secondAttribute="top" constant="25" id="2AW-im-21p"/>
+                                    <constraint firstAttribute="trailing" secondItem="MAH-Dn-CuD" secondAttribute="trailing" constant="1" id="EBu-wc-XCp"/>
+                                    <constraint firstAttribute="width" constant="280" id="RTC-hb-bak"/>
+                                    <constraint firstItem="GlS-ZC-8k1" firstAttribute="centerX" secondItem="bjQ-Zs-7Oo" secondAttribute="centerX" id="T0N-ji-V9J"/>
+                                    <constraint firstAttribute="width" secondItem="bjQ-Zs-7Oo" secondAttribute="height" multiplier="14:9" id="VrH-OE-30e"/>
+                                    <constraint firstItem="7WA-tO-q3F" firstAttribute="top" secondItem="bjQ-Zs-7Oo" secondAttribute="top" constant="120" id="aDb-y5-JBZ"/>
+                                    <constraint firstItem="7WA-tO-q3F" firstAttribute="top" secondItem="MAH-Dn-CuD" secondAttribute="bottom" constant="8" symbolic="YES" id="f2c-XK-iMD"/>
+                                    <constraint firstItem="MAH-Dn-CuD" firstAttribute="top" secondItem="GlS-ZC-8k1" secondAttribute="bottom" constant="8" symbolic="YES" id="gSy-7c-92S"/>
+                                    <constraint firstAttribute="height" constant="180" id="kcU-CF-g2u"/>
+                                    <constraint firstItem="MAH-Dn-CuD" firstAttribute="leading" secondItem="bjQ-Zs-7Oo" secondAttribute="leading" constant="1" id="q1m-fr-PCc"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="280" id="shG-8j-3O6"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="180" id="uOx-S4-Srq"/>
+                                    <constraint firstItem="7WA-tO-q3F" firstAttribute="centerX" secondItem="MAH-Dn-CuD" secondAttribute="centerX" id="yxd-Is-Rdg"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="2f4-8r-gTs"/>
+                        <color key="backgroundColor" name="mainLight"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="OfL-sS-wSU" firstAttribute="top" secondItem="2f4-8r-gTs" secondAttribute="top" constant="10" id="6tB-pQ-ARO"/>
+                            <constraint firstItem="OfL-sS-wSU" firstAttribute="leading" secondItem="2f4-8r-gTs" secondAttribute="leading" id="9Tl-Q6-Zcz"/>
+                            <constraint firstItem="OfL-sS-wSU" firstAttribute="leading" secondItem="2f4-8r-gTs" secondAttribute="leading" id="9qb-Rv-Cx1"/>
+                            <constraint firstItem="bjQ-Zs-7Oo" firstAttribute="centerX" secondItem="ZNV-0I-ZCI" secondAttribute="centerX" id="GhU-tn-lLI"/>
+                            <constraint firstItem="bjQ-Zs-7Oo" firstAttribute="centerY" secondItem="ZNV-0I-ZCI" secondAttribute="centerY" id="Nfz-nN-KIK"/>
+                            <constraint firstAttribute="bottom" secondItem="OfL-sS-wSU" secondAttribute="bottom" constant="-0.5" id="R0F-k8-mIr"/>
+                            <constraint firstItem="OfL-sS-wSU" firstAttribute="trailing" secondItem="2f4-8r-gTs" secondAttribute="trailing" id="WSd-La-1zj"/>
+                            <constraint firstItem="OfL-sS-wSU" firstAttribute="top" secondItem="2f4-8r-gTs" secondAttribute="top" constant="10" id="clx-G7-9z9"/>
+                            <constraint firstItem="OfL-sS-wSU" firstAttribute="centerX" secondItem="ZNV-0I-ZCI" secondAttribute="centerX" id="d13-h6-0Ne"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="التبرع أثناء الحياة" id="F1Z-qC-nXt"/>
+                    <connections>
+                        <outlet property="blackBlurredView" destination="4yX-wl-ikj" id="O86-Nv-SB5"/>
+                        <outlet property="contBtn" destination="Ox6-n5-FUh" id="MhG-dT-HXi"/>
+                        <outlet property="okBtn" destination="tKU-j5-T9J" id="znl-Dn-zu7"/>
+                        <outlet property="popupMsg" destination="MAH-Dn-CuD" id="Wom-6k-PYi"/>
+                        <outlet property="popupTitle" destination="GlS-ZC-8k1" id="Z1l-CN-yNt"/>
+                        <outlet property="popupView" destination="bjQ-Zs-7Oo" id="7hy-Ba-4JE"/>
+                        <outlet property="q1Btn" destination="7xD-9h-SL7" id="kHp-RJ-g2H"/>
+                        <outlet property="q1Radio" destination="bkK-jz-NHt" id="J4c-47-GKW"/>
+                        <outlet property="q2Btn" destination="hpg-gQ-OMx" id="erL-AO-Z2q"/>
+                        <outlet property="q2Radio" destination="8Sy-VX-1gt" id="dWR-Z4-hDW"/>
+                        <outlet property="q3Radio" destination="WZp-wa-d5X" id="XEy-Rw-pef"/>
+                        <outlet property="q3btn" destination="aIJ-Ol-Rjz" id="DQu-WL-cVS"/>
+                        <outlet property="q4Btn" destination="87L-hn-LOK" id="mQk-P8-ucF"/>
+                        <outlet property="q4Radio" destination="lMv-04-bRv" id="v6a-hp-b6n"/>
+                        <outlet property="q5Btn" destination="Z1X-rM-eN8" id="d6g-7h-TmG"/>
+                        <outlet property="q5Radio" destination="sIr-Xv-9To" id="OcI-Ag-3Ff"/>
+                        <outlet property="roundedView" destination="Lx1-eE-8Vr" id="W5l-uV-pn1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6IH-fe-fjv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5303" y="784"/>
+        </scene>
+        <!--التبرع أثناء الحياة-->
+        <scene sceneID="1fY-vx-1nk">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="PB1-Cs-BQv" customClass="AfterDeathODFirstController" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hOj-Hi-yr3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Gw9-Ob-x1B">
+                                <rect key="frame" x="0.0" y="54" width="414" height="842.5"/>
+                                <subviews>
+                                    <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="IlP-lZ-fwl" customClass="RoundedView" customModule="Yumn" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="842.5"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uOv-cq-fiY">
+                                                <rect key="frame" x="23" y="8" width="368" height="668"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="vNh-hK-I5q">
+                                                        <rect key="frame" x="8" y="8" width="350" height="651"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0s4-vp-BVP">
+                                                                <rect key="frame" x="0.0" y="0.0" width="350" height="59"/>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stepper 1:2" translatesAutoresizingMaskIntoConstraints="NO" id="yOR-dz-5ZF">
+                                                                        <rect key="frame" x="56" y="14" width="239" height="32"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="32" id="eAC-gG-fhY"/>
+                                                                            <constraint firstAttribute="width" constant="239" id="n0R-su-clY"/>
+                                                                        </constraints>
+                                                                    </imageView>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="bottom" secondItem="yOR-dz-5ZF" secondAttribute="bottom" constant="13" id="KC9-gz-Wdy"/>
+                                                                    <constraint firstItem="yOR-dz-5ZF" firstAttribute="top" secondItem="0s4-vp-BVP" secondAttribute="top" constant="14" id="OcB-WR-cDO"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="yOR-dz-5ZF" secondAttribute="trailing" constant="55" id="SYz-n6-1NI"/>
+                                                                    <constraint firstItem="yOR-dz-5ZF" firstAttribute="leading" secondItem="0s4-vp-BVP" secondAttribute="leading" constant="56" id="fQg-ak-Ptz"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="jnr-ER-waj">
+                                                                <rect key="frame" x="4.5" y="74" width="341" height="59"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l8F-M4-6Vj">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="62" height="59"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
+                                                                        <connections>
+                                                                            <action selector="onPressedQ1Radio:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="dwU-v5-KBp"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yel-v3-BKD">
+                                                                        <rect key="frame" x="71" y="0.0" width="270" height="59"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="270" id="AyB-tH-KQd"/>
+                                                                        </constraints>
+                                                                        <color key="tintColor" name="textGrey"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain">
+                                                                            <attributedString key="attributedTitle">
+                                                                                <fragment content="التبرع صادر عن رضا واقتناع وبإرادة حرة">
+                                                                                    <attributes>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
+                                                                                        <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                    </attributes>
+                                                                                </fragment>
+                                                                            </attributedString>
+                                                                        </buttonConfiguration>
+                                                                        <connections>
+                                                                            <action selector="onPressedQ1:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="swD-1T-uCy"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZO5-Im-E9N">
+                                                                <rect key="frame" x="4" y="148" width="342" height="59"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kgj-eu-cN1">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="62" height="59"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
+                                                                        <connections>
+                                                                            <action selector="onPressedRadio2:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="VXA-Pq-YWi"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LfU-1R-fCf">
+                                                                        <rect key="frame" x="62" y="0.0" width="280" height="59"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="280" id="2yl-BB-R6Q"/>
+                                                                        </constraints>
+                                                                        <color key="tintColor" name="textGrey"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain">
+                                                                            <attributedString key="attributedTitle">
+                                                                                <fragment content="لا تعاني من أمراض مزمنة مثل السكري، ارتفاع ضغط الدم، السرطان">
+                                                                                    <attributes>
+                                                                                        <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
+                                                                                        <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                    </attributes>
+                                                                                </fragment>
+                                                                            </attributedString>
+                                                                            <color key="baseForegroundColor" red="0.54901960780000003" green="0.5568627451" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        </buttonConfiguration>
+                                                                        <connections>
+                                                                            <action selector="onPressedQ2:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="zzu-vH-96T"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wuc-QL-FAw">
+                                                                <rect key="frame" x="4" y="222" width="342" height="59"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pNU-9D-Gc5">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="62" height="59"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
+                                                                        <connections>
+                                                                            <action selector="onPressedQ3:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="aiN-zh-3u7"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SR6-sc-sp9">
+                                                                        <rect key="frame" x="62" y="0.0" width="280" height="59"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="280" id="uG0-TA-NK7"/>
+                                                                        </constraints>
+                                                                        <color key="tintColor" name="textGrey"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain">
+                                                                            <attributedString key="attributedTitle">
+                                                                                <fragment content="لا تعاني من أمراض مزمنة معدية مثل الأيدز، التهاب الكبد، الزهري، الملاريا">
+                                                                                    <attributes>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
+                                                                                        <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                    </attributes>
+                                                                                </fragment>
+                                                                            </attributedString>
+                                                                        </buttonConfiguration>
+                                                                        <connections>
+                                                                            <action selector="onPressedRadio3:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="ySd-Nj-u2d"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="77" translatesAutoresizingMaskIntoConstraints="NO" id="dL3-4n-orK">
+                                                                <rect key="frame" x="5.5" y="296" width="339" height="59"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DjV-DM-clF">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="62" height="59"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
+                                                                        <connections>
+                                                                            <action selector="onPressedRadio4:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="KzL-MV-yT3"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TkD-77-lmy">
+                                                                        <rect key="frame" x="139" y="0.0" width="200" height="59"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="200" id="weI-6c-XXz"/>
+                                                                        </constraints>
+                                                                        <color key="tintColor" name="textGrey"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain">
+                                                                            <attributedString key="attributedTitle">
+                                                                                <fragment content="عمرك أكبر من ١٨ سنة">
+                                                                                    <attributes>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
+                                                                                        <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                    </attributes>
+                                                                                </fragment>
+                                                                            </attributedString>
+                                                                        </buttonConfiguration>
+                                                                        <connections>
+                                                                            <action selector="onPrssedQ4:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="cP9-1h-jcc"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="67" translatesAutoresizingMaskIntoConstraints="NO" id="cJQ-Dr-UAK">
+                                                                <rect key="frame" x="5.5" y="370" width="339" height="59"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1oA-HP-Mg1">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="62" height="59"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
+                                                                        <connections>
+                                                                            <action selector="onPressedRadio5:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="BBi-DY-M7r"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mQe-qi-xHf">
+                                                                        <rect key="frame" x="129" y="0.0" width="210" height="59"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="210" id="U3a-AX-aLc"/>
+                                                                        </constraints>
+                                                                        <color key="tintColor" name="textGrey"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain">
+                                                                            <attributedString key="attributedTitle">
+                                                                                <fragment content="لست مدخنًا">
+                                                                                    <attributes>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
+                                                                                        <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                                    </attributes>
+                                                                                </fragment>
+                                                                            </attributedString>
+                                                                        </buttonConfiguration>
+                                                                        <connections>
+                                                                            <action selector="onPressedQ5:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="Iys-AW-7iV"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="HLR-nd-xxo">
+                                                                <rect key="frame" x="70" y="444" width="210" height="59"/>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="aY1-oe-lMz">
+                                                                <rect key="frame" x="70" y="518" width="210" height="59"/>
+                                                            </stackView>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5a3-0y-HgS" userLabel="Cont Button">
+                                                                <rect key="frame" x="60" y="592" width="230" height="59"/>
+                                                                <color key="backgroundColor" name="mainDark"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="230" id="8d5-bT-gjE"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="21"/>
+                                                                <color key="tintColor" name="mainDark"/>
+                                                                <state key="normal" title="المتابعة">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="onPressedCont:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="aMf-6a-Dee"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="uOv-cq-fiY" secondAttribute="height" multiplier="369:670" id="ktB-WI-C4X"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="uOv-cq-fiY" secondAttribute="trailing" constant="23" id="FFF-Ya-10I"/>
+                                            <constraint firstItem="uOv-cq-fiY" firstAttribute="leading" secondItem="IlP-lZ-fwl" secondAttribute="leading" constant="23" id="iJM-K1-kkq"/>
+                                            <constraint firstItem="uOv-cq-fiY" firstAttribute="top" secondItem="IlP-lZ-fwl" secondAttribute="top" constant="8" id="lMd-UA-9pH"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusV">
+                                                <real key="value" value="40"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidthV">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColorV">
+                                                <color key="value" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="IlP-lZ-fwl" secondAttribute="trailing" id="RuC-Z0-Axa"/>
+                                    <constraint firstItem="IlP-lZ-fwl" firstAttribute="leading" secondItem="Gw9-Ob-x1B" secondAttribute="leading" id="YF8-kn-6kh"/>
+                                    <constraint firstAttribute="bottom" secondItem="IlP-lZ-fwl" secondAttribute="bottom" id="xhX-WP-79L"/>
+                                </constraints>
+                            </stackView>
+                            <view hidden="YES" alpha="0.30000001192092896" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Er6-tZ-nhP">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EA1-wf-Fmg">
+                                <rect key="frame" x="67" y="358" width="280" height="180"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5OO-iK-be7">
+                                        <rect key="frame" x="122.5" y="25" width="35" height="12"/>
+                                        <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="15"/>
+                                        <color key="textColor" red="0.56862747670000002" green="0.79215681550000006" blue="0.76862752440000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="للأسف، أنت غير مؤهل للتبرع بالأعضاء بعد الوفاة" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BuF-mn-I5v">
+                                        <rect key="frame" x="1" y="45" width="278" height="67"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="BuF-mn-I5v" secondAttribute="height" multiplier="133:32" id="dRp-44-mxl"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="15"/>
+                                        <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="cAx-NJ-XOJ">
+                                        <rect key="frame" x="80" y="120" width="120" height="40"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6iC-wT-thN">
+                                                <rect key="frame" x="0.0" y="0.0" width="120" height="40"/>
+                                                <color key="backgroundColor" red="0.2901961207" green="0.42745098469999998" blue="0.41176474089999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="7PX-2N-sR4"/>
+                                                    <constraint firstAttribute="width" constant="120" id="Qya-6i-0Z5"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="12"/>
+                                                <state key="normal" title="إلغاء">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="cAx-NJ-XOJ" firstAttribute="top" secondItem="EA1-wf-Fmg" secondAttribute="top" constant="120" id="7xZ-i1-JSb"/>
+                                    <constraint firstItem="5OO-iK-be7" firstAttribute="centerX" secondItem="EA1-wf-Fmg" secondAttribute="centerX" id="8UZ-V6-Cvw"/>
+                                    <constraint firstAttribute="width" constant="280" id="BAo-lE-Bs8"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="180" id="EXP-Ey-Kvf"/>
+                                    <constraint firstItem="BuF-mn-I5v" firstAttribute="leading" secondItem="EA1-wf-Fmg" secondAttribute="leading" constant="1" id="Okg-yY-otW"/>
+                                    <constraint firstAttribute="trailing" secondItem="BuF-mn-I5v" secondAttribute="trailing" constant="1" id="PT7-Ps-OPL"/>
+                                    <constraint firstItem="BuF-mn-I5v" firstAttribute="top" secondItem="5OO-iK-be7" secondAttribute="bottom" constant="8" symbolic="YES" id="Rv8-nw-OmY"/>
+                                    <constraint firstAttribute="width" secondItem="EA1-wf-Fmg" secondAttribute="height" multiplier="14:9" id="VYp-jb-Zg4"/>
+                                    <constraint firstItem="cAx-NJ-XOJ" firstAttribute="centerX" secondItem="BuF-mn-I5v" secondAttribute="centerX" id="kUW-0C-TlU"/>
+                                    <constraint firstItem="5OO-iK-be7" firstAttribute="top" secondItem="EA1-wf-Fmg" secondAttribute="top" constant="25" id="m44-g0-4T2"/>
+                                    <constraint firstAttribute="height" constant="180" id="nLs-Jg-weC"/>
+                                    <constraint firstItem="cAx-NJ-XOJ" firstAttribute="top" secondItem="BuF-mn-I5v" secondAttribute="bottom" constant="8" symbolic="YES" id="ocz-ua-Hrj"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="280" id="yYb-ab-okX"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="syX-3J-ZcO"/>
+                        <color key="backgroundColor" name="mainLight"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Gw9-Ob-x1B" firstAttribute="top" secondItem="syX-3J-ZcO" secondAttribute="top" constant="10" id="BMM-Rd-lCt"/>
+                            <constraint firstItem="Gw9-Ob-x1B" firstAttribute="top" secondItem="syX-3J-ZcO" secondAttribute="top" constant="10" id="FWB-9T-RG9"/>
+                            <constraint firstItem="EA1-wf-Fmg" firstAttribute="centerX" secondItem="hOj-Hi-yr3" secondAttribute="centerX" id="M5o-7v-M7O"/>
+                            <constraint firstItem="Gw9-Ob-x1B" firstAttribute="trailing" secondItem="syX-3J-ZcO" secondAttribute="trailing" id="NJY-cb-uMj"/>
+                            <constraint firstItem="EA1-wf-Fmg" firstAttribute="centerY" secondItem="hOj-Hi-yr3" secondAttribute="centerY" id="Yr7-uI-jmH"/>
+                            <constraint firstAttribute="bottom" secondItem="Gw9-Ob-x1B" secondAttribute="bottom" constant="-0.5" id="dbX-N8-Tx0"/>
+                            <constraint firstItem="Gw9-Ob-x1B" firstAttribute="leading" secondItem="syX-3J-ZcO" secondAttribute="leading" id="sRW-qZ-Fv8"/>
+                            <constraint firstItem="Gw9-Ob-x1B" firstAttribute="leading" secondItem="syX-3J-ZcO" secondAttribute="leading" id="wdW-io-5tY"/>
+                            <constraint firstItem="Gw9-Ob-x1B" firstAttribute="centerX" secondItem="hOj-Hi-yr3" secondAttribute="centerX" id="wzx-Da-cfe"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="التبرع أثناء الحياة" id="NHX-ls-PXk"/>
+                    <connections>
+                        <outlet property="blackBlurredView" destination="Er6-tZ-nhP" id="5YL-fe-r9h"/>
+                        <outlet property="contBtn" destination="5a3-0y-HgS" id="sYv-uA-hMd"/>
+                        <outlet property="okBtn" destination="6iC-wT-thN" id="Fh4-O4-nhY"/>
+                        <outlet property="popupMsg" destination="BuF-mn-I5v" id="NMB-eM-p5P"/>
+                        <outlet property="popupTitle" destination="5OO-iK-be7" id="tS8-WL-0Gh"/>
+                        <outlet property="popupView" destination="EA1-wf-Fmg" id="uvS-wb-A13"/>
+                        <outlet property="q1Btn" destination="yel-v3-BKD" id="QIe-cO-Q83"/>
+                        <outlet property="q1Radio" destination="l8F-M4-6Vj" id="fbg-yB-nrf"/>
+                        <outlet property="q2Btn" destination="LfU-1R-fCf" id="hcW-To-mxw"/>
+                        <outlet property="q2Radio" destination="Kgj-eu-cN1" id="mEy-fg-GvU"/>
+                        <outlet property="q3Radio" destination="pNU-9D-Gc5" id="Wwu-TC-Msv"/>
+                        <outlet property="q3btn" destination="SR6-sc-sp9" id="m0D-kf-7qj"/>
+                        <outlet property="q4Btn" destination="TkD-77-lmy" id="Cug-Vk-LlF"/>
+                        <outlet property="q4Radio" destination="DjV-DM-clF" id="vNg-O0-U2P"/>
+                        <outlet property="q5Btn" destination="mQe-qi-xHf" id="Pkl-t4-LKR"/>
+                        <outlet property="q5Radio" destination="1oA-HP-Mg1" id="9xm-8q-Pwj"/>
+                        <outlet property="roundedView" destination="IlP-lZ-fwl" id="9Yn-ol-9o2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w2W-z3-pXE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6094" y="783"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

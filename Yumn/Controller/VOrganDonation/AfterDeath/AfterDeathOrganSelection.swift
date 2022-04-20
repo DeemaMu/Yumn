@@ -40,14 +40,23 @@ struct AfterDeathOrganSelection: View {
         "القرنيات":false,
     ]
     
+    @State var checked = false
+
+    
     var body: some View {
         VStack(spacing: 20){
             HStack(){
+                HStack(){
+                    Text("الكل").font(Font.custom("Tajawal", size: 15))
+                        .foregroundColor(.gray).padding(.top,4)
+                    RadioButton(checked: $checked)
+                }.padding(.leading)
                 
                 Spacer()
                 Text("الأعضاء المراد التبرع بها:").font(Font.custom("Tajawal", size: 15))
                                 .foregroundColor(mainDark)
             }.padding(.trailing)
+            .padding(.bottom,10)
             
             
             ScrollView(.vertical, showsIndicators: false){
@@ -113,8 +122,39 @@ struct AfterDeathOrganSelection: View {
         self.organsVM.selected[organ]?.toggle()
     }
     
+    func selectAll(){
+        for organ in self.organsVM.selected {
+            self.organsVM.selected[organ.key]?.toggle()
+        }
+    }
     
     
+}
+
+struct RadioButton: View {
+    @Binding var checked: Bool    //the variable that determines if its checked
+    let mainDark = Color(UIColor.init(named: "mainDark")!)
+
+    var body: some View {
+        Group{
+            if checked {
+                ZStack{
+                    Circle()
+                        .fill(mainDark)
+                        .frame(width: 18, height: 18)
+                    Circle()
+                        .fill(Color.white)
+                        .frame(width: 6, height: 6)
+                }.onTapGesture {self.checked = false}
+            } else {
+                Circle()
+                    .fill(Color.white)
+                    .frame(width: 15, height: 15)
+                    .overlay(Circle().stroke(Color.gray, lineWidth: 3))
+                    .onTapGesture {self.checked = true}
+            }
+        }
+    }
 }
 
 class OrgansVM: ObservableObject {
