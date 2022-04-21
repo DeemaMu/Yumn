@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 class AliveFirstVC: UIViewController {
     
     @IBOutlet weak var container: UIView!
@@ -14,7 +15,12 @@ class AliveFirstVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewWillAppear(true)
-                
+        
+        let childView = UIHostingController(rootView: ChooseOrganButton(controller: self))
+        addChild(childView)
+        childView.view.frame = container.bounds
+        container.addSubview(childView.view)
+        
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.layoutIfNeeded()
