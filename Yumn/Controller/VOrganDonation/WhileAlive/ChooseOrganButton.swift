@@ -10,67 +10,95 @@ import SwiftUI
 struct ChooseOrganButton: View {
     
     @State var controller: AliveFirstVC
-
+    
     let mainDark = Color(UIColor.init(named: "mainDark")!)
     let mainLight = Color(UIColor.init(named: "mainLight")!)
     let lightGray = Color(UIColor.lightGray)
     let whiteBg = Color(UIColor.white)
     let shadowColor = Color(#colorLiteral(red: 0.8653315902, green: 0.8654771447, blue: 0.8653123975, alpha: 1))
-
+    
+    @State var kidney = false
+    @State var liver = false
     
     var body: some View {
         HStack(spacing: 0){
             VStack(){
-                Image("liver")
-                            .resizable()
-                            .scaledToFit()
-                            .padding(.leading)
-                            .padding(.trailing)
-                Text("التبرع بجزء من الكبد").font(Font.custom("Tajawal", size: 18))
-                    .foregroundColor(mainLight)
-                
+                if(!liver){
+                    Image("liver")
+                        .resizable()
+                        .scaledToFit()
+                        .padding(.leading)
+                        .padding(.trailing)
+                    Text("التبرع بجزء من الكبد").font(Font.custom("Tajawal", size: 18))
+                        .foregroundColor(mainLight)
+                } else {
+                    Image("whiteLiver")
+                        .resizable()
+                        .scaledToFit()
+                        .padding(.leading)
+                        .padding(.trailing)
+                    Text("التبرع بجزء من الكبد").font(Font.custom("Tajawal", size: 18))
+                        .foregroundColor(.white)
+                }
                 
             }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                .background(whiteBg)
+                .background((liver) ? mainLight : whiteBg)
                 .cornerRadius(20, corners: [.bottomLeft, .topLeft])
                 .shadow(color: shadowColor,
                         radius: 6, x: 0
                         , y: 6)
                 .onTapGesture {
-                    controller.moveToLiverSection()
+                    liver.toggle()
+                    if(liver){
+                        kidney = false
+                        controller.moveToLiverSection()
+                    }
                 }
-                
+            
             VStack(){
-                Image("alive_organ_donation")
-                            .resizable()
-                            .scaledToFit()
-                            .padding(.leading)
-                            .padding(.trailing)
-                Text("التبرع بكلية").font(Font.custom("Tajawal", size: 18))
-                    .foregroundColor(mainLight)
-
                 
+                if(!kidney){
+                    Image("alive_organ_donation")
+                        .resizable()
+                        .scaledToFit()
+                        .padding(.leading)
+                        .padding(.trailing)
+                    Text("التبرع بكلية").font(Font.custom("Tajawal", size: 18))
+                        .foregroundColor(mainLight)
+                } else {
+                    Image("whiteKidney")
+                        .resizable()
+                        .scaledToFit()
+                        .padding(.leading)
+                        .padding(.trailing)
+                    Text("التبرع بكلية").font(Font.custom("Tajawal", size: 18))
+                        .foregroundColor(.white)
+                }
             }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                .background(whiteBg)
+                .background((kidney) ? mainLight : whiteBg)
                 .cornerRadius(20, corners: [.bottomRight, .topRight])
                 .shadow(color: shadowColor,
                         radius: 6, x: 3
                         , y: 6)
                 .onTapGesture {
-                    controller.moveToKindneySection()
+                    kidney.toggle()
+                    if(kidney){
+                        liver = false
+                        controller.moveToKindneySection()
+                    }
                 }
             
         }
-            .frame(width: UIScreen.screenWidth - 80, height: UIScreen.screenHeight - 600, alignment: .center).background(
-                RoundedRectangle(
-                    cornerRadius: 40,
-                    style: .continuous
-                )
-                    .fill(.white)
+        .frame(width: UIScreen.screenWidth - 80, height: UIScreen.screenHeight - 600, alignment: .center).background(
+            RoundedRectangle(
+                cornerRadius: 40,
+                style: .continuous
             )
-//            .shadow(color: shadowColor,
-//                    radius: 6, x: 0
-//                    , y: 6)
+                .fill(.white)
+        )
+        //            .shadow(color: shadowColor,
+        //                    radius: 6, x: 0
+        //                    , y: 6)
     }
 }
 
@@ -87,10 +115,10 @@ extension View {
 }
 
 struct RoundedCorner: Shape {
-
+    
     var radius: CGFloat = .infinity
     var corners: UIRectCorner = .allCorners
-
+    
     func path(in rect: CGRect) -> Path {
         let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         return Path(path.cgPath)

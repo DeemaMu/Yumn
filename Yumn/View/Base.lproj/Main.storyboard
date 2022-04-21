@@ -3598,13 +3598,13 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="351" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ngi-Yt-RAF">
-                                                        <rect key="frame" x="0.0" y="0.0" width="208" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="50"/>
                                                         <fontDescription key="fontDescription" name="Tajawal-Medium" family="Tajawal Medium" pointSize="21"/>
                                                         <color key="textColor" name="mainLight"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="يتم التبرع بـ:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ifr-kf-wnD">
-                                                        <rect key="frame" x="268" y="0.0" width="83" height="50"/>
+                                                        <rect key="frame" x="267" y="0.0" width="84" height="50"/>
                                                         <fontDescription key="fontDescription" name="Tajawal-Medium" family="Tajawal Medium" pointSize="18"/>
                                                         <color key="textColor" name="mainLight"/>
                                                         <nil key="highlightedColor"/>
@@ -6623,35 +6623,11 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AyB-7A-O5y">
                                                 <rect key="frame" x="23" y="8" width="368" height="749"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="kzQ-4t-WVe">
-                                                        <rect key="frame" x="8" y="8" width="350" height="59"/>
-                                                        <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GzX-B6-dLi">
-                                                                <rect key="frame" x="0.0" y="0.0" width="350" height="59"/>
-                                                                <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stepper 1:2" translatesAutoresizingMaskIntoConstraints="NO" id="YuW-9j-On9">
-                                                                        <rect key="frame" x="56" y="14" width="239" height="32"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="32" id="97J-6j-xlM"/>
-                                                                            <constraint firstAttribute="width" constant="239" id="j5s-Xk-QXX"/>
-                                                                        </constraints>
-                                                                    </imageView>
-                                                                </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                <constraints>
-                                                                    <constraint firstItem="YuW-9j-On9" firstAttribute="top" secondItem="GzX-B6-dLi" secondAttribute="top" constant="14" id="NLf-Fa-fMW"/>
-                                                                    <constraint firstItem="YuW-9j-On9" firstAttribute="leading" secondItem="GzX-B6-dLi" secondAttribute="leading" constant="56" id="OFe-IJ-1zb"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="YuW-9j-On9" secondAttribute="bottom" constant="13" id="TfQ-Od-zNv"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="YuW-9j-On9" secondAttribute="trailing" constant="55" id="qpp-iy-WpE"/>
-                                                                </constraints>
-                                                            </view>
-                                                        </subviews>
-                                                    </stackView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pva-ei-MUQ">
-                                                        <rect key="frame" x="8" y="71" width="352" height="670"/>
+                                                        <rect key="frame" x="8" y="8" width="352" height="733"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" secondItem="Pva-ei-MUQ" secondAttribute="height" multiplier="175:333" id="9Ls-kl-ddQ"/>
+                                                            <constraint firstAttribute="width" secondItem="Pva-ei-MUQ" secondAttribute="height" multiplier="175:333" constant="-33.210210210210221" id="9Ls-kl-ddQ"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
@@ -6706,7 +6682,6 @@
                     <navigationItem key="navigationItem" title="التبرع أثناء الحياة" id="F1Z-qC-nXt"/>
                     <connections>
                         <outlet property="container" destination="Pva-ei-MUQ" id="ute-KM-A3I"/>
-                        <outlet property="roundedView" destination="Lx1-eE-8Vr" id="W5l-uV-pn1"/>
                         <segue destination="PB1-Cs-BQv" kind="show" identifier="donateKidney" id="ZeZ-mo-PXa"/>
                         <segue destination="GZ4-B0-PJs" kind="show" identifier="donateLiver" id="DQP-iS-JeZ"/>
                     </connections>
