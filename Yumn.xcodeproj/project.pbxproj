@@ -55,6 +55,8 @@
 		B94CB96A280EBE160088470D /* AfterDeathOrganSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94CB969280EBE160088470D /* AfterDeathOrganSelection.swift */; };
 		B9503D8827BAE4E500E312B8 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9503D8727BAE4E400E312B8 /* CustomSegmentedControl.swift */; };
 		B952BB1227C641B80049D81B /* HospitalsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B952BB1127C641B80049D81B /* HospitalsController.swift */; };
+		B9533EFC2810D23000485482 /* Alive1stVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9533EFB2810D23000485482 /* Alive1stVC.swift */; };
+		B9533EFE2810D49E00485482 /* ChooseOrganButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9533EFD2810D49E00485482 /* ChooseOrganButton.swift */; };
 		B9570C2F27DFA828000D1B8B /* MaterialSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9570C2E27DFA826000D1B8B /* MaterialSegmentedControl.swift */; };
 		B97A37FE27B9D32A00718079 /* RoundedShadowedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A37FD27B9D32A00718079 /* RoundedShadowedView.swift */; };
 		B97A380227BA9EA000718079 /* BloodDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A380127BA9EA000718079 /* BloodDonationViewController.swift */; };
@@ -145,6 +147,8 @@
 		B94CB969280EBE160088470D /* AfterDeathOrganSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterDeathOrganSelection.swift; sourceTree = "<group>"; };
 		B9503D8727BAE4E400E312B8 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		B952BB1127C641B80049D81B /* HospitalsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalsController.swift; sourceTree = "<group>"; };
+		B9533EFB2810D23000485482 /* Alive1stVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alive1stVC.swift; sourceTree = "<group>"; };
+		B9533EFD2810D49E00485482 /* ChooseOrganButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseOrganButton.swift; sourceTree = "<group>"; };
 		B9570C2E27DFA826000D1B8B /* MaterialSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialSegmentedControl.swift; sourceTree = "<group>"; };
 		B97A37FD27B9D32A00718079 /* RoundedShadowedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowedView.swift; sourceTree = "<group>"; };
 		B97A380127BA9EA000718079 /* BloodDonationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationViewController.swift; sourceTree = "<group>"; };
@@ -215,6 +219,7 @@
 		8DC80B7227E7A70100A1DF6E /* VOrganDonation */ = {
 			isa = PBXGroup;
 			children = (
+				B9533EFA2810D1BC00485482 /* WhileAlive */,
 				B9BAC6E8280E0C8B001489A1 /* AfterDeath */,
 				D19B1B5227E95FCB00CB3FFA /* OrganDonationViewController.swift */,
 			);
@@ -361,6 +366,15 @@
 				B91DD29527E998C000BA9881 /* CustomPopUpView.swift */,
 			);
 			path = "Custom Classes";
+			sourceTree = "<group>";
+		};
+		B9533EFA2810D1BC00485482 /* WhileAlive */ = {
+			isa = PBXGroup;
+			children = (
+				B9533EFB2810D23000485482 /* Alive1stVC.swift */,
+				B9533EFD2810D49E00485482 /* ChooseOrganButton.swift */,
+			);
+			path = WhileAlive;
 			sourceTree = "<group>";
 		};
 		B9AD3F2827E2CF1E001AB734 /* HAppointments */ = {
@@ -644,6 +658,7 @@
 				95062D9F27CADE9E00D63911 /* ConvertingColors.swift in Sources */,
 				D195443427D4996700B03DFF /* ViewController.swift in Sources */,
 				B91DD28E27E995F200BA9881 /* CalenderAndAppointments.swift in Sources */,
+				B9533EFC2810D23000485482 /* Alive1stVC.swift in Sources */,
 				B9AD3F3027E335B3001AB734 /* DateValue.swift in Sources */,
 				D195443C27D499D900B03DFF /* organsChartVC.swift in Sources */,
 				95531DC727E869E30029B490 /* addPopup.swift in Sources */,
@@ -652,6 +667,7 @@
 				B9570C2F27DFA828000D1B8B /* MaterialSegmentedControl.swift in Sources */,
 				D195443827D499A200B03DFF /* organShortageVC.swift in Sources */,
 				D19B1B4727E95ED400CB3FFA /* OpenMapDirections.swift in Sources */,
+				B9533EFE2810D49E00485482 /* ChooseOrganButton.swift in Sources */,
 				B9DA61DA27C10FCC00359487 /* LocationManger.swift in Sources */,
 				9520693C27E3A5FF00D5DC11 /* VolunteeringOpportunities.swift in Sources */,
 				8D7F152727D25F3B00E1EB1A /* SignInViewController.swift in Sources */,

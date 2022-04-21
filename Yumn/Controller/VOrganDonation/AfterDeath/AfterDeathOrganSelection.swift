@@ -55,9 +55,12 @@ struct AfterDeathOrganSelection: View {
                 Spacer()
                 Text("الأعضاء المراد التبرع بها:").font(Font.custom("Tajawal", size: 15))
                                 .foregroundColor(mainDark)
-            }.padding(.trailing)
+            }.onChange(of: checked){ newValue in
+                self.selectAll()
+            }
+            .padding(.trailing)
             .padding(.bottom,10)
-            
+
             
             ScrollView(.vertical, showsIndicators: false){
                         LazyVGrid(columns: items, alignment: .center) {
@@ -123,9 +126,16 @@ struct AfterDeathOrganSelection: View {
     }
     
     func selectAll(){
-        for organ in self.organsVM.selected {
-            self.organsVM.selected[organ.key]?.toggle()
+        if(checked){
+            for organ in self.organsVM.selected {
+                self.organsVM.selected[organ.key]? = true
+                }
+        } else {
+            for organ in self.organsVM.selected {
+                self.organsVM.selected[organ.key]? = false
+                }
         }
+        
     }
     
     
