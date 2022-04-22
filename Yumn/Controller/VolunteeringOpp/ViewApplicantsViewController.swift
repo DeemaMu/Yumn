@@ -82,8 +82,17 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
         getAcceptedApplicants(docID: VODocID)
         
         
-        
-        
+        guard let customFont = UIFont(name: "Tajawal-Regular", size: UIFont.labelFontSize) else {
+            fatalError("""
+                Failed to load the "CustomFont-Light" font.
+                Make sure the font file is included in the project and the font name is spelled correctly.
+                """
+            )
+        }
+        // font style
+        questionLabel.font = UIFontMetrics.default.scaledFont(for: customFont)
+        questionLabel.adjustsFontForContentSizeCategory = true
+        questionLabel.font = questionLabel.font.withSize(15)
         
         
         codeSegmented = CustomSegmentedControl(frame: CGRect(x: 0, y: 0, width: segmentsView.frame.width, height: 50), buttonTitle: ["المتقدمين المقبولين","المتقدمين الحاليين"])
@@ -195,92 +204,7 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
     }
     } // end func
     
-   /*
-    func acceptedApplicantListener(docID : String) {
-       // let uid = "uid_0" //this is the logged in user
-        acceptedApplicants = []
-        self.noApplicantsLabel.isHidden = true
-        let userRef = db.collection("volunteeringOpp").document(docID).collection("applicants").whereField("status", isEqualTo: "accepted")
-        //let postsRef = userRef.collection("Posts")
-        userRef.addSnapshotListener { documentSnapshot, error in
-            guard let snapshot = documentSnapshot else {
-                print("err fetching snapshots")
-                return
-            }
-            if snapshot.isEmpty{
-                self.noApplicantsLabel.text = "لا يوجد متقدمين مقبولين"
-                self.noApplicantsLabel.isHidden = false
-                print("no available accepted applicants")
-                return
-            }
-            snapshot.documentChanges.forEach { diff in
-                let doc = diff.document
-                //let applicantId = doc.documentID
-                let uid  = doc.get("uid") as! String
-
-                if (diff.type == .added) { //will initially populate the array or add new posts
-                    print("added accepted applicant \(uid)")
-                   // self.applicantDoc(uid : uid, applicantType: "accepted")
-                    
-                    
-                    
-                    self.db.collection("volunteer").document(uid).getDocument { (document, error) in
-                             if let document = document, document.exists {
-                                 let docData = document.data()
-                                 print("Volunteer document exists")
-                                 
-                                 let firstName : String = docData!["firstName"] as! String
-                                 let lastName : String = docData!["lastName"] as! String
-                                 let DOB : String = docData!["birthDate"] as! String
-                                 let email : String = docData!["email"] as! String
-                                 let ciry : String = docData!["city"] as! String
-                                 let uid : String = document.documentID
-                                 print("volunteer is  \(uid)")
-                                 print("array count is  \(self.acceptedApplicants.count)")
-
-                                 self.acceptedApplicants.append(applicant(uid: uid, firstName: firstName, lastName: lastName, DOB: DOB, email: email, city: ciry))
-                                 
-                             } else {
-                                 print("Volunteer document does not exist")
-
-                              }
-                }
-                    
-                    
-                    
-                    DispatchQueue.main.async {
-                        self.acceptedApplicantsTable.reloadData()
-                    }
-                    //let aPost = UserPostClass(theId: postId, theText: postText, theLikes: numLikes)
-                    //self.postArray.append(aPost)
-                }
-
-                if (diff.type == .modified) { //called when there are changes
-                    //find the post that was modified by it's postId
-                    //let resultsArray = self.postArray.filter { $0.postId == postId }
-                    let resultsArray = self.acceptedApplicants.filter { $0.uid == uid }
-                   /* if let postToUpdate = resultsArray.first {
-                        postToUpdate.likes = numLikes
-                    }*/
-                }
-
-                if (diff.type == .removed) {
-
-                    print("handle removed")
-                }
-            }
-            //this is just for testing. It prints all of the posts
-            // when any of them are modified
-            /*for doc in snapshot.documents {
-                let postId = doc.documentID
-                let postText = doc.get("post") as! String
-                let numLikes = doc.get("likes") as! Int
-                print(postId, postText, numLikes)
-            }*/
-            
-        }
-    }
-    */
+   
     
     func getAcceptedApplicants(docID : String){
 
@@ -315,63 +239,41 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
     @IBAction func acceptBtnOnPopup(_ sender: Any) {
         
         let type = acceeptOrRejectHeadline.text
-        let docID = currentApplicants[clickedCellIndex].uid
-
+       
         
         if type == "قبول المتقدم"{
             
-            let ref = db.collection("volunteeringOpp").document(VODocID).collection("applicants").document(docID)
-            ref.updateData(["status": "accepted"]) { (error) in
-                    if error == nil {
-                        
-                        components().showToast(message: "تم قبول المتقدم بنجاح", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!, viewC: self)
-                        
-                        self.currentApplicants.remove(at: self.clickedCellIndex)
-                        
-                        self.reloadCurrentTable()
-                        self.reloadAcceptedTable()
-                        
-                        self.hidePopupAndBlurredView()
-                        
-                        self.showCurrentAppLbl()
-
-                        
-                    }else{
-                        
-                        components().showToast(message: "حدثت مشكلة أثناء قبول المتقدم", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!, viewC: self)
-                        
-                    }
-                    
-                }
+            acceptApplicantMthod()
+           
             
         }
         
         // reject
-        else {
-            let ref = db.collection("volunteeringOpp").document(VODocID).collection("applicants").document(docID)
+        else if type == "رفض المتقدم"{
+            
+            rejectApplicantMthod()
+       
+        }
         
-            ref.updateData(["status": "rejected"]) { (error) in
-                    if error == nil {
-                        
-                        components().showToast(message: "تم رفض المتقدم بنجاح", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!, viewC: self)
-                        
-                        self.currentApplicants.remove(at: self.clickedCellIndex)
-                        
-                       
-                        self.reloadCurrentTable()
-                        self.reloadAcceptedTable()
-                        
-                        self.hidePopupAndBlurredView()
-                        
-                        self.showCurrentAppLbl()
-                        
-                    }else{
-                        
-                        components().showToast(message: "حدثت مشكلة أثناء رفض المتقدم", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!, viewC: self)
-                        
-                    }
-                    
-                }
+        // retrive points then update it
+        else if type == "حضور المتقدم" {
+            
+            markApplicantAsAttendMthod()
+            
+           
+          
+        }
+        
+        
+        
+        
+        
+        // applicant did not attend
+        else {
+            
+            markApplicantAsDNAttendMthod()
+           
+            
         }
         
         
@@ -424,6 +326,174 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
             self.acceptedApplicantsTable.reloadData()
 
         }
+        
+    }
+    
+    
+    
+    func acceptApplicantMthod(){
+        
+        let docID = currentApplicants[clickedCellIndex].uid
+
+        let ref = db.collection("volunteeringOpp").document(VODocID).collection("applicants").document(docID)
+        ref.updateData(["status": "accepted"]) { (error) in
+                if error == nil {
+                    
+                    components().showToast(message: "تم قبول المتقدم بنجاح", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!, viewC: self)
+                    
+                    self.currentApplicants.remove(at: self.clickedCellIndex)
+                    
+                    self.reloadCurrentTable()
+                    self.reloadAcceptedTable()
+                    
+                    self.hidePopupAndBlurredView()
+                    
+                    self.showCurrentAppLbl()
+
+                    
+                }else{
+                    
+                    components().showToast(message: "حدثت مشكلة أثناء قبول المتقدم", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!, viewC: self)
+                    
+                }
+                
+            }
+        
+    }
+    
+    
+    
+    func rejectApplicantMthod(){
+        
+        let docID = currentApplicants[clickedCellIndex].uid
+
+        let ref = db.collection("volunteeringOpp").document(VODocID).collection("applicants").document(docID)
+    
+        ref.updateData(["status": "rejected"]) { (error) in
+                if error == nil {
+                    
+                    components().showToast(message: "تم رفض المتقدم بنجاح", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!, viewC: self)
+                    
+                    self.currentApplicants.remove(at: self.clickedCellIndex)
+                    
+                   
+                    self.reloadCurrentTable()
+                    self.reloadAcceptedTable()
+                    
+                    self.hidePopupAndBlurredView()
+                    
+                    self.showCurrentAppLbl()
+                    
+                }else{
+                    
+                    components().showToast(message: "حدثت مشكلة أثناء رفض المتقدم", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!, viewC: self)
+                    
+                }
+                
+            }
+        
+    }
+    
+    
+    
+    func markApplicantAsAttendMthod(){
+        var points = 0
+        
+        let docID = acceptedApplicants[clickedCellIndex].uid
+        
+        let ref = db.collection("volunteer").document(docID)
+        let refToAppInOpp = db.collection("volunteeringOpp").document(VODocID).collection("applicants").document(docID)
+
+        
+        // bring applicant points
+        ref.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let data = document.data()
+               // print("Document data: \(data)")
+                points = data!["points"] as! Int
+                print("applicant points are \(points)")
+            } else {
+                print("Document does not exist")
+            }
+        }
+        
+       
+        
+        
+        
+        
+    // update status
+        refToAppInOpp.updateData(["status": "attended"]) { (error) in
+                if error == nil {
+                    
+                    // increase points
+                    points += 10
+                    // update applicant points
+                    print("points after addition \(points)")
+                    ref.updateData(["points": points]) { (error) in
+                            if error == nil {
+                                
+                              
+                                self.hidePopupAndBlurredView()
+                                self.reloadCurrentTable()
+                                self.reloadAcceptedTable()
+                                
+                                components().showToast(message: "تم تأكيد حضور المتقدم بنجاح", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!, viewC: self)
+                                
+                              
+                                self.showAcceptedAppLbl()
+                                
+                               
+                                
+                            }else{
+                                
+                                components().showToast(message: "حدثت مشكلة أثناء تأكيد حضور المتقدم", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!, viewC: self)
+                                
+                            }
+                            
+                        }
+
+                   
+                    
+                }else{
+                    
+                    components().showToast(message: "حدثت مشكلة أثناء تأكيد حضور المتقدم", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!, viewC: self)
+                    
+                }
+                
+            }
+        
+    }
+    
+    
+    
+    
+    func markApplicantAsDNAttendMthod(){
+        
+        let docID = acceptedApplicants[clickedCellIndex].uid
+        
+        let refToAppInOpp = db.collection("volunteeringOpp").document(VODocID).collection("applicants").document(docID)
+        // DNAttend == did not attend
+        refToAppInOpp.updateData(["status": "DNAttend"]) { (error) in
+                if error == nil {
+                    
+                    self.hidePopupAndBlurredView()
+                    self.reloadCurrentTable()
+                    self.reloadAcceptedTable()
+                    
+                    components().showToast(message: "تم تأكيد عدم حضور المتقدم بنجاح", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!, viewC: self)
+                    
+                  
+                    self.showAcceptedAppLbl()
+                    
+                   
+                }else{
+                    
+                    components().showToast(message: "حدثت مشكلة أثناء تأكيد عدم حضور المتقدم", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!, viewC: self)
+                    
+                }
+        }
+            
         
     }
     
@@ -560,6 +630,7 @@ extension ViewApplicantsViewController: UITableViewDataSource {
             cell.didNotAttendBtn.tag = indexPath.row
             
             cell.attendBtn.addTarget(self, action: #selector(acceptedApplicantAttended(sender:)), for: .touchUpInside)
+            cell.didNotAttendBtn.addTarget(self, action: #selector(acceptedApplicantDidNotAttend(sender:)), for: .touchUpInside)
 
             
             return cell
@@ -603,34 +674,32 @@ extension ViewApplicantsViewController: UITableViewDataSource {
     
     
     @objc
-    // remove applicant from acceptedApplicants
+    
     func acceptedApplicantAttended(sender: UIButton) {
         
-       /* clickedCellIndex = sender.tag
-        print(clickedCellIndex)
-        let docID = acceptedApplicants[clickedCellIndex].uid
-        let ref = db.collection("volunteeringOpp").document(VODocID).collection("applicants").document(docID)
-    
-        ref.updateData(["status": "pending"]) { (error) in
-                if error == nil {
-                    
-                    //components().showToast(message: "تم رفض المتقدم بنجاح", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!, viewC: self)
-                    
-                    self.acceptedApplicants.remove(at: self.clickedCellIndex)
-                    self.acceptedApplicantsTable.reloadData()
-                    
-                    print("status updated (rejected)")
-                }else{
-                    
-                    //components().showToast(message: "حدثت مشكلة أثناء رفض المتقدم", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!, viewC: self)
-                    
-                    print("status not updated (rejected)")
-                }
-                
-            }*/
-    
+        // increase the applicant points + change status
+        clickedCellIndex = sender.tag
+        let name = "\(acceptedApplicants[clickedCellIndex].firstName) \(acceptedApplicants[clickedCellIndex].lastName)"
+        acceeptOrRejectHeadline.text = "حضور المتقدم"
+        questionLabel.text = "هل أنت متأكد من تأكيد حضور \(name)؟"
+        showPopupAndBlurredView()
+        
+     
     }
     
+    
+    @objc
+   
+    func acceptedApplicantDidNotAttend(sender: UIButton) {
+        
+        // change status
+        clickedCellIndex = sender.tag
+        let name = "\(acceptedApplicants[clickedCellIndex].firstName) \(acceptedApplicants[clickedCellIndex].lastName)"
+        acceeptOrRejectHeadline.text = "عدم حضور المتقدم"
+        questionLabel.text = "هل أنت متأكد من تأكيد عدم حضور \(name)؟"
+        showPopupAndBlurredView()
+        
+    }
     
 }// end of extension
 
