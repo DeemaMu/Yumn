@@ -27,6 +27,8 @@
 		954F2DB327E80C4100A3DFB1 /* ViewVolunteeringOpportunities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954F2DB227E80C4100A3DFB1 /* ViewVolunteeringOpportunities.swift */; };
 		954F2DB527E80CD200A3DFB1 /* ViewVOCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954F2DB427E80CD200A3DFB1 /* ViewVOCollectionViewCell.swift */; };
 		95531DC727E869E30029B490 /* addPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95531DC627E869E30029B490 /* addPopup.swift */; };
+		9572140E28146B9900E46AEE /* AfterDeathDonor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572140D28146B9900E46AEE /* AfterDeathDonor.swift */; };
+		9572141028146BC800E46AEE /* DonorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572140F28146BC800E46AEE /* DonorCollectionViewCell.swift */; };
 		95785059279E1917004F3D8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95785058279E1917004F3D8F /* AppDelegate.swift */; };
 		9578505B279E1917004F3D8F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9578505A279E1917004F3D8F /* SceneDelegate.swift */; };
 		9578505D279E1917004F3D8F /* VHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9578505C279E1917004F3D8F /* VHomeViewController.swift */; };
@@ -62,6 +64,7 @@
 		B9DA61CE27C10C2900359487 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9DA61CD27C10C2800359487 /* GoogleService-Info.plist */; };
 		B9DA61DA27C10FCC00359487 /* LocationManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DA61D927C10FCC00359487 /* LocationManger.swift */; };
 		B9DA61DC27C1100B00359487 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DA61DB27C1100B00359487 /* Location.swift */; };
+		CD3614A777A6003567D59BB7 /* Pods_Yumn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB566A712E6424E22DDF416C /* Pods_Yumn.framework */; };
 		D195443427D4996700B03DFF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D195443327D4996600B03DFF /* ViewController.swift */; };
 		D195443627D4998F00B03DFF /* bloodShortageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D195443527D4998F00B03DFF /* bloodShortageViewController.swift */; };
 		D195443827D499A200B03DFF /* organShortageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D195443727D499A200B03DFF /* organShortageVC.swift */; };
@@ -87,12 +90,10 @@
 		D19B1B5127E95F2200CB3FFA /* oldBloodAppTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D19B1B5027E95F2200CB3FFA /* oldBloodAppTableViewCell.xib */; };
 		D19B1B5327E95FCB00CB3FFA /* OrganDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19B1B5227E95FCB00CB3FFA /* OrganDonationViewController.swift */; };
 		D19B1B5927E962BC00CB3FFA /* VolunteerBloodAppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19B1B5827E962BC00CB3FFA /* VolunteerBloodAppointmentsViewController.swift */; };
-		D4575F18E114595CF1D46C5E /* Pods_Yumn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C647BCF03E9B2E8AAA54249 /* Pods_Yumn.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0403D4EC0B8593F71EF89203 /* Pods-Yumn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.debug.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.debug.xcconfig"; sourceTree = "<group>"; };
-		6C647BCF03E9B2E8AAA54249 /* Pods_Yumn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yumn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4032CE35DA1A0F2710021A93 /* Pods-Yumn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.debug.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.debug.xcconfig"; sourceTree = "<group>"; };
 		8D0E9A1E27E5339C00890AC0 /* BloodDonationInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationInformationViewController.swift; sourceTree = "<group>"; };
 		8D7F152127D25DD200E1EB1A /* GIfCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIfCode.swift; sourceTree = "<group>"; };
 		8D7F152427D25EF200E1EB1A /* yumnLoading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = yumnLoading.gif; sourceTree = "<group>"; };
@@ -113,6 +114,8 @@
 		954F2DB227E80C4100A3DFB1 /* ViewVolunteeringOpportunities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewVolunteeringOpportunities.swift; sourceTree = "<group>"; };
 		954F2DB427E80CD200A3DFB1 /* ViewVOCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewVOCollectionViewCell.swift; sourceTree = "<group>"; };
 		95531DC627E869E30029B490 /* addPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addPopup.swift; sourceTree = "<group>"; };
+		9572140D28146B9900E46AEE /* AfterDeathDonor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterDeathDonor.swift; sourceTree = "<group>"; };
+		9572140F28146BC800E46AEE /* DonorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonorCollectionViewCell.swift; sourceTree = "<group>"; };
 		95785055279E1917004F3D8F /* Yumn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yumn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95785058279E1917004F3D8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9578505A279E1917004F3D8F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +133,7 @@
 		95C5967827D767FE00A5572C /* VSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VSignUpViewController.swift; sourceTree = "<group>"; };
 		95EED9CA27E6602C009AFDAC /* VOCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VOCollectionViewCell.swift; sourceTree = "<group>"; };
 		95EED9CC27E682DB009AFDAC /* VolunteeringOpp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolunteeringOpp.swift; sourceTree = "<group>"; };
+		9A87055B9B3C757D4B448E5E /* Pods-Yumn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.release.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.release.xcconfig"; sourceTree = "<group>"; };
 		B91DD28D27E995F200BA9881 /* CalenderAndAppointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderAndAppointments.swift; sourceTree = "<group>"; };
 		B91DD28F27E9965F00BA9881 /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
 		B91DD29127E996CF00BA9881 /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
@@ -175,7 +179,7 @@
 		D19B1B5027E95F2200CB3FFA /* oldBloodAppTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = oldBloodAppTableViewCell.xib; sourceTree = "<group>"; };
 		D19B1B5227E95FCB00CB3FFA /* OrganDonationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganDonationViewController.swift; sourceTree = "<group>"; };
 		D19B1B5827E962BC00CB3FFA /* VolunteerBloodAppointmentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolunteerBloodAppointmentsViewController.swift; sourceTree = "<group>"; };
-		D52D933E88C814542BC4B64C /* Pods-Yumn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.release.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.release.xcconfig"; sourceTree = "<group>"; };
+		DB566A712E6424E22DDF416C /* Pods_Yumn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yumn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,17 +187,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4575F18E114595CF1D46C5E /* Pods_Yumn.framework in Frameworks */,
+				CD3614A777A6003567D59BB7 /* Pods_Yumn.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		42D005F50D1899AED71899E9 /* Frameworks */ = {
+		409EAFB0A9E500F8B405F873 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6C647BCF03E9B2E8AAA54249 /* Pods_Yumn.framework */,
+				DB566A712E6424E22DDF416C /* Pods_Yumn.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -256,7 +260,7 @@
 				95785057279E1917004F3D8F /* Yumn */,
 				95785056279E1917004F3D8F /* Products */,
 				FB3A4FC32329E4399DABC3B5 /* Pods */,
-				42D005F50D1899AED71899E9 /* Frameworks */,
+				409EAFB0A9E500F8B405F873 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -322,6 +326,7 @@
 				D19B1B4C27E95F1900CB3FFA /* currentBldAppCell.xib */,
 				D19B1B4E27E95F1D00CB3FFA /* oldBloodAppTableViewCell.swift */,
 				D19B1B5027E95F2200CB3FFA /* oldBloodAppTableViewCell.xib */,
+				9572140F28146BC800E46AEE /* DonorCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -343,6 +348,7 @@
 				B9CC6E8C27E147460005C160 /* Home */,
 				B9C7969427C7A839006A78A3 /* TabBarController.swift */,
 				95C5967627D75A8D00A5572C /* styles.swift */,
+				9572140D28146B9900E46AEE /* AfterDeathDonor.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -459,8 +465,8 @@
 		FB3A4FC32329E4399DABC3B5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				0403D4EC0B8593F71EF89203 /* Pods-Yumn.debug.xcconfig */,
-				D52D933E88C814542BC4B64C /* Pods-Yumn.release.xcconfig */,
+				4032CE35DA1A0F2710021A93 /* Pods-Yumn.debug.xcconfig */,
+				9A87055B9B3C757D4B448E5E /* Pods-Yumn.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -472,11 +478,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 95785069279E1918004F3D8F /* Build configuration list for PBXNativeTarget "Yumn" */;
 			buildPhases = (
-				861BFFBCB91CBFD0BF35C852 /* [CP] Check Pods Manifest.lock */,
+				E16FC65BA39C55C2D24C4872 /* [CP] Check Pods Manifest.lock */,
 				95785051279E1917004F3D8F /* Sources */,
 				95785052279E1917004F3D8F /* Frameworks */,
 				95785053279E1917004F3D8F /* Resources */,
-				80D9C7492A54C3CB7CE99C56 /* [CP] Embed Pods Frameworks */,
+				B12DAAC018536A509827528D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -546,7 +552,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		80D9C7492A54C3CB7CE99C56 /* [CP] Embed Pods Frameworks */ = {
+		B12DAAC018536A509827528D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -563,7 +569,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Yumn/Pods-Yumn-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		861BFFBCB91CBFD0BF35C852 /* [CP] Check Pods Manifest.lock */ = {
+		E16FC65BA39C55C2D24C4872 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -613,6 +619,7 @@
 				8D7F152B27D299C100E1EB1A /* constants.swift in Sources */,
 				D195443E27D499ED00B03DFF /* customTabBar.swift in Sources */,
 				B9419DFC27C52D9C00962A1B /* HospitalCellTableViewCell.swift in Sources */,
+				9572141028146BC800E46AEE /* DonorCollectionViewCell.swift in Sources */,
 				9578505D279E1917004F3D8F /* VHomeViewController.swift in Sources */,
 				959A52D127E8A41F002244A0 /* editVolunteeringOpp.swift in Sources */,
 				D19B1B4B27E95F1000CB3FFA /* currentBldAppCell.swift in Sources */,
@@ -628,6 +635,7 @@
 				D195443C27D499D900B03DFF /* organsChartVC.swift in Sources */,
 				95531DC727E869E30029B490 /* addPopup.swift in Sources */,
 				9520693927E3A5D100D5DC11 /* addVolunteeringOpp.swift in Sources */,
+				9572140E28146B9900E46AEE /* AfterDeathDonor.swift in Sources */,
 				95C5967727D75A8D00A5572C /* styles.swift in Sources */,
 				B9570C2F27DFA828000D1B8B /* MaterialSegmentedControl.swift in Sources */,
 				D195443827D499A200B03DFF /* organShortageVC.swift in Sources */,
@@ -800,7 +808,7 @@
 		};
 		9578506A279E1918004F3D8F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0403D4EC0B8593F71EF89203 /* Pods-Yumn.debug.xcconfig */;
+			baseConfigurationReference = 4032CE35DA1A0F2710021A93 /* Pods-Yumn.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -835,7 +843,7 @@
 		};
 		9578506B279E1918004F3D8F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D52D933E88C814542BC4B64C /* Pods-Yumn.release.xcconfig */;
+			baseConfigurationReference = 9A87055B9B3C757D4B448E5E /* Pods-Yumn.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

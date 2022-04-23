@@ -14,6 +14,7 @@ target 'Yumn' do
   pod 'SCLAlertView'
   pod 'Firebase/Auth'
   pod 'Charts'
+  pod 'ContextMenuSwift'
 
   # Pods for Yumn
 

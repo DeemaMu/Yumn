@@ -2207,6 +2207,13 @@
                             <view hidden="YES" alpha="0.30000001192092896" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oul-y5-ukP">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fcu-AU-WLF">
+                                        <rect key="frame" x="355" y="46" width="51" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -2226,16 +2233,10 @@
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="الاحتياج" id="KT4-Kg-THh">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="logout" id="dGf-5D-MMf">
-                            <color key="tintColor" name="mainDark"/>
-                            <connections>
-                                <action selector="onPressedLogout:" destination="dA3-Ya-KWu" id="hDu-Vo-29Z"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="Profile" width="20" id="k24-1B-Cf1">
+                        <barButtonItem key="rightBarButtonItem" image="list.dash" catalog="system" width="20" id="k24-1B-Cf1">
                             <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-4"/>
                             <connections>
-                                <segue destination="cJC-8l-dUH" kind="show" id="Huj-OT-y0s"/>
+                                <action selector="viewMenu:" destination="dA3-Ya-KWu" id="Uac-F8-Ldo"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -2266,6 +2267,7 @@
                         <outlet property="liverLb" destination="G03-h9-F5T" id="so7-gy-qGO"/>
                         <outlet property="lung" destination="5HY-vv-TDv" id="K00-cH-exs"/>
                         <outlet property="lungLb" destination="vsk-7N-cCz" id="SQy-ro-wj8"/>
+                        <outlet property="menuView" destination="fcu-AU-WLF" id="bqz-UW-Y1v"/>
                         <outlet property="oNegative" destination="CQn-bk-vR5" id="ySX-rL-HaV"/>
                         <outlet property="oPositive" destination="4GS-fJ-rxm" id="agx-Vm-7J6"/>
                         <outlet property="organShortageNeed" destination="QLi-vv-QdO" id="aL2-Dc-eQY"/>
@@ -2276,11 +2278,13 @@
                         <outlet property="popupStack" destination="GBG-fm-0if" id="TGJ-tI-Orl"/>
                         <outlet property="popupTitle" destination="v5m-cr-QMt" id="Fwq-hD-7gJ"/>
                         <outlet property="popupView" destination="av0-v0-jG0" id="9AS-nN-ZRm"/>
+                        <segue destination="cJC-8l-dUH" kind="show" identifier="hospitalProfile" id="w7f-rj-u7a"/>
+                        <segue destination="5ww-1q-kbb" kind="show" identifier="afterDeathDonors" id="ckG-kD-252"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ovp-gx-9rp" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1078" y="3080"/>
+            <point key="canvasLocation" x="1076.8115942028987" y="3079.6875"/>
         </scene>
         <!--Custom Tab BarVC-->
         <scene sceneID="jXN-LG-3FA">
@@ -2722,7 +2726,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gjp-En-nMf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2270" y="3107"/>
+            <point key="canvasLocation" x="2270" y="3098"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dJW-oI-7mi">
@@ -5942,9 +5946,144 @@
             </objects>
             <point key="canvasLocation" x="2206" y="47"/>
         </scene>
+        <!--المتبرعين بعد الوفاه-->
+        <scene sceneID="Ra4-wb-FT0">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="5ww-1q-kbb" customClass="AfterDeathDonor" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="56U-xd-2DH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eJw-99-eCQ" customClass="RoundedView" customModule="testMenu" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="103" width="414" height="797"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EfN-gr-dEx">
+                                        <rect key="frame" x="8" y="45" width="398" height="742"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="11" id="1be-CH-YOZ">
+                                            <size key="itemSize" width="368" height="124"/>
+                                            <size key="headerReferenceSize" width="0.0" height="10"/>
+                                            <size key="footerReferenceSize" width="0.0" height="30"/>
+                                            <inset key="sectionInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="donorCell" id="Acp-we-3LP" customClass="DonorCollectionViewCell" customModule="Yumn">
+                                                <rect key="frame" x="15" y="10" width="368" height="124"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="E3Y-A3-BeP">
+                                                    <rect key="frame" x="0.0" y="0.0" width="368" height="124"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="XCy-rg-qDg">
+                                                            <rect key="frame" x="289" y="31" width="62" height="62"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="tintColor" red="0.52549019610000003" green="0.79199999570000001" blue="0.76499998570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ديمه المطيري" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHF-Xw-4G4">
+                                                            <rect key="frame" x="123" y="23" width="143" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1121671679" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cyd-LX-VQk">
+                                                            <rect key="frame" x="171" y="52" width="95" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="جميع الاعضاء" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Myf-l5-8Lp">
+                                                            <rect key="frame" x="171" y="81" width="95" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pencil.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="458-8C-4p8">
+                                                            <rect key="frame" x="8" y="8" width="39" height="42"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="tintColor" red="0.65492137959999996" green="0.066473766470000001" blue="0.02061267453" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </collectionViewCellContentView>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <size key="customSize" width="368" height="124"/>
+                                                <connections>
+                                                    <outlet property="bloodType" destination="458-8C-4p8" id="aXX-ns-72O"/>
+                                                    <outlet property="id" destination="Cyd-LX-VQk" id="zrD-lR-U98"/>
+                                                    <outlet property="name" destination="jHF-Xw-4G4" id="jzM-pF-Dba"/>
+                                                    <outlet property="organs" destination="Myf-l5-8Lp" id="cXc-2I-3RW"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mAk-pS-jQv">
+                                            <rect key="frame" x="0.0" y="0.0" width="398" height="10"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionReusableView>
+                                        <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="4XA-Sy-IeN">
+                                            <rect key="frame" x="0.0" y="134" width="398" height="30"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionReusableView>
+                                        <connections>
+                                            <outlet property="dataSource" destination="5ww-1q-kbb" id="qtt-JJ-x0k"/>
+                                            <outlet property="delegate" destination="5ww-1q-kbb" id="OhN-hQ-lh8"/>
+                                        </connections>
+                                    </collectionView>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="لا يوجد متبرعين حتى الآن" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2j-0A-rzk">
+                                        <rect key="frame" x="23" y="330" width="368" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="17"/>
+                                        <color key="textColor" name="textGrey"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTw-mX-o0j">
+                                        <rect key="frame" x="45" y="17" width="24" height="14"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusV">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidthV">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColorV">
+                                        <color key="value" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="rNb-d9-5Jy"/>
+                        <color key="backgroundColor" red="0.52549019610000003" green="0.79215686269999996" blue="0.76470588240000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="people" id="v8R-5t-Esn">
+                        <inset key="imageInsets" minX="0.0" minY="12" maxX="0.0" maxY="-12"/>
+                    </tabBarItem>
+                    <navigationItem key="navigationItem" title="المتبرعين بعد الوفاه" id="dY1-iE-IHd">
+                        <barButtonItem key="backBarButtonItem" title="   " image="chevron.backward" catalog="system" id="r6c-Ux-haT"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="donorsList" destination="EfN-gr-dEx" id="fq8-sy-cgf"/>
+                        <outlet property="noDonorsLabel" destination="w2j-0A-rzk" id="6kP-Sy-nTp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MRB-vO-t5n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3279.7101449275365" y="3097.7678571428569"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="O1h-b2-P26"/>
+        <segue reference="w7f-rj-u7a"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ABm" width="45" height="38"/>
@@ -5969,12 +6108,15 @@
         <image name="hands-noBG" width="632" height="395"/>
         <image name="heart icon" width="2048" height="2048"/>
         <image name="help" width="256" height="256"/>
+        <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="logo2" width="362" height="262"/>
         <image name="logout" width="66" height="66"/>
         <image name="organDon" width="413" height="233"/>
         <image name="organDonate" width="284" height="300"/>
         <image name="packages-grey" width="30" height="30"/>
+        <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
         <image name="people" width="42" height="27"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="shortagePic" width="55" height="55"/>
         <namedColor name="bgGrey">
             <color red="0.92500001192092896" green="0.94099998474121094" blue="0.94099998474121094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
