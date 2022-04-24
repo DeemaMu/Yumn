@@ -12,6 +12,7 @@ class DonorCollectionViewCell : UICollectionViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var id: UILabel!
     @IBOutlet weak var organs: UILabel!
+    @IBOutlet weak var city: UILabel!
     @IBOutlet weak var bloodType: UIImageView!
     
     override class func awakeFromNib() {
