@@ -120,17 +120,6 @@ class Alive2ndVC: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        let nav = self.navigationController?.navigationBar
-        guard let customFont = UIFont(name: "Tajawal-Bold", size: 25) else {
-            fatalError("""
-                Failed to load the "Tajawal" font.
-                Make sure the font file is included in the project and the font name is spelled correctly.
-                """
-            )
-        }
-        nav?.tintColor = UIColor.init(named: "mainLight")
-        nav?.barTintColor = UIColor.init(named: "mainLight")
-        nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(named: "mainLight")!, NSAttributedString.Key.font: customFont]
     }
     
     func showFirstSection(){

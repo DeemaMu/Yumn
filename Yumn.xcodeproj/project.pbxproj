@@ -64,6 +64,8 @@
 		B9AD3F2A27E2CF81001AB734 /* ManageAppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD3F2927E2CF81001AB734 /* ManageAppointmentsViewController.swift */; };
 		B9AD3F3027E335B3001AB734 /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD3F2F27E335B3001AB734 /* DateValue.swift */; };
 		B9B3143B2815BAB000C62981 /* AODInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3143A2815BAB000C62981 /* AODInstructions.swift */; };
+		B9B3143D2815F82200C62981 /* Alive3rdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3143C2815F82000C62981 /* Alive3rdVC.swift */; };
+		B9B3143F2815FB8400C62981 /* AODHospitalList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3143E2815FB8300C62981 /* AODHospitalList.swift */; };
 		B9BAC6EA280E0CDF001489A1 /* AfterDeathODFirstController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BAC6E9280E0CDF001489A1 /* AfterDeathODFirstController.swift */; };
 		B9C7969527C7A83A006A78A3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C7969427C7A839006A78A3 /* TabBarController.swift */; };
 		B9DA61CE27C10C2900359487 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9DA61CD27C10C2800359487 /* GoogleService-Info.plist */; };
@@ -158,6 +160,8 @@
 		B9AD3F2927E2CF81001AB734 /* ManageAppointmentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageAppointmentsViewController.swift; sourceTree = "<group>"; };
 		B9AD3F2F27E335B3001AB734 /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
 		B9B3143A2815BAB000C62981 /* AODInstructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AODInstructions.swift; sourceTree = "<group>"; };
+		B9B3143C2815F82000C62981 /* Alive3rdVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alive3rdVC.swift; sourceTree = "<group>"; };
+		B9B3143E2815FB8300C62981 /* AODHospitalList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AODHospitalList.swift; sourceTree = "<group>"; };
 		B9BAC6E9280E0CDF001489A1 /* AfterDeathODFirstController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterDeathODFirstController.swift; sourceTree = "<group>"; };
 		B9C7969427C7A839006A78A3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B9DA61CD27C10C2800359487 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -379,6 +383,8 @@
 				B9533EFD2810D49E00485482 /* ChooseOrganButton.swift */,
 				B9533EFF2811A79D00485482 /* Alive2ndVC.swift */,
 				B9B3143A2815BAB000C62981 /* AODInstructions.swift */,
+				B9B3143C2815F82000C62981 /* Alive3rdVC.swift */,
+				B9B3143E2815FB8300C62981 /* AODHospitalList.swift */,
 			);
 			path = WhileAlive;
 			sourceTree = "<group>";
@@ -655,6 +661,7 @@
 				B9419DFC27C52D9C00962A1B /* HospitalCellTableViewCell.swift in Sources */,
 				9578505D279E1917004F3D8F /* VHomeViewController.swift in Sources */,
 				959A52D127E8A41F002244A0 /* editVolunteeringOpp.swift in Sources */,
+				B9B3143F2815FB8400C62981 /* AODHospitalList.swift in Sources */,
 				D19B1B4B27E95F1000CB3FFA /* currentBldAppCell.swift in Sources */,
 				959A52CB27E87E51002244A0 /* cancelPopup.swift in Sources */,
 				B9533F002811A79E00485482 /* Alive2ndVC.swift in Sources */,
@@ -672,6 +679,7 @@
 				9520693927E3A5D100D5DC11 /* addVolunteeringOpp.swift in Sources */,
 				B9B3143B2815BAB000C62981 /* AODInstructions.swift in Sources */,
 				95C5967727D75A8D00A5572C /* styles.swift in Sources */,
+				B9B3143D2815F82200C62981 /* Alive3rdVC.swift in Sources */,
 				B9570C2F27DFA828000D1B8B /* MaterialSegmentedControl.swift in Sources */,
 				D195443827D499A200B03DFF /* organShortageVC.swift in Sources */,
 				D19B1B4727E95ED400CB3FFA /* OpenMapDirections.swift in Sources */,
