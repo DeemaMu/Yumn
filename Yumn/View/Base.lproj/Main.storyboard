@@ -6836,7 +6836,7 @@
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
                                                                         <connections>
-                                                                            <action selector="onPressedQ1Radio:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="dwU-v5-KBp"/>
+                                                                            <action selector="onPressedQ1:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="hfQ-u6-3hm"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yel-v3-BKD">
@@ -6870,7 +6870,7 @@
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
                                                                         <connections>
-                                                                            <action selector="onPressedRadio2:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="VXA-Pq-YWi"/>
+                                                                            <action selector="onPressedQ2:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="H3k-db-VhK"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LfU-1R-fCf">
@@ -6906,7 +6906,7 @@
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
                                                                         <connections>
-                                                                            <action selector="onPressedQ3:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="aiN-zh-3u7"/>
+                                                                            <action selector="onPressedQ3:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="gMI-Wm-O0d"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SR6-sc-sp9">
@@ -6927,24 +6927,24 @@
                                                                             </attributedString>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="onPressedRadio3:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="ySd-Nj-u2d"/>
+                                                                            <action selector="onPressedQ3:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="jBR-lJ-zav"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
                                                             </stackView>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="77" translatesAutoresizingMaskIntoConstraints="NO" id="dL3-4n-orK">
-                                                                <rect key="frame" x="5.5" y="268" width="339" height="59"/>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="dL3-4n-orK">
+                                                                <rect key="frame" x="4" y="268" width="342" height="59"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DjV-DM-clF">
                                                                         <rect key="frame" x="0.0" y="0.0" width="62" height="59"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
                                                                         <connections>
-                                                                            <action selector="onPressedRadio4:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="KzL-MV-yT3"/>
+                                                                            <action selector="onPrssedQ4:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="uqV-MW-Esr"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TkD-77-lmy">
-                                                                        <rect key="frame" x="139" y="0.0" width="200" height="59"/>
+                                                                        <rect key="frame" x="142" y="0.0" width="200" height="59"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="200" id="weI-6c-XXz"/>
                                                                         </constraints>
@@ -6961,24 +6961,24 @@
                                                                             </attributedString>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="onPrssedQ4:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="cP9-1h-jcc"/>
+                                                                            <action selector="onPrssedQ4:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="LuD-S4-b4W"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
                                                             </stackView>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="67" translatesAutoresizingMaskIntoConstraints="NO" id="cJQ-Dr-UAK">
-                                                                <rect key="frame" x="5.5" y="335" width="339" height="59"/>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="cJQ-Dr-UAK">
+                                                                <rect key="frame" x="4" y="335" width="342" height="59"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1oA-HP-Mg1">
                                                                         <rect key="frame" x="0.0" y="0.0" width="62" height="59"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
                                                                         <connections>
-                                                                            <action selector="onPressedRadio5:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="BBi-DY-M7r"/>
+                                                                            <action selector="onPressedQ5:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="qcN-s1-H6m"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mQe-qi-xHf">
-                                                                        <rect key="frame" x="129" y="0.0" width="210" height="59"/>
+                                                                        <rect key="frame" x="132" y="0.0" width="210" height="59"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="210" id="U3a-AX-aLc"/>
                                                                         </constraints>
@@ -6995,7 +6995,7 @@
                                                                             </attributedString>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="onPressedQ5:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="Iys-AW-7iV"/>
+                                                                            <action selector="onPressedQ5:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="sqG-6x-TH6"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -7008,8 +7008,7 @@
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain" image="emptyRadio" title=""/>
                                                                         <connections>
-                                                                            <action selector="onPressedQ6:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="czz-GH-4M4"/>
-                                                                            <action selector="onPressedRadio2:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="tQq-GI-75K"/>
+                                                                            <action selector="onPressedQ6:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="KrB-Cj-PP9"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BJ8-lU-oKU">
@@ -7258,8 +7257,7 @@
                                                                             <color key="baseForegroundColor" red="0.54901960780000003" green="0.5568627451" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </buttonConfiguration>
                                                                         <connections>
-                                                                            <action selector="onPressedQ2:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="gwF-v5-aYp"/>
-                                                                            <action selector="onPressedQ6:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="Azt-06-fGy"/>
+                                                                            <action selector="onPressedQ6:" destination="PB1-Cs-BQv" eventType="touchUpInside" id="1Z1-uY-fG0"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>

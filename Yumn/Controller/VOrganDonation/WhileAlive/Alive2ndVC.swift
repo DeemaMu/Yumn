@@ -159,25 +159,6 @@ class Alive2ndVC: UIViewController {
         
     }
     
-    @IBAction func onPressedQ1Radio(_ sender: Any) {
-        
-        questions[0] = !questions[0]
-        print (questions)
-        
-        if (q1Radio.currentImage == UIImage(named: "fullRadio")){
-            
-            
-            q1Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
-            
-        }
-        else {
-            
-            q1Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
-            
-            
-        }
-    }
-    
     
     @IBAction func onPressedQ2(_ sender: Any) {
         
@@ -201,45 +182,6 @@ class Alive2ndVC: UIViewController {
     }
     
     
-    @IBAction func onPressedRadio2(_ sender: Any) {
-        questions[1] = !questions[1]
-        print (questions)
-        
-        if (q2Radio.currentImage == UIImage(named: "fullRadio")){
-            
-            
-            q2Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
-            
-        }
-        else {
-            
-            q2Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
-            
-            
-        }
-    }
-    
-    
-    @IBAction func onPressedRadio3(_ sender: Any) {
-        questions[2] = !questions[2]
-        print (questions)
-        
-        if (q3Radio.currentImage == UIImage(named: "fullRadio")){
-            
-            
-            q3Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
-            
-        }
-        else {
-            
-            q3Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
-            
-            
-        }
-    }
-    
-    
-    
     @IBAction func onPressedQ3(_ sender: Any) {
         
         questions[2] = !questions[2]
@@ -254,26 +196,6 @@ class Alive2ndVC: UIViewController {
         else {
             
             q3Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
-            
-            
-        }
-    }
-    
-    
-    @IBAction func onPressedRadio4(_ sender: Any) {
-        
-        questions[3] = !questions[3]
-        print (questions)
-        
-        if (q4Radio.currentImage == UIImage(named: "fullRadio")){
-            
-            
-            q4Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
-            
-        }
-        else {
-            
-            q4Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
             
             
         }
@@ -319,24 +241,6 @@ class Alive2ndVC: UIViewController {
     }
     
     
-    @IBAction func onPressedRadio5(_ sender: Any) {
-        questions[4] = !questions[4]
-        print (questions)
-        
-        if (q5Radio.currentImage == UIImage(named: "fullRadio")){
-            
-            
-            q5Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
-            
-        }
-        else {
-            
-            q5Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
-            
-            
-        }
-    }
-    
     @IBAction func onPressedQ6(_ sender: Any) {
         
         questions[5] = !questions[5]
@@ -374,7 +278,7 @@ class Alive2ndVC: UIViewController {
         
         else{
             
-            performSegue(withIdentifier: "goToOrganSelection", sender: nil)
+//            performSegue(withIdentifier: "goToOrganSelection", sender: nil)
             
             //Go to next page
         }
