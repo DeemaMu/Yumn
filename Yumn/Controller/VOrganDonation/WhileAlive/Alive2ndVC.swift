@@ -27,6 +27,8 @@ class Alive2ndVC: UIViewController {
     @IBOutlet weak var firstSection: UIView!
     @IBOutlet weak var secondSection: UIView!
     
+    @IBOutlet weak var instructionsView: UIView!
+    
     @IBOutlet weak var q1Btn: UIButton!
     @IBOutlet weak var q1Radio: UIButton!
     
@@ -46,38 +48,37 @@ class Alive2ndVC: UIViewController {
     @IBOutlet weak var q6Radio: UIButton!
     
     @IBOutlet weak var contBtn: UIButton!
-
+    @IBOutlet weak var to2ndSection: UIButton!
+    
+    @IBOutlet weak var instructionsStack: UIStackView!
     @IBOutlet weak var regulationsStack: UIStackView!
     
     var questions = [false, false,false, false, false, false]
     
     override func viewDidLoad() {
         
-        print("\(Constants.selected.selectedOrgan.organ)")
         super.viewDidLoad()
-        viewWillAppear(true)
         
+        viewWillAppear(true)
+                
+        blackBlurredView.superview?.bringSubviewToFront(blackBlurredView)
         popupView.superview?.bringSubviewToFront(popupView)
+
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.layoutIfNeeded()
-        if(Constants.selected.selectedOrgan.organ == "kidney"){
-            self.title = "التبرع بكلية"
-        }
-        if(Constants.selected.selectedOrgan.organ == "liver"){
-            self.title = "التبرع بجزء من الكبد"
-        }
         
-//        contBtn.layer.cornerRadius = 25
+        to2ndSection.layer.cornerRadius = 25
+        contBtn.layer.cornerRadius = 25
         okBtn.layer.cornerRadius = 15
         popupView.layer.cornerRadius = 30
         
         
-//        let childView = UIHostingController(rootView: AfterDeathOrganSelection(controller: self))
-//        addChild(childView)
-//        childView.view.frame = selectionHolder.bounds
-//        selectionHolder.addSubview(childView.view)
+        let childView = UIHostingController(rootView: AODInstructions(controller: self))
+        addChild(childView)
+        childView.view.frame = instructionsView.bounds
+        instructionsView.addSubview(childView.view)
         
         
         q1Btn.contentHorizontalAlignment = .right
@@ -88,9 +89,19 @@ class Alive2ndVC: UIViewController {
         q6Btn.contentHorizontalAlignment = .right
         
     }
-    
+    override func viewDidAppear(_ animated: Bool){
+        super.viewDidAppear(animated)
+        
+        if(Constants.selected.selectedOrgan.organ == "kidney"){
+            self.title = "التبرع بكلية"
+        }
+        if(Constants.selected.selectedOrgan.organ == "liver"){
+            self.title = "التبرع بجزء من الكبد"
+        }
+
+        
+    }
     override func viewWillAppear(_ animated: Bool) {
-        //        self.navigationController?.navigationBar.tintColor = UIColor.white
         super.viewWillAppear(animated)
         
         let nav = self.navigationController?.navigationBar
@@ -123,11 +134,15 @@ class Alive2ndVC: UIViewController {
     }
     
     func showFirstSection(){
-        
+        firstSection.isHidden = false;
     }
     
     func showSecondSection(){
-        
+        to2ndSection.isHidden = true
+        instructionsView.isHidden = true
+        instructionsStack.isHidden = true
+        firstSection.isHidden = true
+        secondSection.isHidden = false
     }
     
     func showThirdSection(){
@@ -138,6 +153,9 @@ class Alive2ndVC: UIViewController {
         
     }
     
+    @IBAction func firstCont(_ sender: Any) {
+        showSecondSection()
+    }
     
     @IBAction func onPressedQ1(_ sender: Any) {
         
@@ -278,7 +296,7 @@ class Alive2ndVC: UIViewController {
         
         else{
             
-//            performSegue(withIdentifier: "goToOrganSelection", sender: nil)
+            performSegue(withIdentifier: "showThirdSection", sender: nil)
             
             //Go to next page
         }
