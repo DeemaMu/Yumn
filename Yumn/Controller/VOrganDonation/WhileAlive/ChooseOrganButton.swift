@@ -48,10 +48,11 @@ struct ChooseOrganButton: View {
                         radius: 6, x: 0
                         , y: 6)
                 .onTapGesture {
+                    Constants.selected.selectedOrgan.organ = "liver"
                     liver.toggle()
                     if(liver){
                         kidney = false
-                        controller.moveToLiverSection()
+                        controller.moveToKindneySection()
                     }
                 }
             
@@ -82,6 +83,7 @@ struct ChooseOrganButton: View {
                         , y: 6)
                 .onTapGesture {
                     kidney.toggle()
+                    Constants.selected.selectedOrgan.organ = "kidney"
                     if(kidney){
                         liver = false
                         controller.moveToKindneySection()
@@ -123,4 +125,11 @@ struct RoundedCorner: Shape {
         let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         return Path(path.cgPath)
     }
+}
+
+struct SelectedOrgan {
+    var organ: String
+    var hospital: String
+    var appointment: String
+    var organHospitals: [String]
 }
