@@ -56,35 +56,25 @@ struct AODHospitalList: View {
                 //                }.padding(.leading)
                 
                 Spacer()
-                Text("حجز موعد للفحص المبدئي").font(Font.custom("Tajawal", size: 18)).fontWeight(.bold)
+                Text("حجز موعد للفحص المبدئي").font(Font.custom("Tajawal", size: 16)).fontWeight(.bold)
                     .foregroundColor(mainDark)
             }
             .onChange(of: checked){ newValue in
                 //                self.selectAll()
             }
             .padding(.trailing)
-            .padding(.bottom,10)
             
-            VStack(){
-                
-                ForEach(0..<hVM.odHospitals.count, id: \.self) { index in
-                    //                    let currentH = hVM.odHospitals[index].hospital
-                    //                    Text("\(currentH!.name)")
-                    card(hospital: hVM.odHospitals[index], index: index)
-                }
-            }
+            
             
             ScrollView(.vertical, showsIndicators: false){
-                LazyVGrid(columns: items, alignment: .center) {
-                    ForEach(organs.dropLast(organs.count % 3), id: \.self) { index in
-                        //                                card(organ: index)
+                VStack(spacing: 20){
+                    
+                    ForEach(0..<hVM.odHospitals.count, id: \.self) { index in
+                        //                    let currentH = hVM.odHospitals[index].hospital
+                        //                    Text("\(currentH!.name)")
+                        card(hospital: hVM.odHospitals[index], index: index)
                     }
-                }
-                LazyHStack {
-                    ForEach(organs.suffix(organs.count % 3), id: \.self) { index in
-                        //                                card(organ: index)
-                    }
-                }
+                }.padding(.top, 10)
             }
             Button(action: {
             }
@@ -129,8 +119,8 @@ struct AODHospitalList: View {
             
             Spacer()
             
-            VStack(alignment: .trailing, spacing: 10){
-                Text("\(currentH!.name)").font(Font.custom("Tajawal", size: 18))
+            VStack(alignment: .trailing, spacing: 20){
+                Text("\(currentH!.name)").font(Font.custom("Tajawal", size: 17))
                     .foregroundColor(mainDark)
                 Text("\(currentH!.area) - \(currentH!.city)").font(Font.custom("Tajawal", size: 12))
                     .foregroundColor(mainDark)
@@ -165,7 +155,7 @@ struct AODHospitalList: View {
             }
         }
         .padding(.horizontal, 15)
-        .padding(.bottom, 5)
+        .padding(.vertical, 5)
         
         //            Button(action: {
         //                buttonPressed(organ: organ)
@@ -343,5 +333,53 @@ class ODHospitals: ObservableObject {
 struct AODHospitalList_Previews: PreviewProvider {
     static var previews: some View {
         AODHospitalList()
+    }
+}
+
+
+struct RadioButton2: View {
+    //    @Binding
+    var matched: Bool    //the variable that determines if its checked
+    //    @Binding var checkedIndex: Int
+    //    var currentIndex: Int
+    
+    let mainDark = Color(UIColor.init(named: "mainDark")!)
+    let mainLight = Color(UIColor.init(named: "mainLight")!)
+    
+    
+    var body: some View {
+        Group{
+            if matched {
+                ZStack{
+                    
+                    Circle()
+                        .fill(Color.white)
+                        .frame(width: 15, height: 15)
+                        .overlay(Circle().stroke(mainLight, lineWidth: 3))
+                    Circle()
+                        .fill(mainLight)
+                        .frame(width: 6, height: 6)
+                    
+                    //                    Circle()
+                    //                        .fill(mainLight)
+                    //                        .frame(width: 18, height: 18)
+                    //                    Circle()
+                    //                        .fill(Color.white)
+                    //                        .frame(width: 6, height: 6)
+                }
+                //                .onTapGesture {
+                //                    self.checked = false
+                //                }
+            } else {
+                Circle()
+                    .fill(Color.white)
+                    .frame(width: 15, height: 15)
+                    .overlay(Circle().stroke(Color.gray, lineWidth: 3))
+                //                    .onTapGesture {
+                //                        self.checked = true
+                //
+                //                    }
+            }
+        }
     }
 }

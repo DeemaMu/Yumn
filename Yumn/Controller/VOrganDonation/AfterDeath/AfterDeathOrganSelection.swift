@@ -167,42 +167,6 @@ struct RadioButton: View {
     }
 }
 
-struct RadioButton2: View {
-//    @Binding
-    var matched: Bool    //the variable that determines if its checked
-//    @Binding var checkedIndex: Int
-//    var currentIndex: Int
-    
-    let mainDark = Color(UIColor.init(named: "mainDark")!)
-
-    var body: some View {
-        Group{
-            if matched {
-                ZStack{
-                    Circle()
-                        .fill(mainDark)
-                        .frame(width: 18, height: 18)
-                    Circle()
-                        .fill(Color.white)
-                        .frame(width: 6, height: 6)
-                }
-//                .onTapGesture {
-//                    self.checked = false
-//                }
-            } else {
-                Circle()
-                    .fill(Color.white)
-                    .frame(width: 15, height: 15)
-                    .overlay(Circle().stroke(Color.gray, lineWidth: 3))
-//                    .onTapGesture {
-//                        self.checked = true
-//
-//                    }
-            }
-        }
-    }
-}
-
 class OrgansVM: ObservableObject {
     @Published var selected = [
         "الكلى": false,
