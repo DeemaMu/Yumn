@@ -137,8 +137,7 @@ extension AllQRCodesViewController{
                 print("sorted down")
                 print (Constants.Globals.sortedValidQRCodes)
 
-                    
-                    DispatchQueue.main.async {
+                                    DispatchQueue.main.async {
                         self.validQRCodesTableView.reloadData()
                     }
                 

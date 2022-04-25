@@ -87,7 +87,8 @@ extension BloodDonationViewController: UITableViewDataSource {
         
         let distance = String(format: "%.3f", sortedHospitals![indexPath.row].distance!)
         cell.distanceText.text = "يبعد: \(distance) كم"
-        
+        print ("Rawan cell")
+        print (cell)
         return cell
     }
     
