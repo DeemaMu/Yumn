@@ -16,6 +16,8 @@ struct AODHospitalList: View {
     
     
     @State var checked = false
+    @State var checkedIndex = -1
+    
     @State var controller: Alive3rdVC = Alive3rdVC()
     let mainDark = Color(UIColor.init(named: "mainDark")!)
     let mainLight = Color(UIColor.init(named: "mainLight")!)
@@ -47,27 +49,29 @@ struct AODHospitalList: View {
     var body: some View {
         VStack(spacing: 20){
             HStack(){
-                HStack(){
-                    Text("الكل").font(Font.custom("Tajawal", size: 15))
-                        .foregroundColor(.gray).padding(.top,4)
-                    RadioButton(checked: $checked)
-                }.padding(.leading)
+                //                HStack(){
+                //                    Text("الكل").font(Font.custom("Tajawal", size: 15))
+                //                        .foregroundColor(.gray).padding(.top,4)
+                //                    RadioButton(checked: $checked)
+                //                }.padding(.leading)
                 
                 Spacer()
-                Text("حجز موعد للفحص المبدئي").font(Font.custom("Tajawal", size: 15))
+                Text("حجز موعد للفحص المبدئي").font(Font.custom("Tajawal", size: 18)).fontWeight(.bold)
                     .foregroundColor(mainDark)
-            }.onChange(of: checked){ newValue in
+            }
+            .onChange(of: checked){ newValue in
                 //                self.selectAll()
             }
             .padding(.trailing)
             .padding(.bottom,10)
             
-            HStack(){
+            VStack(){
                 
-                ForEach(hVM.odHospitals) { index in
-                    Text("\(index.name)")
+                ForEach(0..<hVM.odHospitals.count, id: \.self) { index in
+                    //                    let currentH = hVM.odHospitals[index].hospital
+                    //                    Text("\(currentH!.name)")
+                    card(hospital: hVM.odHospitals[index], index: index)
                 }
-        
             }
             
             ScrollView(.vertical, showsIndicators: false){
@@ -105,53 +109,106 @@ struct AODHospitalList: View {
     }
     
     
-        @ViewBuilder
-        func card(hospital: Location) -> some View{
-            let shadowColor = Color(#colorLiteral(red: 0.8653315902, green: 0.8654771447, blue: 0.8653123975, alpha: 1))
-    //        let raduis = 3
-    //        let ySpread = 0
-    
-            Button(action: {
-                buttonPressed(organ: organ)
+    @ViewBuilder
+    func card(hospital: odHospital, index: Int) -> some View{
+        let shadowColor = Color(#colorLiteral(red: 0.8653315902, green: 0.8654771447, blue: 0.8653123975, alpha: 1))
+        let currentH = hospital.hospital
+        //        let raduis = 3
+        //        let ySpread = 0
+        
+        
+        HStack(){
+            VStack(alignment: .leading){
+                if(hospital.selected){
+                    RadioButton2(matched: true)
+                }
+                if(!hospital.selected){
+                    RadioButton2(matched: false)
+                }
+            }.padding(.leading, 20)
+            
+            Spacer()
+            
+            VStack(alignment: .trailing, spacing: 10){
+                Text("\(currentH!.name)").font(Font.custom("Tajawal", size: 18))
+                    .foregroundColor(mainDark)
+                Text("\(currentH!.area) - \(currentH!.city)").font(Font.custom("Tajawal", size: 12))
+                    .foregroundColor(mainDark)
+            }.frame(maxWidth: .infinity, alignment: .trailing)
+                .frame(height: 90)
+                .padding(10)
+            
+        }.onChange(of: checkedIndex){ newValue in
+            if(newValue == index){
+                hVM.odHospitals[index].selected = true
+            } else {
+                hVM.odHospitals[index].selected = false
             }
-            ) {
-                Text(organ).font(Font.custom("Tajawal", size: 15))
-                    .foregroundColor(self.organsVM.selected[organ]! ? .white : mainDark)
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(
-                RoundedRectangle(
-                    cornerRadius: 10,
-                    style: .continuous
-                )
-                    .fill(self.organsVM.selected[organ]! ? mainDark : .white)
-            )
-            .frame(width: 90, height: 90, alignment: .center)
-            .shadow(color: shadowColor,
-                    radius: self.organsVM.selected[organ]! ? 0 : 3, x: 0
-                    , y:  self.organsVM.selected[organ]! ? 0 : 6)
         }
+        .background(
+            RoundedRectangle(
+                cornerRadius: 20,
+                style: .continuous
+            )
+                .fill(.white)
+        )
+        .frame(height: 90, alignment: .center)
+        .frame(maxWidth: .infinity)
+        .shadow(color: shadowColor,
+                radius: 6, x: 0
+                , y: 6)
+        .onTapGesture {
+            if(checkedIndex == index){
+                checkedIndex = -1
+            } else {
+                checkedIndex = index
+            }
+        }
+        .padding(.horizontal, 15)
+        .padding(.bottom, 5)
+        
+        //            Button(action: {
+        //                buttonPressed(organ: organ)
+        //            }
+        //            ) {
+        //                Text(organ).font(Font.custom("Tajawal", size: 15))
+        //                    .foregroundColor(self.organsVM.selected[organ]! ? .white : mainDark)
+        //            }
+        //            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        //            .background(
+        //                RoundedRectangle(
+        //                    cornerRadius: 10,
+        //                    style: .continuous
+        //                )
+        //                    .fill(self.organsVM.selected[organ]! ? mainDark : .white)
+        //            )
+        //            .frame(width: 90, height: 90, alignment: .center)
+        //            .shadow(color: shadowColor,
+        //                    radius: self.organsVM.selected[organ]! ? 0 : 3, x: 0
+        //                    , y:  self.organsVM.selected[organ]! ? 0 : 6)
+    }
     
-//        func buttonPressed(organ: String){
-//            self.organsVM.selected[organ]?.toggle()
-//        }
-//
-//        func selectAll(){
-//            if(checked){
-//                for organ in self.organsVM.selected {
-//                    self.organsVM.selected[organ.key]? = true
-//                    }
-//            } else {
-//                for organ in self.organsVM.selected {
-//                    self.organsVM.selected[organ.key]? = false
-//                    }
-//            }
-//
-//        }
+    //        func buttonPressed(organ: String){
+    //            self.organsVM.selected[organ]?.toggle()
+    //        }
+    //
+    //        func selectAll(){
+    //            if(checked){
+    //                for organ in self.organsVM.selected {
+    //                    self.organsVM.selected[organ.key]? = true
+    //                    }
+    //            } else {
+    //                for organ in self.organsVM.selected {
+    //                    self.organsVM.selected[organ.key]? = false
+    //                    }
+    //            }
+    //
+    //        }
     
 }
 
-struct odHospital {
+struct odHospital: Identifiable {
+    var id = UUID().uuidString
     var hospital: Location?
     var selected = false
 }
@@ -199,7 +256,7 @@ class ODHospitals: ObservableObject {
                         self.hospitalsID.append(hospital)
                     }
                 }
-            
+                
                 
                 return OrganAppointment(appointments: appointments, type: type, startTime: startTime, endTime: endTime,
                                         aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, organ: organ)
