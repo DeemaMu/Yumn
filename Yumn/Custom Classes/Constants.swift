@@ -37,6 +37,8 @@ struct Constants {
          static var firstNameFromdb = ""
          static var currentQRID = "Zgtw52fTlum4bv7zpIlY"
          static var isLoggingIn = true
+         static var sortedValidQRCodes:[QRCode]?
+
                  
     }
 

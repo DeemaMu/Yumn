@@ -15,6 +15,8 @@ class QRCodeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var createdAt: UILabel!
     
+    var id:String = ""
+    
     @IBOutlet weak var viewQRCodeBtn: UIButton!
 
     
@@ -32,8 +34,6 @@ class QRCodeTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    @IBAction func bookFromList(_ sender: UIButton) {
-    }
     
     
     @IBAction func onPressedViewQr(_ sender: Any) {
