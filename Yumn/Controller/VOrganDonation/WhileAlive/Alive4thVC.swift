@@ -1,5 +1,5 @@
 //
-//  AfterDeathODFirstController.swift
+//  Alive4thVC.swift
 //  Yumn
 //
 //  Created by Rawan Mohammed on 17/04/2022.
@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import SwiftUI
 
-class Alive3rdVC: UIViewController {
+class Alive4thVC: UIViewController {
         
     @IBOutlet weak var roundedView: RoundedView!
     
@@ -40,21 +40,11 @@ class Alive3rdVC: UIViewController {
         okBtn.layer.cornerRadius = 15
         popupView.layer.cornerRadius = 30
         
-        let configuration = Configuration()
-        let controller = UIHostingController(rootView: AODHospitalList(config: configuration))
-
-        // injects here, because `configuration` is a reference !!
-        configuration.hostingController = controller
-
-//        controller.title = "title"
-//        MyNavigationManager.present(controller)
         
 //        let childView = UIHostingController(rootView: AODHospitalList())
-        addChild(controller)
-        controller.view.frame = hospitalSection.bounds
-        hospitalSection.addSubview(controller.view)
-        
-        
+//        addChild(childView)
+//        childView.view.frame = hospitalSection.bounds
+//        hospitalSection.addSubview(childView.view)
         
         
     }
@@ -67,10 +57,6 @@ class Alive3rdVC: UIViewController {
         if(Constants.selected.selectedOrgan.organ == "liver"){
             self.title = "التبرع بجزء من الكبد"
         }
-        
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.layoutIfNeeded()
 
         
     }
@@ -102,12 +88,9 @@ class Alive3rdVC: UIViewController {
     }
     
     func showAppointments(){
-        performSegue(withIdentifier: "goToChooseAppointment", sender: nil)
+        
     }
     
 }
 
 
-class Configuration {
-    weak var hostingController: UIViewController?    // << wraps reference
-}

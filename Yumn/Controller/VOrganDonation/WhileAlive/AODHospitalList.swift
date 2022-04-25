@@ -9,16 +9,20 @@ import SwiftUI
 import Firebase
 import MapKit
 import CoreLocation
+import UIKit
 
 struct AODHospitalList: View {
     
+    let config: Configuration
     @ObservedObject var hVM = ODHospitals()
     
     
     @State var checked = false
     @State var checkedIndex = -1
+    @State var showError = false
     
     @State var controller: Alive3rdVC = Alive3rdVC()
+    
     let mainDark = Color(UIColor.init(named: "mainDark")!)
     let mainLight = Color(UIColor.init(named: "mainLight")!)
     let lightGray = Color(UIColor.lightGray)
@@ -32,70 +36,69 @@ struct AODHospitalList: View {
     @ObservedObject var appointmentsVM = OrgansVM()
     
     
-    let organs: [String] = ["الكلى", "الكبد", "الرئتين", "البنكرياس", "القلب", "الامعاء", "العظام", "نخاع العظم", "الجلد", "القرنيات"]
-    var selected = [
-        "الكلى": false,
-        "الكبد":false,
-        "الرئتين":false,
-        "البنكرياس":false,
-        "القلب":false,
-        "الامعاء":false,
-        "العظام":false,
-        "نخاع العظم":false,
-        "الجلد":false,
-        "القرنيات":false,
-    ]
-    
     var body: some View {
-        VStack(spacing: 20){
-            HStack(){
-                //                HStack(){
-                //                    Text("الكل").font(Font.custom("Tajawal", size: 15))
-                //                        .foregroundColor(.gray).padding(.top,4)
-                //                    RadioButton(checked: $checked)
-                //                }.padding(.leading)
-                
-                Spacer()
-                Text("حجز موعد للفحص المبدئي").font(Font.custom("Tajawal", size: 16)).fontWeight(.bold)
-                    .foregroundColor(mainDark)
-            }
-            .onChange(of: checked){ newValue in
-                //                self.selectAll()
-            }
-            .padding(.trailing)
-            
-            
-            
-            ScrollView(.vertical, showsIndicators: false){
-                VStack(spacing: 20){
-                    
-                    ForEach(0..<hVM.odHospitals.count, id: \.self) { index in
-                        //                    let currentH = hVM.odHospitals[index].hospital
-                        //                    Text("\(currentH!.name)")
-                        card(hospital: hVM.odHospitals[index], index: index)
-                    }
-                }.padding(.top, 10)
-            }
-            Button(action: {
-            }
-            ) {
-                Text("متابعة").font(Font.custom("Tajawal", size: 20))
-                    .foregroundColor(.white)
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(
-                RoundedRectangle(
-                    cornerRadius: 25,
-                    style: .continuous
-                )
-                    .fill(mainDark)
-            )
-            .frame(width: 230, height: 59, alignment: .center)
-        }.onAppear(){
-            self.hVM.fetchData()
-            self.hVM.fetchHospitalsInfo()
-        }
         
+        ZStack(){
+            
+            VStack(spacing: 20){
+                HStack(){
+                    Spacer()
+                    Text("حجز موعد للفحص المبدئي").font(Font.custom("Tajawal", size: 16)).fontWeight(.bold)
+                        .foregroundColor(mainDark)
+                }
+                .onChange(of: checked){ newValue in
+                    //                self.selectAll()
+                }
+                .padding(.trailing)
+                
+                
+                
+                ScrollView(.vertical, showsIndicators: false){
+                    VStack(spacing: 20){
+                        
+                        ForEach(0..<hVM.odHospitals.count, id: \.self) { index in
+                            card(hospital: hVM.odHospitals[index], index: index)
+                        }
+                    }.padding(.top, 10)
+                }
+                
+                if(showError){
+                    Text("الرجاء اختيار مستشفى لعرض المواعيد *").font(Font.custom("Tajawal", size: 15))
+                        .foregroundColor(.red)
+                }
+                
+//                NavigationLink(destination: UIKitView()) { Text("Berlin") }
+                
+                Button(action: {
+                    if(checkedIndex == -1){
+                        showError = true
+                    } else {
+                        showError = false
+                        Constants.selected.selectedOrgan.hospital = hVM.odHospitals[checkedIndex].hospitalID
+                        var x =
+                        config.hostingController?.parent as! Alive3rdVC
+                        x.showAppointments()
+                    }
+                }
+                ) {
+                    Text("متابعة").font(Font.custom("Tajawal", size: 20))
+                        .foregroundColor(.white)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(
+                    RoundedRectangle(
+                        cornerRadius: 25,
+                        style: .continuous
+                    )
+                        .fill(mainDark)
+                )
+                .frame(width: 230, height: 59, alignment: .center)
+            }.onAppear(){
+                self.hVM.fetchData()
+                self.hVM.fetchHospitalsInfo()
+            }
+            
+        }
     }
     
     
@@ -150,57 +153,27 @@ struct AODHospitalList: View {
         .onTapGesture {
             if(checkedIndex == index){
                 checkedIndex = -1
+                showError = true
             } else {
                 checkedIndex = index
+                showError = false
             }
         }
         .padding(.horizontal, 15)
         .padding(.vertical, 5)
-        
-        //            Button(action: {
-        //                buttonPressed(organ: organ)
-        //            }
-        //            ) {
-        //                Text(organ).font(Font.custom("Tajawal", size: 15))
-        //                    .foregroundColor(self.organsVM.selected[organ]! ? .white : mainDark)
-        //            }
-        //            .frame(maxWidth: .infinity, maxHeight: .infinity)
-        //            .background(
-        //                RoundedRectangle(
-        //                    cornerRadius: 10,
-        //                    style: .continuous
-        //                )
-        //                    .fill(self.organsVM.selected[organ]! ? mainDark : .white)
-        //            )
-        //            .frame(width: 90, height: 90, alignment: .center)
-        //            .shadow(color: shadowColor,
-        //                    radius: self.organsVM.selected[organ]! ? 0 : 3, x: 0
-        //                    , y:  self.organsVM.selected[organ]! ? 0 : 6)
     }
     
-    //        func buttonPressed(organ: String){
-    //            self.organsVM.selected[organ]?.toggle()
-    //        }
-    //
-    //        func selectAll(){
-    //            if(checked){
-    //                for organ in self.organsVM.selected {
-    //                    self.organsVM.selected[organ.key]? = true
-    //                    }
-    //            } else {
-    //                for organ in self.organsVM.selected {
-    //                    self.organsVM.selected[organ.key]? = false
-    //                    }
-    //            }
-    //
-    //        }
-    
+    func showAppointments(){
+//        controller
+    }
 }
+
 
 struct odHospital: Identifiable {
     var id = UUID().uuidString
     var hospital: Location?
     var selected = false
+    var hospitalID: String
 }
 
 class ODHospitals: ObservableObject {
@@ -302,7 +275,7 @@ class ODHospitals: ObservableObject {
                         let name: String = doc["name"] as! String
                         let city: String = doc["city"] as! String
                         let area: String = doc["area"] as! String
-                        hospitals.append(odHospital(hospital: Location(name: name, lat: latitude, long: longitude, city: city, area: area, distance: self.calculateDistance( lat: latitude, long: longitude)), selected: false))
+                        hospitals.append(odHospital(hospital: Location(name: name, lat: latitude, long: longitude, city: city, area: area, distance: self.calculateDistance( lat: latitude, long: longitude)), selected: false, hospitalID: document.documentID))
                         print("\(document.documentID) => \(document.data())")
                     }
                 }
@@ -332,7 +305,7 @@ class ODHospitals: ObservableObject {
 
 struct AODHospitalList_Previews: PreviewProvider {
     static var previews: some View {
-        AODHospitalList()
+        AODHospitalList(config: Configuration())
     }
 }
 
@@ -381,5 +354,20 @@ struct RadioButton2: View {
                 //                    }
             }
         }
+    }
+}
+
+struct UIKitView: UIViewControllerRepresentable {
+    typealias UIViewControllerType = Alive4thVC
+    
+
+    func makeUIViewController(context: Context) -> Alive4thVC {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = sb.instantiateViewController(identifier: "alive4thVC") as! Alive4thVC
+        return viewController
+    }
+    
+    func updateUIViewController(_ uiViewController: Alive4thVC, context: Context) {
+        
     }
 }
