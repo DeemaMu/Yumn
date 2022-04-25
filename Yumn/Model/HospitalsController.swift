@@ -41,9 +41,11 @@ extension BloodDonationViewController {
                 
             }
         }
+        
         let hospitals2 = hospitals.sorted(by: { (h0: Location, h1: Location) -> Bool in
             return h0.distance! < h1.distance!
         })
+        
         return hospitals2
     }
     

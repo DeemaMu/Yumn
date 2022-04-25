@@ -8,7 +8,8 @@
 import Foundation
 import CoreLocation
 
-struct Location{
+struct Location: Identifiable {
+    var id = UUID().uuidString
     let name:String
     let lat:Double
     let long:Double
