@@ -151,10 +151,15 @@ struct AODHospitalList: View {
     
 }
 
+struct odHospital {
+    var hospital: Location?
+    var selected = false
+}
+
 class ODHospitals: ObservableObject {
     @Published var appointments = [OrganAppointment]()
     @Published var appointmentsWithin = [DAppointment]()
-    @Published var odHospitals = [Location]()
+    @Published var odHospitals = [odHospital]()
     @Published var hospitalsID = [String]()
     
     @ObservedObject var lm = LocationManager()
@@ -235,7 +240,7 @@ class ODHospitals: ObservableObject {
     
     
     func fetchHospitalsInfo(){
-        var hospitals:[Location] = []
+        var hospitals:[odHospital] = []
         
         db.collection("hospitalsInformation").getDocuments() { (querySnapshot, err) in
             if let err = err {
@@ -250,18 +255,18 @@ class ODHospitals: ObservableObject {
                         let name: String = doc["name"] as! String
                         let city: String = doc["city"] as! String
                         let area: String = doc["area"] as! String
-                        hospitals.append(Location(name: name, lat: latitude, long: longitude, city: city, area: area, distance: self.calculateDistance( lat: latitude, long: longitude)))
+                        hospitals.append(odHospital(hospital: Location(name: name, lat: latitude, long: longitude, city: city, area: area, distance: self.calculateDistance( lat: latitude, long: longitude)), selected: false))
                         print("\(document.documentID) => \(document.data())")
                     }
                 }
-                self.odHospitals = hospitals.sorted(by: { (h0: Location, h1: Location) -> Bool in
-                    return h0.distance! < h1.distance!
+                self.odHospitals = hospitals.sorted(by: { (h0: odHospital, h1: odHospital) -> Bool in
+                    return h0.hospital!.distance! < h1.hospital!.distance!
                 })
             }
         }
         
-        let hospitals2 = hospitals.sorted(by: { (h0: Location, h1: Location) -> Bool in
-            return h0.distance! < h1.distance!
+        let hospitals2 = hospitals.sorted(by: { (h0: odHospital, h1: odHospital) -> Bool in
+            return h0.hospital!.distance! < h1.hospital!.distance!
         })
         
         self.odHospitals = hospitals2
