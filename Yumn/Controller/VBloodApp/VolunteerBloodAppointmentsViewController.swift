@@ -169,14 +169,12 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
     }
     
     
-    func getCurrentAppointments(userID : String) //-> [bloodAppointment]
-    { // specify current and old
+    func getCurrentAppointments(userID : String)
+    {
         
-       // var appointments:[bloodAppointment] = []
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        //"MMMM dd, yyyy 'at' hh:mm:ss a 'UTC'+3"
-       // dateFormatter.dateFormat = "MMMM d, yyyy HH:mm:sss"
+        
         dateFormatter.dateFormat = "yyyy/MM/dd"
         let currentDate = dateFormatter.string(from: Date())
         print("current date is \(currentDate)")
