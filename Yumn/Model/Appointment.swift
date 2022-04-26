@@ -31,6 +31,7 @@ class OrganAppointment: Appointment, Identifiable {
 struct DAppointment: Identifiable {
     var id = UUID().uuidString
     var type: String
+    var docID = ""
     var startTime: Date = Date()
     var endTime: Date = Date().addingTimeInterval(30 * 60)
     var donor: String = "-1"
@@ -189,7 +190,7 @@ class AppointmentVM: ObservableObject {
     }
     
     func fetchAppointmentsData2(docID: String) -> [DAppointment] {
-        db.collection("appointments").document(docID).collection("appointments").addSnapshotListener { (querySnapshot, error) in
+        db.collection("appointments").document(docID).collection("appointments").whereField("booked", in: [false]).addSnapshotListener { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
                 print("no documents")
                 return
@@ -197,6 +198,7 @@ class AppointmentVM: ObservableObject {
             
             self.appointmentsWithin = documents.map { (queryDocumentSnapshot) -> DAppointment in
                 let data = queryDocumentSnapshot.data()
+                let id = queryDocumentSnapshot.documentID
                 let type = data["type"] as? String ?? ""
                 let donor = data["donor"] as? String ?? ""
                 let hName = data["hospital"] as? String ?? ""
@@ -209,7 +211,9 @@ class AppointmentVM: ObservableObject {
                 let stamp2 = data["end_time"] as? Timestamp
                 let endTime = stamp2!.dateValue()
                 
-                return DAppointment(type: type, startTime: startTime, endTime: endTime, donor: donor, hName: hName, confirmed: confirmed, booked: booked)
+                var apt = DAppointment(type: type, startTime: startTime, endTime: endTime, donor: donor, hName: hName, confirmed: confirmed, booked: booked)
+                apt.docID = id
+                return apt
             }
         }
         
@@ -298,7 +302,7 @@ class AppointmentVM: ObservableObject {
                 print("documents")
                 let data = queryDocumentSnapshot.data()
                 let type = data["type"] as? String ?? ""
-                let docID = queryDocumentSnapshot.documentID
+//                let docID = queryDocumentSnapshot.documentID
                 
                 let appointments: [DAppointment] = self.fetchAppointmentsData(doc: queryDocumentSnapshot)
                 

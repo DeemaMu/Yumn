@@ -231,8 +231,9 @@ struct SelectODAppointment: View {
 //                } else {
 //                }
                 
-                Text("التاريخ").font(Font.custom("Tajawal", size: 15))
-                                .foregroundColor(mainDark)
+                Text("التاريخ").font(Font.custom("Tajawal", size: 16)).fontWeight(.bold)
+                    .foregroundColor(mainDark)
+                
             }.hLeading()
         }.padding()
             .background(bgWhite)
@@ -349,8 +350,10 @@ struct SelectODAppointment: View {
             }
             
         } else {
-            Text("hereeee222")
-//            print("hereeee222")
+            
+            Text("لايوجد مواعيد متاحة لهذا التاريخ").font(Font.custom("Tajawal", size: 16))
+                .foregroundColor(lightGray).padding(.top, 100).multilineTextAlignment(.center)
+
         }
 
     }

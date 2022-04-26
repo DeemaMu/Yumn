@@ -16,12 +16,13 @@ class Alive4thVC: UIViewController {
     @IBOutlet weak var blackBlurredView: UIView!
 
     @IBOutlet weak var popupView: UIView!
-    @IBOutlet weak var popupTitle: UILabel!
-    @IBOutlet weak var popupMsg: UILabel!
-    @IBOutlet weak var okBtn: UIButton!
+    
+    @IBOutlet weak var innerPopUp: UIView!
     
     @IBOutlet weak var appointmentsSection: UIView!
         
+    var hasBeenSet = false
+    
     
     override func viewDidLoad() {
         
@@ -34,7 +35,6 @@ class Alive4thVC: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.layoutIfNeeded()
         
-        okBtn.layer.cornerRadius = 15
         popupView.layer.cornerRadius = 30
         
         let configuration = Configuration()
@@ -44,8 +44,6 @@ class Alive4thVC: UIViewController {
         addChild(controller)
         controller.view.frame = appointmentsSection.bounds
         appointmentsSection.addSubview(controller.view)
-        
-        
         
     }
     override func viewDidAppear(_ animated: Bool){
@@ -90,6 +88,27 @@ class Alive4thVC: UIViewController {
     func confirmAppoitment(apt: OrganAppointment, exact: DAppointment){
         blackBlurredView.superview?.bringSubviewToFront(blackBlurredView)
         popupView.superview?.bringSubviewToFront(popupView)
+        popupView.isHidden = false
+        blackBlurredView.isHidden = false
+        
+        let configuration = Configuration()
+        let controller = UIHostingController(rootView: ConfirmAppointmentPopUp(config: configuration, appointment: apt, exact: exact))
+        // injects here, because `configuration` is a reference !!
+        configuration.hostingController = controller
+        addChild(controller)
+        controller.view.frame = innerPopUp.bounds
+        innerPopUp.addSubview(controller.view)
+        
+
+    }
+    
+    func cancel(){
+        blackBlurredView.superview?.sendSubviewToBack(blackBlurredView)
+        popupView.superview?.sendSubviewToBack(popupView)
+        popupView.isHidden = true
+        blackBlurredView.isHidden = true
+        
+        innerPopUp.removeSubviews()
     }
     
 }
