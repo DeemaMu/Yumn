@@ -27,18 +27,25 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J7M-XF-zbk" customClass="RoundedShadowedView" customModule="Yumn" customModuleProvider="target">
                         <rect key="frame" x="7" y="14" width="341" height="137"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="topRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="فرصة تطوعية في مستشفى الملك فيصل" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" showsExpansionTextWhenTruncated="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XP4-h8-k6f">
-                                <rect key="frame" x="68" y="4" width="265" height="48"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="topRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" showsExpansionTextWhenTruncated="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XP4-h8-k6f">
+                                <rect key="frame" x="66" y="4" width="265" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="eke-af-s2K"/>
                                     <constraint firstAttribute="width" constant="265" id="tje-7c-BeD"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="16"/>
-                                <color key="textColor" name="mainDark"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="فرصة تطوعية في مستشفى الملك فيصل">
+                                        <attributes>
+                                            <color key="NSColor" name="mainDark"/>
+                                            <font key="NSFont" size="16" name=".SFArabic-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="di1-I5-www">
-                                <rect key="frame" x="159" y="100" width="176" height="24"/>
+                                <rect key="frame" x="159" y="102" width="176" height="24"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="zEa-ie-iUM">
                                         <rect key="frame" x="64" y="0.0" width="110" height="24"/>
@@ -58,8 +65,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="368-Ws-SMM">
                                         <rect key="frame" x="28" y="0.0" width="140" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="."/>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -70,16 +78,16 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mDZ-fm-GO9">
-                                <rect key="frame" x="183.5" y="80" width="149.5" height="13"/>
+                                <rect key="frame" x="176.5" y="82" width="154.5" height="13"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 AM - 12 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2B-oL-MoA">
-                                        <rect key="frame" x="0.0" y="0.0" width="63" height="13"/>
-                                        <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="12"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="68" height="13"/>
+                                        <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="13"/>
                                         <color key="textColor" name="mainDark"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ساعات العمل:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vRa-tX-p3B">
-                                        <rect key="frame" x="71" y="0.0" width="78.5" height="13"/>
+                                        <rect key="frame" x="76" y="0.0" width="78.5" height="13"/>
                                         <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="13"/>
                                         <color key="textColor" name="mainDark"/>
                                         <nil key="highlightedColor"/>
@@ -87,16 +95,16 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="bottom" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="wYh-SF-wRr">
-                                <rect key="frame" x="175.5" y="55" width="157.5" height="13"/>
+                                <rect key="frame" x="163.5" y="57" width="167.5" height="13"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20/10/2022 - 10/10/2022" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FO8-jk-aj7">
-                                        <rect key="frame" x="0.0" y="1" width="118.5" height="12"/>
-                                        <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="12"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="128.5" height="13"/>
+                                        <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="13"/>
                                         <color key="textColor" name="mainDark"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="التاريخ:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qtx-qx-XuZ">
-                                        <rect key="frame" x="121.5" y="0.0" width="36" height="13"/>
+                                        <rect key="frame" x="131.5" y="0.0" width="36" height="13"/>
                                         <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="13"/>
                                         <color key="textColor" name="mainDark"/>
                                         <nil key="highlightedColor"/>
@@ -107,13 +115,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="di1-I5-www" secondAttribute="trailing" constant="6" id="0WQ-9i-DUq"/>
-                            <constraint firstItem="mDZ-fm-GO9" firstAttribute="top" secondItem="J7M-XF-zbk" secondAttribute="top" constant="80" id="AmK-Nw-qY9"/>
-                            <constraint firstItem="wYh-SF-wRr" firstAttribute="top" secondItem="J7M-XF-zbk" secondAttribute="top" constant="55" id="Il3-9k-qcl"/>
-                            <constraint firstAttribute="bottom" secondItem="di1-I5-www" secondAttribute="bottom" constant="13" id="MDL-wB-CLM"/>
-                            <constraint firstAttribute="trailing" secondItem="mDZ-fm-GO9" secondAttribute="trailing" constant="8" id="U4w-LP-Elp"/>
+                            <constraint firstItem="mDZ-fm-GO9" firstAttribute="top" secondItem="J7M-XF-zbk" secondAttribute="top" constant="82" id="AmK-Nw-qY9"/>
+                            <constraint firstItem="wYh-SF-wRr" firstAttribute="top" secondItem="J7M-XF-zbk" secondAttribute="top" constant="57" id="Il3-9k-qcl"/>
+                            <constraint firstAttribute="bottom" secondItem="di1-I5-www" secondAttribute="bottom" constant="11" id="MDL-wB-CLM"/>
+                            <constraint firstAttribute="trailing" secondItem="mDZ-fm-GO9" secondAttribute="trailing" constant="10" id="U4w-LP-Elp"/>
                             <constraint firstItem="XP4-h8-k6f" firstAttribute="top" secondItem="J7M-XF-zbk" secondAttribute="top" constant="4" id="dTj-2C-0rh"/>
-                            <constraint firstAttribute="trailing" secondItem="wYh-SF-wRr" secondAttribute="trailing" constant="8" id="eDR-fm-rOw"/>
-                            <constraint firstAttribute="trailing" secondItem="XP4-h8-k6f" secondAttribute="trailing" constant="8" id="fKq-lR-vp3"/>
+                            <constraint firstAttribute="trailing" secondItem="wYh-SF-wRr" secondAttribute="trailing" constant="10" id="eDR-fm-rOw"/>
+                            <constraint firstAttribute="trailing" secondItem="XP4-h8-k6f" secondAttribute="trailing" constant="10" id="fKq-lR-vp3"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusV">

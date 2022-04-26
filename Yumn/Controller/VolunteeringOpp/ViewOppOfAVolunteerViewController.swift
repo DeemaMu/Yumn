@@ -32,11 +32,16 @@ class ViewOppOfAVolunteerViewController: UIViewController ,CustomSegmentedContro
     let db = Firestore.firestore()
     // VOpp id : applicant state
     var VOppDict: [String : String] = [:]
+    var arrayOfOldVOpp : [String] = []
     
     var codeSegmented:CustomSegmentedControl? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        
         
         // change names
         currentVOppTable.isHidden = false
@@ -54,6 +59,14 @@ class ViewOppOfAVolunteerViewController: UIViewController ,CustomSegmentedContro
         
         
         oldVOppTable.register(UINib(nibName: "viewOldVolunteerOppTableViewCell", bundle: nil), forCellReuseIdentifier: "oldVOPPCell")
+        
+        // put user id (auth)
+        getCurrentVOpp(userID: "iDhMoT6PacOwKgKLi8ILK98UrB03")
+        getOldVOpp(userID: "iDhMoT6PacOwKgKLi8ILK98UrB03")
+        
+        
+        
+        
         
         
         codeSegmented = CustomSegmentedControl(frame: CGRect(x: 0, y: 0, width: segmentsView.frame.width, height: 50), buttonTitle: ["التطوعات السابقة","التطوعات الحالية"])
@@ -88,7 +101,7 @@ class ViewOppOfAVolunteerViewController: UIViewController ,CustomSegmentedContro
         
     }
     
-    
+        
     func getCurrentVOpp(userID : String) {
         
         // جب لي ال vOpp اللي الابلكنتس فيها اليوزر اي دي هذا
@@ -96,19 +109,17 @@ class ViewOppOfAVolunteerViewController: UIViewController ,CustomSegmentedContro
         // اجيب الدوكس بالسب كولكشن واشيك اذا فيها اليوزر اي دي ولا لا ، اذا فيها اجيب الدوكيمنت تبع هذا الكولكشن
         
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        
-        dateFormatter.dateFormat = "yyyy/MM/dd"
-        let currentDate = dateFormatter.string(from: Date())
-        print("current date is \(currentDate)")
-        
+        let currentDate = getCurrentDate()
+        let ref =   db.collection("volunteeringOpp").whereField("endDate", isGreaterThanOrEqualTo: currentDate)
         
         // only bring docs that their endDate isGreaterThanOrEqualTo current date
-        db.collection("volunteeringOpp").whereField("endDate", isGreaterThanOrEqualTo: currentDate).getDocuments() { (querySnapshot, err) in
+        
+        ref.getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
+                
+               // print("in current method")
                 
                 if querySnapshot!.documents.count != 0 {
                     self.noCurrentVOppLabel.isHidden = true
@@ -116,21 +127,13 @@ class ViewOppOfAVolunteerViewController: UIViewController ,CustomSegmentedContro
                 for document in querySnapshot!.documents {
                     
                      let docID : String = document.documentID
-                        
                     // check if applicant with the same user id exists in docID VOpp
-                        self.checkApplicantExists(docID : docID , userID: userID)
+                    self.checkApplicantExists(docID : docID , userID: userID, type: "current")
 
-                      //  self.applicantDoc(uid: uid, applicantType: "current")
-                     //   self.reloadCurrentTable()
+                        self.reloadCurrentTable()
                     
                 } // end for
                     
-                    // after looping through all the docs in volunteeringOpp bring the data of the docs from VOppList
-                    
-                    // maybe put it in the loop ?
-                    self.bringVoppData(type : "current")
-                    // maybe commented
-                    self.reloadCurrentTable()
 
                 
             }// end if stm
@@ -149,19 +152,14 @@ class ViewOppOfAVolunteerViewController: UIViewController ,CustomSegmentedContro
     }
     
     
+   
+  func getOldVOpp(userID : String){
+        
     
-    func getOldVOpp(userID : String){
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        
-        dateFormatter.dateFormat = "yyyy/MM/dd"
-        let currentDate = dateFormatter.string(from: Date())
-        print("current date is \(currentDate)")
-        
-        
+        let currentDate = getCurrentDate()
+        let ref =  db.collection("volunteeringOpp").whereField("endDate", isLessThan: currentDate)
         // only bring docs that their endDate isLessThan current date
-        db.collection("volunteeringOpp").whereField("endDate", isLessThan: currentDate).getDocuments() { (querySnapshot, err) in
+        ref.getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -170,25 +168,16 @@ class ViewOppOfAVolunteerViewController: UIViewController ,CustomSegmentedContro
                     self.noOldVOppLabel.isHidden = true
                     // for each doc check if the user id exists in applicants subcollection or not
                 for document in querySnapshot!.documents {
-                    
                      let docID : String = document.documentID
                         
                     // check if applicant with the same user id exists in docID VOpp
-                        self.checkApplicantExists(docID : docID , userID: userID)
-
-                      //  self.applicantDoc(uid: uid, applicantType: "current")
-                     //   self.reloadCurrentTable()
+                        self.checkApplicantExists(docID : docID , userID: userID, type: "old")
+                        self.reloadOldTable()
                     
                 } // end for
                     
-                    // after looping through all the docs in volunteeringOpp bring the data of the docs from VOppList
-                    
-                    // maybe put it in the loop ?
-                    self.bringVoppData(type : "old")
-                    // maybe commented
-                    self.reloadOldTable()
+                   // self.reloadOldTable()
 
-                
             }// end if stm
                 
                 else {
@@ -203,25 +192,32 @@ class ViewOppOfAVolunteerViewController: UIViewController ,CustomSegmentedContro
     
     
     
-    
-    
-    func checkApplicantExists(docID : String, userID : String){
+    func checkApplicantExists(docID : String, userID : String , type : String){
         
         // if applicant exists add the docID to the dictionary VOppDict, otherwise return
         
         // make VOppDict empty for current and old
         VOppDict = [:]
-        
+        arrayOfOldVOpp = []
         let docRef = db.collection("volunteeringOpp").document(docID).collection("applicants").document(userID)
         
         docRef.getDocument { (document, error) in
             if document!.exists {
-                 print("Document \(userID) exists")
-                if let data = document!.data(){
+                if let data = document!.data() {
                     // add docID + applicant state to dictionary
-                    self.VOppDict[docID] = (data["status"] as! String)
+                    if type == "current"{
+                        self.VOppDict[docID] = (data["status"] as! String)
+                        self.bringVoppData(type : "current")
+                    }
+                    else if type == "old"{
+                        self.arrayOfOldVOpp.append(docID)
+                        self.bringVoppData(type : "old")
+
+                    }
                     
                 }
+                    
+                
               } else {
                  print("Document \(userID) does not exist")
               }
@@ -230,9 +226,26 @@ class ViewOppOfAVolunteerViewController: UIViewController ,CustomSegmentedContro
         
     }
     
+    
     func bringVoppData(type : String){
         
-        // shouldn't we create different dictionary for old VOpp ?
+        if type == "current"{
+            bringCurrentVOpp()
+       // عشان ما يتكرر ال cell
+            VOppDict = [:]
+    }// end if
+        
+        else if type == "old"{
+            print("no. of doc in old array is \(arrayOfOldVOpp.count)")
+            bringOldVOpp()
+            // عشان ما يتكرر
+            arrayOfOldVOpp = []
+        }
+        
+    }// end func
+    
+    
+    func bringCurrentVOpp(){
         // loop through the docs and get them
         // key >> docID, value >> applicant state
         for (key,value) in VOppDict {
@@ -241,7 +254,6 @@ class ViewOppOfAVolunteerViewController: UIViewController ,CustomSegmentedContro
             
             docRef.getDocument { (document, error) in
                 if document!.exists {
-                     print("VOpp document exists")
                     // get data
                     if let data = document?.data(){
                         let title : String = data["title"] as! String
@@ -252,16 +264,9 @@ class ViewOppOfAVolunteerViewController: UIViewController ,CustomSegmentedContro
                         let location : String = data["location"] as! String
                         let status : String = value
                     
-                        if type == "current"{
                             self.currentVOpp.append(volunteerVOpp(title: title, endDate: endDate, startDate: startDate, workingHours: workingHours, location: location, status: status))
                             self.reloadCurrentTable()
-                        }
-                        else // type == old
-                        {
-                            self.oldVOpp.append(volunteerVOpp(title: title, endDate: endDate, startDate: startDate, workingHours: workingHours, location: location))
-                            self.reloadOldTable()
-                        }
-                    
+                      
                     }// end data
                     
                     
@@ -271,10 +276,51 @@ class ViewOppOfAVolunteerViewController: UIViewController ,CustomSegmentedContro
             }
             
         }// end for
-        
     }
     
-   
+    
+    func bringOldVOpp(){
+        // loop through the docs and get them
+        for doc in arrayOfOldVOpp{
+            
+            let docRef = db.collection("volunteeringOpp").document(doc)
+
+            docRef.getDocument { (document, error) in
+                if document!.exists {
+                    // get data
+                    if let data = document?.data(){
+                        let title : String = data["title"] as! String
+                        //let date : String = data["date"] as! String
+                        let endDate : String = data["endDate"] as! String
+                        let startDate : String = data["startDate"] as! String
+                        let workingHours : String = data["workingHours"] as! String
+                        let location : String = data["location"] as! String
+                    
+                      
+                            self.oldVOpp.append(volunteerVOpp(title: title, endDate: endDate, startDate: startDate, workingHours: workingHours, location: location))
+                            self.reloadOldTable()
+                     
+                    }// end data
+                    
+                    
+                  } else {
+                     print("arrayOfOldVOpp document does not exist")
+                  }
+            }
+            
+        }
+    }
+    
+    func getCurrentDate() -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy/MM/dd"
+        let currentDate = dateFormatter.string(from: Date())
+        print("current date is \(currentDate)")
+        return currentDate
+        
+    }
     
     func showCurrentVoppLbl(){
         
@@ -397,18 +443,45 @@ extension ViewOppOfAVolunteerViewController: UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+       
+        guard let customFont = UIFont(name: "Tajawal-Regular", size: UIFont.labelFontSize) else {
+            fatalError("""
+                Failed to load the "CustomFont-Light" font.
+                Make sure the font file is included in the project and the font name is spelled correctly.
+                """
+            )
+        }
         
         if tableView == currentVOppTable {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "currentVOPPCell", for: indexPath) as! viewCurrentVolunteerOppTableViewCell
             
-            let date = "\(currentVOpp[indexPath.row].startDate) - \(currentVOpp[indexPath.row].endDate)"
+            let date = "\(currentVOpp[indexPath.row].endDate) - \(currentVOpp[indexPath.row].startDate)"
             // make sure of it from deema's code
+           
             cell.title.text = currentVOpp[indexPath.row].title
+            cell.title.font = UIFontMetrics.default.scaledFont(for: customFont)
+            cell.title.adjustsFontForContentSizeCategory = true
+            cell.title.font = cell.title.font.withSize(16)
+            
             cell.date.text = date
             cell.workingHours.text = currentVOpp[indexPath.row].workingHours
             cell.location.text = currentVOpp[indexPath.row].location
+            
+            let status = currentVOpp[indexPath.row].status
+            if status == "pending"{
+                cell.state.text = "في الانتظار"
+                cell.state.textColor = UIColor(red: 0.60, green: 0.60, blue: 0.60, alpha: 1.00)
+
+            }
+            else if status == "accepted" {
+                cell.state.text = "مقبول"
+                cell.state.textColor = UIColor(red: 0.00, green: 0.55, blue: 0.27, alpha: 1.00)
+            }
+            else if status == "rejected" {
+                cell.state.text = "مرفوض"
+                cell.state.textColor = UIColor(red: 0.72, green: 0.00, blue: 0.00, alpha: 1.00)
+            }
         // must bring state from somewhere else + create new model for it
             //   cell.state.text = currentVOpp[indexPath.row].state
             
@@ -428,9 +501,11 @@ extension ViewOppOfAVolunteerViewController: UITableViewDataSource {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "oldVOPPCell", for: indexPath) as! viewOldVolunteerOppTableViewCell
             
-            let date = "\(oldVOpp[indexPath.row].startDate) - \(oldVOpp[indexPath.row].endDate)"
-            // make sure of it from deema's code
+            let date = "\(oldVOpp[indexPath.row].endDate) - \(oldVOpp[indexPath.row].startDate)"
             cell.title.text = oldVOpp[indexPath.row].title
+            cell.title.font = UIFontMetrics.default.scaledFont(for: customFont)
+            cell.title.adjustsFontForContentSizeCategory = true
+            cell.title.font = cell.title.font.withSize(16)
             cell.date.text = date
             cell.workingHours.text = oldVOpp[indexPath.row].workingHours
             cell.location.text = oldVOpp[indexPath.row].location

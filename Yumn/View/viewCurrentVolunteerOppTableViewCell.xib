@@ -27,18 +27,95 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fgg-n0-sPD" customClass="RoundedShadowedView" customModule="Yumn" customModuleProvider="target">
                         <rect key="frame" x="7" y="14" width="341" height="137"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="topRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="فرصة تطوعية في مستشفى الملك فيصل" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" showsExpansionTextWhenTruncated="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ri1-7f-WgN">
-                                <rect key="frame" x="68" y="4" width="265" height="48"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="topRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" showsExpansionTextWhenTruncated="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ri1-7f-WgN">
+                                <rect key="frame" x="66" y="4" width="265" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="wD9-kd-5eM"/>
                                     <constraint firstAttribute="width" constant="265" id="zu9-5Y-h3q"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="16"/>
-                                <color key="textColor" name="mainDark"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="فرصة">
+                                        <attributes>
+                                            <color key="NSColor" name="mainDark"/>
+                                            <font key="NSFont" size="17" name=".SFArabic-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" name="mainDark"/>
+                                            <font key="NSFont" metaFont="system" size="17"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="تطوعية">
+                                        <attributes>
+                                            <color key="NSColor" name="mainDark"/>
+                                            <font key="NSFont" size="17" name=".SFArabic-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" name="mainDark"/>
+                                            <font key="NSFont" metaFont="system" size="17"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="في">
+                                        <attributes>
+                                            <color key="NSColor" name="mainDark"/>
+                                            <font key="NSFont" size="17" name=".SFArabic-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" name="mainDark"/>
+                                            <font key="NSFont" metaFont="system" size="17"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="مستشفى">
+                                        <attributes>
+                                            <color key="NSColor" name="mainDark"/>
+                                            <font key="NSFont" size="17" name=".SFArabic-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" name="mainDark"/>
+                                            <font key="NSFont" metaFont="system" size="17"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="الملك">
+                                        <attributes>
+                                            <color key="NSColor" name="mainDark"/>
+                                            <font key="NSFont" size="17" name=".SFArabic-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" name="mainDark"/>
+                                            <font key="NSFont" metaFont="system" size="17"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="فيصل">
+                                        <attributes>
+                                            <color key="NSColor" name="mainDark"/>
+                                            <font key="NSFont" size="17" name=".SFArabic-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O6q-PV-7pq">
-                                <rect key="frame" x="159" y="100" width="176" height="24"/>
+                                <rect key="frame" x="159" y="102" width="176" height="24"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="ada-La-lye">
                                         <rect key="frame" x="64" y="0.0" width="110" height="24"/>
@@ -58,8 +135,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L3O-wW-DIk">
                                         <rect key="frame" x="28" y="0.0" width="140" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="."/>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -76,7 +154,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kQf-LL-y3J">
-                                <rect key="frame" x="183.5" y="80" width="149.5" height="13"/>
+                                <rect key="frame" x="181.5" y="82" width="149.5" height="13"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 AM - 12 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nDq-af-mRk">
                                         <rect key="frame" x="0.0" y="0.0" width="63" height="13"/>
@@ -93,7 +171,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="bottom" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="bWP-9j-DE6">
-                                <rect key="frame" x="175.5" y="55" width="157.5" height="13"/>
+                                <rect key="frame" x="173.5" y="57" width="157.5" height="13"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20/10/2022 - 10/10/2022" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="21i-0v-TQI">
                                         <rect key="frame" x="0.0" y="1" width="118.5" height="12"/>
@@ -114,14 +192,14 @@
                         <constraints>
                             <constraint firstItem="0OG-zq-SfF" firstAttribute="leading" secondItem="Fgg-n0-sPD" secondAttribute="leading" constant="8" id="0ed-0Q-YAY"/>
                             <constraint firstAttribute="trailing" secondItem="O6q-PV-7pq" secondAttribute="trailing" constant="6" id="AqA-tT-SfA"/>
-                            <constraint firstAttribute="trailing" secondItem="bWP-9j-DE6" secondAttribute="trailing" constant="8" id="GYo-mU-zeT"/>
-                            <constraint firstAttribute="trailing" secondItem="kQf-LL-y3J" secondAttribute="trailing" constant="8" id="KTQ-6V-r1w"/>
-                            <constraint firstAttribute="bottom" secondItem="O6q-PV-7pq" secondAttribute="bottom" constant="13" id="Mky-TL-C0t"/>
-                            <constraint firstItem="kQf-LL-y3J" firstAttribute="top" secondItem="Fgg-n0-sPD" secondAttribute="top" constant="80" id="O7S-XU-pM2"/>
+                            <constraint firstAttribute="trailing" secondItem="bWP-9j-DE6" secondAttribute="trailing" constant="10" id="GYo-mU-zeT"/>
+                            <constraint firstAttribute="trailing" secondItem="kQf-LL-y3J" secondAttribute="trailing" constant="10" id="KTQ-6V-r1w"/>
+                            <constraint firstAttribute="bottom" secondItem="O6q-PV-7pq" secondAttribute="bottom" constant="11" id="Mky-TL-C0t"/>
+                            <constraint firstItem="kQf-LL-y3J" firstAttribute="top" secondItem="Fgg-n0-sPD" secondAttribute="top" constant="82" id="O7S-XU-pM2"/>
                             <constraint firstItem="0OG-zq-SfF" firstAttribute="top" secondItem="Fgg-n0-sPD" secondAttribute="top" constant="13" id="Uk7-D5-qjG"/>
                             <constraint firstItem="Ri1-7f-WgN" firstAttribute="top" secondItem="Fgg-n0-sPD" secondAttribute="top" constant="4" id="l0m-1m-jcP"/>
-                            <constraint firstItem="bWP-9j-DE6" firstAttribute="top" secondItem="Fgg-n0-sPD" secondAttribute="top" constant="55" id="mOT-bV-FtQ"/>
-                            <constraint firstAttribute="trailing" secondItem="Ri1-7f-WgN" secondAttribute="trailing" constant="8" id="saC-gX-qGG"/>
+                            <constraint firstItem="bWP-9j-DE6" firstAttribute="top" secondItem="Fgg-n0-sPD" secondAttribute="top" constant="57" id="mOT-bV-FtQ"/>
+                            <constraint firstAttribute="trailing" secondItem="Ri1-7f-WgN" secondAttribute="trailing" constant="10" id="saC-gX-qGG"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusV">
