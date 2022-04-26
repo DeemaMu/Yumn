@@ -113,6 +113,7 @@ struct SelectODAppointment: View {
                                         }
                                     }.onChange(of: selectedDate) { newValue in
                                         aptVM.currentDay = newValue
+                                        checkedIndex = -1
                                         aptVM.filteringAppointments()
                                     }
                             }
@@ -166,7 +167,7 @@ struct SelectODAppointment: View {
                     }
                 }
                 ) {
-                    Text("متابعة").font(Font.custom("Tajawal", size: 20))
+                    Text("تأكيد").font(Font.custom("Tajawal", size: 20))
                         .foregroundColor(.white)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -210,7 +211,7 @@ struct SelectODAppointment: View {
     // MARK: Appointments View
     func AppointmentsView() -> some View {
         
-        LazyVStack(spacing: 18){
+        LazyVStack(spacing: 20){
             if let apts = aptVM.filteredAppointments {
                 
                 if apts.isEmpty {
@@ -240,6 +241,7 @@ struct SelectODAppointment: View {
         
         
         HStack(){
+            
             VStack(alignment: .leading){
                 if(self.checkedIndex == index){
                     RadioButton2(matched: true)
@@ -248,17 +250,27 @@ struct SelectODAppointment: View {
                     RadioButton2(matched: false)
                 }
             }.padding(.leading, 20)
+                .padding(.top, 3)
             
             Spacer()
             
-            VStack(alignment: .trailing, spacing: 20){
+            VStack(alignment: .center){
                 //                Text("\(currentH!.name)").font(Font.custom("Tajawal", size: 17))
                 //                    .foregroundColor(mainDark)
-                Text("\(currentA.startTime) - \(currentA.endTime)").font(Font.custom("Tajawal", size: 17))
+                Text("\(currentA.startTime.getFormattedDate(format: "HH:mm")) - \(currentA.endTime.getFormattedDate(format: "HH:mm"))").font(Font.custom("Tajawal", size: 22))
                     .foregroundColor(mainDark)
-            }.frame(maxWidth: .infinity, alignment: .trailing)
-                .frame(height: 90)
-                .padding(10)
+            }.frame(maxWidth: .infinity, alignment: .center)
+                .frame(height: 50)
+                .padding(.top, 10)
+            
+            VStack(){
+                Image("time").resizable()
+                    .scaledToFit()
+            }.padding(.trailing, 10).padding(.top, 10).padding(.bottom, 10)
+            
+
+
+                        
             
         }.onChange(of: checkedIndex){ newValue in
             if(newValue == index){
@@ -275,8 +287,8 @@ struct SelectODAppointment: View {
             )
                 .fill(.white)
         )
-        .frame(height: 90, alignment: .center)
-        .frame(maxWidth: .infinity)
+        .frame(height: 50, alignment: .center)
+        .frame(maxWidth: 250)
         .shadow(color: shadowColor,
                 radius: 6, x: 0
                 , y: 6)
