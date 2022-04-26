@@ -72,6 +72,8 @@
 		B9DA61DA27C10FCC00359487 /* LocationManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DA61D927C10FCC00359487 /* LocationManger.swift */; };
 		B9DA61DC27C1100B00359487 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DA61DB27C1100B00359487 /* Location.swift */; };
 		B9DDAE8A281742A80001149C /* Alive4thVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DDAE89281742A80001149C /* Alive4thVC.swift */; };
+		B9DDAE8C281753300001149C /* SelectODAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DDAE8B281753300001149C /* SelectODAppointment.swift */; };
+		B9DDAE8E281835690001149C /* PLACEHOLDER.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DDAE8D281835680001149C /* PLACEHOLDER.swift */; };
 		BD2713510A5BCC4C37211C9D /* Pods_Yumn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F22E2273C1379E333356AA4C /* Pods_Yumn.framework */; };
 		D195443427D4996700B03DFF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D195443327D4996600B03DFF /* ViewController.swift */; };
 		D195443627D4998F00B03DFF /* bloodShortageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D195443527D4998F00B03DFF /* bloodShortageViewController.swift */; };
@@ -169,6 +171,8 @@
 		B9DA61D927C10FCC00359487 /* LocationManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManger.swift; sourceTree = "<group>"; };
 		B9DA61DB27C1100B00359487 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		B9DDAE89281742A80001149C /* Alive4thVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alive4thVC.swift; sourceTree = "<group>"; };
+		B9DDAE8B281753300001149C /* SelectODAppointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectODAppointment.swift; sourceTree = "<group>"; };
+		B9DDAE8D281835680001149C /* PLACEHOLDER.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PLACEHOLDER.swift; sourceTree = "<group>"; };
 		D195443327D4996600B03DFF /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D195443527D4998F00B03DFF /* bloodShortageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bloodShortageViewController.swift; sourceTree = "<group>"; };
 		D195443727D499A200B03DFF /* organShortageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = organShortageVC.swift; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 				B9533EFA2810D1BC00485482 /* WhileAlive */,
 				B9BAC6E8280E0C8B001489A1 /* AfterDeath */,
 				D19B1B5227E95FCB00CB3FFA /* OrganDonationViewController.swift */,
+				B9DDAE8D281835680001149C /* PLACEHOLDER.swift */,
 			);
 			path = VOrganDonation;
 			sourceTree = "<group>";
@@ -388,6 +393,7 @@
 				B9B3143C2815F82000C62981 /* Alive3rdVC.swift */,
 				B9B3143E2815FB8300C62981 /* AODHospitalList.swift */,
 				B9DDAE89281742A80001149C /* Alive4thVC.swift */,
+				B9DDAE8B281753300001149C /* SelectODAppointment.swift */,
 			);
 			path = WhileAlive;
 			sourceTree = "<group>";
@@ -640,6 +646,7 @@
 			files = (
 				959A52CD27E88883002244A0 /* applyPopup.swift in Sources */,
 				95EED9CD27E682DB009AFDAC /* VolunteeringOpp.swift in Sources */,
+				B9DDAE8E281835690001149C /* PLACEHOLDER.swift in Sources */,
 				D195443A27D499C700B03DFF /* bloodChartViewController.swift in Sources */,
 				B91DD29427E9976200BA9881 /* PopupAddForm.swift in Sources */,
 				D195444227D49A1700B03DFF /* bloodShortage.swift in Sources */,
@@ -652,6 +659,7 @@
 				B9503D8827BAE4E500E312B8 /* CustomSegmentedControl.swift in Sources */,
 				D195444627D49A2F00B03DFF /* totalBloodShortage.swift in Sources */,
 				D195444427D49A2400B03DFF /* organShortage.swift in Sources */,
+				B9DDAE8C281753300001149C /* SelectODAppointment.swift in Sources */,
 				B9AD3F2A27E2CF81001AB734 /* ManageAppointmentsViewController.swift in Sources */,
 				D195444C27D49AA300B03DFF /* components.swift in Sources */,
 				B91DD29227E996CF00BA9881 /* CustomDatePicker.swift in Sources */,

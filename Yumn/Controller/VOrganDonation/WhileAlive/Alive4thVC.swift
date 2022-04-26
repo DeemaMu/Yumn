@@ -20,7 +20,7 @@ class Alive4thVC: UIViewController {
     @IBOutlet weak var popupMsg: UILabel!
     @IBOutlet weak var okBtn: UIButton!
     
-    @IBOutlet weak var hospitalSection: UIView!
+    @IBOutlet weak var appointmentsSection: UIView!
         
     
     override func viewDidLoad() {
@@ -28,9 +28,6 @@ class Alive4thVC: UIViewController {
         super.viewDidLoad()
         
         viewWillAppear(true)
-                
-        blackBlurredView.superview?.bringSubviewToFront(blackBlurredView)
-        popupView.superview?.bringSubviewToFront(popupView)
 
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
@@ -40,11 +37,14 @@ class Alive4thVC: UIViewController {
         okBtn.layer.cornerRadius = 15
         popupView.layer.cornerRadius = 30
         
+        let configuration = Configuration()
+        let controller = UIHostingController(rootView: SelectODAppointment(config: configuration, selectedDate: Date()))
+        // injects here, because `configuration` is a reference !!
+        configuration.hostingController = controller
+        addChild(controller)
+        controller.view.frame = appointmentsSection.bounds
+        appointmentsSection.addSubview(controller.view)
         
-//        let childView = UIHostingController(rootView: AODHospitalList())
-//        addChild(childView)
-//        childView.view.frame = hospitalSection.bounds
-//        hospitalSection.addSubview(childView.view)
         
         
     }
@@ -87,8 +87,9 @@ class Alive4thVC: UIViewController {
         self.navigationController?.navigationBar.layoutIfNeeded()
     }
     
-    func showAppointments(){
-        
+    func confirmAppoitment(apt: OrganAppointment){
+        blackBlurredView.superview?.bringSubviewToFront(blackBlurredView)
+        popupView.superview?.bringSubviewToFront(popupView)
     }
     
 }

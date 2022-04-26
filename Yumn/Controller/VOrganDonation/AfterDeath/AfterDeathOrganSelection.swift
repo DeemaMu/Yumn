@@ -97,6 +97,7 @@ struct AfterDeathOrganSelection: View {
     @ViewBuilder
     func card(organ: String) -> some View{
         let shadowColor = Color(#colorLiteral(red: 0.8653315902, green: 0.8654771447, blue: 0.8653123975, alpha: 1))
+        
 //        let raduis = 3
 //        let ySpread = 0
         

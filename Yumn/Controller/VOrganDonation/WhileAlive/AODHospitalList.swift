@@ -27,11 +27,6 @@ struct AODHospitalList: View {
     let mainLight = Color(UIColor.init(named: "mainLight")!)
     let lightGray = Color(UIColor.lightGray)
     
-    let items: [GridItem] = [
-        GridItem(.flexible(), spacing: 0, alignment: nil),
-        GridItem(.flexible(), spacing: 0, alignment: nil),
-        GridItem(.flexible(), spacing: 0, alignment: nil),
-    ]
     
     @ObservedObject var appointmentsVM = OrgansVM()
     
