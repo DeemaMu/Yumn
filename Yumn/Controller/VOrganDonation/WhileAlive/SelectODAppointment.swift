@@ -13,6 +13,8 @@ struct SelectODAppointment: View {
     @ObservedObject var aptVM = AppointmentVM()
     @StateObject var odVM = ODAppointmentVM()
     
+    var thereIS = chechingAppointments()
+    
     @State var selectedDate: Date
     @State var checkedIndex: Int = -1
     @State var showError = false
@@ -178,7 +180,7 @@ struct SelectODAppointment: View {
                     }
                 }
                 
-                if(aptVM.organAppointments.isEmpty){
+                if(aptVM.organAppointments.isEmpty ||                 !thereIS.thereIs){
                     Text("عذرًا، لايوجد مواعيد للمستشفى المختار").font(Font.custom("Tajawal", size: 15))
                         .foregroundColor(.red)
                 }
@@ -359,6 +361,7 @@ struct SelectODAppointment: View {
         
         for index in 0..<(aptVM.organAppointments.count){
             if(calender.isDate(aptVM.organAppointments[index].aptDate, inSameDayAs: date)){
+                thereIS.thereIs = true
                 return true;
             }
         }
@@ -441,4 +444,8 @@ class ODAppointmentVM: ObservableObject {
         return calender.isDate(currentDay, inSameDayAs: date)
     }
     
+}
+
+class chechingAppointments{
+    var thereIs = false
 }

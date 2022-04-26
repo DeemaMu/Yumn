@@ -16,7 +16,7 @@ class OrganAppointment: Appointment, Identifiable {
     init(type: String, startTime: Date, endTime: Date,
          aptDate: Date, hospital: String, aptDuration: Double, organ: String) {
         super.init()
-//        self.appointments = appointments
+        //        self.appointments = appointments
         self.type = type
         self.startTime = startTime
         self.endTime = endTime
@@ -73,9 +73,10 @@ class AppointmentVM: ObservableObject {
     @Published var filteredAppointments: [OrganAppointment] = [OrganAppointment]()
     @Published var added = true
     @Published var appointmentsWithin = [DAppointment]()
+    //    var thereIS = false
     
     init(){
-//        self.fetchOrganAppointments()
+        //        self.fetchOrganAppointments()
         self.fetchOrganAppointments()
         self.filteringAppointments()
     }
@@ -117,7 +118,7 @@ class AppointmentVM: ObservableObject {
                     let organ = data["organ"] as? String ?? ""
                     let aptDuration = 60.0
                     var apt = OrganAppointment(type: type, startTime: startTime, endTime: endTime,
-                                            aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, organ: organ)
+                                               aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, organ: organ)
                     apt.appointments = appointments
                     return apt
                 }
@@ -164,7 +165,7 @@ class AppointmentVM: ObservableObject {
                 print("no documents")
                 return
             }
-
+            
             self.appointmentsWithin = documents.map { (queryDocumentSnapshot) -> DAppointment in
                 let data = queryDocumentSnapshot.data()
                 let type = data["type"] as? String ?? ""
@@ -172,28 +173,28 @@ class AppointmentVM: ObservableObject {
                 let hName = data["hospital"] as? String ?? ""
                 let confirmed = data["confirmed"] as? Bool ?? false
                 let booked = data["booked"] as? Bool ?? false
-
+                
                 let stamp1 = data["start_time"] as? Timestamp
                 let startTime = stamp1!.dateValue()
-
+                
                 let stamp2 = data["end_time"] as? Timestamp
                 let endTime = stamp2!.dateValue()
-
+                
                 return DAppointment(type: type, startTime: startTime, endTime: endTime, donor: donor, hName: hName, confirmed: confirmed, booked: booked)
             }
         }
-
+        
         
         return self.appointmentsWithin
     }
     
-    func fetchAppointmentsData2(docID: String) -> [DAppointment] {        
+    func fetchAppointmentsData2(docID: String) -> [DAppointment] {
         db.collection("appointments").document(docID).collection("appointments").addSnapshotListener { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
                 print("no documents")
                 return
             }
-
+            
             self.appointmentsWithin = documents.map { (queryDocumentSnapshot) -> DAppointment in
                 let data = queryDocumentSnapshot.data()
                 let type = data["type"] as? String ?? ""
@@ -201,21 +202,21 @@ class AppointmentVM: ObservableObject {
                 let hName = data["hospital"] as? String ?? ""
                 let confirmed = data["confirmed"] as? Bool ?? false
                 let booked = data["booked"] as? Bool ?? false
-
+                
                 let stamp1 = data["start_time"] as? Timestamp
                 let startTime = stamp1!.dateValue()
-
+                
                 let stamp2 = data["end_time"] as? Timestamp
                 let endTime = stamp2!.dateValue()
-
+                
                 return DAppointment(type: type, startTime: startTime, endTime: endTime, donor: donor, hName: hName, confirmed: confirmed, booked: booked)
             }
         }
-
+        
         
         return self.appointmentsWithin
     }
-
+    
     
     func addData(apt: BloodAppointment) {
         // Add doc to collection
@@ -320,10 +321,10 @@ class AppointmentVM: ObservableObject {
                 apt.docID = queryDocumentSnapshot.documentID
                 apt.appointments?.append(appointments[0])
                 
-//                if(!apt.appointments!.isEmpty){
-//                    print("document3333")
-//
-//                }
+                //                if(!apt.appointments!.isEmpty){
+                //                    print("document3333")
+                //
+                //                }
                 
                 if((hospital == Constants.selected.selectedOrgan.hospital) && (organ == Constants.selected.selectedOrgan.organ)){
                     self.organAppointments.append(apt)
@@ -364,9 +365,9 @@ class AppointmentVM: ObservableObject {
                 }
                 
                 if(self.organAppointments.first?.appointments != nil){
-                filtered = filtered.filter {
-                    return !(($0.appointments?.first?.booked)!)
-                }}
+                    filtered = filtered.filter {
+                        return !(($0.appointments?.first?.booked)!)
+                    }}
                 
                 DispatchQueue.main.async {
                     withAnimation {
@@ -378,6 +379,57 @@ class AppointmentVM: ObservableObject {
         }
         return self.filteredAppointments
     }
+    
+//    func filtering2weeksAppointments() -> Bool {
+//        let calender = Calendar.current
+//        var currentWeek: [Date] = []
+//
+//        // MARK: Curent day
+//        let currentDay: Date = Date()
+//
+//        //        let today = Date()
+//        //        let week = calender.dateInterval(of: .weekOfMonth, for: today)
+//
+//        //        let firstWeekDay = week?.start
+//
+//        (0...14).forEach {
+//            day in
+//
+//            if let weekday = calender.date(byAdding: .day, value: day, to: currentDay) {
+//                currentWeek.append(weekday)
+//            }
+//
+//        }
+//
+//
+//        if(!self.organAppointments.isEmpty){
+//
+//            var filtered = [OrganAppointment]()
+//
+//            if(self.organAppointments.first?.appointments != nil){
+//
+//                filtered = self.organAppointments.filter {
+//                    return !(($0.appointments?.first?.booked)!)
+//                }
+//
+//                if(!filtered.isEmpty){
+//                    for day in currentWeek {
+//                        for apt in filtered {
+//                            if (calender.isDate(apt.aptDate, inSameDayAs: day)){
+//                                return true
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//
+//
+//        }
+//        return false
+//
+//
+//    }
+    
     
 }
 
