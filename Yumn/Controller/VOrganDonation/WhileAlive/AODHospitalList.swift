@@ -215,9 +215,11 @@ class ODHospitals: ObservableObject {
                     }
                 }
                 
-                
-                return OrganAppointment(appointments: appointments, type: type, startTime: startTime, endTime: endTime,
+                var apt =
+                OrganAppointment(type: type, startTime: startTime, endTime: endTime,
                                         aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, organ: organ)
+                apt.appointments = appointments
+                return apt
                 
             }
         }

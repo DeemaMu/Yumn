@@ -226,9 +226,11 @@ struct PopupAddFormOrgan: View {
         let duration = 60.0
         let apList = createAppointmentList()
         
-        let apt = OrganAppointment(appointments: apList, type: "organ",
+        let apt = OrganAppointment(type: "organ",
                                    startTime: selectedDate, endTime: selectedDate.addingTimeInterval(60 * 60),
                                    aptDate: date, hospital: Constants.UserInfo.userID, aptDuration: duration, organ: apptType)
+        
+        apt.appointments = apList
         
         aptVM.addDataOrgan(apt: apt)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2 , execute: {

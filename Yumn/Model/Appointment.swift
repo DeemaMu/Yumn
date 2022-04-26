@@ -13,10 +13,10 @@ class OrganAppointment: Appointment, Identifiable {
     var id = UUID().uuidString
     var organ: String = ""
     
-    init(appointments: [DAppointment], type: String, startTime: Date, endTime: Date,
+    init(type: String, startTime: Date, endTime: Date,
          aptDate: Date, hospital: String, aptDuration: Double, organ: String) {
         super.init()
-        self.appointments = appointments
+//        self.appointments = appointments
         self.type = type
         self.startTime = startTime
         self.endTime = endTime
@@ -70,11 +70,13 @@ class BloodAppointment: Appointment {
 class AppointmentVM: ObservableObject {
     @Published var appointments = [Appointment]()
     @Published var organAppointments = [OrganAppointment]()
-    @Published var filteredAppointments: [OrganAppointment]?
+    @Published var filteredAppointments: [OrganAppointment] = [OrganAppointment]()
     @Published var added = true
     @Published var appointmentsWithin = [DAppointment]()
     
     init(){
+//        self.fetchOrganAppointments()
+        self.fetchOrganAppointments()
         self.filteringAppointments()
     }
     
@@ -114,8 +116,10 @@ class AppointmentVM: ObservableObject {
                 else {
                     let organ = data["organ"] as? String ?? ""
                     let aptDuration = 60.0
-                    return OrganAppointment(appointments: appointments, type: type, startTime: startTime, endTime: endTime,
+                    var apt = OrganAppointment(type: type, startTime: startTime, endTime: endTime,
                                             aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, organ: organ)
+                    apt.appointments = appointments
+                    return apt
                 }
             }
         }
@@ -154,12 +158,13 @@ class AppointmentVM: ObservableObject {
     
     func fetchAppointmentsData(doc: QueryDocumentSnapshot) -> [DAppointment] {
         let docID = doc.documentID
+        
         db.collection("appointments").document(docID).collection("appointments").addSnapshotListener { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
                 print("no documents")
                 return
             }
-            
+
             self.appointmentsWithin = documents.map { (queryDocumentSnapshot) -> DAppointment in
                 let data = queryDocumentSnapshot.data()
                 let type = data["type"] as? String ?? ""
@@ -167,19 +172,50 @@ class AppointmentVM: ObservableObject {
                 let hName = data["hospital"] as? String ?? ""
                 let confirmed = data["confirmed"] as? Bool ?? false
                 let booked = data["booked"] as? Bool ?? false
-                
+
                 let stamp1 = data["start_time"] as? Timestamp
                 let startTime = stamp1!.dateValue()
-                
+
                 let stamp2 = data["end_time"] as? Timestamp
                 let endTime = stamp2!.dateValue()
-                
+
                 return DAppointment(type: type, startTime: startTime, endTime: endTime, donor: donor, hName: hName, confirmed: confirmed, booked: booked)
             }
         }
+
         
         return self.appointmentsWithin
     }
+    
+    func fetchAppointmentsData2(docID: String) -> [DAppointment] {        
+        db.collection("appointments").document(docID).collection("appointments").addSnapshotListener { (querySnapshot, error) in
+            guard let documents = querySnapshot?.documents else {
+                print("no documents")
+                return
+            }
+
+            self.appointmentsWithin = documents.map { (queryDocumentSnapshot) -> DAppointment in
+                let data = queryDocumentSnapshot.data()
+                let type = data["type"] as? String ?? ""
+                let donor = data["donor"] as? String ?? ""
+                let hName = data["hospital"] as? String ?? ""
+                let confirmed = data["confirmed"] as? Bool ?? false
+                let booked = data["booked"] as? Bool ?? false
+
+                let stamp1 = data["start_time"] as? Timestamp
+                let startTime = stamp1!.dateValue()
+
+                let stamp2 = data["end_time"] as? Timestamp
+                let endTime = stamp2!.dateValue()
+
+                return DAppointment(type: type, startTime: startTime, endTime: endTime, donor: donor, hName: hName, confirmed: confirmed, booked: booked)
+            }
+        }
+
+        
+        return self.appointmentsWithin
+    }
+
     
     func addData(apt: BloodAppointment) {
         // Add doc to collection
@@ -249,6 +285,7 @@ class AppointmentVM: ObservableObject {
         
     } // end of addData
     
+    
     func fetchOrganAppointments() {
         db.collection("appointments").whereField("type", in: ["organ"]).addSnapshotListener { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
@@ -260,6 +297,8 @@ class AppointmentVM: ObservableObject {
                 print("documents")
                 let data = queryDocumentSnapshot.data()
                 let type = data["type"] as? String ?? ""
+                let docID = queryDocumentSnapshot.documentID
+                
                 let appointments: [DAppointment] = self.fetchAppointmentsData(doc: queryDocumentSnapshot)
                 
                 let stamp1 = data["start_time"] as? Timestamp
@@ -276,9 +315,15 @@ class AppointmentVM: ObservableObject {
                 print("\(organ)")
                 let aptDuration = 60.0
                 
-                let apt = OrganAppointment(appointments: appointments, type: type, startTime: startTime, endTime: endTime,
+                let apt = OrganAppointment(type: type, startTime: startTime, endTime: endTime,
                                            aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, organ: organ)
                 apt.docID = queryDocumentSnapshot.documentID
+                apt.appointments?.append(appointments[0])
+                
+//                if(!apt.appointments!.isEmpty){
+//                    print("document3333")
+//
+//                }
                 
                 if((hospital == Constants.selected.selectedOrgan.hospital) && (organ == Constants.selected.selectedOrgan.organ)){
                     self.organAppointments.append(apt)
@@ -291,41 +336,47 @@ class AppointmentVM: ObservableObject {
         
     }
     
-    var storedAppointments: [OrganAppointment] =
-    [
-        OrganAppointment(appointments:
-                            [DAppointment(type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(30 * 60), donor: "", hName: Constants.selected.selectedOrgan.hospital, confirmed: false, booked: false)]
-                         , type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(60 * 60), aptDate: getSampleDate(offset: 0), hospital: Constants.selected.selectedOrgan.hospital, aptDuration: 60, organ: Constants.selected.selectedOrgan.organ),
-        OrganAppointment(appointments:
-                            [DAppointment(type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(30 * 60), donor: "", hName: Constants.selected.selectedOrgan.hospital, confirmed: false, booked: false)]
-                         , type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(60 * 60), aptDate: getSampleDate(offset: 0), hospital: Constants.selected.selectedOrgan.hospital, aptDuration: 60, organ: Constants.selected.selectedOrgan.organ),
-        OrganAppointment(appointments:
-                            [DAppointment(type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(30 * 60), donor: "", hName: Constants.selected.selectedOrgan.hospital, confirmed: false, booked: false)]
-                         , type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(60 * 60), aptDate: getSampleDate(offset: 0), hospital: Constants.selected.selectedOrgan.hospital, aptDuration: 60, organ: Constants.selected.selectedOrgan.organ),
-    ]
+    //    var storedAppointments: [OrganAppointment] =
+    //    [
+    //        OrganAppointment(appointments:
+    //                            [DAppointment(type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(30 * 60), donor: "", hName: Constants.selected.selectedOrgan.hospital, confirmed: false, booked: false)]
+    //                         , type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(60 * 60), aptDate: getSampleDate(offset: 0), hospital: Constants.selected.selectedOrgan.hospital, aptDuration: 60, organ: Constants.selected.selectedOrgan.organ),
+    //        OrganAppointment(appointments:
+    //                            [DAppointment(type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(30 * 60), donor: "", hName: Constants.selected.selectedOrgan.hospital, confirmed: false, booked: false)]
+    //                         , type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(60 * 60), aptDate: getSampleDate(offset: 0), hospital: Constants.selected.selectedOrgan.hospital, aptDuration: 60, organ: Constants.selected.selectedOrgan.organ),
+    //        OrganAppointment(appointments:
+    //                            [DAppointment(type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(30 * 60), donor: "", hName: Constants.selected.selectedOrgan.hospital, confirmed: false, booked: false)]
+    //                         , type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(60 * 60), aptDate: getSampleDate(offset: 0), hospital: Constants.selected.selectedOrgan.hospital, aptDuration: 60, organ: Constants.selected.selectedOrgan.organ),
+    //    ]
     
     @Published var currentDay: Date = Date()
-
     
-    func filteringAppointments(){
+    
+    func filteringAppointments() -> [OrganAppointment] {
         let calender = Calendar.current
         
         DispatchQueue.global(qos: .userInteractive).async {
-            var filtered: [OrganAppointment] = self.storedAppointments.filter {
-                return calender.isDate($0.aptDate, inSameDayAs: self.currentDay)
-            }
             
-            filtered = filtered.filter {
-                return !($0.appointments![0].booked)
-            }
-            
-            DispatchQueue.main.async {
-                withAnimation {
-                    self.filteredAppointments = filtered
+            if(!self.organAppointments.isEmpty){
+                
+                var filtered: [OrganAppointment] = self.organAppointments.filter {
+                    return calender.isDate($0.aptDate, inSameDayAs: self.currentDay)
+                }
+                
+                if(self.organAppointments.first?.appointments != nil){
+                filtered = filtered.filter {
+                    return !(($0.appointments?.first?.booked)!)
+                }}
+                
+                DispatchQueue.main.async {
+                    withAnimation {
+                        self.filteredAppointments = filtered
+                    }
                 }
             }
             
         }
+        return self.filteredAppointments
     }
     
 }

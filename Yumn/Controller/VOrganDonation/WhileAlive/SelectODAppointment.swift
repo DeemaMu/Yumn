@@ -16,10 +16,14 @@ struct SelectODAppointment: View {
     @State var selectedDate: Date
     @State var checkedIndex: Int = -1
     @State var showError = false
+    @State var counter = 0
     
+    @State var thisDayApt: [OrganAppointment] = [OrganAppointment]()
     @Namespace var animation
     
     @State var activate = false
+    
+    var calender = Calendar.current
     
     var hospitalID = Constants.selected.selectedOrgan.hospital
     var selectedOrgan = Constants.selected.selectedOrgan.organ
@@ -30,18 +34,18 @@ struct SelectODAppointment: View {
     let lightGray = Color(UIColor.lightGray)
     let bgWhite = Color(UIColor.white)
     
-    var appointments: [Appointment] =
-    [
-        OrganAppointment(appointments:
-                            [DAppointment(type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(30 * 60), donor: "", hName: Constants.selected.selectedOrgan.hospital, confirmed: false, booked: false)]
-                         , type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(60 * 60), aptDate: getSampleDate(offset: 1), hospital: Constants.selected.selectedOrgan.hospital, aptDuration: 60, organ: Constants.selected.selectedOrgan.organ),
-        OrganAppointment(appointments:
-                            [DAppointment(type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(30 * 60), donor: "", hName: Constants.selected.selectedOrgan.hospital, confirmed: false, booked: false)]
-                         , type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(60 * 60), aptDate: getSampleDate(offset: 0), hospital: Constants.selected.selectedOrgan.hospital, aptDuration: 60, organ: Constants.selected.selectedOrgan.organ),
-        OrganAppointment(appointments:
-                            [DAppointment(type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(30 * 60), donor: "", hName: Constants.selected.selectedOrgan.hospital, confirmed: false, booked: false)]
-                         , type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(60 * 60), aptDate: getSampleDate(offset: -2), hospital: Constants.selected.selectedOrgan.hospital, aptDuration: 60, organ: Constants.selected.selectedOrgan.organ),
-    ]
+//    var appointments: [Appointment] =
+//    [
+//        OrganAppointment(appointments:
+//                            [DAppointment(type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(30 * 60), donor: "", hName: Constants.selected.selectedOrgan.hospital, confirmed: false, booked: false)]
+//                         , type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(60 * 60), aptDate: getSampleDate(offset: 1), hospital: Constants.selected.selectedOrgan.hospital, aptDuration: 60, organ: Constants.selected.selectedOrgan.organ),
+//        OrganAppointment(appointments:
+//                            [DAppointment(type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(30 * 60), donor: "", hName: Constants.selected.selectedOrgan.hospital, confirmed: false, booked: false)]
+//                         , type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(60 * 60), aptDate: getSampleDate(offset: 0), hospital: Constants.selected.selectedOrgan.hospital, aptDuration: 60, organ: Constants.selected.selectedOrgan.organ),
+//        OrganAppointment(appointments:
+//                            [DAppointment(type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(30 * 60), donor: "", hName: Constants.selected.selectedOrgan.hospital, confirmed: false, booked: false)]
+//                         , type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(60 * 60), aptDate: getSampleDate(offset: 3), hospital: Constants.selected.selectedOrgan.hospital, aptDuration: 60, organ: Constants.selected.selectedOrgan.organ),
+//    ]
     
     var weekdaysAR: [String:String] =
     [
@@ -77,9 +81,18 @@ struct SelectODAppointment: View {
                                     //                                            .foregroundColor(self.organsVM.selected[organ]! ? .white : mainDark)
                                     
                                     // MARK: circle under
-                                    Circle().fill(odVM.isToday(date: odVM.currentWeek[day]) ? .white : mainDark)
+                                    ZStack{
+                                    Circle().fill(appointmentsOnDate(date: odVM.currentWeek[day]) ? mainDark : .white)
                                         .frame(width: 8, height: 8)
-                                        .opacity(odVM.isToday(date: odVM.currentWeek[day]) ? 1 : 0)
+                                        .opacity(appointmentsOnDate(date: odVM.currentWeek[day]) ? 1 : 0)
+                                        
+                                        if(calender.isDate( odVM.currentWeek[day], inSameDayAs: selectedDate)){
+                                            Circle().fill(.white)
+                                                .frame(width: 8, height: 8)
+                                                .opacity(appointmentsOnDate(date: odVM.currentWeek[day]) ? 1 : 0)
+                                        }
+                                        
+                                    }
                                     
                                 }.id(day)
                                 //                                        .foregroundStyle(odVM.isToday(date: odVM.currentWeek[day]) ? .primary : .tertiary)
@@ -114,7 +127,17 @@ struct SelectODAppointment: View {
                                     }.onChange(of: selectedDate) { newValue in
                                         aptVM.currentDay = newValue
                                         checkedIndex = -1
-                                        aptVM.filteringAppointments()
+//                                        aptVM.filteringAppointments()
+                                        counter += 1
+                                        DispatchQueue.main.async {
+                                            aptVM.filteringAppointments()
+
+                                        }
+                                        
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 4 , execute: {
+                                            $thisDayApt.wrappedValue = aptVM.filteredAppointments
+                                        })
+                                        
                                     }
                             }
                         }.onAppear(){ // <== Here
@@ -152,7 +175,7 @@ struct SelectODAppointment: View {
                 }
                 
                 if(aptVM.organAppointments.isEmpty){
-                    Text("عذرًا، لايجود مواعيد للمستشفى المختار").font(Font.custom("Tajawal", size: 15))
+                    Text("عذرًا، لايوجد مواعيد للمستشفى المختار").font(Font.custom("Tajawal", size: 15))
                         .foregroundColor(.red)
                 }
                 
@@ -163,7 +186,7 @@ struct SelectODAppointment: View {
                         showError = false
                         let x =
                         config.hostingController?.parent as! Alive4thVC
-                        x.confirmAppoitment(apt: aptVM.filteredAppointments![checkedIndex])
+                        x.confirmAppoitment(apt: aptVM.filteredAppointments[checkedIndex])
                     }
                 }
                 ) {
@@ -184,7 +207,6 @@ struct SelectODAppointment: View {
             }.onAppear(){
                 activate = true
                 odVM.fetchCurrentWeek()
-                aptVM.fetchOrganAppointments()
                 aptVM.filteringAppointments()
             }.environment(\.layoutDirection, .rightToLeft)
         
@@ -229,7 +251,9 @@ struct SelectODAppointment: View {
                 ProgressView()
                     .offset(y: 100).foregroundColor(mainDark)
             }
-        }.frame(maxHeight: .infinity)
+        }.frame(maxHeight: .infinity).onChange(of: counter) { newValue in
+            
+        }
         
         
     }
@@ -237,73 +261,99 @@ struct SelectODAppointment: View {
     @ViewBuilder
     func AppoitmentCard(apt: OrganAppointment, index: Int) -> some View {
         
-        let currentA = apt.appointments![0]
+        let mini = aptVM.fetchAppointmentsData2(docID: apt.docID)
         
-        
-        HStack(){
-            
-            VStack(alignment: .leading){
-                if(self.checkedIndex == index){
-                    RadioButton2(matched: true)
+        if(!mini.isEmpty){
+                            
+                let currentA = mini[0]
+                
+                if(currentA != nil){
+                HStack(){
+                    
+                    VStack(alignment: .leading){
+                        if(self.checkedIndex == index){
+                            RadioButton2(matched: true)
+                        }
+                        if(self.checkedIndex != index){
+                            RadioButton2(matched: false)
+                        }
+                    }.padding(.leading, 20)
+                        .padding(.top, 3)
+                    
+                    Spacer()
+                    
+                    VStack(alignment: .center){
+                        //                Text("\(currentH!.name)").font(Font.custom("Tajawal", size: 17))
+                        //                    .foregroundColor(mainDark)
+                        Text("\(currentA.startTime.getFormattedDate(format: "HH:mm")) - \(currentA.endTime.getFormattedDate(format: "HH:mm"))").font(Font.custom("Tajawal", size: 22))
+                            .foregroundColor(mainDark)
+                    }.frame(maxWidth: .infinity, alignment: .center)
+                        .frame(height: 50)
+                        .padding(.top, 10)
+                    
+                    VStack(){
+                        Image("time").resizable()
+                            .scaledToFit()
+                    }.padding(.trailing, 10).padding(.top, 10).padding(.bottom, 10)
+                    
+                    
+                    
+                    
+                    
+                }.onChange(of: checkedIndex){ newValue in
+                    if(newValue == index){
+                        //                hVM.odHospitals[index].selected = true
+                    } else {
+                        //                hVM.odHospitals[index].selected = false
+                    }
                 }
-                if(self.checkedIndex != index){
-                    RadioButton2(matched: false)
+                .environment(\.layoutDirection, .leftToRight)
+                .background(
+                    RoundedRectangle(
+                        cornerRadius: 20,
+                        style: .continuous
+                    )
+                        .fill(.white)
+                )
+                .frame(height: 50, alignment: .center)
+                .frame(maxWidth: 250)
+                .shadow(color: shadowColor,
+                        radius: 6, x: 0
+                        , y: 6)
+                .onTapGesture {
+                    if(checkedIndex == index){
+                        checkedIndex = -1
+                        showError = true
+                    } else {
+                        checkedIndex = index
+                        showError = false
+                    }
                 }
-            }.padding(.leading, 20)
-                .padding(.top, 3)
+                .padding(.horizontal, 15)
+                .padding(.vertical, 5)
             
-            Spacer()
-            
-            VStack(alignment: .center){
-                //                Text("\(currentH!.name)").font(Font.custom("Tajawal", size: 17))
-                //                    .foregroundColor(mainDark)
-                Text("\(currentA.startTime.getFormattedDate(format: "HH:mm")) - \(currentA.endTime.getFormattedDate(format: "HH:mm"))").font(Font.custom("Tajawal", size: 22))
-                    .foregroundColor(mainDark)
-            }.frame(maxWidth: .infinity, alignment: .center)
-                .frame(height: 50)
-                .padding(.top, 10)
-            
-            VStack(){
-                Image("time").resizable()
-                    .scaledToFit()
-            }.padding(.trailing, 10).padding(.top, 10).padding(.bottom, 10)
-            
-
-
-                        
-            
-        }.onChange(of: checkedIndex){ newValue in
-            if(newValue == index){
-                //                hVM.odHospitals[index].selected = true
             } else {
-                //                hVM.odHospitals[index].selected = false
+                Text("hereeee")
+//                print("hereeee")
+            }
+            
+        } else {
+            Text("hereeee222")
+//            print("hereeee222")
+        }
+
+    }
+    
+    func appointmentsOnDate(date: Date) -> Bool {
+//        var thereIs: Bool = false
+        let calender = Calendar.current
+        
+        for index in 0..<(aptVM.organAppointments.count){
+            if(calender.isDate(aptVM.organAppointments[index].aptDate, inSameDayAs: date)){
+                return true;
             }
         }
-        .environment(\.layoutDirection, .leftToRight)
-        .background(
-            RoundedRectangle(
-                cornerRadius: 20,
-                style: .continuous
-            )
-                .fill(.white)
-        )
-        .frame(height: 50, alignment: .center)
-        .frame(maxWidth: 250)
-        .shadow(color: shadowColor,
-                radius: 6, x: 0
-                , y: 6)
-        .onTapGesture {
-            if(checkedIndex == index){
-                checkedIndex = -1
-                showError = true
-            } else {
-                checkedIndex = index
-                showError = false
-            }
-        }
-        .padding(.horizontal, 15)
-        .padding(.vertical, 5)
-        
+        return false;
     }
     
     
