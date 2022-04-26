@@ -18,6 +18,10 @@ struct SelectODAppointment: View {
     @State var showError = false
     @State var counter = 0
     
+    @State var selectedAppointment:OrganAppointment?
+    @State var selectedMiniAppointment: DAppointment?
+    
+    
     @State var thisDayApt: [OrganAppointment] = [OrganAppointment]()
     @Namespace var animation
     
@@ -186,7 +190,7 @@ struct SelectODAppointment: View {
                         showError = false
                         let x =
                         config.hostingController?.parent as! Alive4thVC
-                        x.confirmAppoitment(apt: aptVM.filteredAppointments[checkedIndex])
+                        x.confirmAppoitment(apt: selectedAppointment!, exact: selectedMiniAppointment!)
                     }
                 }
                 ) {
@@ -217,13 +221,16 @@ struct SelectODAppointment: View {
     func HeaderView() -> some View {
         HStack(spacing: 10){
             VStack(){
-                if #available(iOS 15.0, *) {
-                    Text(Date().formatted(date: .abbreviated, time: .omitted))
-                        .foregroundColor(.gray)
-                    
-                    Text("Today").font(.largeTitle.bold())
-                } else {
-                }
+//                if #available(iOS 15.0, *) {
+//                    Text(Date().formatted(date: .abbreviated, time: .omitted))
+//                        .foregroundColor(.gray)
+//
+//                    Text("Today").font(.largeTitle.bold())
+//                } else {
+//                }
+                
+                Text("التاريخ").font(Font.custom("Tajawal", size: 15))
+                                .foregroundColor(mainDark)
             }.hLeading()
         }.padding()
             .background(bgWhite)
@@ -325,6 +332,8 @@ struct SelectODAppointment: View {
                         checkedIndex = -1
                         showError = true
                     } else {
+                        selectedMiniAppointment = mini[0]
+                        selectedAppointment = aptVM.filteredAppointments[index]
                         checkedIndex = index
                         showError = false
                     }

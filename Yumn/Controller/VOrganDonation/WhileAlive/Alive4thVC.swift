@@ -87,7 +87,7 @@ class Alive4thVC: UIViewController {
         self.navigationController?.navigationBar.layoutIfNeeded()
     }
     
-    func confirmAppoitment(apt: OrganAppointment){
+    func confirmAppoitment(apt: OrganAppointment, exact: DAppointment){
         blackBlurredView.superview?.bringSubviewToFront(blackBlurredView)
         popupView.superview?.bringSubviewToFront(popupView)
     }
