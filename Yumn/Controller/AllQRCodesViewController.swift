@@ -118,7 +118,10 @@ extension AllQRCodesViewController: UITableViewDataSource{
         return 300.3
     }*/
 
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 180.0//Choose your custom row height
+    }
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "QRCell", for: indexPath) as! QRCodeTableViewCell

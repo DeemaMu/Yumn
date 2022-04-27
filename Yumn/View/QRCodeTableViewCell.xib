@@ -5,6 +5,8 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -15,55 +17,86 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="QRCell" rowHeight="214" id="vui-Bf-rut" customClass="QRCodeTableViewCell" customModule="Yumn" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="804" height="214"/>
-            <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vui-Bf-rut" id="fkO-3J-OTT">
-                <rect key="frame" x="0.0" y="0.0" width="804" height="214"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="QRCell" rowHeight="230" id="EC3-ub-cc3" customClass="QRCodeTableViewCell" customModule="Yumn" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="852" height="230"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EC3-ub-cc3" id="OdS-sW-da4">
+                <rect key="frame" x="0.0" y="0.0" width="852" height="230"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="١٦٠" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuc-bB-je5">
-                        <rect key="frame" x="607" y="55" width="124" height="83"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" name="Tajawal-Medium" family="Tajawal Medium" pointSize="73"/>
-                        <color key="textColor" name="mainDark"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ريال سعودي" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ldt-Pm-7HJ">
-                        <rect key="frame" x="393" y="59" width="262" height="83"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" name="Tajawal-Medium" family="Tajawal Medium" pointSize="20"/>
-                        <color key="textColor" name="mainDark"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYa-dv-ONM">
-                        <rect key="frame" x="68" y="59" width="205" height="110"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" name="mainDark"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" title="عرض رمز ال QR">
-                            <fontDescription key="titleFontDescription" name="Tajawal-Medium" family="Tajawal Medium" pointSize="28"/>
-                        </buttonConfiguration>
-                        <connections>
-                            <action selector="onPressedViewQr:" destination="vui-Bf-rut" eventType="touchUpInside" id="NrD-IM-hS0"/>
-                        </connections>
-                    </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="تم إنشاؤه في: ١٢/١/٢٠٢٢ " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SbA-bm-Fst">
-                        <rect key="frame" x="481" y="146" width="250" height="27"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" name="Tajawal-Medium" family="Tajawal Medium" pointSize="27"/>
-                        <color key="textColor" name="textGrey"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U9i-ww-xfQ" customClass="RoundedShadowedView" customModule="Yumn" customModuleProvider="target">
+                        <rect key="frame" x="39" y="29" width="774" height="173"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="١٦٠" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bVL-cU-hK8">
+                                <rect key="frame" x="599" y="27" width="124" height="83"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Tajawal-Medium" family="Tajawal Medium" pointSize="73"/>
+                                <color key="textColor" name="mainDark"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ريال سعودي" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ze1-w5-zTy">
+                                <rect key="frame" x="381" y="33" width="262" height="83"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Tajawal-Medium" family="Tajawal Medium" pointSize="20"/>
+                                <color key="textColor" name="mainDark"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تم إنشاؤه في: ١٢/١/٢٠٢٢ " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5f0-JL-k4t">
+                                <rect key="frame" x="473" y="118" width="250" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Tajawal-Medium" family="Tajawal Medium" pointSize="27"/>
+                                <color key="textColor" name="textGrey"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="H27-AD-KLy">
+                                <rect key="frame" x="55" y="35" width="205" height="110"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="mainDark"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="عرض رمز ال QR">
+                                    <fontDescription key="titleFontDescription" name="Tajawal-Medium" family="Tajawal Medium" pointSize="28"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="onPressedViewQr:" destination="EC3-ub-cc3" eventType="touchUpInside" id="orH-TZ-HDQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="131" id="Dvn-hq-aOo"/>
+                            <constraint firstAttribute="width" constant="334" id="nez-61-G2Z"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusV">
+                                <integer key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidthV">
+                                <integer key="value" value="0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                <color key="value" red="0.82352941180000006" green="0.81960784310000001" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                <integer key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                <size key="value" width="0.0" height="6"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                <integer key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                 </subviews>
             </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="j8B-nM-BkF"/>
             <connections>
-                <outlet property="amount" destination="xuc-bB-je5" id="IB2-dM-LOM"/>
-                <outlet property="createdAt" destination="SbA-bm-Fst" id="rkA-jh-iop"/>
-                <outlet property="viewQRCodeBtn" destination="DYa-dv-ONM" id="1wK-fJ-ieI"/>
+                <outlet property="amount" destination="bVL-cU-hK8" id="rzL-rd-zKY"/>
+                <outlet property="createdAt" destination="5f0-JL-k4t" id="b0v-ak-fj7"/>
+                <outlet property="viewQRCodeBtn" destination="H27-AD-KLy" id="Ngp-ku-mFN"/>
             </connections>
-            <point key="canvasLocation" x="-7.2463768115942031" y="83.705357142857139"/>
+            <point key="canvasLocation" x="27.536231884057973" y="284.59821428571428"/>
         </tableViewCell>
     </objects>
     <resources>
@@ -73,5 +106,8 @@
         <namedColor name="textGrey">
             <color red="0.54900002479553223" green="0.55699998140335083" blue="0.55299997329711914" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

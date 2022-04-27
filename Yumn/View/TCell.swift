@@ -8,19 +8,11 @@
 import UIKit
 
 
-class QRCodeTableViewCell: UITableViewCell {
+class TCell: UITableViewCell {
     
-    @IBOutlet weak var amount: UILabel!
     
-    @IBOutlet weak var viewQRCodeBtn: UIButton!
   
-    @IBOutlet weak var createdAt: UILabel!
-    
-    
-    var id:String = ""
-    
-   
-
+    @IBOutlet weak var label: UILabel!
     
 
     
@@ -34,11 +26,6 @@ class QRCodeTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-    
-    
-    
-    @IBAction func onPressedViewQr(_ sender: Any) {
     }
     
     
