@@ -54,10 +54,12 @@ struct CustomDatePicker: View {
                     
                     Spacer(minLength: 0)
                     
+                    
+                    
                     Button {
                         withAnimation{currentMonth -=  1}
                     } label: {
-                        Image(systemName: "chevron.left")
+                        Image(systemName: "chevron.right")
                             .font(.title2)
                             .foregroundColor(mainDark)
                     }
@@ -65,12 +67,16 @@ struct CustomDatePicker: View {
                     Button {
                         withAnimation{currentMonth +=  1}
                     } label: {
-                        Image(systemName: "chevron.right")
+                        Image(systemName: "chevron.left")
                             .font(.title2)
                             .foregroundColor(mainDark)
                     }
                     
+                    
+                    
                 }.padding(.horizontal, 30).padding(.vertical,10)
+                    .environment(\.layoutDirection, .rightToLeft)
+                
                 
                 // days view
                 HStack(spacing: 0){
@@ -351,11 +357,14 @@ struct CustomDatePicker: View {
     // extracting year and month for display
     func extraDate()-> [String]{
         let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY MMMM"
+        formatter.dateFormat = "YYYY"
+        var date = formatter.string(from: getCurrentMonth())
+        
+        formatter.dateFormat = "MMMM"
         formatter.locale = NSLocale(localeIdentifier: "ar") as Locale
         
-        
-        let date = formatter.string(from: getCurrentMonth())
+        date.append(" ")
+        date.append(formatter.string(from: getCurrentMonth()))
         
         return date.components(separatedBy: " ")
     }
