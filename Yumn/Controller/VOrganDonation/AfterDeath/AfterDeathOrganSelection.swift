@@ -11,7 +11,10 @@ import UIKit
 
 
 struct AfterDeathOrganSelection: View {
-    @State var controller: AfterDeathODSecondController = AfterDeathODSecondController()
+    //    @State var controller: AfterDeathODSecondController = AfterDeathODSecondController()
+    
+    let config: Configuration
+    
     let mainDark = Color(UIColor.init(named: "mainDark")!)
     let mainLight = Color(UIColor.init(named: "mainLight")!)
     let lightGray = Color(UIColor.lightGray)
@@ -23,8 +26,11 @@ struct AfterDeathOrganSelection: View {
     ]
     
     @ObservedObject var organsVM = OrgansVM()
-
+    
     var organsPointer = 0
+    
+    @State var showError = false
+    
     
     let organs: [String] = ["الكلى", "الكبد", "الرئتين", "البنكرياس", "القلب", "الامعاء", "العظام", "نخاع العظم", "الجلد", "القرنيات"]
     var selected = [
@@ -41,7 +47,7 @@ struct AfterDeathOrganSelection: View {
     ]
     
     @State var checked = false
-
+    
     
     var body: some View {
         VStack(spacing: 20){
@@ -54,30 +60,45 @@ struct AfterDeathOrganSelection: View {
                 
                 Spacer()
                 Text("الأعضاء المراد التبرع بها:").font(Font.custom("Tajawal", size: 15))
-                                .foregroundColor(mainDark)
+                    .foregroundColor(mainDark)
             }.onChange(of: checked){ newValue in
                 self.selectAll()
             }
             .padding(.trailing)
             .padding(.bottom,10)
-
+            
             
             ScrollView(.vertical, showsIndicators: false){
-                        LazyVGrid(columns: items, alignment: .center) {
-                            ForEach(organs.dropLast(organs.count % 3), id: \.self) { index in
-                                card(organ: index)
-                            }
-                        }
-                        LazyHStack {
-                            ForEach(organs.suffix(organs.count % 3), id: \.self) { index in
-                                card(organ: index)
-                            }
-                        }
+                LazyVGrid(columns: items, alignment: .center) {
+                    ForEach(organs.dropLast(organs.count % 3), id: \.self) { index in
+                        card(organ: index)
                     }
+                }
+                LazyHStack {
+                    ForEach(organs.suffix(organs.count % 3), id: \.self) { index in
+                        card(organ: index)
+                    }
+                }
+            }
+            
+            if(showError){
+                Text("الرجاء اختيار عضو").font(Font.custom("Tajawal", size: 15))
+                    .foregroundColor(.red)
+            }
+            
+            
             Button(action: {
+                if(self.checkSelection()){
+                    showError = false
+                    let x =
+                    config.hostingController?.parent as! AfterDeathODSecondController
+                    x.showConfirmationMessage()
+                } else {
+                    self.showError = true
+                }
             }
             ) {
-                Text("متابعة").font(Font.custom("Tajawal", size: 20))
+                Text("تأكيد").font(Font.custom("Tajawal", size: 20))
                     .foregroundColor(.white)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -98,8 +119,8 @@ struct AfterDeathOrganSelection: View {
     func card(organ: String) -> some View{
         let shadowColor = Color(#colorLiteral(red: 0.8653315902, green: 0.8654771447, blue: 0.8653123975, alpha: 1))
         
-//        let raduis = 3
-//        let ySpread = 0
+        //        let raduis = 3
+        //        let ySpread = 0
         
         Button(action: {
             buttonPressed(organ: organ)
@@ -121,20 +142,30 @@ struct AfterDeathOrganSelection: View {
                 radius: self.organsVM.selected[organ]! ? 0 : 3, x: 0
                 , y:  self.organsVM.selected[organ]! ? 0 : 6)
     }
-        
+    
     func buttonPressed(organ: String){
         self.organsVM.selected[organ]?.toggle()
+    }
+    
+    func checkSelection() -> Bool {
+        for organ in self.organsVM.selected {
+            if(organ.value){
+                return true
+            }
+        }
+        
+        return false
     }
     
     func selectAll(){
         if(checked){
             for organ in self.organsVM.selected {
                 self.organsVM.selected[organ.key]? = true
-                }
+            }
         } else {
             for organ in self.organsVM.selected {
                 self.organsVM.selected[organ.key]? = false
-                }
+            }
         }
         
     }
@@ -145,7 +176,7 @@ struct AfterDeathOrganSelection: View {
 struct RadioButton: View {
     @Binding var checked: Bool    //the variable that determines if its checked
     let mainDark = Color(UIColor.init(named: "mainDark")!)
-
+    
     var body: some View {
         Group{
             if checked {
@@ -187,7 +218,7 @@ class OrgansVM: ObservableObject {
 
 struct AfterDeathOrganSelection_Previews: PreviewProvider {
     static var previews: some View {
-        AfterDeathOrganSelection()
+        AfterDeathOrganSelection(config: Configuration())
     }
 }
 

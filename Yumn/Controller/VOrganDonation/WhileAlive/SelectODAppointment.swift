@@ -180,7 +180,7 @@ struct SelectODAppointment: View {
                     }
                 }
                 
-                if(aptVM.organAppointments.isEmpty ||                 !thereIS.thereIs){
+                if(aptVM.organAppointments.isEmpty || !thereIS.thereIs){
                     Text("عذرًا، لايوجد مواعيد للمستشفى المختار").font(Font.custom("Tajawal", size: 15))
                         .foregroundColor(.red)
                 }

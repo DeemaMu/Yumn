@@ -24,6 +24,7 @@ struct ConfirmAppointmentPopUp: View {
     let lightGray = Color(UIColor.lightGray)
     let bgWhite = Color(UIColor.white)
     
+    @State var hospitalName = ""
     
     var weekdaysAR: [String:String] =
     [
@@ -64,7 +65,7 @@ struct ConfirmAppointmentPopUp: View {
                     Text("الموقع:").font(Font.custom("Tajawal", size: 14))
                         .foregroundColor(mainLight).fontWeight(.semibold).hTrailing()
                     HStack(){
-                        Text("\(appointment.hospital)").font(Font.custom("Tajawal", size: 14))
+                        Text("\(hospitalName)").font(Font.custom("Tajawal", size: 14))
                             .foregroundColor(textGray).hTrailing().padding(.trailing, 15)
                     }
                 }
@@ -138,6 +139,8 @@ struct ConfirmAppointmentPopUp: View {
                 
             }.padding(.vertical)
                 .padding(.horizontal, 25)
+        }.onAppear {
+            self.getHospitalName()
         }
     }
     
@@ -176,7 +179,8 @@ struct ConfirmAppointmentPopUp: View {
     }
     
     func getHospitalName() -> String {
-        var name = ""
+//        var name = ""
+        print(self.appointment.hospital)
         let doc = db.collection("hospitalsInformation").document(appointment.hospital)
         
         doc.getDocument { (document, error) in
@@ -184,11 +188,12 @@ struct ConfirmAppointmentPopUp: View {
                 print("Document does not exist")
                 return
             }
+            print("here")
             let dataDescription = document.data()
-            name = dataDescription?["name"] as! String
+            self.hospitalName = dataDescription?["name"] as! String
         }
         
-        return name
+        return hospitalName
     }
 }
 

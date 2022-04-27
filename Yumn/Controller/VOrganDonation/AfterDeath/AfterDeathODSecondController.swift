@@ -12,6 +12,7 @@ import SwiftUI
 class AfterDeathODSecondController: UIViewController {
     
     @IBOutlet weak var roundedView: RoundedView!
+    @IBOutlet weak var innerThanku: UIView!
     
     @IBOutlet weak var blackBlurredView: UIView!
 
@@ -23,8 +24,11 @@ class AfterDeathODSecondController: UIViewController {
     
     @IBOutlet weak var okBtn: UIButton!
     
+    @IBOutlet weak var saveBtn: UIButton!
+    
     @IBOutlet weak var selectionHolder: UIView!
 
+    @IBOutlet weak var thankYouPopup: UIView!
     
     var questions = [false, false,false, false, false]
     
@@ -34,26 +38,26 @@ class AfterDeathODSecondController: UIViewController {
         
         popupView.superview?.bringSubviewToFront(popupView)
         
+        popupTitle.text = "تأكيد التبرع"
+        
+        
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.layoutIfNeeded()
         
 //        contBtn.layer.cornerRadius = 25
         okBtn.layer.cornerRadius = 15
+        saveBtn.layer.cornerRadius = 15
         popupView.layer.cornerRadius = 30
         
         
-        let childView = UIHostingController(rootView: AfterDeathOrganSelection(controller: self))
-        addChild(childView)
-        childView.view.frame = selectionHolder.bounds
-        selectionHolder.addSubview(childView.view)
-        
-        
-//        q1Btn.contentHorizontalAlignment = .right
-//        q2Btn.contentHorizontalAlignment = .right
-//        q3btn.contentHorizontalAlignment = .right
-//        q4Btn.contentHorizontalAlignment = .right
-//        q5Btn.contentHorizontalAlignment = .right
+        let configuration = Configuration()
+        let controller = UIHostingController(rootView: AfterDeathOrganSelection(config: configuration))
+        // injects here, because `configuration` is a reference !!
+        configuration.hostingController = controller
+        addChild(controller)
+        controller.view.frame = selectionHolder.bounds
+        selectionHolder.addSubview(controller.view)
         
     }
     
@@ -91,26 +95,38 @@ class AfterDeathODSecondController: UIViewController {
         nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(named: "mainLight")!, NSAttributedString.Key.font: customFont]
     }
     
+    func showConfirmationMessage(){
+        blackBlurredView.superview?.bringSubviewToFront(blackBlurredView)
+        popupView.superview?.bringSubviewToFront(popupView)
+        popupView.isHidden = false
+        blackBlurredView.isHidden = false
+    }
     
-    func onPressedCont(valid: Bool) {
-        
-        if (!valid){
-            
-            popupTitle.text = "مقدرين حبك للمساعدة"
-//            popupMsg.text = """
-//للأسف، أنت غير مؤهل للتبرع
-//            بالأعضاء بعد الوفاة
-//"""
-            popupView.isHidden = false
-            blackBlurredView.isHidden = false
-        }
-        
-        else{
-            
-            performSegue(withIdentifier: "goToOrganSelection", sender: nil)
-            
-            //Go to next page
-        }
+    
+    @IBAction func cancel(_ sender: Any) {
+        blackBlurredView.superview?.sendSubviewToBack(blackBlurredView)
+        popupView.superview?.sendSubviewToBack(popupView)
+        popupView.isHidden = true
+        blackBlurredView.isHidden = true
+    }
+    
+    
+    @IBAction func confirm(_ sender: UIButton) {
+        thankYouPopup.superview?.bringSubviewToFront(thankYouPopup)
+        popupView.isHidden = true
+        thankYouPopup.isHidden = false
+        let configuration = Configuration()
+        let controller = UIHostingController(rootView: ThankYouPopup(config: configuration, controllerType: 2))
+        // injects here, because `configuration` is a reference !!
+        configuration.hostingController = controller
+        addChild(controller)
+        controller.view.frame = innerThanku.bounds
+        innerThanku.addSubview(controller.view)
+    }
+
+    
+    func thankYou(){
+        performSegue(withIdentifier: "wrapToHome", sender: nil)
     }
     
 }

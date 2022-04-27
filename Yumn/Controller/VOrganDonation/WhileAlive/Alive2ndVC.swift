@@ -270,7 +270,7 @@ class Alive2ndVC: UIViewController {
     
     @IBAction func onPressedCont(_ sender: Any) {
         
-        let isValidDonor = questions[0]&&questions[1]&&questions[2]&&questions[3]&&questions[4]
+        let isValidDonor = questions[0]&&questions[1]&&questions[2]&&questions[3]&&questions[4]&&questions[5]
         
         if (!isValidDonor){
             

@@ -117,7 +117,7 @@ class Alive4thVC: UIViewController {
         popupView.isHidden = true
         thankYouPopup.isHidden = false
         let configuration = Configuration()
-        let controller = UIHostingController(rootView: ThankYouPopup(config: configuration))
+        let controller = UIHostingController(rootView: ThankYouPopup(config: configuration, controllerType: 1))
         // injects here, because `configuration` is a reference !!
         configuration.hostingController = controller
         addChild(controller)

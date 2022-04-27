@@ -10,6 +10,7 @@ import SwiftUI
 struct ThankYouPopup: View {
     
     let config: Configuration
+    let controllerType: Int
     
     let shadowColor = Color(#colorLiteral(red: 0.8653315902, green: 0.8654771447, blue: 0.8653123975, alpha: 1))
     let mainDark = Color(UIColor.init(named: "mainDark")!)
@@ -26,16 +27,16 @@ struct ThankYouPopup: View {
                     .multilineTextAlignment(.center)
                 
                 VStack(spacing: 5){
-                Text(" ( وَمَنْ أَحْيَاهَا فَكَأَنَّمَا أَحْيَا النَّاسَ جَمِيعًا)").font(Font.custom("Tajawal", size: 15))
-                    .foregroundColor(mainLight).fontWeight(.semibold)
-                    .multilineTextAlignment(.center)
-                
-                Text("آية 32 سورة المائدة").font(Font.custom("Tajawal", size: 7))
-                    .foregroundColor(textGray)
-                    .multilineTextAlignment(.center)
+                    Text(" ( وَمَنْ أَحْيَاهَا فَكَأَنَّمَا أَحْيَا النَّاسَ جَمِيعًا)").font(Font.custom("Tajawal", size: 15))
+                        .foregroundColor(mainLight).fontWeight(.semibold)
+                        .multilineTextAlignment(.center)
+                    
+                    Text("آية 32 سورة المائدة").font(Font.custom("Tajawal", size: 7))
+                        .foregroundColor(textGray)
+                        .multilineTextAlignment(.center)
                 }
                 
-
+                
                 Text("شكرًا على مساهمتك").font(Font.custom("Tajawal", size: 13))
                     .foregroundColor(mainLight).fontWeight(.semibold)
                     .multilineTextAlignment(.center)
@@ -44,10 +45,16 @@ struct ThankYouPopup: View {
                 HStack(alignment: .bottom, spacing: 10){
                     
                     Button(action: {
-                        
-                        var x =
-                        config.hostingController?.parent as! Alive4thVC
-                        x.thankYou()
+                        if(controllerType == 1){
+                            var x =
+                            config.hostingController?.parent as! Alive4thVC
+                            x.thankYou()
+                        }
+                        if(controllerType == 2){
+                            var x =
+                            config.hostingController?.parent as! AfterDeathODSecondController
+                            x.thankYou()
+                        }
                         
                     }
                     ) {
@@ -75,6 +82,6 @@ struct ThankYouPopup: View {
 
 struct ThankYouPopup_Previews: PreviewProvider {
     static var previews: some View {
-        ThankYouPopup(config: Configuration())
+        ThankYouPopup(config: Configuration(), controllerType: 1)
     }
 }
