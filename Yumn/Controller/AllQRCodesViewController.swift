@@ -133,7 +133,7 @@ extension AllQRCodesViewController: UITableViewDataSource{
         
         print (cell.amount.text!)
         
-        cell.createdAt.text! =
+        cell.createdAt.text! = "تم إنشاؤه في: " +
         sortedValidQRCodes![indexPath.row].dateCreated
         
        

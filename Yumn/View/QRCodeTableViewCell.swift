@@ -27,6 +27,9 @@ class QRCodeTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         print("here")
+        
+        viewQRCodeBtn.layer.cornerRadius = 25
+        
         // Initialization code
     }
 
