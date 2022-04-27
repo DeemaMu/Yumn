@@ -20,9 +20,9 @@ class Alive4thVC: UIViewController {
     @IBOutlet weak var innerPopUp: UIView!
     
     @IBOutlet weak var appointmentsSection: UIView!
-        
-    var hasBeenSet = false
-    
+            
+    @IBOutlet weak var thankYouPopup: UIView!
+    @IBOutlet weak var innerThanks: UIView!
     
     override func viewDidLoad() {
         
@@ -36,6 +36,7 @@ class Alive4thVC: UIViewController {
         self.navigationController?.navigationBar.layoutIfNeeded()
         
         popupView.layer.cornerRadius = 30
+        thankYouPopup.layer.cornerRadius = 30
         
         let configuration = Configuration()
         let controller = UIHostingController(rootView: SelectODAppointment(config: configuration, selectedDate: Date()))
@@ -109,6 +110,21 @@ class Alive4thVC: UIViewController {
         blackBlurredView.isHidden = true
         
         innerPopUp.removeSubviews()
+    }
+    
+    func confirm(){
+        thankYouPopup.superview?.bringSubviewToFront(thankYouPopup)
+        let configuration = Configuration()
+        let controller = UIHostingController(rootView: ThankYouPopup(config: configuration))
+        // injects here, because `configuration` is a reference !!
+        configuration.hostingController = controller
+        addChild(controller)
+        controller.view.frame = thankYouPopup.bounds
+        thankYouPopup.addSubview(controller.view)
+    }
+    
+    func thankYou(){
+        performSegue(withIdentifier: "wrapToHome", sender: nil)
     }
     
 }

@@ -112,6 +112,9 @@ struct ConfirmAppointmentPopUp: View {
                     Button(action: {
                         if(self.updateData()){
                             print("lets goooo")
+                            var x =
+                            config.hostingController?.parent as! Alive4thVC
+                            x.confirm()
                         } else {
                             print("fail")
                         }

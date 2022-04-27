@@ -235,8 +235,7 @@ struct SelectODAppointment: View {
                     .foregroundColor(mainDark)
                 
             }.hLeading()
-        }.padding()
-            .background(bgWhite)
+        }.background(bgWhite)
     }
     
     
