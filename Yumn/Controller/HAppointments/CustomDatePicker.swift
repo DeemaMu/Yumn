@@ -174,6 +174,11 @@ struct CustomDatePicker: View {
                             //                        .overlay(RoundedRectangle(cornerRadius: 10).stroke(mainLight, lineWidth: 1))
                         }.padding(.horizontal, 30)
                             .padding(.vertical, 5)
+                            .onTapGesture {
+                                // Send doc ID and perform segue to details viewController
+                                print("Hey DEEMA b")
+                                controller.showDeema()
+                            }
                         
                         
                     } else {
@@ -241,6 +246,10 @@ struct CustomDatePicker: View {
                             )
                         }.padding(.horizontal, 30)
                             .padding(.vertical, 5)
+                            .onTapGesture {
+                                // Send doc ID and perform segue to details viewController
+                                print("Hey DEEMA o")
+                            }
                         
                         
                     } else {

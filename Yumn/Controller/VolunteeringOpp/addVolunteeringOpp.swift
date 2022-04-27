@@ -37,6 +37,8 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate , UITextViewDele
     @IBOutlet weak var desErrorMSG: UILabel!
     
     // FOR VALIDATION
+    var originalStartDate = ""
+    var originalEndDate = ""
     var startDate = ""
     var endDate = ""
     var startTime = ""
@@ -521,7 +523,9 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate , UITextViewDele
         let picker = DateTimePicker()
         picker.setup()
         picker.didSelectDates = { [ weak self ] (startDate , endDate) in
-            
+
+            Constants.VolunteeringOpp.endDate = Date.reverseDateFormatter(date: endDate)
+
             self?.startDate = Date.dateFormatter(date: startDate)
             self?.endDate = Date.dateFormatter(date: endDate)
             

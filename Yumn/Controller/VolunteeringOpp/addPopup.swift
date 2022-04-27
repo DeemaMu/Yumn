@@ -62,6 +62,7 @@ class addPopup: UIViewController{
                 db.collection("volunteeringOpp").document().setData([
                     "title":Constants.VolunteeringOpp.title,
                     "date": Constants.VolunteeringOpp.date,
+                    "endDate": Constants.VolunteeringOpp.endDate,
                     "workingHours": Constants.VolunteeringOpp.workingHours,
                     "location": Constants.VolunteeringOpp.location,
                     "description": Constants.VolunteeringOpp.description,

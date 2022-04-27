@@ -89,6 +89,7 @@ struct Constants {
     struct VolunteeringOpp {
          static var title = ""
          static var date = ""
+        static var endDate = ""
          static var workingHours = ""
          static var location  = ""
          static var gender = ""

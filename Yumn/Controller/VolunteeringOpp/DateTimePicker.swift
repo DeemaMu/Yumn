@@ -188,7 +188,13 @@ extension Date {
     
         return String(format: "%@", dateFormatter.string(from: date))
     }
+    static func reverseDateFormatter(date: Date) -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy/MM/dd"
     
+        return String(format: "%@", dateFormatter.string(from: date))
+    }
     static func buildTimeRangeString(startTime: Date, endTime: Date) -> String {
 
       let startTimeFormatter = DateFormatter()

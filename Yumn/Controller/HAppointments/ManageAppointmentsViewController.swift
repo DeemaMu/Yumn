@@ -140,6 +140,10 @@ class ManageAppointmentsViewController: UIViewController {
         popUp.isHidden = false
     }
 
+    func showDeema(){
+        print("Deeeee")
+        self.performSegue(withIdentifier: "deema", sender: self)
+    }
     
     func hideOverlay(){
         blurredView.isHidden = true
