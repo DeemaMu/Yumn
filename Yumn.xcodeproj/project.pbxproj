@@ -12,6 +12,7 @@
 		8D123A76280E08D200E1828F /* QRCodeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D123A75280E08D200E1828F /* QRCodeTableViewCell.xib */; };
 		8D123A78280E0BBD00E1828F /* QRCodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D123A77280E0BBD00E1828F /* QRCodeTableViewCell.swift */; };
 		8D123A7A280E140300E1828F /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D123A79280E140300E1828F /* QRCode.swift */; };
+		8D123A7C2818B5C100E1828F /* QRController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D123A7B2818B5C000E1828F /* QRController.swift */; };
 		8D5FD4A827D3A321008A266F /* Al%20Majeed%20Quranic%20Font_shiped.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D5FD4A727D3A321008A266F /* Al%20Majeed%20Quranic%20Font_shiped.ttf */; };
 		8D7D721C27E131280088AC98 /* BloodDonationInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7D721B27E131280088AC98 /* BloodDonationInfoViewController.swift */; };
 		8D7D721E27E1E2240088AC98 /* BloodDonationInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7D721D27E1E2240088AC98 /* BloodDonationInformationViewController.swift */; };
@@ -69,6 +70,7 @@
 		8D123A75280E08D200E1828F /* QRCodeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QRCodeTableViewCell.xib; sourceTree = "<group>"; };
 		8D123A77280E0BBD00E1828F /* QRCodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeTableViewCell.swift; sourceTree = "<group>"; };
 		8D123A79280E140300E1828F /* QRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCode.swift; sourceTree = "<group>"; };
+		8D123A7B2818B5C000E1828F /* QRController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRController.swift; sourceTree = "<group>"; };
 		8D5FD4A727D3A321008A266F /* Al%20Majeed%20Quranic%20Font_shiped.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Al%20Majeed%20Quranic%20Font_shiped.ttf"; sourceTree = "<group>"; };
 		8D7D721B27E131280088AC98 /* BloodDonationInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationInfoViewController.swift; sourceTree = "<group>"; };
 		8D7D721D27E1E2240088AC98 /* BloodDonationInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationInformationViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			children = (
 				B9DA61DB27C1100B00359487 /* Location.swift */,
 				B952BB1127C641B80049D81B /* HospitalsController.swift */,
+				8D123A7B2818B5C000E1828F /* QRController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				8D7D721C27E131280088AC98 /* BloodDonationInfoViewController.swift in Sources */,
 				B9DA61DC27C1100B00359487 /* Location.swift in Sources */,
 				8D7F152227D25DD200E1EB1A /* GIfCode.swift in Sources */,
+				8D123A7C2818B5C100E1828F /* QRController.swift in Sources */,
 				8D7F153A27D2C5BE00E1EB1A /* ContinueViewController.swift in Sources */,
 				B952BB1227C641B80049D81B /* HospitalsController.swift in Sources */,
 				B930F86827B85D5F00E70860 /* RoundedView.swift in Sources */,
