@@ -38,6 +38,10 @@ class AfterDeathODSecondController: UIViewController {
     
     var selectedOrgans: [String:Bool]?
     
+    var donor: Donor?
+    
+    var organs: [String] = []
+    
     var questions = [false, false,false, false, false]
     
     override func viewDidLoad() {
@@ -103,16 +107,17 @@ class AfterDeathODSecondController: UIViewController {
         nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(named: "mainLight")!, NSAttributedString.Key.font: customFont]
     }
     
-    func showConfirmationMessage(selected: [String:Bool]){
+    func showConfirmationMessage(selected: [String:Bool], donor: Donor){
         blackBlurredView.superview?.bringSubviewToFront(blackBlurredView)
         popupView.superview?.bringSubviewToFront(popupView)
         popupView.isHidden = false
         blackBlurredView.isHidden = false
         selectedOrgans = selected
+        self.donor = donor
     }
     
     
-    @IBAction func cancel(_ sender: Any) {
+    @IBAction func cancel(_ sender: UIButton) {
         blackBlurredView.superview?.sendSubviewToBack(blackBlurredView)
         popupView.superview?.sendSubviewToBack(popupView)
         popupView.isHidden = true
@@ -124,6 +129,13 @@ class AfterDeathODSecondController: UIViewController {
         thankYouPopup.superview?.bringSubviewToFront(thankYouPopup)
         popupView.isHidden = true
         thankYouPopup.isHidden = false
+        
+        for organ in selectedOrgans! {
+            if(organ.value){
+                self.organs.append(organ.key)
+            }
+        }
+        
         if(saveDate()){
             let configuration = Configuration()
             let controller = UIHostingController(rootView: ThankYouPopup(config: configuration, controllerType: 2))
@@ -136,30 +148,22 @@ class AfterDeathODSecondController: UIViewController {
     }
     
     func saveDate() -> Bool {
+        var added = true
+        let newDoc = db.collection("afterDeathDonors").document(userID)
         
-        let newDoc = db.collection("afterDeathDonors").document()
-        
-//        newDoc.setData(["type": apt.type,"hospital": apt.hospital, "start_time": apt.startTime,
-//                        "end_time": apt.endTime, "date": apt.aptDate, "appointment_duration": 30
-//                        , "donors": apt.donors ]) { error in
-//
-//            if (error == nil){
-//
-//            } else {
-//                print(error!)
-//                self.added = false
-//            }
-//        }
-        return true
+        newDoc.setData(["bloodType": self.donor!.bloodType, "city": self.donor!.city, "name": self.donor!.name, "nationalID": self.donor!.nationalID, "organs": self.donor!.organs,
+                        "uid": userID]) { error in
+
+            if (error == nil){
+                print("added")
+            } else {
+                print(error!)
+                added = false
+            }
+        }
+        return added
     }
-    
-    func getUser() -> Donor {
-        var donor = Donor()
         
-        
-        return donor
-    }
-    
     
     func thankYou(){
         performSegue(withIdentifier: "wrapToHome", sender: nil)

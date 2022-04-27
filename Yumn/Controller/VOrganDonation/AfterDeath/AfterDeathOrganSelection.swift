@@ -15,6 +15,11 @@ struct AfterDeathOrganSelection: View {
     
     let config: Configuration
     
+    let userID = Auth.auth().currentUser!.uid
+    @State var donor = Donor()
+    let db = Firestore.firestore()
+
+    
     let mainDark = Color(UIColor.init(named: "mainDark")!)
     let mainLight = Color(UIColor.init(named: "mainLight")!)
     let lightGray = Color(UIColor.lightGray)
@@ -33,6 +38,9 @@ struct AfterDeathOrganSelection: View {
     
     
     let organs: [String] = ["الكلى", "الكبد", "الرئتين", "البنكرياس", "القلب", "الامعاء", "العظام", "نخاع العظم", "الجلد", "القرنيات"]
+    
+    @State var unwrappedOrgans: [String] = []
+    
     var selected = [
         "الكلى": false,
         "الكبد":false,
@@ -89,10 +97,12 @@ struct AfterDeathOrganSelection: View {
             
             Button(action: {
                 if(self.checkSelection()){
+                    self.changeOrgans()
                     showError = false
                     let x =
                     config.hostingController?.parent as! AfterDeathODSecondController
-                    x.showConfirmationMessage(selected: self.organsVM.selected)
+                    x.showConfirmationMessage(selected: self.organsVM.selected, donor: self.donor)
+                    
                 } else {
                     self.showError = true
                 }
@@ -110,6 +120,8 @@ struct AfterDeathOrganSelection: View {
                     .fill(mainDark)
             )
             .frame(width: 230, height: 59, alignment: .center)
+        }.onAppear(){
+            self.getUser()
         }
         
     }
@@ -175,6 +187,46 @@ struct AfterDeathOrganSelection: View {
         }
         
     }
+    
+    func getUser() {
+        
+        for organ in organsVM.selected {
+            if(organ.value){
+                self.unwrappedOrgans.append(organ.key)
+            }
+        }
+        
+        db.collection("volunteer").document(userID).addSnapshotListener { (querySnapshot, error) in
+            
+            self.donor = querySnapshot.map { (queryDocumentSnapshot) -> Donor in
+                print("documents")
+                let data = queryDocumentSnapshot.data()
+                let fname = data!["firstName"] as! String
+                let lname = data!["lastName"] as! String
+                let name = fname + " " + lname
+                let city = data!["city"] as! String
+                let bloodType = data!["bloodType"] as! String
+                let nationalID = data!["nationalID"] as! String
+                return Donor(name: name, city: city, bloodType: bloodType, organs: self.organs, nationalID: nationalID)
+                
+            } as! Donor
+            
+        }
+    }
+
+    func changeOrgans() {
+        
+        unwrappedOrgans.removeAll()
+        
+        for organ in organsVM.selected {
+            if(organ.value){
+                self.unwrappedOrgans.append(organ.key)
+            }
+        }
+        
+        self.donor.organs = unwrappedOrgans
+    }
+
     
     
 }
