@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Foundation
 
 
 class QRCodeTableViewCell: UITableViewCell {
@@ -42,7 +43,15 @@ class QRCodeTableViewCell: UITableViewCell {
     
     
     @IBAction func onPressedViewQr(_ sender: Any) {
+        
+        
+        Constants.Globals.currentQRID = id
     }
+    
+    
+    
+    
+    
     
     
 }

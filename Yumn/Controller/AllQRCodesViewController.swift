@@ -151,7 +151,19 @@ extension AllQRCodesViewController: UITableViewDataSource{
 }
     
     
-    
+    func transitionToQr(){
+        
+        
+        
+       let QRViewController =  storyboard?.instantiateViewController(identifier: Constants.Storyboard.qrViewController) as? QRCodeViewController
+        
+        view.window?.rootViewController = QRViewController
+        view.window?.makeKeyAndVisible()
+        
+        
+
+    }
+
   
 
 }
