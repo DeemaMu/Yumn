@@ -18,6 +18,9 @@
 		8D123A842818C6D300E1828F /* TCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D123A832818C6D300E1828F /* TCell.swift */; };
 		8D123A862818C7F400E1828F /* T.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D123A852818C7F400E1828F /* T.swift */; };
 		8D123A882818C8FB00E1828F /* TController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D123A872818C8FB00E1828F /* TController.swift */; };
+		8D123A8A281974B500E1828F /* dateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D123A89281974B400E1828F /* dateCell.xib */; };
+		8D123A8C2819765100E1828F /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D123A8B2819765100E1828F /* DateCell.swift */; };
+		8D123A8E281979BE00E1828F /* DateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D123A8D281979BE00E1828F /* DateController.swift */; };
 		8D5FD4A827D3A321008A266F /* Al%20Majeed%20Quranic%20Font_shiped.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D5FD4A727D3A321008A266F /* Al%20Majeed%20Quranic%20Font_shiped.ttf */; };
 		8D7D721C27E131280088AC98 /* BloodDonationInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7D721B27E131280088AC98 /* BloodDonationInfoViewController.swift */; };
 		8D7D721E27E1E2240088AC98 /* BloodDonationInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7D721D27E1E2240088AC98 /* BloodDonationInformationViewController.swift */; };
@@ -81,6 +84,9 @@
 		8D123A832818C6D300E1828F /* TCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCell.swift; sourceTree = "<group>"; };
 		8D123A852818C7F400E1828F /* T.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = T.swift; sourceTree = "<group>"; };
 		8D123A872818C8FB00E1828F /* TController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TController.swift; sourceTree = "<group>"; };
+		8D123A89281974B400E1828F /* dateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = dateCell.xib; sourceTree = "<group>"; };
+		8D123A8B2819765100E1828F /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
+		8D123A8D281979BE00E1828F /* DateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateController.swift; sourceTree = "<group>"; };
 		8D5FD4A727D3A321008A266F /* Al%20Majeed%20Quranic%20Font_shiped.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Al%20Majeed%20Quranic%20Font_shiped.ttf"; sourceTree = "<group>"; };
 		8D7D721B27E131280088AC98 /* BloodDonationInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationInfoViewController.swift; sourceTree = "<group>"; };
 		8D7D721D27E1E2240088AC98 /* BloodDonationInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationInformationViewController.swift; sourceTree = "<group>"; };
@@ -221,6 +227,7 @@
 				B952BB1127C641B80049D81B /* HospitalsController.swift */,
 				8D123A7B2818B5C000E1828F /* QRController.swift */,
 				8D123A872818C8FB00E1828F /* TController.swift */,
+				8D123A8D281979BE00E1828F /* DateController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -236,6 +243,8 @@
 				8D123A77280E0BBD00E1828F /* QRCodeTableViewCell.swift */,
 				8D123A7F2818C66000E1828F /* TCell.xib */,
 				8D123A832818C6D300E1828F /* TCell.swift */,
+				8D123A89281974B400E1828F /* dateCell.xib */,
+				8D123A8B2819765100E1828F /* DateCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -367,6 +376,7 @@
 				8DA7D52A2804C706007F6416 /* greySquare.gif in Resources */,
 				95062D9827CADC0500D63911 /* Tajawal-Regular.ttf in Resources */,
 				95785062279E1918004F3D8F /* Assets.xcassets in Resources */,
+				8D123A8A281974B500E1828F /* dateCell.xib in Resources */,
 				8DA7D5302804D385007F6416 /* grey.gif in Resources */,
 				8D123A802818C66000E1828F /* TCell.xib in Resources */,
 				95785060279E1917004F3D8F /* Main.storyboard in Resources */,
@@ -458,7 +468,9 @@
 				8D123A7C2818B5C100E1828F /* QRController.swift in Sources */,
 				8D7F153A27D2C5BE00E1EB1A /* ContinueViewController.swift in Sources */,
 				B952BB1227C641B80049D81B /* HospitalsController.swift in Sources */,
+				8D123A8C2819765100E1828F /* DateCell.swift in Sources */,
 				8D123A822818C68B00E1828F /* TViewController.swift in Sources */,
+				8D123A8E281979BE00E1828F /* DateController.swift in Sources */,
 				B930F86827B85D5F00E70860 /* RoundedView.swift in Sources */,
 				8DC80B7827F9BDA400A1DF6E /* BloodDonationAppointmentViewController.swift in Sources */,
 				8D7F152D27D299F300E1EB1A /* HomeViewController.swift in Sources */,

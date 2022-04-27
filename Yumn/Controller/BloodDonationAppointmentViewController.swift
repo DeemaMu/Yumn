@@ -6,20 +6,29 @@
 //
 
 import UIKit
-import SwiftUI
 
 
 class BloodDonationAppointmentViewController: UIViewController {
-
+    @IBOutlet weak var dateTableView: UITableView!
+    
+  
     @IBOutlet weak var roundView: UIView!
     
     override func viewDidLoad() {
         
-        //roundView.layer.cornerRadius = 35
+        roundView.layer.cornerRadius = 35
         
+        
+        dateTableView.transform = CGAffineTransform (rotationAngle: 1.5707963)
+        
+        
+        dateTableView.dataSource = self
+     
+        
+        dateTableView.register(UINib(nibName: "dateCell", bundle: nil), forCellReuseIdentifier: "DateCell")
+
         super.viewDidLoad()
-        let vc = UIHostingController (rootView: BloodDonationAppointment())
-        present(vc, animated: false)
+        
 
         // Do any additional setup after loading the view.
     }
@@ -37,27 +46,60 @@ class BloodDonationAppointmentViewController: UIViewController {
 
 }
 
-struct BloodDonationAppointment: View {
-    var body: some View {
-        ScrollView {
-            HStack{
-                ForEach(0..<30) { index in
-                    RoundedRectangle(cornerRadius: 25)
-                        .fill(Color.white)
-                        .frame(width: 200, height: 150)
-                        .shadow(radius: 10)
-                        .padding()
-                
-            }
-        }
+
+
+
+
+
+
+extension BloodDonationAppointmentViewController: UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+   /* func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+
         
-        }}
+        return 300.3
+    }*/
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+
+        cell.transform = CGAffineTransform (rotationAngle: -90)
+
+      }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 180.0//Choose your custom row height
     }
 
-struct BloodDonationAppointment_Previews: PreviewProvider {
-    static var previews: some View {
-        BloodAppointmentView()
-    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DateCell", for: indexPath) as! DateCell
+        
+        
+        
+        
+        
+        
+        
+
+        
+       
+        
+      
+       // print ("celllllllllll")
+       // print (cell)
+        
+        
+        return cell
+        
+
+    
 }
+    
+    
+   
 
-
+}
