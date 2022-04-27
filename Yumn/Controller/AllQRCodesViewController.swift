@@ -136,6 +136,13 @@ extension AllQRCodesViewController: UITableViewDataSource{
         cell.createdAt.text! = "تم إنشاؤه في: " +
         sortedValidQRCodes![indexPath.row].dateCreated
         
+        cell.viewQRCodeBtn.addTarget(self, action:#selector(transitionToQr(sender:)), for: .touchUpInside)
+        
+        
+        
+        
+
+        
        
         
         cell.id = sortedValidQRCodes![indexPath.row].id
@@ -151,7 +158,7 @@ extension AllQRCodesViewController: UITableViewDataSource{
 }
     
     
-    func transitionToQr(){
+    @objc func transitionToQr(sender: Any){
         
         
         

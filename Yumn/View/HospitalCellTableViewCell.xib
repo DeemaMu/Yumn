@@ -24,8 +24,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="355" height="159"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bMi-59-uza" customClass="RoundedShadowedView" customModule="Yumn" customModuleProvider="target">
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bMi-59-uza" customClass="RoundedShadowedView" customModule="Yumn" customModuleProvider="target">
                         <rect key="frame" x="10" y="11" width="334" height="131"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="مركز التبرع بالدم - مستشفى دلة" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" showsExpansionTextWhenTruncated="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z77-Jh-ea4">
                                 <rect key="frame" x="35" y="20" width="287" height="38"/>
@@ -58,7 +59,7 @@
                                     <attributedString key="attributedTitle">
                                         <fragment content="حجز موعد">
                                             <attributes>
-                                                <font key="NSFont" metaFont="system"/>
+                                                <font key="NSFont" size="13" name="Tajawal-Regular"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
                                         </fragment>
@@ -75,10 +76,6 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="131" id="S41-G7-s5v"/>
-                            <constraint firstAttribute="width" constant="334" id="YMq-3X-Qm7"/>
-                        </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusV">
                                 <integer key="value" value="20"/>
