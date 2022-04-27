@@ -92,7 +92,7 @@ struct AfterDeathOrganSelection: View {
                     showError = false
                     let x =
                     config.hostingController?.parent as! AfterDeathODSecondController
-                    x.showConfirmationMessage()
+                    x.showConfirmationMessage(selected: self.organsVM.selected)
                 } else {
                     self.showError = true
                 }

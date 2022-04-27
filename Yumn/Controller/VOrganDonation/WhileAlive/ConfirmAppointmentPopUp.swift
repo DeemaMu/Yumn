@@ -112,12 +112,23 @@ struct ConfirmAppointmentPopUp: View {
                     
                     Button(action: {
                         if(self.updateData()){
-                            print("lets goooo")
-                            var x =
-                            config.hostingController?.parent as! Alive4thVC
-                            x.confirm()
-                        } else {
-                            print("fail")
+                            if(self.addToArray()){
+                                if(self.addToUser()){
+                                print("lets goooo")
+                                var x =
+                                config.hostingController?.parent as! Alive4thVC
+                                    x.confirm()
+                                    
+                                }  else {
+                                    print("fail22222")
+                                }
+                            }
+                            else {
+                                print("fail1111")
+                            }
+                        }
+                        else {
+                            print("fail3333")
                         }
                     }
                     ) {
@@ -150,6 +161,24 @@ struct ConfirmAppointmentPopUp: View {
         db.collection("appointments").document(appointment.docID).collection("appointments").document(exact.docID).setData(["booked":true, "donor": userID], merge: true) { error in
             
             if error == nil {
+                appointment.bookedAppointments?.append(exact.docID)
+                success = true
+            } else {
+                print("\(String(describing: error))")
+                success = false
+            }
+        }
+        
+        return success
+    }
+    
+    
+    func addToArray() -> Bool {
+        var success = true
+        
+        db.collection("appointments").document(appointment.docID).setData(["bookedAppointments":appointment.bookedAppointments!], merge: true) { error in
+            
+            if error == nil {
                 success = true
             } else {
                 success = false
@@ -157,6 +186,24 @@ struct ConfirmAppointmentPopUp: View {
         }
         
         return success
+    }
+    
+    func addToUser() -> Bool {
+        var added = true
+        let newDoc = db.collection("volunteer").document(userID).collection("organAppointments").document()
+        
+        newDoc.setData(["type": appointment.type,"hospital": appointment.hospital, "start_time": exact.startTime,
+                        "end_time": exact.endTime, "date": appointment.aptDate, "appointment_duration": 60
+                        , "docID": exact.docID, "mainDocId": appointment.docID]) { error in
+            
+            if (error == nil){
+                added = true
+            } else {
+                print(error!)
+                added = false
+            }
+        }
+        return added
     }
     
     func convertToArabic(date: Date) -> String {
@@ -179,7 +226,7 @@ struct ConfirmAppointmentPopUp: View {
     }
     
     func getHospitalName() -> String {
-//        var name = ""
+        //        var name = ""
         print(self.appointment.hospital)
         let doc = db.collection("hospitalsInformation").document(appointment.hospital)
         

@@ -247,7 +247,7 @@ class ODHospitals: ObservableObject {
                 
                 let stamp2 = data["end_time"] as? Timestamp
                 let endTime = stamp2!.dateValue()
-                
+                                
                 return DAppointment(type: type, startTime: startTime, endTime: endTime, donor: donor, hName: hName, confirmed: confirmed, booked: booked)
             }
         }

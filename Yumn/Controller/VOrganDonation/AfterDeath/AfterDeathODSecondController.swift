@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 import SwiftUI
+import Firebase
+import FirebaseAuth
 
 class AfterDeathODSecondController: UIViewController {
     
@@ -15,7 +17,7 @@ class AfterDeathODSecondController: UIViewController {
     @IBOutlet weak var innerThanku: UIView!
     
     @IBOutlet weak var blackBlurredView: UIView!
-
+    
     @IBOutlet weak var popupView: UIView!
     
     @IBOutlet weak var popupTitle: UILabel!
@@ -27,8 +29,14 @@ class AfterDeathODSecondController: UIViewController {
     @IBOutlet weak var saveBtn: UIButton!
     
     @IBOutlet weak var selectionHolder: UIView!
-
+    
     @IBOutlet weak var thankYouPopup: UIView!
+    
+    let userID = Auth.auth().currentUser!.uid
+    let db = Firestore.firestore()
+
+    
+    var selectedOrgans: [String:Bool]?
     
     var questions = [false, false,false, false, false]
     
@@ -45,7 +53,7 @@ class AfterDeathODSecondController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.layoutIfNeeded()
         
-//        contBtn.layer.cornerRadius = 25
+        //        contBtn.layer.cornerRadius = 25
         okBtn.layer.cornerRadius = 15
         saveBtn.layer.cornerRadius = 15
         popupView.layer.cornerRadius = 30
@@ -65,7 +73,7 @@ class AfterDeathODSecondController: UIViewController {
         //        self.navigationController?.navigationBar.tintColor = UIColor.white
         super.viewWillAppear(animated)
         
-        var nav = self.navigationController?.navigationBar
+        let nav = self.navigationController?.navigationBar
         guard let customFont = UIFont(name: "Tajawal-Bold", size: 25) else {
             fatalError("""
                 Failed to load the "Tajawal" font.
@@ -82,7 +90,7 @@ class AfterDeathODSecondController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        var nav = self.navigationController?.navigationBar
+        let nav = self.navigationController?.navigationBar
         guard let customFont = UIFont(name: "Tajawal-Bold", size: 25) else {
             fatalError("""
                 Failed to load the "Tajawal" font.
@@ -95,11 +103,12 @@ class AfterDeathODSecondController: UIViewController {
         nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(named: "mainLight")!, NSAttributedString.Key.font: customFont]
     }
     
-    func showConfirmationMessage(){
+    func showConfirmationMessage(selected: [String:Bool]){
         blackBlurredView.superview?.bringSubviewToFront(blackBlurredView)
         popupView.superview?.bringSubviewToFront(popupView)
         popupView.isHidden = false
         blackBlurredView.isHidden = false
+        selectedOrgans = selected
     }
     
     
@@ -115,15 +124,42 @@ class AfterDeathODSecondController: UIViewController {
         thankYouPopup.superview?.bringSubviewToFront(thankYouPopup)
         popupView.isHidden = true
         thankYouPopup.isHidden = false
-        let configuration = Configuration()
-        let controller = UIHostingController(rootView: ThankYouPopup(config: configuration, controllerType: 2))
-        // injects here, because `configuration` is a reference !!
-        configuration.hostingController = controller
-        addChild(controller)
-        controller.view.frame = innerThanku.bounds
-        innerThanku.addSubview(controller.view)
+        if(saveDate()){
+            let configuration = Configuration()
+            let controller = UIHostingController(rootView: ThankYouPopup(config: configuration, controllerType: 2))
+            // injects here, because `configuration` is a reference !!
+            configuration.hostingController = controller
+            addChild(controller)
+            controller.view.frame = innerThanku.bounds
+            innerThanku.addSubview(controller.view)
+        }
     }
-
+    
+    func saveDate() -> Bool {
+        
+        let newDoc = db.collection("afterDeathDonors").document()
+        
+//        newDoc.setData(["type": apt.type,"hospital": apt.hospital, "start_time": apt.startTime,
+//                        "end_time": apt.endTime, "date": apt.aptDate, "appointment_duration": 30
+//                        , "donors": apt.donors ]) { error in
+//
+//            if (error == nil){
+//
+//            } else {
+//                print(error!)
+//                self.added = false
+//            }
+//        }
+        return true
+    }
+    
+    func getUser() -> Donor {
+        var donor = Donor()
+        
+        
+        return donor
+    }
+    
     
     func thankYou(){
         performSegue(withIdentifier: "wrapToHome", sender: nil)

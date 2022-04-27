@@ -49,6 +49,7 @@ class Appointment {
     var aptDate: Date = Date()
     var hospital: String = ""
     var aptDuration: Double = 0
+    var bookedAppointments: [String]?
 }
 
 class BloodAppointment: Appointment {
@@ -76,11 +77,20 @@ class AppointmentVM: ObservableObject {
     @Published var appointmentsWithin = [DAppointment]()
     //    var thereIS = false
     
-    init(){
-        //        self.fetchOrganAppointments()
-        self.fetchOrganAppointments()
-        self.filteringAppointments()
+    init() {
+                self.fetchOrganAppointments()
     }
+    
+//    @available(iOS 15.0.0, *)
+//    func setup() async {
+//        do {
+//            let apts = try await self.fetchOrganAppointments()
+//            self.filteredAppointments = self.filteringAppointments()
+//            print("Fetched \(apts.count) images.")
+//        } catch {
+//            print("Fetching images failed with error \(error)")
+//        }
+//    }
     
     let db = Firestore.firestore()
     
@@ -190,7 +200,7 @@ class AppointmentVM: ObservableObject {
     }
     
     func fetchAppointmentsData2(docID: String) -> [DAppointment] {
-        db.collection("appointments").document(docID).collection("appointments").whereField("booked", in: [false]).addSnapshotListener { (querySnapshot, error) in
+        db.collection("appointments").document(docID).collection("appointments").addSnapshotListener { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
                 print("no documents")
                 return
@@ -292,6 +302,9 @@ class AppointmentVM: ObservableObject {
     
     
     func fetchOrganAppointments() {
+        
+        self.organAppointments.removeAll()
+        
         db.collection("appointments").whereField("type", in: ["organ"]).addSnapshotListener { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
                 print("no documents")
@@ -317,12 +330,14 @@ class AppointmentVM: ObservableObject {
                 
                 let hospital = data["hospital"] as? String ?? ""
                 let organ = data["organ"] as? String ?? ""
+                let bookedApts = data["bookedAppointments"] as! [String]
                 print("\(organ)")
                 let aptDuration = 60.0
                 
                 let apt = OrganAppointment(type: type, startTime: startTime, endTime: endTime,
                                            aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, organ: organ)
                 apt.docID = queryDocumentSnapshot.documentID
+                apt.bookedAppointments = bookedApts
                 apt.appointments?.append(appointments[0])
                 
                 //                if(!apt.appointments!.isEmpty){
@@ -338,7 +353,7 @@ class AppointmentVM: ObservableObject {
             }
             
         }
-        
+            
     }
     
     //    var storedAppointments: [OrganAppointment] =
@@ -368,10 +383,10 @@ class AppointmentVM: ObservableObject {
                     return calender.isDate($0.aptDate, inSameDayAs: self.currentDay)
                 }
                 
-                if(self.organAppointments.first?.appointments != nil){
-                    filtered = filtered.filter {
-                        return !(($0.appointments?.first?.booked)!)
-                    }}
+//                if(self.organAppointments.first?.appointments != nil){
+//                    filtered = filtered.filter {
+//                        return !(($0.appointments?.first?.booked)!)
+//                    }}
                 
                 DispatchQueue.main.async {
                     withAnimation {
