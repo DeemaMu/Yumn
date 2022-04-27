@@ -6,18 +6,20 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct CustomDatePicker: View {
     
-
+    @ObservedObject var aptVM = AppointmentVM()
+    
     @State var showPopup: Bool = false
     @Binding var currentDate: Date
     
-//    var dispatch : DispatchFunction
+    
     
     @StateObject var overalyControl = OverlayControl()
     @Binding var controller: ManageAppointmentsViewController
-
+    
     // month update on button clicks
     @State var currentMonth: Int = 0
     
@@ -25,10 +27,12 @@ struct CustomDatePicker: View {
     let mainLight = Color(UIColor.init(named: "mainLight")!)
     let lightGray = Color(UIColor.lightGray)
     
+    
     var body: some View {
         
         
         if #available(iOS 15.0, *) {
+            
             VStack(spacing: 10){
                 
                 //days
@@ -96,9 +100,10 @@ struct CustomDatePicker: View {
                         if(!checkAppointmentsForDay()){
                             
                             Button(action: {
+                                Constants.selected.selectedDate = self.currentDate
                                 controller.showOverlay(date: currentDate)
-//                                showPopup.toggle()
-//                                overalyControl.showOverlay.toggle()
+                                //                                showPopup.toggle()
+                                //                                overalyControl.showOverlay.toggle()
                             }) {
                                 Text("+").foregroundColor(.white).font(.title)
                                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 4, trailing: 11))
@@ -115,8 +120,8 @@ struct CustomDatePicker: View {
                             if #available(iOS 15.0, *) {
                                 Button(action: {
                                     print("therse already a date")
-//                                    dispatch(.showOverlay(value: true))
-//                                    overalyControl.showOverlay.toggle()
+                                    //                                    dispatch(.showOverlay(value: true))
+                                    //                                    overalyControl.showOverlay.toggle()
                                     
                                 }) {
                                     Text("+").foregroundColor(.white).font(.title)
@@ -145,8 +150,8 @@ struct CustomDatePicker: View {
                         
                     }
                     
-                    if let appointment = appointments.first(where: { apt in
-                        return ( isSameDayBlood(date1: apt.aptDate, date2: currentDate, type: apt.type) && (apt.hospital == "mamlakah"))
+                    if let appointment = aptVM.appointments.first(where: { apt in
+                        return ( isSameDayBlood(date1: apt.aptDate, date2: currentDate, type: apt.type) && (apt.hospital == Constants.UserInfo.userID))
                         
                     }) {
                         
@@ -166,19 +171,14 @@ struct CustomDatePicker: View {
                             .padding(.vertical, 10)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .background(
-                                Color("mainLight")
-                                    .opacity(0.8)
+                                Color("mainDark")
+//                                    .opacity(0.8)
                                 //                                .opacity(0.05)
                                     .cornerRadius(10)
                             )
                             //                        .overlay(RoundedRectangle(cornerRadius: 10).stroke(mainLight, lineWidth: 1))
                         }.padding(.horizontal, 30)
                             .padding(.vertical, 5)
-                            .onTapGesture {
-                                // Send doc ID and perform segue to details viewController
-                                print("Hey DEEMA b")
-                                controller.showDeema()
-                            }
                         
                         
                     } else {
@@ -198,6 +198,7 @@ struct CustomDatePicker: View {
                     
                     HStack(){
                         Button(action: {
+                            Constants.selected.selectedDate = self.currentDate
                             controller.showOverlayOrgan(date: currentDate)
                             print("button tapped")
                         }) {
@@ -219,41 +220,47 @@ struct CustomDatePicker: View {
                         
                     }
                     
+//                    VStack(){
+//                        for apt in aptVM.appointments {
+//                            if(isSameDayOrgan(date1: apt.aptDate, date2: currentDate, type: apt.type)){
+//
+//                            }
+//                        }
+//                    }
                     
                     
-                    if let appointment = appointments.first(where: { apt in
+                    let appointments = aptVM.appointments.filter { apt in
                         return isSameDayOrgan(date1: apt.aptDate, date2: currentDate, type: apt.type)
+                    }
+                    
+                    if(!appointments.isEmpty)
+                    {
                         
-                    }) {
-                        
-                        VStack(){
-                            
-                            
-                            VStack(alignment: .leading, spacing: 10){
-                                Text("\(appointment.startTime.getFormattedDate(format: "HH:mm")) - \(appointment.endTime.getFormattedDate(format: "HH:mm"))")
-                                    .font(Font.custom("Tajawal", size: 20))
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.white)
-                                    .frame(maxWidth: .infinity)
-                                
-                            }
-                            .padding(.vertical, 10)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .background(
-                                Color("mainLight")
-                                    .opacity(0.8)
-                                    .cornerRadius(10)
-                            )
-                        }.padding(.horizontal, 30)
-                            .padding(.vertical, 5)
-                            .onTapGesture {
-                                // Send doc ID and perform segue to details viewController
-                                print("Hey DEEMA o")
-                            }
-                        
-                        
+                        ForEach(0..<appointments.count, id: \.self) { index in
+                            VStack(){
+
+
+                                VStack(alignment: .leading, spacing: 10){
+                                    Text("\(appointments[index].startTime.getFormattedDate(format: "HH:mm")) - \(appointments[index].endTime.getFormattedDate(format: "HH:mm"))")
+                                        .font(Font.custom("Tajawal", size: 20))
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.white)
+                                        .frame(maxWidth: .infinity)
+
+                                }
+                                .padding(.vertical, 10)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .background(
+                                    Color("mainDark")
+//                                        .opacity(0.8)
+                                        .cornerRadius(10)
+                                )
+                            }.padding(.horizontal, 30)
+                                .padding(.vertical, 5)
+                        }
+
                     } else {
-                        
+
                         Text("لايوجد مواعيد")
                             .font(Font.custom("Tajawal", size: 15))
                             .frame(maxWidth: .infinity)
@@ -261,6 +268,7 @@ struct CustomDatePicker: View {
                             .opacity(50)
                             .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
                     }
+                                        
                     
                     
                 }.padding()
@@ -272,10 +280,13 @@ struct CustomDatePicker: View {
             }
             .popupNavigationView(show: $showPopup){
                 Text("hi")
+            }.onAppear(){
+                self.aptVM.fetchData()
             }
         } else {
         }
     }
+    
     
     @ViewBuilder
     func CardView(value: DateValue)-> some View{
@@ -283,8 +294,8 @@ struct CustomDatePicker: View {
             if value.day != -1 {
                 //                Text("\(value.day)").font(.title3.bold())
                 
-                if let appointment = appointments.first(where: { apt in
-                    return ( isSameDay(date1: apt.aptDate, date2: value.date) && (apt.hospital == "mamlakah") )
+                if let appointment = aptVM.appointments.first(where: { apt in
+                    return ( isSameDay(date1: apt.aptDate, date2: value.date) && (apt.hospital == Constants.UserInfo.userID) )
                     
                 }) {
                     
@@ -296,7 +307,8 @@ struct CustomDatePicker: View {
                         .fill(isSameDay(date1: appointment.aptDate, date2: currentDate) ? .white : mainDark)
                         .frame(width: 8, height: 8)
                     
-                } else {
+                }
+                else {
                     
                     Text("\(value.day)").font(Font.custom("Tajawal", size: 20))
                         .foregroundColor(isSameDay(date1: value.date, date2: currentDate) ? .white : .black)
@@ -376,11 +388,13 @@ struct CustomDatePicker: View {
     
     func checkAppointmentsForDay()-> Bool {
         var thereIs = false
-        for index in 0...(appointments.count - 1) {
-            let apt = appointments[index]
-            
-            if (isSameDay(date1: apt.aptDate, date2: currentDate) && apt.type == "blood" && apt.hospital == "mamlakah") {
-                thereIs = true
+        if (!aptVM.appointments.isEmpty) {
+            for index in 0...(aptVM.appointments.count - 1) {
+                let apt = aptVM.appointments[index]
+                
+                if (isSameDay(date1: apt.aptDate, date2: currentDate) && apt.type == "blood" && apt.hospital == Constants.UserInfo.userID) {
+                    thereIs = true
+                }
             }
         }
         return thereIs

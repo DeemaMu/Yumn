@@ -36,6 +36,10 @@ struct Constants {
          static var firstNameFromdb = ""
          static var isLoggingOut = false
     }
+    
+    struct UserInfo {
+         static var userID = ""
+    }
 
     static let cellNibName = "bloodTypeCell"
     static let cellNibNameOrgans = "organCell"
@@ -97,5 +101,8 @@ struct Constants {
         
     }
     
+    struct selected {
+        static var selectedDate: Date = Date()
+    }
 
 }

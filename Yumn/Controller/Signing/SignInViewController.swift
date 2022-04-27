@@ -64,38 +64,39 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var logInButton: UIButton!
     
     @IBOutlet weak var errorLabel: UILabel!
-
-    override func viewWillAppear(_ animated: Bool) {
-        let db = Firestore.firestore()
-        if (isUserLoggedIn){
-            let docRef = db.collection("volunteer").document(Auth.auth().currentUser?.uid ?? "")
-
-            docRef.getDocument { [self] (document, error) in
-                if let document = document, document.exists {
-
-                    print("Vol")
-                    DispatchQueue.main.async {
-                        transitionToHome()
-                    }
-
-
-                } else {
-                    print("Man")
-                    DispatchQueue.main.async {
-                        transitionToHospitalHome()
-                    }
-                }
-
-            }
-        }
-    }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        let db = Firestore.firestore()
+//        if (isUserLoggedIn){
+//            let docRef = db.collection("volunteer").document(Auth.auth().currentUser?.uid ?? "")
+//
+//            docRef.getDocument { [self] (document, error) in
+//                if let document = document, document.exists {
+//
+//                    print("Vol")
+//                    DispatchQueue.main.async {
+//                        transitionToHome()
+//                    }
+//
+//
+//                } else {
+//                    print("Man")
+//                    DispatchQueue.main.async {
+//                        transitionToHospitalHome()
+//                    }
+//                }
+//
+//            }
+//        }
+//    }
     override func viewDidLoad() {
         
         
         if (Constants.Globals.isLoggingOut == true) {
             
             let mssg = "تم تسجيل خروجك بنجاح"
-            
+            Constants.UserInfo.userID = ""
+
             let seconds = 0.25
             DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
                 
@@ -452,6 +453,8 @@ class SignInViewController: UIViewController {
                                 
                                 // Transition to volunteer home
                                 
+                                Constants.UserInfo.userID = Auth.auth().currentUser?.uid ?? ""
+                                
                                 self.transitionToHome()
                                 
                             } else {
@@ -487,7 +490,8 @@ class SignInViewController: UIViewController {
                                 self.loadingGif.isHidden = true
                                 
                                 
-                                
+                                Constants.UserInfo.userID = Auth.auth().currentUser?.uid ?? ""
+
                                 // Transition to hospital home page
                                 self.transitionToHospitalHome()
                                 

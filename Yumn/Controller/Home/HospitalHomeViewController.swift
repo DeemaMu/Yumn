@@ -88,6 +88,9 @@ class HospitalHomeViewController: UIViewController {
         do
             {
         try Auth.auth().signOut()
+                
+                Constants.UserInfo.userID = ""
+
                 transitionToLogIn()
                 
                 
