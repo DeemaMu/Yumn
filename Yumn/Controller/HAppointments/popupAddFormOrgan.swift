@@ -231,9 +231,9 @@ struct PopupAddFormOrgan: View {
                                    aptDate: date, hospital: Constants.UserInfo.userID, aptDuration: duration, organ: apptType)
         
         apt.appointments = apList
-        
+        apt.bookedAppointments = [String]()
         aptVM.addDataOrgan(apt: apt)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2 , execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1 , execute: {
             if(aptVM.added){
                 self.controller.showSuccessPopUp()
             }

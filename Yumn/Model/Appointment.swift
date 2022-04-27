@@ -118,12 +118,18 @@ class AppointmentVM: ObservableObject {
                 
                 let hospital = data["hospital"] as? String ?? ""
                 
+                let bookedApts = data["bookedAppointments"] as! [String]
+                
                 if (type == "blood"){
                     let aptDuration = 30.0
                     let donors = data["donors"] as? Int ?? 0
                     
-                    return BloodAppointment(appointments: appointments, type: type, startTime: startTime, endTime: endTime,
-                                            aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, donors: donors)
+                    var apt = BloodAppointment(appointments: appointments, type: type, startTime: startTime, endTime: endTime,
+                                               aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, donors: donors)
+                    
+                    apt.bookedAppointments = bookedApts
+                    
+                    return apt
                 }
                 else {
                     let organ = data["organ"] as? String ?? ""
@@ -131,6 +137,7 @@ class AppointmentVM: ObservableObject {
                     var apt = OrganAppointment(type: type, startTime: startTime, endTime: endTime,
                                                aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, organ: organ)
                     apt.appointments = appointments
+                    apt.bookedAppointments = bookedApts
                     return apt
                 }
             }
@@ -237,7 +244,7 @@ class AppointmentVM: ObservableObject {
         let newDoc = db.collection("appointments").document()
         newDoc.setData(["type": apt.type,"hospital": apt.hospital, "start_time": apt.startTime,
                         "end_time": apt.endTime, "date": apt.aptDate, "appointment_duration": 30
-                        , "donors": apt.donors ]) { error in
+                        , "donors": apt.donors, "bookedAppointments": apt.bookedAppointments ]) { error in
             
             if (error == nil){
                 
@@ -271,7 +278,7 @@ class AppointmentVM: ObservableObject {
         let newDoc = db.collection("appointments").document()
         newDoc.setData(["type": apt.type,"hospital": apt.hospital, "start_time": apt.startTime,
                         "end_time": apt.endTime, "date": apt.aptDate, "appointment_duration": 60
-                        , "organ": apt.organ ]) { error in
+                        , "organ": apt.organ , "bookedAppointments": apt.bookedAppointments ]) { error in
             
             if (error == nil){
                 

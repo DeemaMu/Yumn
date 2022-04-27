@@ -161,6 +161,9 @@ struct ConfirmAppointmentPopUp: View {
         db.collection("appointments").document(appointment.docID).collection("appointments").document(exact.docID).setData(["booked":true, "donor": userID], merge: true) { error in
             
             if error == nil {
+                if(appointment.bookedAppointments == nil){
+                    appointment.bookedAppointments = [String]()
+                }
                 appointment.bookedAppointments?.append(exact.docID)
                 success = true
             } else {
@@ -176,21 +179,32 @@ struct ConfirmAppointmentPopUp: View {
     func addToArray() -> Bool {
         var success = true
         
-        db.collection("appointments").document(appointment.docID).setData(["bookedAppointments":appointment.bookedAppointments!], merge: true) { error in
-            
-            if error == nil {
-                success = true
-            } else {
-                success = false
-            }
+        var doc = db.collection("appointments").document(appointment.docID)
+        
+        doc.updateData(["bookedAppointments": FieldValue.arrayUnion([exact.docID])]) { error in
+            if (error == nil) {
+                            success = true
+                        } else {
+                            print(error!)
+                            success = false
+                        }
         }
+        
+//            .setData(["bookedAppointments":appointment.bookedAppointments], merge: true) { error in
+//
+//            if error == nil {
+//                success = true
+//            } else {
+//                success = false
+//            }
+//        }
         
         return success
     }
     
     func addToUser() -> Bool {
         var added = true
-        let newDoc = db.collection("volunteer").document(userID).collection("organAppointments").document()
+        let newDoc = db.collection("volunteer").document(userID).collection("organAppointments").document(exact.docID)
         
         newDoc.setData(["type": appointment.type,"hospital": appointment.hospital, "start_time": exact.startTime,
                         "end_time": exact.endTime, "date": appointment.aptDate, "appointment_duration": 60
