@@ -328,9 +328,9 @@ class AppointmentVM: ObservableObject {
                 //
                 //                }
                 
-                if((hospital == Constants.selected.selectedOrgan.hospital) && (organ == Constants.selected.selectedOrgan.organ)){
-                    self.organAppointments.append(apt)
-                }
+//                if((hospital == Constants.selected.selectedOrgan.hospital) && (organ == Constants.selected.selectedOrgan.organ)){
+//                    self.organAppointments.append(apt)
+//                }
                 return apt
                 
             }

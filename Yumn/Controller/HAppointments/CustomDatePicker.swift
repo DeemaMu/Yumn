@@ -179,6 +179,10 @@ struct CustomDatePicker: View {
                             //                        .overlay(RoundedRectangle(cornerRadius: 10).stroke(mainLight, lineWidth: 1))
                         }.padding(.horizontal, 30)
                             .padding(.vertical, 5)
+                            .onTapGesture {
+                                print("deema blood")
+                                controller.showDeema()
+                            }
                         
                         
                     } else {
@@ -257,6 +261,9 @@ struct CustomDatePicker: View {
                                 )
                             }.padding(.horizontal, 30)
                                 .padding(.vertical, 5)
+                                .onTapGesture {
+                                    print("deema organs")
+                                }
                         }
 
                     } else {
