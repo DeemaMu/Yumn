@@ -9,8 +9,9 @@ import UIKit
 import Firebase
 
 class TViewController: UIViewController {
-
     @IBOutlet weak var table: UITableView!
+    
+
     
     var tArray:[T]?
     

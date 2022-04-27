@@ -20,6 +20,7 @@ class AllQRCodesViewController: UIViewController, CustomSegmentedControlDelegate
     @IBOutlet weak var validQRCodesTableView: UITableView!
     
     
+    
     @IBOutlet weak var whiteView: UIView!
     
     var codeSegmented:CustomSegmentedControl2Btns? = nil
