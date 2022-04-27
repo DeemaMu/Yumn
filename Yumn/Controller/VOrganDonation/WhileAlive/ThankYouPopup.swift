@@ -21,22 +21,22 @@ struct ThankYouPopup: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: false){
             VStack(spacing: 15){
-                Text("قال تعالى:").font(Font.custom("Tajawal", size: 18))
+                Text("قال تعالى:").font(Font.custom("Tajawal", size: 15))
                     .foregroundColor(mainLight).fontWeight(.semibold)
                     .multilineTextAlignment(.center)
                 
                 VStack(spacing: 5){
-                Text(" ( وَمَنْ أَحْيَاهَا فَكَأَنَّمَا أَحْيَا النَّاسَ جَمِيعًا)").font(Font.custom("Tajawal", size: 18))
+                Text(" ( وَمَنْ أَحْيَاهَا فَكَأَنَّمَا أَحْيَا النَّاسَ جَمِيعًا)").font(Font.custom("Tajawal", size: 15))
                     .foregroundColor(mainLight).fontWeight(.semibold)
                     .multilineTextAlignment(.center)
                 
-                Text("آية 32 سورة المائدة").font(Font.custom("Tajawal", size: 10))
+                Text("آية 32 سورة المائدة").font(Font.custom("Tajawal", size: 7))
                     .foregroundColor(textGray)
                     .multilineTextAlignment(.center)
                 }
                 
 
-                Text("شكرًا على مساهمتك").font(Font.custom("Tajawal", size: 16))
+                Text("شكرًا على مساهمتك").font(Font.custom("Tajawal", size: 13))
                     .foregroundColor(mainLight).fontWeight(.semibold)
                     .multilineTextAlignment(.center)
                 

@@ -114,13 +114,15 @@ class Alive4thVC: UIViewController {
     
     func confirm(){
         thankYouPopup.superview?.bringSubviewToFront(thankYouPopup)
+        popupView.isHidden = true
+        thankYouPopup.isHidden = false
         let configuration = Configuration()
         let controller = UIHostingController(rootView: ThankYouPopup(config: configuration))
         // injects here, because `configuration` is a reference !!
         configuration.hostingController = controller
         addChild(controller)
-        controller.view.frame = thankYouPopup.bounds
-        thankYouPopup.addSubview(controller.view)
+        controller.view.frame = innerThanks.bounds
+        innerThanks.addSubview(controller.view)
     }
     
     func thankYou(){
