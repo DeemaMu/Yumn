@@ -145,11 +145,17 @@ struct AfterDeathOrganSelection: View {
     
     func buttonPressed(organ: String){
         self.organsVM.selected[organ]?.toggle()
+        for organ in self.organsVM.selected {
+            if(organ.value){
+                showError = false
+            }
+        }
     }
     
     func checkSelection() -> Bool {
         for organ in self.organsVM.selected {
             if(organ.value){
+                showError = false
                 return true
             }
         }
