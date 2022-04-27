@@ -337,7 +337,7 @@ class AppointmentVM: ObservableObject {
                 
                 let hospital = data["hospital"] as? String ?? ""
                 let organ = data["organ"] as? String ?? ""
-                let bookedApts = data["bookedAppointments"] as! [String]
+                let bookedApts = data["bookedAppointments"] as? [String] ?? [String]()
                 print("\(organ)")
                 let aptDuration = 60.0
                 

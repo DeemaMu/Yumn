@@ -36,7 +36,14 @@ struct CustomDatePicker: View {
             VStack(spacing: 10){
                 
                 //days
-                let days: [String] = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+                let days: [String] = [
+                    "Sun",
+                    "Mon",
+                    "Tue",
+                    "Wed",
+                    "Thu",
+                    "Fri",
+                    "Sat"]
                 
                 HStack(spacing: 20){
                     
@@ -345,6 +352,8 @@ struct CustomDatePicker: View {
     func extraDate()-> [String]{
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY MMMM"
+        formatter.locale = NSLocale(localeIdentifier: "ar") as Locale
+        
         
         let date = formatter.string(from: getCurrentMonth())
         
@@ -359,6 +368,17 @@ struct CustomDatePicker: View {
             return Date()
         }
         return currentMonth
+    }
+    
+    func convertToArabic(date: Date) -> String {
+        let formatter = DateFormatter()
+        
+        //        formatter.dateFormat = "EEEE, d, MMMM, yyyy HH:mm a"
+        formatter.dateFormat = "MMMM"
+        formatter.locale = NSLocale(localeIdentifier: "ar") as Locale
+        
+        return formatter.string(from: date)
+        
     }
     
     func extractDate() -> [DateValue] {
