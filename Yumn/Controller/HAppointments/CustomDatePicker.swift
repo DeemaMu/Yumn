@@ -11,15 +11,15 @@ import Firebase
 struct CustomDatePicker: View {
     
     @ObservedObject var aptVM = AppointmentVM()
-
+    
     @State var showPopup: Bool = false
     @Binding var currentDate: Date
-
     
-        
+    
+    
     @StateObject var overalyControl = OverlayControl()
     @Binding var controller: ManageAppointmentsViewController
-
+    
     // month update on button clicks
     @State var currentMonth: Int = 0
     
@@ -102,8 +102,8 @@ struct CustomDatePicker: View {
                             Button(action: {
                                 Constants.selected.selectedDate = self.currentDate
                                 controller.showOverlay(date: currentDate)
-//                                showPopup.toggle()
-//                                overalyControl.showOverlay.toggle()
+                                //                                showPopup.toggle()
+                                //                                overalyControl.showOverlay.toggle()
                             }) {
                                 Text("+").foregroundColor(.white).font(.title)
                                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 4, trailing: 11))
@@ -120,8 +120,8 @@ struct CustomDatePicker: View {
                             if #available(iOS 15.0, *) {
                                 Button(action: {
                                     print("therse already a date")
-//                                    dispatch(.showOverlay(value: true))
-//                                    overalyControl.showOverlay.toggle()
+                                    //                                    dispatch(.showOverlay(value: true))
+                                    //                                    overalyControl.showOverlay.toggle()
                                     
                                 }) {
                                     Text("+").foregroundColor(.white).font(.title)
@@ -171,8 +171,8 @@ struct CustomDatePicker: View {
                             .padding(.vertical, 10)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .background(
-                                Color("mainLight")
-                                    .opacity(0.8)
+                                Color("mainDark")
+//                                    .opacity(0.8)
                                 //                                .opacity(0.05)
                                     .cornerRadius(10)
                             )
@@ -220,37 +220,47 @@ struct CustomDatePicker: View {
                         
                     }
                     
+//                    VStack(){
+//                        for apt in aptVM.appointments {
+//                            if(isSameDayOrgan(date1: apt.aptDate, date2: currentDate, type: apt.type)){
+//
+//                            }
+//                        }
+//                    }
                     
                     
-                    if let appointment = aptVM.appointments.first(where: { apt in
+                    let appointments = aptVM.appointments.filter { apt in
                         return isSameDayOrgan(date1: apt.aptDate, date2: currentDate, type: apt.type)
+                    }
+                    
+                    if(!appointments.isEmpty)
+                    {
                         
-                    }) {
-                        
-                        VStack(){
-                            
-                            
-                            VStack(alignment: .leading, spacing: 10){
-                                Text("\(appointment.startTime.getFormattedDate(format: "HH:mm")) - \(appointment.endTime.getFormattedDate(format: "HH:mm"))")
-                                    .font(Font.custom("Tajawal", size: 20))
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.white)
-                                    .frame(maxWidth: .infinity)
-                                
-                            }
-                            .padding(.vertical, 10)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .background(
-                                Color("mainLight")
-                                    .opacity(0.8)
-                                    .cornerRadius(10)
-                            )
-                        }.padding(.horizontal, 30)
-                            .padding(.vertical, 5)
-                        
-                        
+                        ForEach(0..<appointments.count, id: \.self) { index in
+                            VStack(){
+
+
+                                VStack(alignment: .leading, spacing: 10){
+                                    Text("\(appointments[index].startTime.getFormattedDate(format: "HH:mm")) - \(appointments[index].endTime.getFormattedDate(format: "HH:mm"))")
+                                        .font(Font.custom("Tajawal", size: 20))
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.white)
+                                        .frame(maxWidth: .infinity)
+
+                                }
+                                .padding(.vertical, 10)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .background(
+                                    Color("mainDark")
+//                                        .opacity(0.8)
+                                        .cornerRadius(10)
+                                )
+                            }.padding(.horizontal, 30)
+                                .padding(.vertical, 5)
+                        }
+
                     } else {
-                        
+
                         Text("لايوجد مواعيد")
                             .font(Font.custom("Tajawal", size: 15))
                             .frame(maxWidth: .infinity)
@@ -258,6 +268,7 @@ struct CustomDatePicker: View {
                             .opacity(50)
                             .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
                     }
+                                        
                     
                     
                 }.padding()
@@ -275,7 +286,7 @@ struct CustomDatePicker: View {
         } else {
         }
     }
-
+    
     
     @ViewBuilder
     func CardView(value: DateValue)-> some View{
