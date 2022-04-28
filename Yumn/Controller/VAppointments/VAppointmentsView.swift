@@ -32,11 +32,11 @@ struct VAppointmentsView: View {
     var calender = Calendar.current
     
     init(config: Configuration){
+        selectedDate = Date() - 1
         self.config = config
         aptVM.currentDay = Date()
-        aptVM.filteringAppointments()
+        aptVM.filteredAppointments = aptVM.filteringAppointments()
         activate = true
-
     }
     
     //        var appointments: [Appointment] =
@@ -96,7 +96,7 @@ struct VAppointmentsView: View {
                                             cornerRadius: 10,
                                             style: .continuous
                                         ).fill(mainDark)
-//                                            .matchedGeometryEffect(id: "CURRENTDAY", in: animation)
+                                        //                                            .matchedGeometryEffect(id: "CURRENTDAY", in: animation)
                                         
                                     )
                                     .onTapGesture {
@@ -194,6 +194,7 @@ struct VAppointmentsView: View {
                                 }.onAppear(){ // <== Here
                                     DispatchQueue.main.asyncAfter(deadline: .now() , execute: {
                                         value.scrollTo(6)
+                                        aptVM.filteringAppointments()
                                     })
                                 }.onChange(of: activate) { newValue in
                                     DispatchQueue.main.asyncAfter(deadline: .now() , execute: {
@@ -258,11 +259,15 @@ struct VAppointmentsView: View {
                     
                 }
             }.onAppear(){
+                selectedDate = Date() - 1
                 activate = true
                 odVM.fetchCurrentWeek(weeks: 3)
-                
-//                aptVM.filteringAppointments()
+                selectedDate = Date()
+                //                aptVM.filteringAppointments()
             }.environment(\.layoutDirection, .rightToLeft)
+                .refreshable {
+                    await aptVM.reload()
+                }
             
         }
     }
@@ -286,6 +291,7 @@ struct VAppointmentsView: View {
     
     
     // MARK: Appointments View
+    @available(iOS 15.0, *)
     func AppointmentsView() -> some View {
         
         LazyVStack(spacing: 18){
@@ -307,9 +313,13 @@ struct VAppointmentsView: View {
                     .offset(y: 100).foregroundColor(mainDark)
             }
         }.frame(maxHeight: .infinity)
+            .refreshable {
+                await aptVM.reload()
+            }
         
     }
     
+    @available(iOS 15.0, *)
     @ViewBuilder
     func AppoitmentCard(apt: retrievedAppointment, index: Int) -> some View {
         
@@ -340,6 +350,8 @@ struct VAppointmentsView: View {
             } else {
                 //                hVM.odHospitals[index].selected = false
             }
+        }.refreshable {
+            await aptVM.reload()
         }
         .background(
             RoundedRectangle(
@@ -430,18 +442,18 @@ struct VAppointmentsView: View {
         
         //        formatter.dateFormat = "EEEE, d, MMMM, yyyy HH:mm a"
         formatter.dateFormat = "d"
-
+        
         let day = formatter.string(from: date)
         
         formatter.dateFormat = "yyyy"
         let year = formatter.string(from: date)
-
+        
         
         formatter.dateFormat = "  MMMM, "
         formatter.locale = NSLocale(localeIdentifier: "ar") as Locale
         
         let month = formatter.string(from: date)
-
+        
         
         return day + month + year
         
@@ -473,8 +485,21 @@ class VAppointments : ObservableObject {
     
     @Published var organAppointments = [retrievedAppointment]()
     
+    
+    
     init() {
-        self.getUserOA()
+        organAppointments = self.getUserOA()
+    }
+    
+    @available(iOS 15.0.0, *)
+    func reload() async {
+        do {
+            organAppointments = try await getUserOA2()
+        } catch {
+            
+        }
+        
+        filteredAppointments = filteringAppointments()
     }
     
     func getUserOA() -> [retrievedAppointment] {
@@ -534,10 +559,69 @@ class VAppointments : ObservableObject {
         return self.organAppointments
     }
     
+    @available(iOS 15.0.0, *)
+    func getUserOA2() async throws -> [retrievedAppointment] {
+        
+        db.collection("volunteer").document(userID).collection("organAppointments").addSnapshotListener { (querySnapshot, error) in
+            
+            guard let documents = querySnapshot?.documents else {
+                print("no documents")
+                return
+            }
+            
+            self.organAppointments = documents.map { (queryDocumentSnapshot) -> retrievedAppointment in
+                print("documents")
+                let data = queryDocumentSnapshot.data()
+                let duration = data["appointment_duration"] as! Int
+                
+                let type = data["type"] as! String
+                let hName = data["hospital_name"] as! String
+                let exact = data["docID"] as! String
+                let mainDoc = data["mainDocId"] as! String
+                let hospitalId = data["hospital"] as! String
+                
+                let stamp1 = data["start_time"] as? Timestamp
+                let startTime = stamp1!.dateValue()
+                
+                let stamp2 = data["end_time"] as? Timestamp
+                let endTime = stamp2!.dateValue()
+                
+                let stamp3 = data["date"] as? Timestamp
+                let aptDate = stamp3?.dateValue()
+                
+                var apt = retrievedAppointment()
+                
+                if(type == "organ"){
+                    let organ = data["organ"] as! String
+                    apt.organ = organ
+                }
+                
+                apt.duration = duration
+                apt.type = type
+                apt.date = aptDate
+                
+                apt.appointmentID = exact
+                apt.mainAppointmentID = mainDoc
+                apt.endTime = endTime
+                
+                apt.startTime = startTime
+                apt.hospitalID = hospitalId
+                apt.hName = hName
+                
+                return apt
+                
+            }
+            
+        }
+        
+        return self.organAppointments
+    }
+    
+    
     func filteringAppointments() -> [retrievedAppointment] {
         let calender = Calendar.current
         
-        DispatchQueue.global(qos: .userInteractive).async {
+//        DispatchQueue.global(qos: .userInteractive).async {
             
             if(!self.organAppointments.isEmpty){
                 
@@ -553,7 +637,7 @@ class VAppointments : ObservableObject {
                 }
             }
             
-        }
+//        }
         return self.filteredAppointments
     }
     
