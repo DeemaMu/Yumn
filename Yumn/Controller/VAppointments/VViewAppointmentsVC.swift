@@ -182,6 +182,10 @@ class VViewAppointmentsVC: UIViewController {
         return self.organAppointmentsList
     }
     
+    func moveToOldApts(){
+        performSegue(withIdentifier: "goToOldApts", sender: nil)
+    }
+    
     
     
     

@@ -75,25 +75,26 @@ struct VAppointmentsView: View {
                                     
                                     VStack(spacing: 5){
                                         Text("مواعيد").font(Font.custom("Tajawal", size: 13))
-                                            .foregroundColor( mainDark).fontWeight(.semibold)
+                                            .foregroundColor( .white).fontWeight(.semibold)
                                         
-                                        Text("أقدم").font(Font.custom("Tajawal", size: 13))
-                                            .foregroundColor( mainDark).fontWeight(.semibold)
+                                        Text("سابقة").font(Font.custom("Tajawal", size: 13))
+                                            .foregroundColor( .white).fontWeight(.semibold)
                                         
                                     }
                                     .frame(width: 90, height: 90)
                                     .background(
-                                        
                                         // MARK: Mathed gemotry
                                         RoundedRectangle(
                                             cornerRadius: 10,
                                             style: .continuous
                                         ).fill(mainDark)
-                                            .matchedGeometryEffect(id: "CURRENTDAY", in: animation)
+//                                            .matchedGeometryEffect(id: "CURRENTDAY", in: animation)
                                         
                                     )
                                     .onTapGesture {
-                                        
+                                        var x =
+                                        config.hostingController?.parent as! VViewAppointmentsVC
+                                        x.moveToOldApts()
                                     }
                                     
                                     
@@ -159,6 +160,29 @@ struct VAppointmentsView: View {
                                                 aptVM.filteringAppointments()
                                             }
                                     }
+                                    
+                                    VStack(spacing: 5){
+                                        Text("مواعيد").font(Font.custom("Tajawal", size: 13))
+                                            .foregroundColor( .white).fontWeight(.semibold)
+                                        
+                                        Text("قادمة").font(Font.custom("Tajawal", size: 13))
+                                            .foregroundColor( .white).fontWeight(.semibold)
+                                        
+                                    }
+                                    .frame(width: 90, height: 90)
+                                    .background(
+                                        // MARK: Mathed gemotry
+                                        RoundedRectangle(
+                                            cornerRadius: 10,
+                                            style: .continuous
+                                        ).fill(mainDark)
+                                    )
+                                    .onTapGesture {
+                                        var x =
+                                        config.hostingController?.parent as! VViewAppointmentsVC
+                                        x.moveToOldApts()
+                                    }
+                                    
                                 }.onAppear(){ // <== Here
                                     DispatchQueue.main.asyncAfter(deadline: .now() , execute: {
                                         value.scrollTo(6)
@@ -169,7 +193,7 @@ struct VAppointmentsView: View {
                                     })
                                 }
                                 .padding(.horizontal)
-                                .padding(.bottom, 10)
+                                .padding(.bottom, 5)
                                 
                                 //                        .environment(\.layoutDirection, .rightToLeft)
                             }
@@ -397,10 +421,21 @@ struct VAppointmentsView: View {
         let formatter = DateFormatter()
         
         //        formatter.dateFormat = "EEEE, d, MMMM, yyyy HH:mm a"
-        formatter.dateFormat = "d  MMMM, yyyy"
+        formatter.dateFormat = "d"
+
+        let day = formatter.string(from: date)
+        
+        formatter.dateFormat = "yyyy"
+        let year = formatter.string(from: date)
+
+        
+        formatter.dateFormat = "  MMMM, "
         formatter.locale = NSLocale(localeIdentifier: "ar") as Locale
         
-        return formatter.string(from: date)
+        let month = formatter.string(from: date)
+
+        
+        return day + month + year
         
     }
     
