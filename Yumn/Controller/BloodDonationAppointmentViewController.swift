@@ -11,6 +11,9 @@ import UIKit
 class BloodDonationAppointmentViewController: UIViewController {
     @IBOutlet weak var dateTableView: UITableView!
     
+    
+    @IBOutlet weak var timeTableView: UITableView!
+    
   
     @IBOutlet weak var roundView: UIView!
     
@@ -23,9 +26,12 @@ class BloodDonationAppointmentViewController: UIViewController {
         
         
         dateTableView.dataSource = self
+        timeTableView.dataSource = self
      
         
         dateTableView.register(UINib(nibName: "dateCell", bundle: nil), forCellReuseIdentifier: "DateCell")
+        
+        timeTableView.register(UINib(nibName: "TimeCell", bundle: nil), forCellReuseIdentifier: "TimeCell")
 
         super.viewDidLoad()
         
@@ -55,7 +61,16 @@ class BloodDonationAppointmentViewController: UIViewController {
 extension BloodDonationAppointmentViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        
+        //date
+        if (tableView == dateTableView){
+            return 10}
+        
+        //time
+        else{
+            
+            return 10
+        }
     }
     
    /* func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -64,36 +79,35 @@ extension BloodDonationAppointmentViewController: UITableViewDataSource{
         return 300.3
     }*/
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-
-        cell.transform = CGAffineTransform (rotationAngle:  CGFloat.pi)
-
-      }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+   /* func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 180.0//Choose your custom row height
-    }
+    }*/
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DateCell", for: indexPath) as! DateCell
         
-        
-        
-        
-        
-        
-        
+        var cell:UITableViewCell?
 
         
-       
-        
-      
-       // print ("celllllllllll")
-       // print (cell)
+        if (tableView == dateTableView){
+         cell = tableView.dequeueReusableCell(withIdentifier: "DateCell", for: indexPath) as! DateCell
+        }
         
         
-        return cell
+        // Time cell
+        else{
+            
+             cell = tableView.dequeueReusableCell(withIdentifier: "TimeCell", for: indexPath) as! TimeCell
+        }
+        return cell!
+
+        
+        
+        
+        
+ 
+        
         
 
     

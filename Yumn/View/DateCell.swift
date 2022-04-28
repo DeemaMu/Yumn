@@ -18,6 +18,9 @@ class DateCell: UITableViewCell {
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var dateBtn: UIButton!
     
+    
+    var index = 0
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -69,6 +72,8 @@ class DateCell: UITableViewCell {
         addshadow(top: false, left: false, bottom: false, right: false)
 
     }
+    
+    
     
     func addshadow(top: Bool,
                        left: Bool,
