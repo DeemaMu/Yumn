@@ -90,9 +90,6 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="."/>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email" translatesAutoresizingMaskIntoConstraints="NO" id="mm4-1s-0hT">
-                                        <rect key="frame" x="195" y="4" width="15" height="13"/>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="abdul@gmail.com" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="coZ-A8-AL1">
                                         <rect key="frame" x="8" y="4" width="179" height="16"/>
                                         <constraints>
@@ -103,6 +100,9 @@
                                         <color key="textColor" name="mainDark"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="email" translatesAutoresizingMaskIntoConstraints="NO" id="mm4-1s-0hT">
+                                        <rect key="frame" x="183" y="1" width="29" height="20"/>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="coZ-A8-AL1" secondAttribute="bottom" constant="2" id="4SS-cJ-m8C"/>
@@ -206,7 +206,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="email" width="15" height="13"/>
+        <image name="email" width="46" height="28"/>
         <image name="location2" width="21" height="24"/>
         <namedColor name="mainDark">
             <color red="0.2199999988079071" green="0.37999999523162842" blue="0.36500000953674316" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -52,7 +52,18 @@ class olderAppointmensVC: UIViewController {
     var storedCurrentBldApp: [bloodAppointment] = []
     var clickedCellIndex: Int = -1
     
+    @IBOutlet weak var currentVOppTable: UITableView!
+    @IBOutlet weak var oldVOppTable: UITableView!
     
+    @IBOutlet weak var noCurrentVOppLabel: UILabel!
+    @IBOutlet weak var noOldVOppLabel: UILabel!
+   
+    var currentVOpp: [volunteerVOpp] = []
+    var oldVOpp: [volunteerVOpp] = []
+    
+    
+    var VOppDict: [String : String] = [:]
+    var arrayOfOldVOpp : [String] = []
     
     let user = Auth.auth().currentUser
     
@@ -94,6 +105,27 @@ class olderAppointmensVC: UIViewController {
         
         
         oldAppTable.register(UINib(nibName: "oldBloodAppTableViewCell", bundle: nil), forCellReuseIdentifier: "oldBloodACell")
+        
+        // change names
+        currentVOppTable.isHidden = true
+        oldVOppTable.isHidden = true
+        noCurrentVOppLabel.isHidden = true
+        
+        currentVOppTable.dataSource = self
+        oldVOppTable.dataSource = self
+        
+        
+        // register tables
+        
+        
+        currentVOppTable.register(UINib(nibName: "viewCurrentVolunteerOppTableViewCell", bundle: nil), forCellReuseIdentifier: "currentVOPPCell")
+        
+        
+        oldVOppTable.register(UINib(nibName: "viewOldVolunteerOppTableViewCell", bundle: nil), forCellReuseIdentifier: "oldVOPPCell")
+        
+        // put user id (auth)
+        getCurrentVOpp(userID: user!.uid)
+        getOldVOpp(userID: user!.uid)
         
         
         // on index change
@@ -278,20 +310,20 @@ class olderAppointmensVC: UIViewController {
     }
     
     func reloadCurrentTable(){
-        
+
         DispatchQueue.main.async {
             self.tableMainForCurrentBldApp.reloadData()
 
         }
-        
+
     }
-    
+
     func reloadOldTable(){
         DispatchQueue.main.async {
             self.oldAppTable.reloadData()
 
         }
-        
+
     }
     
     
@@ -341,9 +373,14 @@ class olderAppointmensVC: UIViewController {
         switch sender.selectedSegmentIndex {
         case 0:
             
-            tableMainForCurrentBldApp.isHidden = false
+            tableMainForCurrentBldApp.isHidden = true
             oldAppTable.isHidden = true
             
+            currentVOppTable.isHidden = true
+            oldVOppTable.isHidden = false
+            noCurrentVOppLabel.isHidden = true
+            
+            showOldVoppLbl()
             
             break
         case 1:
@@ -356,6 +393,9 @@ class olderAppointmensVC: UIViewController {
             tableMainForCurrentBldApp.isHidden = true
             oldAppTable.isHidden = false
             noAppLabel.isHidden = true
+            currentVOppTable.isHidden = true
+            oldVOppTable.isHidden = true
+            noCurrentVOppLabel.isHidden = true
             showOldAppLbl()
             
         }

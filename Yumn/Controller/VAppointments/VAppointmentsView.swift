@@ -4,7 +4,7 @@ import FirebaseAuth
 
 struct VAppointmentsView: View {
     
-    let config: Configuration
+    var config = Configuration()
     
     //        @ObservedObject var aptVM = AppointmentVM()
     @StateObject var odVM = ODAppointmentVM()
@@ -30,6 +30,14 @@ struct VAppointmentsView: View {
     var thereIS = chechingAppointments()
     
     var calender = Calendar.current
+    
+    init(config: Configuration){
+        self.config = config
+        aptVM.currentDay = Date()
+        aptVM.filteringAppointments()
+        activate = true
+
+    }
     
     //        var appointments: [Appointment] =
     //        [
@@ -253,7 +261,7 @@ struct VAppointmentsView: View {
                 activate = true
                 odVM.fetchCurrentWeek(weeks: 3)
                 
-                aptVM.filteringAppointments()
+//                aptVM.filteringAppointments()
             }.environment(\.layoutDirection, .rightToLeft)
             
         }
