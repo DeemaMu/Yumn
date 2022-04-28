@@ -35,6 +35,8 @@ class ViewOppOfAVolunteerViewController: UIViewController ,CustomSegmentedContro
     var VOppDict: [String : String] = [:]
     var arrayOfOldVOpp : [String] = []
     
+    let user = Auth.auth().currentUser
+    
     var codeSegmented:CustomSegmentedControl? = nil
     
     override func viewDidLoad() {
@@ -62,8 +64,8 @@ class ViewOppOfAVolunteerViewController: UIViewController ,CustomSegmentedContro
         oldVOppTable.register(UINib(nibName: "viewOldVolunteerOppTableViewCell", bundle: nil), forCellReuseIdentifier: "oldVOPPCell")
         
         // put user id (auth)
-        getCurrentVOpp(userID: "iDhMoT6PacOwKgKLi8ILK98UrB03")
-        getOldVOpp(userID: "iDhMoT6PacOwKgKLi8ILK98UrB03")
+        getCurrentVOpp(userID: user!.uid)
+        getOldVOpp(userID: user!.uid)
         
         
         
@@ -416,7 +418,9 @@ class ViewOppOfAVolunteerViewController: UIViewController ,CustomSegmentedContro
     }
     
    
-
+   
+    
+    
 }
 
 
