@@ -273,18 +273,23 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
         
         
         let appointmentID = storedCurrentBldApp[clickedCellIndex].appID
-    
+       let hospitalID = storedCurrentBldApp[clickedCellIndex].hospitalID
         // make it current user
         // delete the app in firestore
-         db.collection("volunteer").document("iDhMoT6PacOwKgKLi8ILK98UrB03").collection("bloodAppointments").document(appointmentID).delete() { err in
+        db.collection("volunteer").document(user!.uid).collection("bloodAppointments").document(appointmentID).delete() { err in
             if let err = err {
                 print("Error removing appointment document: \(err)")
                 
                 components().showToast(message: "حدثت مشكلة أثناء حذف الموعد، الرجاء المحاولة مرة أخرى", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn")!, viewC: self)
             } else {
+                
+                
                 // remove it from array so that the cell is removed
                 self.storedCurrentBldApp.remove(at: self.clickedCellIndex)
                 self.tableMainForCurrentBldApp.reloadData()
+                
+                // added
+                self.restoreAppointment(appID : appointmentID, hospitalID : hospitalID)
                 // show flushbar
                 print("Appointment document successfully removed!")
                 
@@ -295,8 +300,80 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
         
     }
     
+    // رجعي الاوقات كأوقات متاحةبعد ما يحذفها اليوزر
+    func restoreAppointment(appID : String, hospitalID: String){
+        
+        // will get a lot of docs, so check which one has the appID
+        db.collection("appointments").whereField("hospital", isEqualTo: hospitalID).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                
+                if querySnapshot!.documents.count != 0 {
+                    // for each doc check
+                for document in querySnapshot!.documents {
+                   
+                    // save the doc id so if it has the appID in its subcollection, remove the app from the array
+                    let docID = document.documentID
+                    self.checkAppointment(docID : docID, appID : appID)
+                    
+                    // check which doc contains the appID and save its ID
+               
+                }
+
+                    self.reloadOldTable()
+                
+            }// end if stm
+                
+                else {
+                    print("in restore")
+                   // self.showOldAppLbl()
+                }
+                
+            } // end else
+        }
+        
+    }
     
-    
+                          
+                          
+   func checkAppointment(docID : String, appID : String){
+                        
+       let docRef = db.collection("appointments").document(docID).collection("appointments").document(appID)
+       
+       let parentDoc = db.collection("appointments").document(docID)
+       
+       docRef.getDocument { (document, error) in
+           if document!.exists {
+                  // update the booked field as false and change the donor field to ""
+                  
+                   docRef.updateData([
+                       "booked": false,
+                       "confirmed": false,
+                       "donor": ""
+                       
+                   ])
+               { err in
+                       if let err = err {
+                           print("Error updating document: \(appID) \(err)")
+                       } else {
+                           print("Document successfully updated")
+                       }
+                   }
+               
+             parentDoc.updateData([
+                   "bookedAppointments": FieldValue.arrayRemove([appID])
+               ])
+               
+               
+             } else {
+                print("Document \(appID) does not exist")
+             }
+       }
+                        
+                    }
+                          
+                          
     @IBAction func okayMapBtn(_ sender: Any) {
        
         
