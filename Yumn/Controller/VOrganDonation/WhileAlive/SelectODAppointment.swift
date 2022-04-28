@@ -197,17 +197,17 @@ struct SelectODAppointment: View {
                     config.hostingController?.parent as! Alive4thVC
                     x.confirmAppoitment(apt: selectedAppointment!, exact: selectedMiniAppointment!)
                     
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 3 , execute: {
-//                        if(odVM.checkIfFree2(doc: selectedAppointment!, exactID: selectedMiniAppointment!.docID)){
-//                            showError = false
-//                            let x =
-//                            config.hostingController?.parent as! Alive4thVC
-//                            x.confirmAppoitment(apt: selectedAppointment!, exact: selectedMiniAppointment!)
-//                        }
-//                        else {
-//                            print("cant")
-//                        }
-//                    })
+                    //                    DispatchQueue.main.asyncAfter(deadline: .now() + 3 , execute: {
+                    //                        if(odVM.checkIfFree2(doc: selectedAppointment!, exactID: selectedMiniAppointment!.docID)){
+                    //                            showError = false
+                    //                            let x =
+                    //                            config.hostingController?.parent as! Alive4thVC
+                    //                            x.confirmAppoitment(apt: selectedAppointment!, exact: selectedMiniAppointment!)
+                    //                        }
+                    //                        else {
+                    //                            print("cant")
+                    //                        }
+                    //                    })
                     
                     
                 }
@@ -229,7 +229,7 @@ struct SelectODAppointment: View {
             
         }.onAppear() {
             activate = true
-            odVM.fetchCurrentWeek()
+            odVM.fetchCurrentWeek(weeks: 2)
             aptVM.filteringAppointments()
         }.environment(\.layoutDirection, .rightToLeft)
         
@@ -296,80 +296,80 @@ struct SelectODAppointment: View {
             let currentA = mini[0]
             
             if(odVM.checkIfFree2(doc: apt, exactID: currentA.docID)) {
-            
-            HStack(){
                 
-                VStack(alignment: .leading){
-                    if(self.checkedIndex == index){
-                        RadioButton2(matched: true)
+                HStack(){
+                    
+                    VStack(alignment: .leading){
+                        if(self.checkedIndex == index){
+                            RadioButton2(matched: true)
+                        }
+                        if(self.checkedIndex != index){
+                            RadioButton2(matched: false)
+                        }
+                    }.padding(.leading, 20)
+                        .padding(.top, 3)
+                    
+                    Spacer()
+                    
+                    VStack(alignment: .center){
+                        //                Text("\(currentH!.name)").font(Font.custom("Tajawal", size: 17))
+                        //                    .foregroundColor(mainDark)
+                        Text("\(currentA.startTime.getFormattedDate(format: "HH:mm")) - \(currentA.endTime.getFormattedDate(format: "HH:mm"))").font(Font.custom("Tajawal", size: 22))
+                            .foregroundColor(mainDark)
+                    }.frame(maxWidth: .infinity, alignment: .center)
+                        .frame(height: 50)
+                        .padding(.top, 10)
+                    
+                    VStack(){
+                        Image("time").resizable()
+                            .scaledToFit()
+                    }.padding(.trailing, 10).padding(.top, 10).padding(.bottom, 10)
+                    
+                    
+                    
+                    
+                    
+                }.onChange(of: checkedIndex){ newValue in
+                    if(newValue == index){
+                        //                hVM.odHospitals[index].selected = true
+                    } else {
+                        //                hVM.odHospitals[index].selected = false
                     }
-                    if(self.checkedIndex != index){
-                        RadioButton2(matched: false)
-                    }
-                }.padding(.leading, 20)
-                    .padding(.top, 3)
-                
-                Spacer()
-                
-                VStack(alignment: .center){
-                    //                Text("\(currentH!.name)").font(Font.custom("Tajawal", size: 17))
-                    //                    .foregroundColor(mainDark)
-                    Text("\(currentA.startTime.getFormattedDate(format: "HH:mm")) - \(currentA.endTime.getFormattedDate(format: "HH:mm"))").font(Font.custom("Tajawal", size: 22))
-                        .foregroundColor(mainDark)
-                }.frame(maxWidth: .infinity, alignment: .center)
-                    .frame(height: 50)
-                    .padding(.top, 10)
-                
-                VStack(){
-                    Image("time").resizable()
-                        .scaledToFit()
-                }.padding(.trailing, 10).padding(.top, 10).padding(.bottom, 10)
-                
-                
-                
-                
-                
-            }.onChange(of: checkedIndex){ newValue in
-                if(newValue == index){
-                    //                hVM.odHospitals[index].selected = true
-                } else {
-                    //                hVM.odHospitals[index].selected = false
                 }
-            }
-            .environment(\.layoutDirection, .leftToRight)
-            .background(
-                RoundedRectangle(
-                    cornerRadius: 20,
-                    style: .continuous
+                .environment(\.layoutDirection, .leftToRight)
+                .background(
+                    RoundedRectangle(
+                        cornerRadius: 20,
+                        style: .continuous
+                    )
+                        .fill(.white)
                 )
-                    .fill(.white)
-            )
-            .frame(height: 50, alignment: .center)
-            .frame(maxWidth: 250)
-            .shadow(color: shadowColor,
-                    radius: 6, x: 0
-                    , y: 6)
-            .onTapGesture {
-                if(checkedIndex == index){
-                    checkedIndex = -1
-                    showError = true
-                } else {
-                    selectedMiniAppointment = mini[0]
-                    selectedAppointment = aptVM.filteredAppointments[index]
-                    checkedIndex = index
-                    showError = false
+                .frame(height: 50, alignment: .center)
+                .frame(maxWidth: 250)
+                .shadow(color: shadowColor,
+                        radius: 6, x: 0
+                        , y: 6)
+                .onTapGesture {
+                    if(checkedIndex == index){
+                        checkedIndex = -1
+                        showError = true
+                    } else {
+                        selectedMiniAppointment = mini[0]
+                        selectedAppointment = aptVM.filteredAppointments[index]
+                        checkedIndex = index
+                        showError = false
+                    }
                 }
+                .padding(.horizontal, 15)
+                .padding(.vertical, 5)
+                
+                
+                
+            } } else {
+                
+                Text("لايوجد مواعيد متاحة لهذا التاريخ").font(Font.custom("Tajawal", size: 16))
+                    .foregroundColor(lightGray).padding(.top, 100).multilineTextAlignment(.center)
             }
-            .padding(.horizontal, 15)
-            .padding(.vertical, 5)
-            
-            
-            
-        } } else {
-            
-            Text("لايوجد مواعيد متاحة لهذا التاريخ").font(Font.custom("Tajawal", size: 16))
-                .foregroundColor(lightGray).padding(.top, 100).multilineTextAlignment(.center)
-        }
     }
     
     func appointmentsOnDate(date: Date) -> Bool {
@@ -421,8 +421,8 @@ class ODAppointmentVM: ObservableObject {
     @Published var currentDay: Date = Date()
     let db = Firestore.firestore()
     
-    func fetchCurrentWeek(){
-        let today = Date()
+    func fetchCurrentWeek(weeks: Int){
+        let today = Date() - 7
         let calender = Calendar.current
         
         let week = calender.dateInterval(of: .weekOfMonth, for: today)
@@ -433,20 +433,54 @@ class ODAppointmentVM: ObservableObject {
         
         //        let firstWeekDay2 =  firstWeekDay.
         
-        (0...14).forEach {
-            day in
-            
-            //            if let weekday = calender.date(byAdding: .day, value: day, to: (firstWeekDay - 1)) {
-            //                currentWeek.append(weekday)
-            //            }
-            
-            if let weekday = calender.date(byAdding: .day, value: day, to: currentDay) {
-                currentWeek.append(weekday)
+        if(weeks == 2){
+            (0...14).forEach {
+                day in
+                
+                //            if let weekday = calender.date(byAdding: .day, value: day, to: (firstWeekDay - 1)) {
+                //                currentWeek.append(weekday)
+                //            }
+                
+                if let weekday = calender.date(byAdding: .day, value: day, to: currentDay) {
+                    currentWeek.append(weekday)
+                }
+                
             }
-            
         }
         
+        var i = -7;
+        
+        if(weeks == 3){
+            (0...6).forEach {
+                day in
+                
+                //            if let weekday = calender.date(byAdding: .day, value: day, to: (firstWeekDay - 1)) {
+                //                currentWeek.append(weekday)
+                //            }
+                
+                if let weekday = calender.date(byAdding: .day, value:  i, to: currentDay) {
+                    currentWeek.append(weekday)
+                }
+                
+                i += 1
+            }
+            
+            (0...7).forEach {
+                day in
+                
+                //            if let weekday = calender.date(byAdding: .day, value: day, to: (firstWeekDay - 1)) {
+                //                currentWeek.append(weekday)
+                //            }
+                
+                if let weekday = calender.date(byAdding: .day, value: day, to: currentDay) {
+                    currentWeek.append(weekday)
+                }
+                
+            }
+        }
     }
+    
+    
     
     func extractDate(date: Date, format: String) -> String {
         let formatter = DateFormatter()

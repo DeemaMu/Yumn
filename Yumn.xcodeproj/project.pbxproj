@@ -63,6 +63,8 @@
 		B975979C28195D9300AD2C93 /* Donor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B975979B28195D9300AD2C93 /* Donor.swift */; };
 		B97A37FE27B9D32A00718079 /* RoundedShadowedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A37FD27B9D32A00718079 /* RoundedShadowedView.swift */; };
 		B97A380227BA9EA000718079 /* BloodDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A380127BA9EA000718079 /* BloodDonationViewController.swift */; };
+		B9AC66222819E7880013301B /* VViewAppointmentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC66212819E7880013301B /* VViewAppointmentsVC.swift */; };
+		B9AC66242819E90E0013301B /* VAppointmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC66232819E90E0013301B /* VAppointmentsView.swift */; };
 		B9AD3F2A27E2CF81001AB734 /* ManageAppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD3F2927E2CF81001AB734 /* ManageAppointmentsViewController.swift */; };
 		B9AD3F3027E335B3001AB734 /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD3F2F27E335B3001AB734 /* DateValue.swift */; };
 		B9B3143B2815BAB000C62981 /* AODInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3143A2815BAB000C62981 /* AODInstructions.swift */; };
@@ -165,6 +167,8 @@
 		B975979B28195D9300AD2C93 /* Donor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Donor.swift; sourceTree = "<group>"; };
 		B97A37FD27B9D32A00718079 /* RoundedShadowedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowedView.swift; sourceTree = "<group>"; };
 		B97A380127BA9EA000718079 /* BloodDonationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationViewController.swift; sourceTree = "<group>"; };
+		B9AC66212819E7880013301B /* VViewAppointmentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VViewAppointmentsVC.swift; sourceTree = "<group>"; };
+		B9AC66232819E90E0013301B /* VAppointmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VAppointmentsView.swift; sourceTree = "<group>"; };
 		B9AD3F2927E2CF81001AB734 /* ManageAppointmentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageAppointmentsViewController.swift; sourceTree = "<group>"; };
 		B9AD3F2F27E335B3001AB734 /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
 		B9B3143A2815BAB000C62981 /* AODInstructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AODInstructions.swift; sourceTree = "<group>"; };
@@ -363,6 +367,7 @@
 		B930F85627B8548900E70860 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B9AC66202819E7380013301B /* VAppointments */,
 				D19B1B5727E9629000CB3FFA /* VBloodApp */,
 				8DC80B7227E7A70100A1DF6E /* VOrganDonation */,
 				8D0E9A1D27E5337900890AC0 /* Information */,
@@ -413,6 +418,15 @@
 				B9D831C62818BDF30023CBC5 /* ThankYouPopup.swift */,
 			);
 			path = WhileAlive;
+			sourceTree = "<group>";
+		};
+		B9AC66202819E7380013301B /* VAppointments */ = {
+			isa = PBXGroup;
+			children = (
+				B9AC66212819E7880013301B /* VViewAppointmentsVC.swift */,
+				B9AC66232819E90E0013301B /* VAppointmentsView.swift */,
+			);
+			path = VAppointments;
 			sourceTree = "<group>";
 		};
 		B9AD3F2827E2CF1E001AB734 /* HAppointments */ = {
@@ -668,6 +682,7 @@
 				D195444427D49A2400B03DFF /* organShortage.swift in Sources */,
 				B9DDAE8C281753300001149C /* SelectODAppointment.swift in Sources */,
 				B9AD3F2A27E2CF81001AB734 /* ManageAppointmentsViewController.swift in Sources */,
+				B9AC66242819E90E0013301B /* VAppointmentsView.swift in Sources */,
 				D195444C27D49AA300B03DFF /* components.swift in Sources */,
 				B91DD29227E996CF00BA9881 /* CustomDatePicker.swift in Sources */,
 				954F2DB527E80CD200A3DFB1 /* ViewVOCollectionViewCell.swift in Sources */,
@@ -731,6 +746,7 @@
 				95785059279E1917004F3D8F /* AppDelegate.swift in Sources */,
 				9578505B279E1917004F3D8F /* SceneDelegate.swift in Sources */,
 				D19B1B5927E962BC00CB3FFA /* VolunteerBloodAppointmentsViewController.swift in Sources */,
+				B9AC66222819E7880013301B /* VViewAppointmentsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

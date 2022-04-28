@@ -61,7 +61,8 @@
 //        ScrollView(.vertical, showsIndicators: false){
 //
 //
-//
+////                    // MARK: current week view
+
 //            LazyVStack(spacing: 15, pinnedViews: [.sectionHeaders, .sectionFooters]){
 //
 //                Section{

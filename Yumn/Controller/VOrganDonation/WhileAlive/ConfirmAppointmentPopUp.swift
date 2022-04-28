@@ -208,7 +208,7 @@ struct ConfirmAppointmentPopUp: View {
         
         newDoc.setData(["type": appointment.type,"hospital": appointment.hospital, "start_time": exact.startTime,
                         "end_time": exact.endTime, "date": appointment.aptDate, "appointment_duration": 60
-                        , "docID": exact.docID, "mainDocId": appointment.docID]) { error in
+                        , "docID": exact.docID, "mainDocId": appointment.docID, "hospital_name": self.hospitalName, "organ": appointment.organ]) { error in
             
             if (error == nil){
                 added = true

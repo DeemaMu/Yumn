@@ -61,6 +61,7 @@ class AfterDeathODSecondController: UIViewController {
         okBtn.layer.cornerRadius = 15
         saveBtn.layer.cornerRadius = 15
         popupView.layer.cornerRadius = 30
+        thankYouPopup.layer.cornerRadius = 30
         
         
         let configuration = Configuration()
