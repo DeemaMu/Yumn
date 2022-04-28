@@ -138,18 +138,14 @@ struct SelectODAppointment: View {
                                     counter += 1
                                     DispatchQueue.main.async {
                                         aptVM.filteringAppointments()
-                                        
                                     }
-                                    
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 4 , execute: {
-                                        $thisDayApt.wrappedValue = aptVM.filteredAppointments
-                                    })
                                     
                                 }
                         }
                     }.onAppear(){ // <== Here
                         DispatchQueue.main.asyncAfter(deadline: .now() , execute: {
                             value.scrollTo(0)
+                            aptVM.filteringAppointments()
                         })
                     }.onChange(of: activate) { newValue in
                         DispatchQueue.main.asyncAfter(deadline: .now() , execute: {
