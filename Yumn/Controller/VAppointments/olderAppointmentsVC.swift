@@ -425,14 +425,23 @@ extension olderAppointmensVC: UITableViewDataSource {
             
          
         }
+//
+//        // old app table
+//        else {
+//
+//            print("this is for current table inside count row method")
+//
+//             return storedCurrentBldApp.count
+//
+//        }
         
-        // old app table
+        if tableView == currentVOppTable {
+            
+            return currentVOpp.count
+        }
         else {
             
-            print("this is for current table inside count row method")
-
-             return storedCurrentBldApp.count
-            
+            return oldVOpp.count
         }
         
       
@@ -441,6 +450,14 @@ extension olderAppointmensVC: UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let customFont = UIFont(name: "Tajawal-Regular", size: UIFont.labelFontSize) else {
+            fatalError("""
+                Failed to load the "CustomFont-Light" font.
+                Make sure the font file is included in the project and the font name is spelled correctly.
+                """
+            )
+        }
+
         
         // current blood app table
         if  tableView == oldAppTable
@@ -465,33 +482,97 @@ extension olderAppointmensVC: UITableViewDataSource {
             
         }
         
-        else {
+//        else {
+//
+//
+//                print("this is for current table inside cell method")
+//
+//
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "currentBACell", for: indexPath) as! currentBldAppCell
+//
+//            let time = checkTime(time : storedCurrentBldApp[indexPath.row].time)
+//
+//
+//            let cityAndArea = "\(storedCurrentBldApp[indexPath.row].city) - \(storedCurrentBldApp[indexPath.row].area)"
+//            cell.hospitalName.text = storedCurrentBldApp[indexPath.row].name
+//            cell.date.text = storedCurrentBldApp[indexPath.row].date
+//            cell.time.text = "\(storedCurrentBldApp[indexPath.row].time) \(time)"
+//            cell.cityAndArea.text = cityAndArea
+//
+//            cell.cancelAppBtn.tag = indexPath.row
+//            cell.editAppBtn.tag = indexPath.row
+//
+//            cell.cancelAppBtn.addTarget(self, action: #selector(cancelAppointment(sender:)), for: .touchUpInside)
+//
+//
+//            cell.locBtn.tag = indexPath.row
+//            cell.locBtn.addTarget(self, action: #selector(askToOpenMapForCurrent(sender:)), for: .touchUpInside)
+//            return cell
+//            }
+        
+        if tableView == currentVOppTable {
             
-                
-                print("this is for current table inside cell method")
+            let cell = tableView.dequeueReusableCell(withIdentifier: "currentVOPPCell", for: indexPath) as! viewCurrentVolunteerOppTableViewCell
+            
+           
+            cell.title.text = currentVOpp[indexPath.row].title
+            cell.title.font = UIFontMetrics.default.scaledFont(for: customFont)
+            cell.title.adjustsFontForContentSizeCategory = true
+            cell.title.font = cell.title.font.withSize(16)
+            
+            cell.date.text = currentVOpp[indexPath.row].date
+            cell.workingHours.text = currentVOpp[indexPath.row].workingHours
+            cell.location.text = currentVOpp[indexPath.row].location
+            
+            let status = currentVOpp[indexPath.row].status
+            if status == "pending"{
+                cell.state.text = "في الانتظار"
+                cell.state.textColor = UIColor(red: 0.60, green: 0.60, blue: 0.60, alpha: 1.00)
 
-                
-            let cell = tableView.dequeueReusableCell(withIdentifier: "currentBACell", for: indexPath) as! currentBldAppCell
-
-            let time = checkTime(time : storedCurrentBldApp[indexPath.row].time)
-            
-            
-            let cityAndArea = "\(storedCurrentBldApp[indexPath.row].city) - \(storedCurrentBldApp[indexPath.row].area)"
-            cell.hospitalName.text = storedCurrentBldApp[indexPath.row].name
-            cell.date.text = storedCurrentBldApp[indexPath.row].date
-            cell.time.text = "\(storedCurrentBldApp[indexPath.row].time) \(time)"
-            cell.cityAndArea.text = cityAndArea
-            
-            cell.cancelAppBtn.tag = indexPath.row
-            cell.editAppBtn.tag = indexPath.row
-            
-            cell.cancelAppBtn.addTarget(self, action: #selector(cancelAppointment(sender:)), for: .touchUpInside)
-            
-            
-            cell.locBtn.tag = indexPath.row
-            cell.locBtn.addTarget(self, action: #selector(askToOpenMapForCurrent(sender:)), for: .touchUpInside)
-            return cell
             }
+            else if status == "accepted" {
+                cell.state.text = "مقبول"
+                cell.state.textColor = UIColor(red: 0.00, green: 0.55, blue: 0.27, alpha: 1.00)
+            }
+            else if status == "rejected" {
+                cell.state.text = "مرفوض"
+                cell.state.textColor = UIColor(red: 0.72, green: 0.00, blue: 0.00, alpha: 1.00)
+            }
+        // must bring state from somewhere else + create new model for it
+            //   cell.state.text = currentVOpp[indexPath.row].state
+            
+            
+            // button
+            cell.locationBtn.tag = indexPath.row
+
+            
+          //  cell.locationBtn.addTarget(self, action: #selector(acceptCurrentApplicant(sender:)), for: .touchUpInside)
+            
+            
+            return cell
+            
+        }
+        
+        else { // old table
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "oldVOPPCell", for: indexPath) as! viewOldVolunteerOppTableViewCell
+            
+            cell.title.text = oldVOpp[indexPath.row].title
+            cell.title.font = UIFontMetrics.default.scaledFont(for: customFont)
+            cell.title.adjustsFontForContentSizeCategory = true
+            cell.title.font = cell.title.font.withSize(16)
+            cell.date.text = oldVOpp[indexPath.row].date
+            cell.workingHours.text = oldVOpp[indexPath.row].workingHours
+            cell.location.text = oldVOpp[indexPath.row].location
+            
+            // button
+            cell.locationBtn.tag = indexPath.row
+            
+            //  cell.locationBtn.addTarget(self, action: #selector(acceptCurrentApplicant(sender:)), for: .touchUpInside)
+            
+            return cell
+
+        }
         
         
     }
