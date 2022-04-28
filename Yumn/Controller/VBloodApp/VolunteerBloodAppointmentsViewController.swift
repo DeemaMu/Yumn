@@ -138,6 +138,21 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
         super.viewWillAppear(animated)
         navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
+        
+        let nav = self.navigationController?.navigationBar
+        guard let customFont = UIFont(name: "Tajawal-Bold", size: 25) else {
+            fatalError("""
+                Failed to load the "Tajawal" font.
+                Make sure the font file is included in the project and the font name is spelled correctly.
+                """
+            )
+        }
+        
+        nav?.tintColor = UIColor.init(named: "mainLight")
+        nav?.barTintColor = UIColor.white
+        nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(named: "mainLight")!, NSAttributedString.Key.font: customFont]
+        navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -218,7 +233,7 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
         //"MMMM dd, yyyy 'at' hh:mm:ss a 'UTC'+3"
        // dateFormatter.dateFormat = "MMMM d, yyyy HH:mm:sss"
         dateFormatter.dateFormat = "yyyy/MM/dd"
-        let currentDate = dateFormatter.string(from: Date())
+        let currentDate = dateFormatter.string(from: Date() - 7 )
         print("current date is \(currentDate)")
         
        

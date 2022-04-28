@@ -73,6 +73,11 @@
 		B9AC6630281B1C370013301B /* viewCurrentVolunteerOppTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9AC662E281B1C370013301B /* viewCurrentVolunteerOppTableViewCell.xib */; };
 		B9AC6633281B1CB50013301B /* viewOldVolunteerOppTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC6631281B1CB50013301B /* viewOldVolunteerOppTableViewCell.swift */; };
 		B9AC6634281B1CB50013301B /* viewOldVolunteerOppTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9AC6632281B1CB50013301B /* viewOldVolunteerOppTableViewCell.xib */; };
+		B9AC6636281B2E520013301B /* applicant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC6635281B2E520013301B /* applicant.swift */; };
+		B9AC6639281B2EBC0013301B /* currentApplicantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC6637281B2EBC0013301B /* currentApplicantTableViewCell.swift */; };
+		B9AC663A281B2EBC0013301B /* currentApplicantTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9AC6638281B2EBC0013301B /* currentApplicantTableViewCell.xib */; };
+		B9AC663D281B2EF20013301B /* acceptedApplicantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC663B281B2EF20013301B /* acceptedApplicantTableViewCell.swift */; };
+		B9AC663E281B2EF20013301B /* acceptedApplicantTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9AC663C281B2EF20013301B /* acceptedApplicantTableViewCell.xib */; };
 		B9AD3F2A27E2CF81001AB734 /* ManageAppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD3F2927E2CF81001AB734 /* ManageAppointmentsViewController.swift */; };
 		B9AD3F3027E335B3001AB734 /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD3F2F27E335B3001AB734 /* DateValue.swift */; };
 		B9B3143B2815BAB000C62981 /* AODInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3143A2815BAB000C62981 /* AODInstructions.swift */; };
@@ -185,6 +190,11 @@
 		B9AC662E281B1C370013301B /* viewCurrentVolunteerOppTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = viewCurrentVolunteerOppTableViewCell.xib; sourceTree = "<group>"; };
 		B9AC6631281B1CB50013301B /* viewOldVolunteerOppTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewOldVolunteerOppTableViewCell.swift; sourceTree = "<group>"; };
 		B9AC6632281B1CB50013301B /* viewOldVolunteerOppTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = viewOldVolunteerOppTableViewCell.xib; sourceTree = "<group>"; };
+		B9AC6635281B2E520013301B /* applicant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = applicant.swift; sourceTree = "<group>"; };
+		B9AC6637281B2EBC0013301B /* currentApplicantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = currentApplicantTableViewCell.swift; sourceTree = "<group>"; };
+		B9AC6638281B2EBC0013301B /* currentApplicantTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = currentApplicantTableViewCell.xib; sourceTree = "<group>"; };
+		B9AC663B281B2EF20013301B /* acceptedApplicantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = acceptedApplicantTableViewCell.swift; sourceTree = "<group>"; };
+		B9AC663C281B2EF20013301B /* acceptedApplicantTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = acceptedApplicantTableViewCell.xib; sourceTree = "<group>"; };
 		B9AD3F2927E2CF81001AB734 /* ManageAppointmentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageAppointmentsViewController.swift; sourceTree = "<group>"; };
 		B9AD3F2F27E335B3001AB734 /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
 		B9B3143A2815BAB000C62981 /* AODInstructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AODInstructions.swift; sourceTree = "<group>"; };
@@ -358,6 +368,7 @@
 				B91DD28F27E9965F00BA9881 /* Appointment.swift */,
 				B975979B28195D9300AD2C93 /* Donor.swift */,
 				B9AC6627281B1AE80013301B /* volunteerVOpp.swift */,
+				B9AC6635281B2E520013301B /* applicant.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -383,6 +394,10 @@
 				B9AC662E281B1C370013301B /* viewCurrentVolunteerOppTableViewCell.xib */,
 				B9AC6631281B1CB50013301B /* viewOldVolunteerOppTableViewCell.swift */,
 				B9AC6632281B1CB50013301B /* viewOldVolunteerOppTableViewCell.xib */,
+				B9AC6637281B2EBC0013301B /* currentApplicantTableViewCell.swift */,
+				B9AC6638281B2EBC0013301B /* currentApplicantTableViewCell.xib */,
+				B9AC663B281B2EF20013301B /* acceptedApplicantTableViewCell.swift */,
+				B9AC663C281B2EF20013301B /* acceptedApplicantTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -634,10 +649,12 @@
 				95785060279E1917004F3D8F /* Main.storyboard in Resources */,
 				95062D9727CADC0500D63911 /* Tajawal-Medium.ttf in Resources */,
 				95062D9627CADC0500D63911 /* Tajawal-Light.ttf in Resources */,
+				B9AC663E281B2EF20013301B /* acceptedApplicantTableViewCell.xib in Resources */,
 				95062D9927CADC0500D63911 /* Tajawal-Bold.ttf in Resources */,
 				B9AC6634281B1CB50013301B /* viewOldVolunteerOppTableViewCell.xib in Resources */,
 				D195445227D49B1600B03DFF /* organCell.xib in Resources */,
 				D19B1B5127E95F2200CB3FFA /* oldBloodAppTableViewCell.xib in Resources */,
+				B9AC663A281B2EBC0013301B /* currentApplicantTableViewCell.xib in Resources */,
 				B9AC6630281B1C370013301B /* viewCurrentVolunteerOppTableViewCell.xib in Resources */,
 				8D7F152527D25EF200E1EB1A /* yumnLoading.gif in Resources */,
 				B9DA61CE27C10C2900359487 /* GoogleService-Info.plist in Resources */,
@@ -715,6 +732,7 @@
 				954F2DB527E80CD200A3DFB1 /* ViewVOCollectionViewCell.swift in Sources */,
 				D19B1B5327E95FCB00CB3FFA /* OrganDonationViewController.swift in Sources */,
 				B9AC662C281B1BA10013301B /* ViewOppOfAVolunteerViewController.swift in Sources */,
+				B9AC6639281B2EBC0013301B /* currentApplicantTableViewCell.swift in Sources */,
 				95A64FCF27E540F80004F830 /* TimePicker.swift in Sources */,
 				8D7F152B27D299C100E1EB1A /* constants.swift in Sources */,
 				B9BAC6EA280E0CDF001489A1 /* AfterDeathODFirstController.swift in Sources */,
@@ -722,6 +740,7 @@
 				B9419DFC27C52D9C00962A1B /* HospitalCellTableViewCell.swift in Sources */,
 				9578505D279E1917004F3D8F /* VHomeViewController.swift in Sources */,
 				959A52D127E8A41F002244A0 /* editVolunteeringOpp.swift in Sources */,
+				B9AC6636281B2E520013301B /* applicant.swift in Sources */,
 				B9B3143F2815FB8400C62981 /* AODHospitalList.swift in Sources */,
 				D19B1B4B27E95F1000CB3FFA /* currentBldAppCell.swift in Sources */,
 				B9D831C72818BDF40023CBC5 /* ThankYouPopup.swift in Sources */,
@@ -771,6 +790,7 @@
 				D195444027D499FA00B03DFF /* tabBarVC.swift in Sources */,
 				B97A37FE27B9D32A00718079 /* RoundedShadowedView.swift in Sources */,
 				8D7F152F27D29A6500E1EB1A /* HospitalHomeViewController.swift in Sources */,
+				B9AC663D281B2EF20013301B /* acceptedApplicantTableViewCell.swift in Sources */,
 				95062D9D27CADE1300D63911 /* VolunteerProfileViewController.swift in Sources */,
 				B91DD29627E998C000BA9881 /* CustomPopUpView.swift in Sources */,
 				952C5D1227E4CF4800DF6537 /* DateTimePicker.swift in Sources */,
