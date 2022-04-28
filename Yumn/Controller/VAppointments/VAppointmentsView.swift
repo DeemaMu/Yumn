@@ -6,7 +6,6 @@ struct VAppointmentsView: View {
     
     var config = Configuration()
     
-    //        @ObservedObject var aptVM = AppointmentVM()
     @StateObject var odVM = ODAppointmentVM()
     
     @ObservedObject var aptVM = VAppointments()
@@ -69,7 +68,7 @@ struct VAppointmentsView: View {
                 
                 // MARK: current week view
                 
-                LazyVStack(spacing: 15, pinnedViews: [.sectionHeaders, .sectionFooters]){
+                LazyVStack(spacing: 15, pinnedViews: [.sectionHeaders]){
                     
                     Section{
                         
@@ -184,9 +183,9 @@ struct VAppointmentsView: View {
                                         ).fill(mainDark)
                                     )
                                     .onTapGesture {
-                                        var x =
+                                        let x =
                                         config.hostingController?.parent as! VViewAppointmentsVC
-                                        x.moveToOldApts()
+                                        x.moveToFutureApts()
                                     }
                                     
                                 }.onAppear(){ // <== Here
@@ -216,43 +215,6 @@ struct VAppointmentsView: View {
                         HeaderView()
                         
                         
-                    } footer: {
-                        ////                        if(showError && !aptVM.organAppointments.isEmpty){
-                        ////                            if(!aptVM.organAppointments.isEmpty){
-                        ////                                Text("الرجاء اختيار موعد للمتابعة").font(Font.custom("Tajawal", size: 15))
-                        ////                                    .foregroundColor(.red)
-                        ////
-                        ////                            }
-                        ////                        }
-                        ////
-                        //                        if(aptVM.organAppointments.isEmpty){
-                        //                            Text("لا توجد مواعيد").font(Font.custom("Tajawal", size: 15))
-                        //                                .foregroundColor(.red)
-                        //                        }
-                        //
-                        //                        Button(action: {
-                        //                            if(checkedIndex == -1){
-                        //                                showError = true
-                        //                            } else {
-                        //                                showError = false
-                        ////                                let x =
-                        ////                                config.hostingController?.parent as! Alive4thVC
-                        ////                                x.confirmAppoitment(apt: aptVM.filteredAppointments![checkedIndex])
-                        //                            }
-                        //                        }
-                        //                        ) {
-                        //                            Text("متابعة").font(Font.custom("Tajawal", size: 20))
-                        //                                .foregroundColor(.white)
-                        //                        }
-                        //                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        //                        .background(
-                        //                            RoundedRectangle(
-                        //                                cornerRadius: 25,
-                        //                                style: .continuous
-                        //                            )
-                        //                                .fill(mainDark)
-                        //                        )
-                        //                        .frame(width: 230, height: 59, alignment: .center)
                     }
                     
                 }

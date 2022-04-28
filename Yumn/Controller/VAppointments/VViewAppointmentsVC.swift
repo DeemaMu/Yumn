@@ -186,7 +186,9 @@ class VViewAppointmentsVC: UIViewController {
         performSegue(withIdentifier: "goToOldApts", sender: nil)
     }
     
-    
+    func moveToFutureApts(){
+        performSegue(withIdentifier: "goToFuture", sender: nil)
+    }
     
     
     //    @IBAction func confirm(_ sender: UIButton) {
