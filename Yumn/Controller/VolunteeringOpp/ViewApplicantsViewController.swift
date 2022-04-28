@@ -597,8 +597,8 @@ extension ViewApplicantsViewController: UITableViewDataSource {
             
             let name = "\(currentApplicants[indexPath.row].firstName) \(currentApplicants[indexPath.row].lastName)"
             cell.name.text = name
-        //    cell.age.text = String(currentApplicants[indexPath.row].age) // must be calculated frpm DOB
-            cell.age.text = "22" // must be removed
+            let age = getAge(type: "current", index: indexPath.row)
+            cell.age.text = "\(String(age)) عامًا"
             cell.email.text = currentApplicants[indexPath.row].email
             cell.cityAndArea.text = currentApplicants[indexPath.row].city
             
@@ -620,8 +620,8 @@ extension ViewApplicantsViewController: UITableViewDataSource {
             
             let name = "\(acceptedApplicants[indexPath.row].firstName) \(acceptedApplicants[indexPath.row].lastName)"
             cell.name.text = name
-           // cell.age.text = String(acceptedApplicants[indexPath.row].age) // must be calculated frpm DOB
-            cell.age.text = "22" // must be removed
+            let age = getAge(type: "accepted", index: indexPath.row)
+            cell.age.text = "\(String(age)) عامًا"
             cell.email.text = acceptedApplicants[indexPath.row].email
             cell.cityAndArea.text = acceptedApplicants[indexPath.row].city
             
@@ -641,6 +641,37 @@ extension ViewApplicantsViewController: UITableViewDataSource {
     
     
     }
+    
+    func formatAge(age : String) -> Date {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        let DOB = dateFormatter.date(from: age)
+        return DOB!
+        
+    }
+    
+    func getAge(type : String, index : Int)->Int {
+        
+        
+        if type == "current"{
+            let birthday = formatAge(age: currentApplicants[index].DOB)
+            let timeInterval = birthday.timeIntervalSinceNow
+            let age = abs(Int(timeInterval / 31556926.0))
+            return age
+        }
+        else if type == "accepted"{
+            let birthday = formatAge(age: acceptedApplicants[index].DOB)
+            let timeInterval = birthday.timeIntervalSinceNow
+            let age = abs(Int(timeInterval / 31556926.0))
+            return age
+        }
+        
+        return 0
+        
+    }
+    
     
     @objc
     // remove applicant from currentApplicants

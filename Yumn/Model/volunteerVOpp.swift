@@ -12,9 +12,7 @@ struct volunteerVOpp {
    
  //  let id : String
    let title : String
-    let endDate : String
-    let startDate : String
-  //let date : String
+  let date : String
    let workingHours  : String
    let location : String
    var status : String?

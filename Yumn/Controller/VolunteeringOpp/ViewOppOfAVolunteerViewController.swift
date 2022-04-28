@@ -29,8 +29,9 @@ class ViewOppOfAVolunteerViewController: UIViewController ,CustomSegmentedContro
    
     var currentVOpp: [volunteerVOpp] = []
     var oldVOpp: [volunteerVOpp] = []
+    
     let db = Firestore.firestore()
-    // VOpp id : applicant state
+    
     var VOppDict: [String : String] = [:]
     var arrayOfOldVOpp : [String] = []
     
@@ -105,9 +106,7 @@ class ViewOppOfAVolunteerViewController: UIViewController ,CustomSegmentedContro
     func getCurrentVOpp(userID : String) {
         
         // جب لي ال vOpp اللي الابلكنتس فيها اليوزر اي دي هذا
-     
         // اجيب الدوكس بالسب كولكشن واشيك اذا فيها اليوزر اي دي ولا لا ، اذا فيها اجيب الدوكيمنت تبع هذا الكولكشن
-        
         
         let currentDate = getCurrentDate()
         let ref =   db.collection("volunteeringOpp").whereField("endDate", isGreaterThanOrEqualTo: currentDate)
@@ -134,8 +133,6 @@ class ViewOppOfAVolunteerViewController: UIViewController ,CustomSegmentedContro
                     
                 } // end for
                     
-
-                
             }// end if stm
                 
                 else {
@@ -155,10 +152,11 @@ class ViewOppOfAVolunteerViewController: UIViewController ,CustomSegmentedContro
    
   func getOldVOpp(userID : String){
         
-    
+    // get the current date for the query
         let currentDate = getCurrentDate()
+      // only bring docs that their endDate isLessThan current date (old)
         let ref =  db.collection("volunteeringOpp").whereField("endDate", isLessThan: currentDate)
-        // only bring docs that their endDate isLessThan current date
+        
         ref.getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -166,11 +164,10 @@ class ViewOppOfAVolunteerViewController: UIViewController ,CustomSegmentedContro
                 
                 if querySnapshot!.documents.count != 0 {
                     self.noOldVOppLabel.isHidden = true
-                    // for each doc check if the user id exists in applicants subcollection or not
+                    
                 for document in querySnapshot!.documents {
                      let docID : String = document.documentID
-                        
-                    // check if applicant with the same user id exists in docID VOpp
+                    // for each doc check if the user id (current user logged in) exists in applicants subcollection or not
                         self.checkApplicantExists(docID : docID , userID: userID, type: "old")
                         self.reloadOldTable()
                     
@@ -194,9 +191,10 @@ class ViewOppOfAVolunteerViewController: UIViewController ,CustomSegmentedContro
     
     func checkApplicantExists(docID : String, userID : String , type : String){
         
-        // if applicant exists add the docID to the dictionary VOppDict, otherwise return
+        // مهم ترتيب الاشياء
+        // if user id (current user logged in) exists in applicants subcollection, add the docID to the dictionary VOppDict (for current VOpp) or arrayOfOldVOpp (for old VOpp), otherwise return
         
-        // make VOppDict empty for current and old
+        // make it empty for current and old
         VOppDict = [:]
         arrayOfOldVOpp = []
         let docRef = db.collection("volunteeringOpp").document(docID).collection("applicants").document(userID)
@@ -207,10 +205,12 @@ class ViewOppOfAVolunteerViewController: UIViewController ,CustomSegmentedContro
                     // add docID + applicant state to dictionary
                     if type == "current"{
                         self.VOppDict[docID] = (data["status"] as! String)
+                        // since doc exists add its data to currentVOpp array
                         self.bringVoppData(type : "current")
                     }
                     else if type == "old"{
                         self.arrayOfOldVOpp.append(docID)
+                        // since doc exists add its data to oldVOpp array
                         self.bringVoppData(type : "old")
 
                     }
@@ -257,14 +257,12 @@ class ViewOppOfAVolunteerViewController: UIViewController ,CustomSegmentedContro
                     // get data
                     if let data = document?.data(){
                         let title : String = data["title"] as! String
-                        //let date : String = data["date"] as! String
-                        let endDate : String = data["endDate"] as! String
-                        let startDate : String = data["startDate"] as! String
+                        let date : String = data["date"] as! String
                         let workingHours : String = data["workingHours"] as! String
                         let location : String = data["location"] as! String
                         let status : String = value
                     
-                            self.currentVOpp.append(volunteerVOpp(title: title, endDate: endDate, startDate: startDate, workingHours: workingHours, location: location, status: status))
+                            self.currentVOpp.append(volunteerVOpp(title: title, date: date, workingHours: workingHours, location: location, status: status))
                             self.reloadCurrentTable()
                       
                     }// end data
@@ -290,14 +288,12 @@ class ViewOppOfAVolunteerViewController: UIViewController ,CustomSegmentedContro
                     // get data
                     if let data = document?.data(){
                         let title : String = data["title"] as! String
-                        //let date : String = data["date"] as! String
-                        let endDate : String = data["endDate"] as! String
-                        let startDate : String = data["startDate"] as! String
+                        let date : String = data["date"] as! String
                         let workingHours : String = data["workingHours"] as! String
                         let location : String = data["location"] as! String
                     
                       
-                            self.oldVOpp.append(volunteerVOpp(title: title, endDate: endDate, startDate: startDate, workingHours: workingHours, location: location))
+                            self.oldVOpp.append(volunteerVOpp(title: title, date: date, workingHours: workingHours, location: location))
                             self.reloadOldTable()
                      
                     }// end data
@@ -456,15 +452,13 @@ extension ViewOppOfAVolunteerViewController: UITableViewDataSource {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "currentVOPPCell", for: indexPath) as! viewCurrentVolunteerOppTableViewCell
             
-            let date = "\(currentVOpp[indexPath.row].endDate) - \(currentVOpp[indexPath.row].startDate)"
-            // make sure of it from deema's code
            
             cell.title.text = currentVOpp[indexPath.row].title
             cell.title.font = UIFontMetrics.default.scaledFont(for: customFont)
             cell.title.adjustsFontForContentSizeCategory = true
             cell.title.font = cell.title.font.withSize(16)
             
-            cell.date.text = date
+            cell.date.text = currentVOpp[indexPath.row].date
             cell.workingHours.text = currentVOpp[indexPath.row].workingHours
             cell.location.text = currentVOpp[indexPath.row].location
             
@@ -501,12 +495,11 @@ extension ViewOppOfAVolunteerViewController: UITableViewDataSource {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "oldVOPPCell", for: indexPath) as! viewOldVolunteerOppTableViewCell
             
-            let date = "\(oldVOpp[indexPath.row].endDate) - \(oldVOpp[indexPath.row].startDate)"
             cell.title.text = oldVOpp[indexPath.row].title
             cell.title.font = UIFontMetrics.default.scaledFont(for: customFont)
             cell.title.adjustsFontForContentSizeCategory = true
             cell.title.font = cell.title.font.withSize(16)
-            cell.date.text = date
+            cell.date.text = oldVOpp[indexPath.row].date
             cell.workingHours.text = oldVOpp[indexPath.row].workingHours
             cell.location.text = oldVOpp[indexPath.row].location
             
