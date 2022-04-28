@@ -66,7 +66,7 @@ extension BloodDonationAppointmentViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 
-        cell.transform = CGAffineTransform (rotationAngle: -90)
+        cell.transform = CGAffineTransform (rotationAngle:  CGFloat.pi)
 
       }
     
