@@ -1,9 +1,4 @@
-//
-//  BloodDonationViewController.swift
-//  Yumn
-//
-//  Created by Rawan Mohammed on 10/02/2022.
-//
+
 
 import UIKit
 import SwiftUI
@@ -43,12 +38,13 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
     
     @IBOutlet weak var segmentsView: UIView!
     
-    // by modhi
+ 
     @IBOutlet weak var oldAppTable: UITableView!
     
     @IBOutlet weak var noAppLabel: UILabel!
     @IBOutlet weak var mapsAvailablePopUp: UIView!
     
+    @IBOutlet weak var noOldAppLbl: UILabel!
     @IBOutlet weak var mapPopUpBtn: UIButton!
     @IBOutlet weak var mapPopUpMsg: UILabel!
     @IBOutlet weak var blurredView: UIView!
@@ -59,14 +55,13 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
     var clickedCellIndex: Int = -1
 
     
-    // By Modhi
+   
     let user = Auth.auth().currentUser
 
     
     var codeSegmented:CustomSegmentedControl? = nil
     
-//    var sortedHospitals:[Location]?
- //   var hController = HospitalsController()
+
     
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -127,10 +122,7 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
         segmentedControl.removeBorder()
         segmentedControl.addUnderlineForSelectedSegment()
         
-        //sortedHospitals = getHospitals()
         
-       // tableMain.dataSource = self
-       // tableMain.register(UINib(nibName: "HospitalCellTableViewCell", bundle: nil), forCellReuseIdentifier: "HospitalsCell")
         
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
@@ -202,19 +194,15 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
                     self.storedCurrentBldApp.append(bloodAppointment(hospitalID:hospitalID, name: name, lat: latitude, long: longitude, city: city, area: area, date: date, time: time, appID: appID))
                 }
 
-                DispatchQueue.main.async {
-                    self.tableMainForCurrentBldApp.reloadData()
-                }
+                    self.reloadCurrentTable()
                 
             }// end if stm
                 
                 else {
                     
-                    self.noAppLabel.text = "لا يوجد مواعيد حالية"
-                    self.noAppLabel.isHidden = false
-                    print("no available current appointments")
+                    self.showCurrentAppLbl()
                 }
-                
+                self.reloadCurrentTable()
             } // end else
         }
         
@@ -232,6 +220,8 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
         dateFormatter.dateFormat = "yyyy/MM/dd"
         let currentDate = dateFormatter.string(from: Date())
         print("current date is \(currentDate)")
+        
+       
                 
 
         db.collection("volunteer").document(userID).collection("bloodAppointments").whereField("date", isLessThan: currentDate).getDocuments() { (querySnapshot, err) in
@@ -240,7 +230,7 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
             } else {
                 
                 if querySnapshot!.documents.count != 0 {
-                    self.noAppLabel.isHidden = true
+                    self.noOldAppLbl.isHidden = true
                 for document in querySnapshot!.documents {
                     let doc = document.data()
                     let hospitalID:String = doc["hospitalID"] as! String
@@ -256,17 +246,13 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
                     self.storedOldBldApp.append(bloodAppointment(hospitalID:hospitalID, name: name, lat: latitude, long: longitude, city: city, area: area, date: date, time: time, appID: appID))
                 }
 
-                DispatchQueue.main.async {
-                    self.oldAppTable.reloadData()
-                }
+                    self.reloadOldTable()
                 
             }// end if stm
                 
                 else {
-                    
-                    self.noAppLabel.text = "لا يوجد مواعيد سابقة"
-                    self.noAppLabel.isHidden = false
-                    print("no available old appointments")
+                    print("in old bld app")
+                   // self.showOldAppLbl()
                 }
                 
             } // end else
@@ -277,8 +263,8 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
     
     @IBAction func cancelingAppDelete(_ sender: Any) {
         
-        blurredView.isHidden = true
-        deleteAppPopUp.isHidden = true
+     
+        hidePopupAndBlurredView()
         
     }
     
@@ -301,9 +287,8 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
                 self.tableMainForCurrentBldApp.reloadData()
                 // show flushbar
                 print("Appointment document successfully removed!")
-                self.blurredView.isHidden = true
-                self.deleteAppPopUp.isHidden = true
                 
+                self.hidePopupAndBlurredView()
                 components().showToast(message: "تم حذف الموعد بنجاح", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!, viewC: self)
             }
         }
@@ -313,11 +298,58 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
     
     
     @IBAction func okayMapBtn(_ sender: Any) {
-        self.blurredView.isHidden = true
-        self.mapsAvailablePopUp.isHidden = true
+       
+        
+        hidePopupAndBlurredView()
     }
     
     
+    
+    func showCurrentAppLbl(){
+        
+        if storedCurrentBldApp.count == 0 {
+            noAppLabel.isHidden = false
+            noOldAppLbl.isHidden = true
+        }
+    }
+    
+    
+    func showOldAppLbl(){
+        
+        if storedOldBldApp.count == 0 {
+            noAppLabel.isHidden = true
+            noOldAppLbl.isHidden = false
+        }
+    }
+    
+    
+    func hidePopupAndBlurredView(){
+        self.blurredView.isHidden = true
+        self.deleteAppPopUp.isHidden = true
+
+    }
+    
+    func showPopupAndBlurredView(){
+        self.blurredView.isHidden = false
+        self.deleteAppPopUp.isHidden = false
+    }
+    
+    func reloadCurrentTable(){
+        
+        DispatchQueue.main.async {
+            self.tableMainForCurrentBldApp.reloadData()
+
+        }
+        
+    }
+    
+    func reloadOldTable(){
+        DispatchQueue.main.async {
+            self.oldAppTable.reloadData()
+
+        }
+        
+    }
     
     func addSegments(){
         
@@ -359,17 +391,22 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
            
             tableMainForCurrentBldApp.isHidden = true
             oldAppTable.isHidden = false
+            noAppLabel.isHidden = true
+            showOldAppLbl()
          
             break
         case 1:
    
             tableMainForCurrentBldApp.isHidden = false
             oldAppTable.isHidden = true
+            noOldAppLbl.isHidden = true
+            showCurrentAppLbl()
 
             break
         default:
             tableMainForCurrentBldApp.isHidden = false
             oldAppTable.isHidden = true
+            noOldAppLbl.isHidden = true
         }
     }
     
@@ -514,8 +551,9 @@ extension VolunteerBloodAppointmensViewController: UITableViewDataSource {
         bldAppHospitalName.text = storedCurrentBldApp[index].name
         bldAppDate.text = storedCurrentBldApp[index].date
         bldAppTime.text = "\(storedCurrentBldApp[index].time) \(time)"
-        blurredView.isHidden = false
-        deleteAppPopUp.isHidden = false
+      //  blurredView.isHidden = false
+       // deleteAppPopUp.isHidden = false
+        showPopupAndBlurredView()
         
     }
     
@@ -567,87 +605,3 @@ extension VolunteerBloodAppointmensViewController{
     
     
 }
-
-
-/*
-extension UISegmentedControl {
-    
-    func removeBorder(){
-        
-        guard let customFont = UIFont(name: "Tajawal", size: 18) else {
-            fatalError("""
-                                 Failed to load the "Tajawal" font.
-                                 Make sure the font file is included in the project and the font name is spelled correctly.
-                                 """
-            )
-        }
-        
-        self.tintColor = UIColor.clear
-        self.backgroundColor = UIColor.clear
-        self.setTitleTextAttributes( [NSAttributedString.Key.foregroundColor : UIColor.init(named: "mainLight")!, NSAttributedString.Key.font: customFont, NSAttributedString.Key.underlineColor: UIColor.init(named: "mainLight")!, NSAttributedString.Key.underlineStyle: NSUnderlineStyle.thick.rawValue], for: .selected)
-        self.setTitleTextAttributes( [NSAttributedString.Key.foregroundColor : UIColor.gray,  NSAttributedString.Key.font: customFont], for: .normal)
-        if #available(iOS 13.0, *) {
-            self.selectedSegmentTintColor = UIColor.clear
-        }
-        
-        
-        setBackgroundImage(imageWithColor(color: backgroundColor ?? UIColor.white), for: .normal, barMetrics: .default)
-        setBackgroundImage(imageWithColor(color: UIColor.white), for: .selected, barMetrics: .default)
-        tintColor = UIColor.init(named: "mainLight")
-        
-        setDividerImage(imageWithColor(color: UIColor.clear), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
-        //       setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.init(named: "mainLight")!, NSAttributedString.Key.font : customFont, NSAttributedString.Key.underlineColor: UIColor.init(named: "mainLight")!, NSAttributedString.Key.underlineStyle: NSUnderlineStyle.thick.rawValue], for: .selected)
-    }
-    
-    
-    private func imageWithColor(color: UIColor) -> UIImage {
-        let rect = CGRect(x: 0.0, y: 0.0, width:  1.0, height: 1.0)
-        UIGraphicsBeginImageContext(rect.size)
-        let context = UIGraphicsGetCurrentContext()
-        context!.setFillColor(color.cgColor);
-        context!.fill(rect);
-        let image = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        return image!
-    }
-    /*
-    func setupSegment() {
-        //        self.removeBorder()
-        //        let segmentUnderlineWidth: CGFloat = self.bounds.width
-        //        let segmentUnderlineHeight: CGFloat = 4.0
-        //        let segmentUnderlineXPosition = self.bounds.minX
-        //        let segmentUnderLineYPosition = self.bounds.size.height - 1.0
-        //        let segmentUnderlineFrame = CGRect(x: segmentUnderlineXPosition, y: segmentUnderLineYPosition, width: segmentUnderlineWidth, height: segmentUnderlineHeight)
-        //        let segmentUnderline = UIView(frame: segmentUnderlineFrame)
-        //        segmentUnderline.backgroundColor = UIColor.clear
-        self.removeBorder()
-        //        self.addSubview(segmentUnderline)
-        self.addUnderlineForSelectedSegment()
-    }
-    
-    func addUnderlineForSelectedSegment(){
-        
-        let underlineWidth: CGFloat = self.bounds.size.width / CGFloat(self.numberOfSegments)
-        let underlineHeight: CGFloat = 4.0
-        let underlineXPosition = CGFloat(selectedSegmentIndex * Int(underlineWidth))
-        let underLineYPosition = self.bounds.size.height - 1.0
-        let underlineFrame = CGRect(x: underlineXPosition, y: underLineYPosition, width: underlineWidth, height: underlineHeight)
-        let underline = UIView(frame: underlineFrame)
-        underline.backgroundColor = UIColor.init(named: "mainLight")
-        underline.tag = 1
-        self.addSubview(underline)
-        
-        
-    }
-    
-    
-    func changeUnderlinePosition(){
-        guard let underline = self.viewWithTag(1) else {return}
-        let underlineFinalXPosition = (self.bounds.width / CGFloat(self.numberOfSegments)) * CGFloat(selectedSegmentIndex)
-        underline.frame.origin.x = underlineFinalXPosition
-        
-    }
-    */
-}
-
-*/
