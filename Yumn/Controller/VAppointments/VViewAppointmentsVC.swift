@@ -107,12 +107,20 @@ class VViewAppointmentsVC: UIViewController {
     }
     
 //
-//    @IBAction func cancel(_ sender: UIButton) {
-//        blackBlurredView.superview?.sendSubviewToBack(blackBlurredView)
-//        popupView.superview?.sendSubviewToBack(popupView)
-//        popupView.isHidden = true
-//        blackBlurredView.isHidden = true
-//    }
+    func cancel(_ sender: UIButton) {
+        blackBlurredView.superview?.sendSubviewToBack(blackBlurredView)
+        popupView.superview?.sendSubviewToBack(popupView)
+        popupView.isHidden = true
+        blackBlurredView.isHidden = true
+        let configuration = Configuration()
+        let controller = UIHostingController(rootView: ThankYouPopup(config: configuration, controllerType: 2))
+        // injects here, because `configuration` is a reference !!
+        configuration.hostingController = controller
+        addChild(controller)
+        controller.view.frame = innerPopup.bounds
+        innerPopup.addSubview(controller.view)
+    }
+    
 //
 //    func getDataFromDatabase( completion: @escaping([retrievedAppointment]) -> Void) {
 //        let retrievedData: [retrievedAppointment] = getUserOA()

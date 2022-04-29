@@ -104,6 +104,9 @@ struct Constants {
         static var selectedDate: Date = Date()
         static var selectedOrgan: SelectedOrgan = SelectedOrgan(organ: "", hospital: "", appointment: "", organHospitals: [])
         static var vc: Alive2ndVC = Alive2ndVC()
+        static var edit = false
+        static var mainDoc = ""
+        static var exactDoc = ""
     }
 
 }

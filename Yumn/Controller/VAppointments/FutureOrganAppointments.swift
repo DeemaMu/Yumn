@@ -31,6 +31,8 @@ struct FutureOrganAppointments: View {
     
     var calender = Calendar.current
     
+    var dateFormatter = DateFormatter()
+    
     init(config: Configuration){
         self.config = config
         aptVM.currentDay = Date()
@@ -43,6 +45,11 @@ struct FutureOrganAppointments: View {
         "kidney":"كلية",
         "liver":"جزء من الكبد",
     ]
+    
+    init() {
+        self.dateFormatter.dateFormat = "yyyy-MM-dd"
+        self.dateFormatter.locale = Locale(identifier:"en_US_POSIX")
+    }
     
     var body: some View {
         
@@ -103,6 +110,11 @@ struct FutureOrganAppointments: View {
     //    @available(iOS 15.0, *)
     @ViewBuilder
     func AppoitmentCard(apt: retrievedAppointment, index: Int) -> some View {
+        
+        let future = self.dateFormatter.string(from: (Date()))
+        let ogDate = self.dateFormatter.string(from: apt.date!)
+        
+        if(future < ogDate){
         HStack(){
             Spacer()
             
@@ -133,36 +145,45 @@ struct FutureOrganAppointments: View {
                 Spacer()
                 
                 HStack(){
-                    VStack(){
-                        Image("appCalendar").resizable()
-                            .scaledToFit()
-                    }.padding(.bottom,9).padding(.top, 9)
-                    Text(apt.date!.getFormattedDate(format: "yyyy/MM/dd")).font(Font.custom("Tajawal", size: 12)).foregroundColor(mainDark)
-                        .padding(.trailing, 40).padding(.top, 5)
-                    
-                    VStack(){
-                        Image("time").resizable()
-                            .scaledToFit()
-                    }.padding(.bottom, 9).padding(.top, 9)
-                    
-                    Text("\(apt.startTime!.getFormattedDate(format: "HH:mm")) - \(apt.endTime!.getFormattedDate(format: "HH:mm"))").font(Font.custom("Tajawal", size: 12))
-                        .foregroundColor(mainDark).padding(.top, 5)
-                }
-                
-                HStack(){
-                    
-                    VStack(){
-                        Image("location").resizable()
-                            .scaledToFit()
-                    }.padding(.bottom, 2).padding(.top, 2)
-                    Text(apt.hospitalLocation!).font(Font.custom("Tajawal", size: 12)).foregroundColor(mainDark)
-                        .padding(.trailing, 10).padding(.leading, -3)
+                    VStack(alignment: .leading, spacing: 0){
+                        HStack(){
+                            VStack(){
+                                Image("appCalendar").resizable()
+                                    .scaledToFit()
+                            }.padding(.bottom,9).padding(.top, 9)
+                            Text(apt.date!.getFormattedDate(format: "yyyy/MM/dd")).font(Font.custom("Tajawal", size: 12)).foregroundColor(mainDark)
+                                .padding(.top, 5).padding(.trailing, 30)
+                            
+                            
+                            VStack(){
+                                Image("time").resizable()
+                                    .scaledToFit()
+                            }.padding(.bottom, 9).padding(.top, 9)
+                            
+                            Text("\(apt.startTime!.getFormattedDate(format: "HH:mm")) - \(apt.endTime!.getFormattedDate(format: "HH:mm"))").font(Font.custom("Tajawal", size: 12))
+                                .foregroundColor(mainDark).padding(.top, 5)
+                        }
+                        
+                        HStack(){
+                            
+                            VStack(){
+                                Image("location").resizable()
+                                    .scaledToFit()
+                            }.padding(.bottom, 2).padding(.top, 2).padding(.leading, -5)
+                            Text(apt.hospitalLocation!).font(Font.custom("Tajawal", size: 12)).foregroundColor(mainDark)
+                                .padding(.leading, -3)
+                            
+                        }.padding(.bottom, 5)
+                        
+                        
+                    }
                     
                     Spacer()
-                    
-                    self.editButton()
-                    
-                } .padding(.bottom, 5).padding(.leading, -3)
+                    VStack(){
+                        Spacer()
+                        self.editButton()
+                    }.padding(.bottom, 5).padding(.leading, -3)
+                }
                 
                 
             }.frame(maxWidth: .infinity, alignment: .leading)
@@ -187,7 +208,10 @@ struct FutureOrganAppointments: View {
                 , y: 0)
         .padding(.horizontal, 5)
         .padding(.vertical, 5)
-        
+        }
+        else {
+            
+        }
         
     }
     

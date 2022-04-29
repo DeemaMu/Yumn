@@ -26,7 +26,7 @@ struct ConfirmAppointmentPopUp: View {
     
     @State var hospitalName = ""
     @State var hospitalLocation = ""
-
+    
     
     var weekdaysAR: [String:String] =
     [
@@ -99,11 +99,14 @@ struct ConfirmAppointmentPopUp: View {
                         if(self.updateData()){
                             if(self.addToArray()){
                                 if(self.addToUser()){
-                                print("lets goooo")
-                                let x =
-                                config.hostingController?.parent as! Alive4thVC
-                                    x.confirm()
-                                    
+                                    if(!Constants.selected.edit){
+                                        print("lets goooo")
+                                        let x =
+                                        config.hostingController?.parent as! Alive4thVC
+                                        x.confirm()
+                                    } else {
+                                        
+                                    }
                                 }  else {
                                     print("fail22222")
                                 }
@@ -115,8 +118,8 @@ struct ConfirmAppointmentPopUp: View {
                         else {
                             print("fail3333")
                         }
-                    }
-                    ) {
+                        
+                    }) {
                         Text("تأكيد").font(Font.custom("Tajawal", size: 16))
                             .foregroundColor(.white)
                     }
@@ -139,6 +142,54 @@ struct ConfirmAppointmentPopUp: View {
             self.getHospitalName()
         }
     }
+    
+    func updateInnerAppointment() -> Bool {
+        var success = true
+        
+        db.collection("appointments").document(Constants.selected.mainDoc).collection("appointments").document(Constants.selected.exactDoc).setData(["booked":false, "donor": ""], merge: true) { error in
+            
+            if error == nil {
+                success = true
+            } else {
+                print("\(String(describing: error))")
+                success = false
+            }
+        }
+        
+        return success
+    }
+    
+    func updateAppointment() -> Bool {
+        var success = true
+        
+        var doc = db.collection("appointments").document(Constants.selected.mainDoc)
+        
+        doc.updateData(["bookedAppointments": FieldValue.arrayRemove([Constants.selected.exactDoc])]) { error in
+            if (error == nil) {
+                success = true
+            } else {
+                print(error!)
+                success = false
+            }
+        }
+        return success
+    }
+    
+    func DeleteFromUser() -> Bool {
+        var success = true
+        
+        db.collection("volunteer").document(userID).collection("organAppointments").document(exact.docID).delete() { error in
+            
+            if error == nil {
+                success = true
+            } else {
+                print("\(String(describing: error))")
+                success = false
+            }
+        }
+        return success
+    }
+    
     
     func updateData() -> Bool {
         var success = true
@@ -168,21 +219,21 @@ struct ConfirmAppointmentPopUp: View {
         
         doc.updateData(["bookedAppointments": FieldValue.arrayUnion([exact.docID])]) { error in
             if (error == nil) {
-                            success = true
-                        } else {
-                            print(error!)
-                            success = false
-                        }
+                success = true
+            } else {
+                print(error!)
+                success = false
+            }
         }
         
-//            .setData(["bookedAppointments":appointment.bookedAppointments], merge: true) { error in
-//
-//            if error == nil {
-//                success = true
-//            } else {
-//                success = false
-//            }
-//        }
+        //            .setData(["bookedAppointments":appointment.bookedAppointments], merge: true) { error in
+        //
+        //            if error == nil {
+        //                success = true
+        //            } else {
+        //                success = false
+        //            }
+        //        }
         
         return success
     }

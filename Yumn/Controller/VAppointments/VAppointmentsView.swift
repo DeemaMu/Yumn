@@ -472,6 +472,10 @@ class VAppointments : ObservableObject {
     func getUserOA() -> [retrievedAppointment] {
         olderOA.removeAll()
         futureOA.removeAll()
+        self.dateFormatter.dateFormat = "yyyy-MM-dd"
+        self.dateFormatter.locale = Locale(identifier:"en_US_POSIX")
+        let past = self.dateFormatter.string(from: (Date() - 7))
+        let future = self.dateFormatter.string(from: (Date() + 7))
         
         db.collection("volunteer").document(userID).collection("organAppointments").addSnapshotListener { (querySnapshot, error) in
             
@@ -522,24 +526,22 @@ class VAppointments : ObservableObject {
                 apt.hName = hName
                 apt.hospitalLocation = location
                 
-                self.dateFormatter.dateFormat = "yyyy-MM-dd"
-                self.dateFormatter.locale = Locale(identifier:"en_US_POSIX")
-                let past = self.dateFormatter.string(from: (Date() - 7))
-                let future = self.dateFormatter.string(from: (Date() + 7))
-                let ogDate = self.dateFormatter.string(from: aptDate!)
-                
-                if(future < ogDate){
-                    self.futureOA.append(apt)
-                }
-                
-                if(past > ogDate){
-                    self.olderOA.append(apt)
-                }
-                
                 return apt
                 
             }
             
+        }
+        
+        for appointment in organAppointments {
+            let ogDate = self.dateFormatter.string(from: appointment.date!)
+            
+            if(future < ogDate){
+                self.futureOA.append(appointment)
+            }
+            
+            if(past > ogDate){
+                self.olderOA.append(appointment)
+            }
         }
         
         return self.organAppointments
