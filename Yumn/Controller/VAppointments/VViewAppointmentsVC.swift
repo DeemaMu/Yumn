@@ -247,6 +247,7 @@ struct retrievedAppointment : Identifiable {
     var endTime: Date?
     var hName: String?
     var hospitalID: String?
+    var hospitalLocation: String?
     
     var mainAppointmentID: String?
     var appointmentID: String?

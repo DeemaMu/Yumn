@@ -16,7 +16,6 @@ class OrganAppointment: Appointment, Identifiable {
     init(type: String, startTime: Date, endTime: Date,
          aptDate: Date, hospital: String, aptDuration: Double, organ: String) {
         super.init()
-        //        self.appointments = appointments
         self.type = type
         self.startTime = startTime
         self.endTime = endTime
@@ -75,22 +74,10 @@ class AppointmentVM: ObservableObject {
     @Published var filteredAppointments: [OrganAppointment] = [OrganAppointment]()
     @Published var added = true
     @Published var appointmentsWithin = [DAppointment]()
-    //    var thereIS = false
     
     init() {
                 self.fetchOrganAppointments()
     }
-    
-//    @available(iOS 15.0.0, *)
-//    func setup() async {
-//        do {
-//            let apts = try await self.fetchOrganAppointments()
-//            self.filteredAppointments = self.filteringAppointments()
-//            print("Fetched \(apts.count) images.")
-//        } catch {
-//            print("Fetching images failed with error \(error)")
-//        }
-//    }
     
     let db = Firestore.firestore()
     
@@ -363,18 +350,6 @@ class AppointmentVM: ObservableObject {
             
     }
     
-    //    var storedAppointments: [OrganAppointment] =
-    //    [
-    //        OrganAppointment(appointments:
-    //                            [DAppointment(type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(30 * 60), donor: "", hName: Constants.selected.selectedOrgan.hospital, confirmed: false, booked: false)]
-    //                         , type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(60 * 60), aptDate: getSampleDate(offset: 0), hospital: Constants.selected.selectedOrgan.hospital, aptDuration: 60, organ: Constants.selected.selectedOrgan.organ),
-    //        OrganAppointment(appointments:
-    //                            [DAppointment(type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(30 * 60), donor: "", hName: Constants.selected.selectedOrgan.hospital, confirmed: false, booked: false)]
-    //                         , type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(60 * 60), aptDate: getSampleDate(offset: 0), hospital: Constants.selected.selectedOrgan.hospital, aptDuration: 60, organ: Constants.selected.selectedOrgan.organ),
-    //        OrganAppointment(appointments:
-    //                            [DAppointment(type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(30 * 60), donor: "", hName: Constants.selected.selectedOrgan.hospital, confirmed: false, booked: false)]
-    //                         , type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(60 * 60), aptDate: getSampleDate(offset: 0), hospital: Constants.selected.selectedOrgan.hospital, aptDuration: 60, organ: Constants.selected.selectedOrgan.organ),
-    //    ]
     
     @Published var currentDay: Date = Date()
     
@@ -405,56 +380,6 @@ class AppointmentVM: ObservableObject {
         }
         return self.filteredAppointments
     }
-    
-//    func filtering2weeksAppointments() -> Bool {
-//        let calender = Calendar.current
-//        var currentWeek: [Date] = []
-//
-//        // MARK: Curent day
-//        let currentDay: Date = Date()
-//
-//        //        let today = Date()
-//        //        let week = calender.dateInterval(of: .weekOfMonth, for: today)
-//
-//        //        let firstWeekDay = week?.start
-//
-//        (0...14).forEach {
-//            day in
-//
-//            if let weekday = calender.date(byAdding: .day, value: day, to: currentDay) {
-//                currentWeek.append(weekday)
-//            }
-//
-//        }
-//
-//
-//        if(!self.organAppointments.isEmpty){
-//
-//            var filtered = [OrganAppointment]()
-//
-//            if(self.organAppointments.first?.appointments != nil){
-//
-//                filtered = self.organAppointments.filter {
-//                    return !(($0.appointments?.first?.booked)!)
-//                }
-//
-//                if(!filtered.isEmpty){
-//                    for day in currentWeek {
-//                        for apt in filtered {
-//                            if (calender.isDate(apt.aptDate, inSameDayAs: day)){
-//                                return true
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//
-//
-//        }
-//        return false
-//
-//
-//    }
     
     
 }

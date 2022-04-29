@@ -25,6 +25,8 @@ struct ConfirmAppointmentPopUp: View {
     let bgWhite = Color(UIColor.white)
     
     @State var hospitalName = ""
+    @State var hospitalLocation = ""
+
     
     var weekdaysAR: [String:String] =
     [
@@ -37,23 +39,6 @@ struct ConfirmAppointmentPopUp: View {
         "Sat":"السبت"
     ]
     
-    //    var monthsAR: [String:String] =
-    //    [
-    //        "01": "الأحد",
-    //        "Mon": "الأثنين",
-    //        "Tue": "الثلاثاء",
-    //        "Wed": "الاربعاء",
-    //        "Thu":"الخميس",
-    //        "Fri":"الجمعة",
-    //        "Sat":"السبت"
-    //    ]
-    
-    
-    
-    
-    //    init(){
-    //        appointment.appointments = [DAppointment(type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(30 * 60), donor: "", hName: Constants.selected.selectedOrgan.hospital, confirmed: false, booked: false)]
-    //    }
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false){
@@ -91,7 +76,7 @@ struct ConfirmAppointmentPopUp: View {
                 HStack(alignment: .bottom, spacing: 10){
                     
                     Button(action: {
-                        var x =
+                        let x =
                         config.hostingController?.parent as! Alive4thVC
                         x.cancel()
                     }
@@ -115,7 +100,7 @@ struct ConfirmAppointmentPopUp: View {
                             if(self.addToArray()){
                                 if(self.addToUser()){
                                 print("lets goooo")
-                                var x =
+                                let x =
                                 config.hostingController?.parent as! Alive4thVC
                                     x.confirm()
                                     
@@ -208,7 +193,7 @@ struct ConfirmAppointmentPopUp: View {
         
         newDoc.setData(["type": appointment.type,"hospital": appointment.hospital, "start_time": exact.startTime,
                         "end_time": exact.endTime, "date": appointment.aptDate, "appointment_duration": 60
-                        , "docID": exact.docID, "mainDocId": appointment.docID, "hospital_name": self.hospitalName, "organ": appointment.organ]) { error in
+                        , "docID": exact.docID, "mainDocId": appointment.docID, "hospital_name": self.hospitalName, "organ": appointment.organ, "location": self.hospitalLocation]) { error in
             
             if (error == nil){
                 added = true
@@ -252,6 +237,9 @@ struct ConfirmAppointmentPopUp: View {
             print("here")
             let dataDescription = document.data()
             self.hospitalName = dataDescription?["name"] as! String
+            let city = dataDescription?["city"] as! String
+            let area = dataDescription?["area"] as! String
+            self.hospitalLocation = city + " - " + area
         }
         
         return hospitalName

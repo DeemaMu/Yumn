@@ -63,166 +63,165 @@ struct VAppointmentsView: View {
     
     var body: some View {
         if #available(iOS 15.0, *){
-            ScrollView(.vertical, showsIndicators: false){
+            
+            
+            // MARK: current week view
+            
+            VStack(spacing: 15){
                 
-                
-                // MARK: current week view
-                
-                LazyVStack(spacing: 15, pinnedViews: [.sectionHeaders]){
+                Section{
                     
-                    Section{
-                        
-                        // MARK: current week view
-                        ScrollView(.horizontal, showsIndicators: false){
-                            ScrollViewReader { value in
-                                HStack(spacing: 20){
+                    // MARK: current week view
+                    ScrollView(.horizontal, showsIndicators: false){
+                        ScrollViewReader { value in
+                            HStack(spacing: 20){
+                                
+                                
+                                VStack(spacing: 5){
+                                    Text("مواعيد").font(Font.custom("Tajawal", size: 13))
+                                        .foregroundColor( .white).fontWeight(.semibold)
                                     
+                                    Text("سابقة").font(Font.custom("Tajawal", size: 13))
+                                        .foregroundColor( .white).fontWeight(.semibold)
                                     
+                                }
+                                .frame(width: 90, height: 90)
+                                .background(
+                                    // MARK: Mathed gemotry
+                                    RoundedRectangle(
+                                        cornerRadius: 10,
+                                        style: .continuous
+                                    ).fill(mainDark)
+                                    //                                            .matchedGeometryEffect(id: "CURRENTDAY", in: animation)
+                                    
+                                )
+                                .onTapGesture {
+                                    var x =
+                                    config.hostingController?.parent as! VViewAppointmentsVC
+                                    x.moveToOldApts()
+                                }
+                                
+                                
+                                
+                                
+                                // MARK: Display dates
+                                ForEach(0..<odVM.currentWeek.count, id: \.self){ day in
                                     VStack(spacing: 5){
-                                        Text("مواعيد").font(Font.custom("Tajawal", size: 13))
-                                            .foregroundColor( .white).fontWeight(.semibold)
+                                        Text(odVM.extractDate(date: odVM.currentWeek[day], format: "dd")).font(Font.custom("Tajawal", size: 25))
+                                            .foregroundColor(odVM.isToday(date: odVM.currentWeek[day]) ? .white : mainDark).fontWeight(.semibold)
                                         
-                                        Text("سابقة").font(Font.custom("Tajawal", size: 13))
-                                            .foregroundColor( .white).fontWeight(.semibold)
+                                        // MARK: Returns days
+                                        Text(weekdaysAR[odVM.extractDate(date: odVM.currentWeek[day], format: "EEE")]!).font(Font.custom("Tajawal", size: 14))
+                                            .foregroundColor(odVM.isToday(date: odVM.currentWeek[day]) ? .white : mainDark)
+                                        //                                            .foregroundColor(self.organsVM.selected[organ]! ? .white : mainDark)
                                         
-                                    }
-                                    .frame(width: 90, height: 90)
-                                    .background(
-                                        // MARK: Mathed gemotry
-                                        RoundedRectangle(
-                                            cornerRadius: 10,
-                                            style: .continuous
-                                        ).fill(mainDark)
-                                        //                                            .matchedGeometryEffect(id: "CURRENTDAY", in: animation)
-                                        
-                                    )
-                                    .onTapGesture {
-                                        var x =
-                                        config.hostingController?.parent as! VViewAppointmentsVC
-                                        x.moveToOldApts()
-                                    }
-                                    
-                                    
-                                    
-                                    
-                                    // MARK: Display dates
-                                    ForEach(0..<odVM.currentWeek.count, id: \.self){ day in
-                                        VStack(spacing: 5){
-                                            Text(odVM.extractDate(date: odVM.currentWeek[day], format: "dd")).font(Font.custom("Tajawal", size: 25))
-                                                .foregroundColor(odVM.isToday(date: odVM.currentWeek[day]) ? .white : mainDark).fontWeight(.semibold)
+                                        // MARK: circle under
+                                        ZStack{
+                                            Circle().fill(appointmentsOnDate(date: odVM.currentWeek[day]) ? mainDark : .white)
+                                                .frame(width: 8, height: 8)
+                                                .opacity(appointmentsOnDate(date: odVM.currentWeek[day]) ? 1 : 0)
                                             
-                                            // MARK: Returns days
-                                            Text(weekdaysAR[odVM.extractDate(date: odVM.currentWeek[day], format: "EEE")]!).font(Font.custom("Tajawal", size: 14))
-                                                .foregroundColor(odVM.isToday(date: odVM.currentWeek[day]) ? .white : mainDark)
-                                            //                                            .foregroundColor(self.organsVM.selected[organ]! ? .white : mainDark)
-                                            
-                                            // MARK: circle under
-                                            ZStack{
-                                                Circle().fill(appointmentsOnDate(date: odVM.currentWeek[day]) ? mainDark : .white)
+                                            if(calender.isDate( odVM.currentWeek[day], inSameDayAs: selectedDate)){
+                                                Circle().fill(.white)
                                                     .frame(width: 8, height: 8)
                                                     .opacity(appointmentsOnDate(date: odVM.currentWeek[day]) ? 1 : 0)
-                                                
-                                                if(calender.isDate( odVM.currentWeek[day], inSameDayAs: selectedDate)){
-                                                    Circle().fill(.white)
-                                                        .frame(width: 8, height: 8)
-                                                        .opacity(appointmentsOnDate(date: odVM.currentWeek[day]) ? 1 : 0)
-                                                }
-                                                
                                             }
                                             
-                                        }.id(day)
-                                        //                                        .foregroundStyle(odVM.isToday(date: odVM.currentWeek[day]) ? .primary : .tertiary)
-                                            .frame(width: 90, height: 90)
-                                            .background(
-                                                ZStack{
-                                                    // MARK: Mathed gemotry
-                                                    if(odVM.isToday(date: odVM.currentWeek[day])){
-                                                        RoundedRectangle(
-                                                            cornerRadius: 10,
-                                                            style: .continuous
-                                                        ).fill(mainDark)
-                                                            .matchedGeometryEffect(id: "CURRENTDAY", in: animation)
-                                                    } else {
-                                                        RoundedRectangle(
-                                                            cornerRadius: 10,
-                                                            style: .continuous
-                                                        ).fill(bgWhite)
-                                                    }
-                                                    //                                                    .fill(self.organsVM.selected[organ]! ? mainDark : .white)
+                                        }
+                                        
+                                    }.id(day)
+                                    //                                        .foregroundStyle(odVM.isToday(date: odVM.currentWeek[day]) ? .primary : .tertiary)
+                                        .frame(width: 90, height: 90)
+                                        .background(
+                                            ZStack{
+                                                // MARK: Mathed gemotry
+                                                if(odVM.isToday(date: odVM.currentWeek[day])){
+                                                    RoundedRectangle(
+                                                        cornerRadius: 10,
+                                                        style: .continuous
+                                                    ).fill(mainDark)
+                                                        .matchedGeometryEffect(id: "CURRENTDAY", in: animation)
+                                                } else {
+                                                    RoundedRectangle(
+                                                        cornerRadius: 10,
+                                                        style: .continuous
+                                                    ).fill(bgWhite)
                                                 }
-                                            )
-                                            .shadow(color: shadowColor,
-                                                    radius:  odVM.isToday(date: odVM.currentWeek[day]) ? 0 : 3, x: 0
-                                                    , y:  odVM.isToday(date: odVM.currentWeek[day]) ? 0 : 6)
-                                            .onTapGesture {
-                                                // updating current date
-                                                selectedDate = odVM.currentWeek[day]
-                                                withAnimation {
-                                                    odVM.currentDay = odVM.currentWeek[day]
-                                                }
-                                            }.onChange(of: selectedDate) { newValue in
-                                                aptVM.currentDay = newValue
-                                                aptVM.filteringAppointments()
+                                                //                                                    .fill(self.organsVM.selected[organ]! ? mainDark : .white)
                                             }
-                                    }
-                                    
-                                    VStack(spacing: 5){
-                                        Text("مواعيد").font(Font.custom("Tajawal", size: 13))
-                                            .foregroundColor( .white).fontWeight(.semibold)
-                                        
-                                        Text("قادمة").font(Font.custom("Tajawal", size: 13))
-                                            .foregroundColor( .white).fontWeight(.semibold)
-                                        
-                                    }
-                                    .frame(width: 90, height: 90)
-                                    .background(
-                                        // MARK: Mathed gemotry
-                                        RoundedRectangle(
-                                            cornerRadius: 10,
-                                            style: .continuous
-                                        ).fill(mainDark)
-                                    )
-                                    .onTapGesture {
-                                        let x =
-                                        config.hostingController?.parent as! VViewAppointmentsVC
-                                        x.moveToFutureApts()
-                                    }
-                                    
-                                }.onAppear(){ // <== Here
-                                    DispatchQueue.main.asyncAfter(deadline: .now() , execute: {
-                                        value.scrollTo(6)
-                                        aptVM.filteringAppointments()
-                                    })
-                                }.onChange(of: activate) { newValue in
-                                    DispatchQueue.main.asyncAfter(deadline: .now() , execute: {
-                                        value.scrollTo(6)
-                                    })
+                                        )
+                                        .shadow(color: shadowColor,
+                                                radius:  odVM.isToday(date: odVM.currentWeek[day]) ? 0 : 3, x: 0
+                                                , y:  odVM.isToday(date: odVM.currentWeek[day]) ? 0 : 6)
+                                        .onTapGesture {
+                                            // updating current date
+                                            selectedDate = odVM.currentWeek[day]
+                                            withAnimation {
+                                                odVM.currentDay = odVM.currentWeek[day]
+                                            }
+                                        }.onChange(of: selectedDate) { newValue in
+                                            aptVM.currentDay = newValue
+                                            aptVM.filteringAppointments()
+                                        }
                                 }
-                                .padding(.horizontal)
-                                .padding(.bottom, 5)
                                 
-                                //                        .environment(\.layoutDirection, .rightToLeft)
+                                VStack(spacing: 5){
+                                    Text("مواعيد").font(Font.custom("Tajawal", size: 13))
+                                        .foregroundColor( .white).fontWeight(.semibold)
+                                    
+                                    Text("قادمة").font(Font.custom("Tajawal", size: 13))
+                                        .foregroundColor( .white).fontWeight(.semibold)
+                                    
+                                }
+                                .frame(width: 90, height: 90)
+                                .background(
+                                    // MARK: Mathed gemotry
+                                    RoundedRectangle(
+                                        cornerRadius: 10,
+                                        style: .continuous
+                                    ).fill(mainDark)
+                                )
+                                .onTapGesture {
+                                    let x =
+                                    config.hostingController?.parent as! VViewAppointmentsVC
+                                    x.moveToFutureApts()
+                                }
+                                
+                            }.onAppear(){ // <== Here
+                                DispatchQueue.main.asyncAfter(deadline: .now() , execute: {
+                                    value.scrollTo(6)
+                                    aptVM.filteringAppointments()
+                                })
+                            }.onChange(of: activate) { newValue in
+                                DispatchQueue.main.asyncAfter(deadline: .now() , execute: {
+                                    value.scrollTo(6)
+                                })
                             }
+                            .padding(.horizontal)
+                            .padding(.bottom, 5)
+                            
+                            //                        .environment(\.layoutDirection, .rightToLeft)
                         }
-                        
-                        ScrollView(.vertical,  showsIndicators: false){
-                            AppointmentsView()
-                        }
-                        
-                        Spacer()
-                        
-                    } header: {
-                        HeaderView()
-                        
-                        
                     }
                     
+                    ScrollView(.vertical,  showsIndicators: false){
+                        AppointmentsView()
+                    }
+                    
+                    Spacer()
+                    
+                } header: {
+                    HeaderView()
+                    
+                    
                 }
-            }.onAppear(){
+                
+            }
+            .onAppear(){
                 activate = true
                 odVM.fetchCurrentWeek(weeks: 3)
             }.environment(\.layoutDirection, .rightToLeft)
-//
+            //
             
         }
     }
@@ -270,20 +269,11 @@ struct VAppointmentsView: View {
         
     }
     
-//    @available(iOS 15.0, *)
+    //    @available(iOS 15.0, *)
     @ViewBuilder
     func AppoitmentCard(apt: retrievedAppointment, index: Int) -> some View {
         
         HStack(){
-            //                VStack(alignment: .leading){
-            //                    if(self.checkedIndex == index){
-            //                        RadioButton2(matched: true)
-            //                    }
-            //                    if(self.checkedIndex != index){
-            //                        RadioButton2(matched: false)
-            //                    }
-            //                }.padding(.leading, 20)
-            //
             Spacer()
             
             VStack(alignment: .trailing, spacing: 20){
@@ -295,12 +285,6 @@ struct VAppointmentsView: View {
                 .frame(height: 90)
                 .padding(10)
             
-        }.onChange(of: checkedIndex){ newValue in
-            if(newValue == index){
-                //                hVM.odHospitals[index].selected = true
-            } else {
-                //                hVM.odHospitals[index].selected = false
-            }
         }
         .background(
             RoundedRectangle(
@@ -314,77 +298,11 @@ struct VAppointmentsView: View {
         .shadow(color: shadowColor,
                 radius: 6, x: 0
                 , y: 6)
-        .onTapGesture {
-            if(checkedIndex == index){
-                checkedIndex = -1
-                showError = true
-            } else {
-                checkedIndex = index
-                showError = false
-            }
-        }
         .padding(.horizontal, 15)
         .padding(.vertical, 5)
         
     }
     
-    @ViewBuilder
-    func card(hospital: odHospital, index: Int) -> some View{
-        let currentH = hospital.hospital
-        
-        
-        HStack(){
-            VStack(alignment: .leading){
-                if(hospital.selected){
-                    RadioButton2(matched: true)
-                }
-                if(!hospital.selected){
-                    RadioButton2(matched: false)
-                }
-            }.padding(.leading, 20)
-            
-            Spacer()
-            
-            VStack(alignment: .trailing, spacing: 20){
-                Text("\(currentH!.name)").font(Font.custom("Tajawal", size: 17))
-                    .foregroundColor(mainDark)
-                Text("\(currentH!.area) - \(currentH!.city)").font(Font.custom("Tajawal", size: 12))
-                    .foregroundColor(mainDark)
-            }.frame(maxWidth: .infinity, alignment: .trailing)
-                .frame(height: 90)
-                .padding(10)
-            
-        }.onChange(of: checkedIndex){ newValue in
-            if(newValue == index){
-                //                hVM.odHospitals[index].selected = true
-            } else {
-                //                hVM.odHospitals[index].selected = false
-            }
-        }
-        .background(
-            RoundedRectangle(
-                cornerRadius: 20,
-                style: .continuous
-            )
-                .fill(.white)
-        )
-        .frame(height: 90, alignment: .center)
-        .frame(maxWidth: .infinity)
-        .shadow(color: shadowColor,
-                radius: 6, x: 0
-                , y: 6)
-        .onTapGesture {
-            if(checkedIndex == index){
-                checkedIndex = -1
-                showError = true
-            } else {
-                checkedIndex = index
-                showError = false
-            }
-        }
-        .padding(.horizontal, 15)
-        .padding(.vertical, 5)
-    }
     
     func convertToArabic(date: Date) -> String {
         let formatter = DateFormatter()
@@ -440,18 +358,6 @@ class VAppointments : ObservableObject {
         organAppointments = self.getUserOA()
     }
     
-    
-//    @available(iOS 15.0.0, *)
-//    func reload() async {
-//        do {
-//            organAppointments = try await getUserOA2()
-//        } catch {
-//
-//        }
-//
-//        filteredAppointments = filteringAppointments()
-//    }
-    
     func getUserOA() -> [retrievedAppointment] {
         
         db.collection("volunteer").document(userID).collection("organAppointments").addSnapshotListener { (querySnapshot, error) in
@@ -471,12 +377,14 @@ class VAppointments : ObservableObject {
                 let exact = data["docID"] as! String
                 let mainDoc = data["mainDocId"] as! String
                 let hospitalId = data["hospital"] as! String
+                let location = data["location"] as! String
                 
                 let stamp1 = data["start_time"] as? Timestamp
                 let startTime = stamp1!.dateValue()
                 
                 let stamp2 = data["end_time"] as? Timestamp
                 let endTime = stamp2!.dateValue()
+                
                 
                 let stamp3 = data["date"] as? Timestamp
                 let aptDate = stamp3?.dateValue()
@@ -499,6 +407,7 @@ class VAppointments : ObservableObject {
                 apt.startTime = startTime
                 apt.hospitalID = hospitalId
                 apt.hName = hName
+                apt.hospitalLocation = location
                 
                 return apt
                 
@@ -509,63 +418,63 @@ class VAppointments : ObservableObject {
         return self.organAppointments
     }
     
-//    @available(iOS 15.0.0, *)
-//    func getUserOA2() async throws -> [retrievedAppointment] {
-//
-//        db.collection("volunteer").document(userID).collection("organAppointments").addSnapshotListener { (querySnapshot, error) in
-//
-//            guard let documents = querySnapshot?.documents else {
-//                print("no documents")
-//                return
-//            }
-//
-//            self.organAppointments = documents.map { (queryDocumentSnapshot) -> retrievedAppointment in
-//                print("documents")
-//                let data = queryDocumentSnapshot.data()
-//                let duration = data["appointment_duration"] as! Int
-//
-//                let type = data["type"] as! String
-//                let hName = data["hospital_name"] as! String
-//                let exact = data["docID"] as! String
-//                let mainDoc = data["mainDocId"] as! String
-//                let hospitalId = data["hospital"] as! String
-//
-//                let stamp1 = data["start_time"] as? Timestamp
-//                let startTime = stamp1!.dateValue()
-//
-//                let stamp2 = data["end_time"] as? Timestamp
-//                let endTime = stamp2!.dateValue()
-//
-//                let stamp3 = data["date"] as? Timestamp
-//                let aptDate = stamp3?.dateValue()
-//
-//                var apt = retrievedAppointment()
-//
-//                if(type == "organ"){
-//                    let organ = data["organ"] as! String
-//                    apt.organ = organ
-//                }
-//
-//                apt.duration = duration
-//                apt.type = type
-//                apt.date = aptDate
-//
-//                apt.appointmentID = exact
-//                apt.mainAppointmentID = mainDoc
-//                apt.endTime = endTime
-//
-//                apt.startTime = startTime
-//                apt.hospitalID = hospitalId
-//                apt.hName = hName
-//
-//                return apt
-//
-//            }
-//
-//        }
-//
-//        return self.organAppointments
-//    }
+    //    @available(iOS 15.0.0, *)
+    //    func getUserOA2() async throws -> [retrievedAppointment] {
+    //
+    //        db.collection("volunteer").document(userID).collection("organAppointments").addSnapshotListener { (querySnapshot, error) in
+    //
+    //            guard let documents = querySnapshot?.documents else {
+    //                print("no documents")
+    //                return
+    //            }
+    //
+    //            self.organAppointments = documents.map { (queryDocumentSnapshot) -> retrievedAppointment in
+    //                print("documents")
+    //                let data = queryDocumentSnapshot.data()
+    //                let duration = data["appointment_duration"] as! Int
+    //
+    //                let type = data["type"] as! String
+    //                let hName = data["hospital_name"] as! String
+    //                let exact = data["docID"] as! String
+    //                let mainDoc = data["mainDocId"] as! String
+    //                let hospitalId = data["hospital"] as! String
+    //
+    //                let stamp1 = data["start_time"] as? Timestamp
+    //                let startTime = stamp1!.dateValue()
+    //
+    //                let stamp2 = data["end_time"] as? Timestamp
+    //                let endTime = stamp2!.dateValue()
+    //
+    //                let stamp3 = data["date"] as? Timestamp
+    //                let aptDate = stamp3?.dateValue()
+    //
+    //                var apt = retrievedAppointment()
+    //
+    //                if(type == "organ"){
+    //                    let organ = data["organ"] as! String
+    //                    apt.organ = organ
+    //                }
+    //
+    //                apt.duration = duration
+    //                apt.type = type
+    //                apt.date = aptDate
+    //
+    //                apt.appointmentID = exact
+    //                apt.mainAppointmentID = mainDoc
+    //                apt.endTime = endTime
+    //
+    //                apt.startTime = startTime
+    //                apt.hospitalID = hospitalId
+    //                apt.hName = hName
+    //
+    //                return apt
+    //
+    //            }
+    //
+    //        }
+    //
+    //        return self.organAppointments
+    //    }
     
     
     func filteringAppointments() -> [retrievedAppointment] {
