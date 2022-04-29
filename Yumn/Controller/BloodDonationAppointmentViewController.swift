@@ -10,6 +10,7 @@ import UIKit
 
 class BloodDonationAppointmentViewController: UIViewController {
     @IBOutlet weak var dateTableView: UITableView!
+    @IBOutlet weak var noAvailableAppointment: UILabel!
     
     @IBOutlet weak var hospitalNameLabel: UITableView!
     @IBOutlet weak var monthLabel: UILabel!
@@ -35,6 +36,9 @@ class BloodDonationAppointmentViewController: UIViewController {
     override func viewDidLoad() {
         
         self.remainingDaysOfTheMonth = getRemainingDaysOfTheMonth()
+        
+        
+        noAvailableAppointment.isHidden = true
 
         
         roundView.layer.cornerRadius = 35
@@ -216,6 +220,19 @@ extension BloodDonationAppointmentViewController: UITableViewDataSource{
             }
         
         
+        
+        let dateFormatter2 = DateFormatter()
+        dateFormatter2.dateFormat = "m"
+        var monthAndYear = Date().month
+        dateFormatter2.dateFormat = "yyyy"
+        monthAndYear += "، " + dateFormatter2.string(from: Date())
+        
+        
+        
+        monthLabel.text = monthAndYear
+
+        
+        
         print (datesArray)
         
         return (datesArray)
@@ -238,6 +255,12 @@ extension Date {
     var startOfDay: Date {
         return Calendar.current.startOfDay(for: self)
     }
+    
+    var month: String {
+           let dateFormatter = DateFormatter()
+           dateFormatter.dateFormat = "MMMM"
+           return dateFormatter.string(from: self)
+       }
 
     var startOfMonth: Date {
 
