@@ -11,10 +11,13 @@ import UIKit
 class BloodDonationAppointmentViewController: UIViewController {
     @IBOutlet weak var dateTableView: UITableView!
     
-  
-
+    @IBOutlet weak var monthLabel: UILabel!
+    
+    @IBOutlet weak var calendarBtn: UIButton!
+    
     
 
+    @IBOutlet weak var continueBtn: UIButton!
     
 
     @IBOutlet weak var timeTableView: UITableView!
@@ -27,7 +30,7 @@ class BloodDonationAppointmentViewController: UIViewController {
         
         roundView.layer.cornerRadius = 35
         
-        
+        continueBtn.layer.cornerRadius = 25
         dateTableView.transform = CGAffineTransform (rotationAngle: 1.5707963)
         
         
@@ -35,7 +38,10 @@ class BloodDonationAppointmentViewController: UIViewController {
         timeTableView.dataSource = self
         
        
-
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.layoutIfNeeded()
+        
      
         
         dateTableView.register(UINib(nibName: "dateCell", bundle: nil), forCellReuseIdentifier: "DateCell")
@@ -49,6 +55,8 @@ class BloodDonationAppointmentViewController: UIViewController {
     }
     
 
+    @IBAction func onPressedContinueBtn(_ sender: Any) {
+    }
     /*
     // MARK: - Navigation
 
@@ -59,6 +67,8 @@ class BloodDonationAppointmentViewController: UIViewController {
     }
     */
 
+    @IBAction func onPressedCalendarBtn(_ sender: Any) {
+    }
 }
 
 
