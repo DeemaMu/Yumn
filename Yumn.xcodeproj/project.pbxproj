@@ -67,6 +67,7 @@
 		B99C2726281C227700EAC439 /* FutureOrganAppointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99C2725281C227700EAC439 /* FutureOrganAppointments.swift */; };
 		B99C2728281C886D00EAC439 /* cancelAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99C2727281C886C00EAC439 /* cancelAppointment.swift */; };
 		B99C272A281C888200EAC439 /* editAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99C2729281C888200EAC439 /* editAppointment.swift */; };
+		B99C272C281C98EC00EAC439 /* deleteAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99C272B281C98EC00EAC439 /* deleteAppointment.swift */; };
 		B9AC66222819E7880013301B /* VViewAppointmentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC66212819E7880013301B /* VViewAppointmentsVC.swift */; };
 		B9AC66242819E90E0013301B /* VAppointmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC66232819E90E0013301B /* VAppointmentsView.swift */; };
 		B9AC6626281AF4AC0013301B /* olderAppointmentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC6625281AF4AB0013301B /* olderAppointmentsVC.swift */; };
@@ -189,6 +190,7 @@
 		B99C2725281C227700EAC439 /* FutureOrganAppointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureOrganAppointments.swift; sourceTree = "<group>"; };
 		B99C2727281C886C00EAC439 /* cancelAppointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cancelAppointment.swift; sourceTree = "<group>"; };
 		B99C2729281C888200EAC439 /* editAppointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editAppointment.swift; sourceTree = "<group>"; };
+		B99C272B281C98EC00EAC439 /* deleteAppointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deleteAppointment.swift; sourceTree = "<group>"; };
 		B9AC66212819E7880013301B /* VViewAppointmentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VViewAppointmentsVC.swift; sourceTree = "<group>"; };
 		B9AC66232819E90E0013301B /* VAppointmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VAppointmentsView.swift; sourceTree = "<group>"; };
 		B9AC6625281AF4AB0013301B /* olderAppointmentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = olderAppointmentsVC.swift; sourceTree = "<group>"; };
@@ -479,6 +481,7 @@
 				B99C2725281C227700EAC439 /* FutureOrganAppointments.swift */,
 				B99C2727281C886C00EAC439 /* cancelAppointment.swift */,
 				B99C2729281C888200EAC439 /* editAppointment.swift */,
+				B99C272B281C98EC00EAC439 /* deleteAppointment.swift */,
 			);
 			path = VAppointments;
 			sourceTree = "<group>";
@@ -760,6 +763,7 @@
 				959A52D127E8A41F002244A0 /* editVolunteeringOpp.swift in Sources */,
 				B9AC6636281B2E520013301B /* applicant.swift in Sources */,
 				B9B3143F2815FB8400C62981 /* AODHospitalList.swift in Sources */,
+				B99C272C281C98EC00EAC439 /* deleteAppointment.swift in Sources */,
 				B99C2724281C226200EAC439 /* OlderOrganAppointments.swift in Sources */,
 				B99C2728281C886D00EAC439 /* cancelAppointment.swift in Sources */,
 				D19B1B4B27E95F1000CB3FFA /* currentBldAppCell.swift in Sources */,

@@ -107,13 +107,13 @@ class VViewAppointmentsVC: UIViewController {
     }
     
 //
-    func cancel(_ sender: UIButton) {
+    func cancel(apt: retrievedAppointment) {
         blackBlurredView.superview?.sendSubviewToBack(blackBlurredView)
         popupView.superview?.sendSubviewToBack(popupView)
         popupView.isHidden = true
         blackBlurredView.isHidden = true
         let configuration = Configuration()
-        let controller = UIHostingController(rootView: ThankYouPopup(config: configuration, controllerType: 2))
+        let controller = UIHostingController(rootView: deleteAppointment(config: configuration,appointment: apt, controllerType: 1))
         // injects here, because `configuration` is a reference !!
         configuration.hostingController = controller
         addChild(controller)

@@ -110,11 +110,6 @@ struct FutureOrganAppointments: View {
     //    @available(iOS 15.0, *)
     @ViewBuilder
     func AppoitmentCard(apt: retrievedAppointment, index: Int) -> some View {
-        
-        let future = self.dateFormatter.string(from: (Date()))
-        let ogDate = self.dateFormatter.string(from: apt.date!)
-        
-        if(future < ogDate){
         HStack(){
             Spacer()
             
@@ -208,10 +203,8 @@ struct FutureOrganAppointments: View {
                 , y: 0)
         .padding(.horizontal, 5)
         .padding(.vertical, 5)
-        }
-        else {
-            
-        }
+        
+        
         
     }
     
@@ -219,7 +212,7 @@ struct FutureOrganAppointments: View {
     func editButton() -> some View {
         Button(action: {
             let x =
-            config.hostingController?.parent as! VViewAppointmentsVC
+            config.hostingController?.parent as! futureAppointmensVC
         }
         ) {
             Text("تعديل").font(Font.custom("Tajawal", size: 16))

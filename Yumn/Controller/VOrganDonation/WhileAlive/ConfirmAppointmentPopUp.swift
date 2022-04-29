@@ -143,7 +143,7 @@ struct ConfirmAppointmentPopUp: View {
         }
     }
     
-    func updateInnerAppointment() -> Bool {
+    func DeleteFromInnerAppointment() -> Bool {
         var success = true
         
         db.collection("appointments").document(Constants.selected.mainDoc).collection("appointments").document(Constants.selected.exactDoc).setData(["booked":false, "donor": ""], merge: true) { error in
@@ -159,7 +159,7 @@ struct ConfirmAppointmentPopUp: View {
         return success
     }
     
-    func updateAppointment() -> Bool {
+    func DeleteFromAppointment() -> Bool {
         var success = true
         
         var doc = db.collection("appointments").document(Constants.selected.mainDoc)
