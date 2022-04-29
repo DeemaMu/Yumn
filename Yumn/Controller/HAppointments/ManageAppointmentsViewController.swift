@@ -36,6 +36,10 @@ class ManageAppointmentsViewController: UIViewController {
     @IBOutlet weak var OKButton1: UIButton!
     @IBOutlet weak var OKButton2: UIButton!
     
+    //By deema
+    var mainDocID = ""
+    var appintmentsPeriod = ""
+    
     override func viewDidLoad() {
         
         
@@ -140,9 +144,19 @@ class ManageAppointmentsViewController: UIViewController {
         popUp.isHidden = false
     }
 
-    func showDeema(){
-        print("Deeeee")
-        self.performSegue(withIdentifier: "deema", sender: self)
+    func viewAppointments(_ docID : String, _ period : String){
+        self.mainDocID = docID
+        self.appintmentsPeriod = period
+        self.performSegue(withIdentifier: "appointmentsList", sender: self)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "appointmentsList"){
+            let controller = segue.destination as! viewAppointment
+            controller.docID = self.mainDocID
+            controller.period = self.appintmentsPeriod
+        }
     }
     
     func hideOverlay(){

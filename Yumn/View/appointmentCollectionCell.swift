@@ -14,6 +14,8 @@ class appointmentCollectionCell : UICollectionViewCell {
     
     @IBOutlet weak var complete: UIButton!
     @IBOutlet weak var incomplete: UIButton!
+    @IBOutlet weak var inCompleteView: UITextView!
+    @IBOutlet weak var completeView: UITextView!
     
     override class func awakeFromNib() {
         super.awakeFromNib()

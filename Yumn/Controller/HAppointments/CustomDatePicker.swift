@@ -180,8 +180,11 @@ struct CustomDatePicker: View {
                         }.padding(.horizontal, 30)
                             .padding(.vertical, 5)
                             .onTapGesture {
-                                print("deema blood")
-                                controller.showDeema()
+                                let time = "\(appointment.startTime.getFormattedDate(format: "HH:mm"))-\(appointment.endTime.getFormattedDate(format: "HH:mm"))"
+                                let day = "\(appointment.startTime.getFormattedDate(format: "dd/MM/yyyy"))"
+                                let period = day + ", " + time
+
+                                controller.viewAppointments(appointment.docID, period)
                             }
                         
                         

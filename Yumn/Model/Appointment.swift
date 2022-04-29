@@ -53,7 +53,7 @@ class BloodAppointment: Appointment {
     var donors: Int?
     
     init(appointments: [DAppointment], type: String, startTime: Date, endTime: Date,
-         aptDate: Date, hospital: String, aptDuration: Double, donors: Int) {
+         aptDate: Date, hospital: String, aptDuration: Double, donors: Int, mainDocID: String) {
         super.init()
         self.appointments = appointments
         self.type = type
@@ -63,6 +63,8 @@ class BloodAppointment: Appointment {
         self.hospital = hospital
         self.aptDuration = aptDuration
         self.donors = donors
+        
+        self.docID = mainDocID
     }
 }
 
@@ -106,12 +108,14 @@ class AppointmentVM: ObservableObject {
                 
                 let hospital = data["hospital"] as? String ?? ""
                 
+                let docId = queryDocumentSnapshot.documentID
+
                 if (type == "blood"){
                     let aptDuration = 30.0
                     let donors = data["donors"] as? Int ?? 0
                     
                     return BloodAppointment(appointments: appointments, type: type, startTime: startTime, endTime: endTime,
-                                            aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, donors: donors)
+                                            aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, donors: donors, mainDocID: docId)
                 }
                 else {
                     let organ = data["organ"] as? String ?? ""
