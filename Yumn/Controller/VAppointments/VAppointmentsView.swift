@@ -384,12 +384,19 @@ class VAppointments : ObservableObject {
     @Published var olderOA = [retrievedAppointment]()
     @Published var futureOA = [retrievedAppointment]()
     
+    let dateFormatter: DateFormatter = DateFormatter()
+
     
     init() {
         organAppointments = self.getUserOA()
+//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+//        dateFormatter.locale = Locale(identifier:"en_US_POSIX")
+//        olderOA = self.getUserOlderOA()
     }
     
     func getUserOA() -> [retrievedAppointment] {
+        olderOA.removeAll()
+        futureOA.removeAll()
         
         db.collection("volunteer").document(userID).collection("organAppointments").addSnapshotListener { (querySnapshot, error) in
             
@@ -440,13 +447,20 @@ class VAppointments : ObservableObject {
                 apt.hName = hName
                 apt.hospitalLocation = location
                 
-                if(Date() + 7 > aptDate!  ){
+                self.dateFormatter.dateFormat = "yyyy-MM-dd"
+                self.dateFormatter.locale = Locale(identifier:"en_US_POSIX")
+                let past = self.dateFormatter.string(from: (Date() - 7))
+                let future = self.dateFormatter.string(from: (Date() + 7))
+                let ogDate = self.dateFormatter.string(from: aptDate!)
+                
+                if(future < ogDate){
                     self.futureOA.append(apt)
                 }
-                if(Date() - 7 > aptDate!  ){
+
+                if(past > ogDate){
                     self.olderOA.append(apt)
                 }
-                
+
                 return apt
                 
             }
@@ -481,7 +495,6 @@ class VAppointments : ObservableObject {
     
     func getUserOlderOA() -> [retrievedAppointment] {
         
-        
         db.collection("volunteer").document(userID).collection("organAppointments").addSnapshotListener { (querySnapshot, error) in
             
             guard let documents = querySnapshot?.documents else {
@@ -489,7 +502,7 @@ class VAppointments : ObservableObject {
                 return
             }
             
-            self.organAppointments = documents.map { (queryDocumentSnapshot) -> retrievedAppointment in
+            self.olderOA = documents.map { (queryDocumentSnapshot) -> retrievedAppointment in
                 print("documents")
                 let data = queryDocumentSnapshot.data()
                 let duration = data["appointment_duration"] as! Int
@@ -537,7 +550,7 @@ class VAppointments : ObservableObject {
             
         }
         
-        return self.organAppointments
+        return self.olderOA
     }
     
     func getUserFutureOA() -> [retrievedAppointment] {
@@ -622,5 +635,20 @@ class VAppointments : ObservableObject {
 struct VAppointmentsView_Previews: PreviewProvider {
     static var previews: some View {
         VAppointmentsView(config: Configuration())
+    }
+}
+
+func checkTimeStampOlder(date: String!) -> Bool {
+    let dateFormatter: DateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    dateFormatter.locale = Locale(identifier:"en_US_POSIX")
+    let datecomponents = dateFormatter.date(from: date)
+    
+    let now = Date() - 7
+    
+    if (now >= datecomponents!) {
+        return true
+    } else {
+        return false
     }
 }

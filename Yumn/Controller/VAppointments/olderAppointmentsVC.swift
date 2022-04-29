@@ -77,12 +77,18 @@ class olderAppointmensVC: UIViewController {
     
     let db = Firestore.firestore()
     
+    
+    // old organ appointments
+    @IBOutlet weak var oldOA: UIView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
         oldAppTable.isHidden = false
         tableMainForCurrentBldApp.isHidden = true
+        oldOA.isHidden = true
         
         
         deleteAppPopUp.layer.cornerRadius = 17
@@ -131,6 +137,15 @@ class olderAppointmensVC: UIViewController {
         // on index change
         getOldAppointments(userID:user!.uid)
         
+        
+        // connect to uiview
+        let configuration = Configuration()
+        let controller = UIHostingController(rootView: OlderOrganAppointments(config: configuration))
+        // injects here, because `configuration` is a reference !!
+        configuration.hostingController = controller
+        self.addChild(controller)
+        controller.view.frame = self.oldOA.bounds
+        self.oldOA.addSubview(controller.view)
         
         
         
@@ -380,6 +395,8 @@ class olderAppointmensVC: UIViewController {
             oldVOppTable.isHidden = false
             noCurrentVOppLabel.isHidden = true
             
+            oldOA.isHidden = true
+            
             showOldVoppLbl()
             
             break
@@ -391,11 +408,16 @@ class olderAppointmensVC: UIViewController {
             currentVOppTable.isHidden = true
             oldVOppTable.isHidden = true
             noCurrentVOppLabel.isHidden = true
+            
+            oldOA.isHidden = false
                     
             break
         default:
             tableMainForCurrentBldApp.isHidden = true
             oldAppTable.isHidden = false
+            
+            oldOA.isHidden = true
+
             noAppLabel.isHidden = true
             currentVOppTable.isHidden = true
             oldVOppTable.isHidden = true

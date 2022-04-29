@@ -291,6 +291,11 @@ class futureAppointmensVC: UIViewController {
         case 1:
             
             tableMainForCurrentBldApp.isHidden = true
+            noAppLabel.isHidden = true
+            currentVOppTable.isHidden = true
+            noCurrentVOppLabel.isHidden = true
+            
+            
             
             break
         default:
