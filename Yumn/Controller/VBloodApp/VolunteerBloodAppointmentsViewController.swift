@@ -13,32 +13,32 @@ import Charts
 class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmentedControlDelegate {
     
     
-  
+    
     
     func change(to index: Int) {
         
     }
- 
-    @IBOutlet weak var tableMainForCurrentBldApp: UITableView! // current app table
-//@IBOutlet weak var BldAppLabel: UILabel!
-@IBOutlet weak var deleteAppPopUp: UIView!
-@IBOutlet weak var bldAppHospitalName: UILabel!
-@IBOutlet weak var bldAppDate: UILabel!
-
-@IBOutlet weak var bldAppTime: UILabel!
-@IBOutlet weak var deleteAppLabel: UILabel!
-@IBOutlet weak var questionLabel: UILabel!
-@IBOutlet weak var placeLabel: UILabel!
-@IBOutlet weak var dateLabel: UILabel!
-@IBOutlet weak var timeLabel: UILabel!
     
-@IBOutlet weak var deleteAppBtn: UIButton!
+    @IBOutlet weak var tableMainForCurrentBldApp: UITableView! // current app table
+    //@IBOutlet weak var BldAppLabel: UILabel!
+    @IBOutlet weak var deleteAppPopUp: UIView!
+    @IBOutlet weak var bldAppHospitalName: UILabel!
+    @IBOutlet weak var bldAppDate: UILabel!
+    
+    @IBOutlet weak var bldAppTime: UILabel!
+    @IBOutlet weak var deleteAppLabel: UILabel!
+    @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var placeLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    
+    @IBOutlet weak var deleteAppBtn: UIButton!
     
     
     
     @IBOutlet weak var segmentsView: UIView!
     
- 
+    
     @IBOutlet weak var oldAppTable: UITableView!
     
     @IBOutlet weak var noAppLabel: UILabel!
@@ -53,15 +53,15 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
     var storedOldBldApp: [bloodAppointment] = []
     var storedCurrentBldApp: [bloodAppointment] = []
     var clickedCellIndex: Int = -1
-
     
-   
+    
+    
     let user = Auth.auth().currentUser
-
+    
     
     var codeSegmented:CustomSegmentedControl? = nil
     
-
+    
     
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -71,8 +71,8 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
     override func viewDidLoad() {
         super.viewDidLoad()
         
- 
-
+        
+        
         
         oldAppTable.isHidden = true
         tableMainForCurrentBldApp.isHidden = false
@@ -86,24 +86,24 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
         mapPopUpBtn.layer.masksToBounds = true
         
         mapsAvailablePopUp.layer.cornerRadius = 17
-       // mapsAvailablePopUp.layer.cornerRadius = 12
+        // mapsAvailablePopUp.layer.cornerRadius = 12
         mapsAvailablePopUp.layer.masksToBounds = true
         
         
         tableMainForCurrentBldApp.dataSource = self
         oldAppTable.dataSource = self
-
+        
         // current blood app table
         tableMainForCurrentBldApp.register(UINib(nibName: "currentBldAppCell", bundle: nil), forCellReuseIdentifier: "currentBACell")
         
         
         oldAppTable.register(UINib(nibName: "oldBloodAppTableViewCell", bundle: nil), forCellReuseIdentifier: "oldBloodACell")
-
+        
         
         // on index change
         getCurrentAppointments(userID:user!.uid)
         
-         getOldAppointments(userID:user!.uid)
+        getOldAppointments(userID:user!.uid)
         
         
         
@@ -185,8 +185,8 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
         dateFormatter.dateFormat = "yyyy/MM/dd"
         let currentDate = dateFormatter.string(from: Date())
         print("current date is \(currentDate)")
-                
-
+        
+        
         db.collection("volunteer").document(userID).collection("bloodAppointments").whereField("date", isGreaterThanOrEqualTo: currentDate).getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -194,24 +194,24 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
                 
                 if querySnapshot!.documents.count != 0 {
                     self.noAppLabel.isHidden = true
-                for document in querySnapshot!.documents {
-                    let doc = document.data()
-                    let hospitalID:String = doc["hospitalID"] as! String
-                    let latitude:Double = doc["latitude"] as! Double
-                    let longitude:Double = doc["longitude"] as! Double
-                    let name: String = doc["hospitalName"] as! String
-                    let city: String = doc["city"] as! String
-                    let area: String = doc["area"] as! String
-                    let date: String = doc["date"] as! String
-                    let time: String = doc["time"] as! String
-                    let appID: String = doc["appID"] as! String
+                    for document in querySnapshot!.documents {
+                        let doc = document.data()
+                        let hospitalID:String = doc["hospitalID"] as! String
+                        let latitude:Double = doc["latitude"] as! Double
+                        let longitude:Double = doc["longitude"] as! Double
+                        let name: String = doc["hospitalName"] as! String
+                        let city: String = doc["city"] as! String
+                        let area: String = doc["area"] as! String
+                        let date: String = doc["date"] as! String
+                        let time: String = doc["time"] as! String
+                        let appID: String = doc["appID"] as! String
+                        
+                        self.storedCurrentBldApp.append(bloodAppointment(hospitalID:hospitalID, name: name, lat: latitude, long: longitude, city: city, area: area, date: date, time: time, appID: appID))
+                    }
                     
-                    self.storedCurrentBldApp.append(bloodAppointment(hospitalID:hospitalID, name: name, lat: latitude, long: longitude, city: city, area: area, date: date, time: time, appID: appID))
-                }
-
                     self.reloadCurrentTable()
-                
-            }// end if stm
+                    
+                }// end if stm
                 
                 else {
                     
@@ -221,7 +221,7 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
             } // end else
         }
         
-
+        
     } // end of getApp func
     
     
@@ -231,14 +231,14 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         //"MMMM dd, yyyy 'at' hh:mm:ss a 'UTC'+3"
-       // dateFormatter.dateFormat = "MMMM d, yyyy HH:mm:sss"
+        // dateFormatter.dateFormat = "MMMM d, yyyy HH:mm:sss"
         dateFormatter.dateFormat = "yyyy/MM/dd"
         let currentDate = dateFormatter.string(from: Date() - 7 )
         print("current date is \(currentDate)")
         
-       
-                
-
+        
+        
+        
         db.collection("volunteer").document(userID).collection("bloodAppointments").whereField("date", isLessThan: currentDate).getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -246,39 +246,39 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
                 
                 if querySnapshot!.documents.count != 0 {
                     self.noOldAppLbl.isHidden = true
-                for document in querySnapshot!.documents {
-                    let doc = document.data()
-                    let hospitalID:String = doc["hospitalID"] as! String
-                    let latitude:Double = doc["latitude"] as! Double
-                    let longitude:Double = doc["longitude"] as! Double
-                    let name: String = doc["hospitalName"] as! String
-                    let city: String = doc["city"] as! String
-                    let area: String = doc["area"] as! String
-                    let date: String = doc["date"] as! String
-                    let time: String = doc["time"] as! String
-                    let appID: String = doc["appID"] as! String
+                    for document in querySnapshot!.documents {
+                        let doc = document.data()
+                        let hospitalID:String = doc["hospitalID"] as! String
+                        let latitude:Double = doc["latitude"] as! Double
+                        let longitude:Double = doc["longitude"] as! Double
+                        let name: String = doc["hospitalName"] as! String
+                        let city: String = doc["city"] as! String
+                        let area: String = doc["area"] as! String
+                        let date: String = doc["date"] as! String
+                        let time: String = doc["time"] as! String
+                        let appID: String = doc["appID"] as! String
+                        
+                        self.storedOldBldApp.append(bloodAppointment(hospitalID:hospitalID, name: name, lat: latitude, long: longitude, city: city, area: area, date: date, time: time, appID: appID))
+                    }
                     
-                    self.storedOldBldApp.append(bloodAppointment(hospitalID:hospitalID, name: name, lat: latitude, long: longitude, city: city, area: area, date: date, time: time, appID: appID))
-                }
-
                     self.reloadOldTable()
-                
-            }// end if stm
+                    
+                }// end if stm
                 
                 else {
                     print("in old bld app")
-                   // self.showOldAppLbl()
+                    // self.showOldAppLbl()
                 }
                 
             } // end else
         }
         
-
+        
     }// end func
     
     @IBAction func cancelingAppDelete(_ sender: Any) {
         
-     
+        
         hidePopupAndBlurredView()
         
     }
@@ -288,10 +288,10 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
         
         
         let appointmentID = storedCurrentBldApp[clickedCellIndex].appID
-    
+        
         // make it current user
         // delete the app in firestore
-         db.collection("volunteer").document("iDhMoT6PacOwKgKLi8ILK98UrB03").collection("bloodAppointments").document(appointmentID).delete() { err in
+        db.collection("volunteer").document("iDhMoT6PacOwKgKLi8ILK98UrB03").collection("bloodAppointments").document(appointmentID).delete() { err in
             if let err = err {
                 print("Error removing appointment document: \(err)")
                 
@@ -313,7 +313,7 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
     
     
     @IBAction func okayMapBtn(_ sender: Any) {
-       
+        
         
         hidePopupAndBlurredView()
     }
@@ -341,7 +341,7 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
     func hidePopupAndBlurredView(){
         self.blurredView.isHidden = true
         self.deleteAppPopUp.isHidden = true
-
+        
     }
     
     func showPopupAndBlurredView(){
@@ -353,7 +353,7 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
         
         DispatchQueue.main.async {
             self.tableMainForCurrentBldApp.reloadData()
-
+            
         }
         
     }
@@ -361,7 +361,7 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
     func reloadOldTable(){
         DispatchQueue.main.async {
             self.oldAppTable.reloadData()
-
+            
         }
         
     }
@@ -403,20 +403,20 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
     @objc func selectedSegment(_ sender: MaterialSegmentedControlR) {
         switch sender.selectedSegmentIndex {
         case 0:
-           
+            
             tableMainForCurrentBldApp.isHidden = true
             oldAppTable.isHidden = false
             noAppLabel.isHidden = true
             showOldAppLbl()
-         
+            
             break
         case 1:
-   
+            
             tableMainForCurrentBldApp.isHidden = false
             oldAppTable.isHidden = true
             noOldAppLbl.isHidden = true
             showCurrentAppLbl()
-
+            
             break
         default:
             tableMainForCurrentBldApp.isHidden = false
@@ -426,17 +426,17 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
     }
     
     
-   
     
     
     
     
-    }
+    
+}
 
-    
-    
-    
-    
+
+
+
+
 
 
 // update it
@@ -444,26 +444,26 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
 extension VolunteerBloodAppointmensViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       
-       if tableView == oldAppTable {
-           
-           print("this is for old table inside count row method")
-
-           return storedOldBldApp.count
+        
+        if tableView == oldAppTable {
             
-         
+            print("this is for old table inside count row method")
+            
+            return storedOldBldApp.count
+            
+            
         }
         
         // old app table
         else {
             
             print("this is for current table inside count row method")
-
-             return storedCurrentBldApp.count
+            
+            return storedCurrentBldApp.count
             
         }
         
-      
+        
     }
     
     
@@ -472,11 +472,11 @@ extension VolunteerBloodAppointmensViewController: UITableViewDataSource {
         
         // current blood app table
         if  tableView == oldAppTable
-       {
+        {
             
             print("this is for old table inside cell method")
             let cell = tableView.dequeueReusableCell(withIdentifier: "oldBloodACell", for: indexPath) as! oldBloodAppTableViewCell
-
+            
             let time = checkTime(time : storedOldBldApp[indexPath.row].time)
             
             
@@ -495,12 +495,12 @@ extension VolunteerBloodAppointmensViewController: UITableViewDataSource {
         
         else {
             
-                
-                print("this is for current table inside cell method")
-
-                
+            
+            print("this is for current table inside cell method")
+            
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "currentBACell", for: indexPath) as! currentBldAppCell
-
+            
             let time = checkTime(time : storedCurrentBldApp[indexPath.row].time)
             
             
@@ -519,30 +519,30 @@ extension VolunteerBloodAppointmensViewController: UITableViewDataSource {
             cell.locBtn.tag = indexPath.row
             cell.locBtn.addTarget(self, action: #selector(askToOpenMapForCurrent(sender:)), for: .touchUpInside)
             return cell
-            }
+        }
         
         
     }
     
-
+    
     @objc
     func askToOpenMapForOld(sender : UIButton) {
-    
-    let lat = storedOldBldApp[sender.tag].lat
-    let long = storedOldBldApp[sender.tag].long
-    
-    OpenMapDirections.present(in: self, sourceView: sender , latitude: lat, longitude: long , popUp : mapsAvailablePopUp , popUpMsg : mapPopUpMsg , blurredView: blurredView)
-  }
+        
+        let lat = storedOldBldApp[sender.tag].lat
+        let long = storedOldBldApp[sender.tag].long
+        
+        OpenMapDirections.present(in: self, sourceView: sender , latitude: lat, longitude: long , popUp : mapsAvailablePopUp , popUpMsg : mapPopUpMsg , blurredView: blurredView)
+    }
     
     @objc
     func askToOpenMapForCurrent(sender : UIButton) {
+        
+        let lat = storedCurrentBldApp[sender.tag].lat
+        let long = storedCurrentBldApp[sender.tag].long
+        
+        OpenMapDirections.present(in: self, sourceView: sender , latitude: lat, longitude: long , popUp : mapsAvailablePopUp , popUpMsg : mapPopUpMsg , blurredView: blurredView)
+    }
     
-    let lat = storedCurrentBldApp[sender.tag].lat
-    let long = storedCurrentBldApp[sender.tag].long
-    
-    OpenMapDirections.present(in: self, sourceView: sender , latitude: lat, longitude: long , popUp : mapsAvailablePopUp , popUpMsg : mapPopUpMsg , blurredView: blurredView)
-  }
-
     
     
     // when canceling the appointment make the date & time available again
@@ -557,7 +557,7 @@ extension VolunteerBloodAppointmensViewController: UITableViewDataSource {
         // appID to be deleted
         clickedCellIndex = sender.tag
         CancelBtnOnCellClicked(index : sender.tag)
-
+        
         
     }//end cancel button method
     
@@ -570,8 +570,8 @@ extension VolunteerBloodAppointmensViewController: UITableViewDataSource {
         bldAppHospitalName.text = storedCurrentBldApp[index].name
         bldAppDate.text = storedCurrentBldApp[index].date
         bldAppTime.text = "\(storedCurrentBldApp[index].time) \(time)"
-      //  blurredView.isHidden = false
-       // deleteAppPopUp.isHidden = false
+        //  blurredView.isHidden = false
+        // deleteAppPopUp.isHidden = false
         showPopupAndBlurredView()
         
     }

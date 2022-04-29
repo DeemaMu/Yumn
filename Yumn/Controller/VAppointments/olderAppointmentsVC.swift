@@ -657,27 +657,264 @@ extension olderAppointmensVC: UITableViewDataSource {
 } // end extension
 
 
-
-
-
-
-
-
-
-
-
-// nothing to change
+// volunteering opportunity 
 extension olderAppointmensVC {
     
-    
-    @IBAction func segmentedControlDidChange(_ sender: UISegmentedControl){
-        segmentedControl.changeUnderlinePosition()
-        print("index changed")
+    func getCurrentVOpp(userID : String) {
+        
+        // جب لي ال vOpp اللي الابلكنتس فيها اليوزر اي دي هذا
+        // اجيب الدوكس بالسب كولكشن واشيك اذا فيها اليوزر اي دي ولا لا ، اذا فيها اجيب الدوكيمنت تبع هذا الكولكشن
+        
+        let currentDate = getCurrentDate(time: "future")
+        let ref =   db.collection("volunteeringOpp").whereField("endDate", isGreaterThanOrEqualTo: currentDate)
+        
+        // only bring docs that their endDate isGreaterThanOrEqualTo current date
+        
+        ref.getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                
+               // print("in current method")
+                
+                if querySnapshot!.documents.count != 0 {
+                    self.noCurrentVOppLabel.isHidden = true
+                    // for each doc check if the user id exists in applicants subcollection or not
+                for document in querySnapshot!.documents {
+                    
+                     let docID : String = document.documentID
+                    // check if applicant with the same user id exists in docID VOpp
+                    self.checkApplicantExists(docID : docID , userID: userID, type: "current")
+
+                        self.reloadCurrentTableOpp()
+                    
+                } // end for
+                    
+            }// end if stm
+                
+                else {
+                    self.showCurrentVoppLbl()
+                    self.reloadCurrentTableOpp()
+                   
+                }
+                
+            } // end else
+        }
+        
+        
+        
     }
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        segmentedControl.setupSegment()
+    
+   
+  func getOldVOpp(userID : String){
+        
+    // get the current date for the query
+      let currentDate = getCurrentDate(time: "past")
+      // only bring docs that their endDate isLessThan current date (old)
+        let ref =  db.collection("volunteeringOpp").whereField("endDate", isLessThan: currentDate)
+        
+        ref.getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                
+                if querySnapshot!.documents.count != 0 {
+                    self.noOldVOppLabel.isHidden = true
+                    
+                for document in querySnapshot!.documents {
+                     let docID : String = document.documentID
+                    // for each doc check if the user id (current user logged in) exists in applicants subcollection or not
+                        self.checkApplicantExists(docID : docID , userID: userID, type: "old")
+                        self.reloadOldTableOpp()
+                    
+                } // end for
+                    
+                   // self.reloadOldTable()
+
+            }// end if stm
+                
+                else {
+                    self.showOldVoppLbl()
+                    self.reloadOldTableOpp()
+                   
+                }
+                
+            } // end else
+        }
     }
     
     
+    
+    func checkApplicantExists(docID : String, userID : String , type : String){
+        
+        // مهم ترتيب الاشياء
+        // if user id (current user logged in) exists in applicants subcollection, add the docID to the dictionary VOppDict (for current VOpp) or arrayOfOldVOpp (for old VOpp), otherwise return
+        
+        // make it empty for current and old
+        VOppDict = [:]
+        arrayOfOldVOpp = []
+        let docRef = db.collection("volunteeringOpp").document(docID).collection("applicants").document(userID)
+        
+        docRef.getDocument { (document, error) in
+            if document!.exists {
+                if let data = document!.data() {
+                    // add docID + applicant state to dictionary
+                    if type == "current"{
+                        self.VOppDict[docID] = (data["status"] as! String)
+                        // since doc exists add its data to currentVOpp array
+                        self.bringVoppData(type : "current")
+                    }
+                    else if type == "old"{
+                        self.arrayOfOldVOpp.append(docID)
+                        // since doc exists add its data to oldVOpp array
+                        self.bringVoppData(type : "old")
+
+                    }
+                    
+                }
+                    
+                
+              } else {
+                 print("Document \(userID) does not exist")
+              }
+        }
+        
+        
+    }
+    
+    
+    func bringVoppData(type : String){
+        
+        if type == "current"{
+            bringCurrentVOpp()
+       // عشان ما يتكرر ال cell
+            VOppDict = [:]
+    }// end if
+        
+        else if type == "old"{
+            print("no. of doc in old array is \(arrayOfOldVOpp.count)")
+            bringOldVOpp()
+            // عشان ما يتكرر
+            arrayOfOldVOpp = []
+        }
+        
+    }// end func
+    
+    
+    func bringCurrentVOpp(){
+        // loop through the docs and get them
+        // key >> docID, value >> applicant state
+        for (key,value) in VOppDict {
+            
+            let docRef = db.collection("volunteeringOpp").document(key)
+            
+            docRef.getDocument { (document, error) in
+                if document!.exists {
+                    // get data
+                    if let data = document?.data(){
+                        let title : String = data["title"] as! String
+                        let date : String = data["date"] as! String
+                        let workingHours : String = data["workingHours"] as! String
+                        let location : String = data["location"] as! String
+                        let status : String = value
+                    
+                            self.currentVOpp.append(volunteerVOpp(title: title, date: date, workingHours: workingHours, location: location, status: status))
+                            self.reloadCurrentTableOpp()
+                      
+                    }// end data
+                    
+                    
+                  } else {
+                     print("VOpp document does not exist")
+                  }
+            }
+            
+        }// end for
+    }
+    
+    
+    func bringOldVOpp(){
+        // loop through the docs and get them
+        for doc in arrayOfOldVOpp{
+            
+            let docRef = db.collection("volunteeringOpp").document(doc)
+
+            docRef.getDocument { (document, error) in
+                if document!.exists {
+                    // get data
+                    if let data = document?.data(){
+                        let title : String = data["title"] as! String
+                        let date : String = data["date"] as! String
+                        let workingHours : String = data["workingHours"] as! String
+                        let location : String = data["location"] as! String
+                    
+                      
+                            self.oldVOpp.append(volunteerVOpp(title: title, date: date, workingHours: workingHours, location: location))
+                            self.reloadOldTableOpp()
+                     
+                    }// end data
+                    
+                    
+                  } else {
+                     print("arrayOfOldVOpp document does not exist")
+                  }
+            }
+            
+        }
+    }
+    
+    func getCurrentDate(time: String) -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy/MM/dd"
+        var currentDate = ""
+        if(time == "past"){
+        currentDate = dateFormatter.string(from: Date() - 7)
+        }
+        if(time == "future"){
+        currentDate = dateFormatter.string(from: Date() + 7)
+        }
+        print("current date is \(currentDate)")
+        return currentDate
+        
+    }
+    
+    func showCurrentVoppLbl(){
+        
+        if currentVOpp.count == 0 {
+            noCurrentVOppLabel.isHidden = false
+            noOldVOppLabel.isHidden = true
+        }
+        
+    }
+    
+    func showOldVoppLbl(){
+        if oldVOpp.count == 0 {
+       noCurrentVOppLabel.isHidden = true
+       noOldVOppLabel.isHidden = false
+        }
+    }
+    
+    
+    func reloadCurrentTableOpp(){
+        
+        DispatchQueue.main.async {
+            self.currentVOppTable.reloadData()
+
+        }
+        
+    }
+    
+    func reloadOldTableOpp(){
+        DispatchQueue.main.async {
+            self.oldVOppTable.reloadData()
+
+        }
+        
+    }
+    
+    
+
 }

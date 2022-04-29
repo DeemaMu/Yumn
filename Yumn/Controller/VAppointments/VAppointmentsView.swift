@@ -60,6 +60,11 @@ struct VAppointmentsView: View {
         "Sat":"السبت"
     ]
     
+    var arOrgan: [String?:String] =
+    [
+        "kidney":"كلية",
+        "liver":"جزء من الكبد",
+    ]
     
     var body: some View {
         if #available(iOS 15.0, *){
@@ -230,14 +235,12 @@ struct VAppointmentsView: View {
     func HeaderView() -> some View {
         HStack(spacing: 10){
             VStack(){
-                if #available(iOS 15.0, *) {
-                    Text(convertToArabic(date: Date())).font(Font.custom("Tajawal", size: 14))
-                        .foregroundColor(.gray)
-                    
-                    Text("اليوم").font(Font.custom("Tajawal", size: 20))
-                        .foregroundColor(lightGray).padding(.top, 7)
-                } else {
-                }
+                Text(convertToArabic(date: Date())).font(Font.custom("Tajawal", size: 14))
+                    .foregroundColor(.gray)
+                
+                Text("اليوم").font(Font.custom("Tajawal", size: 20))
+                    .foregroundColor(lightGray).padding(.top, 7)
+                
             }.hLeading()
         }.padding()
             .background(bgWhite)
@@ -266,6 +269,7 @@ struct VAppointmentsView: View {
                     .offset(y: 100).foregroundColor(mainDark)
             }
         }.frame(maxHeight: .infinity)
+            .padding(.top, 10)
         
     }
     
@@ -276,13 +280,39 @@ struct VAppointmentsView: View {
         HStack(){
             Spacer()
             
-            VStack(alignment: .trailing, spacing: 20){
-                //                Text("\(currentH!.name)").font(Font.custom("Tajawal", size: 17))
-                //                    .foregroundColor(mainDark)
-                Text("\(apt.startTime!) - \(apt.endTime!)").font(Font.custom("Tajawal", size: 17))
-                    .foregroundColor(mainDark)
-            }.frame(maxWidth: .infinity, alignment: .trailing)
-                .frame(height: 90)
+            VStack(alignment: .leading, spacing: 5){
+                let title = "موعد فحص مبدئي للتبرع بـ "
+                let place = "في "
+                Text(title + self.arOrgan[apt.organ]!).font(Font.custom("Tajawal", size: 17))
+                    .foregroundColor(mainDark).padding(.bottom, 10).padding(.top, 5)
+                
+                Text(place + apt.hName!).font(Font.custom("Tajawal", size: 14)).foregroundColor(mainDark)
+                
+                HStack(){
+                    
+                    VStack(){
+                        Image("location").resizable()
+                            .scaledToFit()
+                    }.padding(.top, 5).padding(.bottom, 5)
+                    Text(apt.hospitalLocation!).font(Font.custom("Tajawal", size: 14)).foregroundColor(mainDark)
+                        .padding(.trailing, 10)
+                    
+                    
+                    VStack(){
+                        Image("time").resizable()
+                            .scaledToFit()
+                    }.padding(.top, 11).padding(.bottom, 11)
+                    
+                    Text("\(apt.startTime!.getFormattedDate(format: "HH:mm")) - \(apt.endTime!.getFormattedDate(format: "HH:mm"))").font(Font.custom("Tajawal", size: 14))
+                        .foregroundColor(mainDark)
+
+                } .padding(.bottom, 5)
+                
+            
+                
+                
+            }.frame(maxWidth: .infinity, alignment: .leading)
+                .frame(height: 100)
                 .padding(10)
             
         }
@@ -293,7 +323,7 @@ struct VAppointmentsView: View {
             )
                 .fill(.white)
         )
-        .frame(height: 90, alignment: .center)
+        .frame(height: 100, alignment: .center)
         .frame(maxWidth: .infinity)
         .shadow(color: shadowColor,
                 radius: 6, x: 0
@@ -351,7 +381,8 @@ class VAppointments : ObservableObject {
     @Published var filteredAppointments = [retrievedAppointment]()
     
     @Published var organAppointments = [retrievedAppointment]()
-    
+    @Published var olderOA = [retrievedAppointment]()
+    @Published var futureOA = [retrievedAppointment]()
     
     
     init() {
@@ -359,6 +390,97 @@ class VAppointments : ObservableObject {
     }
     
     func getUserOA() -> [retrievedAppointment] {
+        
+        db.collection("volunteer").document(userID).collection("organAppointments").addSnapshotListener { (querySnapshot, error) in
+            
+            guard let documents = querySnapshot?.documents else {
+                print("no documents")
+                return
+            }
+            
+            self.organAppointments = documents.map { (queryDocumentSnapshot) -> retrievedAppointment in
+                print("documents")
+                let data = queryDocumentSnapshot.data()
+                
+                let duration = data["appointment_duration"] as! Int
+                let type = data["type"] as? String ?? ""
+                let hName = data["hospital_name"] as! String
+                let exact = data["docID"] as! String
+                let mainDoc = data["mainDocId"] as? String  ?? ""
+                let hospitalId = data["hospital"] as! String
+                let location = data["location"] as? String ?? ""
+                
+                let stamp1 = data["start_time"] as? Timestamp
+                let startTime = stamp1?.dateValue()
+                
+                let stamp2 = data["end_time"] as? Timestamp
+                let endTime = stamp2?.dateValue()
+                
+                
+                let stamp3 = data["date"] as? Timestamp
+                let aptDate = stamp3?.dateValue()
+                
+                var apt = retrievedAppointment()
+                
+                if(type == "organ"){
+                    let organ = data["organ"] as! String
+                    apt.organ = organ
+                }
+                
+                apt.duration = duration
+                apt.type = type
+                apt.date = aptDate
+                
+                apt.appointmentID = exact
+                apt.mainAppointmentID = mainDoc
+                apt.endTime = endTime
+                
+                apt.startTime = startTime
+                apt.hospitalID = hospitalId
+                apt.hName = hName
+                apt.hospitalLocation = location
+                
+                if(Date() + 7 > aptDate!  ){
+                    self.futureOA.append(apt)
+                }
+                if(Date() - 7 > aptDate!  ){
+                    self.olderOA.append(apt)
+                }
+                
+                return apt
+                
+            }
+            
+        }
+        
+        return self.organAppointments
+    }
+    
+    func filteringAppointments() -> [retrievedAppointment] {
+        let calender = Calendar.current
+        
+        DispatchQueue.global(qos: .userInteractive).async {
+            
+            if(!self.organAppointments.isEmpty){
+                
+                var filtered: [retrievedAppointment] = self.organAppointments.filter {
+                    return calender.isDate($0.date!, inSameDayAs: self.currentDay)
+                }
+                
+                
+                DispatchQueue.main.async {
+                    withAnimation {
+                        self.filteredAppointments = filtered
+                    }
+                }
+            }
+            
+        }
+        return self.filteredAppointments
+    }
+    
+    func getUserOlderOA() -> [retrievedAppointment] {
+        
         
         db.collection("volunteer").document(userID).collection("organAppointments").addSnapshotListener { (querySnapshot, error) in
             
@@ -418,86 +540,81 @@ class VAppointments : ObservableObject {
         return self.organAppointments
     }
     
-    //    @available(iOS 15.0.0, *)
-    //    func getUserOA2() async throws -> [retrievedAppointment] {
-    //
-    //        db.collection("volunteer").document(userID).collection("organAppointments").addSnapshotListener { (querySnapshot, error) in
-    //
-    //            guard let documents = querySnapshot?.documents else {
-    //                print("no documents")
-    //                return
-    //            }
-    //
-    //            self.organAppointments = documents.map { (queryDocumentSnapshot) -> retrievedAppointment in
-    //                print("documents")
-    //                let data = queryDocumentSnapshot.data()
-    //                let duration = data["appointment_duration"] as! Int
-    //
-    //                let type = data["type"] as! String
-    //                let hName = data["hospital_name"] as! String
-    //                let exact = data["docID"] as! String
-    //                let mainDoc = data["mainDocId"] as! String
-    //                let hospitalId = data["hospital"] as! String
-    //
-    //                let stamp1 = data["start_time"] as? Timestamp
-    //                let startTime = stamp1!.dateValue()
-    //
-    //                let stamp2 = data["end_time"] as? Timestamp
-    //                let endTime = stamp2!.dateValue()
-    //
-    //                let stamp3 = data["date"] as? Timestamp
-    //                let aptDate = stamp3?.dateValue()
-    //
-    //                var apt = retrievedAppointment()
-    //
-    //                if(type == "organ"){
-    //                    let organ = data["organ"] as! String
-    //                    apt.organ = organ
-    //                }
-    //
-    //                apt.duration = duration
-    //                apt.type = type
-    //                apt.date = aptDate
-    //
-    //                apt.appointmentID = exact
-    //                apt.mainAppointmentID = mainDoc
-    //                apt.endTime = endTime
-    //
-    //                apt.startTime = startTime
-    //                apt.hospitalID = hospitalId
-    //                apt.hName = hName
-    //
-    //                return apt
-    //
-    //            }
-    //
-    //        }
-    //
-    //        return self.organAppointments
-    //    }
-    
-    
-    func filteringAppointments() -> [retrievedAppointment] {
-        let calender = Calendar.current
+    func getUserFutureOA() -> [retrievedAppointment] {
         
-        DispatchQueue.global(qos: .userInteractive).async {
+        db.collection("volunteer").document(userID).collection("organAppointments").whereField("endDate", isGreaterThanOrEqualTo: getCurrentDate(time: "future")).addSnapshotListener { (querySnapshot, error) in
             
-            if(!self.organAppointments.isEmpty){
+            guard let documents = querySnapshot?.documents else {
+                print("no documents")
+                return
+            }
+            
+            self.organAppointments = documents.map { (queryDocumentSnapshot) -> retrievedAppointment in
+                print("documents")
+                let data = queryDocumentSnapshot.data()
+                let duration = data["appointment_duration"] as! Int
                 
-                var filtered: [retrievedAppointment] = self.organAppointments.filter {
-                    return calender.isDate($0.date!, inSameDayAs: self.currentDay)
+                let type = data["type"] as! String
+                let hName = data["hospital_name"] as! String
+                let exact = data["docID"] as! String
+                let mainDoc = data["mainDocId"] as! String
+                let hospitalId = data["hospital"] as! String
+                let location = data["location"] as! String
+                
+                let stamp1 = data["start_time"] as? Timestamp
+                let startTime = stamp1!.dateValue()
+                
+                let stamp2 = data["end_time"] as? Timestamp
+                let endTime = stamp2!.dateValue()
+                
+                
+                let stamp3 = data["date"] as? Timestamp
+                let aptDate = stamp3?.dateValue()
+                
+                var apt = retrievedAppointment()
+                
+                if(type == "organ"){
+                    let organ = data["organ"] as! String
+                    apt.organ = organ
                 }
                 
+                apt.duration = duration
+                apt.type = type
+                apt.date = aptDate
                 
-                DispatchQueue.main.async {
-                    withAnimation {
-                        self.filteredAppointments = filtered
-                    }
-                }
+                apt.appointmentID = exact
+                apt.mainAppointmentID = mainDoc
+                apt.endTime = endTime
+                
+                apt.startTime = startTime
+                apt.hospitalID = hospitalId
+                apt.hName = hName
+                apt.hospitalLocation = location
+                
+                return apt
+                
             }
             
         }
-        return self.filteredAppointments
+        
+        return self.organAppointments
+    }
+    
+    func getCurrentDate(time: String) -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy/MM/dd"
+        var currentDate = ""
+        if(time == "past"){
+            currentDate = dateFormatter.string(from: Date() - 7)
+        }
+        if(time == "future"){
+            currentDate = dateFormatter.string(from: Date() + 7)
+        }
+        print("current date is \(currentDate)")
+        return currentDate
+        
     }
     
 }

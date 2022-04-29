@@ -63,6 +63,8 @@
 		B975979C28195D9300AD2C93 /* Donor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B975979B28195D9300AD2C93 /* Donor.swift */; };
 		B97A37FE27B9D32A00718079 /* RoundedShadowedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A37FD27B9D32A00718079 /* RoundedShadowedView.swift */; };
 		B97A380227BA9EA000718079 /* BloodDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A380127BA9EA000718079 /* BloodDonationViewController.swift */; };
+		B99C2724281C226200EAC439 /* OlderOrganAppointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99C2723281C226200EAC439 /* OlderOrganAppointments.swift */; };
+		B99C2726281C227700EAC439 /* FutureOrganAppointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99C2725281C227700EAC439 /* FutureOrganAppointments.swift */; };
 		B9AC66222819E7880013301B /* VViewAppointmentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC66212819E7880013301B /* VViewAppointmentsVC.swift */; };
 		B9AC66242819E90E0013301B /* VAppointmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC66232819E90E0013301B /* VAppointmentsView.swift */; };
 		B9AC6626281AF4AC0013301B /* olderAppointmentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC6625281AF4AB0013301B /* olderAppointmentsVC.swift */; };
@@ -181,6 +183,8 @@
 		B975979B28195D9300AD2C93 /* Donor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Donor.swift; sourceTree = "<group>"; };
 		B97A37FD27B9D32A00718079 /* RoundedShadowedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowedView.swift; sourceTree = "<group>"; };
 		B97A380127BA9EA000718079 /* BloodDonationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationViewController.swift; sourceTree = "<group>"; };
+		B99C2723281C226200EAC439 /* OlderOrganAppointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OlderOrganAppointments.swift; sourceTree = "<group>"; };
+		B99C2725281C227700EAC439 /* FutureOrganAppointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureOrganAppointments.swift; sourceTree = "<group>"; };
 		B9AC66212819E7880013301B /* VViewAppointmentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VViewAppointmentsVC.swift; sourceTree = "<group>"; };
 		B9AC66232819E90E0013301B /* VAppointmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VAppointmentsView.swift; sourceTree = "<group>"; };
 		B9AC6625281AF4AB0013301B /* olderAppointmentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = olderAppointmentsVC.swift; sourceTree = "<group>"; };
@@ -467,6 +471,8 @@
 				B9AC66232819E90E0013301B /* VAppointmentsView.swift */,
 				B9AC6625281AF4AB0013301B /* olderAppointmentsVC.swift */,
 				B9AC663F281B582A0013301B /* futureAppointments.swift */,
+				B99C2723281C226200EAC439 /* OlderOrganAppointments.swift */,
+				B99C2725281C227700EAC439 /* FutureOrganAppointments.swift */,
 			);
 			path = VAppointments;
 			sourceTree = "<group>";
@@ -733,6 +739,7 @@
 				B9AC66242819E90E0013301B /* VAppointmentsView.swift in Sources */,
 				D195444C27D49AA300B03DFF /* components.swift in Sources */,
 				B91DD29227E996CF00BA9881 /* CustomDatePicker.swift in Sources */,
+				B99C2726281C227700EAC439 /* FutureOrganAppointments.swift in Sources */,
 				954F2DB527E80CD200A3DFB1 /* ViewVOCollectionViewCell.swift in Sources */,
 				D19B1B5327E95FCB00CB3FFA /* OrganDonationViewController.swift in Sources */,
 				B9AC662C281B1BA10013301B /* ViewOppOfAVolunteerViewController.swift in Sources */,
@@ -746,6 +753,7 @@
 				959A52D127E8A41F002244A0 /* editVolunteeringOpp.swift in Sources */,
 				B9AC6636281B2E520013301B /* applicant.swift in Sources */,
 				B9B3143F2815FB8400C62981 /* AODHospitalList.swift in Sources */,
+				B99C2724281C226200EAC439 /* OlderOrganAppointments.swift in Sources */,
 				D19B1B4B27E95F1000CB3FFA /* currentBldAppCell.swift in Sources */,
 				B9D831C72818BDF40023CBC5 /* ThankYouPopup.swift in Sources */,
 				959A52CB27E87E51002244A0 /* cancelPopup.swift in Sources */,

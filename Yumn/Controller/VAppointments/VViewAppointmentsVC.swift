@@ -39,9 +39,7 @@ class VViewAppointmentsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewWillAppear(true)
-        
-        organAppointmentsList = self.getUserOA()
-        
+            
         popupView.superview?.bringSubviewToFront(popupView)
         
         
@@ -115,73 +113,16 @@ class VViewAppointmentsVC: UIViewController {
 //        popupView.isHidden = true
 //        blackBlurredView.isHidden = true
 //    }
-    
-    func getDataFromDatabase( completion: @escaping([retrievedAppointment]) -> Void) {
-        let retrievedData: [retrievedAppointment] = getUserOA()
-        // 'Get data from database' code goes here
-        // In this example, the data received will be of type 'String?'
-        // Once you've got your data from the database, which in this case is a string
-        // Call your completion block as follows
-        completion(retrievedData)
-    }
-    
-    func getUserOA() -> [retrievedAppointment] {
-        
-        db.collection("volunteer").document(userID).collection("organAppointments").addSnapshotListener { (querySnapshot, error) in
-            
-            guard let documents = querySnapshot?.documents else {
-                print("no documents")
-                return
-            }
-            
-            self.organAppointmentsList = documents.map { (queryDocumentSnapshot) -> retrievedAppointment in
-                print("documents")
-                let data = queryDocumentSnapshot.data()
-                let duration = data["appointment_duration"] as! Int
-                
-                let type = data["type"] as? String ?? ""
-                let hName = data["hospital_name"] as? String ?? ""
-                let exact = data["docID"] as! String
-                let mainDoc = data["mainDocId"] as? String ?? "hi"
-                let hospitalId = data["hospital"] as! String
-                
-                let stamp1 = data["start_time"] as? Timestamp
-                let startTime = stamp1!.dateValue()
-                
-                let stamp2 = data["end_time"] as? Timestamp
-                let endTime = stamp2!.dateValue()
-                
-                let stamp3 = data["date"] as? Timestamp
-                let aptDate = stamp3?.dateValue()
-                
-                var apt = retrievedAppointment()
-                
-                if(type == "organ"){
-                    let organ = data["organ"] as? String ?? "kidney"
-                    apt.organ = organ
-                }
-                
-                apt.duration = duration
-                apt.type = type
-                apt.date = aptDate
-                
-                apt.appointmentID = exact
-                apt.mainAppointmentID = mainDoc
-                apt.endTime = endTime
-                
-                apt.startTime = startTime
-                apt.hospitalID = hospitalId
-                apt.hName = hName
-                
-                return apt
-                
-            }
-            
-        }
-        
-        return self.organAppointmentsList
-    }
-    
+//
+//    func getDataFromDatabase( completion: @escaping([retrievedAppointment]) -> Void) {
+//        let retrievedData: [retrievedAppointment] = getUserOA()
+//        // 'Get data from database' code goes here
+//        // In this example, the data received will be of type 'String?'
+//        // Once you've got your data from the database, which in this case is a string
+//        // Call your completion block as follows
+//        completion(retrievedData)
+//    }
+//
     func moveToOldApts(){
         performSegue(withIdentifier: "goToOldApts", sender: nil)
     }

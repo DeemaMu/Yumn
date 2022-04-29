@@ -28,16 +28,16 @@
                         <rect key="frame" x="7" y="14" width="341" height="137"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="topRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" showsExpansionTextWhenTruncated="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GeX-sf-815">
-                                <rect key="frame" x="66" y="4" width="265" height="48"/>
+                                <rect key="frame" x="31" y="4" width="300" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="1bM-Vy-vxd"/>
-                                    <constraint firstAttribute="width" constant="265" id="Pxe-vy-Zkm"/>
+                                    <constraint firstAttribute="width" constant="300" id="6et-yo-s1S"/>
                                 </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="فرصة تطوعية في مستشفى الملك فيصل">
                                         <attributes>
-                                            <color key="NSColor" name="mainDark"/>
-                                            <font key="NSFont" metaFont="system" size="16"/>
+                                            <color key="NSColor" red="0.2598763704" green="0.37665799259999999" blue="0.3647065759" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -121,6 +121,7 @@
                             <constraint firstAttribute="bottom" secondItem="kaZ-hI-EUs" secondAttribute="bottom" constant="11" id="cih-gi-vVo"/>
                             <constraint firstItem="Ity-vU-jfk" firstAttribute="top" secondItem="6Cp-yH-kja" secondAttribute="top" constant="57" id="feW-UR-DXd"/>
                             <constraint firstAttribute="trailing" secondItem="kaZ-hI-EUs" secondAttribute="trailing" constant="6" id="idi-D9-1KL"/>
+                            <constraint firstItem="GeX-sf-815" firstAttribute="leading" secondItem="6Cp-yH-kja" secondAttribute="leading" constant="31" id="wg4-Wp-t7J"/>
                             <constraint firstAttribute="trailing" secondItem="w1H-mg-nVJ" secondAttribute="trailing" constant="10" id="zf4-9r-JQg"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
