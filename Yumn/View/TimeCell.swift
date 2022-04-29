@@ -40,6 +40,8 @@ class TimeCell: UITableViewCell {
         
         //Toggle the image
         
+        radioLabel.image = UIImage(named:"radioFilled" )
+        
         
        
     }

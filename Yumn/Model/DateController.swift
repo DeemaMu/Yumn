@@ -6,3 +6,27 @@
 //
 
 import Foundation
+import Firebase
+
+
+
+struct BloodDonationController {
+    
+}
+
+extension BloodDonationAppointmentViewController{
+    
+    
+    func getAvailableAppointmentsDate() -> [BloodDonationDate]{
+        
+        
+        var availableDates: [BloodDonationDate] = []
+        
+        let db = Firestore.firestore()
+        
+        
+        //db.collection("")
+        
+        return availableDates
+    }
+}

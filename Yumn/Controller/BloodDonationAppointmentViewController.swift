@@ -11,6 +11,7 @@ import UIKit
 class BloodDonationAppointmentViewController: UIViewController {
     @IBOutlet weak var dateTableView: UITableView!
     
+    @IBOutlet weak var hospitalNameLabel: UITableView!
     @IBOutlet weak var monthLabel: UILabel!
     
     @IBOutlet weak var calendarBtn: UIButton!
@@ -25,6 +26,9 @@ class BloodDonationAppointmentViewController: UIViewController {
     
   
     @IBOutlet weak var roundView: UIView!
+    
+    var sortedValidQRCodes:[QRCode]?
+    
     
     override func viewDidLoad() {
         
