@@ -140,7 +140,7 @@ class ViewVolunteeringOpportunities: UIViewController, UICollectionViewDelegate,
         
         let db = Firestore.firestore()
         let uid = Auth.auth().currentUser?.uid
-        
+
         // Check if already applied
         DispatchQueue.main.async {
             
@@ -161,8 +161,6 @@ class ViewVolunteeringOpportunities: UIViewController, UICollectionViewDelegate,
             }
  
         }
-        
-
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
