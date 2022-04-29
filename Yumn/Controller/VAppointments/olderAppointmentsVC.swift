@@ -388,6 +388,10 @@ class olderAppointmensVC: UIViewController {
             tableMainForCurrentBldApp.isHidden = true
             oldAppTable.isHidden = true
             
+            currentVOppTable.isHidden = true
+            oldVOppTable.isHidden = true
+            noCurrentVOppLabel.isHidden = true
+                    
             break
         default:
             tableMainForCurrentBldApp.isHidden = true
