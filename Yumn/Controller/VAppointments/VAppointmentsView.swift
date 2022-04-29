@@ -284,7 +284,7 @@ struct VAppointmentsView: View {
                 let title = "موعد فحص مبدئي للتبرع بـ "
                 let place = "في "
                 Text(title + self.arOrgan[apt.organ]!).font(Font.custom("Tajawal", size: 17))
-                    .foregroundColor(mainDark).padding(.bottom, 10).padding(.top, 5)
+                    .foregroundColor(mainDark).padding(.bottom, 10).padding(.top, 10)
                 
                 Text(place + apt.hName!).font(Font.custom("Tajawal", size: 14)).foregroundColor(mainDark)
                 
@@ -295,16 +295,16 @@ struct VAppointmentsView: View {
                             .scaledToFit()
                     }.padding(.top, 5).padding(.bottom, 5)
                     Text(apt.hospitalLocation!).font(Font.custom("Tajawal", size: 14)).foregroundColor(mainDark)
-                        .padding(.trailing, 10)
+                        .padding(.trailing, 10).padding(.top, 4)
                     
                     
                     VStack(){
                         Image("time").resizable()
                             .scaledToFit()
-                    }.padding(.top, 11).padding(.bottom, 11)
+                    }.padding(.top, 9).padding(.bottom, 9)
                     
                     Text("\(apt.startTime!.getFormattedDate(format: "HH:mm")) - \(apt.endTime!.getFormattedDate(format: "HH:mm"))").font(Font.custom("Tajawal", size: 14))
-                        .foregroundColor(mainDark)
+                        .foregroundColor(mainDark).padding(.top, 7)
 
                 } .padding(.bottom, 5)
                 
