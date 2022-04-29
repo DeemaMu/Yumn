@@ -99,51 +99,62 @@ struct OlderOrganAppointments: View {
                     .offset(y: 100).foregroundColor(mainDark)
             }
         }.frame(maxHeight: .infinity)
-            .padding(.top, 20)
+            .padding(.top, 10)
         
     }
     
     //    @available(iOS 15.0, *)
     @ViewBuilder
     func AppoitmentCard(apt: retrievedAppointment, index: Int) -> some View {
-        if(apt.date! < (Date() - 7)){
         HStack(){
             Spacer()
             
-            VStack(alignment: .leading, spacing: 5){
+            VStack(alignment: .leading, spacing: 0){
                 let title = "موعد فحص مبدئي للتبرع بـ "
                 let place = "في "
                 Text(title + self.arOrgan[apt.organ]!).font(Font.custom("Tajawal", size: 17))
-                    .foregroundColor(mainDark).padding(.bottom, 10).padding(.top, 5)
+                    .foregroundColor(mainDark).padding(.bottom, 10).padding(.top, 15)
                 
                 Text(place + apt.hName!).font(Font.custom("Tajawal", size: 14)).foregroundColor(mainDark)
+                
+                Spacer()
+                
+                HStack(){
+                    VStack(){
+                        Image("appCalendar").resizable()
+                            .scaledToFit()
+                    }.padding(.bottom,9).padding(.top, 9)
+                    Text(apt.date!.getFormattedDate(format: "yyyy/MM/dd")).font(Font.custom("Tajawal", size: 12)).foregroundColor(mainDark)
+                        .padding(.trailing, 40).padding(.top, 5)
+                    
+                    VStack(){
+                        Image("time").resizable()
+                            .scaledToFit()
+                    }.padding(.bottom, 9).padding(.top, 9)
+                    
+                    Text("\(apt.startTime!.getFormattedDate(format: "HH:mm")) - \(apt.endTime!.getFormattedDate(format: "HH:mm"))").font(Font.custom("Tajawal", size: 12))
+                        .foregroundColor(mainDark).padding(.top, 5)
+                }
                 
                 HStack(){
                     
                     VStack(){
                         Image("location").resizable()
                             .scaledToFit()
-                    }.padding(.top, 5).padding(.bottom, 5)
-                    Text(apt.hospitalLocation!).font(Font.custom("Tajawal", size: 14)).foregroundColor(mainDark)
-                        .padding(.trailing, 10)
+                    }.padding(.bottom, 2).padding(.top, 2)
+                    Text(apt.hospitalLocation!).font(Font.custom("Tajawal", size: 12)).foregroundColor(mainDark)
+                        .padding(.trailing, 10).padding(.leading, -3)
                     
                     
-                    VStack(){
-                        Image("time").resizable()
-                            .scaledToFit()
-                    }.padding(.top, 11).padding(.bottom, 11)
-                    
-                    Text("\(apt.startTime!.getFormattedDate(format: "HH:mm")) - \(apt.endTime!.getFormattedDate(format: "HH:mm"))").font(Font.custom("Tajawal", size: 14))
-                        .foregroundColor(mainDark)
-                    
-                } .padding(.bottom, 5)
-                
-                
+                } .padding(.bottom, 5).padding(.leading, -3)
                 
                 
             }.frame(maxWidth: .infinity, alignment: .leading)
-                .frame(height: 100)
-                .padding(10)
+                .frame(height: 130)
+                .shadow(color: shadowColor,
+                        radius: 0, x: 0
+                        , y: 0)
+//                .padding(5)
             
         }
         .background(
@@ -153,14 +164,14 @@ struct OlderOrganAppointments: View {
             )
                 .fill(.white)
         )
-        .frame(height: 120, alignment: .center)
+        .frame(height: 130, alignment: .center)
         .frame(maxWidth: .infinity)
         .shadow(color: shadowColor,
                 radius: 6, x: 0
                 , y: 0)
         .padding(.horizontal, 5)
         .padding(.vertical, 5)
-        }
+        
         
     }
     
