@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -42,7 +43,15 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="cancelBtn">
+                                <buttonConfiguration key="configuration" style="plain" imagePlacement="trailing">
+                                    <imageReference key="image" image="x.circle.fill" catalog="system" symbolScale="large" renderingMode="hierarchical">
+                                        <hierarchicalColors>
+                                            <color systemColor="systemBackgroundColor"/>
+                                            <color systemColor="systemBackgroundColor"/>
+                                            <color name="mainDark"/>
+                                        </hierarchicalColors>
+                                    </imageReference>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="16" scale="medium" weight="medium"/>
                                     <attributedString key="attributedTitle">
                                         <fragment content=".">
                                             <attributes>
@@ -189,9 +198,9 @@
     </objects>
     <resources>
         <image name="appCalendar" width="16" height="16"/>
-        <image name="cancelBtn" width="30" height="30"/>
         <image name="location" width="21" height="24"/>
         <image name="time" width="16" height="16"/>
+        <image name="x.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="mainDark">
             <color red="0.2199999988079071" green="0.37999999523162842" blue="0.36500000953674316" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

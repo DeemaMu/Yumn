@@ -19,12 +19,14 @@ struct VAppointmentsView: View {
     
     @State var activate = false
     
+    let dateFormatter = DateFormatter()
     
     let shadowColor = Color(#colorLiteral(red: 0.8653315902, green: 0.8654771447, blue: 0.8653123975, alpha: 1))
     let mainDark = Color(UIColor.init(named: "mainDark")!)
     let mainLight = Color(UIColor.init(named: "mainLight")!)
     let lightGray = Color(UIColor.lightGray)
     let bgWhite = Color(UIColor.white)
+    let grey = Color(UIColor.gray)
     
     var thereIS = chechingAppointments()
     
@@ -195,6 +197,8 @@ struct VAppointmentsView: View {
                             }.onAppear(){ // <== Here
                                 DispatchQueue.main.asyncAfter(deadline: .now() , execute: {
                                     value.scrollTo(6)
+                                    dateFormatter.dateFormat = "yyyy-MM-dd"
+                                    dateFormatter.locale = Locale(identifier:"en_US_POSIX")
                                     aptVM.filteringAppointments()
                                 })
                             }.onChange(of: activate) { newValue in
@@ -278,14 +282,41 @@ struct VAppointmentsView: View {
     func AppoitmentCard(apt: retrievedAppointment, index: Int) -> some View {
         
         HStack(){
+            
+            let today = dateFormatter.string(from: Date())
+            let aptDate = dateFormatter.string(from: apt.date!)
             Spacer()
             
             VStack(alignment: .leading, spacing: 5){
                 let title = "موعد فحص مبدئي للتبرع بـ "
                 let place = "في "
-                Text(title + self.arOrgan[apt.organ]!).font(Font.custom("Tajawal", size: 17))
-                    .foregroundColor(mainDark).padding(.bottom, 10).padding(.top, 10)
                 
+                HStack(){
+                    Text(title + self.arOrgan[apt.organ]!).font(Font.custom("Tajawal", size: 17))
+                        .foregroundColor(mainDark).padding(.bottom, 10).padding(.top, 10)
+                    
+                    Spacer()
+                    if(today < aptDate){
+                        let colorInvert = Color(UIColor.init(named: "mainDark")!.inverted)
+                        VStack(){
+                            Image(systemName: "x.circle.fill").foregroundColor(colorInvert).colorInvert()
+                                .scaledToFit().font(.system(size: 17).bold())
+                                .onTapGesture {
+                                    
+                                }
+                            
+                        }.padding(.top, 0).padding(.bottom, 0)
+                        
+                    }
+                    if(today >= aptDate){
+                        let colorInvert = Color(UIColor.gray.inverted)
+                        VStack(){
+                            Image(systemName: "x.circle.fill").foregroundColor(colorInvert).colorInvert()
+                                .scaledToFit().font(.system(size: 17).bold())
+                        }.padding(.top, 0).padding(.bottom, 0)
+                        
+                    }
+                }
                 Text(place + apt.hName!).font(Font.custom("Tajawal", size: 14)).foregroundColor(mainDark)
                 
                 HStack(){
@@ -293,26 +324,31 @@ struct VAppointmentsView: View {
                     VStack(){
                         Image("location").resizable()
                             .scaledToFit()
-                    }.padding(.top, 5).padding(.bottom, 5)
-                    Text(apt.hospitalLocation!).font(Font.custom("Tajawal", size: 14)).foregroundColor(mainDark)
-                        .padding(.trailing, 10).padding(.top, 4)
+                    }.padding(.top, 10).padding(.bottom, 10)
+                    Text(apt.hospitalLocation!).font(Font.custom("Tajawal", size: 12)).foregroundColor(mainDark)
+                        .padding(.trailing, 10).padding(.top, 4).padding(.leading, -5)
                     
                     
                     VStack(){
                         Image("time").resizable()
                             .scaledToFit()
-                    }.padding(.top, 9).padding(.bottom, 9)
+                    }.padding(.top, 14).padding(.bottom, 14)
                     
-                    Text("\(apt.startTime!.getFormattedDate(format: "HH:mm")) - \(apt.endTime!.getFormattedDate(format: "HH:mm"))").font(Font.custom("Tajawal", size: 14))
+                    Text("\(apt.startTime!.getFormattedDate(format: "HH:mm")) - \(apt.endTime!.getFormattedDate(format: "HH:mm"))").font(Font.custom("Tajawal", size: 12))
                         .foregroundColor(mainDark).padding(.top, 7)
-
+                    
+                    Spacer()
+                    
+                    self.editButton(isFuture: (today < aptDate))
+                    
+                    
                 } .padding(.bottom, 5)
                 
-            
+                
                 
                 
             }.frame(maxWidth: .infinity, alignment: .leading)
-                .frame(height: 100)
+                .frame(height: 110)
                 .padding(10)
             
         }
@@ -323,7 +359,7 @@ struct VAppointmentsView: View {
             )
                 .fill(.white)
         )
-        .frame(height: 100, alignment: .center)
+        .frame(height: 110, alignment: .center)
         .frame(maxWidth: .infinity)
         .shadow(color: shadowColor,
                 radius: 6, x: 0
@@ -333,6 +369,45 @@ struct VAppointmentsView: View {
         
     }
     
+    @ViewBuilder
+    func editButton(isFuture: Bool) -> some View {
+        if(isFuture){
+            Button(action: {
+                let x =
+                config.hostingController?.parent as! VViewAppointmentsVC
+            }
+            ) {
+                Text("تعديل").font(Font.custom("Tajawal", size: 16))
+                    .foregroundColor(.white)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(
+                RoundedRectangle(
+                    cornerRadius: 25,
+                    style: .continuous
+                )
+                    .fill(mainDark)
+            )
+            .frame(width: 70, height: 30, alignment: .trailing)
+        } else {
+            Button(action: {
+               
+            }
+            ) {
+                Text("تعديل").font(Font.custom("Tajawal", size: 16))
+                    .foregroundColor(.white)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(
+                RoundedRectangle(
+                    cornerRadius: 25,
+                    style: .continuous
+                )
+                    .fill(grey)
+            )
+            .frame(width: 70, height: 30, alignment: .trailing)
+        }
+    }
     
     func convertToArabic(date: Date) -> String {
         let formatter = DateFormatter()
@@ -385,13 +460,13 @@ class VAppointments : ObservableObject {
     @Published var futureOA = [retrievedAppointment]()
     
     let dateFormatter: DateFormatter = DateFormatter()
-
+    
     
     init() {
         organAppointments = self.getUserOA()
-//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-//        dateFormatter.locale = Locale(identifier:"en_US_POSIX")
-//        olderOA = self.getUserOlderOA()
+        //        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        //        dateFormatter.locale = Locale(identifier:"en_US_POSIX")
+        //        olderOA = self.getUserOlderOA()
     }
     
     func getUserOA() -> [retrievedAppointment] {
@@ -456,11 +531,11 @@ class VAppointments : ObservableObject {
                 if(future < ogDate){
                     self.futureOA.append(apt)
                 }
-
+                
                 if(past > ogDate){
                     self.olderOA.append(apt)
                 }
-
+                
                 return apt
                 
             }
@@ -650,5 +725,12 @@ func checkTimeStampOlder(date: String!) -> Bool {
         return true
     } else {
         return false
+    }
+}
+
+extension UIColor {
+    var inverted: UIColor {
+        var a: CGFloat = 0.0, r: CGFloat = 0.0, g: CGFloat = 0.0, b: CGFloat = 0.0
+        return getRed(&r, green: &g, blue: &b, alpha: &a) ? UIColor(red: 1.0-r, green: 1.0-g, blue: 1.0-b, alpha: a) : .black
     }
 }

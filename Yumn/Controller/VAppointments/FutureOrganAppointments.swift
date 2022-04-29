@@ -19,6 +19,7 @@ struct FutureOrganAppointments: View {
     
     @Namespace var animation
     
+    
     @State var activate = false
     
     
@@ -27,7 +28,7 @@ struct FutureOrganAppointments: View {
     let mainLight = Color(UIColor.init(named: "mainLight")!)
     let lightGray = Color(UIColor.lightGray)
     let bgWhite = Color(UIColor.white)
-        
+    
     var calender = Calendar.current
     
     init(config: Configuration){
@@ -66,7 +67,7 @@ struct FutureOrganAppointments: View {
         .onAppear(){
             activate = true
             odVM.fetchCurrentWeek(weeks: 3)
-//            aptVM.getUserOA()
+            //            aptVM.getUserOA()
         }.environment(\.layoutDirection, .rightToLeft)
         //
         
@@ -108,8 +109,24 @@ struct FutureOrganAppointments: View {
             VStack(alignment: .leading, spacing: 0){
                 let title = "موعد فحص مبدئي للتبرع بـ "
                 let place = "في "
-                Text(title + self.arOrgan[apt.organ]!).font(Font.custom("Tajawal", size: 17))
-                    .foregroundColor(mainDark).padding(.bottom, 10).padding(.top, 15)
+                HStack(){
+                    
+                    
+                    Text(title + self.arOrgan[apt.organ]!).font(Font.custom("Tajawal", size: 17))
+                        .foregroundColor(mainDark).padding(.bottom, 10).padding(.top, 15)
+                    
+                    Spacer()
+                    
+                    let colorInvert = Color(UIColor.init(named: "mainDark")!.inverted)
+                    VStack(){
+                        Image(systemName: "x.circle.fill").foregroundColor(colorInvert).colorInvert()
+                            .scaledToFit().font(.system(size: 17).bold())
+                            .onTapGesture {
+                                
+                            }.padding(.trailing, 20)
+                        
+                    }.padding(.top, 0).padding(.bottom, 0)
+                }
                 
                 Text(place + apt.hName!).font(Font.custom("Tajawal", size: 14)).foregroundColor(mainDark)
                 
@@ -141,6 +158,9 @@ struct FutureOrganAppointments: View {
                     Text(apt.hospitalLocation!).font(Font.custom("Tajawal", size: 12)).foregroundColor(mainDark)
                         .padding(.trailing, 10).padding(.leading, -3)
                     
+                    Spacer()
+                    
+                    self.editButton()
                     
                 } .padding(.bottom, 5).padding(.leading, -3)
                 
@@ -150,7 +170,7 @@ struct FutureOrganAppointments: View {
                 .shadow(color: shadowColor,
                         radius: 0, x: 0
                         , y: 0)
-//                .padding(5)
+            //                .padding(5)
             
         }
         .background(
@@ -171,6 +191,28 @@ struct FutureOrganAppointments: View {
         
     }
     
+    @ViewBuilder
+    func editButton() -> some View {
+        Button(action: {
+            let x =
+            config.hostingController?.parent as! VViewAppointmentsVC
+        }
+        ) {
+            Text("تعديل").font(Font.custom("Tajawal", size: 16))
+                .foregroundColor(.white)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(
+            RoundedRectangle(
+                cornerRadius: 25,
+                style: .continuous
+            )
+                .fill(mainDark)
+        )
+        .frame(width: 70, height: 30, alignment: .trailing)
+        .padding(.trailing, 20)
+        .padding(.bottom, 10)
+    }
     
     func convertToArabic(date: Date) -> String {
         let formatter = DateFormatter()
