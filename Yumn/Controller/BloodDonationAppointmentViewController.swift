@@ -27,10 +27,15 @@ class BloodDonationAppointmentViewController: UIViewController {
   
     @IBOutlet weak var roundView: UIView!
     
-    var sortedValidQRCodes:[QRCode]?
+    
+    var remainingDaysOfTheMonth:[DateCellInfo]?
+
     
     
     override func viewDidLoad() {
+        
+        self.remainingDaysOfTheMonth = getRemainingDaysOfTheMonth()
+
         
         roundView.layer.cornerRadius = 35
         
@@ -41,6 +46,12 @@ class BloodDonationAppointmentViewController: UIViewController {
         dateTableView.dataSource = self
         timeTableView.dataSource = self
         
+        dateTableView.register(UINib(nibName: "dateCell", bundle: nil), forCellReuseIdentifier: "DateCell")
+        
+        timeTableView.register(UINib(nibName: "TimeCell", bundle: nil), forCellReuseIdentifier: "TimeCell")
+        
+
+        
        
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -48,11 +59,16 @@ class BloodDonationAppointmentViewController: UIViewController {
         
      
         
-        dateTableView.register(UINib(nibName: "dateCell", bundle: nil), forCellReuseIdentifier: "DateCell")
-        
-        timeTableView.register(UINib(nibName: "TimeCell", bundle: nil), forCellReuseIdentifier: "TimeCell")
+       
 
         super.viewDidLoad()
+        
+                
+        
+        
+        //setInitialViewToCurrentMonth()
+        
+        
         
 
         // Do any additional setup after loading the view.
@@ -87,7 +103,11 @@ extension BloodDonationAppointmentViewController: UITableViewDataSource{
         
         //date
         if (tableView == dateTableView){
-            return 10}
+            
+            //We Should check if the date is changed
+            
+            
+            return self.remainingDaysOfTheMonth!.count}
         
         //time
         else{
@@ -110,29 +130,140 @@ extension BloodDonationAppointmentViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        var cell:UITableViewCell?
-
         
         if (tableView == dateTableView){
-         cell = tableView.dequeueReusableCell(withIdentifier: "DateCell", for: indexPath) as! DateCell
+            
+            let dateCell = tableView.dequeueReusableCell(withIdentifier: "DateCell", for: indexPath) as! DateCell
+            
+          
+            dateCell.dateLabel.text! =  remainingDaysOfTheMonth![indexPath.row].dateNum
+    
+            
+            
+            
+            dateCell.dayLabel.text! =  remainingDaysOfTheMonth![indexPath.row].day
+            
+            return dateCell
+            
+            
+            
+            
+            
+            
         }
         
         
         // Time cell
         else{
             
-             cell = tableView.dequeueReusableCell(withIdentifier: "TimeCell", for: indexPath) as! TimeCell
-        }
-        return cell!
-
+            let timeCell = tableView.dequeueReusableCell(withIdentifier: "TimeCell", for: indexPath) as! TimeCell
         
+            
+            
+            return timeCell
+        }
+
+  
+}
+    
+ 
+    
+    func setInitialViewToCurrentMonth(){
+        
+        
+                
+    
        
         
         
- 
-        
-        
+    }
 
     
-}
+    
+    
+    func getRemainingDaysOfTheMonth() -> [DateCellInfo]
+    {
+        var datesArray:[DateCellInfo] = []
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/YYYY"
+
+        
+        
+        let lastDayOfCurrentMonthDate = Date().endOfMonth
+        
+        let currentDayOfCurrentMonthDate = Date()
+        
+        let lastDayOfCurrentMonthString = (formatter.string(from: lastDayOfCurrentMonthDate)).prefix(2)
+        
+        let currentDayOfCurrentMonthString = (formatter.string(from: currentDayOfCurrentMonthDate)).prefix(2)
+        
+        var currentDate = Date()
+
+        
+        print (lastDayOfCurrentMonthString)
+        print(currentDayOfCurrentMonthString)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+
+        while currentDate <= lastDayOfCurrentMonthDate {
+            
+            datesArray.append(DateCellInfo(day: dateFormatter.string(from: currentDate)
+           , dateNum: String((formatter.string(from: currentDate)).prefix(2)), date: currentDate))
+            
+                currentDate = nextDay(date:currentDate)
+            }
+        
+        
+        print (datesArray)
+        
+        return (datesArray)
+
+        
+
+        
+        
     }
+    func nextDay(date: Date) -> Date {
+        var dateComponents = DateComponents()
+        dateComponents.day = 1
+        return Calendar.current.date(byAdding: dateComponents, to: date)!
+    }
+
+}
+
+
+extension Date {
+    var startOfDay: Date {
+        return Calendar.current.startOfDay(for: self)
+    }
+
+    var startOfMonth: Date {
+
+        let calendar = Calendar(identifier: .gregorian)
+        let components = calendar.dateComponents([.year, .month], from: self)
+
+        return  calendar.date(from: components)!
+    }
+
+    var endOfDay: Date {
+        var components = DateComponents()
+        components.day = 1
+        components.second = -1
+        return Calendar.current.date(byAdding: components, to: startOfDay)!
+    }
+
+    var endOfMonth: Date {
+        var components = DateComponents()
+        components.month = 1
+        components.second = -1
+        return Calendar(identifier: .gregorian).date(byAdding: components, to: startOfMonth)!
+    }
+
+    func isMonday() -> Bool {
+        let calendar = Calendar(identifier: .gregorian)
+        let components = calendar.dateComponents([.weekday], from: self)
+        return components.weekday == 2
+    }
+}
