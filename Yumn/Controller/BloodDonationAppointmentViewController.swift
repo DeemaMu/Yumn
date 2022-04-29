@@ -11,8 +11,14 @@ import UIKit
 class BloodDonationAppointmentViewController: UIViewController {
     @IBOutlet weak var dateTableView: UITableView!
     
+  
+
     
+
+    
+
     @IBOutlet weak var timeTableView: UITableView!
+    
     
   
     @IBOutlet weak var roundView: UIView!
@@ -27,6 +33,9 @@ class BloodDonationAppointmentViewController: UIViewController {
         
         dateTableView.dataSource = self
         timeTableView.dataSource = self
+        
+       
+
      
         
         dateTableView.register(UINib(nibName: "dateCell", bundle: nil), forCellReuseIdentifier: "DateCell")
@@ -103,7 +112,7 @@ extension BloodDonationAppointmentViewController: UITableViewDataSource{
         return cell!
 
         
-        
+       
         
         
  
@@ -112,8 +121,4 @@ extension BloodDonationAppointmentViewController: UITableViewDataSource{
 
     
 }
-    
-    
-   
-
-}
+    }

@@ -59,20 +59,7 @@ class DateCell: UITableViewCell {
     }
     
     
-    func setBtnShadow(){
-        
-        dateBtn.layer.backgroundColor = UIColor.white.cgColor
-        dateBtn.layer.cornerRadius = 15
-    
-        dateBtn.layer.shadowOffset = CGSize(width: 0, height: 1)
-        dateBtn.layer.shadowColor = UIColor.gray.cgColor
-        dateBtn.layer.shadowOpacity = 1
-        dateBtn.layer.shadowRadius = 7
-        dateBtn.layer.masksToBounds = false
-        addshadow(top: false, left: false, bottom: false, right: false)
-
-    }
-    
+   
     
     
     func addshadow(top: Bool,
