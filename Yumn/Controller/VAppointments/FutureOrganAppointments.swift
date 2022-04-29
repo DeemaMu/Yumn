@@ -125,7 +125,7 @@ struct FutureOrganAppointments: View {
                                 
                             }.padding(.trailing, 20)
                         
-                    }.padding(.top, 0).padding(.bottom, 0)
+                    }.padding(.top, 3).padding(.bottom, 0)
                 }
                 
                 Text(place + apt.hName!).font(Font.custom("Tajawal", size: 14)).foregroundColor(mainDark)
@@ -211,7 +211,7 @@ struct FutureOrganAppointments: View {
         )
         .frame(width: 70, height: 30, alignment: .trailing)
         .padding(.trailing, 20)
-        .padding(.bottom, 10)
+        .padding(.bottom, 5)
     }
     
     func convertToArabic(date: Date) -> String {
