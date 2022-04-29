@@ -63,12 +63,16 @@ class futureAppointmensVC: UIViewController {
     
     let db = Firestore.firestore()
     
+    // future organ
+    @IBOutlet weak var futureOAView: UIView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        tableMainForCurrentBldApp.isHidden = true
-        
+        tableMainForCurrentBldApp.isHidden = false
+        futureOAView.isHidden = true
         
         deleteAppPopUp.layer.cornerRadius = 17
         deleteAppBtn.layer.cornerRadius = 12
@@ -105,7 +109,15 @@ class futureAppointmensVC: UIViewController {
         getCurrentVOpp(userID: user!.uid)
         
         
-        // on index change
+        // future OA
+        // connect to uiview
+        let configuration = Configuration()
+        let controller = UIHostingController(rootView: FutureOrganAppointments(config: configuration))
+        // injects here, because `configuration` is a reference !!
+        configuration.hostingController = controller
+        self.addChild(controller)
+        controller.view.frame = self.futureOAView.bounds
+        self.futureOAView.addSubview(controller.view)
         
         
         
@@ -283,9 +295,11 @@ class futureAppointmensVC: UIViewController {
         case 0:
             
             tableMainForCurrentBldApp.isHidden = true
-            
+            noAppLabel.isHidden = true
+
             currentVOppTable.isHidden = false
             noCurrentVOppLabel.isHidden = true
+            showCurrentVoppLbl()
                         
             break
         case 1:
@@ -295,6 +309,7 @@ class futureAppointmensVC: UIViewController {
             currentVOppTable.isHidden = true
             noCurrentVOppLabel.isHidden = true
             
+            futureOAView.isHidden = false
             
             
             break
@@ -303,6 +318,8 @@ class futureAppointmensVC: UIViewController {
             noAppLabel.isHidden = true
             currentVOppTable.isHidden = true
             noCurrentVOppLabel.isHidden = true
+            showCurrentAppLbl()
+
             
         }
     }
