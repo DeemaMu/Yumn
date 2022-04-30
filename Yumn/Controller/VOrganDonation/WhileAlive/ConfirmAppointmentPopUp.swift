@@ -96,28 +96,57 @@ struct ConfirmAppointmentPopUp: View {
                     
                     
                     Button(action: {
-                        if(self.updateData()){
-                            if(self.addToArray()){
-                                if(self.addToUser()){
-                                    if(!Constants.selected.edit){
-                                        print("lets goooo")
-                                        let x =
-                                        config.hostingController?.parent as! Alive4thVC
-                                        x.confirm()
+                        
+                        self.updateData { succuss in
+                            if succuss {
+                                self.addToArray { succuss2 in
+                                    if succuss2 {
+                                        self.addToUser { succuss3 in
+                                            if succuss2 {
+                                                print("lets goooo")
+                                                if(Constants.selected.edit){
+                                                    
+                                                }
+                                                else {
+                                                    let x =
+                                                    config.hostingController?.parent as! Alive4thVC
+                                                    x.confirm()
+                                                }
+                                            } else {
+                                                print("failed to add to user")
+                                            }
+                                        }
                                     } else {
-                                        
+                                        print("failed to add to array")
                                     }
-                                }  else {
-                                    print("fail22222")
                                 }
-                            }
-                            else {
-                                print("fail1111")
+                            } else {
+                                print("failed to update appointment")
                             }
                         }
-                        else {
-                            print("fail3333")
-                        }
+                        
+//                        if(self.updateData()){
+//                            if(self.addToArray()){
+//                                if(self.addToUser()){
+//                                    if(!Constants.selected.edit){
+//                                        print("lets goooo")
+//                                        let x =
+//                                        config.hostingController?.parent as! Alive4thVC
+//                                        x.confirm()
+//                                    } else {
+//
+//                                    }
+//                                }  else {
+//                                    print("fail22222")
+//                                }
+//                            }
+//                            else {
+//                                print("fail1111")
+//                            }
+//                        }
+//                        else {
+//                            print("fail3333")
+//                        }
                         
                     }) {
                         Text("تأكيد").font(Font.custom("Tajawal", size: 16))
@@ -143,7 +172,34 @@ struct ConfirmAppointmentPopUp: View {
         }
     }
     
-    func DeleteFromInnerAppointment() -> Bool {
+    func deleteDoc(){
+        self.DeleteFromAppointment { succuss in
+            if succuss {
+                self.DeleteFromAppointment { succuss2 in
+                    if succuss2 {
+                        self.DeleteFromUser { succuss3 in
+                            if succuss3 {
+                                print("lets goooo")
+                                if(Constants.selected.edit){
+                                    let x =
+                                    config.hostingController?.parent as! futureAppointmensVC
+                                    x.confirmDelete()
+                                }
+                            } else {
+                                print("failed to add to user")
+                            }
+                        }
+                    } else {
+                        print("failed to add to array")
+                    }
+                }
+            } else {
+                print("failed to update appointment")
+            }
+        }
+    }
+    
+    func DeleteFromInnerAppointment(completion: (Bool) -> () ){
         var success = true
         
         db.collection("appointments").document(Constants.selected.mainDoc).collection("appointments").document(Constants.selected.exactDoc).setData(["booked":false, "donor": ""], merge: true) { error in
@@ -156,10 +212,10 @@ struct ConfirmAppointmentPopUp: View {
             }
         }
         
-        return success
+        completion(success)
     }
     
-    func DeleteFromAppointment() -> Bool {
+    func DeleteFromAppointment(completion: (Bool) -> () ) {
         var success = true
         
         var doc = db.collection("appointments").document(Constants.selected.mainDoc)
@@ -172,10 +228,10 @@ struct ConfirmAppointmentPopUp: View {
                 success = false
             }
         }
-        return success
+        completion(success)
     }
     
-    func DeleteFromUser() -> Bool {
+    func DeleteFromUser(completion: (Bool) -> () ) {
         var success = true
         
         db.collection("volunteer").document(userID).collection("organAppointments").document(exact.docID).delete() { error in
@@ -187,11 +243,11 @@ struct ConfirmAppointmentPopUp: View {
                 success = false
             }
         }
-        return success
+        completion(success)
     }
     
     
-    func updateData() -> Bool {
+    func updateData(completion: (Bool) -> () ){
         var success = true
         
         db.collection("appointments").document(appointment.docID).collection("appointments").document(exact.docID).setData(["booked":true, "donor": userID], merge: true) { error in
@@ -209,11 +265,11 @@ struct ConfirmAppointmentPopUp: View {
             }
         }
         
-        return success
+        completion(success)
     }
     
     
-    func addToArray() -> Bool {
+    func addToArray(completion: (Bool) -> () ){
         var success = true
         
         var doc = db.collection("appointments").document(appointment.docID)
@@ -236,10 +292,10 @@ struct ConfirmAppointmentPopUp: View {
         //            }
         //        }
         
-        return success
+         completion(success)
     }
     
-    func addToUser() -> Bool {
+    func addToUser(completion: (Bool) -> () ){
         var added = true
         let newDoc = db.collection("volunteer").document(userID).collection("organAppointments").document(exact.docID)
         
@@ -254,7 +310,8 @@ struct ConfirmAppointmentPopUp: View {
                 added = false
             }
         }
-        return added
+        
+        completion(added)
     }
     
     func convertToArabic(date: Date) -> String {

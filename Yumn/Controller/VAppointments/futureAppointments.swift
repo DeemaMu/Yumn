@@ -173,6 +173,9 @@ class futureAppointmensVC: UIViewController {
         
     }
     
+    func confirmDelete() {
+        
+    }
     
     
     @IBAction func cancelingAppDelete(_ sender: Any) {
