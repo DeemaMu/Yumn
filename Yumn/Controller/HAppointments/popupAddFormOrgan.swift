@@ -131,10 +131,10 @@ struct PopupAddFormOrgan: View {
                                 if(!newValue.isEmpty){
                                     switch newValue{
                                     case dropDownList[0]:
-                                        self.apptType = "liver"
+                                        self.apptType = "kidney"
                                         break
                                     case dropDownList[1]:
-                                        self.apptType = "kidney"
+                                        self.apptType = "liver"
                                         break
                                     default:
                                         self.apptType = "none"

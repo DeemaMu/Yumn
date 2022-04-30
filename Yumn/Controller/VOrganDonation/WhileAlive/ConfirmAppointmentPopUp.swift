@@ -68,7 +68,7 @@ struct ConfirmAppointmentPopUp: View {
                     Text("التوقيت:").font(Font.custom("Tajawal", size: 14))
                         .foregroundColor(mainLight).fontWeight(.semibold).hTrailing()
                     HStack(){
-                        Text("\(exact.startTime.getFormattedDate(format: "HH:mm")) - \(exact.endTime.getFormattedDate(format: "HH:mm")) ").font(Font.custom("Tajawal", size: 14))
+                        Text("\(appointment.startTime.getFormattedDate(format: "HH:mm")) - \(appointment.endTime.getFormattedDate(format: "HH:mm")) ").font(Font.custom("Tajawal", size: 14))
                             .foregroundColor(textGray).hTrailing().padding(.trailing, 15)
                     }
                 }
@@ -200,6 +200,7 @@ struct ConfirmAppointmentPopUp: View {
                 if(appointment.bookedAppointments == nil){
                     appointment.bookedAppointments = [String]()
                 }
+                print("heerreeee44444 \(exact.docID)")
                 appointment.bookedAppointments?.append(exact.docID)
                 success = true
             } else {
@@ -242,8 +243,8 @@ struct ConfirmAppointmentPopUp: View {
         var added = true
         let newDoc = db.collection("volunteer").document(userID).collection("organAppointments").document(exact.docID)
         
-        newDoc.setData(["type": appointment.type,"hospital": appointment.hospital, "start_time": exact.startTime,
-                        "end_time": exact.endTime, "date": appointment.aptDate, "appointment_duration": 60
+        newDoc.setData(["type": appointment.type,"hospital": appointment.hospital, "start_time": appointment.startTime,
+                        "end_time": appointment.endTime, "date": appointment.aptDate, "appointment_duration": 60
                         , "docID": exact.docID, "mainDocId": appointment.docID, "hospital_name": self.hospitalName, "organ": appointment.organ, "location": self.hospitalLocation]) { error in
             
             if (error == nil){
@@ -297,11 +298,11 @@ struct ConfirmAppointmentPopUp: View {
     }
 }
 
-struct ConfirmAppointmentPopUp_Previews: PreviewProvider {
-    static var apt = OrganAppointment(type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(60 * 60), aptDate: getSampleDate(offset: 0), hospital: "المملكة", aptDuration: 60, organ: Constants.selected.selectedOrgan.organ)
-    
-    
-    static var previews: some View {
-        ConfirmAppointmentPopUp(config: Configuration(), appointment: apt, exact: DAppointment(type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(30 * 60), donor: "", hName: Constants.selected.selectedOrgan.hospital, confirmed: false, booked: false))
-    }
-}
+//struct ConfirmAppointmentPopUp_Previews: PreviewProvider {
+//    static var apt = OrganAppointment(type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(60 * 60), aptDate: getSampleDate(offset: 0), hospital: "المملكة", aptDuration: 60, organ: Constants.selected.selectedOrgan.organ)
+//    
+//    
+//    static var previews: some View {
+//        ConfirmAppointmentPopUp(config: Configuration(), appointment: apt, exact: DAppointment(type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(30 * 60), donor: "", hName: Constants.selected.selectedOrgan.hospital, confirmed: false, booked: false))
+//    }
+//}

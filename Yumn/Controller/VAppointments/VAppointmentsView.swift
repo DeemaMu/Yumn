@@ -302,7 +302,9 @@ struct VAppointmentsView: View {
                             Image(systemName: "x.circle.fill").foregroundColor(colorInvert).colorInvert()
                                 .scaledToFit().font(.system(size: 17).bold())
                                 .onTapGesture {
-                                    
+                                    let x =
+                                    config.hostingController?.parent as! VViewAppointmentsVC
+                                    x.cancel(apt: apt)
                                 }
                             
                         }.padding(.top, 0).padding(.bottom, 0)

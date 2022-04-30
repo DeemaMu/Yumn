@@ -14,6 +14,7 @@ struct deleteAppointment: View {
     let appointment: retrievedAppointment
     let userID = Auth.auth().currentUser!.uid
     let controllerType: Int
+//    let userID = ""
     
     let db = Firestore.firestore()
     
@@ -26,48 +27,34 @@ struct deleteAppointment: View {
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false){
-            VStack(spacing: 20){
-                Text("تأكيد الموعد").font(Font.custom("Tajawal", size: 14))
+            VStack(alignment: .center, spacing: 20){
+                Text("تأكيد عملية الحذف").font(Font.custom("Tajawal", size: 15))
                     .foregroundColor(mainLight).fontWeight(.semibold)
                 
-                VStack(spacing: 15){
-                    Text("الموقع:").font(Font.custom("Tajawal", size: 14))
-                        .foregroundColor(mainLight).fontWeight(.semibold).hTrailing()
+                Spacer()
+
+                VStack(spacing: 4){
+                    Text("هل أنت متأكد من رغبتك في").font(Font.custom("Tajawal", size: 14))
+                        .foregroundColor(textGray).fontWeight(.semibold)
                     HStack(){
-                        Text("hi").font(Font.custom("Tajawal", size: 14))
-                            .foregroundColor(textGray).hTrailing().padding(.trailing, 15)
+                        Text("حذف الموعد؟").font(Font.custom("Tajawal", size: 14))
+                            .foregroundColor(textGray).fontWeight(.semibold)
                     }
                 }
                 
-                VStack(spacing: 15){
-                    Text("التاريخ").font(Font.custom("Tajawal", size: 14))
-                        .foregroundColor(mainLight).fontWeight(.semibold).hTrailing()
-                    HStack(){
-                        Text("hiii").font(Font.custom("Tajawal", size: 14))
-                            .foregroundColor(textGray).hTrailing().padding(.trailing, 15)
-                    }
-                }
-                
-                VStack(spacing: 15){
-                    Text("التوقيت:").font(Font.custom("Tajawal", size: 14))
-                        .foregroundColor(mainLight).fontWeight(.semibold).hTrailing()
-                    HStack(){
-                        Text("hi").font(Font.custom("Tajawal", size: 14))
-                            .foregroundColor(textGray).hTrailing().padding(.trailing, 15)
-                    }
-                }
+                Spacer()
                 
                 HStack(alignment: .bottom, spacing: 10){
                     
                     Button(action: {
                         if(controllerType == 1){
-                        let x =
-                        config.hostingController?.parent as! VViewAppointmentsVC
-//                        x.cancel()
+                            let x =
+                            config.hostingController?.parent as! VViewAppointmentsVC
+                            x.cancelDelete()
                         } else {
                             let x =
                             config.hostingController?.parent as! futureAppointmensVC
-//                            x.cancel()
+                            //                            x.cancel()
                         }
                     }
                     ) {
@@ -86,7 +73,21 @@ struct deleteAppointment: View {
                     
                     
                     Button(action: {
-                        
+                        if(self.DeleteFromAppointment()){
+                            if(self.DeleteFromUser()){
+                                if(self.DeleteFromInnerAppointment()){
+                                    if(controllerType == 1){
+                                        let x =
+                                        config.hostingController?.parent as! VViewAppointmentsVC
+                                        x.cancelDelete()
+                                    } else {
+                                        let x =
+                                        config.hostingController?.parent as! futureAppointmensVC
+                                        //                            x.cancel()
+                                    }
+                                }
+                            }
+                        }
                     }) {
                         Text("تأكيد").font(Font.custom("Tajawal", size: 16))
                             .foregroundColor(.white)
@@ -113,7 +114,7 @@ struct deleteAppointment: View {
     func DeleteFromInnerAppointment() -> Bool {
         var success = true
         
-        db.collection("appointments").document(Constants.selected.mainDoc).collection("appointments").document(Constants.selected.exactDoc).setData(["booked":false, "donor": ""], merge: true) { error in
+        db.collection("appointments").document(appointment.mainAppointmentID!).collection("appointments").document(appointment.appointmentID!).setData(["booked":false, "donor": ""], merge: true) { error in
             
             if error == nil {
                 success = true
@@ -129,9 +130,9 @@ struct deleteAppointment: View {
     func DeleteFromAppointment() -> Bool {
         var success = true
         
-        var doc = db.collection("appointments").document(Constants.selected.mainDoc)
+        var doc = db.collection("appointments").document(appointment.mainAppointmentID!)
         
-        doc.updateData(["bookedAppointments": FieldValue.arrayRemove([Constants.selected.exactDoc])]) { error in
+        doc.updateData(["bookedAppointments": FieldValue.arrayRemove([appointment.appointmentID])]) { error in
             if (error == nil) {
                 success = true
             } else {

@@ -243,10 +243,10 @@ class ODHospitals: ObservableObject {
                 let booked = data["booked"] as? Bool ?? false
                 
                 let stamp1 = data["start_time"] as? Timestamp
-                let startTime = stamp1!.dateValue()
+                let startTime = stamp1?.dateValue() ?? Date()
                 
                 let stamp2 = data["end_time"] as? Timestamp
-                let endTime = stamp2!.dateValue()
+                let endTime = stamp2?.dateValue() ?? Date()
                                 
                 return DAppointment(type: type, startTime: startTime, endTime: endTime, donor: donor, hName: hName, confirmed: confirmed, booked: booked)
             }

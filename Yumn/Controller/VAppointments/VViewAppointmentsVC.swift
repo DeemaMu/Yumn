@@ -108,10 +108,10 @@ class VViewAppointmentsVC: UIViewController {
     
 //
     func cancel(apt: retrievedAppointment) {
-        blackBlurredView.superview?.sendSubviewToBack(blackBlurredView)
-        popupView.superview?.sendSubviewToBack(popupView)
-        popupView.isHidden = true
-        blackBlurredView.isHidden = true
+        blackBlurredView.superview?.bringSubviewToFront(blackBlurredView)
+        popupView.superview?.bringSubviewToFront(popupView)
+        popupView.isHidden = false
+        blackBlurredView.isHidden = false
         let configuration = Configuration()
         let controller = UIHostingController(rootView: deleteAppointment(config: configuration,appointment: apt, controllerType: 1))
         // injects here, because `configuration` is a reference !!
@@ -120,6 +120,15 @@ class VViewAppointmentsVC: UIViewController {
         controller.view.frame = innerPopup.bounds
         innerPopup.addSubview(controller.view)
     }
+    
+    
+    func cancelDelete() {
+        blackBlurredView.superview?.sendSubviewToBack(blackBlurredView)
+        popupView.superview?.sendSubviewToBack(popupView)
+        popupView.isHidden = true
+        blackBlurredView.isHidden = true
+    }
+    
     
 //
 //    func getDataFromDatabase( completion: @escaping([retrievedAppointment]) -> Void) {

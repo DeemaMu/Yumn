@@ -285,7 +285,7 @@ struct SelectODAppointment: View {
     @ViewBuilder
     func AppoitmentCard(apt: OrganAppointment, index: Int) -> some View {
         
-        let mini = aptVM.fetchAppointmentsData2(docID: apt.docID)
+        var mini = aptVM.fetchAppointmentsData2(docID: apt.docID)
         
         if(!mini.isEmpty){
             
@@ -294,7 +294,6 @@ struct SelectODAppointment: View {
             if(odVM.checkIfFree2(doc: apt, exactID: currentA.docID)) {
                 
                 HStack(){
-                    
                     VStack(alignment: .leading){
                         if(self.checkedIndex == index){
                             RadioButton2(matched: true)
@@ -310,7 +309,7 @@ struct SelectODAppointment: View {
                     VStack(alignment: .center){
                         //                Text("\(currentH!.name)").font(Font.custom("Tajawal", size: 17))
                         //                    .foregroundColor(mainDark)
-                        Text("\(currentA.startTime.getFormattedDate(format: "HH:mm")) - \(currentA.endTime.getFormattedDate(format: "HH:mm"))").font(Font.custom("Tajawal", size: 22))
+                        Text("\(aptVM.filteredAppointments[index].startTime.getFormattedDate(format: "HH:mm")) - \(aptVM.filteredAppointments[index].endTime.getFormattedDate(format: "HH:mm"))").font(Font.custom("Tajawal", size: 22))
                             .foregroundColor(mainDark)
                     }.frame(maxWidth: .infinity, alignment: .center)
                         .frame(height: 50)
@@ -351,9 +350,14 @@ struct SelectODAppointment: View {
                         showError = true
                     } else {
                         selectedMiniAppointment = mini[0]
+//                        Constants.selected.exact = mini[0]
                         selectedAppointment = aptVM.filteredAppointments[index]
                         checkedIndex = index
                         showError = false
+                    }
+                }.onAppear{
+                    DispatchQueue.main.async {
+                        mini = aptVM.fetchAppointmentsData2(docID: apt.docID)
                     }
                 }
                 .padding(.horizontal, 15)
