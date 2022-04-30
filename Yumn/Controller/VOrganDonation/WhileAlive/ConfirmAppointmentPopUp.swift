@@ -111,7 +111,7 @@ struct ConfirmAppointmentPopUp: View {
                                     let x =
                                     config.hostingController?.parent as! Alive4thVC
                                     x.confirm()
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
                                         listener?.remove()
                                     }
                                 }

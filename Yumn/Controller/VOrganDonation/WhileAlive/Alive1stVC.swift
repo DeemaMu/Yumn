@@ -11,15 +11,25 @@ import SwiftUI
 class AliveFirstVC: UIViewController {
     
     @IBOutlet weak var container: UIView!
+    @IBOutlet weak var popupView: UIView!
+    @IBOutlet weak var innerPopup: UIView!
+    @IBOutlet weak var blackBlurredView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewWillAppear(true)
+        popupView.layer.cornerRadius = 30
+        popupView.isHidden = true
+        blackBlurredView.isHidden = true
         
-        let childView = UIHostingController(rootView: ChooseOrganButton(controller: self))
-        addChild(childView)
-        childView.view.frame = container.bounds
-        container.addSubview(childView.view)
+        let configuration = Configuration()
+        let controller = UIHostingController(rootView: ChooseOrganButton(config: configuration))
+        // injects here, because `configuration` is a reference !!
+        configuration.hostingController = controller
+        addChild(controller)
+        controller.view.frame = container.bounds
+        container.addSubview(controller.view)
+        
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -45,6 +55,32 @@ class AliveFirstVC: UIViewController {
         nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: customFont]
         navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
+    }
+    
+    func showPopup(){
+        blackBlurredView.superview?.bringSubviewToFront(blackBlurredView)
+        popupView.superview?.bringSubviewToFront(popupView)
+
+        popupView.isHidden = false
+        blackBlurredView.isHidden = false
+        
+        let configuration = Configuration()
+        let controller = UIHostingController(rootView: CannotDonatePopup(config: configuration))
+        // injects here, because `configuration` is a reference !!
+        configuration.hostingController = controller
+        addChild(controller)
+        controller.view.frame = innerPopup.bounds
+        innerPopup.addSubview(controller.view)
+    }
+    
+    func hidePopup(){
+        blackBlurredView.superview?.sendSubviewToBack(blackBlurredView)
+        popupView.superview?.sendSubviewToBack(popupView)
+
+        popupView.isHidden = true
+        blackBlurredView.isHidden = true
+        
+        innerPopup.removeSubviews()
     }
     
     func moveToKindneySection(){

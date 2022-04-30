@@ -6,19 +6,33 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseAuth
 
 struct ChooseOrganButton: View {
     
-    @State var controller: AliveFirstVC
+    var config: Configuration?
     
     let mainDark = Color(UIColor.init(named: "mainDark")!)
     let mainLight = Color(UIColor.init(named: "mainLight")!)
     let lightGray = Color(UIColor.lightGray)
     let whiteBg = Color(UIColor.white)
     let shadowColor = Color(#colorLiteral(red: 0.8653315902, green: 0.8654771447, blue: 0.8653123975, alpha: 1))
+    @State var listener: ListenerRegistration?
+    
+    let userID = Auth.auth().currentUser!.uid
+    let db = Firestore.firestore()
     
     @State var kidney = false
     @State var liver = false
+    
+    @State var kidneyApp = true
+    @State var LiverApp = true
+    
+    init(config: Configuration) {
+        self.config = config
+        self.checkAppointments()
+    }
     
     var body: some View {
         HStack(spacing: 0){
@@ -51,8 +65,17 @@ struct ChooseOrganButton: View {
                     Constants.selected.selectedOrgan.organ = "liver"
                     liver.toggle()
                     if(liver){
-                        kidney = false
-                        controller.moveToKindneySection()
+                        if(LiverApp){
+                            let x =
+                            config!.hostingController?.parent as! AliveFirstVC
+                            x.showPopup()
+                        } else {
+                            kidney = false
+                            let x =
+                            config!.hostingController?.parent as! AliveFirstVC
+                            x.moveToKindneySection()
+                        }
+                        
                     }
                 }
             
@@ -85,8 +108,16 @@ struct ChooseOrganButton: View {
                     kidney.toggle()
                     Constants.selected.selectedOrgan.organ = "kidney"
                     if(kidney){
-                        liver = false
-                        controller.moveToKindneySection()
+                        if(kidneyApp){
+                            let x =
+                            config!.hostingController?.parent as! AliveFirstVC
+                            x.showPopup()
+                        } else {
+                            liver = false
+                            let x =
+                            config!.hostingController?.parent as! AliveFirstVC
+                            x.moveToKindneySection()
+                        }
                     }
                 }
             
@@ -97,16 +128,60 @@ struct ChooseOrganButton: View {
                 style: .continuous
             )
                 .fill(.white)
-        )
+        ).onAppear {
+            DispatchQueue.main.async {
+                self.checkAppointments()
+            }
+        }.onDisappear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
+                listener?.remove()
+            }
+        }
         //            .shadow(color: shadowColor,
         //                    radius: 6, x: 0
         //                    , y: 6)
+    }
+    
+    func checkAppointments(){
+        listener =  db.collection("volunteer").document(userID).collection("organAppointments").whereField("organ", in: ["kidney"]).addSnapshotListener({ documentSnapshot, error in
+            
+            guard let document = documentSnapshot else {
+                print("Error fetching document: \(error!)")
+                return
+            }
+            
+            if(document.count > 0){
+                print(document.count)
+                kidneyApp = true
+                print("there are none")
+            } else {
+                kidney = false
+            }
+            
+            db.collection("volunteer").document(userID).collection("organAppointments").whereField("organ", in: ["liver"]).addSnapshotListener({ documentSnapshot, error in
+                
+                guard let document = documentSnapshot else {
+                    print("Error fetching document: \(error!)")
+                    return
+                }
+                
+                if(document.count > 0){
+                    print(document.count)
+                    LiverApp = true
+                    print("there are none2")
+                } else {
+                    LiverApp = false
+                }
+                
+            })
+            
+        })
     }
 }
 
 struct ChooseOrganButton_Previews: PreviewProvider {
     static var previews: some View {
-        ChooseOrganButton(controller: AliveFirstVC())
+        ChooseOrganButton(config: Configuration())
     }
 }
 
@@ -133,3 +208,4 @@ struct SelectedOrgan {
     var appointment: String
     var organHospitals: [String]
 }
+

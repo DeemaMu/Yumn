@@ -108,6 +108,10 @@ struct AODHospitalList: View {
                 self.hVM.fetchHospitalsInfo()
             }
             
+        }.onDisappear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                hVM.listener?.remove()
+            }
         }
     }
     
