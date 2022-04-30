@@ -31,7 +31,7 @@ extension BloodDonationAppointmentViewController{
         let db = Firestore.firestore()
         
         
-        db.collection("appointments").document("2rQwtfO2gKed0ugsDD5R").collection("appointments").whereField("hospital", isEqualTo: Constants.Globals.hospitalId).whereField("type", isEqualTo:  "blood")
+        db.collection("appointments").whereField("hospital", isEqualTo: Constants.Globals.hospitalId).whereField("type", isEqualTo: "blood")
 .getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print ("Error getting the documents:  \(err)")
@@ -39,21 +39,40 @@ extension BloodDonationAppointmentViewController{
                 
                 //Search inside the other appointment collection
 
-               /* for document in
+                for document in
                         querySnapshot!.documents{
                     
-                 
+                 let selectedDateTimeStamp = selectedDate.timeIntervalSince1970
+
                     
-                    
-                    db.collection("appointments").document(document.documentID).collection("appointments").whereField("booked", isEqualTo: false).whereField("start_time", in: [selectedDate]).getDocuments() { (querySnapshot, err) in
+                    db.collection("appointments").document(document.documentID).collection("appointments").whereField("booked", isEqualTo: false)
+.getDocuments() { (querySnapshot, err) in
                         if let err = err {
                             print ("Error getting the documents:  \(err)")
                         } else {
-                            */
+                            
+                            let dateformat = DateFormatter()
+                                   dateformat.dateFormat = "MM/dd/yyyy"
+                                   let SDF =  dateformat.string(from: selectedDate)
+                               
+                            
+                            //Get the selected date only
+                            
+                            
                             for document in
                                     querySnapshot!.documents{
                                 let doc = document.data()
                                 
+                                print ( doc["start_time"] as! Timestamp)
+                                
+                                print (SDF+"sdf")
+                                print(dateformat.string(from:(doc["start_time"] as! Timestamp).dateValue()))
+                                
+                                
+                                if (SDF == dateformat.string(from:(doc["start_time"] as! Timestamp).dateValue())){
+                                    
+                                    dateformat.string(from: selectedDate)
+     
                                 let docID:String =  document.documentID
                                 
                                 let startDate:Timestamp = doc["start_time"] as! Timestamp
@@ -73,6 +92,11 @@ extension BloodDonationAppointmentViewController{
                                 
                                 
                                 availableTimes.append(BloodDonationTime(startTime: start_time, endTime: end_time, appointmentID: docID))
+                                
+                                print (availableTimes)
+                                print ("fffffff")
+                                
+
                            // }
                                 
                             
@@ -87,7 +111,7 @@ extension BloodDonationAppointmentViewController{
                                    self.timeTableView.reloadData()
                                }
                                 
-                        }
+                            }}
                     
                     
                     
@@ -97,7 +121,7 @@ extension BloodDonationAppointmentViewController{
             }
     
 
-
+                }}}
         
         return availableTimes
     }
