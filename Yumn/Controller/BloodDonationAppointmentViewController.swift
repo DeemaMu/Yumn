@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 
 class BloodDonationAppointmentViewController: UIViewController {
@@ -37,6 +38,8 @@ class BloodDonationAppointmentViewController: UIViewController {
         
         self.remainingDaysOfTheMonth = getRemainingDaysOfTheMonth()
         
+        
+        //The first cell is selected by defualt
         self.remainingDaysOfTheMonth![0].selected = true
 
         
@@ -64,9 +67,15 @@ class BloodDonationAppointmentViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.layoutIfNeeded()
         
-     
+        //It includes the first selected cell
         Constants.Globals.appointmentDateArray = remainingDaysOfTheMonth
        
+        
+        let indexPath = IndexPath(row: 0, section: 0)
+            dateTableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+        
+        
+            
 
         super.viewDidLoad()
         
@@ -96,6 +105,18 @@ class BloodDonationAppointmentViewController: UIViewController {
 
     @IBAction func onPressedCalendarBtn(_ sender: Any) {
     }
+    
+    
+    
+    
+    func getAppointmentsofTheDay (day: Date){
+        
+        
+        
+        
+        
+        
+    }
 }
 
 
@@ -123,6 +144,7 @@ extension BloodDonationAppointmentViewController: UITableViewDataSource{
         }
     }
     
+   
 
 
     
@@ -142,6 +164,8 @@ extension BloodDonationAppointmentViewController: UITableViewDataSource{
             dateCell.dayLabel.text! =  remainingDaysOfTheMonth![indexPath.row].day
             
             dateCell.index = indexPath.row
+            
+           
             
            
             

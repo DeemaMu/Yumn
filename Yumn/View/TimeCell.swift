@@ -24,14 +24,19 @@ class TimeCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
          
+        if (index == 0){
+            setSelected(true, animated: true)}
         
         addshadow(top: true, left: false, bottom: true, right: true)
+        
       
 
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        
+      
 
         if (selected){
             
