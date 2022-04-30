@@ -73,6 +73,9 @@ struct AODHospitalList: View {
                         var x =
                         config.hostingController?.parent as! Alive3rdVC
                         x.showAppointments()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                            hVM.listener?.remove()
+                        }
                     }
                 }
                 ) {
@@ -178,11 +181,12 @@ class ODHospitals: ObservableObject {
     @Published var hospitalsID = [String]()
     
     @ObservedObject var lm = LocationManager()
-    
+    @State var listener: ListenerRegistration?
+
     let db = Firestore.firestore()
     
     func fetchData() {
-        db.collection("appointments").whereField("type", in: ["organ"]).addSnapshotListener { (querySnapshot, error) in
+        self.listener = db.collection("appointments").whereField("type", in: ["organ"]).addSnapshotListener { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
                 print("no documents")
                 return
