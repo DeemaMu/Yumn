@@ -256,6 +256,8 @@ class BloodDonationAppointmentViewController: UIViewController {
         
         // Change booked to true and donor to the volunteer id
         
+        
+        
         db.collection("appointments").document(selecetedOuterDocId).collection("appointments").document(selectedApp).updateData([
             "booked": true,
             "donor": volunteerId
@@ -291,14 +293,14 @@ class BloodDonationAppointmentViewController: UIViewController {
         }
    }
         
+                
+        // The needed information for the blood appointment in the volunteer collection
         let dateformat = DateFormatter()
                dateformat.dateFormat = "MM/dd/yyyy"
         
         let timeFormat = DateFormatter()
                dateformat.dateFormat = "HH:mm"
-        
-        // The needed information for the blood appointment in the volunteer collection
-     
+
         
         db.collection("volunteer").document(volunteerId).collection("bloodAppointments").document(selectedApp).setData([
             
@@ -307,15 +309,14 @@ class BloodDonationAppointmentViewController: UIViewController {
             "appID": self.selectedApp,
             "area":self.hospitalArea,
             "city": self.hospitalCity,
-            "date": dateformat.string(from: startTime.dateValue()),
+            "date": "",
             "hospitalID":Constants.Globals.hospitalId,
             "hospitalName":
                 Constants.Globals.hosName,
             "latitude": self.latitude,
             "longitude": self.longitude,
             "mainDocID": self.selecetedOuterDocId,
-            "time": timeFormat.string(from:  self.startTime.dateValue()),
-            "type": "blood"
+            "time": "",
        
         
         ])
@@ -336,6 +337,8 @@ class BloodDonationAppointmentViewController: UIViewController {
             
         }
         
+        
+        /*
         // Info from the outer appointment collection
         db.collection("appointments").document(selecetedOuterDocId).getDocument { (document, error) in
             if let document = document, document.exists {
@@ -359,7 +362,11 @@ class BloodDonationAppointmentViewController: UIViewController {
                 }
             
         }
-                    
+             */
+        
+        
+        
+        
       // Info from the hospitalInformation collection
             
         db.collection("hospitalsInformation").document(Constants.Globals.hospitalId).getDocument { (document, error) in
@@ -388,9 +395,11 @@ class BloodDonationAppointmentViewController: UIViewController {
                     
                     
                     self.db.collection("volunteer").document(volunteerId).collection("bloodAppointments").document(self.selectedApp).updateData([
-                        "hospital_name": self.hospitalName,
+                        "hospitalName": self.hospitalName,
                         "area":self.hospitalArea,
                         "city": self.hospitalCity,
+                        "longitude": self.longitude,
+                        "latitude": self.latitude
                         
                         ])
 
@@ -423,11 +432,21 @@ class BloodDonationAppointmentViewController: UIViewController {
                     
                     self.endTime = (document.get("end_time") as! Timestamp)
                     
+                    let timeFormat = DateFormatter()
+                           timeFormat.dateFormat = "HH:mm"
+                    
+                    let timeString = timeFormat.string(from: self.startTime.dateValue())
+                    
+                    let dateformat = DateFormatter()
+                           dateformat.dateFormat = "yyyy/MM/dd"
+                    
+                    let dateString = dateformat.string(from: self.startTime.dateValue())
+
                     
                     self.db.collection("volunteer").document(volunteerId).collection("bloodAppointments").document(self.selectedApp).updateData([
-                        "end_time": self.endTime,
-                        "start_time":self.startTime,
-                        "date": self.startTime
+                        "time": timeString,
+                        "date": dateString,
+                        "appDateAndTime": self.startTime,
                         
                         ])
                     
