@@ -20,6 +20,8 @@ struct AODHospitalList: View {
     @State var checked = false
     @State var checkedIndex = -1
     @State var showError = false
+    @State var thereIs = false
+    
     
     @State var controller: Alive3rdVC = Alive3rdVC()
     
@@ -49,12 +51,22 @@ struct AODHospitalList: View {
                 
                 
                 ScrollView(.vertical, showsIndicators: false){
-                    VStack(spacing: 20){
-                        
-                        ForEach(0..<hVM.odHospitals.count, id: \.self) { index in
-                            card(hospital: hVM.odHospitals[index], index: index)
+                    ZStack {
+                        VStack{
+                            if(!thereIs){
+                                Text("لا توجد مواعيد خلال الاسبوعين القادمة.").font(Font.custom("Tajawal", size: 16))
+                                    .foregroundColor(lightGray).padding(.top, 100).multilineTextAlignment(.center)
+                                Text("الرجاء المحاولة لاحقًا").font(Font.custom("Tajawal", size: 16))
+                                    .foregroundColor(lightGray).padding(.top, 4).multilineTextAlignment(.center)
+                            }
                         }
-                    }.padding(.top, 10)
+                        VStack(spacing: 20){
+                            
+                            ForEach(0..<hVM.odHospitals.count, id: \.self) { index in
+                                card(hospital: hVM.odHospitals[index], index: index)
+                            }
+                        }.padding(.top, 10)
+                    }
                 }
                 
                 if(showError){
@@ -62,7 +74,7 @@ struct AODHospitalList: View {
                         .foregroundColor(.red)
                 }
                 
-//                NavigationLink(destination: UIKitView()) { Text("Berlin") }
+                //                NavigationLink(destination: UIKitView()) { Text("Berlin") }
                 
                 Button(action: {
                     if(checkedIndex == -1){
@@ -70,7 +82,7 @@ struct AODHospitalList: View {
                     } else {
                         showError = false
                         Constants.selected.selectedOrgan.hospital = hVM.odHospitals[checkedIndex].hospitalID
-                        var x =
+                        let x =
                         config.hostingController?.parent as! Alive3rdVC
                         x.showAppointments()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
@@ -159,10 +171,13 @@ struct AODHospitalList: View {
         }
         .padding(.horizontal, 15)
         .padding(.vertical, 5)
+        .onAppear {
+            thereIs = true
+        }
     }
     
     func showAppointments(){
-//        controller
+        //        controller
     }
 }
 
@@ -182,7 +197,7 @@ class ODHospitals: ObservableObject {
     
     @ObservedObject var lm = LocationManager()
     @State var listener: ListenerRegistration?
-
+    
     let db = Firestore.firestore()
     
     func fetchData() {
@@ -221,7 +236,7 @@ class ODHospitals: ObservableObject {
                 
                 var apt =
                 OrganAppointment(type: type, startTime: startTime, endTime: endTime,
-                                        aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, organ: organ)
+                                 aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, organ: organ)
                 apt.appointments = appointments
                 return apt
                 
@@ -243,7 +258,7 @@ class ODHospitals: ObservableObject {
                 let type = data["type"] as? String ?? ""
                 let donor = data["donor"] as? String ?? ""
                 let hName = data["hospital"] as? String ?? ""
-                let confirmed = data["confirmed"] as? Bool ?? false
+                let confirmed = data["confirmed"] as? String ?? ""
                 let booked = data["booked"] as? Bool ?? false
                 
                 let stamp1 = data["start_time"] as? Timestamp
@@ -251,7 +266,7 @@ class ODHospitals: ObservableObject {
                 
                 let stamp2 = data["end_time"] as? Timestamp
                 let endTime = stamp2?.dateValue() ?? Date()
-                                
+                
                 return DAppointment(type: type, startTime: startTime, endTime: endTime, donor: donor, hName: hName, confirmed: confirmed, booked: booked)
             }
         }
@@ -361,7 +376,7 @@ struct RadioButton2: View {
 struct UIKitView: UIViewControllerRepresentable {
     typealias UIViewControllerType = Alive4thVC
     
-
+    
     func makeUIViewController(context: Context) -> Alive4thVC {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let viewController = sb.instantiateViewController(identifier: "alive4thVC") as! Alive4thVC

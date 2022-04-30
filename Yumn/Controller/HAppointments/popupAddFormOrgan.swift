@@ -252,7 +252,7 @@ struct PopupAddFormOrgan: View {
         
         let currentEnd = currentDate.addingTimeInterval(60 * 60)
         
-        list.append(DAppointment(type: "organ", startTime: currentDate, endTime: currentEnd, donor: "", hName: Constants.UserInfo.userID, confirmed: false, booked: false))
+        list.append(DAppointment(type: "organ", startTime: currentDate, endTime: currentEnd, donor: "", hName: Constants.UserInfo.userID, confirmed: "", booked: false))
         
         
         print("\(list.count)")

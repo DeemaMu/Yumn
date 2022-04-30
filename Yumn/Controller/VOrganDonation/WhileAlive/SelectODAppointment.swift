@@ -19,7 +19,8 @@ struct SelectODAppointment: View {
     @State var selectedDate: Date
     @State var checkedIndex: Int = -1
     @State var showError = false
-    @State var counter = 0
+    @State var empty = true
+    var counter = 0
     
     @State var selectedAppointment:OrganAppointment?
     @State var selectedMiniAppointment: DAppointment?
@@ -40,6 +41,7 @@ struct SelectODAppointment: View {
     let mainLight = Color(UIColor.init(named: "mainLight")!)
     let lightGray = Color(UIColor.lightGray)
     let bgWhite = Color(UIColor.white)
+    
     
     //    var appointments: [Appointment] =
     //    [
@@ -132,10 +134,9 @@ struct SelectODAppointment: View {
                                         odVM.currentDay = odVM.currentWeek[day]
                                     }
                                 }.onChange(of: selectedDate) { newValue in
+                                    empty = true
                                     aptVM.currentDay = newValue
                                     checkedIndex = -1
-                                    //                                        aptVM.filteringAppointments()
-                                    counter += 1
                                     DispatchQueue.main.async {
                                         aptVM.filteringAppointments()
                                     }
@@ -164,7 +165,14 @@ struct SelectODAppointment: View {
             Section{
                 
                 ScrollView(.vertical,  showsIndicators: false){
-                    AppointmentsView()
+                    ZStack(){
+                        if(empty){
+                            Text("لايوجد مواعيد متاحة لهذا التاريخ").font(Font.custom("Tajawal", size: 16))
+                                .foregroundColor(lightGray).padding(.top, 100).multilineTextAlignment(.center)
+                        }
+                        AppointmentsView()
+                        
+                    }
                 }.padding()
                 
             }
@@ -238,13 +246,6 @@ struct SelectODAppointment: View {
     func HeaderView() -> some View {
         HStack(spacing: 10){
             VStack(){
-                //                if #available(iOS 15.0, *) {
-                //                    Text(Date().formatted(date: .abbreviated, time: .omitted))
-                //                        .foregroundColor(.gray)
-                //
-                //                    Text("Today").font(.largeTitle.bold())
-                //                } else {
-                //                }
                 
                 Text("التاريخ").font(Font.custom("Tajawal", size: 16)).fontWeight(.bold)
                     .foregroundColor(mainDark)
@@ -280,10 +281,6 @@ struct SelectODAppointment: View {
         
     }
     
-//        .task(id: checkedIndex) {
-//
-//        }
-    
     @ViewBuilder
     func AppoitmentCard(apt: OrganAppointment, index: Int) -> some View {
         
@@ -293,7 +290,7 @@ struct SelectODAppointment: View {
             
             let currentA = mini[0]
             
-            if(odVM.checkIfFree2(doc: apt, exactID: currentA.docID)) {
+            if(odVM.checkIfFree(doc: apt, exactID: currentA.docID)) {
                 
                 HStack(){
                     VStack(alignment: .leading){
@@ -309,8 +306,6 @@ struct SelectODAppointment: View {
                     Spacer()
                     
                     VStack(alignment: .center){
-                        //                Text("\(currentH!.name)").font(Font.custom("Tajawal", size: 17))
-                        //                    .foregroundColor(mainDark)
                         Text("\(aptVM.filteredAppointments[index].startTime.getFormattedDate(format: "HH:mm")) - \(aptVM.filteredAppointments[index].endTime.getFormattedDate(format: "HH:mm"))").font(Font.custom("Tajawal", size: 22))
                             .foregroundColor(mainDark)
                     }.frame(maxWidth: .infinity, alignment: .center)
@@ -333,7 +328,7 @@ struct SelectODAppointment: View {
                             
                         }
                         
-        
+                        
                     } else {
                     }
                 }
@@ -356,31 +351,27 @@ struct SelectODAppointment: View {
                         showError = true
                     } else {
                         
-//                        DispatchQueue.main.async {
-//                            apt.appointments?.append(                        aptVM.fetchAppointmentsData2(docID: apt.docID)[0]
-//                        )}
-//                        selectedMiniAppointment = apt.appointments?.first
+                        //                        DispatchQueue.main.async {
+                        //                            apt.appointments?.append(                        aptVM.fetchAppointmentsData2(docID: apt.docID)[0]
+                        //                        )}
+                        //                        selectedMiniAppointment = apt.appointments?.first
                         selectedAppointment = aptVM.filteredAppointments[index]
                         checkedIndex = index
                         showError = false
                         
                     }
                 }.onAppear{
-//                    DispatchQueue.main.async {
-//                        apt.appointments?.append(                        aptVM.fetchAppointmentsData2(docID: apt.docID)[0]
-//                        )
-//                    }
+                    empty = false
                 }
                 .padding(.horizontal, 15)
                 .padding(.vertical, 5)
                 
                 
                 
-            } } else {
-                
-                Text("لايوجد مواعيد متاحة لهذا التاريخ").font(Font.custom("Tajawal", size: 16))
-                    .foregroundColor(lightGray).padding(.top, 100).multilineTextAlignment(.center)
             }
+            
+        }
+        
     }
     
     func appointmentsOnDate(date: Date) -> Bool {
@@ -507,24 +498,8 @@ class ODAppointmentVM: ObservableObject {
         return calender.isDate(currentDay, inSameDayAs: date)
     }
     
-    func checkIfFree(docID: String, exactID: String) -> Bool {
-        //        var docs = [DAppointment]()
-        var free = false
-        
-        db.collection("appointments").document(docID).collection("appointments").document(exactID).addSnapshotListener { snapshot, error in
-            
-            if(snapshot!.exists){
-                let data = snapshot!.data()
-                let booked = data!["booked"] as? Bool
-                free = !booked!
-                print("\(free)")
-            }
-        }
-        
-        return free
-    }
     
-    func checkIfFree2(doc: OrganAppointment, exactID: String) -> Bool {
+    func checkIfFree(doc: OrganAppointment, exactID: String) -> Bool {
         var free = false
         if(doc.bookedAppointments!.isEmpty){
             free = true

@@ -60,6 +60,7 @@
 		B9533EFE2810D49E00485482 /* ChooseOrganButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9533EFD2810D49E00485482 /* ChooseOrganButton.swift */; };
 		B9533F002811A79E00485482 /* Alive2ndVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9533EFF2811A79D00485482 /* Alive2ndVC.swift */; };
 		B9570C2F27DFA828000D1B8B /* MaterialSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9570C2E27DFA826000D1B8B /* MaterialSegmentedControl.swift */; };
+		B96EABA5281DD919004AD51E /* AppointmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96EABA4281DD919004AD51E /* AppointmentManager.swift */; };
 		B975979C28195D9300AD2C93 /* Donor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B975979B28195D9300AD2C93 /* Donor.swift */; };
 		B97A37FE27B9D32A00718079 /* RoundedShadowedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A37FD27B9D32A00718079 /* RoundedShadowedView.swift */; };
 		B97A380227BA9EA000718079 /* BloodDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A380127BA9EA000718079 /* BloodDonationViewController.swift */; };
@@ -181,6 +182,7 @@
 		B9533EFD2810D49E00485482 /* ChooseOrganButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseOrganButton.swift; sourceTree = "<group>"; };
 		B9533EFF2811A79D00485482 /* Alive2ndVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alive2ndVC.swift; sourceTree = "<group>"; };
 		B9570C2E27DFA826000D1B8B /* MaterialSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialSegmentedControl.swift; sourceTree = "<group>"; };
+		B96EABA4281DD919004AD51E /* AppointmentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentManager.swift; sourceTree = "<group>"; };
 		B975979B28195D9300AD2C93 /* Donor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Donor.swift; sourceTree = "<group>"; };
 		B97A37FD27B9D32A00718079 /* RoundedShadowedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowedView.swift; sourceTree = "<group>"; };
 		B97A380127BA9EA000718079 /* BloodDonationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationViewController.swift; sourceTree = "<group>"; };
@@ -573,6 +575,7 @@
 			isa = PBXGroup;
 			children = (
 				B9DA61D927C10FCC00359487 /* LocationManger.swift */,
+				B96EABA4281DD919004AD51E /* AppointmentManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -732,6 +735,7 @@
 				B91DD29427E9976200BA9881 /* PopupAddForm.swift in Sources */,
 				B99C272A281C888200EAC439 /* editAppointment.swift in Sources */,
 				D195444227D49A1700B03DFF /* bloodShortage.swift in Sources */,
+				B96EABA5281DD919004AD51E /* AppointmentManager.swift in Sources */,
 				95EED9CB27E6602C009AFDAC /* VOCollectionViewCell.swift in Sources */,
 				B94CB968280EB8B00088470D /* AfterDeathODSecondController.swift in Sources */,
 				B9AC6640281B582A0013301B /* futureAppointments.swift in Sources */,
