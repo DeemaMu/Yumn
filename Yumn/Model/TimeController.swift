@@ -77,10 +77,10 @@ extension BloodDonationAppointmentViewController{
                        
                            
                                 
-                                print ( doc["start_time"] as! Timestamp)
+                               // print ( doc["start_time"] as! Timestamp)
                                 
-                                print (SDF+"sdf")
-                                print(dateformat.string(from:(doc["start_time"] as! Timestamp).dateValue()))
+                              //  print (SDF+"sdf")
+                              //  print(dateformat.string(from:(doc["start_time"] as! Timestamp).dateValue()))
                                 
                                 
                                 if (SDF == dateformat.string(from:(doc["start_time"] as! Timestamp).dateValue())){
@@ -118,7 +118,7 @@ extension BloodDonationAppointmentViewController{
                             
                             // I need to sort them
                                 self.sortedTimes = availableTimes
-                                    self.sortedTimes![0].selected = true
+                                   // self.sortedTimes![0].selected = true
                                     
                                     Constants.Globals.appointmentTimeArray = availableTimes
                                     
@@ -127,12 +127,32 @@ extension BloodDonationAppointmentViewController{
                             
                             print("sorted down")
                             print (self.sortedTimes)
+                                    
+                                   
+
                                 
                             DispatchQueue.main.async {
                                    self.timeTableView.reloadData()
                                }
                                 
-                            }}
+                            }
+                                
+                                if (self.sortedTimes!.isEmpty){
+                                    
+                                    self.noAvailableAppointment.isHidden = false
+                                    
+                                    print ("show no app")
+
+                                    
+                                    
+
+                                }
+                                
+                                else {
+                                    self.noAvailableAppointment.isHidden = true
+                                }
+                                
+                            }
                             
                            
                                 
@@ -148,20 +168,13 @@ extension BloodDonationAppointmentViewController{
 
                 }
     
-    print ("available times")
-    print (availableTimes)
-
     
-    if (availableTimes.isEmpty){
-        
-        self.continueBtn.isHidden = true
-
-        
-        
-
-    }
-
 }
+        
+                
+
+        
+        
         
                 
         return availableTimes
