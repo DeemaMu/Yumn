@@ -21,11 +21,13 @@ class BloodDonationAppointmentViewController: UIViewController {
     @IBOutlet weak var calendarBtn: UIButton!
     
     
-
+    
+    
     @IBOutlet weak var continueBtn: UIButton!
     
-
+    
     @IBOutlet weak var timeTableView: UITableView!
+ 
     
     
     @IBOutlet weak var appointmentHospitalNameLabel: UILabel!
@@ -46,6 +48,8 @@ class BloodDonationAppointmentViewController: UIViewController {
     var sortedTimes:[BloodDonationTime]?
 
     
+
+    
     
     override func viewDidLoad() {
         
@@ -55,6 +59,9 @@ class BloodDonationAppointmentViewController: UIViewController {
         popupView.layer.cornerRadius = 30
         
         confirmBtn.layer.cornerRadius = 20
+        
+       
+
         
         
         
@@ -88,7 +95,8 @@ class BloodDonationAppointmentViewController: UIViewController {
 
         
         noAvailableAppointment.superview?.bringSubviewToFront(noAvailableAppointment)
-
+        
+     
 
         
         roundView.layer.cornerRadius = 35
@@ -153,11 +161,43 @@ class BloodDonationAppointmentViewController: UIViewController {
     }
     
 
+    
+  
+   
+    
+    
     @IBAction func onPressedContinueBtn(_ sender: Any) {
         
         
+        var selectedTimeSlot = false
+        
+        var selectedApp:String = ""
+        
+        for item in Constants.Globals.appointmentTimeArray!{
+            
+            if (item.selected == true){
+                
+                selectedTimeSlot = true
+                selectedApp = item.appointmentID
+            }
+        }
+        
+        if (!selectedTimeSlot){
+            
+            
+            //Show toast
+            
+            self.showToast(message: "الرجاء اختيار وقت للموعد", font: .systemFont(ofSize: 20), image: (UIImage(named: "yumn-1") ?? UIImage(named: "")! ))
+}
+            
+            
+        
+        
+        
+        else{
         popupView.isHidden = false
         blackBlurredView.isHidden = false
+        }
     }
     /*
     // MARK: - Navigation
@@ -406,3 +446,5 @@ extension Date {
         return components.weekday == 2
     }
 }
+
+

@@ -4760,7 +4760,7 @@
         <scene sceneID="6NI-2n-gd5">
             <objects>
                 <viewController storyboardIdentifier="organVC" id="YVF-tr-n2j" customClass="OrganDonationViewController" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="U2K-eE-QXQ">
+                    <view key="view" contentMode="scaleToFill" id="U2K-eE-QXQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -4773,7 +4773,7 @@
                                             <constraint firstAttribute="height" constant="5.5" id="jBx-zw-c4o"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="center" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L7p-BY-b2U" customClass="RoundedView" customModule="Yumn" customModuleProvider="target">
+                                    <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="L7p-BY-b2U" customClass="RoundedView" customModule="Yumn" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="156.5" width="414" height="689"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MY5-U0-2oY">
@@ -5003,8 +5003,8 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تأكيد الموعد" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNu-bN-Cpf">
-                                                <rect key="frame" x="120" y="25" width="80" height="15"/>
-                                                <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="15"/>
+                                                <rect key="frame" x="109.5" y="25" width="101" height="19"/>
+                                                <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="19"/>
                                                 <color key="textColor" red="0.56862747670000002" green="0.79215681550000006" blue="0.76862752440000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
