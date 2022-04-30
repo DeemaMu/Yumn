@@ -12,7 +12,7 @@ import Firebase
 struct editAppointment: View {
     let config: Configuration
     let appointment: retrievedAppointment
-    let userID = Auth.auth().currentUser!.uid
+//    let userID = Auth.auth().currentUser!.uid
     let controllerType: Int
     
     let db = Firestore.firestore()
@@ -27,7 +27,7 @@ struct editAppointment: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: false){
             VStack(alignment: .center, spacing: 20){
-                Text("تأكيد عملية الحذف").font(Font.custom("Tajawal", size: 15))
+                Text("تأكيد عملية التعديل").font(Font.custom("Tajawal", size: 15))
                     .foregroundColor(mainLight).fontWeight(.semibold)
                 
                 Spacer()
