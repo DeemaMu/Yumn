@@ -77,6 +77,7 @@ struct deleteAppointment: View {
                             if(self.DeleteFromUser()){
                                 if(self.DeleteFromInnerAppointment()){
                                     if(controllerType == 1){
+                                        Constants.selected.deleted = true 
                                         let x =
                                         config.hostingController?.parent as! VViewAppointmentsVC
                                         x.cancelDelete()

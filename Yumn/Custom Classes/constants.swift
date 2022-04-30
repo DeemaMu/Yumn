@@ -107,6 +107,7 @@ struct Constants {
         static var edit = false
         static var mainDoc = ""
         static var exactDoc = ""
+        static var deleted = false
     }
 
 }

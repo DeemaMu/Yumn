@@ -215,6 +215,12 @@ struct VAppointmentsView: View {
                     
                     ScrollView(.vertical,  showsIndicators: false){
                         AppointmentsView()
+                    }.onChange(of: Constants.selected.deleted) { new in
+                        DispatchQueue.main.asyncAfter(deadline: .now() , execute: {
+                            aptVM.getUserOA()
+                            selectedDate = Date()
+                        })
+                        Constants.selected.deleted = false
                     }
                     
                     Spacer()
