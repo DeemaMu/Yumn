@@ -26,11 +26,10 @@ struct editAppointment: View {
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false){
-            VStack(alignment: .center, spacing: 20){
+            VStack(alignment: .center, spacing: 30){
                 Text("تأكيد عملية التعديل").font(Font.custom("Tajawal", size: 15))
                     .foregroundColor(mainLight).fontWeight(.semibold)
                 
-                Spacer()
 
                 VStack(spacing: 4){
                     Text("هل أنت متأكد من رغبتك في").font(Font.custom("Tajawal", size: 14))
@@ -39,9 +38,8 @@ struct editAppointment: View {
                         Text("تعديل الموعد؟").font(Font.custom("Tajawal", size: 14))
                             .foregroundColor(textGray).fontWeight(.semibold)
                     }
-                }
+                }.padding(.top, 5)
                 
-                Spacer()
                 
                 HStack(alignment: .bottom, spacing: 10){
                     
@@ -76,7 +74,7 @@ struct editAppointment: View {
                         
                         Constants.selected.edit = true
                         Constants.selected.mainDoc = self.appointment.mainAppointmentID!
-                        Constants.selected.mainDoc = self.appointment.appointmentID!
+                        Constants.selected.exactDoc = self.appointment.appointmentID!
                         Constants.selected.selectedOrgan.organ = self.appointment.organ!
 
                         if(controllerType == 1) {

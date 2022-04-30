@@ -108,6 +108,7 @@ struct Constants {
         static var mainDoc = ""
         static var exactDoc = ""
         static var deleted = false
+        static var selectedAppointment = ""
     }
 
 }

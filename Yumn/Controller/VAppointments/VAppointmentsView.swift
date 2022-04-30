@@ -216,11 +216,12 @@ struct VAppointmentsView: View {
                     ScrollView(.vertical,  showsIndicators: false){
                         AppointmentsView()
                     }.onChange(of: Constants.selected.deleted) { new in
+                        if(Constants.selected.deleted){
                         DispatchQueue.main.asyncAfter(deadline: .now() , execute: {
                             aptVM.getUserOA()
-                            selectedDate = Date()
-                        })
-                        Constants.selected.deleted = false
+                            Constants.selected.deleted  = false
+                            aptVM.filteringAppointments()
+                        })}
                     }
                     
                     Spacer()
@@ -486,7 +487,7 @@ class VAppointments : ObservableObject {
         let past = self.dateFormatter.string(from: (Date() - 7))
         let future = self.dateFormatter.string(from: (Date() + 7))
         
-        db.collection("volunteer").document(userID).collection("organAppointments").addSnapshotListener { (querySnapshot, error) in
+        db.collection("volunteer").document(userID).collection("organAppointments").addSnapshotListener(includeMetadataChanges: true) { (querySnapshot, error) in
             
             guard let documents = querySnapshot?.documents else {
                 print("no documents")

@@ -191,7 +191,7 @@ struct SelectODAppointment: View {
                     showError = false
                     let x =
                     config.hostingController?.parent as! Alive4thVC
-                    x.confirmAppoitment(apt: selectedAppointment!, exact: selectedMiniAppointment!)
+                    x.confirmAppoitment(apt: selectedAppointment!, exact: selectedAppointment!.appointments![0])
                     
                     //                    DispatchQueue.main.asyncAfter(deadline: .now() + 3 , execute: {
                     //                        if(odVM.checkIfFree2(doc: selectedAppointment!, exactID: selectedMiniAppointment!.docID)){
@@ -275,17 +275,19 @@ struct SelectODAppointment: View {
                 ProgressView()
                     .offset(y: 100).foregroundColor(mainDark)
             }
-        }.frame(maxHeight: .infinity).onChange(of: counter) { newValue in
-            
-        }
+        }.frame(maxHeight: .infinity)
         
         
     }
     
+//        .task(id: checkedIndex) {
+//
+//        }
+    
     @ViewBuilder
     func AppoitmentCard(apt: OrganAppointment, index: Int) -> some View {
         
-        var mini = aptVM.fetchAppointmentsData2(docID: apt.docID)
+        let mini = aptVM.fetchAppointmentsData2(docID: apt.docID)
         
         if(!mini.isEmpty){
             
@@ -326,9 +328,13 @@ struct SelectODAppointment: View {
                     
                 }.onChange(of: checkedIndex){ newValue in
                     if(newValue == index){
-                        //                hVM.odHospitals[index].selected = true
+                        DispatchQueue.main.async {
+                            aptVM.filteredAppointments[index].appointments = aptVM.fetchAppointmentsData2(docID: apt.docID)
+                            
+                        }
+                        
+        
                     } else {
-                        //                hVM.odHospitals[index].selected = false
                     }
                 }
                 .environment(\.layoutDirection, .leftToRight)
@@ -349,16 +355,21 @@ struct SelectODAppointment: View {
                         checkedIndex = -1
                         showError = true
                     } else {
-                        selectedMiniAppointment = mini[0]
-//                        Constants.selected.exact = mini[0]
+                        
+//                        DispatchQueue.main.async {
+//                            apt.appointments?.append(                        aptVM.fetchAppointmentsData2(docID: apt.docID)[0]
+//                        )}
+//                        selectedMiniAppointment = apt.appointments?.first
                         selectedAppointment = aptVM.filteredAppointments[index]
                         checkedIndex = index
                         showError = false
+                        
                     }
                 }.onAppear{
-                    DispatchQueue.main.async {
-                        mini = aptVM.fetchAppointmentsData2(docID: apt.docID)
-                    }
+//                    DispatchQueue.main.async {
+//                        apt.appointments?.append(                        aptVM.fetchAppointmentsData2(docID: apt.docID)[0]
+//                        )
+//                    }
                 }
                 .padding(.horizontal, 15)
                 .padding(.vertical, 5)

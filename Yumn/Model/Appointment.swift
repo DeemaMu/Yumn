@@ -123,7 +123,7 @@ class AppointmentVM: ObservableObject {
                     let aptDuration = 60.0
                     var apt = OrganAppointment(type: type, startTime: startTime, endTime: endTime,
                                                aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, organ: organ)
-                    apt.appointments = appointments
+                    apt.appointments = [DAppointment]()
                     apt.bookedAppointments = bookedApts
                     return apt
                 }

@@ -17,6 +17,8 @@ struct ConfirmAppointmentPopUp: View {
     
     let db = Firestore.firestore()
     
+    @State var listener: ListenerRegistration?
+    
     let shadowColor = Color(#colorLiteral(red: 0.8653315902, green: 0.8654771447, blue: 0.8653123975, alpha: 1))
     let mainDark = Color(UIColor.init(named: "mainDark")!)
     let mainLight = Color(UIColor.init(named: "mainLight")!)
@@ -27,6 +29,8 @@ struct ConfirmAppointmentPopUp: View {
     @State var hospitalName = ""
     @State var hospitalLocation = ""
     
+    @State var appointmentsTemp:[DAppointment]?
+    @State var docID:String?
     
     var weekdaysAR: [String:String] =
     [
@@ -99,54 +103,45 @@ struct ConfirmAppointmentPopUp: View {
                         
                         self.updateData { succuss in
                             if succuss {
-                                self.addToArray { succuss2 in
-                                    if succuss2 {
-                                        self.addToUser { succuss3 in
-                                            if succuss2 {
-                                                print("lets goooo")
-                                                if(Constants.selected.edit){
-                                                    
-                                                }
-                                                else {
-                                                    let x =
-                                                    config.hostingController?.parent as! Alive4thVC
-                                                    x.confirm()
-                                                }
-                                            } else {
-                                                print("failed to add to user")
-                                            }
-                                        }
-                                    } else {
-                                        print("failed to add to array")
+                                print("lets goooo")
+                                if(Constants.selected.edit){
+                                    self.deleteDoc()
+                                }
+                                else {
+                                    let x =
+                                    config.hostingController?.parent as! Alive4thVC
+                                    x.confirm()
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                        listener?.remove()
                                     }
                                 }
-                            } else {
-                                print("failed to update appointment")
+                            }else{
+                                print("failed")
                             }
                         }
                         
-//                        if(self.updateData()){
-//                            if(self.addToArray()){
-//                                if(self.addToUser()){
-//                                    if(!Constants.selected.edit){
-//                                        print("lets goooo")
-//                                        let x =
-//                                        config.hostingController?.parent as! Alive4thVC
-//                                        x.confirm()
-//                                    } else {
-//
-//                                    }
-//                                }  else {
-//                                    print("fail22222")
-//                                }
-//                            }
-//                            else {
-//                                print("fail1111")
-//                            }
-//                        }
-//                        else {
-//                            print("fail3333")
-//                        }
+                        //                        if(self.updateData()){
+                        //                            if(self.addToArray()){
+                        //                                if(self.addToUser()){
+                        //                                    if(!Constants.selected.edit){
+                        //                                        print("lets goooo")
+                        //                                        let x =
+                        //                                        config.hostingController?.parent as! Alive4thVC
+                        //                                        x.confirm()
+                        //                                    } else {
+                        //
+                        //                                    }
+                        //                                }  else {
+                        //                                    print("fail22222")
+                        //                                }
+                        //                            }
+                        //                            else {
+                        //                                print("fail1111")
+                        //                            }
+                        //                        }
+                        //                        else {
+                        //                            print("fail3333")
+                        //                        }
                         
                     }) {
                         Text("تأكيد").font(Font.custom("Tajawal", size: 16))
@@ -173,34 +168,23 @@ struct ConfirmAppointmentPopUp: View {
     }
     
     func deleteDoc(){
-        self.DeleteFromAppointment { succuss in
-            if succuss {
-                self.DeleteFromAppointment { succuss2 in
-                    if succuss2 {
-                        self.DeleteFromUser { succuss3 in
-                            if succuss3 {
-                                print("lets goooo")
-                                if(Constants.selected.edit){
-                                    let x =
-                                    config.hostingController?.parent as! Alive4thVC
-                                    Constants.selected.edit = false
-                                    x.confirm()
-                                }
-                            } else {
-                                print("failed to add to user")
-                            }
-                        }
-                    } else {
-                        print("failed to add to array")
-                    }
+        
+        if(self.DeleteFromAppointment()){
+            if(self.DeleteFromUser()){
+                if(self.DeleteFromInnerAppointment()){
+                    let x = config.hostingController?.parent as! Alive4thVC
+                    x.confirm()
+                
                 }
-            } else {
-                print("failed to update appointment")
             }
         }
+        
     }
     
-    func DeleteFromInnerAppointment(completion: (Bool) -> () ){
+    // Constants.selected.mainDoc
+    // Constants.selected.exactDoc
+    
+    func DeleteFromInnerAppointment() -> Bool {
         var success = true
         
         db.collection("appointments").document(Constants.selected.mainDoc).collection("appointments").document(Constants.selected.exactDoc).setData(["booked":false, "donor": ""], merge: true) { error in
@@ -213,10 +197,10 @@ struct ConfirmAppointmentPopUp: View {
             }
         }
         
-        completion(success)
+        return success
     }
     
-    func DeleteFromAppointment(completion: (Bool) -> () ) {
+    func DeleteFromAppointment() -> Bool {
         var success = true
         
         var doc = db.collection("appointments").document(Constants.selected.mainDoc)
@@ -229,13 +213,13 @@ struct ConfirmAppointmentPopUp: View {
                 success = false
             }
         }
-        completion(success)
+        return success
     }
     
-    func DeleteFromUser(completion: (Bool) -> () ) {
+    func DeleteFromUser() -> Bool {
         var success = true
         
-        db.collection("volunteer").document(userID).collection("organAppointments").document(exact.docID).delete() { error in
+        db.collection("volunteer").document(userID).collection("organAppointments").document(Constants.selected.exactDoc).delete() { error in
             
             if error == nil {
                 success = true
@@ -244,26 +228,94 @@ struct ConfirmAppointmentPopUp: View {
                 success = false
             }
         }
-        completion(success)
+        return success
     }
     
     
     func updateData(completion: (Bool) -> () ){
         var success = true
         
-        db.collection("appointments").document(appointment.docID).collection("appointments").document(exact.docID).setData(["booked":true, "donor": userID], merge: true) { error in
+        self.listener = db.collection("appointments").document(appointment.docID).collection("appointments").limit(to: 1).addSnapshotListener { QuerySnapshot, Error in
             
-            if error == nil {
-                if(appointment.bookedAppointments == nil){
-                    appointment.bookedAppointments = [String]()
-                }
-                print("heerreeee44444 \(exact.docID)")
-                appointment.bookedAppointments?.append(exact.docID)
-                success = true
-            } else {
-                print("\(String(describing: error))")
-                success = false
+            guard let documents = QuerySnapshot?.documents else {
+                print("no documents")
+                return
             }
+            
+            self.appointmentsTemp = documents.map { (queryDocumentSnapshot) -> DAppointment in
+                
+                let data = queryDocumentSnapshot.data()
+                var docID = queryDocumentSnapshot.documentID
+                var donor: String = "-1"
+                var hName: String = ""
+                var confirmed: Bool = false
+                var booked: Bool = false
+                
+                let type = data["type"] as? String ?? ""
+                
+                let stamp1 = data["start_time"] as? Timestamp
+                let startTime = stamp1!.dateValue()
+                
+                let stamp2 = data["end_time"] as? Timestamp
+                let endTime = stamp2!.dateValue()
+                
+                let hospital = data["hospital"] as? String ?? ""
+                
+                
+                let organ = data["organ"] as? String ?? ""
+                let aptDuration = 60.0
+                var apt = DAppointment(type: "organ")
+                apt.startTime = startTime
+                apt.endTime = endTime
+                apt.hName = hospital
+                apt.docID = docID
+                self.docID = docID
+                return apt
+            }
+            
+            db.collection("appointments").document(appointment.docID).collection("appointments").document(docID!).setData(["booked":true, "donor": userID], merge: true) { error in
+                
+                if error == nil {
+                    if(appointment.bookedAppointments == nil){
+                        appointment.bookedAppointments = [String]()
+                        
+                    }
+                    print("heerreeee44444 \(exact.docID)")
+                    appointment.bookedAppointments?.append(exact.docID)
+                    success = true && success
+                } else {
+                    print("\(String(describing: error))")
+                    success = false
+                }
+            }
+            
+            var doc = db.collection("appointments").document(appointment.docID)
+            
+            doc.updateData(["bookedAppointments": FieldValue.arrayUnion([docID!])]) { error in
+                if (error == nil) {
+                    success = true && success
+                } else {
+                    print(error!)
+                    success = false
+                }
+            }
+            
+            
+            // add to user
+            let newDoc = db.collection("volunteer").document(userID).collection("organAppointments").document(exact.docID)
+            
+            newDoc.setData(["type": appointment.type,"hospital": appointment.hospital, "start_time": appointment.startTime,
+                            "end_time": appointment.endTime, "date": appointment.aptDate, "appointment_duration": 60
+                            , "docID": exact.docID, "mainDocId": appointment.docID, "hospital_name": self.hospitalName, "organ": appointment.organ, "location": self.hospitalLocation]) { error in
+                
+                if (error == nil){
+                    success = true && success
+                } else {
+                    print(error!)
+                    success = false
+                }
+            }
+            
         }
         
         completion(success)
@@ -275,7 +327,7 @@ struct ConfirmAppointmentPopUp: View {
         
         var doc = db.collection("appointments").document(appointment.docID)
         
-        doc.updateData(["bookedAppointments": FieldValue.arrayUnion([exact.docID])]) { error in
+        doc.updateData(["bookedAppointments": FieldValue.arrayUnion([docID!])]) { error in
             if (error == nil) {
                 success = true
             } else {
@@ -293,7 +345,7 @@ struct ConfirmAppointmentPopUp: View {
         //            }
         //        }
         
-         completion(success)
+        completion(success)
     }
     
     func addToUser(completion: (Bool) -> () ){

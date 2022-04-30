@@ -27,11 +27,10 @@ struct deleteAppointment: View {
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false){
-            VStack(alignment: .center, spacing: 20){
+            VStack(alignment: .center, spacing: 30){
                 Text("تأكيد عملية الحذف").font(Font.custom("Tajawal", size: 15))
                     .foregroundColor(mainLight).fontWeight(.semibold)
                 
-                Spacer()
 
                 VStack(spacing: 4){
                     Text("هل أنت متأكد من رغبتك في").font(Font.custom("Tajawal", size: 14))
@@ -40,10 +39,8 @@ struct deleteAppointment: View {
                         Text("حذف الموعد؟").font(Font.custom("Tajawal", size: 14))
                             .foregroundColor(textGray).fontWeight(.semibold)
                     }
-                }
-                
-                Spacer()
-                
+                }.padding(.top, 5)
+                                
                 HStack(alignment: .bottom, spacing: 10){
                     
                     Button(action: {
@@ -124,6 +121,8 @@ struct deleteAppointment: View {
                 print("\(String(describing: error))")
                 success = false
             }
+            
+            
         }
         
         return success

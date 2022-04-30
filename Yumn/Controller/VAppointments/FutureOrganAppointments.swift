@@ -89,10 +89,13 @@ struct FutureOrganAppointments: View {
                 
                 if apts.isEmpty {
                     
-                    VStack { Text("لا يوجد مواعيد سابقة").font(Font.custom("Tajawal", size: 27))
+                    VStack {
+                        
+                        Text("لا توجد مواعيد قادمة").font(Font.custom("Tajawal", size: 27))
                             .foregroundColor(.gray)
-                            .padding(.top, 300)
+                            .padding(.top, 295)
                             .multilineTextAlignment(.center)
+                        
                     }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                     
                 } else {
