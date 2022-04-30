@@ -39,8 +39,7 @@ class BloodDonationAppointmentViewController: UIViewController {
     
     override func viewDidLoad() {
         
-        self.sortedTimes = getAvailableAppointmentsTimes()
-        
+      
         let db = Firestore.firestore()
         
         let docRef = db.collection("hospitalsInformation").document(Constants.Globals.hospitalId)
@@ -109,7 +108,8 @@ class BloodDonationAppointmentViewController: UIViewController {
             noAvailableAppointment.isHidden = false
             
         }*/
-
+        self.sortedTimes = getAvailableAppointmentsTimes()
+        
         super.viewDidLoad()
         
                 
@@ -218,7 +218,16 @@ extension BloodDonationAppointmentViewController: UITableViewDataSource{
         else{
             
             let timeCell = tableView.dequeueReusableCell(withIdentifier: "TimeCell", for: indexPath) as! TimeCell
-        
+            
+            let formatter = DateFormatter()
+            
+            formatter.dateFormat = "HH-mm"
+            
+        //    let startTimeString =  sortedTimes![indexPath.row].startTime
+            
+            timeCell.timeSlotLabel.text! =  sortedTimes![indexPath.row].startTime + " - " + sortedTimes![indexPath.row].endTime
+            
+       
             
             
             return timeCell

@@ -88,12 +88,15 @@ extension BloodDonationAppointmentViewController{
                                 
                                 let startDate2:Date = startDate.dateValue()
                                 let endDate2:Date = endDate.dateValue()
+                                    
+                                    
+                                    
 
                                 
 
                                 let formatter = DateFormatter()
                                 
-                                formatter.dateFormat = "dd/MM/YYYY"
+                                formatter.dateFormat = "HH:mm"
                                 let start_time:String = formatter.string(from: startDate2)
                                 let end_time:String = formatter.string(from: endDate2)
                                 
