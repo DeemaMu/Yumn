@@ -39,6 +39,7 @@ class ManageAppointmentsViewController: UIViewController {
     //By deema
     var mainDocID = ""
     var appintmentsPeriod = ""
+    var type = ""
     
     override func viewDidLoad() {
         
@@ -144,9 +145,10 @@ class ManageAppointmentsViewController: UIViewController {
         popUp.isHidden = false
     }
 
-    func viewAppointments(_ docID : String, _ period : String){
+    func viewAppointments(_ docID : String, _ period : String, _ type : String){
         self.mainDocID = docID
         self.appintmentsPeriod = period
+        self.type = type
         self.performSegue(withIdentifier: "appointmentsList", sender: self)
         
     }
@@ -156,6 +158,7 @@ class ManageAppointmentsViewController: UIViewController {
             let controller = segue.destination as! viewAppointment
             controller.docID = self.mainDocID
             controller.period = self.appintmentsPeriod
+            controller.type = self.type
         }
     }
     

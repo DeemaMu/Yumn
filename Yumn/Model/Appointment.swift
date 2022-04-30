@@ -12,7 +12,7 @@ class OrganAppointment: Appointment, Identifiable {
     var organ: String = ""
     
     init(type: String, startTime: Date, endTime: Date,
-         aptDate: Date, hospital: String, aptDuration: Double, organ: String) {
+         aptDate: Date, hospital: String, aptDuration: Double, organ: String, mainDocID: String) {
         super.init()
         //        self.appointments = appointments
         self.type = type
@@ -22,6 +22,8 @@ class OrganAppointment: Appointment, Identifiable {
         self.hospital = hospital
         self.aptDuration = aptDuration
         self.organ = organ
+        
+        self.docID = mainDocID
     }
 }
 
@@ -34,7 +36,7 @@ struct DAppointment: Identifiable {
     var endTime: Date = Date().addingTimeInterval(30 * 60)
     var donor: String = "-1"
     var hName: String = ""
-    var confirmed: Bool = false
+    var confirmed: String = "Pending"
     var booked: Bool = false
 }
 
@@ -121,7 +123,7 @@ class AppointmentVM: ObservableObject {
                     let organ = data["organ"] as? String ?? ""
                     let aptDuration = 60.0
                     var apt = OrganAppointment(type: type, startTime: startTime, endTime: endTime,
-                                               aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, organ: organ)
+                                               aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, organ: organ, mainDocID: docId)
                     apt.appointments = appointments
                     return apt
                 }
@@ -168,20 +170,21 @@ class AppointmentVM: ObservableObject {
                 print("no documents")
                 return
             }
-            
+//            print("main: "+docID)
             self.appointmentsWithin = documents.map { (queryDocumentSnapshot) -> DAppointment in
                 let data = queryDocumentSnapshot.data()
+//                print(queryDocumentSnapshot.documentID)
                 let type = data["type"] as? String ?? ""
                 let donor = data["donor"] as? String ?? ""
                 let hName = data["hospital"] as? String ?? ""
-                let confirmed = data["confirmed"] as? Bool ?? false
+                let confirmed = data["confirmed"] as? String ?? ""
                 let booked = data["booked"] as? Bool ?? false
                 
-                let stamp1 = data["start_time"] as? Timestamp
-                let startTime = stamp1!.dateValue()
+                let stamp1 = data["start_time"] as? Timestamp ?? Timestamp()
+                let startTime = stamp1.dateValue()
                 
-                let stamp2 = data["end_time"] as? Timestamp
-                let endTime = stamp2!.dateValue()
+                let stamp2 = data["end_time"] as? Timestamp ?? Timestamp()
+                let endTime = stamp2.dateValue()
                 
                 return DAppointment(type: type, startTime: startTime, endTime: endTime, donor: donor, hName: hName, confirmed: confirmed, booked: booked)
             }
@@ -204,7 +207,7 @@ class AppointmentVM: ObservableObject {
                 let type = data["type"] as? String ?? ""
                 let donor = data["donor"] as? String ?? ""
                 let hName = data["hospital"] as? String ?? ""
-                let confirmed = data["confirmed"] as? Bool ?? false
+                let confirmed = data["confirmed"] as? String ?? ""
                 let booked = data["booked"] as? Bool ?? false
                 
                 let stamp1 = data["start_time"] as? Timestamp
@@ -322,9 +325,10 @@ class AppointmentVM: ObservableObject {
                 print("\(organ)")
                 let aptDuration = 60.0
                 
+                let docID = queryDocumentSnapshot.documentID
                 let apt = OrganAppointment(type: type, startTime: startTime, endTime: endTime,
-                                           aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, organ: organ)
-                apt.docID = queryDocumentSnapshot.documentID
+                                           aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, organ: organ,mainDocID: docID)
+                
                 apt.appointments?.append(appointments[0])
                 
                 //                if(!apt.appointments!.isEmpty){

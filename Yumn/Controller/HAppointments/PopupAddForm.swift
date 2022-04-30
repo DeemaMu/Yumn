@@ -374,7 +374,7 @@ struct PopupAddForm: View {
             num += 1
             let currentEnd = currentDate.addingTimeInterval(30 * 60)
             
-            list.append(DAppointment(type: "blood", startTime: currentDate, endTime: currentEnd, donor: "", hName: Constants.UserInfo.userID, confirmed: false, booked: false))
+            list.append(DAppointment(type: "blood", startTime: currentDate, endTime: currentEnd, donor: "", hName: Constants.UserInfo.userID, confirmed: "Pending", booked: false))
             
             currentDate = currentDate.addingTimeInterval(30 * 60)
         }

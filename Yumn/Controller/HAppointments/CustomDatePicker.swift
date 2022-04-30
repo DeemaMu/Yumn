@@ -184,7 +184,7 @@ struct CustomDatePicker: View {
                                 let day = "\(appointment.startTime.getFormattedDate(format: "dd/MM/yyyy"))"
                                 let period = day + ", " + time
 
-                                controller.viewAppointments(appointment.docID, period)
+                                controller.viewAppointments(appointment.docID, period,"Blood")
                             }
                         
                         
@@ -266,6 +266,11 @@ struct CustomDatePicker: View {
                                 .padding(.vertical, 5)
                                 .onTapGesture {
                                     print("deema organs")
+                                    let time = "\(appointments[index].startTime.getFormattedDate(format: "HH:mm"))-\(appointments[index].endTime.getFormattedDate(format: "HH:mm"))"
+                                    let day = "\(appointments[index].startTime.getFormattedDate(format: "dd/MM/yyyy"))"
+                                    let period = day + ", " + time
+
+                                    controller.viewAppointments(appointments[index].docID, period,"Organ")
                                 }
                         }
 
