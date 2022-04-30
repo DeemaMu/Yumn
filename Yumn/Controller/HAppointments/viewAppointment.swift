@@ -33,6 +33,13 @@ class viewAppointment: UIViewController, UICollectionViewDelegate, UICollectionV
         NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: NSNotification.Name(rawValue: "updateOnStatus"), object: nil)
         
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first
+        if touch?.view != self.backView {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     @objc func refresh() {
         
         self.fetchData() // a refresh the collectionView.
@@ -44,7 +51,7 @@ class viewAppointment: UIViewController, UICollectionViewDelegate, UICollectionV
         let user = Auth.auth().currentUser
         let uid = user?.uid
         
-        db.collection("appointments").document(docID).collection("appointments").order(by: "start_time", descending: false).getDocuments() { (querySnapshot, error) in
+        db.collection("appointments").document(docID).collection("appointments").order(by: "start_time", descending: false).addSnapshotListener() { (querySnapshot, error) in
             
             guard let documents = querySnapshot?.documents else {
                 print("No documents")
@@ -135,6 +142,10 @@ class viewAppointment: UIViewController, UICollectionViewDelegate, UICollectionV
         
         if(appointment.booked){
             cell.donor.text = appointment.donor
+            // Show buttons
+            cell.complete.isHidden = false
+            cell.incomplete.isHidden = false
+            
             if(appointment.confirmed == "Complete"){
                 cell.completeView.isHidden = false
                 
