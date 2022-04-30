@@ -37,6 +37,9 @@ class BloodDonationAppointmentViewController: UIViewController {
         
         self.remainingDaysOfTheMonth = getRemainingDaysOfTheMonth()
         
+        self.remainingDaysOfTheMonth![0].selected = true
+
+        
         
         noAvailableAppointment.isHidden = true
 
@@ -62,7 +65,7 @@ class BloodDonationAppointmentViewController: UIViewController {
         self.navigationController?.navigationBar.layoutIfNeeded()
         
      
-        
+        Constants.Globals.appointmentDateArray = remainingDaysOfTheMonth
        
 
         super.viewDidLoad()
@@ -120,16 +123,7 @@ extension BloodDonationAppointmentViewController: UITableViewDataSource{
         }
     }
     
-   /* func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
 
-        
-        return 300.3
-    }*/
-    
-    
-   /* func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 180.0//Choose your custom row height
-    }*/
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -146,6 +140,18 @@ extension BloodDonationAppointmentViewController: UITableViewDataSource{
             
             
             dateCell.dayLabel.text! =  remainingDaysOfTheMonth![indexPath.row].day
+            
+            dateCell.index = indexPath.row
+            
+            if (remainingDaysOfTheMonth![indexPath.row].selected == true){
+                
+                dateCell.dateBtn.backgroundColor  = UIColor(named: "mainDark")
+                
+                dateCell.dayLabel.textColor = UIColor.white
+                dateCell.dateLabel.textColor = UIColor.white
+            }
+            
+            print (dateCell.isChosen)
             
             return dateCell
             
@@ -235,6 +241,7 @@ extension BloodDonationAppointmentViewController: UITableViewDataSource{
         
         print (datesArray)
         
+        
         return (datesArray)
 
         
@@ -251,6 +258,12 @@ extension BloodDonationAppointmentViewController: UITableViewDataSource{
 }
 
 
+
+
+
+
+
+// Date
 extension Date {
     var startOfDay: Date {
         return Calendar.current.startOfDay(for: self)

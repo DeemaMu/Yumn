@@ -12,4 +12,5 @@ struct DateCellInfo{
     let day:String
     let dateNum:String
     let date:Date
+    var selected:Bool = false
 }

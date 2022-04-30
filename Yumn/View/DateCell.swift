@@ -21,6 +21,8 @@ class DateCell: UITableViewCell {
     
     var index = 0
     
+    var isChosen:Bool = false
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -34,7 +36,11 @@ class DateCell: UITableViewCell {
         
         //setBtnShadow()
         addshadow(top: true, left: false, bottom: true, right: true)
-
+        
+        
+        
+        
+       
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -48,12 +54,24 @@ class DateCell: UITableViewCell {
         
         //Toggle the color
         
-        
-        dateBtn.backgroundColor = UIColor.red
-        
+        if (dateBtn.backgroundColor == UIColor.white){
+            
+            dateBtn.backgroundColor  = UIColor(named: "mainDark")
+
         dayLabel.textColor = UIColor.white
         dateLabel.textColor = UIColor.white
-
+    }
+    
+    else{
+        
+        dateBtn.backgroundColor = UIColor.white
+        
+        dayLabel.textColor = UIColor(named: "mainDark")
+        dateLabel.textColor = UIColor(named: "mainDark")
+        
+        
+        
+    }
         
         
     }
@@ -68,12 +86,16 @@ class DateCell: UITableViewCell {
                        right: Bool,
                        shadowRadius: CGFloat = 2.0) {
         dateBtn.layer.cornerRadius = 15
+     
     
         dateBtn.layer.shadowOffset = CGSize(width: 0, height: 0)
         dateBtn.layer.shadowColor = UIColor.gray.cgColor
         dateBtn.layer.shadowOpacity = 0.5
         dateBtn.layer.shadowRadius = 15
         dateBtn.layer.masksToBounds = false
+        
+       
+
 /*
         dateBtn.layer.masksToBounds = false
         dateBtn.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
