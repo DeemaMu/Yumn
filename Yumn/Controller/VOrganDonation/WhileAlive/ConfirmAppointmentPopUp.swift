@@ -245,11 +245,11 @@ struct ConfirmAppointmentPopUp: View {
             self.appointmentsTemp = documents.map { (queryDocumentSnapshot) -> DAppointment in
                 
                 let data = queryDocumentSnapshot.data()
-                var docID = queryDocumentSnapshot.documentID
-                var donor: String = "-1"
-                var hName: String = ""
-                var confirmed: Bool = false
-                var booked: Bool = false
+                let docID = queryDocumentSnapshot.documentID
+                let donor: String = "-1"
+                let hName: String = ""
+                let confirmed: Bool = false
+                let booked: Bool = false
                 
                 let type = data["type"] as? String ?? ""
                 
