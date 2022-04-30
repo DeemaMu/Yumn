@@ -42,6 +42,7 @@ struct Constants {
         static var appointmentDateArray:[DateCellInfo]?
         static var appointmentTimeArray:[BloodDonationTime]?
         
+        static var hosName = ""
         
 
                  

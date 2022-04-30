@@ -46,11 +46,32 @@ class BloodDonationAppointmentViewController: UIViewController {
     var remainingDaysOfTheMonth:[DateCellInfo]?
     
     var sortedTimes:[BloodDonationTime]?
+    
+    var selectedApp:String = ""
+    
+    var selecetedOuterDocId:String = ""
+
+    
+    
+    
+    
+    var appointmentDuration:Int = 0
+    var hospitalName:String = ""
+    var hospitalCity:String = ""
+    var hospitalArea:String = ""
+    var appointmentdate:Timestamp = Timestamp()
+    var startTime:Timestamp = Timestamp()
+
+    var endTime: Timestamp = Timestamp()
+    
+    var longitude = 0.0
+    var latitude = 0.0
 
     
 
     
-    
+    let db = Firestore.firestore()
+
     override func viewDidLoad() {
         
        // blackBlurredView.isHidden = true
@@ -66,7 +87,6 @@ class BloodDonationAppointmentViewController: UIViewController {
         
         
       
-        let db = Firestore.firestore()
         
         let docRef = db.collection("hospitalsInformation").document(Constants.Globals.hospitalId)
 
@@ -171,7 +191,6 @@ class BloodDonationAppointmentViewController: UIViewController {
         
         var selectedTimeSlot = false
         
-        var selectedApp:String = ""
         
         for item in Constants.Globals.appointmentTimeArray!{
             
@@ -179,6 +198,10 @@ class BloodDonationAppointmentViewController: UIViewController {
                 
                 selectedTimeSlot = true
                 selectedApp = item.appointmentID
+                selecetedOuterDocId = item.outerDocId
+                
+                
+                print ("selected appointment " + selectedApp)
             }
         }
         
@@ -219,14 +242,229 @@ class BloodDonationAppointmentViewController: UIViewController {
         
         
         
-        
-        
+     
         
     }
     
     
     @IBAction func onPressedConfirmAppointment(_ sender: Any) {
+        
+        //The user's id using auth (after integration)
+        let volunteerId = "iDhMoT6PacOwKgKLi8ILK98UrB03"
+
+        
+        
+        // Change booked to true and donor to the volunteer id
+        
+        db.collection("appointments").document(selecetedOuterDocId).collection("appointments").document(selectedApp).updateData([
+            "booked": true,
+            "donor": volunteerId
+            
+            
+            ]){ error in
+        
+            if error != nil {
+                
+                print(error?.localizedDescription as Any)
+                
+                print ("error in updating booked attribute")
+                
+                self.showToast(message: "حدث خطأ ما يرجى المحاولة لاحقا", font: .systemFont(ofSize: 20), image: (UIImage(named: "yumn-1") ?? UIImage(named: "")! ))
+            }
+       }
+        
+        // Add the appointment id to the array
+        
+        db.collection("appointments").document(selecetedOuterDocId).updateData([
+            "bookedAppointments": FieldValue.arrayUnion([selectedApp]),
+        
+            
+        ]){ error in
+    
+        if error != nil {
+            
+            print(error?.localizedDescription as Any)
+            
+            print ("error in adding the appointment id to the array")
+            
+            self.showToast(message: "حدث خطأ ما يرجى المحاولة لاحقا", font: .systemFont(ofSize: 20), image: (UIImage(named: "yumn-1") ?? UIImage(named: "")! ))
+        }
+   }
+        
+        let dateformat = DateFormatter()
+               dateformat.dateFormat = "MM/dd/yyyy"
+        
+        let timeFormat = DateFormatter()
+               dateformat.dateFormat = "HH:mm"
+        
+        // The needed information for the blood appointment in the volunteer collection
+     
+        
+        db.collection("volunteer").document(volunteerId).collection("bloodAppointments").document(selectedApp).setData([
+            
+           
+            "appDateAndTime": self.startTime,
+            "appID": self.selectedApp,
+            "area":self.hospitalArea,
+            "city": self.hospitalCity,
+            "date": dateformat.string(from: startTime.dateValue()),
+            "hospitalID":Constants.Globals.hospitalId,
+            "hospitalName":
+                Constants.Globals.hosName,
+            "latitude": self.latitude,
+            "longitude": self.longitude,
+            "mainDocID": self.selecetedOuterDocId,
+            "time": timeFormat.string(from:  self.startTime.dateValue()),
+            "type": "blood"
+       
+        
+        ])
+        
+        { error in
+        
+            if error != nil {
+                
+                print(error?.localizedDescription as Any)
+                
+            // Show error message or pop up message
+
+                
+                print ("error in saving the user data")
+                
+                
+            }
+            
+        }
+        
+        // Info from the outer appointment collection
+        db.collection("appointments").document(selecetedOuterDocId).getDocument { (document, error) in
+            if let document = document, document.exists {
+                
+                
+                self.appointmentDuration = (document.get("appointment_duration") as! Int)
+                
+                self.db.collection("volunteer").document(volunteerId).collection("bloodAppointments").document(self.selectedApp).updateData([
+                    "appointment_duration": self.appointmentDuration,
+                 
+                    ])
+                
+                
+                
+                
+            }
+                    
+                else{
+                    print (error?.localizedDescription as Any)
+                    
+                }
+            
+        }
+                    
+      // Info from the hospitalInformation collection
+            
+        db.collection("hospitalsInformation").document(Constants.Globals.hospitalId).getDocument { (document, error) in
+                if let document = document, document.exists {
+                    
+                    self.hospitalName = (document.get("name") as! String)
+                    
+                    Constants.Globals.hosName = (document.get("name") as! String)
+                    
+                    print ("hospital name" + self.hospitalName)
+                    
+                    print ("hospital name global" + Constants.Globals.hosName)
+
+                    
+                    
+                    
+                    self.hospitalCity = (document.get("city") as! String)
+                    self.hospitalArea = (document.get("area") as! String)
+                    
+                    self.longitude = (document.get("longitude") as! Double)
+                    
+                    self.latitude = (document.get("latitude") as! Double)
+                    
+
+                   
+                    
+                    
+                    self.db.collection("volunteer").document(volunteerId).collection("bloodAppointments").document(self.selectedApp).updateData([
+                        "hospital_name": self.hospitalName,
+                        "area":self.hospitalArea,
+                        "city": self.hospitalCity,
+                        
+                        ])
+
+                    
+                    
+                    
+                   
+                
+
+                    
+                    
+                }
+                        
+                    else{
+                        print (error?.localizedDescription as Any)
+                        
+                    }
+            }
+        
+        
+        //Info from the inner appointment collection
+        
+       
+        
+        
+        db.collection("appointments").document(selecetedOuterDocId).collection("appointments").document(selectedApp).getDocument { (document, error) in
+                if let document = document, document.exists {
+                    
+                    self.startTime = (document.get("start_time") as! Timestamp)
+                    
+                    self.endTime = (document.get("end_time") as! Timestamp)
+                    
+                    
+                    self.db.collection("volunteer").document(volunteerId).collection("bloodAppointments").document(self.selectedApp).updateData([
+                        "end_time": self.endTime,
+                        "start_time":self.startTime,
+                        "date": self.startTime
+                        
+                        ])
+                    
+                    
+                    
+                   
+                    
+                }
+                        
+                    else{
+                        print (error?.localizedDescription as Any)
+                        
+                    }
+            }
+        
+        
+        
+        
+     
+       
+        
+        
+        
+        popupView.layer.isHidden = true
+        
+        blackBlurredView.layer.isHidden = true
+            
     }
+
+        
+        
+        
+        
+    
+    
+    
+    
     
     @IBAction func onPressedCancel(_ sender: Any) {
         
@@ -411,7 +649,12 @@ extension Date {
     var startOfDay: Date {
         return Calendar.current.startOfDay(for: self)
     }
+
+    func currentTimeMillis() -> Int64 {
+            return Int64(self.timeIntervalSince1970 * 1000)
+        }
     
+
     var month: String {
            let dateFormatter = DateFormatter()
            dateFormatter.dateFormat = "MMMM"

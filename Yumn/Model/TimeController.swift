@@ -50,6 +50,9 @@ extension BloodDonationAppointmentViewController{
                 for document in
                         querySnapshot!.documents{
                     
+                    
+                    let outerDocId = document.documentID
+                    
                  let selectedDateTimeStamp = selectedDate.timeIntervalSince1970
 
                     
@@ -108,7 +111,7 @@ extension BloodDonationAppointmentViewController{
                                 
                                 
                                 
-                                availableTimes.append(BloodDonationTime(startTime: start_time, endTime: end_time, appointmentID: docID))
+                                availableTimes.append(BloodDonationTime(startTime: start_time, endTime: end_time, appointmentID: docID, outerDocId: outerDocId))
                                 
                                 print (availableTimes)
                                 print ("fffffff")
