@@ -74,11 +74,8 @@ extension BloodDonationAppointmentViewController{
                                 
                                 // Check if there are no appointments
                                 
-                                if querySnapshot.value is NSNull {
-                                    
-                                }
-                                
-                                else {
+                       
+                           
                                 
                                 print ( doc["start_time"] as! Timestamp)
                                 
@@ -117,7 +114,6 @@ extension BloodDonationAppointmentViewController{
                                 print ("fffffff")
                                 
 
-                           // }
                                 
                             
                             // I need to sort them
@@ -126,7 +122,7 @@ extension BloodDonationAppointmentViewController{
                                     
                                     Constants.Globals.appointmentTimeArray = availableTimes
                                     
-                                    Constants.Globals.appointmentTimeArray![0].selected = true
+                                    //Constants.Globals.appointmentTimeArray![0].selected = true
                             
                             
                             print("sorted down")
@@ -137,6 +133,10 @@ extension BloodDonationAppointmentViewController{
                                }
                                 
                             }}
+                            
+                           
+                                
+                              
                             }
                     
                     
@@ -146,8 +146,24 @@ extension BloodDonationAppointmentViewController{
             }
     
 
-                }}}
+                }
+    
+    print ("available times")
+    print (availableTimes)
+
+    
+    if (availableTimes.isEmpty){
         
+        self.continueBtn.isHidden = true
+
+        
+        
+
+    }
+
+}
+        
+                
         return availableTimes
     }
 }

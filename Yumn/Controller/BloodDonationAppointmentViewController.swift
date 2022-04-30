@@ -87,8 +87,8 @@ class BloodDonationAppointmentViewController: UIViewController {
         self.remainingDaysOfTheMonth![0].selected = true
 
         
-        
-        noAvailableAppointment.isHidden = true
+        noAvailableAppointment.superview?.bringSubviewToFront(noAvailableAppointment)
+
 
         
         roundView.layer.cornerRadius = 35
