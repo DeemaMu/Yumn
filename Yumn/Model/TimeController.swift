@@ -21,10 +21,18 @@ extension BloodDonationAppointmentViewController{
     
     func getAvailableAppointmentsTimes() -> [BloodDonationTime]{
         
+        var selectedDate = Date()
+
+        
         //Make a method to get the selected date
-        
-        let selectedDate = Date()
-        
+        for item in Constants.Globals.appointmentDateArray!{
+            
+            if (item.selected == true){
+                selectedDate = item.date
+            }
+                
+        }
+                
         
         var availableTimes: [BloodDonationTime] = []
         
