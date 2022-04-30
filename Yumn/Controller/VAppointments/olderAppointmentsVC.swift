@@ -312,6 +312,12 @@ class olderAppointmensVC: UIViewController {
         }
     }
     
+    func showOldOAppLbl(){
+        noAppLabel.isHidden = true
+        noOldAppLbl.isHidden = false
+        oldOA.isHidden = true
+    }
+    
     
     func hidePopupAndBlurredView(){
         self.blurredView.isHidden = true

@@ -88,8 +88,12 @@ struct FutureOrganAppointments: View {
             if let apts = aptVM.futureOA {
                 
                 if apts.isEmpty {
-                    Text("لا توجد مواعيد").font(Font.custom("Tajawal", size: 16))
-                        .foregroundColor(lightGray).padding(.top, 100).multilineTextAlignment(.center)
+                    
+                    VStack { Text("لا يوجد مواعيد سابقة").font(Font.custom("Tajawal", size: 27))
+                            .foregroundColor(.gray)
+                            .padding(.top, 300)
+                            .multilineTextAlignment(.center)
+                    }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                     
                 } else {
                     ForEach(0..<apts.count, id: \.self){ index in

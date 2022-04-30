@@ -70,7 +70,7 @@ struct OlderOrganAppointments: View {
         .onAppear(){
             activate = true
             odVM.fetchCurrentWeek(weeks: 3)
-//            aptVM.getUserOA()
+            //            aptVM.getUserOA()
         }.environment(\.layoutDirection, .rightToLeft)
         //
         
@@ -84,8 +84,23 @@ struct OlderOrganAppointments: View {
             if let apts = aptVM.olderOA {
                 
                 if apts.isEmpty {
-                    Text("لا توجد مواعيد").font(Font.custom("Tajawal", size: 16))
-                        .foregroundColor(lightGray).padding(.top, 100).multilineTextAlignment(.center)
+                    
+                    VStack {
+                    
+                    Text("لا يوجد مواعيد سابقة").font(Font.custom("Tajawal", size: 27))
+                            .foregroundColor(.gray)
+                            .padding(.top, 300)
+                            .multilineTextAlignment(.center)
+                    }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                    
+//                    Text("").onAppear {
+//                        DispatchQueue.main.async {
+//                            let x =
+//                            config.hostingController?.parent as! olderAppointmensVC
+//                            x.showOldOAppLbl()
+//                        }
+//                    }
+                    
                     
                 } else {
                     ForEach(0..<apts.count, id: \.self){ index in
@@ -154,7 +169,7 @@ struct OlderOrganAppointments: View {
                 .shadow(color: shadowColor,
                         radius: 0, x: 0
                         , y: 0)
-//                .padding(5)
+            //                .padding(5)
             
         }
         .background(
