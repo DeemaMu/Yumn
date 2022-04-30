@@ -40,6 +40,9 @@ struct Constants {
          static var sortedValidQRCodes:[QRCode]?
         static var hospitalId = "y5I2Wz29l1cz2zAt8dVc1wETEK13"
         static var appointmentDateArray:[DateCellInfo]?
+        static var appointmentTimeArray:[BloodDonationTime]?
+        
+        
 
                  
     }

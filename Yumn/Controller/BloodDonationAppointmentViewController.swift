@@ -13,7 +13,8 @@ class BloodDonationAppointmentViewController: UIViewController {
     @IBOutlet weak var dateTableView: UITableView!
     @IBOutlet weak var noAvailableAppointment: UILabel!
     
- 
+    @IBOutlet weak var blackBlurredView: UIView!
+    
     @IBOutlet weak var monthLabel: UILabel!
     
     @IBOutlet weak var hospitalNameLabel: UILabel!
@@ -27,10 +28,19 @@ class BloodDonationAppointmentViewController: UIViewController {
     @IBOutlet weak var timeTableView: UITableView!
     
     
-  
+    @IBOutlet weak var appointmentHospitalNameLabel: UILabel!
+    
+
+    @IBOutlet weak var appointmentDateLabel: UILabel!
+    @IBOutlet weak var appointmentTimeLabel: UILabel!
+    
     @IBOutlet weak var roundView: UIView!
+    @IBOutlet weak var popupstack: UIStackView!
     
+    @IBOutlet weak var confirmBtn: UIButton!
     
+    @IBOutlet weak var cancelBtn: UIButton!
+    @IBOutlet weak var popupView: UIView!
     var remainingDaysOfTheMonth:[DateCellInfo]?
     
     var sortedTimes:[BloodDonationTime]?
@@ -38,6 +48,15 @@ class BloodDonationAppointmentViewController: UIViewController {
     
     
     override func viewDidLoad() {
+        
+       // blackBlurredView.isHidden = true
+     //   popupView.isHidden = true
+        
+        popupView.layer.cornerRadius = 30
+        
+        confirmBtn.layer.cornerRadius = 20
+        
+        
         
       
         let db = Firestore.firestore()
@@ -95,9 +114,22 @@ class BloodDonationAppointmentViewController: UIViewController {
         //It includes the first selected cell
         Constants.Globals.appointmentDateArray = remainingDaysOfTheMonth
        
+        self.sortedTimes = getAvailableAppointmentsTimes()
+        
+     
+
+        Constants.Globals.appointmentTimeArray = getAvailableAppointmentsTimes()
+        
+
+
         
         let indexPath = IndexPath(row: 0, section: 0)
             dateTableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+        
+        let indexPath2 = IndexPath(row: 0, section: 0)
+
+        
+            timeTableView.selectRow(at: indexPath2, animated: false, scrollPosition: .none)
         
         
             
@@ -108,7 +140,7 @@ class BloodDonationAppointmentViewController: UIViewController {
             noAvailableAppointment.isHidden = false
             
         }*/
-        self.sortedTimes = getAvailableAppointmentsTimes()
+        
         
         super.viewDidLoad()
         
@@ -125,6 +157,10 @@ class BloodDonationAppointmentViewController: UIViewController {
     
 
     @IBAction func onPressedContinueBtn(_ sender: Any) {
+        
+        
+        popupView.isHidden = false
+        blackBlurredView.isHidden = false
     }
     /*
     // MARK: - Navigation
@@ -149,6 +185,16 @@ class BloodDonationAppointmentViewController: UIViewController {
         
         
         
+    }
+    
+    
+    @IBAction func onPressedConfirmAppointment(_ sender: Any) {
+    }
+    
+    @IBAction func onPressedCancel(_ sender: Any) {
+        
+        popupView.isHidden = true
+        blackBlurredView.isHidden = true
     }
 }
 
@@ -218,14 +264,14 @@ extension BloodDonationAppointmentViewController: UITableViewDataSource{
         else{
             
             let timeCell = tableView.dequeueReusableCell(withIdentifier: "TimeCell", for: indexPath) as! TimeCell
-            
-            let formatter = DateFormatter()
-            
-            formatter.dateFormat = "HH-mm"
-            
-        //    let startTimeString =  sortedTimes![indexPath.row].startTime
-            
+    
+
             timeCell.timeSlotLabel.text! =  sortedTimes![indexPath.row].startTime + " - " + sortedTimes![indexPath.row].endTime
+            
+            timeCell.index = indexPath.row
+            
+            print (indexPath.row)
+
             
        
             

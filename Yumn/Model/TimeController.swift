@@ -113,6 +113,8 @@ extension BloodDonationAppointmentViewController{
                             
                             // I need to sort them
                                 self.sortedTimes = availableTimes
+                                    
+                                    Constants.Globals.appointmentTimeArray = availableTimes
                             
                             
                             print("sorted down")

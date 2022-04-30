@@ -13,5 +13,7 @@ struct BloodDonationTime{
     let startTime:String
     let endTime:String
     let appointmentID:String
+    var selected:Bool = false
+
     
 }

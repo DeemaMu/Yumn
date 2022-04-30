@@ -24,8 +24,7 @@ class TimeCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
          
-        if (index == 0){
-            setSelected(true, animated: true)}
+       
         
         addshadow(top: true, left: false, bottom: true, right: true)
         
@@ -41,6 +40,8 @@ class TimeCell: UITableViewCell {
         if (selected){
             
             radioLabel.image = UIImage(named:"radioFilled" )
+            Constants.Globals.appointmentTimeArray![index].selected = true
+
 
             
             
@@ -48,6 +49,10 @@ class TimeCell: UITableViewCell {
         else{
             
             radioLabel.image = UIImage(named:"emptyRadio" )
+            
+            print ("inside else")
+           // print (Constants.Globals.appointmentTimeArray![index])
+            Constants.Globals.appointmentTimeArray![index].selected = false
 
             
             
