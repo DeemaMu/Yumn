@@ -17,6 +17,9 @@ import MaterialDesignWidgets
 class futureAppointmensVC: UIViewController {
     
     
+    @IBOutlet weak var popupView: UIView!
+    @IBOutlet weak var innerPopup: UIView!
+    
     @IBOutlet weak var tableMainForCurrentBldApp: UITableView! // current app table
     //@IBOutlet weak var BldAppLabel: UILabel!
     @IBOutlet weak var deleteAppPopUp: UIView!
@@ -173,10 +176,44 @@ class futureAppointmensVC: UIViewController {
         
     }
     
-    func confirmDelete() {
-        
+    
+    func cancel(apt: retrievedAppointment) {
+        blurredView.superview?.bringSubviewToFront(blurredView)
+        popupView.superview?.bringSubviewToFront(popupView)
+        popupView.isHidden = false
+        blurredView.isHidden = false
+        let configuration = Configuration()
+        let controller = UIHostingController(rootView: deleteAppointment(config: configuration,appointment: apt, controllerType: 2))
+        // injects here, because `configuration` is a reference !!
+        configuration.hostingController = controller
+        addChild(controller)
+        controller.view.frame = innerPopup.bounds
+        innerPopup.addSubview(controller.view)
     }
     
+    
+    func cancelDelete() {
+        blurredView.superview?.sendSubviewToBack(blurredView)
+        popupView.superview?.sendSubviewToBack(popupView)
+        popupView.isHidden = true
+        blurredView.isHidden = true
+        innerPopup.removeSubviews()
+    }
+    
+    
+    func editAppointment(apt: retrievedAppointment) {
+        blurredView.superview?.bringSubviewToFront(blurredView)
+        popupView.superview?.bringSubviewToFront(popupView)
+        popupView.isHidden = false
+        blurredView.isHidden = false
+        let configuration = Configuration()
+        let controller = UIHostingController(rootView: Yumn.editAppointment(config: configuration,appointment: apt, controllerType: 2))
+        // injects here, because `configuration` is a reference !!
+        configuration.hostingController = controller
+        addChild(controller)
+        controller.view.frame = innerPopup.bounds
+        innerPopup.addSubview(controller.view)
+    }
     
     @IBAction func cancelingAppDelete(_ sender: Any) {
         

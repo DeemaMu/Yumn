@@ -182,8 +182,9 @@ struct ConfirmAppointmentPopUp: View {
                                 print("lets goooo")
                                 if(Constants.selected.edit){
                                     let x =
-                                    config.hostingController?.parent as! futureAppointmensVC
-                                    x.confirmDelete()
+                                    config.hostingController?.parent as! Alive4thVC
+                                    Constants.selected.edit = false
+                                    x.confirm()
                                 }
                             } else {
                                 print("failed to add to user")

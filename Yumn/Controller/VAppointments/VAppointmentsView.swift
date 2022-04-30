@@ -347,7 +347,7 @@ struct VAppointmentsView: View {
                     
                     Spacer()
                     
-                    self.editButton(isFuture: (today < aptDate))
+                    self.editButton(isFuture: (today < aptDate), apt: apt)
                     
                     
                 } .padding(.bottom, 5)
@@ -378,11 +378,12 @@ struct VAppointmentsView: View {
     }
     
     @ViewBuilder
-    func editButton(isFuture: Bool) -> some View {
+    func editButton(isFuture: Bool, apt: retrievedAppointment) -> some View {
         if(isFuture){
             Button(action: {
                 let x =
                 config.hostingController?.parent as! VViewAppointmentsVC
+                x.editAppointment(apt: apt)
             }
             ) {
                 Text("تعديل").font(Font.custom("Tajawal", size: 16))

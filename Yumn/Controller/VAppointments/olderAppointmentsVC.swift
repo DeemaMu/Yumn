@@ -266,7 +266,7 @@ class olderAppointmensVC: UIViewController {
     
         // make it current user
         // delete the app in firestore
-         db.collection("volunteer").document("iDhMoT6PacOwKgKLi8ILK98UrB03").collection("bloodAppointments").document(appointmentID).delete() { err in
+         db.collection("volunteer").document(user!.uid).collection("bloodAppointments").document(appointmentID).delete() { err in
             if let err = err {
                 print("Error removing appointment document: \(err)")
                 

@@ -6,15 +6,114 @@
 //
 
 import SwiftUI
+import FirebaseAuth
+import Firebase
 
 struct editAppointment: View {
+    let config: Configuration
+    let appointment: retrievedAppointment
+    let userID = Auth.auth().currentUser!.uid
+    let controllerType: Int
+    
+    let db = Firestore.firestore()
+    
+    let shadowColor = Color(#colorLiteral(red: 0.8653315902, green: 0.8654771447, blue: 0.8653123975, alpha: 1))
+    let mainDark = Color(UIColor.init(named: "mainDark")!)
+    let mainLight = Color(UIColor.init(named: "mainLight")!)
+    let textGray = Color(UIColor.init(named: "textGrey")!)
+    let lightGray = Color(UIColor.lightGray)
+    let bgWhite = Color(UIColor.white)
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView(.vertical, showsIndicators: false){
+            VStack(alignment: .center, spacing: 20){
+                Text("تأكيد عملية الحذف").font(Font.custom("Tajawal", size: 15))
+                    .foregroundColor(mainLight).fontWeight(.semibold)
+                
+                Spacer()
+
+                VStack(spacing: 4){
+                    Text("هل أنت متأكد من رغبتك في").font(Font.custom("Tajawal", size: 14))
+                        .foregroundColor(textGray).fontWeight(.semibold)
+                    HStack(){
+                        Text("تعديل الموعد؟").font(Font.custom("Tajawal", size: 14))
+                            .foregroundColor(textGray).fontWeight(.semibold)
+                    }
+                }
+                
+                Spacer()
+                
+                HStack(alignment: .bottom, spacing: 10){
+                    
+                    Button(action: {
+                        if(controllerType == 1){
+                            let x =
+                            config.hostingController?.parent as! VViewAppointmentsVC
+                            x.cancelDelete()
+                        } else {
+                            let x =
+                            config.hostingController?.parent as! futureAppointmensVC
+                            x.cancelDelete()
+                            //                            x.cancel()
+                        }
+                    }
+                    ) {
+                        Text("إلغاء").font(Font.custom("Tajawal", size: 16))
+                            .foregroundColor(mainDark)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(
+                        RoundedRectangle(
+                            cornerRadius: 25,
+                            style: .continuous
+                        )
+                            .fill(bgWhite)
+                    )
+                    .frame(width: 100, height: 30, alignment: .center)
+                    
+                    
+                    Button(action: {
+                        
+                        Constants.selected.edit = true
+                        Constants.selected.mainDoc = self.appointment.mainAppointmentID!
+                        Constants.selected.mainDoc = self.appointment.appointmentID!
+                        Constants.selected.selectedOrgan.organ = self.appointment.organ!
+
+                        if(controllerType == 1) {
+                        let x = config.hostingController?.parent as! VViewAppointmentsVC
+                            x.bookAppointment()
+                        } else {
+                            //MARK: FROM FUTURE
+                        }
+                       
+                        
+                    }) {
+                        Text("تأكيد").font(Font.custom("Tajawal", size: 16))
+                            .foregroundColor(.white)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(
+                        RoundedRectangle(
+                            cornerRadius: 25,
+                            style: .continuous
+                        )
+                            .fill(mainDark)
+                    )
+                    .frame(width: 100, height: 30, alignment: .center)
+                    
+                    
+                }
+                
+            }.padding(.vertical)
+                .padding(.horizontal, 25)
+        }
+        
     }
+    
 }
 
 struct editAppointment_Previews: PreviewProvider {
     static var previews: some View {
-        editAppointment()
+        editAppointment(config: Configuration(), appointment: retrievedAppointment(), controllerType: 1)
     }
 }
