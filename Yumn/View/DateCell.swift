@@ -71,36 +71,7 @@ class DateCell: UITableViewCell {
         }
     }
     
-    /*
-    @IBAction func onPressedDateBtn(_ sender: Any) {
-        
-        //Toggle the color
-        
-        if (dateBtn.backgroundColor == UIColor.white){
-            
-            dateBtn.backgroundColor  = UIColor(named: "mainDark")
-
-        dayLabel.textColor = UIColor.white
-        dateLabel.textColor = UIColor.white
-    }
-    
-    else{
-        
-        dateBtn.backgroundColor = UIColor.white
-        
-        dayLabel.textColor = UIColor(named: "mainDark")
-        dateLabel.textColor = UIColor(named: "mainDark")
-        
-        
-        
-    }
-        
-        
-    
-    }*/
-    
    
-    
     
     func addshadow(top: Bool,
                        left: Bool,
@@ -118,20 +89,13 @@ class DateCell: UITableViewCell {
         
        
 
-/*
-        dateBtn.layer.masksToBounds = false
-        dateBtn.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-        dateBtn.layer.shadowRadius = shadowRadius
-        dateBtn.layer.shadowOpacity = 1.0
-*/
+
             let path = UIBezierPath()
             var x: CGFloat = 0
             var y: CGFloat = 0
             var viewWidth = self.frame.width
             var viewHeight = self.frame.height
 
-            // here x, y, viewWidth, and viewHeight can be changed in
-            // order to play around with the shadow paths.
             if (top) {
                 y+=(shadowRadius+1)
             }

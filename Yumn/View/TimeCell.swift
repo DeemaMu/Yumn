@@ -11,7 +11,8 @@ import UIKit
 class TimeCell: UITableViewCell {
     
     
-    @IBOutlet weak var timeSlotBtn: UIButton!
+
+    @IBOutlet weak var timeSlotBtn: UIView!
     
     @IBOutlet weak var timeSlotLabel: UILabel!
     
@@ -32,7 +33,20 @@ class TimeCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+        if (selected){
+            
+            radioLabel.image = UIImage(named:"radioFilled" )
+
+            
+            
+        }
+        else{
+            
+            radioLabel.image = UIImage(named:"emptyRadio" )
+
+            
+            
+        }
     }
     
     
