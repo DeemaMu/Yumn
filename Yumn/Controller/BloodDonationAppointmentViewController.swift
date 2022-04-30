@@ -102,6 +102,13 @@ class BloodDonationAppointmentViewController: UIViewController {
         
         
             
+        
+        if (sortedTimes!.count == 0){
+            
+            timeTableView.isHidden = true
+            noAvailableAppointment.isHidden = false
+            
+        }
 
         super.viewDidLoad()
         
@@ -166,7 +173,7 @@ extension BloodDonationAppointmentViewController: UITableViewDataSource{
         //time
         else{
             
-            return 10
+            return sortedTimes!.count
         }
     }
     
