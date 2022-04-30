@@ -71,6 +71,15 @@ extension BloodDonationAppointmentViewController{
                                     querySnapshot!.documents{
                                 let doc = document.data()
                                 
+                                
+                                // Check if there are no appointments
+                                
+                                if querySnapshot.value is NSNull {
+                                    
+                                }
+                                
+                                else {
+                                
                                 print ( doc["start_time"] as! Timestamp)
                                 
                                 print (SDF+"sdf")
@@ -113,8 +122,11 @@ extension BloodDonationAppointmentViewController{
                             
                             // I need to sort them
                                 self.sortedTimes = availableTimes
+                                    self.sortedTimes![0].selected = true
                                     
                                     Constants.Globals.appointmentTimeArray = availableTimes
+                                    
+                                    Constants.Globals.appointmentTimeArray![0].selected = true
                             
                             
                             print("sorted down")
@@ -125,7 +137,7 @@ extension BloodDonationAppointmentViewController{
                                }
                                 
                             }}
-                    
+                            }
                     
                     
                     

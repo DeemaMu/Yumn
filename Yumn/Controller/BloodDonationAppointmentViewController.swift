@@ -120,21 +120,18 @@ class BloodDonationAppointmentViewController: UIViewController {
 
         Constants.Globals.appointmentTimeArray = getAvailableAppointmentsTimes()
         
-
+       
 
         
         let indexPath = IndexPath(row: 0, section: 0)
             dateTableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
         
-        let indexPath2 = IndexPath(row: 0, section: 0)
 
         
-            timeTableView.selectRow(at: indexPath2, animated: false, scrollPosition: .none)
-        
-        
+            timeTableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
             
        /*
-        if (sortedTimes!.count == 0){
+        if (Constants.Globals.appointmentTimeArray!.count == 0){
             
             timeTableView.isHidden = true
             noAvailableAppointment.isHidden = false
