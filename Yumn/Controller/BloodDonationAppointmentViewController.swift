@@ -143,13 +143,7 @@ extension BloodDonationAppointmentViewController: UITableViewDataSource{
             
             dateCell.index = indexPath.row
             
-            if (remainingDaysOfTheMonth![indexPath.row].selected == true){
-                
-                dateCell.dateBtn.backgroundColor  = UIColor(named: "mainDark")
-                
-                dateCell.dayLabel.textColor = UIColor.white
-                dateCell.dateLabel.textColor = UIColor.white
-            }
+           
             
             print (dateCell.isChosen)
             

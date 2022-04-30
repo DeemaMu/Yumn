@@ -13,10 +13,15 @@ class DateCell: UITableViewCell {
     
   
     @IBOutlet weak var dateLabel: UILabel!
+  
     
 
+
+
     @IBOutlet weak var dayLabel: UILabel!
-    @IBOutlet weak var dateBtn: UIButton!
+    
+    @IBOutlet weak var dateBtn: UIView!
+    
     
     
     var index = 0
@@ -45,11 +50,28 @@ class DateCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        if (selected){
+        dateBtn.backgroundColor  = UIColor(named: "mainDark")
+      dayLabel.textColor = UIColor.white
+            dateLabel.textColor = UIColor.white
+            
+            Constants.Globals.appointmentDateArray![index].selected = true
+        }
+        
+        else{
+            dateBtn.backgroundColor  = UIColor.white
+            
+          dayLabel.textColor = UIColor(named: "mainDark")
+            dateLabel.textColor = UIColor(named: "mainDark")
+            
+            
+            Constants.Globals.appointmentDateArray![index].selected = false
+            
+            print (index)
+        }
     }
     
-    
+    /*
     @IBAction func onPressedDateBtn(_ sender: Any) {
         
         //Toggle the color
@@ -74,8 +96,8 @@ class DateCell: UITableViewCell {
     }
         
         
-    }
     
+    }*/
     
    
     
