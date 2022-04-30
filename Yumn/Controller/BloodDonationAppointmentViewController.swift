@@ -13,9 +13,10 @@ class BloodDonationAppointmentViewController: UIViewController {
     @IBOutlet weak var dateTableView: UITableView!
     @IBOutlet weak var noAvailableAppointment: UILabel!
     
-    @IBOutlet weak var hospitalNameLabel: UITableView!
+ 
     @IBOutlet weak var monthLabel: UILabel!
     
+    @IBOutlet weak var hospitalNameLabel: UILabel!
     @IBOutlet weak var calendarBtn: UIButton!
     
     
@@ -31,10 +32,35 @@ class BloodDonationAppointmentViewController: UIViewController {
     
     
     var remainingDaysOfTheMonth:[DateCellInfo]?
+    
+    var sortedTimes:[BloodDonationTime]?
 
     
     
     override func viewDidLoad() {
+        
+        self.sortedTimes = getAvailableAppointmentsTimes()
+        
+        let db = Firestore.firestore()
+        
+        let docRef = db.collection("hospitalsInformation").document(Constants.Globals.hospitalId)
+
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                
+               
+                    
+                let hName = document.get("name") as! String
+                    
+                        
+                self.hospitalNameLabel.text! = hName
+                        
+                    }
+                 else {
+                print("Document does not exist")
+            }
+        }
+        
         
         self.remainingDaysOfTheMonth = getRemainingDaysOfTheMonth()
         

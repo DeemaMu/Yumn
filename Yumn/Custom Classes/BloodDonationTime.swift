@@ -10,5 +10,8 @@ import Foundation
 
 struct BloodDonationTime{
     
-    let timeSlot:String
+    let startTime:String
+    let endTime:String
+    let appointmentID:String
+    
 }
