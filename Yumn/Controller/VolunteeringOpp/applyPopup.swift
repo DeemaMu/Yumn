@@ -76,6 +76,8 @@ class applyPopup: UIViewController{
                         "workingHours":data!["workingHours"] as? String ?? "",
                         "location":data!["location"] as? String ?? "",
                         "description":data!["description"] as? String ?? "",
+                        "start_date":data!["start_date"] as? Timestamp,
+                        "end_date":data!["end_date"] as? Timestamp,
                         
                     ]){ error in
                         if error != nil {

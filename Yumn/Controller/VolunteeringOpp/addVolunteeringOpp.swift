@@ -525,7 +525,9 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate , UITextViewDele
         picker.didSelectDates = { [ weak self ] (startDate , endDate) in
 
             Constants.VolunteeringOpp.endDate = Date.reverseDateFormatter(date: endDate)
-
+            Constants.VolunteeringOpp.start_date = startDate
+            Constants.VolunteeringOpp.end_date = endDate
+            
             self?.startDate = Date.dateFormatter(date: startDate)
             self?.endDate = Date.dateFormatter(date: endDate)
             

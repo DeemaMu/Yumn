@@ -63,6 +63,8 @@ class addPopup: UIViewController{
                     "title":Constants.VolunteeringOpp.title,
                     "date": Constants.VolunteeringOpp.date,
                     "endDate": Constants.VolunteeringOpp.endDate,
+                    "start_date":Constants.VolunteeringOpp.start_date,
+                    "end_date":Constants.VolunteeringOpp.end_date,
                     "workingHours": Constants.VolunteeringOpp.workingHours,
                     "location": Constants.VolunteeringOpp.location,
                     "description": Constants.VolunteeringOpp.description,
