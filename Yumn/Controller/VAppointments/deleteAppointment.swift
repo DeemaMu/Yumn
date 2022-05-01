@@ -70,19 +70,40 @@ struct deleteAppointment: View {
                     
                     
                     Button(action: {
-                        if(self.DeleteFromAppointment()){
-                            if(self.DeleteFromUser()){
-                                if(self.DeleteFromInnerAppointment()){
-                                    if(controllerType == 1){
-                                        Constants.selected.deleted = true 
-                                        let x =
-                                        config.hostingController?.parent as! VViewAppointmentsVC
-                                        x.cancelDelete()
-                                    } else {
-                                        let x =
-                                        config.hostingController?.parent as! futureAppointmensVC
-                                        x.cancelDelete()
-                                        //                            x.cancel()
+                        if(appointment.type == "organ"){
+                            if(self.DeleteFromAppointment()){
+                                if(self.DeleteFromUser()){
+                                    if(self.DeleteFromInnerAppointment()){
+                                        if(controllerType == 1){
+                                            Constants.selected.deleted = true
+                                            let x =
+                                            config.hostingController?.parent as! VViewAppointmentsVC
+                                            x.confirmDelete()
+                                        } else {
+                                            let x =
+                                            config.hostingController?.parent as! futureAppointmensVC
+                                            x.confirmDelete()
+                                            //                            x.cancel()
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        if(appointment.type == "blood"){
+                            if(self.DeleteFromAppointment()){
+                                if(self.DeleteFromUser()){
+                                    if(self.DeleteFromInnerAppointment()){
+                                        if(controllerType == 1){
+                                            Constants.selected.deleted = true
+                                            let x =
+                                            config.hostingController?.parent as! VViewAppointmentsVC
+                                            x.cancelDelete()
+                                        } else {
+                                            let x =
+                                            config.hostingController?.parent as! futureAppointmensVC
+                                            x.cancelDelete()
+                                            //                            x.cancel()
+                                        }
                                     }
                                 }
                             }

@@ -130,6 +130,15 @@ class VViewAppointmentsVC: UIViewController {
         innerPopup.removeSubviews()
     }
     
+    func confirmDelete() {
+        blackBlurredView.superview?.sendSubviewToBack(blackBlurredView)
+        popupView.superview?.sendSubviewToBack(popupView)
+        popupView.isHidden = true
+        blackBlurredView.isHidden = true
+        components().showToast(message: "تم حذف الموعد بنجاح", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!, viewC: self)
+        innerPopup.removeSubviews()
+    }
+    
     func editAppointment(apt: retrievedAppointment) {
         blackBlurredView.superview?.bringSubviewToFront(blackBlurredView)
         popupView.superview?.bringSubviewToFront(popupView)

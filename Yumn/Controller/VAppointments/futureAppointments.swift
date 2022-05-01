@@ -109,6 +109,7 @@ class futureAppointmensVC: UIViewController {
         
         
         // put user id (auth)
+        getCurrentAppointments(userID:user!.uid)
         getCurrentVOpp(userID: user!.uid)
         
         
@@ -177,6 +178,54 @@ class futureAppointmensVC: UIViewController {
         
     }
     
+    func getCurrentAppointments(userID : String)
+    {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy/MM/dd"
+        let currentDate = dateFormatter.string(from: Date())
+        print("current date is \(currentDate)")
+        let currentDateAR = currentDate.convertedDigitsToLocale(Locale(identifier: "AR"))
+        
+        db.collection("volunteer").document(userID).collection("bloodAppointments").whereField("date", isGreaterThanOrEqualTo: currentDateAR).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                
+                if querySnapshot!.documents.count != 0 {
+                    self.noAppLabel.isHidden = true
+                    for document in querySnapshot!.documents {
+                        let doc = document.data()
+                        let hospitalID:String = doc["hospitalID"] as! String
+                        let latitude:Double = doc["latitude"] as! Double
+                        let longitude:Double = doc["longitude"] as! Double
+                        let name: String = doc["hospitalName"] as! String
+                        let city: String = doc["city"] as! String
+                        let area: String = doc["area"] as! String
+                        let date: String = doc["date"] as! String
+                        let time: String = doc["time"] as! String
+                        let appID: String = doc["appID"] as! String
+                        
+                        self.storedCurrentBldApp.append(bloodAppointment(hospitalID:hospitalID, name: name, lat: latitude, long: longitude, city: city, area: area, date: date, time: time, appID: appID))
+                    }
+                    
+                    self.reloadCurrentTable()
+                    
+                }// end if stm
+                
+                else {
+                    
+                    self.showCurrentAppLbl()
+                }
+                self.reloadCurrentTable()
+            } // end else
+        }
+        
+        
+    } // end of g
+    
+    
     
     func cancel(apt: retrievedAppointment) {
         blurredView.superview?.bringSubviewToFront(blurredView)
@@ -200,6 +249,17 @@ class futureAppointmensVC: UIViewController {
         blurredView.isHidden = true
         innerPopup.removeSubviews()
     }
+    
+    func confirmDelete() {
+        blurredView.superview?.sendSubviewToBack(blurredView)
+        popupView.superview?.sendSubviewToBack(popupView)
+        popupView.isHidden = true
+        blurredView.isHidden = true
+        components().showToast(message: "تم حذف الموعد بنجاح", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!, viewC: self)
+        innerPopup.removeSubviews()
+    }
+    
+
     
     func editAppointment(apt: retrievedAppointment) {
         blurredView.superview?.bringSubviewToFront(blurredView)
@@ -228,23 +288,98 @@ class futureAppointmensVC: UIViewController {
         
     }
     
+    func checkAppointment(docID : String, appID : String){
+        
+        let docRef = db.collection("appointments").document(docID).collection("appointments").document(appID)
+        
+        let parentDoc = db.collection("appointments").document(docID)
+        
+        docRef.getDocument { (document, error) in
+            if document!.exists {
+                // update the booked field as false and change the donor field to ""
+                
+                docRef.updateData([
+                    "booked": false,
+                    "confirmed": false,
+                    "donor": ""
+                    
+                ])
+                { err in
+                    if let err = err {
+                        print("Error updating document: \(appID) \(err)")
+                    } else {
+                        print("Document successfully updated")
+                    }
+                }
+                
+                parentDoc.updateData([
+                    "bookedAppointments": FieldValue.arrayRemove([appID])
+                ])
+                
+                
+            } else {
+                print("Document \(appID) does not exist")
+            }
+        }
+        
+    }
+    
+    
+    // رجعي الاوقات كأوقات متاحةبعد ما يحذفها اليوزر
+    func restoreAppointment(appID : String, hospitalID: String){
+        
+        // will get a lot of docs, so check which one has the appID
+        db.collection("appointments").whereField("hospital", isEqualTo: hospitalID).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                
+                if querySnapshot!.documents.count != 0 {
+                    // for each doc check
+                    for document in querySnapshot!.documents {
+                        
+                        // save the doc id so if it has the appID in its subcollection, remove the app from the array
+                        let docID = document.documentID
+                        self.checkAppointment(docID : docID, appID : appID)
+                        
+                        // check which doc contains the appID and save its ID
+                        
+                    }
+                    
+                }// end if stm
+                
+                else {
+                    print("in restore")
+                    // self.showOldAppLbl()
+                }
+                
+            } // end else
+        }
+        
+    }
+    
     // delete from hospital too
     @IBAction func deletingAppBtn(_ sender: Any) {
         
         
         let appointmentID = storedCurrentBldApp[clickedCellIndex].appID
-        
+        let hospitalID = storedCurrentBldApp[clickedCellIndex].hospitalID
         // make it current user
         // delete the app in firestore
-        db.collection("volunteer").document("iDhMoT6PacOwKgKLi8ILK98UrB03").collection("bloodAppointments").document(appointmentID).delete() { err in
+        db.collection("volunteer").document(user!.uid).collection("bloodAppointments").document(appointmentID).delete() { err in
             if let err = err {
                 print("Error removing appointment document: \(err)")
                 
                 components().showToast(message: "حدثت مشكلة أثناء حذف الموعد، الرجاء المحاولة مرة أخرى", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn")!, viewC: self)
             } else {
+                
+                
                 // remove it from array so that the cell is removed
                 self.storedCurrentBldApp.remove(at: self.clickedCellIndex)
                 self.tableMainForCurrentBldApp.reloadData()
+                
+                // added
+                self.restoreAppointment(appID : appointmentID, hospitalID : hospitalID)
                 // show flushbar
                 print("Appointment document successfully removed!")
                 
@@ -342,11 +477,11 @@ class futureAppointmensVC: UIViewController {
             
             tableMainForCurrentBldApp.isHidden = true
             noAppLabel.isHidden = true
-
+            
             currentVOppTable.isHidden = false
             noCurrentVOppLabel.isHidden = true
             showCurrentVoppLbl()
-                        
+            
             break
         case 1:
             
@@ -365,7 +500,7 @@ class futureAppointmensVC: UIViewController {
             currentVOppTable.isHidden = true
             noCurrentVOppLabel.isHidden = true
             showCurrentAppLbl()
-
+            
             
         }
     }
@@ -458,29 +593,29 @@ extension futureAppointmensVC: UITableViewDataSource {
         
         else { // old table
             
-                            print("this is for current table inside cell method")
+            print("this is for current table inside cell method")
             
             
-                        let cell = tableView.dequeueReusableCell(withIdentifier: "currentBACell", for: indexPath) as! currentBldAppCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "currentBACell", for: indexPath) as! currentBldAppCell
             
-                        let time = checkTime(time : storedCurrentBldApp[indexPath.row].time)
-            
-            
-                        let cityAndArea = "\(storedCurrentBldApp[indexPath.row].city) - \(storedCurrentBldApp[indexPath.row].area)"
-                        cell.hospitalName.text = storedCurrentBldApp[indexPath.row].name
-                        cell.date.text = storedCurrentBldApp[indexPath.row].date
-                        cell.time.text = "\(storedCurrentBldApp[indexPath.row].time) \(time)"
-                        cell.cityAndArea.text = cityAndArea
-            
-                        cell.cancelAppBtn.tag = indexPath.row
-                        cell.editAppBtn.tag = indexPath.row
-            
-                        cell.cancelAppBtn.addTarget(self, action: #selector(cancelAppointment(sender:)), for: .touchUpInside)
+            let time = checkTime(time : storedCurrentBldApp[indexPath.row].time)
             
             
-                        cell.locBtn.tag = indexPath.row
-                        cell.locBtn.addTarget(self, action: #selector(askToOpenMapForCurrent(sender:)), for: .touchUpInside)
-                        return cell
+            let cityAndArea = "\(storedCurrentBldApp[indexPath.row].city) - \(storedCurrentBldApp[indexPath.row].area)"
+            cell.hospitalName.text = storedCurrentBldApp[indexPath.row].name
+            cell.date.text = storedCurrentBldApp[indexPath.row].date
+            cell.time.text = "\(storedCurrentBldApp[indexPath.row].time) \(time)"
+            cell.cityAndArea.text = cityAndArea
+            
+            cell.cancelAppBtn.tag = indexPath.row
+            cell.editAppBtn.tag = indexPath.row
+            
+            cell.cancelAppBtn.addTarget(self, action: #selector(cancelAppointment(sender:)), for: .touchUpInside)
+            
+            
+            cell.locBtn.tag = indexPath.row
+            cell.locBtn.addTarget(self, action: #selector(askToOpenMapForCurrent(sender:)), for: .touchUpInside)
+            return cell
             
         }
         
@@ -535,7 +670,10 @@ extension futureAppointmensVC: UITableViewDataSource {
     
     func checkTime(time : String) -> String{
         
-        let str = time.prefix(2)
+        let timeEN = time.convertedDigitsToLocale(Locale(identifier: "EN"))
+        
+        let str = timeEN.prefix(2)
+        
         var morningOrEvening : String = ""
         if Double(str)! < 12 {
             
@@ -571,27 +709,27 @@ extension futureAppointmensVC {
                 print("Error getting documents: \(err)")
             } else {
                 
-               // print("in current method")
+                // print("in current method")
                 
                 if querySnapshot!.documents.count != 0 {
                     self.noCurrentVOppLabel.isHidden = true
                     // for each doc check if the user id exists in applicants subcollection or not
-                for document in querySnapshot!.documents {
-                    
-                     let docID : String = document.documentID
-                    // check if applicant with the same user id exists in docID VOpp
-                    self.checkApplicantExists(docID : docID , userID: userID, type: "current")
-
+                    for document in querySnapshot!.documents {
+                        
+                        let docID : String = document.documentID
+                        // check if applicant with the same user id exists in docID VOpp
+                        self.checkApplicantExists(docID : docID , userID: userID, type: "current")
+                        
                         self.reloadCurrentTableOpp()
+                        
+                    } // end for
                     
-                } // end for
-                    
-            }// end if stm
+                }// end if stm
                 
                 else {
                     self.showCurrentVoppLbl()
                     self.reloadCurrentTableOpp()
-                   
+                    
                 }
                 
             } // end else
@@ -624,15 +762,15 @@ extension futureAppointmensVC {
                     else if type == "old"{
                         // since doc exists add its data to oldVOpp array
                         self.bringVoppData(type : "old")
-
+                        
                     }
                     
                 }
-                    
                 
-              } else {
-                 print("Document \(userID) does not exist")
-              }
+                
+            } else {
+                print("Document \(userID) does not exist")
+            }
         }
         
         
@@ -643,12 +781,12 @@ extension futureAppointmensVC {
         
         if type == "current"{
             bringCurrentVOpp()
-       // عشان ما يتكرر ال cell
+            // عشان ما يتكرر ال cell
             VOppDict = [:]
-    }// end if
+        }// end if
         
         else if type == "old"{
-
+            
         }
         
     }// end func
@@ -670,22 +808,22 @@ extension futureAppointmensVC {
                         let workingHours : String = data["workingHours"] as! String
                         let location : String = data["location"] as! String
                         let status : String = value
-                    
-                            self.currentVOpp.append(volunteerVOpp(title: title, date: date, workingHours: workingHours, location: location, status: status))
-                            self.reloadCurrentTableOpp()
-                      
+                        
+                        self.currentVOpp.append(volunteerVOpp(title: title, date: date, workingHours: workingHours, location: location, status: status))
+                        self.reloadCurrentTableOpp()
+                        
                     }// end data
                     
                     
-                  } else {
-                     print("VOpp document does not exist")
-                  }
+                } else {
+                    print("VOpp document does not exist")
+                }
             }
             
         }// end for
     }
     
-        
+    
     func getCurrentDate(time: String) -> String {
         
         let dateFormatter = DateFormatter()
@@ -693,10 +831,10 @@ extension futureAppointmensVC {
         dateFormatter.dateFormat = "yyyy/MM/dd"
         var currentDate = ""
         if(time == "past"){
-        currentDate = dateFormatter.string(from: Date() - 7)
+            currentDate = dateFormatter.string(from: Date() - 7)
         }
         if(time == "future"){
-        currentDate = dateFormatter.string(from: Date() + 7)
+            currentDate = dateFormatter.string(from: Date() + 7)
         }
         print("current date is \(currentDate)")
         return currentDate
@@ -717,10 +855,10 @@ extension futureAppointmensVC {
         
         DispatchQueue.main.async {
             self.currentVOppTable.reloadData()
-
+            
         }
         
     }
     
-
+    
 }
