@@ -4991,15 +4991,15 @@
                                     <constraint firstItem="pYo-k4-JqG" firstAttribute="leading" secondItem="qz3-lu-9ST" secondAttribute="leading" id="ywZ-hH-yua"/>
                                 </constraints>
                             </view>
-                            <view alpha="0.30000001192092896" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R5O-Xk-i8E">
+                            <view hidden="YES" alpha="0.30000001192092896" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R5O-Xk-i8E">
                                 <rect key="frame" x="0.0" y="2" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="85Z-Zv-Wcr">
-                                <rect key="frame" x="44" y="260" width="320" height="300"/>
+                                <rect key="frame" x="364" y="260" width="0.0" height="0.0"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TJW-Wb-8AM">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TJW-Wb-8AM">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تأكيد الموعد" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNu-bN-Cpf">
@@ -5131,7 +5131,7 @@
                     </view>
                     <connections>
                         <outlet property="appointmentDateLabel" destination="2iG-6Q-Azx" id="dSw-nD-67w"/>
-                        <outlet property="appointmentHospitalNameLabel" destination="WRR-LW-djD" id="2TB-tv-k0b"/>
+                        <outlet property="appointmentHospitalNameLabel" destination="HK3-XF-5av" id="xRe-Oi-pqz"/>
                         <outlet property="appointmentTimeLabel" destination="zUs-32-kMU" id="gSC-iS-YZp"/>
                         <outlet property="blackBlurredView" destination="R5O-Xk-i8E" id="wPX-ct-zNI"/>
                         <outlet property="calendarBtn" destination="inD-8B-7Gh" id="K6x-BF-lkM"/>

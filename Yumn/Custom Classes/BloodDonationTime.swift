@@ -15,6 +15,7 @@ struct BloodDonationTime{
     let appointmentID:String
     var selected:Bool = false
     let outerDocId:String
+    let appDate:Date?
 
     
 }

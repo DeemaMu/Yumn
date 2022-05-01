@@ -98,7 +98,7 @@ extension BloodDonationAppointmentViewController{
                                 let startDate2:Date = startDate.dateValue()
                                 let endDate2:Date = endDate.dateValue()
                                     
-                                    
+                              
                                     
 
                                 
@@ -108,10 +108,12 @@ extension BloodDonationAppointmentViewController{
                                 formatter.dateFormat = "HH:mm"
                                 let start_time:String = formatter.string(from: startDate2)
                                 let end_time:String = formatter.string(from: endDate2)
+                                    
+                                    
                                 
                                 
                                 
-                                availableTimes.append(BloodDonationTime(startTime: start_time, endTime: end_time, appointmentID: docID, outerDocId: outerDocId))
+                                    availableTimes.append(BloodDonationTime(startTime: start_time, endTime: end_time, appointmentID: docID, outerDocId: outerDocId, appDate: startDate.dateValue()))
                                 
                                 print (availableTimes)
                                 print ("fffffff")
@@ -140,21 +142,24 @@ extension BloodDonationAppointmentViewController{
                                 
                             }
                                 
-                                if (self.sortedTimes!.isEmpty){
+                                //if (self.sortedTimes != nil){
+                                
+                               // if (self.sortedTimes!.isEmpty){
                                     
-                                    self.noAvailableAppointment.isHidden = false
+                                //    self.noAvailableAppointment.isHidden = false
                                     
-                                    print ("show no app")
+                                 //   print ("show no app")
 
                                     
                                     
 
-                                }
+                               // }
                                 
-                                else {
-                                    self.noAvailableAppointment.isHidden = true
-                                }
+                               // else {
+                               //     self.noAvailableAppointment.isHidden = true
+                              //  }
                                 
+                            //}
                             }
                             
                            

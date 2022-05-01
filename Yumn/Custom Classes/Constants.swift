@@ -44,6 +44,11 @@ struct Constants {
         
         static var hosName = ""
         
+        static var appDate:Date?
+
+        
+        
+        
 
                  
     }

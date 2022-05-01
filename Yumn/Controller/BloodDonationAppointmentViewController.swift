@@ -32,6 +32,7 @@ class BloodDonationAppointmentViewController: UIViewController {
     
     @IBOutlet weak var appointmentHospitalNameLabel: UILabel!
     
+    
 
     @IBOutlet weak var appointmentDateLabel: UILabel!
     @IBOutlet weak var appointmentTimeLabel: UILabel!
@@ -68,7 +69,15 @@ class BloodDonationAppointmentViewController: UIViewController {
     var latitude = 0.0
 
     
+    func updateTable(){
+        
+        DispatchQueue.main.async {
+            self.timeTableView.reloadData()
+        }
 
+    }
+    
+    
     
     let db = Firestore.firestore()
 
@@ -99,6 +108,7 @@ class BloodDonationAppointmentViewController: UIViewController {
                     
                         
                 self.hospitalNameLabel.text! = hName
+                self.appointmentHospitalNameLabel.text = "مركز التبرع بالدم - " + hName
                         
                     }
                  else {
@@ -166,6 +176,9 @@ class BloodDonationAppointmentViewController: UIViewController {
             
         }*/
         
+       // dateTableView.addTarget(self, action: #selector(setTimeTable()), for: .editingChanged)
+        
+        
         
         super.viewDidLoad()
         
@@ -180,6 +193,7 @@ class BloodDonationAppointmentViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+   
 
     
   
@@ -191,6 +205,13 @@ class BloodDonationAppointmentViewController: UIViewController {
         
         var selectedTimeSlot = false
         
+        var hospital = ""
+        
+        
+        var date:Date?
+        
+        let dateformat = DateFormatter()
+               dateformat.dateFormat = "EEEE, MMM d, yyyy"
         
         for item in Constants.Globals.appointmentTimeArray!{
             
@@ -199,6 +220,22 @@ class BloodDonationAppointmentViewController: UIViewController {
                 selectedTimeSlot = true
                 selectedApp = item.appointmentID
                 selecetedOuterDocId = item.outerDocId
+                
+                
+                
+                
+               
+                
+                self.appointmentTimeLabel.text = item.startTime + " - " + item.endTime
+                
+                self.appointmentDateLabel.text = dateformat.string(from: item.appDate!)
+
+                
+           
+             
+                
+                
+                
                 
                 
                 print ("selected appointment " + selectedApp)
@@ -513,6 +550,16 @@ extension BloodDonationAppointmentViewController: UITableViewDataSource{
         //time
         else{
             
+            
+           // self.sortedTimes = getAvailableAppointmentsTimes()
+            
+         
+
+     
+
+            
+            
+            
             return sortedTimes!.count
         }
     }
@@ -557,6 +604,13 @@ extension BloodDonationAppointmentViewController: UITableViewDataSource{
         // Time cell
         else{
             
+         //   self.sortedTimes = getAvailableAppointmentsTimes()
+            
+         
+
+        
+
+            
             let timeCell = tableView.dequeueReusableCell(withIdentifier: "TimeCell", for: indexPath) as! TimeCell
     
 
@@ -578,12 +632,13 @@ extension BloodDonationAppointmentViewController: UITableViewDataSource{
     
  
     
-    func setInitialViewToCurrentMonth(){
+    func setTimeTable(){
         
         
-                
-    
-       
+        self.sortedTimes = getAvailableAppointmentsTimes()
+        
+        
+            
         
         
     }

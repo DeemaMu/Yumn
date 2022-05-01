@@ -56,6 +56,11 @@ class DateCell: UITableViewCell {
             dateLabel.textColor = UIColor.white
             
             Constants.Globals.appointmentDateArray![index].selected = true
+            
+           /* if (!(index == 0)){
+            BloodDonationAppointmentViewController().sortedTimes = BloodDonationAppointmentViewController().getAvailableAppointmentsTimes()
+                BloodDonationAppointmentViewController().updateTable()
+            }*/
         }
         
         else{
