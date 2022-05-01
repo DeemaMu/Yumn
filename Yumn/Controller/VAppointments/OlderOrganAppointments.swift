@@ -30,7 +30,7 @@ struct OlderOrganAppointments: View {
     let lightGray = Color(UIColor.lightGray)
     let bgWhite = Color(UIColor.white)
     
-    var thereIS = chechingAppointments()
+    var thereIS = checkingAppointments()
     
     var calender = Calendar.current
     

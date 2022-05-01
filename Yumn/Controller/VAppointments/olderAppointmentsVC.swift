@@ -400,6 +400,7 @@ class olderAppointmensVC: UIViewController {
             currentVOppTable.isHidden = true
             oldVOppTable.isHidden = false
             noCurrentVOppLabel.isHidden = true
+            noOldAppLbl.isHidden = true
             
             oldOA.isHidden = true
             
@@ -414,6 +415,7 @@ class olderAppointmensVC: UIViewController {
             currentVOppTable.isHidden = true
             oldVOppTable.isHidden = true
             noCurrentVOppLabel.isHidden = true
+            noOldAppLbl.isHidden = true
             
             oldOA.isHidden = false
                     
@@ -428,6 +430,7 @@ class olderAppointmensVC: UIViewController {
             currentVOppTable.isHidden = true
             oldVOppTable.isHidden = true
             noCurrentVOppLabel.isHidden = true
+            
             showOldAppLbl()
             
         }

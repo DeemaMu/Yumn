@@ -10,7 +10,7 @@ class AppointmentVM: ObservableObject {
     @Published var appointmentsWithin = [DAppointment]()
     
     init() {
-                self.fetchOrganAppointments()
+            self.fetchOrganAppointments()
     }
     
     let db = Firestore.firestore()

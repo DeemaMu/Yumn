@@ -14,7 +14,7 @@ struct SelectODAppointment: View {
     @ObservedObject var aptVM = AppointmentVM()
     @StateObject var odVM = ODAppointmentVM()
     
-    var thereIS = chechingAppointments()
+    var thereIS = checkingAppointments()
     
     @State var selectedDate: Date
     @State var checkedIndex: Int = -1
@@ -515,6 +515,6 @@ class ODAppointmentVM: ObservableObject {
     
 }
 
-class chechingAppointments{
+class checkingAppointments{
     var thereIs = false
 }

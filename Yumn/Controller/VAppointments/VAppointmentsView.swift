@@ -28,7 +28,7 @@ struct VAppointmentsView: View {
     let bgWhite = Color(UIColor.white)
     let grey = Color(UIColor.gray)
     
-    var thereIS = chechingAppointments()
+    var thereIS = checkingAppointments()
     
     var calender = Calendar.current
     
@@ -107,7 +107,6 @@ struct VAppointmentsView: View {
                                     config.hostingController?.parent as! VViewAppointmentsVC
                                     x.moveToOldApts()
                                 }
-                                
                                 
                                 
                                 
@@ -217,11 +216,12 @@ struct VAppointmentsView: View {
                         AppointmentsView()
                     }.onChange(of: Constants.selected.deleted) { new in
                         if(Constants.selected.deleted){
-                        DispatchQueue.main.asyncAfter(deadline: .now() , execute: {
-                            aptVM.getUserOA()
-                            Constants.selected.deleted  = false
-                            aptVM.filteringAppointments()
-                        })}
+                            DispatchQueue.main.asyncAfter(deadline: .now() , execute: {
+                                aptVM.getUserOA()
+                                aptVM.getUserBA()
+                                Constants.selected.deleted  = false
+                                aptVM.filteringAppointments()
+                            })}
                     }
                     
                     Spacer()
@@ -287,6 +287,18 @@ struct VAppointmentsView: View {
     //    @available(iOS 15.0, *)
     @ViewBuilder
     func AppoitmentCard(apt: retrievedAppointment, index: Int) -> some View {
+        
+        if(apt.type == "organ"){
+            OrganCard(apt: apt, index: index)
+        }
+        if(apt.type == "blood"){
+            BloodCard(apt: apt, index: index)
+        }
+        
+    }
+    
+    @ViewBuilder
+    func OrganCard(apt: retrievedAppointment, index: Int) -> some View {
         
         HStack(){
             
@@ -379,6 +391,99 @@ struct VAppointmentsView: View {
     }
     
     @ViewBuilder
+    func BloodCard(apt: retrievedAppointment, index: Int) -> some View {
+        
+        HStack(){
+            
+            let today = dateFormatter.string(from: Date())
+            let aptDate = dateFormatter.string(from: apt.date!)
+            Spacer()
+            
+            VStack(alignment: .leading, spacing: 5){
+                let title = "موعد تبرع بالدم"
+                let place = "في "
+                
+                HStack(){
+                    Text(title).font(Font.custom("Tajawal", size: 17))
+                        .foregroundColor(mainDark).padding(.bottom, 10).padding(.top, 10)
+                    Spacer()
+                    if(today < aptDate){
+                        let colorInvert = Color(UIColor.init(named: "mainDark")!.inverted)
+                        VStack(){
+                            Image(systemName: "x.circle.fill").foregroundColor(colorInvert).colorInvert()
+                                .scaledToFit().font(.system(size: 17).bold())
+                                .onTapGesture {
+                                    let x =
+                                    config.hostingController?.parent as! VViewAppointmentsVC
+                                    x.cancel(apt: apt)
+                                }
+                            
+                        }.padding(.top, 0).padding(.bottom, 0)
+                        
+                    }
+                    if(today >= aptDate){
+                        let colorInvert = Color(UIColor.gray.inverted)
+                        VStack(){
+                            Image(systemName: "x.circle.fill").foregroundColor(colorInvert).colorInvert()
+                                .scaledToFit().font(.system(size: 17).bold())
+                        }.padding(.top, 0).padding(.bottom, 0)
+                        
+                    }
+                }
+                Text(place + apt.hName!).font(Font.custom("Tajawal", size: 14)).foregroundColor(mainDark)
+                
+                HStack(){
+                    
+                    VStack(){
+                        Image("location").resizable()
+                            .scaledToFit()
+                    }.padding(.top, 10).padding(.bottom, 10)
+                    Text(apt.hospitalLocation!).font(Font.custom("Tajawal", size: 12)).foregroundColor(mainDark)
+                        .padding(.trailing, 10).padding(.top, 4).padding(.leading, -5)
+                    
+                    
+                    VStack(){
+                        Image("time").resizable()
+                            .scaledToFit()
+                    }.padding(.top, 14).padding(.bottom, 14)
+                    
+                    Text("\(apt.startTime!.getFormattedDate(format: "HH:mm")) - \(apt.endTime!.getFormattedDate(format: "HH:mm"))").font(Font.custom("Tajawal", size: 12))
+                        .foregroundColor(mainDark).padding(.top, 7)
+                    
+                    Spacer()
+                    
+                    self.editButton(isFuture: (today < aptDate), apt: apt)
+                    
+                    
+                } .padding(.bottom, 5)
+                
+                
+                
+                
+            }.frame(maxWidth: .infinity, alignment: .leading)
+                .frame(height: 110)
+                .padding(.horizontal, 10)
+                .padding(.top, 10)
+            
+        }
+        .background(
+            RoundedRectangle(
+                cornerRadius: 20,
+                style: .continuous
+            )
+                .fill(.white)
+        )
+        .frame(height: 110, alignment: .center)
+        .frame(maxWidth: .infinity)
+        .shadow(color: shadowColor,
+                radius: 6, x: 0
+                , y: 6)
+        .padding(.horizontal, 15)
+        .padding(.top, 5)
+        
+    }
+    
+    @ViewBuilder
     func editButton(isFuture: Bool, apt: retrievedAppointment) -> some View {
         if(isFuture){
             Button(action: {
@@ -401,7 +506,7 @@ struct VAppointmentsView: View {
             .frame(width: 70, height: 30, alignment: .trailing)
         } else {
             Button(action: {
-               
+                
             }
             ) {
                 Text("تعديل").font(Font.custom("Tajawal", size: 16))
@@ -451,6 +556,12 @@ struct VAppointmentsView: View {
                 return true;
             }
         }
+        for index in 0..<(aptVM.bloodAppointments.count){
+            if(calender.isDate(aptVM.bloodAppointments[index].date!, inSameDayAs: date)){
+                thereIS.thereIs = true
+                return true;
+            }
+        }
         return false;
     }
     
@@ -466,6 +577,8 @@ class VAppointments : ObservableObject {
     @Published var filteredAppointments = [retrievedAppointment]()
     
     @Published var organAppointments = [retrievedAppointment]()
+    @Published var bloodAppointments = [retrievedAppointment]()
+    @Published var volunteeringOpp = [retrievedAppointment]()
     @Published var olderOA = [retrievedAppointment]()
     @Published var futureOA = [retrievedAppointment]()
     
@@ -474,10 +587,131 @@ class VAppointments : ObservableObject {
     
     init() {
         organAppointments = self.getUserOA()
+        bloodAppointments = self.getUserBA()
+        
         //        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         //        dateFormatter.locale = Locale(identifier:"en_US_POSIX")
         //        olderOA = self.getUserOlderOA()
     }
+    
+    func getUserBA() -> [retrievedAppointment] {
+        
+        self.dateFormatter.dateFormat = "yyyy-MM-dd"
+        self.dateFormatter.locale = Locale(identifier:"en_US_POSIX")
+        
+        db.collection("volunteer").document(userID).collection("bloodAppointments").addSnapshotListener(includeMetadataChanges: true) { (querySnapshot, error) in
+            
+            guard let documents = querySnapshot?.documents else {
+                print("no documents")
+                return
+            }
+            
+            self.bloodAppointments = documents.map { (queryDocumentSnapshot) -> retrievedAppointment in
+                print("documents")
+                let data = queryDocumentSnapshot.data()
+                
+                let duration = 30
+                let type = "blood"
+                let hName = data["hospitalName"] as! String
+                let exact = data["appID"] as! String
+                let mainDoc = data["mainDocID"] as? String  ?? ""
+                let hospitalId = data["hospitalID"] as! String
+                let area = data["area"] as! String
+                let city = data["city"] as! String
+                let location = city + " - " + area
+                
+                let stamp1 = data["appDateAndTime"] as? Timestamp
+                let startTime = stamp1?.dateValue()
+                
+                let endTime = Calendar.current.date(byAdding: .minute, value: 30, to: startTime!)
+                
+                let stamp3 = data["appDateAndTime"] as? Timestamp
+                let aptDate = stamp3?.dateValue()
+                
+                var apt = retrievedAppointment()
+                
+                
+                apt.duration = duration
+                apt.type = type
+                apt.date = aptDate
+                
+                apt.appointmentID = exact
+                apt.mainAppointmentID = mainDoc
+                apt.endTime = endTime
+                
+                apt.startTime = startTime
+                apt.hospitalID = hospitalId
+                apt.hName = hName
+                apt.hospitalLocation = location
+                
+                return apt
+                
+            }
+            
+        }
+        
+        return self.bloodAppointments
+    }
+    
+    func getUserVOpp() -> [retrievedAppointment] {
+        
+        self.dateFormatter.dateFormat = "yyyy-MM-dd"
+        self.dateFormatter.locale = Locale(identifier:"en_US_POSIX")
+        
+        db.collection("volunteer").document(userID).collection("bloodAppointments").addSnapshotListener(includeMetadataChanges: true) { (querySnapshot, error) in
+            
+            guard let documents = querySnapshot?.documents else {
+                print("no documents")
+                return
+            }
+            
+            self.bloodAppointments = documents.map { (queryDocumentSnapshot) -> retrievedAppointment in
+                print("documents")
+                let data = queryDocumentSnapshot.data()
+                
+                let duration = 30
+                let type = "blood"
+                let hName = data["hospitalName"] as! String
+                let exact = data["appID"] as! String
+                let mainDoc = data["mainDocID"] as? String  ?? ""
+                let hospitalId = data["hospitalID"] as! String
+                let area = data["area"] as! String
+                let city = data["city"] as! String
+                let location = city + " - " + area
+                
+                let stamp1 = data["appDateAndTime"] as? Timestamp
+                let startTime = stamp1?.dateValue()
+                
+                let endTime = Calendar.current.date(byAdding: .minute, value: 30, to: startTime!)
+                
+                let stamp3 = data["appDateAndTime"] as? Timestamp
+                let aptDate = stamp3?.dateValue()
+                
+                var apt = retrievedAppointment()
+                
+                
+                apt.duration = duration
+                apt.type = type
+                apt.date = aptDate
+                
+                apt.appointmentID = exact
+                apt.mainAppointmentID = mainDoc
+                apt.endTime = endTime
+                
+                apt.startTime = startTime
+                apt.hospitalID = hospitalId
+                apt.hName = hName
+                apt.hospitalLocation = location
+                
+                return apt
+                
+            }
+            
+        }
+        
+        return self.bloodAppointments
+    }
+
     
     func getUserOA() -> [retrievedAppointment] {
         olderOA.removeAll()
@@ -557,148 +791,41 @@ class VAppointments : ObservableObject {
         return self.organAppointments
     }
     
+    
     func filteringAppointments() -> [retrievedAppointment] {
         let calender = Calendar.current
-        
+        var filtered = [retrievedAppointment]()
         DispatchQueue.global(qos: .userInteractive).async {
             
             if(!self.organAppointments.isEmpty){
                 
-                var filtered: [retrievedAppointment] = self.organAppointments.filter {
+                filtered = self.organAppointments.filter {
                     return calender.isDate($0.date!, inSameDayAs: self.currentDay)
                 }
                 
+            }
+            
+            if(!self.bloodAppointments.isEmpty){
                 
-                DispatchQueue.main.async {
-                    withAnimation {
-                        self.filteredAppointments = filtered
-                    }
+                filtered.append(contentsOf:
+                                    self.bloodAppointments.filter {
+                    return calender.isDate($0.date!, inSameDayAs: self.currentDay)
+                })
+                
+            }
+            
+            DispatchQueue.main.async {
+                withAnimation {
+                    self.filteredAppointments = filtered
                 }
             }
             
+            
         }
+        
         return self.filteredAppointments
     }
     
-    func getUserOlderOA() -> [retrievedAppointment] {
-        
-        db.collection("volunteer").document(userID).collection("organAppointments").addSnapshotListener { (querySnapshot, error) in
-            
-            guard let documents = querySnapshot?.documents else {
-                print("no documents")
-                return
-            }
-            
-            self.olderOA = documents.map { (queryDocumentSnapshot) -> retrievedAppointment in
-                print("documents")
-                let data = queryDocumentSnapshot.data()
-                let duration = data["appointment_duration"] as! Int
-                
-                let type = data["type"] as! String
-                let hName = data["hospital_name"] as! String
-                let exact = data["docID"] as! String
-                let mainDoc = data["mainDocId"] as! String
-                let hospitalId = data["hospital"] as! String
-                let location = data["location"] as! String
-                
-                let stamp1 = data["start_time"] as? Timestamp
-                let startTime = stamp1!.dateValue()
-                
-                let stamp2 = data["end_time"] as? Timestamp
-                let endTime = stamp2!.dateValue()
-                
-                
-                let stamp3 = data["date"] as? Timestamp
-                let aptDate = stamp3?.dateValue()
-                
-                var apt = retrievedAppointment()
-                
-                if(type == "organ"){
-                    let organ = data["organ"] as! String
-                    apt.organ = organ
-                }
-                
-                apt.duration = duration
-                apt.type = type
-                apt.date = aptDate
-                
-                apt.appointmentID = exact
-                apt.mainAppointmentID = mainDoc
-                apt.endTime = endTime
-                
-                apt.startTime = startTime
-                apt.hospitalID = hospitalId
-                apt.hName = hName
-                apt.hospitalLocation = location
-                
-                return apt
-                
-            }
-            
-        }
-        
-        return self.olderOA
-    }
-    
-    func getUserFutureOA() -> [retrievedAppointment] {
-        
-        db.collection("volunteer").document(userID).collection("organAppointments").whereField("endDate", isGreaterThanOrEqualTo: getCurrentDate(time: "future")).addSnapshotListener { (querySnapshot, error) in
-            
-            guard let documents = querySnapshot?.documents else {
-                print("no documents")
-                return
-            }
-            
-            self.organAppointments = documents.map { (queryDocumentSnapshot) -> retrievedAppointment in
-                print("documents")
-                let data = queryDocumentSnapshot.data()
-                let duration = data["appointment_duration"] as! Int
-                
-                let type = data["type"] as! String
-                let hName = data["hospital_name"] as! String
-                let exact = data["docID"] as! String
-                let mainDoc = data["mainDocId"] as! String
-                let hospitalId = data["hospital"] as! String
-                let location = data["location"] as! String
-                
-                let stamp1 = data["start_time"] as? Timestamp
-                let startTime = stamp1!.dateValue()
-                
-                let stamp2 = data["end_time"] as? Timestamp
-                let endTime = stamp2!.dateValue()
-                
-                
-                let stamp3 = data["date"] as? Timestamp
-                let aptDate = stamp3?.dateValue()
-                
-                var apt = retrievedAppointment()
-                
-                if(type == "organ"){
-                    let organ = data["organ"] as! String
-                    apt.organ = organ
-                }
-                
-                apt.duration = duration
-                apt.type = type
-                apt.date = aptDate
-                
-                apt.appointmentID = exact
-                apt.mainAppointmentID = mainDoc
-                apt.endTime = endTime
-                
-                apt.startTime = startTime
-                apt.hospitalID = hospitalId
-                apt.hName = hName
-                apt.hospitalLocation = location
-                
-                return apt
-                
-            }
-            
-        }
-        
-        return self.organAppointments
-    }
     
     func getCurrentDate(time: String) -> String {
         
