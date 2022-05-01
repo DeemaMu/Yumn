@@ -112,6 +112,7 @@ class futureAppointmensVC: UIViewController {
         getCurrentVOpp(userID: user!.uid)
         
         
+        
         // future OA
         // connect to uiview
         let configuration = Configuration()
@@ -121,7 +122,7 @@ class futureAppointmensVC: UIViewController {
         self.addChild(controller)
         controller.view.frame = self.futureOAView.bounds
         self.futureOAView.addSubview(controller.view)
-        
+        popupView.layer.cornerRadius = 20
         
         
         
@@ -200,7 +201,6 @@ class futureAppointmensVC: UIViewController {
         innerPopup.removeSubviews()
     }
     
-    
     func editAppointment(apt: retrievedAppointment) {
         blurredView.superview?.bringSubviewToFront(blurredView)
         popupView.superview?.bringSubviewToFront(popupView)
@@ -214,6 +214,12 @@ class futureAppointmensVC: UIViewController {
         controller.view.frame = innerPopup.bounds
         innerPopup.addSubview(controller.view)
     }
+    
+    
+    func bookAppointment() {
+        performSegue(withIdentifier: "goToBook", sender: nil)
+    }
+    
     
     @IBAction func cancelingAppDelete(_ sender: Any) {
         

@@ -294,7 +294,9 @@ struct VAppointmentsView: View {
         if(apt.type == "blood"){
             BloodCard(apt: apt, index: index)
         }
-        
+        if(apt.type == "volunteering"){
+            VOppCard(apt: apt, index: index)
+        }
     }
     
     @ViewBuilder
@@ -370,7 +372,8 @@ struct VAppointmentsView: View {
                 
             }.frame(maxWidth: .infinity, alignment: .leading)
                 .frame(height: 110)
-                .padding(10)
+                .padding(.horizontal, 10)
+                .padding(.top, 10)
             
         }
         .background(
@@ -397,6 +400,7 @@ struct VAppointmentsView: View {
             
             let today = dateFormatter.string(from: Date())
             let aptDate = dateFormatter.string(from: apt.date!)
+            
             Spacer()
             
             VStack(alignment: .leading, spacing: 5){
@@ -453,6 +457,99 @@ struct VAppointmentsView: View {
                     Spacer()
                     
                     self.editButton(isFuture: (today < aptDate), apt: apt)
+                    
+                    
+                } .padding(.bottom, 5)
+                
+                
+                
+                
+            }.frame(maxWidth: .infinity, alignment: .leading)
+                .frame(height: 110)
+                .padding(.horizontal, 10)
+                .padding(.top, 10)
+            
+        }
+        .background(
+            RoundedRectangle(
+                cornerRadius: 20,
+                style: .continuous
+            )
+                .fill(.white)
+        )
+        .frame(height: 110, alignment: .center)
+        .frame(maxWidth: .infinity)
+        .shadow(color: shadowColor,
+                radius: 6, x: 0
+                , y: 6)
+        .padding(.horizontal, 15)
+        .padding(.top, 5)
+        
+    }
+    
+    @ViewBuilder
+    func VOppCard(apt: retrievedAppointment, index: Int) -> some View {
+        
+        HStack(){
+            
+            let today = dateFormatter.string(from: Date())
+            
+            Spacer()
+            
+            VStack(alignment: .leading, spacing: 5){
+//                let title = "موعد تبرع بالدم"
+                let place = "في "
+                
+                HStack(){
+                    Text(apt.title!).font(Font.custom("Tajawal", size: 17))
+                        .foregroundColor(mainDark).padding(.bottom, 10).padding(.top, 10)
+                    Spacer()
+//                    if(today < aptDate){
+//                        let colorInvert = Color(UIColor.init(named: "mainDark")!.inverted)
+//                        VStack(){
+//                            Image(systemName: "x.circle.fill").foregroundColor(colorInvert).colorInvert()
+//                                .scaledToFit().font(.system(size: 17).bold())
+//                                .onTapGesture {
+//                                    let x =
+//                                    config.hostingController?.parent as! VViewAppointmentsVC
+//                                    x.cancel(apt: apt)
+//                                }
+//
+//                        }.padding(.top, 0).padding(.bottom, 0)
+//
+//                    }
+//                    if(today >= aptDate){
+//                        let colorInvert = Color(UIColor.gray.inverted)
+//                        VStack(){
+//                            Image(systemName: "x.circle.fill").foregroundColor(colorInvert).colorInvert()
+//                                .scaledToFit().font(.system(size: 17).bold())
+//                        }.padding(.top, 0).padding(.bottom, 0)
+//
+//                    }
+                }
+//                Text(place + apt.hName!).font(Font.custom("Tajawal", size: 14)).foregroundColor(mainDark)
+                
+                HStack(){
+                    
+                    VStack(){
+                        Image("location").resizable()
+                            .scaledToFit()
+                    }.padding(.top, 10).padding(.bottom, 10)
+                    Text(apt.hospitalLocation!).font(Font.custom("Tajawal", size: 12)).foregroundColor(mainDark)
+                        .padding(.trailing, 10).padding(.top, 4).padding(.leading, -5)
+                    
+                    
+                    VStack(){
+                        Image("time").resizable()
+                            .scaledToFit()
+                    }.padding(.top, 14).padding(.bottom, 14)
+                    
+                    Text("\(apt.timeString!)").font(Font.custom("Tajawal", size: 12))
+                        .foregroundColor(mainDark).padding(.top, 7)
+                    
+                    Spacer()
+                    
+//                    self.editButton(isFuture: (today < aptDate), apt: apt)
                     
                     
                 } .padding(.bottom, 5)
@@ -562,11 +659,21 @@ struct VAppointmentsView: View {
                 return true;
             }
         }
+//        for index in 0..<(aptVM.volunteeringOpp.count){
+//            var tempDate = aptVM.volunteeringOpp[index].dateString
+//            let dates = tempDate![0..<10]
+//
+//            if(calender.isDate(dates.description.toDate(.isoDate)!, inSameDayAs: date)){
+//                thereIS.thereIs = true
+//                return true;
+//            }
+//        }
+        
+        
         return false;
     }
     
 }
-
 
 
 class VAppointments : ObservableObject {
@@ -588,6 +695,7 @@ class VAppointments : ObservableObject {
     init() {
         organAppointments = self.getUserOA()
         bloodAppointments = self.getUserBA()
+        volunteeringOpp = self.getUserVOpp()
         
         //        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         //        dateFormatter.locale = Locale(identifier:"en_US_POSIX")
@@ -658,70 +766,99 @@ class VAppointments : ObservableObject {
         self.dateFormatter.dateFormat = "yyyy-MM-dd"
         self.dateFormatter.locale = Locale(identifier:"en_US_POSIX")
         
-        db.collection("volunteer").document(userID).collection("bloodAppointments").addSnapshotListener(includeMetadataChanges: true) { (querySnapshot, error) in
+        db.collection("volunteer").document(userID).collection("volunteeringOpps").addSnapshotListener(includeMetadataChanges: true) { (querySnapshot, error) in
             
             guard let documents = querySnapshot?.documents else {
                 print("no documents")
                 return
             }
             
-            self.bloodAppointments = documents.map { (queryDocumentSnapshot) -> retrievedAppointment in
+            self.volunteeringOpp = documents.map { (queryDocumentSnapshot) -> retrievedAppointment in
                 print("documents")
                 let data = queryDocumentSnapshot.data()
                 
-                let duration = 30
-                let type = "blood"
-                let hName = data["hospitalName"] as! String
-                let exact = data["appID"] as! String
-                let mainDoc = data["mainDocID"] as? String  ?? ""
-                let hospitalId = data["hospitalID"] as! String
-                let area = data["area"] as! String
-                let city = data["city"] as! String
-                let location = city + " - " + area
+                let type = "volunteering"
+                let mainDoc = data["mainDocId"] as! String
+//                let hospitalId = data["hospitalId"] as! String
+                let location = data["location"] as! String
+                let status = data["status"] as! String
+                let title = data["title"] as! String
+                let description = data["description"] as! String
                 
-                let stamp1 = data["appDateAndTime"] as? Timestamp
-                let startTime = stamp1?.dateValue()
+//                var tempDate: String = ""
+//                var tempTime: String = ""
+//                // convert dates
+//                DispatchQueue.main.async {
+//
+                var tempDate = data["date"] as! String
+                let tempTime = data["workingHours"] as! String
                 
-                let endTime = Calendar.current.date(byAdding: .minute, value: 30, to: startTime!)
                 
-                let stamp3 = data["appDateAndTime"] as? Timestamp
-                let aptDate = stamp3?.dateValue()
+//                let i = tempDate.firstIndex(of: "-")
+//                tempDate.remove(at: i)
+//                tempDate = tempDate.replacingOccurrences(of: "/", with: "-")
+//                let dates = tempDate.split(separator: " ")
+//
+//
+//                let endDate = dates[1].description.toDate(.isoDate)
+//                let startDate = dates[0].description.toDate(.isoDate)
+//
+//                 // extract time
+//                let j = tempTime.firstIndex(of: "-")
+//                tempTime.remove(at: j!)
+//                tempTime = tempTime.replacingOccurrences(of: "/", with: "-")
+//                let times = tempTime.split(separator: " ")
+//
+//                let startTime = String(times[1])
+//                let endTime = String(times[0])
+                
+//                let stamp1 = data["appDateAndTime"] as? Timestamp
+//                let startTime = stamp1?.dateValue()
+//
+//                let endTime = Calendar.current.date(byAdding: .minute, value: 30, to: startTime!)
+//
+//                let stamp3 = data["appDateAndTime"] as? Timestamp
+//                let aptDate = stamp3?.dateValue()
                 
                 var apt = retrievedAppointment()
                 
                 
-                apt.duration = duration
                 apt.type = type
-                apt.date = aptDate
+                apt.status = status
+                apt.title = title
+                apt.dateString = tempDate.replacingOccurrences(of: "/", with: "-")
+                apt.description = description
+                apt.timeString = tempTime
                 
-                apt.appointmentID = exact
                 apt.mainAppointmentID = mainDoc
-                apt.endTime = endTime
                 
-                apt.startTime = startTime
-                apt.hospitalID = hospitalId
-                apt.hName = hName
                 apt.hospitalLocation = location
                 
                 return apt
                 
             }
             
+            DispatchQueue.main.async {
+                for i in 0..<self.volunteeringOpp.count {
+                    self.volunteeringOpp[i].hName = self.getHospitalName(apt: self.volunteeringOpp[i])
+                }
+            }
+            
         }
         
-        return self.bloodAppointments
+        return self.volunteeringOpp
     }
 
-    
     func getUserOA() -> [retrievedAppointment] {
         olderOA.removeAll()
         futureOA.removeAll()
+        
         self.dateFormatter.dateFormat = "yyyy-MM-dd"
         self.dateFormatter.locale = Locale(identifier:"en_US_POSIX")
         let past = self.dateFormatter.string(from: (Date() - 7))
         let future = self.dateFormatter.string(from: (Date() + 7))
         
-        db.collection("volunteer").document(userID).collection("organAppointments").addSnapshotListener(includeMetadataChanges: true) { (querySnapshot, error) in
+        db.collection("volunteer").document(userID).collection("organAppointments").addSnapshotListener { (querySnapshot, error) in
             
             guard let documents = querySnapshot?.documents else {
                 print("no documents")
@@ -774,20 +911,22 @@ class VAppointments : ObservableObject {
                 
             }
             
+            for appointment in self.organAppointments {
+                let ogDate = self.dateFormatter.string(from: appointment.date!)
+                print(ogDate)
+
+                if(future < ogDate){
+                    self.futureOA.append(appointment)
+                }
+                
+                if(past > ogDate){
+                    self.olderOA.append(appointment)
+                }
+            }
+
         }
         
-        for appointment in organAppointments {
-            let ogDate = self.dateFormatter.string(from: appointment.date!)
-            
-            if(future < ogDate){
-                self.futureOA.append(appointment)
-            }
-            
-            if(past > ogDate){
-                self.olderOA.append(appointment)
-            }
-        }
-        
+                
         return self.organAppointments
     }
     
@@ -810,6 +949,52 @@ class VAppointments : ObservableObject {
                 filtered.append(contentsOf:
                                     self.bloodAppointments.filter {
                     return calender.isDate($0.date!, inSameDayAs: self.currentDay)
+                })
+                
+            }
+            
+            if(!self.volunteeringOpp.isEmpty){
+                
+//                for i in 0..<self.volunteeringOpp.count {
+//                    var tempDate = self.volunteeringOpp[i].dateString
+//                    let h = tempDate!.firstIndex(of: "-")
+//
+//                    tempDate!.remove(at: h!)
+//
+//                    tempDate = tempDate!.replacingOccurrences(of: "/", with: "-")
+//                    let dates = tempDate!.split(separator: " ")
+//
+//                    self.volunteeringOpp[i].endDate = dates[1].description.toDate(.isoDate)
+//                    self.volunteeringOpp[i].date = dates[0].description.toDate(.isoDate)
+//
+//                    // extract time
+//                    var tempTime = self.volunteeringOpp[i].timeString
+//                    let j = tempTime!.firstIndex(of: "-")
+//                    tempTime!.remove(at: j!)
+//                    tempTime = tempTime!.replacingOccurrences(of: "/", with: "-")
+//                    let times = tempTime!.split(separator: " ")
+//
+//                    self.volunteeringOpp[i].startTime = times[0].description.toDate(.isoDateTime)
+//                    self.volunteeringOpp[i].endTime = times[1].description.toDate(.isoDateTime)
+//                }
+                
+//                let i = 0
+                
+                filtered.append(contentsOf:
+                                    self.volunteeringOpp.filter {
+                    
+                    var tempDate = $0.dateString
+                    let h = tempDate!.firstIndex(of: "-")
+                    
+                    tempDate!.remove(at: h!)
+                    
+                    tempDate = tempDate!.replacingOccurrences(of: "/", with: "-")
+                    let dates = tempDate!.split(separator: " ")
+                    
+                    let endDate = dates[1].description.toDate(.isoDate)
+                    let date = dates[0].description.toDate(.isoDate) ?? Date()
+                    
+                    return calender.isDate(date, inSameDayAs: self.currentDay)
                 })
                 
             }
@@ -842,6 +1027,23 @@ class VAppointments : ObservableObject {
         print("current date is \(currentDate)")
         return currentDate
         
+    }
+    
+    func getHospitalName(apt: retrievedAppointment) -> String {
+        var name = ""
+        let doc = db.collection("volunteeringOpp").document(apt.mainAppointmentID!)
+        
+        doc.getDocument { (document, error) in
+            guard let document = document, document.exists else {
+                print("Document does not exist")
+                return
+            }
+            print("here")
+            let dataDescription = document.data()
+            name = dataDescription?["hospitalName"] as! String
+        }
+        
+        return name
     }
     
 }

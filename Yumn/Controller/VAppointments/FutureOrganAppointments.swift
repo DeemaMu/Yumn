@@ -136,10 +136,13 @@ struct FutureOrganAppointments: View {
                         Image(systemName: "x.circle.fill").foregroundColor(colorInvert).colorInvert()
                             .scaledToFit().font(.system(size: 17).bold())
                             .onTapGesture {
-                                
-                            }.padding(.trailing, 20)
+                                print("tapped")
+                                let x =
+                                config.hostingController?.parent as! futureAppointmensVC
+                                x.cancel(apt: apt)
+                            }
                         
-                    }.padding(.top, 3).padding(.bottom, 0)
+                    }.padding(.top, 3).padding(.bottom, 0).padding(.trailing, 20)
                 }
                 
                 Text(place + apt.hName!).font(Font.custom("Tajawal", size: 14)).foregroundColor(mainDark)
@@ -183,7 +186,7 @@ struct FutureOrganAppointments: View {
                     Spacer()
                     VStack(){
                         Spacer()
-                        self.editButton()
+                        self.editButton(apt: apt)
                     }.padding(.bottom, 5).padding(.leading, -3)
                 }
                 
@@ -216,10 +219,13 @@ struct FutureOrganAppointments: View {
     }
     
     @ViewBuilder
-    func editButton() -> some View {
+    func editButton(apt: retrievedAppointment) -> some View {
         Button(action: {
             let x =
             config.hostingController?.parent as! futureAppointmensVC
+            print("tapped")
+            x.editAppointment(apt: apt)
+
         }
         ) {
             Text("تعديل").font(Font.custom("Tajawal", size: 16))

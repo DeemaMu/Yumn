@@ -51,7 +51,7 @@ struct deleteAppointment: View {
                         } else {
                             let x =
                             config.hostingController?.parent as! futureAppointmensVC
-                            //                            x.cancel()
+                            x.cancelDelete()
                         }
                     }
                     ) {

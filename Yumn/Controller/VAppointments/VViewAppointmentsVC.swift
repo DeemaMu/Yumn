@@ -231,6 +231,14 @@ struct retrievedAppointment : Identifiable {
     var type: String?
     
     var organ: String?
+    
+    var status: String?
+    var title: String?
+    var endDate: Date?
+    var description: String?
+    var timeString: String?
+    var dateString: String?
+    
 }
 
 extension String {

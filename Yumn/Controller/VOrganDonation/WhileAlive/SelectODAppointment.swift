@@ -134,7 +134,6 @@ struct SelectODAppointment: View {
                                         odVM.currentDay = odVM.currentWeek[day]
                                     }
                                 }.onChange(of: selectedDate) { newValue in
-                                    empty = true
                                     aptVM.currentDay = newValue
                                     checkedIndex = -1
                                     DispatchQueue.main.async {
@@ -165,14 +164,7 @@ struct SelectODAppointment: View {
             Section{
                 
                 ScrollView(.vertical,  showsIndicators: false){
-                    ZStack(){
-                        if(empty){
-                            Text("لايوجد مواعيد متاحة لهذا التاريخ").font(Font.custom("Tajawal", size: 16))
-                                .foregroundColor(lightGray).padding(.top, 100).multilineTextAlignment(.center)
-                        }
-                        AppointmentsView()
-                        
-                    }
+                    AppointmentsView()
                 }.padding()
                 
             }
@@ -257,28 +249,37 @@ struct SelectODAppointment: View {
     
     // MARK: Appointments View
     func AppointmentsView() -> some View {
-        
-        LazyVStack(spacing: 20){
-            if let apts = aptVM.filteredAppointments {
-                
-                if apts.isEmpty {
-                    Text("لايوجد مواعيد متاحة لهذا التاريخ").font(Font.custom("Tajawal", size: 16))
-                        .foregroundColor(lightGray).padding(.top, 100).multilineTextAlignment(.center)
-                    
-                } else {
-                    ForEach(0..<apts.count, id: \.self){ index in
-                        AppoitmentCard(apt: apts[index], index: index)
+        ZStack(){
+            
+            if(empty){
+                Text("لايوجد مواعيد متاحة لهذا التاريخ").font(Font.custom("Tajawal", size: 16))
+                    .foregroundColor(lightGray).padding(.top, 100).multilineTextAlignment(.center)
+            }
+            
+                LazyVStack(spacing: 20){
+                    if let apts = aptVM.filteredAppointments {
+                        
+                        if apts.isEmpty {
+                            Text("لايوجد مواعيد متاحة لهذا التاريخ").font(Font.custom("Tajawal", size: 16))
+                                .foregroundColor(lightGray).padding(.top, 100).multilineTextAlignment(.center)
+                            
+                        } else {
+                            ForEach(0..<apts.count, id: \.self){ index in
+                                AppoitmentCard(apt: apts[index], index: index)
+                            }
+                        }
+                        
+                    } else {
+                        //MARK: Progress view
+                        ProgressView()
+                            .offset(y: 100).foregroundColor(mainDark)
                     }
+                }.frame(maxHeight: .infinity)
+                .onDisappear {
+                    empty = true
                 }
                 
-            } else {
-                //MARK: Progress view
-                ProgressView()
-                    .offset(y: 100).foregroundColor(mainDark)
             }
-        }.frame(maxHeight: .infinity)
-        
-        
     }
     
     @ViewBuilder
@@ -302,6 +303,9 @@ struct SelectODAppointment: View {
                         }
                     }.padding(.leading, 20)
                         .padding(.top, 3)
+                        .onAppear{
+                            empty = false
+                        }
                     
                     Spacer()
                     
@@ -360,8 +364,6 @@ struct SelectODAppointment: View {
                         showError = false
                         
                     }
-                }.onAppear{
-                    empty = false
                 }
                 .padding(.horizontal, 15)
                 .padding(.vertical, 5)
@@ -370,6 +372,8 @@ struct SelectODAppointment: View {
                 
             }
             
+        } else {
+
         }
         
     }

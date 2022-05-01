@@ -82,6 +82,8 @@ struct editAppointment: View {
                             x.bookAppointment()
                         } else {
                             //MARK: FROM FUTURE
+                            let x = config.hostingController?.parent as! futureAppointmensVC
+                                x.bookAppointment()
                         }
                        
                         
