@@ -44,7 +44,7 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
     let db = Firestore.firestore()
     
     // from segue
-    let VODocID = "4duFZ8QsjfxWDqzoRhpq"
+    let VODocID = "s1MR2pbNW4tO8njESfp7"
 
     
     // By Modhi
@@ -358,7 +358,7 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
                 }
                 
             }
-        
+        updateStatusInVolunteerDoc(status: "accepted", type: "current")
     }
     
     
@@ -392,6 +392,8 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
                 
             }
         
+        updateStatusInVolunteerDoc(status: "rejected", type: "current")
+        
     }
     
     
@@ -418,16 +420,13 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
         }
         
        
-        
-        
-        
-        
     // update status
         refToAppInOpp.updateData(["status": "attended"]) { (error) in
                 if error == nil {
-                    
+                    // maybe deleted
+                    self.acceptedApplicants.remove(at: self.clickedCellIndex)
                     // increase points
-                    points += 10
+                    points += 50
                     // update applicant points
                     print("points after addition \(points)")
                     ref.updateData(["points": points]) { (error) in
@@ -463,7 +462,11 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
                 
             }
         
-    }
+        updateStatusInVolunteerDoc(status: "attended", type: "accepted")
+        
+       
+        
+    }// end func
     
     
     
@@ -476,6 +479,8 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
         // DNAttend == did not attend
         refToAppInOpp.updateData(["status": "DNAttend"]) { (error) in
                 if error == nil {
+                    // maybe deleted
+                    self.acceptedApplicants.remove(at: self.clickedCellIndex)
                     
                     self.hidePopupAndBlurredView()
                     self.reloadCurrentTable()
@@ -494,8 +499,52 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
                 }
         }
             
-        
+        updateStatusInVolunteerDoc(status: "DNAttended", type: "accepted")
     }
+    
+    
+    func updateStatusInVolunteerDoc(status : String, type : String){
+        var docID = ""
+        
+        if type == "accepted"{
+            docID = acceptedApplicants[clickedCellIndex].uid}
+        else {
+            docID = currentApplicants[clickedCellIndex].uid
+        }
+        
+        let ref = db.collection("volunteer").document(docID)
+        
+        // update status in volunteer collection
+        ref.collection("volunteeringOpps").whereField("mainDocId", isEqualTo: VODocID).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                
+                
+                if querySnapshot!.documents.isEmpty == false {
+                    
+                for document in querySnapshot!.documents {
+                    
+                    ref.collection("volunteeringOpps").document(document.documentID).updateData([
+                        "status": status
+                    ]) { err in
+                        if let err = err {
+                            print("Error updating document: \(err)")
+                        } else {
+                            print("Document successfully updated")
+                        }
+                    }
+                   
+                    
+                } // end for
+            }
+                
+                
+            } // end else
+        }
+    }
+    
+    
     
     // nothing to change
     func addSegments(){
