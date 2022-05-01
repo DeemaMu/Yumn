@@ -245,9 +245,7 @@ struct retrievedAppointment : Identifiable {
     var title: String?
     var endDate: Date?
     var description: String?
-    var timeString: String?
-    var dateString: String?
-    
+    var timeString: String?    
 }
 
 extension String {

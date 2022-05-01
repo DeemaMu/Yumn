@@ -62,6 +62,24 @@ struct VAppointmentsView: View {
         "Sat":"السبت"
     ]
     
+    var vOppStatus: [String:String] =
+    [
+        "pending": "في الانتظار",
+        "accepted": "مقبول",
+        "rejected": "مرفوض",
+        "DNAttend": "لم يحضر",
+        "confirmed": "مؤكد"
+    ]
+    
+    var vOppStatusColor: [String:Color] =
+    [
+        "pending": Color(UIColor.lightGray),
+        "accepted": Color.green,
+        "rejected": Color.red,
+        "DNAttend": Color.red,
+        "confirmed": Color.green
+    ]
+    
     var arOrgan: [String?:String] =
     [
         "kidney":"كلية",
@@ -497,68 +515,54 @@ struct VAppointmentsView: View {
             Spacer()
             
             VStack(alignment: .leading, spacing: 5){
-//                let title = "موعد تبرع بالدم"
-                let place = "في "
-                
+                //                let title = "موعد تبرع بالدم"
                 HStack(){
                     Text(apt.title!).font(Font.custom("Tajawal", size: 17))
                         .foregroundColor(mainDark).padding(.bottom, 10).padding(.top, 10)
                     Spacer()
-//                    if(today < aptDate){
-//                        let colorInvert = Color(UIColor.init(named: "mainDark")!.inverted)
-//                        VStack(){
-//                            Image(systemName: "x.circle.fill").foregroundColor(colorInvert).colorInvert()
-//                                .scaledToFit().font(.system(size: 17).bold())
-//                                .onTapGesture {
-//                                    let x =
-//                                    config.hostingController?.parent as! VViewAppointmentsVC
-//                                    x.cancel(apt: apt)
-//                                }
-//
-//                        }.padding(.top, 0).padding(.bottom, 0)
-//
-//                    }
-//                    if(today >= aptDate){
-//                        let colorInvert = Color(UIColor.gray.inverted)
-//                        VStack(){
-//                            Image(systemName: "x.circle.fill").foregroundColor(colorInvert).colorInvert()
-//                                .scaledToFit().font(.system(size: 17).bold())
-//                        }.padding(.top, 0).padding(.bottom, 0)
-//
-//                    }
+
+                    VStack(){
+                        Text(vOppStatus[apt.status!]!).font(Font.custom("Tajawal", size: 12))
+                            .foregroundColor(vOppStatusColor[apt.status!]!)
+                        
+                        
+                    }.padding(.top, -20).padding(.bottom, 0)
+                    
+                    
                 }
-//                Text(place + apt.hName!).font(Font.custom("Tajawal", size: 14)).foregroundColor(mainDark)
+                
+                Text(apt.description!).font(Font.custom("Tajawal", size: 12)).foregroundColor(mainDark)
                 
                 HStack(){
                     
                     VStack(){
                         Image("location").resizable()
                             .scaledToFit()
-                    }.padding(.top, 10).padding(.bottom, 10)
+                    }.padding(.top, 6).padding(.bottom, 6)
                     Text(apt.hospitalLocation!).font(Font.custom("Tajawal", size: 12)).foregroundColor(mainDark)
-                        .padding(.trailing, 10).padding(.top, 4).padding(.leading, -5)
+                        .padding(.trailing, 15).padding(.top, 4).padding(.leading, -5)
                     
                     
                     VStack(){
                         Image("time").resizable()
                             .scaledToFit()
-                    }.padding(.top, 14).padding(.bottom, 14)
+                    }.padding(.top, 10).padding(.bottom, 10)
                     
                     Text("\(apt.timeString!)").font(Font.custom("Tajawal", size: 12))
                         .foregroundColor(mainDark).padding(.top, 7)
                     
                     Spacer()
                     
-//                    self.editButton(isFuture: (today < aptDate), apt: apt)
+                    //                    self.editButton(isFuture: (today < aptDate), apt: apt)
                     
                     
-                } .padding(.bottom, 5)
+                } .padding(.bottom, 5).frame(width: 230, height: 40, alignment: .leading)
                 
                 
                 
                 
             }.frame(maxWidth: .infinity, alignment: .leading)
-                .frame(height: 110)
+                .frame(minHeight: 110)
                 .padding(.horizontal, 10)
                 .padding(.top, 10)
             
@@ -570,7 +574,7 @@ struct VAppointmentsView: View {
             )
                 .fill(.white)
         )
-        .frame(height: 110, alignment: .center)
+        .frame(minHeight: 110, alignment: .center)
         .frame(maxWidth: .infinity)
         .shadow(color: shadowColor,
                 radius: 6, x: 0
@@ -659,15 +663,22 @@ struct VAppointmentsView: View {
                 return true;
             }
         }
-//        for index in 0..<(aptVM.volunteeringOpp.count){
-//            var tempDate = aptVM.volunteeringOpp[index].dateString
-//            let dates = tempDate![0..<10]
-//
-//            if(calender.isDate(dates.description.toDate(.isoDate)!, inSameDayAs: date)){
-//                thereIS.thereIs = true
-//                return true;
-//            }
-//        }
+        
+        var dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.locale = Locale(identifier:"en_US_POSIX")
+        let today = dateFormatter.string(from: date)
+        
+        for i in 0..<(aptVM.volunteeringOpp.count){
+            let aptDate = dateFormatter.string(from: aptVM.volunteeringOpp[i].date!)
+            let endDate = dateFormatter.string(from:  aptVM.volunteeringOpp[i].endDate!)
+            if(aptDate <= today && endDate >= today  ){
+                thereIS.thereIs = true
+                return true;
+                
+            }
+            
+        }
         
         
         return false;
@@ -779,46 +790,43 @@ class VAppointments : ObservableObject {
                 
                 let type = "volunteering"
                 let mainDoc = data["mainDocId"] as! String
-//                let hospitalId = data["hospitalId"] as! String
+                //                let hospitalId = data["hospitalId"] as! String
                 let location = data["location"] as! String
                 let status = data["status"] as! String
                 let title = data["title"] as! String
                 let description = data["description"] as! String
                 
-//                var tempDate: String = ""
-//                var tempTime: String = ""
-//                // convert dates
-//                DispatchQueue.main.async {
-//
-                var tempDate = data["date"] as! String
+                //                var tempDate: String = ""
+                //                var tempTime: String = ""
+                //                // convert dates
+                //                DispatchQueue.main.async {
+                //
                 let tempTime = data["workingHours"] as! String
                 
                 
-//                let i = tempDate.firstIndex(of: "-")
-//                tempDate.remove(at: i)
-//                tempDate = tempDate.replacingOccurrences(of: "/", with: "-")
-//                let dates = tempDate.split(separator: " ")
-//
-//
-//                let endDate = dates[1].description.toDate(.isoDate)
-//                let startDate = dates[0].description.toDate(.isoDate)
-//
-//                 // extract time
-//                let j = tempTime.firstIndex(of: "-")
-//                tempTime.remove(at: j!)
-//                tempTime = tempTime.replacingOccurrences(of: "/", with: "-")
-//                let times = tempTime.split(separator: " ")
-//
-//                let startTime = String(times[1])
-//                let endTime = String(times[0])
+                //                let i = tempDate.firstIndex(of: "-")
+                //                tempDate.remove(at: i)
+                //                tempDate = tempDate.replacingOccurrences(of: "/", with: "-")
+                //                let dates = tempDate.split(separator: " ")
+                //
+                //
+                //                let endDate = dates[1].description.toDate(.isoDate)
+                //                let startDate = dates[0].description.toDate(.isoDate)
+                //
+                //                 // extract time
+                //                let j = tempTime.firstIndex(of: "-")
+                //                tempTime.remove(at: j!)
+                //                tempTime = tempTime.replacingOccurrences(of: "/", with: "-")
+                //                let times = tempTime.split(separator: " ")
+                //
+                //                let startTime = String(times[1])
+                //                let endTime = String(times[0])
                 
-//                let stamp1 = data["appDateAndTime"] as? Timestamp
-//                let startTime = stamp1?.dateValue()
-//
-//                let endTime = Calendar.current.date(byAdding: .minute, value: 30, to: startTime!)
-//
-//                let stamp3 = data["appDateAndTime"] as? Timestamp
-//                let aptDate = stamp3?.dateValue()
+                let stamp1 = data["start_date"] as? Timestamp
+                let startTime = stamp1?.dateValue()
+                
+                let stamp2 = data["end_date"] as? Timestamp
+                let endTime = stamp2?.dateValue()
                 
                 var apt = retrievedAppointment()
                 
@@ -826,9 +834,10 @@ class VAppointments : ObservableObject {
                 apt.type = type
                 apt.status = status
                 apt.title = title
-                apt.dateString = tempDate.replacingOccurrences(of: "/", with: "-")
                 apt.description = description
                 apt.timeString = tempTime
+                apt.endDate = endTime
+                apt.date = startTime
                 
                 apt.mainAppointmentID = mainDoc
                 
@@ -848,7 +857,7 @@ class VAppointments : ObservableObject {
         
         return self.volunteeringOpp
     }
-
+    
     func getUserOA() -> [retrievedAppointment] {
         olderOA.removeAll()
         futureOA.removeAll()
@@ -914,7 +923,7 @@ class VAppointments : ObservableObject {
             for appointment in self.organAppointments {
                 let ogDate = self.dateFormatter.string(from: appointment.date!)
                 print(ogDate)
-
+                
                 if(future < ogDate){
                     self.futureOA.append(appointment)
                 }
@@ -923,10 +932,10 @@ class VAppointments : ObservableObject {
                     self.olderOA.append(appointment)
                 }
             }
-
+            
         }
         
-                
+        
         return self.organAppointments
     }
     
@@ -934,6 +943,7 @@ class VAppointments : ObservableObject {
     func filteringAppointments() -> [retrievedAppointment] {
         let calender = Calendar.current
         var filtered = [retrievedAppointment]()
+        
         DispatchQueue.global(qos: .userInteractive).async {
             
             if(!self.organAppointments.isEmpty){
@@ -954,48 +964,29 @@ class VAppointments : ObservableObject {
             }
             
             if(!self.volunteeringOpp.isEmpty){
+                self.dateFormatter.dateFormat = "yyyy-MM-dd"
+                self.dateFormatter.locale = Locale(identifier:"en_US_POSIX")
+                let today = self.dateFormatter.string(from: self.currentDay)
                 
-//                for i in 0..<self.volunteeringOpp.count {
-//                    var tempDate = self.volunteeringOpp[i].dateString
-//                    let h = tempDate!.firstIndex(of: "-")
-//
-//                    tempDate!.remove(at: h!)
-//
-//                    tempDate = tempDate!.replacingOccurrences(of: "/", with: "-")
-//                    let dates = tempDate!.split(separator: " ")
-//
-//                    self.volunteeringOpp[i].endDate = dates[1].description.toDate(.isoDate)
-//                    self.volunteeringOpp[i].date = dates[0].description.toDate(.isoDate)
-//
-//                    // extract time
-//                    var tempTime = self.volunteeringOpp[i].timeString
-//                    let j = tempTime!.firstIndex(of: "-")
-//                    tempTime!.remove(at: j!)
-//                    tempTime = tempTime!.replacingOccurrences(of: "/", with: "-")
-//                    let times = tempTime!.split(separator: " ")
-//
-//                    self.volunteeringOpp[i].startTime = times[0].description.toDate(.isoDateTime)
-//                    self.volunteeringOpp[i].endTime = times[1].description.toDate(.isoDateTime)
-//                }
+                for i in 0..<self.volunteeringOpp.count {
+                    let aptDate = self.dateFormatter.string(from: self.volunteeringOpp[i].date!)
+                    let endDate = self.dateFormatter.string(from:  self.volunteeringOpp[i].endDate!)
+                    print(aptDate)
+                    print(today)
+                    if(aptDate <= today && endDate >= today  ){
+                        filtered.append( self.volunteeringOpp[i])
+                    }
+                }
                 
-//                let i = 0
-                
-                filtered.append(contentsOf:
-                                    self.volunteeringOpp.filter {
-                    
-                    var tempDate = $0.dateString
-                    let h = tempDate!.firstIndex(of: "-")
-                    
-                    tempDate!.remove(at: h!)
-                    
-                    tempDate = tempDate!.replacingOccurrences(of: "/", with: "-")
-                    let dates = tempDate!.split(separator: " ")
-                    
-                    let endDate = dates[1].description.toDate(.isoDate)
-                    let date = dates[0].description.toDate(.isoDate) ?? Date()
-                    
-                    return calender.isDate(date, inSameDayAs: self.currentDay)
-                })
+                //                filtered.append(contentsOf:
+                //                                    self.volunteeringOpp.filter {
+                //
+                //                    let aptDate = self.dateFormatter.string(from: $0.date!)
+                //                    let endDate = self.dateFormatter.string(from: $0.endDate!)
+                //                    print(aptDate)
+                //                    print(today)
+                //                    return (today < aptDate)
+                //                })
                 
             }
             
