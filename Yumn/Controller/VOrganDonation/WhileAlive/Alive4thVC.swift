@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import SwiftUI
+import Combine
 
 class Alive4thVC: UIViewController {
         
@@ -23,6 +24,11 @@ class Alive4thVC: UIViewController {
             
     @IBOutlet weak var thankYouPopup: UIView!
     @IBOutlet weak var innerThanks: UIView!
+    
+      
+    var cancellables: Set<AnyCancellable> = []
+      
+    struct SubscriptionID: Hashable {}
     
     override func viewDidLoad() {
         
@@ -92,6 +98,13 @@ class Alive4thVC: UIViewController {
         popupView.isHidden = false
         blackBlurredView.isHidden = false
         
+//
+//        FirestoreSubscription.subscribe(id: SubscriptionID(), docPath: "labels/title")
+//              .compactMap(FirestoreDecoder.decode(LabelDoc.self))
+//              .receive(on: DispatchQueue.main)
+//              .map(\LabelDoc.value)
+//              .store(in: &cancellables)
+        
         let configuration = Configuration()
         let controller = UIHostingController(rootView: ConfirmAppointmentPopUp(config: configuration, appointment: apt, exact: exact))
         // injects here, because `configuration` is a reference !!
@@ -125,6 +138,17 @@ class Alive4thVC: UIViewController {
         innerThanks.addSubview(controller.view)
     }
     
+    func fail(){
+        blackBlurredView.superview?.sendSubviewToBack(blackBlurredView)
+        popupView.superview?.sendSubviewToBack(popupView)
+        popupView.isHidden = true
+        blackBlurredView.isHidden = true
+        components().showToast(message: "حدث خطأ في اضافة الموعد. الرجاء المحاولة لاحقًا.", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn")!, viewC: self)
+        innerPopUp.removeSubviews()
+    }
+    
+
+    
     func thankYou(){
         performSegue(withIdentifier: "wrapToHome", sender: nil)
     }
@@ -132,3 +156,46 @@ class Alive4thVC: UIViewController {
 }
 
 
+import Combine
+import FirebaseFirestore
+
+struct FirestoreSubscription {
+  static func subscribe(id: AnyHashable, docPath: String) -> AnyPublisher<DocumentSnapshot, Never> {
+    let subject = PassthroughSubject<DocumentSnapshot, Never>()
+    
+    let docRef = Firestore.firestore().document(docPath)
+    let listener = docRef.addSnapshotListener { snapshot, _ in
+      if let snapshot = snapshot {
+        subject.send(snapshot)
+      }
+    }
+    
+    listeners[id] = Listener(document: docRef, listener: listener, subject: subject)
+    
+    return subject.eraseToAnyPublisher()
+  }
+  
+  static func cancel(id: AnyHashable) {
+    listeners[id]?.listener.remove()
+    listeners[id]?.subject.send(completion: .finished)
+    listeners[id] = nil
+  }
+}
+
+private var listeners: [AnyHashable: Listener] = [:]
+private struct Listener {
+  let document: DocumentReference
+  let listener: ListenerRegistration
+  let subject: PassthroughSubject<DocumentSnapshot, Never>
+}
+
+//
+import Firebase
+
+struct FirestoreDecoder {
+    static func decode<T>(_ type: [String : Any]?) -> (DocumentSnapshot) -> T where T: Decodable {
+        { snapshot in
+            try! snapshot.data() as [String : Any]? as! T
+        }
+    }
+}

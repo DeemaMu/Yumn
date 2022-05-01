@@ -289,9 +289,9 @@ struct SelectODAppointment: View {
         
         if(!mini.isEmpty){
             
-            let currentA = mini[0]
+            let currentA = mini[apt.docID]
             
-            if(odVM.checkIfFree(doc: apt, exactID: currentA.docID)) {
+            if(odVM.checkIfFree(doc: apt, exactID: currentA![0].docID)) {
                 
                 HStack(){
                     VStack(alignment: .leading){
@@ -328,7 +328,7 @@ struct SelectODAppointment: View {
                 }.onChange(of: checkedIndex){ newValue in
                     if(newValue == index){
                         DispatchQueue.main.async {
-                            aptVM.filteredAppointments[index].appointments = aptVM.fetchAppointmentsData2(docID: apt.docID)
+                            aptVM.filteredAppointments[index].appointments = mini[apt.docID]
                             
                         }
                         

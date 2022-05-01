@@ -47,7 +47,7 @@ struct ConfirmAppointmentPopUp: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: false){
             VStack(spacing: 20){
-                Text("تأكيد الموعد").font(Font.custom("Tajawal", size: 14))
+                Text(("تأكيد الموعد")).font(Font.custom("Tajawal", size: 14))
                     .foregroundColor(mainLight).fontWeight(.semibold)
                 
                 VStack(spacing: 15){
@@ -116,6 +116,12 @@ struct ConfirmAppointmentPopUp: View {
                                     }
                                 }
                             }else{
+                                let x =
+                                config.hostingController?.parent as! Alive4thVC
+                                x.fail()
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                                    listener?.remove()
+                                }
                                 print("failed")
                             }
                         }

@@ -8,6 +8,8 @@ class AppointmentVM: ObservableObject {
     @Published var filteredAppointments: [OrganAppointment] = [OrganAppointment]()
     @Published var added = true
     @Published var appointmentsWithin = [DAppointment]()
+    @Published var appointmentsWithin2 = [String: [DAppointment]]()
+
     
     init() {
             self.fetchOrganAppointments()
@@ -127,16 +129,21 @@ class AppointmentVM: ObservableObject {
         return self.appointmentsWithin
     }
     
-    func fetchAppointmentsData2(docID: String) -> [DAppointment] {
+    func fetchAppointmentsData2(docID: String) -> [String: [DAppointment]] {
+        var appointment = [DAppointment]()
+        var appointments = [DAppointment]()
+        var appointmentID = ""
+        
         db.collection("appointments").document(docID).collection("appointments").addSnapshotListener { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
                 print("no documents")
                 return
             }
             
-            self.appointmentsWithin = documents.map { (queryDocumentSnapshot) -> DAppointment in
+            appointment = documents.map { (queryDocumentSnapshot) -> DAppointment in
                 let data = queryDocumentSnapshot.data()
                 let id = queryDocumentSnapshot.documentID
+                let appointmentID = queryDocumentSnapshot.documentID
                 let type = data["type"] as? String ?? ""
                 let donor = data["donor"] as? String ?? ""
                 let hName = data["hospital"] as? String ?? ""
@@ -151,12 +158,14 @@ class AppointmentVM: ObservableObject {
                 
                 var apt = DAppointment(type: type, startTime: startTime, endTime: endTime, donor: donor, hName: hName, confirmed: confirmed, booked: booked)
                 apt.docID = id
+                appointments.append(apt)
                 return apt
             }
+            
+            self.appointmentsWithin2.updateValue(appointments, forKey: docID)
         }
         
-        
-        return self.appointmentsWithin
+        return self.appointmentsWithin2
     }
     
     
