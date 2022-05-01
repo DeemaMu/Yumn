@@ -290,7 +290,7 @@ struct SelectODAppointment: View {
         if(!mini.isEmpty){
             
             let currentA = mini[apt.docID]
-            
+            if(currentA != nil){
             if(odVM.checkIfFree(doc: apt, exactID: currentA![0].docID)) {
                 
                 HStack(){
@@ -371,7 +371,7 @@ struct SelectODAppointment: View {
                 
                 
             }
-            
+            }
         } else {
 
         }
