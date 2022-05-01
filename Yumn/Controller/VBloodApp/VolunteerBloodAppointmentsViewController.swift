@@ -166,13 +166,12 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
         
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        
         dateFormatter.dateFormat = "yyyy/MM/dd"
         let currentDate = dateFormatter.string(from: Date())
         print("current date is \(currentDate)")
-                
+        let currentDateAR = currentDate.convertedDigitsToLocale(Locale(identifier: "AR"))
 
-        db.collection("volunteer").document(userID).collection("bloodAppointments").whereField("date", isGreaterThanOrEqualTo: currentDate).getDocuments() { (querySnapshot, err) in
+        db.collection("volunteer").document(userID).collection("bloodAppointments").whereField("date", isGreaterThanOrEqualTo: currentDateAR).getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -220,11 +219,11 @@ class VolunteerBloodAppointmensViewController: UIViewController, CustomSegmented
         dateFormatter.dateFormat = "yyyy/MM/dd"
         let currentDate = dateFormatter.string(from: Date())
         print("current date is \(currentDate)")
-        
+        let currentDateAR = currentDate.convertedDigitsToLocale(Locale(identifier: "AR"))
        
                 
 
-        db.collection("volunteer").document(userID).collection("bloodAppointments").whereField("date", isLessThan: currentDate).getDocuments() { (querySnapshot, err) in
+        db.collection("volunteer").document(userID).collection("bloodAppointments").whereField("date", isLessThan: currentDateAR).getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
@@ -644,7 +643,9 @@ extension VolunteerBloodAppointmensViewController: UITableViewDataSource {
     
     func checkTime(time : String) -> String{
         
-        let str = time.prefix(2)
+        let timeEN = time.convertedDigitsToLocale(Locale(identifier: "EN"))
+        
+        let str = timeEN.prefix(2)
         var morningOrEvening : String = ""
         if Double(str)! < 12 {
             

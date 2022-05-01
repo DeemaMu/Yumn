@@ -40,9 +40,7 @@ class updateBloodShortageVC: UIViewController {
     }
 
     @IBAction func saveBloodShBtn(_ sender: UIButton) {
-        // delete it
-
-        // write code to get the first doc of bloodshortage
+   
         let userRef = db.collection(Constants.FStore.hospitalCollection).document(user!.uid)
 
            userRef.updateData([
@@ -255,7 +253,7 @@ extension updateBloodShortageVC : UITableViewDataSource {
         return cell
     }
 
-    @objc // updated
+    @objc
     func decreaseValue(sender: UIButton){
 
         // when button with tag # is clicked decrease lblValue with tag #
@@ -275,7 +273,7 @@ extension updateBloodShortageVC : UITableViewDataSource {
     }
 
 
-    @objc // updated
+    @objc
     func increaseValue( sender: UIButton){
 
         // when button with tag # is clicked increase lblValue with tag #
