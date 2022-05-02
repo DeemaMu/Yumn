@@ -67,11 +67,11 @@
 		B97A380227BA9EA000718079 /* BloodDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A380127BA9EA000718079 /* BloodDonationViewController.swift */; };
 		B99C2724281C226200EAC439 /* OlderOrganAppointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99C2723281C226200EAC439 /* OlderOrganAppointments.swift */; };
 		B99C2726281C227700EAC439 /* FutureOrganAppointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99C2725281C227700EAC439 /* FutureOrganAppointments.swift */; };
-		B99C272A281C888200EAC439 /* editAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99C2729281C888200EAC439 /* editAppointment.swift */; };
-		B99C272C281C98EC00EAC439 /* deleteAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99C272B281C98EC00EAC439 /* deleteAppointment.swift */; };
+		B99C272A281C888200EAC439 /* EditAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99C2729281C888200EAC439 /* EditAppointment.swift */; };
+		B99C272C281C98EC00EAC439 /* DeleteAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99C272B281C98EC00EAC439 /* DeleteAppointment.swift */; };
 		B9AC66222819E7880013301B /* VViewAppointmentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC66212819E7880013301B /* VViewAppointmentsVC.swift */; };
 		B9AC66242819E90E0013301B /* VAppointmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC66232819E90E0013301B /* VAppointmentsView.swift */; };
-		B9AC6626281AF4AC0013301B /* olderAppointmentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC6625281AF4AB0013301B /* olderAppointmentsVC.swift */; };
+		B9AC6626281AF4AC0013301B /* OlderAppointmentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC6625281AF4AB0013301B /* OlderAppointmentsVC.swift */; };
 		B9AC6628281B1AE80013301B /* volunteerVOpp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC6627281B1AE80013301B /* volunteerVOpp.swift */; };
 		B9AC662A281B1B6C0013301B /* ViewApplicantsViewController.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC6629281B1B6B0013301B /* ViewApplicantsViewController.swift.swift */; };
 		B9AC662C281B1BA10013301B /* ViewOppOfAVolunteerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC662B281B1BA10013301B /* ViewOppOfAVolunteerViewController.swift */; };
@@ -84,7 +84,7 @@
 		B9AC663A281B2EBC0013301B /* currentApplicantTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9AC6638281B2EBC0013301B /* currentApplicantTableViewCell.xib */; };
 		B9AC663D281B2EF20013301B /* acceptedApplicantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC663B281B2EF20013301B /* acceptedApplicantTableViewCell.swift */; };
 		B9AC663E281B2EF20013301B /* acceptedApplicantTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9AC663C281B2EF20013301B /* acceptedApplicantTableViewCell.xib */; };
-		B9AC6640281B582A0013301B /* futureAppointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC663F281B582A0013301B /* futureAppointments.swift */; };
+		B9AC6640281B582A0013301B /* FutureAppointmentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC663F281B582A0013301B /* FutureAppointmentsVC.swift */; };
 		B9AD3F2A27E2CF81001AB734 /* ManageAppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD3F2927E2CF81001AB734 /* ManageAppointmentsViewController.swift */; };
 		B9AD3F3027E335B3001AB734 /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD3F2F27E335B3001AB734 /* DateValue.swift */; };
 		B9B3143B2815BAB000C62981 /* AODInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3143A2815BAB000C62981 /* AODInstructions.swift */; };
@@ -98,7 +98,6 @@
 		B9DA61DC27C1100B00359487 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DA61DB27C1100B00359487 /* Location.swift */; };
 		B9DDAE8A281742A80001149C /* Alive4thVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DDAE89281742A80001149C /* Alive4thVC.swift */; };
 		B9DDAE8C281753300001149C /* SelectODAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DDAE8B281753300001149C /* SelectODAppointment.swift */; };
-		B9DDAE8E281835690001149C /* PLACEHOLDER.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DDAE8D281835680001149C /* PLACEHOLDER.swift */; };
 		B9DDAE9028188D9B0001149C /* ConfirmAppointmentPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DDAE8F28188D990001149C /* ConfirmAppointmentPopUp.swift */; };
 		D195443427D4996700B03DFF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D195443327D4996600B03DFF /* ViewController.swift */; };
 		D195443627D4998F00B03DFF /* bloodShortageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D195443527D4998F00B03DFF /* bloodShortageViewController.swift */; };
@@ -190,11 +189,11 @@
 		B97A380127BA9EA000718079 /* BloodDonationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationViewController.swift; sourceTree = "<group>"; };
 		B99C2723281C226200EAC439 /* OlderOrganAppointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OlderOrganAppointments.swift; sourceTree = "<group>"; };
 		B99C2725281C227700EAC439 /* FutureOrganAppointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureOrganAppointments.swift; sourceTree = "<group>"; };
-		B99C2729281C888200EAC439 /* editAppointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editAppointment.swift; sourceTree = "<group>"; };
-		B99C272B281C98EC00EAC439 /* deleteAppointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deleteAppointment.swift; sourceTree = "<group>"; };
+		B99C2729281C888200EAC439 /* EditAppointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAppointment.swift; sourceTree = "<group>"; };
+		B99C272B281C98EC00EAC439 /* DeleteAppointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAppointment.swift; sourceTree = "<group>"; };
 		B9AC66212819E7880013301B /* VViewAppointmentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VViewAppointmentsVC.swift; sourceTree = "<group>"; };
 		B9AC66232819E90E0013301B /* VAppointmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VAppointmentsView.swift; sourceTree = "<group>"; };
-		B9AC6625281AF4AB0013301B /* olderAppointmentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = olderAppointmentsVC.swift; sourceTree = "<group>"; };
+		B9AC6625281AF4AB0013301B /* OlderAppointmentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OlderAppointmentsVC.swift; sourceTree = "<group>"; };
 		B9AC6627281B1AE80013301B /* volunteerVOpp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = volunteerVOpp.swift; sourceTree = "<group>"; };
 		B9AC6629281B1B6B0013301B /* ViewApplicantsViewController.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewApplicantsViewController.swift.swift; sourceTree = "<group>"; };
 		B9AC662B281B1BA10013301B /* ViewOppOfAVolunteerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOppOfAVolunteerViewController.swift; sourceTree = "<group>"; };
@@ -207,7 +206,7 @@
 		B9AC6638281B2EBC0013301B /* currentApplicantTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = currentApplicantTableViewCell.xib; sourceTree = "<group>"; };
 		B9AC663B281B2EF20013301B /* acceptedApplicantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = acceptedApplicantTableViewCell.swift; sourceTree = "<group>"; };
 		B9AC663C281B2EF20013301B /* acceptedApplicantTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = acceptedApplicantTableViewCell.xib; sourceTree = "<group>"; };
-		B9AC663F281B582A0013301B /* futureAppointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = futureAppointments.swift; sourceTree = "<group>"; };
+		B9AC663F281B582A0013301B /* FutureAppointmentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureAppointmentsVC.swift; sourceTree = "<group>"; };
 		B9AD3F2927E2CF81001AB734 /* ManageAppointmentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageAppointmentsViewController.swift; sourceTree = "<group>"; };
 		B9AD3F2F27E335B3001AB734 /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
 		B9B3143A2815BAB000C62981 /* AODInstructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AODInstructions.swift; sourceTree = "<group>"; };
@@ -221,7 +220,6 @@
 		B9DA61DB27C1100B00359487 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		B9DDAE89281742A80001149C /* Alive4thVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alive4thVC.swift; sourceTree = "<group>"; };
 		B9DDAE8B281753300001149C /* SelectODAppointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectODAppointment.swift; sourceTree = "<group>"; };
-		B9DDAE8D281835680001149C /* PLACEHOLDER.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PLACEHOLDER.swift; sourceTree = "<group>"; };
 		B9DDAE8F28188D990001149C /* ConfirmAppointmentPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmAppointmentPopUp.swift; sourceTree = "<group>"; };
 		D195443327D4996600B03DFF /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D195443527D4998F00B03DFF /* bloodShortageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bloodShortageViewController.swift; sourceTree = "<group>"; };
@@ -286,7 +284,6 @@
 				B9533EFA2810D1BC00485482 /* WhileAlive */,
 				B9BAC6E8280E0C8B001489A1 /* AfterDeath */,
 				D19B1B5227E95FCB00CB3FFA /* OrganDonationViewController.swift */,
-				B9DDAE8D281835680001149C /* PLACEHOLDER.swift */,
 			);
 			path = VOrganDonation;
 			sourceTree = "<group>";
@@ -478,12 +475,12 @@
 			children = (
 				B9AC66212819E7880013301B /* VViewAppointmentsVC.swift */,
 				B9AC66232819E90E0013301B /* VAppointmentsView.swift */,
-				B9AC6625281AF4AB0013301B /* olderAppointmentsVC.swift */,
-				B9AC663F281B582A0013301B /* futureAppointments.swift */,
+				B9AC6625281AF4AB0013301B /* OlderAppointmentsVC.swift */,
+				B9AC663F281B582A0013301B /* FutureAppointmentsVC.swift */,
 				B99C2723281C226200EAC439 /* OlderOrganAppointments.swift */,
 				B99C2725281C227700EAC439 /* FutureOrganAppointments.swift */,
-				B99C2729281C888200EAC439 /* editAppointment.swift */,
-				B99C272B281C98EC00EAC439 /* deleteAppointment.swift */,
+				B99C2729281C888200EAC439 /* EditAppointment.swift */,
+				B99C272B281C98EC00EAC439 /* DeleteAppointment.swift */,
 			);
 			path = VAppointments;
 			sourceTree = "<group>";
@@ -733,15 +730,14 @@
 			files = (
 				959A52CD27E88883002244A0 /* applyPopup.swift in Sources */,
 				95EED9CD27E682DB009AFDAC /* VolunteeringOpp.swift in Sources */,
-				B9DDAE8E281835690001149C /* PLACEHOLDER.swift in Sources */,
 				D195443A27D499C700B03DFF /* bloodChartViewController.swift in Sources */,
 				B91DD29427E9976200BA9881 /* PopupAddForm.swift in Sources */,
-				B99C272A281C888200EAC439 /* editAppointment.swift in Sources */,
+				B99C272A281C888200EAC439 /* EditAppointment.swift in Sources */,
 				D195444227D49A1700B03DFF /* bloodShortage.swift in Sources */,
 				B96EABA5281DD919004AD51E /* AppointmentManager.swift in Sources */,
 				95EED9CB27E6602C009AFDAC /* VOCollectionViewCell.swift in Sources */,
 				B94CB968280EB8B00088470D /* AfterDeathODSecondController.swift in Sources */,
-				B9AC6640281B582A0013301B /* futureAppointments.swift in Sources */,
+				B9AC6640281B582A0013301B /* FutureAppointmentsVC.swift in Sources */,
 				D195443627D4998F00B03DFF /* bloodShortageViewController.swift in Sources */,
 				B91DD29827E9BA9200BA9881 /* popupAddFormOrgan.swift in Sources */,
 				D195444827D49A3900B03DFF /* totalOrgansShortage.swift in Sources */,
@@ -769,7 +765,7 @@
 				959A52D127E8A41F002244A0 /* editVolunteeringOpp.swift in Sources */,
 				B9AC6636281B2E520013301B /* applicant.swift in Sources */,
 				B9B3143F2815FB8400C62981 /* AODHospitalList.swift in Sources */,
-				B99C272C281C98EC00EAC439 /* deleteAppointment.swift in Sources */,
+				B99C272C281C98EC00EAC439 /* DeleteAppointment.swift in Sources */,
 				B99C2724281C226200EAC439 /* OlderOrganAppointments.swift in Sources */,
 				D19B1B4B27E95F1000CB3FFA /* currentBldAppCell.swift in Sources */,
 				B9D831C72818BDF40023CBC5 /* ThankYouPopup.swift in Sources */,
@@ -805,7 +801,7 @@
 				8D7F152727D25F3B00E1EB1A /* SignInViewController.swift in Sources */,
 				B97A380227BA9EA000718079 /* BloodDonationViewController.swift in Sources */,
 				D19B1B4927E95EE500CB3FFA /* BloodAppointment.swift in Sources */,
-				B9AC6626281AF4AC0013301B /* olderAppointmentsVC.swift in Sources */,
+				B9AC6626281AF4AC0013301B /* OlderAppointmentsVC.swift in Sources */,
 				B9DA61DC27C1100B00359487 /* Location.swift in Sources */,
 				954F2DB327E80C4100A3DFB1 /* ViewVolunteeringOpportunities.swift in Sources */,
 				8D7F152227D25DD200E1EB1A /* GIfCode.swift in Sources */,
