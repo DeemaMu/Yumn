@@ -41,18 +41,6 @@ struct AfterDeathOrganSelection: View {
     
     @State var unwrappedOrgans: [String] = []
     
-    var selected = [
-        "الكلى": false,
-        "الكبد":false,
-        "الرئتين":false,
-        "البنكرياس":false,
-        "القلب":false,
-        "الامعاء":false,
-        "العظام":false,
-        "نخاع العظم":false,
-        "الجلد":false,
-        "القرنيات":false,
-    ]
     
     @State var checked = false
     
@@ -94,11 +82,15 @@ struct AfterDeathOrganSelection: View {
                     .foregroundColor(.red)
             }
             
-            
+            // Save Selection Button
             Button(action: {
+                // check if user has at least selected one organ to donate
+                // if not, display error
                 if(self.checkSelection()){
+                    // Save Array of selected organs
                     self.changeOrgans()
                     showError = false
+                    // Display confirmation message from the controller
                     let x =
                     config.hostingController?.parent as! AfterDeathODSecondController
                     x.showConfirmationMessage(selected: self.organsVM.selected, donor: self.donor)
@@ -120,6 +112,7 @@ struct AfterDeathOrganSelection: View {
                     .fill(mainDark)
             )
             .frame(width: 230, height: 59, alignment: .center)
+            
         }.onAppear(){
             self.getUser()
         }
@@ -153,6 +146,7 @@ struct AfterDeathOrganSelection: View {
                 , y:  self.organsVM.selected[organ]! ? 0 : 6)
     }
     
+    // On organ selected, change it value and hide error message
     func buttonPressed(organ: String){
         self.organsVM.selected[organ]?.toggle()
         for organ in self.organsVM.selected {
@@ -255,6 +249,7 @@ struct RadioButton: View {
     }
 }
 
+// Object to keep track of organs selected
 class OrgansVM: ObservableObject {
     @Published var selected = [
         "الكلى": false,
