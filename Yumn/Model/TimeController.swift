@@ -125,8 +125,7 @@ extension BloodDonationAppointmentViewController{
                                 self.sortedTimes = availableTimes
                                    // self.sortedTimes![0].selected = true
                                     
-                                    Constants.Globals.appointmentTimeArray = availableTimes
-                                    
+                                                                        
                                     //Constants.Globals.appointmentTimeArray![0].selected = true
                             
                             
@@ -134,7 +133,12 @@ extension BloodDonationAppointmentViewController{
                             print (self.sortedTimes)
                                     
                                    
+                                availableTimes =   availableTimes.sorted(by: { (b1: BloodDonationTime, b2: BloodDonationTime) -> Bool in
+                                    return b1.startTime < b2.startTime})
+                                
+                                Constants.Globals.appointmentTimeArray = availableTimes
 
+                                
                                 
                             DispatchQueue.main.async {
                                    self.timeTableView.reloadData()
@@ -142,24 +146,24 @@ extension BloodDonationAppointmentViewController{
                                 
                             }
                                 
-                                //if (self.sortedTimes != nil){
+                                if (self.sortedTimes != nil){
                                 
-                               // if (self.sortedTimes!.isEmpty){
+                                if (self.sortedTimes!.isEmpty){
                                     
-                                //    self.noAvailableAppointment.isHidden = false
+                                    self.noAvailableAppointment.isHidden = false
                                     
-                                 //   print ("show no app")
+                                    print ("show no app")
 
                                     
                                     
 
-                               // }
+                                }
                                 
-                               // else {
-                               //     self.noAvailableAppointment.isHidden = true
-                              //  }
+                                else {
+                                    self.noAvailableAppointment.isHidden = true
+                                }
                                 
-                            //}
+                            }
                             }
                             
                            
@@ -174,18 +178,19 @@ extension BloodDonationAppointmentViewController{
             }
     
 
-                }
+                
     
     
 }
         
-                
+}
 
         
-        
+        let availableTimes2 = availableTimes.sorted(by: { (b1: BloodDonationTime, b2: BloodDonationTime) -> Bool in
+            return b1.startTime < b2.startTime})
         
                 
-        return availableTimes
+        return availableTimes2
     }
 }
     

@@ -603,16 +603,38 @@ extension BloodDonationAppointmentViewController: UITableViewDataSource{
         
         // Time cell
         else{
+         let timeCell = tableView.dequeueReusableCell(withIdentifier: "TimeCell", for: indexPath) as! TimeCell
+           
             
+            /*
          //   self.sortedTimes = getAvailableAppointmentsTimes()
-            
+            let dateformat = DateFormatter()
+                   dateformat.dateFormat = "MM/dd/yyyy"
          
+            
+            var selectedDate = Date()
 
+            
+            //Make a method to get the selected date
+            for item in Constants.Globals.appointmentDateArray!{
+                
+                if (item.selected == true){
+                    selectedDate = item.date
+                }
+                    
+            }
+                
+            
+            let SDF =  dateformat.string(from: selectedDate)
+            
+            if (SDF == dateformat.string(from:(sortedTimes![indexPath.row].appDate! ))){
+                
+            
         
 
             
-            let timeCell = tableView.dequeueReusableCell(withIdentifier: "TimeCell", for: indexPath) as! TimeCell
-    
+            
+    */
 
             timeCell.timeSlotLabel.text! =  sortedTimes![indexPath.row].startTime + " - " + sortedTimes![indexPath.row].endTime
             
@@ -624,10 +646,10 @@ extension BloodDonationAppointmentViewController: UITableViewDataSource{
        
             
             
-            return timeCell
-        }
+       // }
 
-  
+        return timeCell}
+
 }
     
  
