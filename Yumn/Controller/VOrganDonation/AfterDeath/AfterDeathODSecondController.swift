@@ -137,7 +137,7 @@ class AfterDeathODSecondController: UIViewController {
             }
         }
         
-        if(saveDate()){
+        if(saveData()){
             let configuration = Configuration()
             let controller = UIHostingController(rootView: ThankYouPopup(config: configuration, controllerType: 2))
             // injects here, because `configuration` is a reference !!
@@ -148,7 +148,7 @@ class AfterDeathODSecondController: UIViewController {
         }
     }
     
-    func saveDate() -> Bool {
+    func saveData() -> Bool {
         var added = true
         let newDoc = db.collection("afterDeathDonors").document(userID)
         
