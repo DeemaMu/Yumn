@@ -137,32 +137,6 @@ struct ConfirmAppointmentPopUp: View {
                             }
                         })
                         
-                        
-                        //                        self.updateData { succuss in
-                        //                            if succuss {
-                        //                                print("lets goooo")
-                        //                                if(Constants.selected.edit){
-                        //                                    self.deleteDoc()
-                        //                                }
-                        //                                else {
-                        //                                    let x =
-                        //                                    config.hostingController?.parent as! Alive4thVC
-                        //                                    x.confirm()
-                        //                                    DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-                        //                                        listener?.remove()
-                        //                                    }
-                        //                                }
-                        //                            }else{
-                        //                                let x =
-                        //                                config.hostingController?.parent as! Alive4thVC
-                        //                                x.fail()
-                        //                                DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-                        //                                    listener?.remove()
-                        //                                }
-                        //                                print("failed")
-                        //                            }
-                        //                        }
-                        
                     }) {
                         Text("تأكيد").font(Font.custom("Tajawal", size: 16))
                             .foregroundColor(.white)
@@ -560,64 +534,6 @@ struct ConfirmAppointmentPopUp: View {
         return hospitalName
     }
     
-    //    func DeleteFromUser() -> Bool {
-    //        var success = true
-    //
-    //        let doc = db.collection("volunteer").document(userID).collection("organAppointments").document(exactID)
-    //
-    //        doc.getDocument {  (document, error) in
-    //
-    //            if ((document?.exists) != nil) {
-    //                doc.delete()
-    //
-    //           } else {
-    //              print("Document does not exist")
-    //           }
-    //
-    //
-    //        }
-    ////            .delete() { error in
-    ////
-    ////            if error == nil {
-    ////                success = true
-    ////            } else {
-    ////                print("\(String(describing: error))")
-    ////                success = false
-    ////            }
-    ////        }
-    //        return success
-    //    }
-    //
-    //    func DeleteFromAppointment(mainAppointmentId: String) -> Bool {
-    //        var success = true
-    //
-    //        let doc = db.collection("appointments").document(mainAppointmentId)
-    //
-    //        doc.updateData(["bookedAppointments": FieldValue.arrayRemove([Constants.selected.exactDoc])]) { error in
-    //            if (error == nil) {
-    //                success = true
-    //            } else {
-    //                print(error!)
-    //                success = false
-    //            }
-    //        }
-    //        return success
-    //    }
-    //    func DeleteFromInnerAppointment(appointmentID: String, mainAppointmentId: String) -> Bool {
-    //        var success = true
-    //
-    //        db.collection("appointments").document(mainAppointmentId).collection("appointments").document(appointmentID).setData(["booked":false, "donor": ""], merge: true) { error in
-    //
-    //            if error == nil {
-    //                success = true
-    //            } else {
-    //                print("\(String(describing: error))")
-    //                success = false
-    //            }
-    //        }
-    //
-    //        return success
-    //    }
 }
 
 //struct ConfirmAppointmentPopUp_Previews: PreviewProvider {

@@ -379,11 +379,11 @@ struct SelectODAppointment: View {
     }
     
     func appointmentsOnDate(date: Date) -> Bool {
-        //        var thereIs: Bool = false
         let calender = Calendar.current
         
         for index in 0..<(aptVM.organAppointments.count){
-            if(calender.isDate(aptVM.organAppointments[index].aptDate, inSameDayAs: date)){
+            if((calender.isDate(aptVM.organAppointments[index].aptDate, inSameDayAs: date))
+               && (aptVM.organAppointments[index].bookedAppointments?.isEmpty)!){
                 thereIS.thereIs = true
                 return true;
             }
