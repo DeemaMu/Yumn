@@ -347,8 +347,7 @@ struct PopupAddForm: View {
         let duration = 30.0
         let apList = createAppointmentList()
         
-        let apt = BloodAppointment(type: "blood", startTime: selectedDate, endTime: endDate, aptDate: date, hospital: Constants.UserInfo.userID, aptDuration: duration, donors: peoplePerA)
-        apt.appointments = apList
+        let apt = BloodAppointment(appointments: apList, type: "blood", startTime: selectedDate, endTime: endDate, aptDate: date, hospital: Constants.UserInfo.userID, aptDuration: duration, donors: peoplePerA)
         apt.bookedAppointments = [String]()
         aptVM.addData(apt: apt)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2 , execute: {
