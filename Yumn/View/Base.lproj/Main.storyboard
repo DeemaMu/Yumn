@@ -5502,6 +5502,93 @@
             </objects>
             <point key="canvasLocation" x="1955.072463768116" y="1630.5803571428571"/>
         </scene>
+        <!--Code View Controller-->
+        <scene sceneID="h9B-CS-7HH">
+            <objects>
+                <viewController storyboardIdentifier="QR" id="P15-L3-Qob" customClass="QRCodeViewController" customModule="Yumn" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Eya-vM-DBa">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" backIndicatorImage="arrow.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Nlw-lx-WZj">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="bgGrey"/>
+                                <color key="barTintColor" name="bgGrey"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" name="Tajawal-Medium" family="Tajawal Medium" pointSize="23"/>
+                                    <color key="textColor" name="mainLight"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="رمز QR" id="Zf9-a1-JIy">
+                                        <barButtonItem key="rightBarButtonItem" id="umy-LD-hHp">
+                                            <imageReference key="image" image="house.fill" catalog="system" symbolScale="large"/>
+                                            <color key="tintColor" name="mainLight"/>
+                                            <connections>
+                                                <action selector="onPressedBAck:" destination="P15-L3-Qob" id="gyd-rx-g8T"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SPA-32-PxR">
+                                <rect key="frame" x="32" y="126" width="350" height="712"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bottom2" translatesAutoresizingMaskIntoConstraints="NO" id="cv7-U1-VCT">
+                                        <rect key="frame" x="-128" y="472" width="606" height="241"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo3" translatesAutoresizingMaskIntoConstraints="NO" id="S0i-WC-ahn">
+                                        <rect key="frame" x="105" y="-128" width="347" height="416"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="المبلغ: " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F3S-7h-fzy">
+                                        <rect key="frame" x="32" y="425" width="269" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Tajawal-Medium" family="Tajawal Medium" pointSize="21"/>
+                                        <color key="textColor" name="textGrey"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dbQ-0F-Ctc">
+                                        <rect key="frame" x="60" y="125" width="232" height="232"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="test" translatesAutoresizingMaskIntoConstraints="NO" id="VeD-2R-Az8">
+                                        <rect key="frame" x="76" y="142" width="200" height="200"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="تم إنشاؤه في: " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CwJ-S1-NaY">
+                                        <rect key="frame" x="32" y="393" width="269" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Tajawal-Medium" family="Tajawal Medium" pointSize="21"/>
+                                        <color key="textColor" name="textGrey"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="Color"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="MSm-us-Mxj"/>
+                        <color key="backgroundColor" name="bgGrey"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="rfJ-xc-BlT"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="amount" destination="F3S-7h-fzy" id="PtF-LQ-MPq"/>
+                        <outlet property="backButton" destination="umy-LD-hHp" id="E91-ET-AzE"/>
+                        <outlet property="backgroundView" destination="SPA-32-PxR" id="qFT-iR-aEy"/>
+                        <outlet property="bottomImage" destination="cv7-U1-VCT" id="QTe-en-v58"/>
+                        <outlet property="dateCreated" destination="CwJ-S1-NaY" id="lQH-yY-1xa"/>
+                        <outlet property="qrImage" destination="VeD-2R-Az8" id="Suz-r4-MCF"/>
+                        <outlet property="squareGif" destination="dbQ-0F-Ctc" id="P4v-jO-vz3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="09W-yp-nGq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="586.95652173913049" y="96.428571428571431"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Hospital" width="500" height="500"/>
