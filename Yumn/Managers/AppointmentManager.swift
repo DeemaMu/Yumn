@@ -1,18 +1,22 @@
 import Foundation
 import Firebase
 import SwiftUI
+import Combine
 
 class AppointmentVM: ObservableObject {
     @Published var appointments = [Appointment]()
     @Published var organAppointments = [OrganAppointment]()
-    @Published var filteredAppointments: [OrganAppointment] = [OrganAppointment]()
+    @Published var bloodAppointments = [BloodAppointment]()
+    @Published var filteredAppointments: [BloodAppointment] = [BloodAppointment]()
     @Published var added = true
     @Published var appointmentsWithin = [DAppointment]()
     @Published var appointmentsWithin2 = [String: [DAppointment]]()
+    var BloodApppointmentsCancellable: AnyCancellable?
 
     
     init() {
-            self.fetchOrganAppointments()
+        self.fetchOrganAppointments()
+        self.fetchOrganAppointments()
     }
     
     let db = Firestore.firestore()
@@ -47,10 +51,11 @@ class AppointmentVM: ObservableObject {
                     let aptDuration = 30.0
                     let donors = data["donors"] as? Int ?? 0
                     
-                    var apt = BloodAppointment(appointments: appointments, type: type, startTime: startTime, endTime: endTime,
+                    var apt = BloodAppointment(type: type, startTime: startTime, endTime: endTime,
                                                aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, donors: donors)
                     
                     apt.bookedAppointments = bookedApts
+                    apt.appointments = appointments
                     
                     return apt
                 }
@@ -167,6 +172,117 @@ class AppointmentVM: ObservableObject {
         
         return self.appointmentsWithin2
     }
+    
+//    func fetchBloodAppointmentsData(docID: String) -> [DAppointment] {
+//        var appointment = [DAppointment]()
+//        var appointments = [DAppointment]()
+//
+//        self.db.collection("appointments").document(docID).collection("appointments").addSnapshotListener { (querySnapshot, error) in
+//            guard let documents = querySnapshot?.documents else {
+//                print("no documents")
+//                return
+//            }
+//
+//            self.BloodApppointmentsCancellable = Future<[DAppointment], Error> { promise in
+//                DispatchQueue.main.async {
+//                    appointments = documents.map { (queryDocumentSnapshot) -> DAppointment in
+//                        let data = queryDocumentSnapshot.data()
+//                        let id = queryDocumentSnapshot.documentID
+//                        let type = data["type"] as? String ?? ""
+//                        let donor = data["donor"] as? String ?? ""
+//                        let hName = data["hospital"] as? String ?? ""
+//                        let confirmed = data["confirmed"] as? String ?? ""
+//                        let booked = data["booked"] as? Bool ?? false
+//
+//                        let stamp1 = data["start_time"] as? Timestamp
+//                        let startTime = stamp1!.dateValue()
+//
+//                        let stamp2 = data["end_time"] as? Timestamp
+//                        let endTime = stamp2!.dateValue()
+//
+//                        var apt = DAppointment(type: type, startTime: startTime, endTime: endTime, donor: donor, hName: hName, confirmed: confirmed, booked: booked)
+//                        apt.docID = id
+//                        return apt
+//                    }
+//                    if(!appointments.isEmpty) {
+//                        promise(.success(appointments))
+//                    }
+//                }
+//
+//            }.receive(on: DispatchQueue.main
+//                ).sink(receiveCompletion: { completion in
+//                    switch completion {
+//                    case .finished:
+//                        print("finished")
+//                    case .failure(let error):
+//                        print(error)
+//                    }
+//                }, receiveValue: { appointments in
+//                    print(appointments)
+//                    if(success){
+//                        addToUser()
+//                    } else {
+//                        self.removeFromInnerAppointment(appointmentID: self.exact.docID, mainAppointmentId: self.appointment.docID)
+//                        let x =
+//                        config.hostingController?.parent as! Alive4thVC
+//                        x.fail()
+//                        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+//                            listener?.remove()
+//                        }
+//                        print("failed")
+//                    }
+//                })
+//
+//        }
+//
+//    }
+    
+    func fetchBloodAppointmentsData(docID: String) -> Future<[DAppointment], Error> {
+        var appointments = [DAppointment]()
+        
+        
+        return Future<[DAppointment], Error> { promise in
+            
+            DispatchQueue.main.async {
+                
+                self.db.collection("appointments").document(docID).collection("appointments").addSnapshotListener { (querySnapshot, error) in
+                    guard let documents = querySnapshot?.documents else {
+                        print("no documents")
+                        return
+                    }
+                    
+                    appointments = documents.map { (queryDocumentSnapshot) -> DAppointment in
+                        let data = queryDocumentSnapshot.data()
+                        let id = queryDocumentSnapshot.documentID
+                        let type = data["type"] as? String ?? ""
+                        let donor = data["donor"] as? String ?? ""
+                        let hName = data["hospital"] as? String ?? ""
+                        let confirmed = data["confirmed"] as? String ?? ""
+                        let booked = data["booked"] as? Bool ?? false
+                        
+                        let stamp1 = data["start_time"] as? Timestamp
+                        let startTime = stamp1!.dateValue()
+                        
+                        let stamp2 = data["end_time"] as? Timestamp
+                        let endTime = stamp2!.dateValue()
+                        
+                        var apt = DAppointment(type: type, startTime: startTime, endTime: endTime, donor: donor, hName: hName, confirmed: confirmed, booked: booked)
+                        apt.docID = id
+                        return apt
+                    }
+                    
+                    if(!appointments.isEmpty) {
+                        promise(.success(appointments))
+                    }
+                }
+                
+            }
+            
+            
+        }
+    }
+
+
     
     
     func addData(apt: BloodAppointment) {
@@ -293,18 +409,65 @@ class AppointmentVM: ObservableObject {
             
     }
     
+    func fetchBloodAppointments() {
+        
+        self.bloodAppointments.removeAll()
+        
+        db.collection("appointments").whereField("type", in: ["blood"]).addSnapshotListener { (querySnapshot, error) in
+            guard let documents = querySnapshot?.documents else {
+                print("no documents")
+                return
+            }
+            
+            self.appointments = documents.map { (queryDocumentSnapshot) -> BloodAppointment in
+                print("documents")
+                let data = queryDocumentSnapshot.data()
+                let type = data["type"] as? String ?? ""
+                
+                let appointments: [DAppointment] = self.fetchAppointmentsData(doc: queryDocumentSnapshot)
+                
+                let stamp1 = data["start_time"] as? Timestamp
+                let startTime = stamp1!.dateValue()
+                
+                let stamp2 = data["end_time"] as? Timestamp
+                let endTime = stamp2!.dateValue()
+                
+                let stamp3 = data["date"] as? Timestamp
+                let aptDate = stamp3?.dateValue()
+                
+                let hospital = data["hospital"] as? String ?? ""
+                let bookedApts = data["bookedAppointments"] as? [String] ?? [String]()
+                let aptDuration = 60.0
+                
+                let apt = BloodAppointment(type: type, startTime: startTime, endTime: endTime,
+                                           aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, donors: 3)
+                apt.docID = queryDocumentSnapshot.documentID
+                apt.bookedAppointments = bookedApts
+                
+                if((hospital == Constants.selected.selectedOrgan.hospital)){
+                    self.bloodAppointments.append(apt)
+                }
+                return apt
+                
+            }
+            
+        }
+            
+    }
+
+    
     
     @Published var currentDay: Date = Date()
     
     
-    func filteringAppointments() -> [OrganAppointment] {
+    func filteringAppointments() -> [BloodAppointment] {
         let calender = Calendar.current
         
         DispatchQueue.global(qos: .userInteractive).async {
             
-            if(!self.organAppointments.isEmpty){
+            if(!self.bloodAppointments.isEmpty){
                 
-                var filtered: [OrganAppointment] = self.organAppointments.filter {
+                var filtered: [BloodAppointment] = self.bloodAppointments.filter {
                     return calender.isDate($0.aptDate, inSameDayAs: self.currentDay)
                 }
                 

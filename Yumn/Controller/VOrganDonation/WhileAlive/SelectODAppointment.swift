@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 import Firebase
 
 struct SelectODAppointment: View {
@@ -13,6 +14,9 @@ struct SelectODAppointment: View {
     
     @ObservedObject var aptVM = AppointmentVM()
     @StateObject var odVM = ODAppointmentVM()
+    
+    @State var miniAppointments = [DAppointment]()
+    var BloodApppointmentsCancellable: AnyCancellable?
     
     var thereIS = checkingAppointments()
     
@@ -22,7 +26,7 @@ struct SelectODAppointment: View {
     @State var empty = true
     var counter = 0
     
-    @State var selectedAppointment:OrganAppointment?
+    @State var selectedAppointment:BloodAppointment?
     @State var selectedMiniAppointment: DAppointment?
     
     
@@ -191,7 +195,7 @@ struct SelectODAppointment: View {
                     showError = false
                     let x =
                     config.hostingController?.parent as! Alive4thVC
-                    x.confirmAppoitment(apt: selectedAppointment!, exact: selectedAppointment!.appointments![0])
+//                    x.confirmAppoitment(apt: selectedAppointment!, exact: selectedAppointment!.appointments![0])
                     
                     //                    DispatchQueue.main.asyncAfter(deadline: .now() + 3 , execute: {
                     //                        if(odVM.checkIfFree2(doc: selectedAppointment!, exactID: selectedMiniAppointment!.docID)){
@@ -283,9 +287,33 @@ struct SelectODAppointment: View {
     }
     
     @ViewBuilder
-    func AppoitmentCard(apt: OrganAppointment, index: Int) -> some View {
+    func AppoitmentCard(apt: BloodAppointment, index: Int) -> some View {
         
-        let mini = aptVM.fetchAppointmentsData2(docID: apt.docID)
+        let mini = aptVM.fetchBloodAppointmentsData(docID: apt.docID).receive(on: DispatchQueue.main
+        ).sink(receiveCompletion: { completion in
+            switch completion {
+            case .finished:
+                print("finished")
+            case .failure(let error):
+                print(error)
+            }
+        }, receiveValue: { success in
+            print(success)
+            if(success){
+                if(Constants.selected.edit){
+                    self.deleteDoc()
+                }
+                self.addToArray()
+            } else {
+                let x =
+                config.hostingController?.parent as! Alive4thVC
+                x.fail()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                    listener?.remove()
+                }
+                print("failed")
+            }
+        })
         
         if(!mini.isEmpty){
             
@@ -377,6 +405,97 @@ struct SelectODAppointment: View {
         }
         
     }
+    
+    func AppoitmentCard(apt: DAppointment, index: Int) -> some View {
+        
+        if(apt != nil){
+            
+            if(currentA != nil){
+            if(odVM.checkIfFree(doc: apt, exactID: currentA![0].docID)) {
+                
+                HStack(){
+                    VStack(alignment: .leading){
+                        if(self.checkedIndex == index){
+                            RadioButton2(matched: true)
+                        }
+                        if(self.checkedIndex != index){
+                            RadioButton2(matched: false)
+                        }
+                    }.padding(.leading, 20)
+                        .padding(.top, 3)
+                        .onAppear{
+                            empty = false
+                        }
+                    
+                    Spacer()
+                    
+                    VStack(alignment: .center){
+                        Text("\(aptVM.filteredAppointments[index].startTime.getFormattedDate(format: "HH:mm")) - \(aptVM.filteredAppointments[index].endTime.getFormattedDate(format: "HH:mm"))").font(Font.custom("Tajawal", size: 22))
+                            .foregroundColor(mainDark)
+                    }.frame(maxWidth: .infinity, alignment: .center)
+                        .frame(height: 50)
+                        .padding(.top, 10)
+                    
+                    VStack(){
+                        Image("time").resizable()
+                            .scaledToFit()
+                    }.padding(.trailing, 10).padding(.top, 10).padding(.bottom, 10)
+                    
+                    
+                    
+                    
+                    
+                }.onChange(of: checkedIndex){ newValue in
+                    if(newValue == index){
+                        DispatchQueue.main.async {
+                        }
+                        
+                        
+                    } else {
+                    }
+                }
+                .environment(\.layoutDirection, .leftToRight)
+                .background(
+                    RoundedRectangle(
+                        cornerRadius: 20,
+                        style: .continuous
+                    )
+                        .fill(.white)
+                )
+                .frame(height: 50, alignment: .center)
+                .frame(maxWidth: 250)
+                .shadow(color: shadowColor,
+                        radius: 6, x: 0
+                        , y: 6)
+                .onTapGesture {
+                    if(checkedIndex == index){
+                        checkedIndex = -1
+                        showError = true
+                    } else {
+                        
+                        //                        DispatchQueue.main.async {
+                        //                            apt.appointments?.append(                        aptVM.fetchAppointmentsData2(docID: apt.docID)[0]
+                        //                        )}
+                        //                        selectedMiniAppointment = apt.appointments?.first
+                        selectedAppointment = aptVM.filteredAppointments[index]
+                        checkedIndex = index
+                        showError = false
+                        
+                    }
+                }
+                .padding(.horizontal, 15)
+                .padding(.vertical, 5)
+                
+                
+                
+            }
+            }
+        } else {
+
+        }
+        
+    }
+
     
     func appointmentsOnDate(date: Date) -> Bool {
         let calender = Calendar.current
@@ -503,7 +622,7 @@ class ODAppointmentVM: ObservableObject {
     }
     
     
-    func checkIfFree(doc: OrganAppointment, exactID: String) -> Bool {
+    func checkIfFree(doc: BloodAppointment, exactID: String) -> Bool {
         var free = false
         if(doc.bookedAppointments!.isEmpty){
             free = true

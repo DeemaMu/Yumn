@@ -54,7 +54,7 @@ class Appointment {
 class BloodAppointment: Appointment {
     var donors: Int?
     
-    init(appointments: [DAppointment], type: String, startTime: Date, endTime: Date,
+    init(type: String, startTime: Date, endTime: Date,
          aptDate: Date, hospital: String, aptDuration: Double, donors: Int) {
         super.init()
         self.appointments = appointments
