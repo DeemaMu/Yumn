@@ -30,7 +30,7 @@ class QRCodeViewController: UIViewController {
         let db = Firestore.firestore()
         
         
-        
+        // Get the user's QR code
         
         let docRef = db.collection("code").document(Constants.Globals.currentQRID)
 
