@@ -42,6 +42,12 @@
                                 <color key="textColor" name="mainDark"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fw-Cb-Yl7">
+                                <rect key="frame" x="0.0" y="47" width="86" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title=""/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -52,6 +58,7 @@
                 <outlet property="dateBtn" destination="fBP-TN-tFi" id="Rda-TM-zl0"/>
                 <outlet property="dateLabel" destination="bj7-tb-dUt" id="Fmj-CK-RCL"/>
                 <outlet property="dayLabel" destination="Q4U-DC-MTN" id="8q7-kt-XZ3"/>
+                <outlet property="updateTimeSlotsBtn" destination="0fw-Cb-Yl7" id="yqi-RZ-ySl"/>
             </connections>
             <point key="canvasLocation" x="-558.69565217391312" y="259.15178571428572"/>
         </tableViewCell>

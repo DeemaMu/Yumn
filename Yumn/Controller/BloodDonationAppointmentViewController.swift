@@ -11,6 +11,7 @@ import Firebase
 
 class BloodDonationAppointmentViewController: UIViewController {
     @IBOutlet weak var dateTableView: UITableView!
+    @IBOutlet weak var backBtn: UIBarButtonItem!
     @IBOutlet weak var noAvailableAppointment: UILabel!
     
     @IBOutlet weak var blackBlurredView: UIView!
@@ -18,7 +19,6 @@ class BloodDonationAppointmentViewController: UIViewController {
     @IBOutlet weak var monthLabel: UILabel!
     
     @IBOutlet weak var hospitalNameLabel: UILabel!
-    @IBOutlet weak var calendarBtn: UIButton!
     
     
     
@@ -152,7 +152,8 @@ class BloodDonationAppointmentViewController: UIViewController {
         //It includes the first selected cell
         Constants.Globals.appointmentDateArray = remainingDaysOfTheMonth
        
-        self.sortedTimes = getAvailableAppointmentsTimes()
+        self.sortedTimes =
+        getAvailableAppointmentsTimes()
         
      
 
@@ -198,6 +199,16 @@ class BloodDonationAppointmentViewController: UIViewController {
     
   
    
+    @IBAction func onPressedBackBtn(_ sender: Any) {
+        
+        
+        self.navigationController?.popViewController(animated:true)
+        
+        print ("ddddd")
+    
+        
+        
+    }
     
     
     @IBAction func onPressedContinueBtn(_ sender: Any) {
@@ -269,19 +280,9 @@ class BloodDonationAppointmentViewController: UIViewController {
     }
     */
 
-    @IBAction func onPressedCalendarBtn(_ sender: Any) {
-    }
+
     
     
-    
-    
-    func getAppointmentsofTheDay (day: Date){
-        
-        
-        
-     
-        
-    }
     
     
     @IBAction func onPressedConfirmAppointment(_ sender: Any) {
@@ -526,6 +527,17 @@ class BloodDonationAppointmentViewController: UIViewController {
         
         popupView.isHidden = true
         blackBlurredView.isHidden = true
+ 
+    }
+    
+    
+    @objc func updatTable(sender: Any){
+        
+        self.sortedTimes = self.getAvailableAppointmentsTimes()
+        
+        timeTableView.reloadData()
+        
+     
     }
 }
 
@@ -582,6 +594,8 @@ extension BloodDonationAppointmentViewController: UITableViewDataSource{
             
             
             dateCell.dayLabel.text! =  remainingDaysOfTheMonth![indexPath.row].day
+            
+            dateCell.updateTimeSlotsBtn.addTarget(self, action:#selector(updatTable(sender: )), for: .touchUpInside)
             
             dateCell.index = indexPath.row
             

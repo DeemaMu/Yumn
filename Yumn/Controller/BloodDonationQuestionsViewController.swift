@@ -9,7 +9,8 @@ import UIKit
 
 class BloodDonationQuestionsViewController: UIViewController {
     
-
+  
+    
     @IBOutlet weak var q1Btn: UIButton!
     
     @IBOutlet weak var q1Radio: UIButton!
@@ -77,6 +78,64 @@ class BloodDonationQuestionsViewController: UIViewController {
 
 
         // Do any additional setup after loading the view.
+    }
+    
+    
+    /*
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        
+        let isValidDonor = questions[0]&&questions[1]&&questions[2]&&questions[3]&&questions[4]&&questions[5]&&questions[6]
+        
+        if (!isValidDonor){
+            
+            popupTitle.text = "مقدرين حبك للمساعدة"
+            popupMsg.text = "للأسف أنت غير مؤهل للتبرع بالدم"
+            popupView.isHidden = false
+            blackBlurredView.isHidden = false
+            return false
+        }
+        
+        else {
+            return true
+        }
+        
+      
+        
+      
+         
+        
+    }*/
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        
+    
+    let isValidDonor = questions[0]&&questions[1]&&questions[2]&&questions[3]&&questions[4]&&questions[5]&&questions[6]
+    
+    if (!isValidDonor){
+        
+        popupTitle.text = "مقدرين حبك للمساعدة"
+        popupMsg.text = "للأسف أنت غير مؤهل للتبرع بالدم"
+        popupView.isHidden = false
+        blackBlurredView.isHidden = false
+        return false
+    }
+    
+    else{
+        
+    //Go to next page
+        return true
+    }
+    }
+    
+    
+    
+    @IBAction func onPressedBackBtn(_ sender: Any) {
+    
+   
+        
+
+            self.navigationController?.popViewController(animated:true)
+        
     }
     
     
@@ -370,32 +429,21 @@ class BloodDonationQuestionsViewController: UIViewController {
     }
     
     
-    @IBAction func onPressedCont(_ sender: Any) {
-        
-        let isValidDonor = questions[0]&&questions[1]&&questions[2]&&questions[3]&&questions[4]&&questions[5]&&questions[6]
-        
-        if (!isValidDonor){
-            
-            popupTitle.text = "مقدرين حبك للمساعدة"
-            popupMsg.text = "للأسف أنت غير مؤهل للتبرع بالدم"
-            popupView.isHidden = false
-            blackBlurredView.isHidden = false
-        }
-        
-        else{
-            
-            //Go to next page
-        }
-    }
     
-    /*
+    
+    
+    
+    
+      
+
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+   // override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
-}
+

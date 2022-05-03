@@ -21,7 +21,7 @@ extension BloodDonationAppointmentViewController{
     
     func getAvailableAppointmentsTimes() -> [BloodDonationTime]{
         
-        var selectedDate = Date()
+        var selectedDate:Date?
 
         
         //Make a method to get the selected date
@@ -30,6 +30,8 @@ extension BloodDonationAppointmentViewController{
             if (item.selected == true){
                 selectedDate = item.date
             }
+            print("selected")
+            print(selectedDate)
                 
         }
                 
@@ -53,7 +55,7 @@ extension BloodDonationAppointmentViewController{
                     
                     let outerDocId = document.documentID
                     
-                 let selectedDateTimeStamp = selectedDate.timeIntervalSince1970
+                    let selectedDateTimeStamp = selectedDate?.timeIntervalSince1970
 
                     
                     db.collection("appointments").document(document.documentID).collection("appointments").whereField("booked", isEqualTo: false)
@@ -64,7 +66,7 @@ extension BloodDonationAppointmentViewController{
                             
                             let dateformat = DateFormatter()
                                    dateformat.dateFormat = "MM/dd/yyyy"
-                                   let SDF =  dateformat.string(from: selectedDate)
+                            let SDF =  dateformat.string(from: selectedDate!)
                                
                             
                             //Get the selected date only
@@ -80,7 +82,7 @@ extension BloodDonationAppointmentViewController{
                        
                            
                                 
-                               // print ( doc["start_time"] as! Timestamp)
+                              //  print ( doc["start_time"] as! Timestamp)
                                 
                               //  print (SDF+"sdf")
                               //  print(dateformat.string(from:(doc["start_time"] as! Timestamp).dateValue()))
@@ -88,7 +90,7 @@ extension BloodDonationAppointmentViewController{
                                 
                                 if (SDF == dateformat.string(from:(doc["start_time"] as! Timestamp).dateValue())){
                                     
-                                    dateformat.string(from: selectedDate)
+                                    dateformat.string(from: selectedDate!)
      
                                 let docID:String =  document.documentID
                                 

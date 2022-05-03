@@ -10,6 +10,7 @@ import UIKit
 
 class DateCell: UITableViewCell {
     
+    @IBOutlet weak var updateTimeSlotsBtn: UIButton!
     
   
     @IBOutlet weak var dateLabel: UILabel!
@@ -57,10 +58,10 @@ class DateCell: UITableViewCell {
             
             Constants.Globals.appointmentDateArray![index].selected = true
             
-           /* if (!(index == 0)){
-            BloodDonationAppointmentViewController().sortedTimes = BloodDonationAppointmentViewController().getAvailableAppointmentsTimes()
-                BloodDonationAppointmentViewController().updateTable()
-            }*/
+           // if (!(index == 0)){
+           // BloodDonationAppointmentViewController().sortedTimes = BloodDonationAppointmentViewController().getAvailableAppointmentsTimes()
+              //  BloodDonationAppointmentViewController().updateTable()
+            
         }
         
         else{

@@ -42,7 +42,7 @@ class TimeCell: UITableViewCell {
             radioLabel.image = UIImage(named:"radioFilled" )
             Constants.Globals.appointmentTimeArray![index].selected = true
             
-           
+         
             
             
         }
