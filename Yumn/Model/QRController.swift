@@ -8,6 +8,7 @@
 import Foundation
 import CoreLocation
 import Firebase
+import FirebaseAuth
 
 
 struct QRController {
@@ -17,7 +18,7 @@ extension AllQRCodesViewController{
     
 
     
-    func getValidQRCodes() -> [QRCode]{
+    func getValidQRCodes(status: String) -> [QRCode]{
      
         var validQRCodes:[QRCode] = []
 
@@ -25,7 +26,7 @@ extension AllQRCodesViewController{
         let db = Firestore.firestore()
 
         // Add a condition to get only the user's QR codes
-        db.collection("code").getDocuments() { (querySnapshot, err) in
+        db.collection("code").whereField("uid", isEqualTo: (Auth.auth().currentUser?.uid ?? "")).whereField("status", isEqualTo: status).getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print ("Error getting the documents:  \(err)")
             } else {
@@ -44,7 +45,11 @@ extension AllQRCodesViewController{
                     validQRCodes.append(QRCode(amount: amount, dateCreated: dateCreated, id: id, status: status ))
                     
                 }
-                self.sortedValidQRCodes = validQRCodes //validQRCodes.sorted(by: { (QR0: QRCode, QR1: QRCode) -> Bool in
+                self.sortedValidQRCodes = validQRCodes
+                self.sortedValidQRCodes = validQRCodes.sorted(by: { (QR0: QRCode, QR1: QRCode) -> Bool in
+                    return QR0.amount < QR1.amount})
+                
+                //validQRCodes.sorted(by: { (QR0: QRCode, QR1: QRCode) -> Bool in
                         //return QR0.amount < QR1.amount
                     //})
                 
@@ -62,7 +67,34 @@ extension AllQRCodesViewController{
                     
                     
                 }
+            
+            
+            if (self.sortedValidQRCodes != nil){
+            
+            if (self.sortedValidQRCodes!.isEmpty){
+                
+                print ("empty valid qr")
+                
+                self.validQRCodesTableView.isHidden = true
+                
+               
+                    
+                    
+          
+                self.noCodesLabel.isHidden = false
+                self.qrCodeImage.isHidden = false
+                
+
+                
+                
+
             }
+            
+            else {
+                self.noCodesLabel.isHidden = true
+                self.qrCodeImage.isHidden = true
+            }
+            }}
             
             let validQRCodes2 = validQRCodes.sorted(by: { (QR0: QRCode, QR1: QRCode) -> Bool in
                 return QR0.amount < QR1.amount
@@ -70,7 +102,7 @@ extension AllQRCodesViewController{
             
         print ("heeeeeeeeere2")
         print (validQRCodes)
-            return validQRCodes
+            return validQRCodes2
             
         
 

@@ -44,8 +44,13 @@ class QRCodeTableViewCell: UITableViewCell {
     
     @IBAction func onPressedViewQr(_ sender: Any) {
         
+     
         
+        
+        Constants.Globals.newQR = false
         Constants.Globals.currentQRID = id
+        
+        
     }
     
     

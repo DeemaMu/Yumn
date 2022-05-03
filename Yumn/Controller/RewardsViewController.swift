@@ -23,8 +23,7 @@ class RewardsViewController: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var amountTextfield: UITextField!
     @IBOutlet weak var storesButton: UIButton!
-    @IBOutlet weak var qrButton: UIBarButtonItem!
-    @IBOutlet weak var redCircle: UIImageView!
+
     @IBOutlet weak var pointsBox: UIView!
     @IBOutlet weak var confetti: UIImageView!
     
@@ -95,25 +94,23 @@ class RewardsViewController: UIViewController {
         popupStack.superview?.bringSubviewToFront(popupStack)
         popupView.superview?.bringSubviewToFront(popupView)
         
-        
-        redCircle.isHidden = true
-        
-
-
+   
 
         super.viewDidLoad()
+        
         
         
 
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func onPressedQr(_ sender: Any) {
-        
-        redCircle.isHidden = true
-        
-        
-        
+ 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toAllQRCodes" {
+            let destinationVC = segue.destination as! AllQRCodesViewController
+            
+         
+        }
     }
     
     @IBAction func generateQRCode(_ sender: Any) {
@@ -197,6 +194,17 @@ class RewardsViewController: UIViewController {
         
         textfield.layer.addSublayer(bottomLine)
         
+    }
+    
+    @IBAction func onPressedQR(_ sender: Any) {
+        
+        print ("QR Btn clicked")
+    }
+    
+    @IBAction func onPressedProfile(_ sender: Any) {
+        
+        print ("profile Btn clicked")
+
     }
     
     
@@ -457,6 +465,7 @@ class RewardsViewController: UIViewController {
            }
         
         
+        Constants.Globals.newQR = true
     
             transitionToQr()
         

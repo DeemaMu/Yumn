@@ -10,13 +10,16 @@ import Firebase
 import Foundation
 
 
-class AllQRCodesViewController: UIViewController, CustomSegmentedControlDelegate {
+class AllQRCodesViewController: UIViewController {
+    @IBOutlet weak var qrCodeImage: UIImageView!
     
+
     var sortedValidQRCodes:[QRCode]?
     
     var qrController = QRController()
 
-
+    @IBOutlet weak var noCodesLabel: UILabel!
+    
     @IBOutlet weak var validQRCodesTableView: UITableView!
     
     
@@ -30,9 +33,12 @@ class AllQRCodesViewController: UIViewController, CustomSegmentedControlDelegate
     
     override func viewDidLoad() {
         
+        noCodesLabel.isHidden = true
+        
+        qrCodeImage.isHidden = true
         
         
-        validQRCodesTableView.isHidden = true
+       // validQRCodesTableView.isHidden = true
         super.viewDidLoad()
         
         UINavigationBar.appearance().shadowImage = UIImage()
@@ -42,22 +48,21 @@ class AllQRCodesViewController: UIViewController, CustomSegmentedControlDelegate
         
         
         
-        codeSegmented = CustomSegmentedControl2Btns(frame: CGRect(x: 0, y: 0, width: segmentsView.frame.width, height: 50), buttonTitle: ["الرموز الصالحة","الرموز المستخدمة"])
-        codeSegmented!.backgroundColor = .clear
+     //   codeSegmented = CustomSegmentedControl2Btns(frame: CGRect(x: 0, y: 0, width: segmentsView.frame.width, height: 50), buttonTitle: ["الرموز المستخدمة", "الرموز الصالحة"])
+       // codeSegmented!.backgroundColor = .clear
         //        codeSegmented.delegate?.change(to: 2)
-        segmentsView.addSubview(codeSegmented!)
-        codeSegmented?.delegate = self
+      //  segmentsView.addSubview(codeSegmented!)
+       // codeSegmented?.delegate = self
         
-        self.sortedValidQRCodes = getValidQRCodes()
+        self.sortedValidQRCodes = getValidQRCodes(status: "valid")
         
         print("sorted up ")
-        print (self.sortedValidQRCodes)
+     //   print (self.sortedValidQRCodes)
         
-        self.sortedValidQRCodes = getValidQRCodes()
+     //   self.sortedValidQRCodes = getValidQRCodes(status: "valid")
 
         
-        print("sorted up 2")
-        print (self.sortedValidQRCodes)
+        //print (self.sortedValidQRCodes)
         validQRCodesTableView.dataSource = self
      
         
@@ -69,15 +74,29 @@ class AllQRCodesViewController: UIViewController, CustomSegmentedControlDelegate
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.layoutIfNeeded()
         
+        navigationItem.hidesBackButton = true
+        
+
+        
 
     }
     
+    @IBAction func onPressedBack(_ sender: Any) {
+        
+
+            self.navigationController?.popViewController(animated:true)
+        
+    }
     
+    
+    /*
     func change(to index: Int) {
             print("segmentedControl index changed to \(index)")
             if(index==0){
                 
-                validQRCodesTableView.isHidden = false
+                self.sortedValidQRCodes = getValidQRCodes(status: "valid")
+                
+               // validQRCodesTableView.isHidden = true
                 
                 
                 
@@ -85,11 +104,15 @@ class AllQRCodesViewController: UIViewController, CustomSegmentedControlDelegate
              else {
                  
                  
-                 validQRCodesTableView.isHidden = true
+                 self.sortedValidQRCodes = getValidQRCodes(status: "used")
+                 
+               //  validQRCodesTableView.isHidden = false
+
+                 
                  
                  
              }
-        
+        */
         
         
     /*
@@ -103,7 +126,7 @@ class AllQRCodesViewController: UIViewController, CustomSegmentedControlDelegate
     */
 
 }
-}
+
 
     
  
@@ -156,6 +179,11 @@ extension AllQRCodesViewController: UITableViewDataSource{
 
     
 }
+    
+    @objc func push(sender: Any){
+
+    self.navigationController?.pushViewController(QRCodeViewController(), animated: true)
+    }
     
     
     @objc func transitionToQr(sender: Any){

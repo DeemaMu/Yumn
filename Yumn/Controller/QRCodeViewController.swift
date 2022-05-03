@@ -15,9 +15,9 @@ class QRCodeViewController: UIViewController {
     
     @IBOutlet weak var squareGif: UIImageView!
     @IBOutlet weak var dateCreated: UILabel!
-    
-    @IBOutlet weak var backButton: UIBarButtonItem!
+
     @IBOutlet weak var amount: UILabel!
+    @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var qrImage: UIImageView!
     @IBOutlet weak var bottomImage: UIImageView!
     
@@ -52,6 +52,7 @@ class QRCodeViewController: UIViewController {
         }
 
         
+        
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
        
@@ -74,14 +75,51 @@ class QRCodeViewController: UIViewController {
         guard let qrURLImage = URL(string: Constants.Globals.currentQRID)?.qrImage(using: color) else { return }
          qrImage.image = UIImage(ciImage: qrURLImage)
          logo.addToCenter(of: qrImage)
+        
+        
+        //if (Constants.Globals.newQR == false) {
+            
+            
+            
+         //   backButton.image = UIImage(systemName: "arrow.right")
+           // navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.right"), style: .plain, target: self, action: .none)
+
+            
+            
+            
+            
+            
+            
+            
+            
+       // }
        
         
         super.viewDidLoad()
 
     }
-    @IBAction func onPressedBack(_ sender: Any) {
+    
+    
+    
+    
+    @IBAction func onPressedBAck(_ sender: Any) {
+    
+    
+ 
+    
+    
         
+     //   if (Constants.Globals.newQR == false){
+            
+        //    self.navigationController?.popViewController(animated:true)
+
+      //  }
+        
+        
+        
+        //else {
         transitionToHome()
+       // }
         
     }
     func transitionToHome(){
