@@ -13,6 +13,7 @@ class HospitalCellTableViewCell: UITableViewCell {
     @IBOutlet weak var hospitalName: UILabel!
     @IBOutlet weak var locationText: UILabel!
     @IBOutlet weak var locationBtn: UIButton!
+    @IBOutlet weak var bookApp: UIButton!
     @IBOutlet weak var distanceText: UILabel!
     
     override func awakeFromNib() {
@@ -28,6 +29,9 @@ class HospitalCellTableViewCell: UITableViewCell {
     }
     
     @IBAction func bookFromList(_ sender: UIButton) {
+        
+        Constants.Globals.hosName = hospitalName.text!
+
     }
     
 }

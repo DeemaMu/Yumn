@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		340E74A44D2C8391E8A3328B /* Pods_Yumn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F41D1CB5B4D2A77CB772E9A8 /* Pods_Yumn.framework */; };
+		0535D61A7F9090BE7B8C0E00 /* Pods_Yumn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37605B2EF54DB4CFE195DC0E /* Pods_Yumn.framework */; };
 		8D0E9A1F27E5339C00890AC0 /* BloodDonationInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0E9A1E27E5339C00890AC0 /* BloodDonationInformationViewController.swift */; };
 		8D7F152227D25DD200E1EB1A /* GIfCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7F152127D25DD200E1EB1A /* GIfCode.swift */; };
 		8D7F152527D25EF200E1EB1A /* yumnLoading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8D7F152427D25EF200E1EB1A /* yumnLoading.gif */; };
@@ -15,6 +15,20 @@
 		8D7F152B27D299C100E1EB1A /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7F152A27D299C100E1EB1A /* constants.swift */; };
 		8D7F152D27D299F300E1EB1A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7F152C27D299F300E1EB1A /* HomeViewController.swift */; };
 		8D7F152F27D29A6500E1EB1A /* HospitalHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7F152E27D29A6500E1EB1A /* HospitalHomeViewController.swift */; };
+		8DE28D532821A45E00B54BE6 /* QRController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE28D522821A45E00B54BE6 /* QRController.swift */; };
+		8DE28D572821A46E00B54BE6 /* StoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE28D562821A46E00B54BE6 /* StoreController.swift */; };
+		8DE28D592821A4A900B54BE6 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE28D582821A4A800B54BE6 /* Store.swift */; };
+		8DE28D5B2821A4D100B54BE6 /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE28D5A2821A4D100B54BE6 /* QRCode.swift */; };
+		8DE28D5E2821A64C00B54BE6 /* RewardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE28D5D2821A64C00B54BE6 /* RewardsViewController.swift */; };
+		8DE28D602821A65800B54BE6 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE28D5F2821A65800B54BE6 /* QRCodeViewController.swift */; };
+		8DE28D622821A66000B54BE6 /* AllQRCodesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE28D612821A66000B54BE6 /* AllQRCodesViewController.swift */; };
+		8DE28D642821A66700B54BE6 /* AllStoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE28D632821A66700B54BE6 /* AllStoresViewController.swift */; };
+		8DE28D662821A6FF00B54BE6 /* StoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DE28D652821A6FF00B54BE6 /* StoreCell.xib */; };
+		8DE28D682821A70A00B54BE6 /* StoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE28D672821A70900B54BE6 /* StoreCell.swift */; };
+		8DE28D6A2821A71100B54BE6 /* QRCodeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DE28D692821A71100B54BE6 /* QRCodeTableViewCell.xib */; };
+		8DE28D6C2821A71800B54BE6 /* QRCodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE28D6B2821A71800B54BE6 /* QRCodeTableViewCell.swift */; };
+		8DE28D6E2821AF9800B54BE6 /* BloodDonationQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE28D6D2821AF9800B54BE6 /* BloodDonationQuestionsViewController.swift */; };
+		8DE28D702821CA9300B54BE6 /* grey.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8DE28D6F2821CA9300B54BE6 /* grey.gif */; };
 		95062D9627CADC0500D63911 /* Tajawal-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95062D9227CADC0400D63911 /* Tajawal-Light.ttf */; };
 		95062D9727CADC0500D63911 /* Tajawal-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95062D9327CADC0500D63911 /* Tajawal-Medium.ttf */; };
 		95062D9827CADC0500D63911 /* Tajawal-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95062D9427CADC0500D63911 /* Tajawal-Regular.ttf */; };
@@ -127,6 +141,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		37605B2EF54DB4CFE195DC0E /* Pods_Yumn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yumn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		74A5C8899835694B1F89E993 /* Pods-Yumn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.debug.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.debug.xcconfig"; sourceTree = "<group>"; };
 		8D0E9A1E27E5339C00890AC0 /* BloodDonationInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationInformationViewController.swift; sourceTree = "<group>"; };
 		8D7F152127D25DD200E1EB1A /* GIfCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIfCode.swift; sourceTree = "<group>"; };
 		8D7F152427D25EF200E1EB1A /* yumnLoading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = yumnLoading.gif; sourceTree = "<group>"; };
@@ -134,6 +150,20 @@
 		8D7F152A27D299C100E1EB1A /* constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		8D7F152C27D299F300E1EB1A /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8D7F152E27D29A6500E1EB1A /* HospitalHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HospitalHomeViewController.swift; sourceTree = "<group>"; };
+		8DE28D522821A45E00B54BE6 /* QRController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRController.swift; sourceTree = "<group>"; };
+		8DE28D562821A46E00B54BE6 /* StoreController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreController.swift; sourceTree = "<group>"; };
+		8DE28D582821A4A800B54BE6 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		8DE28D5A2821A4D100B54BE6 /* QRCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCode.swift; sourceTree = "<group>"; };
+		8DE28D5D2821A64C00B54BE6 /* RewardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardsViewController.swift; sourceTree = "<group>"; };
+		8DE28D5F2821A65800B54BE6 /* QRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
+		8DE28D612821A66000B54BE6 /* AllQRCodesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllQRCodesViewController.swift; sourceTree = "<group>"; };
+		8DE28D632821A66700B54BE6 /* AllStoresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllStoresViewController.swift; sourceTree = "<group>"; };
+		8DE28D652821A6FF00B54BE6 /* StoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreCell.xib; sourceTree = "<group>"; };
+		8DE28D672821A70900B54BE6 /* StoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreCell.swift; sourceTree = "<group>"; };
+		8DE28D692821A71100B54BE6 /* QRCodeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRCodeTableViewCell.xib; sourceTree = "<group>"; };
+		8DE28D6B2821A71800B54BE6 /* QRCodeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeTableViewCell.swift; sourceTree = "<group>"; };
+		8DE28D6D2821AF9800B54BE6 /* BloodDonationQuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloodDonationQuestionsViewController.swift; sourceTree = "<group>"; };
+		8DE28D6F2821CA9300B54BE6 /* grey.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = grey.gif; sourceTree = "<group>"; };
 		95062D9227CADC0400D63911 /* Tajawal-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tajawal-Light.ttf"; sourceTree = "<group>"; };
 		95062D9327CADC0500D63911 /* Tajawal-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tajawal-Medium.ttf"; sourceTree = "<group>"; };
 		95062D9427CADC0500D63911 /* Tajawal-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tajawal-Regular.ttf"; sourceTree = "<group>"; };
@@ -164,7 +194,7 @@
 		95C5967827D767FE00A5572C /* VSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VSignUpViewController.swift; sourceTree = "<group>"; };
 		95EED9CA27E6602C009AFDAC /* VOCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VOCollectionViewCell.swift; sourceTree = "<group>"; };
 		95EED9CC27E682DB009AFDAC /* VolunteeringOpp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolunteeringOpp.swift; sourceTree = "<group>"; };
-		AF0F267DB4C4C4078A201A2C /* Pods-Yumn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.release.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.release.xcconfig"; sourceTree = "<group>"; };
+		AAE7F21D6C8F9DC1D8D5D389 /* Pods-Yumn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.release.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.release.xcconfig"; sourceTree = "<group>"; };
 		B91DD28D27E995F200BA9881 /* CalenderAndAppointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderAndAppointments.swift; sourceTree = "<group>"; };
 		B91DD28F27E9965F00BA9881 /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
 		B91DD29127E996CF00BA9881 /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
@@ -246,8 +276,6 @@
 		D19B1B5027E95F2200CB3FFA /* oldBloodAppTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = oldBloodAppTableViewCell.xib; sourceTree = "<group>"; };
 		D19B1B5227E95FCB00CB3FFA /* OrganDonationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganDonationViewController.swift; sourceTree = "<group>"; };
 		D19B1B5827E962BC00CB3FFA /* VolunteerBloodAppointmentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolunteerBloodAppointmentsViewController.swift; sourceTree = "<group>"; };
-		F41D1CB5B4D2A77CB772E9A8 /* Pods_Yumn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yumn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F5FB412F9EC537BFEB5586DE /* Pods-Yumn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.debug.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,13 +283,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				340E74A44D2C8391E8A3328B /* Pods_Yumn.framework in Frameworks */,
+				0535D61A7F9090BE7B8C0E00 /* Pods_Yumn.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		302739EC37E63F9169AA960C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				37605B2EF54DB4CFE195DC0E /* Pods_Yumn.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8D0E9A1D27E5337900890AC0 /* Information */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				8D7F152427D25EF200E1EB1A /* yumnLoading.gif */,
+				8DE28D6F2821CA9300B54BE6 /* grey.gif */,
 			);
 			path = GIF;
 			sourceTree = "<group>";
@@ -286,6 +323,17 @@
 				D19B1B5227E95FCB00CB3FFA /* OrganDonationViewController.swift */,
 			);
 			path = VOrganDonation;
+			sourceTree = "<group>";
+		};
+		8DE28D5C2821A63E00B54BE6 /* Rewards */ = {
+			isa = PBXGroup;
+			children = (
+				8DE28D5F2821A65800B54BE6 /* QRCodeViewController.swift */,
+				8DE28D612821A66000B54BE6 /* AllQRCodesViewController.swift */,
+				8DE28D632821A66700B54BE6 /* AllStoresViewController.swift */,
+				8DE28D5D2821A64C00B54BE6 /* RewardsViewController.swift */,
+			);
+			path = Rewards;
 			sourceTree = "<group>";
 		};
 		95062D9127CADBE800D63911 /* Fonts */ = {
@@ -324,7 +372,7 @@
 				95785057279E1917004F3D8F /* Yumn */,
 				95785056279E1917004F3D8F /* Products */,
 				FB3A4FC32329E4399DABC3B5 /* Pods */,
-				B5C9338498F6AECABB78E042 /* Frameworks */,
+				302739EC37E63F9169AA960C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -356,14 +404,6 @@
 			path = Yumn;
 			sourceTree = "<group>";
 		};
-		B5C9338498F6AECABB78E042 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				F41D1CB5B4D2A77CB772E9A8 /* Pods_Yumn.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		B930F85427B8547300E70860 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -375,10 +415,14 @@
 				D195444727D49A3900B03DFF /* totalOrgansShortage.swift */,
 				B9AD3F2F27E335B3001AB734 /* DateValue.swift */,
 				95EED9CC27E682DB009AFDAC /* VolunteeringOpp.swift */,
+				8DE28D522821A45E00B54BE6 /* QRController.swift */,
 				D19B1B4827E95EE500CB3FFA /* BloodAppointment.swift */,
+				8DE28D562821A46E00B54BE6 /* StoreController.swift */,
 				B91DD28F27E9965F00BA9881 /* Appointment.swift */,
+				8DE28D5A2821A4D100B54BE6 /* QRCode.swift */,
 				B975979B28195D9300AD2C93 /* Donor.swift */,
 				B9AC6627281B1AE80013301B /* volunteerVOpp.swift */,
+				8DE28D582821A4A800B54BE6 /* Store.swift */,
 				B9AC6635281B2E520013301B /* applicant.swift */,
 			);
 			path = Model;
@@ -409,6 +453,10 @@
 				B9AC6638281B2EBC0013301B /* currentApplicantTableViewCell.xib */,
 				B9AC663B281B2EF20013301B /* acceptedApplicantTableViewCell.swift */,
 				B9AC663C281B2EF20013301B /* acceptedApplicantTableViewCell.xib */,
+				8DE28D692821A71100B54BE6 /* QRCodeTableViewCell.xib */,
+				8DE28D6B2821A71800B54BE6 /* QRCodeTableViewCell.swift */,
+				8DE28D652821A6FF00B54BE6 /* StoreCell.xib */,
+				8DE28D672821A70900B54BE6 /* StoreCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -416,6 +464,7 @@
 		B930F85627B8548900E70860 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8DE28D5C2821A63E00B54BE6 /* Rewards */,
 				B9AC66202819E7380013301B /* VAppointments */,
 				D19B1B5727E9629000CB3FFA /* VBloodApp */,
 				8DC80B7227E7A70100A1DF6E /* VOrganDonation */,
@@ -583,6 +632,7 @@
 		D19B1B5727E9629000CB3FFA /* VBloodApp */ = {
 			isa = PBXGroup;
 			children = (
+				8DE28D6D2821AF9800B54BE6 /* BloodDonationQuestionsViewController.swift */,
 				D19B1B5827E962BC00CB3FFA /* VolunteerBloodAppointmentsViewController.swift */,
 			);
 			path = VBloodApp;
@@ -591,8 +641,8 @@
 		FB3A4FC32329E4399DABC3B5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F5FB412F9EC537BFEB5586DE /* Pods-Yumn.debug.xcconfig */,
-				AF0F267DB4C4C4078A201A2C /* Pods-Yumn.release.xcconfig */,
+				74A5C8899835694B1F89E993 /* Pods-Yumn.debug.xcconfig */,
+				AAE7F21D6C8F9DC1D8D5D389 /* Pods-Yumn.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -604,11 +654,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 95785069279E1918004F3D8F /* Build configuration list for PBXNativeTarget "Yumn" */;
 			buildPhases = (
-				A1D90814D7742C62DABFE6D5 /* [CP] Check Pods Manifest.lock */,
+				5B817F363ABF5536A58835A7 /* [CP] Check Pods Manifest.lock */,
 				95785051279E1917004F3D8F /* Sources */,
 				95785052279E1917004F3D8F /* Frameworks */,
 				95785053279E1917004F3D8F /* Resources */,
-				0BA1D5CF58C092ADF8700959 /* [CP] Embed Pods Frameworks */,
+				76D0C6AA9E061AFCEF05AB1B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -658,6 +708,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D19B1B4D27E95F1900CB3FFA /* currentBldAppCell.xib in Resources */,
+				8DE28D6A2821A71100B54BE6 /* QRCodeTableViewCell.xib in Resources */,
 				D195444E27D49AF600B03DFF /* bloodTypeCell.xib in Resources */,
 				B9419DFD27C52D9C00962A1B /* HospitalCellTableViewCell.xib in Resources */,
 				95785065279E1918004F3D8F /* LaunchScreen.storyboard in Resources */,
@@ -671,7 +722,9 @@
 				95062D9927CADC0500D63911 /* Tajawal-Bold.ttf in Resources */,
 				B9AC6634281B1CB50013301B /* viewOldVolunteerOppTableViewCell.xib in Resources */,
 				D195445227D49B1600B03DFF /* organCell.xib in Resources */,
+				8DE28D702821CA9300B54BE6 /* grey.gif in Resources */,
 				D19B1B5127E95F2200CB3FFA /* oldBloodAppTableViewCell.xib in Resources */,
+				8DE28D662821A6FF00B54BE6 /* StoreCell.xib in Resources */,
 				B9AC663A281B2EBC0013301B /* currentApplicantTableViewCell.xib in Resources */,
 				B9AC6630281B1C370013301B /* viewCurrentVolunteerOppTableViewCell.xib in Resources */,
 				8D7F152527D25EF200E1EB1A /* yumnLoading.gif in Resources */,
@@ -682,24 +735,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0BA1D5CF58C092ADF8700959 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Yumn/Pods-Yumn-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Yumn/Pods-Yumn-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Yumn/Pods-Yumn-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A1D90814D7742C62DABFE6D5 /* [CP] Check Pods Manifest.lock */ = {
+		5B817F363ABF5536A58835A7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -721,6 +757,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		76D0C6AA9E061AFCEF05AB1B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Yumn/Pods-Yumn-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Yumn/Pods-Yumn-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Yumn/Pods-Yumn-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -730,10 +783,12 @@
 			files = (
 				959A52CD27E88883002244A0 /* applyPopup.swift in Sources */,
 				95EED9CD27E682DB009AFDAC /* VolunteeringOpp.swift in Sources */,
+				8DE28D602821A65800B54BE6 /* QRCodeViewController.swift in Sources */,
 				D195443A27D499C700B03DFF /* bloodChartViewController.swift in Sources */,
 				B91DD29427E9976200BA9881 /* PopupAddForm.swift in Sources */,
 				B99C272A281C888200EAC439 /* EditAppointment.swift in Sources */,
 				D195444227D49A1700B03DFF /* bloodShortage.swift in Sources */,
+				8DE28D6E2821AF9800B54BE6 /* BloodDonationQuestionsViewController.swift in Sources */,
 				B96EABA5281DD919004AD51E /* AppointmentManager.swift in Sources */,
 				95EED9CB27E6602C009AFDAC /* VOCollectionViewCell.swift in Sources */,
 				B94CB968280EB8B00088470D /* AfterDeathODSecondController.swift in Sources */,
@@ -744,6 +799,7 @@
 				B9AC662A281B1B6C0013301B /* ViewApplicantsViewController.swift.swift in Sources */,
 				B94CB96A280EBE160088470D /* AfterDeathOrganSelection.swift in Sources */,
 				B9503D8827BAE4E500E312B8 /* CustomSegmentedControl.swift in Sources */,
+				8DE28D6C2821A71800B54BE6 /* QRCodeTableViewCell.swift in Sources */,
 				D195444627D49A2F00B03DFF /* totalBloodShortage.swift in Sources */,
 				D195444427D49A2400B03DFF /* organShortage.swift in Sources */,
 				B9DDAE8C281753300001149C /* SelectODAppointment.swift in Sources */,
@@ -757,21 +813,25 @@
 				B9AC662C281B1BA10013301B /* ViewOppOfAVolunteerViewController.swift in Sources */,
 				B9AC6639281B2EBC0013301B /* currentApplicantTableViewCell.swift in Sources */,
 				95A64FCF27E540F80004F830 /* TimePicker.swift in Sources */,
+				8DE28D572821A46E00B54BE6 /* StoreController.swift in Sources */,
 				8D7F152B27D299C100E1EB1A /* constants.swift in Sources */,
 				B9BAC6EA280E0CDF001489A1 /* AfterDeathODFirstController.swift in Sources */,
 				D195443E27D499ED00B03DFF /* customTabBar.swift in Sources */,
 				B9419DFC27C52D9C00962A1B /* HospitalCellTableViewCell.swift in Sources */,
 				9578505D279E1917004F3D8F /* VHomeViewController.swift in Sources */,
 				959A52D127E8A41F002244A0 /* editVolunteeringOpp.swift in Sources */,
+				8DE28D682821A70A00B54BE6 /* StoreCell.swift in Sources */,
 				B9AC6636281B2E520013301B /* applicant.swift in Sources */,
 				B9B3143F2815FB8400C62981 /* AODHospitalList.swift in Sources */,
 				B99C272C281C98EC00EAC439 /* DeleteAppointment.swift in Sources */,
+				8DE28D5E2821A64C00B54BE6 /* RewardsViewController.swift in Sources */,
 				B99C2724281C226200EAC439 /* OlderOrganAppointments.swift in Sources */,
 				D19B1B4B27E95F1000CB3FFA /* currentBldAppCell.swift in Sources */,
 				B9D831C72818BDF40023CBC5 /* ThankYouPopup.swift in Sources */,
 				959A52CB27E87E51002244A0 /* cancelPopup.swift in Sources */,
 				B9533F002811A79E00485482 /* Alive2ndVC.swift in Sources */,
 				D195445027D49AFF00B03DFF /* bloodTypeCell.swift in Sources */,
+				8DE28D532821A45E00B54BE6 /* QRController.swift in Sources */,
 				B91DD29027E9965F00BA9881 /* Appointment.swift in Sources */,
 				95062D9C27CADE1300D63911 /* HospitalProfileViewController.swift in Sources */,
 				B9DDAE9028188D9B0001149C /* ConfirmAppointmentPopUp.swift in Sources */,
@@ -789,6 +849,8 @@
 				9520693927E3A5D100D5DC11 /* addVolunteeringOpp.swift in Sources */,
 				B9B3143B2815BAB000C62981 /* AODInstructions.swift in Sources */,
 				95C5967727D75A8D00A5572C /* styles.swift in Sources */,
+				8DE28D592821A4A900B54BE6 /* Store.swift in Sources */,
+				8DE28D642821A66700B54BE6 /* AllStoresViewController.swift in Sources */,
 				B9B3143D2815F82200C62981 /* Alive3rdVC.swift in Sources */,
 				B9570C2F27DFA828000D1B8B /* MaterialSegmentedControl.swift in Sources */,
 				D195443827D499A200B03DFF /* organShortageVC.swift in Sources */,
@@ -808,6 +870,7 @@
 				95C5967927D767FE00A5572C /* VSignUpViewController.swift in Sources */,
 				D19B1B4F27E95F1D00CB3FFA /* oldBloodAppTableViewCell.swift in Sources */,
 				8D0E9A1F27E5339C00890AC0 /* BloodDonationInformationViewController.swift in Sources */,
+				8DE28D622821A66000B54BE6 /* AllQRCodesViewController.swift in Sources */,
 				D195445427D49B2100B03DFF /* organCell.swift in Sources */,
 				B952BB1227C641B80049D81B /* HospitalsController.swift in Sources */,
 				B930F86827B85D5F00E70860 /* RoundedView.swift in Sources */,
@@ -819,6 +882,7 @@
 				B9AC663D281B2EF20013301B /* acceptedApplicantTableViewCell.swift in Sources */,
 				95062D9D27CADE1300D63911 /* VolunteerProfileViewController.swift in Sources */,
 				B91DD29627E998C000BA9881 /* CustomPopUpView.swift in Sources */,
+				8DE28D5B2821A4D100B54BE6 /* QRCode.swift in Sources */,
 				952C5D1227E4CF4800DF6537 /* DateTimePicker.swift in Sources */,
 				95B7FCCF27E8D53D00865258 /* updatePopoup.swift in Sources */,
 				95785059279E1917004F3D8F /* AppDelegate.swift in Sources */,
@@ -968,7 +1032,7 @@
 		};
 		9578506A279E1918004F3D8F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F5FB412F9EC537BFEB5586DE /* Pods-Yumn.debug.xcconfig */;
+			baseConfigurationReference = 74A5C8899835694B1F89E993 /* Pods-Yumn.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1003,7 +1067,7 @@
 		};
 		9578506B279E1918004F3D8F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AF0F267DB4C4C4078A201A2C /* Pods-Yumn.release.xcconfig */;
+			baseConfigurationReference = AAE7F21D6C8F9DC1D8D5D389 /* Pods-Yumn.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

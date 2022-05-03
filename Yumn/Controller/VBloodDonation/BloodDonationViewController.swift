@@ -292,6 +292,14 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
        }
     }
     
+    
+    @objc func onPressedBookApp(sender: Any){
+ 
+    
+    let questionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "bloodQuestions") as! BloodDonationQuestionsViewController
+        self.navigationController?.pushViewController(questionVC, animated: true)
+}
+    
   
     @IBAction func onPressedBloodArrow(_ sender: Any) {
         
@@ -351,6 +359,7 @@ extension BloodDonationViewController: UITableViewDataSource {
         
         let distance = String(format: "%.3f", sortedHospitals![indexPath.row].distance!)
         cell.distanceText.text = "يبعد: \(distance) كم"
+        cell.bookApp.addTarget(self, action:#selector(onPressedBookApp(sender:)), for: .touchUpInside)
         
         return cell
     }

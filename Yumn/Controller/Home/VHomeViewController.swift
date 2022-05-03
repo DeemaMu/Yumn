@@ -50,30 +50,41 @@ class VHomeViewController: UIViewController {
         
         let db = Firestore.firestore()
                
-               let docRef = db.collection("volunteer").document(Auth.auth().currentUser!.uid)
+        
+        let docRef = db.collection("volunteer").document(Auth.auth().currentUser!.uid)
 
-               docRef.getDocument { (document, error) in
-                   if let document = document, document.exists {
-                       
-                       let seconds = 1.0
-                       DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-                           
-                           // Put your code which should be executed with a delay here
-                           
-                           
-                       let name = document.get("firstName") as! String
-                           let mssg = "حياك الله " + name  + "، تو ما نور يُمْن"
-                           
-
-                           self.showToastHome(message: mssg, font: .systemFont(ofSize: 20), image: (UIImage(named: "yumn-1") ?? UIImage(named: "")! ))}
-
-
-                       
-                       print (Constants.Globals.firstNameFromdb)
-                   } else {
-                       print("Document does not exist")
-                   }
-               }
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                
+                let seconds = 1.0
+                DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+                    
+                    // Put your code which should be executed with a delay here
+                    
+                    
+                let name = document.get("firstName") as! String
+                    let mssg = "حياك الله " + name  + "، تو ما نور يُمْن"
+                    
+                    if (Constants.Globals.isLoggingIn == true){
+                        
+                        self.showToast2(message: mssg, font: .systemFont(ofSize: 20), image: (UIImage(named: "yumn-1") ?? UIImage(named: "")! ))
+                        
+                        //To avoid showing the toast allover again while navigating
+                        Constants.Globals.isLoggingIn = false
+                        
+                        
+                    }
+                else{
+                    
+                    //Don't show toast
+                }
+                }
+                
+                print (Constants.Globals.firstNameFromdb)
+            } else {
+                print("Document does not exist")
+            }
+        }
                
         super.viewDidLoad()
         print("\(String(describing: lm.location))")

@@ -223,8 +223,6 @@ class SignInViewController: UIViewController {
     @objc func styleTextFields(textfield: UITextField){
         
         
-        // It only worked this way in this page
-        
         
         
         let bottomLine = CALayer()
@@ -234,8 +232,8 @@ class SignInViewController: UIViewController {
             bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width + 95, height: 2)
         } //was width + 120
         else {
-            bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width  , height: 2)
-            
+           bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width  , height: 2)
+
             
         }
         
@@ -244,7 +242,6 @@ class SignInViewController: UIViewController {
         textfield.borderStyle = .none
         
         textfield.layer.addSublayer(bottomLine)
-        
         
     }
     
