@@ -34,15 +34,14 @@ class AfterDeathODSecondController: UIViewController {
     
     let userID = Auth.auth().currentUser!.uid
     let db = Firestore.firestore()
-
     
+    var cancellable : AnyCancellable?
+        
     var selectedOrgans: [String:Bool]?
     
     var donor: Donor?
     
     var organs: [String] = []
-    
-    var questions = [false, false,false, false, false]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,12 +107,15 @@ class AfterDeathODSecondController: UIViewController {
         nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(named: "mainLight")!, NSAttributedString.Key.font: customFont]
     }
     
+    // The method called from the swiftui button to display the confirmation message
     func showConfirmationMessage(selected: [String:Bool], donor: Donor){
         blackBlurredView.superview?.bringSubviewToFront(blackBlurredView)
         popupView.superview?.bringSubviewToFront(popupView)
         popupView.isHidden = false
         blackBlurredView.isHidden = false
+        // Sets the selected organs dictionary
         selectedOrgans = selected
+        // Sets the after death donor
         self.donor = donor
     }
     
@@ -124,50 +126,75 @@ class AfterDeathODSecondController: UIViewController {
         popupView.isHidden = true
         blackBlurredView.isHidden = true
     }
-    
-    
-    @IBAction func confirm(_ sender: UIButton) {
-        thankYouPopup.superview?.bringSubviewToFront(thankYouPopup)
-        popupView.isHidden = true
-        thankYouPopup.isHidden = false
         
+    // The method called from the swiftui button to display the confirmation message
+    @IBAction func confirm(_ sender: UIButton) {
+        
+        // Transfers the selected organs from the dictionary to the organs array
         for organ in selectedOrgans! {
             if(organ.value){
                 self.organs.append(organ.key)
             }
         }
         
-        if(saveData()){
-            let configuration = Configuration()
-            let controller = UIHostingController(rootView: ThankYouPopup(config: configuration, controllerType: 2))
-            // injects here, because `configuration` is a reference !!
-            configuration.hostingController = controller
-            addChild(controller)
-            controller.view.frame = innerThanku.bounds
-            innerThanku.addSubview(controller.view)
-        }
+        // If the save was successful display seccuess message, otherwise display fail message
+        cancellable = saveData().receive(on: DispatchQueue.main
+        ).sink(receiveCompletion: { completion in
+            switch completion {
+            case .finished:
+                print("finished")
+            case .failure(let error):
+                print(error)
+            }
+        }, receiveValue: { [weak self] success in
+            print(success)
+            if(success){
+                self!.showThankYou()
+            } else {
+                components().showToast(message: "فشل في حفظ العملية. الرجاء المحاولة لاحقًا", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!, viewC: self!)
+            }
+        })
     }
     
-    func saveData() -> Bool {
-        var added = true
-        let newDoc = db.collection("afterDeathDonors").document(userID)
+    // Saving data to database
+    func saveData() -> Future<Bool, Error>{
         
-        newDoc.setData(["bloodType": self.donor!.bloodType, "city": self.donor!.city, "name": self.donor!.name, "nationalID": self.donor!.nationalID, "organs": self.donor!.organs,
-                        "uid": userID]) { error in
-
-            if (error == nil){
-                print("added")
-            } else {
-                print(error!)
-                added = false
+        return Future<Bool, Error> { [weak self] promise in
+            DispatchQueue.main.async {
+                let newDoc = self?.db.collection("afterDeathDonors").document(self!.userID)
+                // Set new document data
+                newDoc?.setData(["bloodType": self?.donor?.bloodType, "city": self?.donor?.city, "name": self?.donor?.name, "nationalID": self?.donor!.nationalID, "organs": self?.donor?.organs,
+                                "uid": self!.userID]) { error in
+                    
+                    if (error == nil){
+                        promise(.success(true))
+                    } else {
+                        promise(.failure(error!))
+                    }
+                }
             }
         }
-        return added
     }
-        
+
+    
+    
+    func showThankYou(){
+        thankYouPopup.superview?.bringSubviewToFront(thankYouPopup)
+        popupView.isHidden = true
+        thankYouPopup.isHidden = false
+        let configuration = Configuration()
+        let controller = UIHostingController(rootView: ThankYouPopup(config: configuration, controllerType: 2))
+        // injects here, because `configuration` is a reference !!
+        configuration.hostingController = controller
+        addChild(controller)
+        controller.view.frame = innerThanku.bounds
+        innerThanku.addSubview(controller.view)
+    }
     
     func thankYou(){
         performSegue(withIdentifier: "wrapToHome", sender: nil)
     }
     
 }
+
+import Combine

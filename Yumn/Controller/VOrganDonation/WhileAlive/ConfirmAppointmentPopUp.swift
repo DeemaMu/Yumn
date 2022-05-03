@@ -8,6 +8,7 @@
 import SwiftUI
 import Firebase
 import FirebaseAuth
+import Combine
 
 struct ConfirmAppointmentPopUp: View {
     let config: Configuration
@@ -17,7 +18,16 @@ struct ConfirmAppointmentPopUp: View {
     
     let db = Firestore.firestore()
     
+    let mainDocID = Constants.selected.mainDoc
+    let exactID = Constants.selected.exactDoc
+    
     @State var listener: ListenerRegistration?
+    @State var updateDataCancellable : AnyCancellable?
+    @State var addToUserCancellable : AnyCancellable?
+    @State var addToArrayCancellable : AnyCancellable?
+    @State var deleteFromArrayCancellable : AnyCancellable?
+    @State var deleteFromUserCancellable : AnyCancellable?
+    @State var updateDocumentCancellable : AnyCancellable?
     
     let shadowColor = Color(#colorLiteral(red: 0.8653315902, green: 0.8654771447, blue: 0.8653123975, alpha: 1))
     let mainDark = Color(UIColor.init(named: "mainDark")!)
@@ -30,7 +40,7 @@ struct ConfirmAppointmentPopUp: View {
     @State var hospitalLocation = ""
     
     @State var appointmentsTemp:[DAppointment]?
-    @State var docID:String?
+    @State var docID:[String]?
     
     var weekdaysAR: [String:String] =
     [
@@ -101,21 +111,22 @@ struct ConfirmAppointmentPopUp: View {
                     
                     Button(action: {
                         
-                        self.updateData { succuss in
-                            if succuss {
-                                print("lets goooo")
+                        self.updateDataCancellable = saveData().receive(on: DispatchQueue.main
+                        ).sink(receiveCompletion: { completion in
+                            switch completion {
+                            case .finished:
+                                print("finished")
+                            case .failure(let error):
+                                print(error)
+                            }
+                        }, receiveValue: { success in
+                            print(success)
+                            if(success){
                                 if(Constants.selected.edit){
                                     self.deleteDoc()
                                 }
-                                else {
-                                    let x =
-                                    config.hostingController?.parent as! Alive4thVC
-                                    x.confirm()
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-                                        listener?.remove()
-                                    }
-                                }
-                            }else{
+                                self.addToArray()
+                            } else {
                                 let x =
                                 config.hostingController?.parent as! Alive4thVC
                                 x.fail()
@@ -124,29 +135,32 @@ struct ConfirmAppointmentPopUp: View {
                                 }
                                 print("failed")
                             }
-                        }
+                        })
                         
-                        //                        if(self.updateData()){
-                        //                            if(self.addToArray()){
-                        //                                if(self.addToUser()){
-                        //                                    if(!Constants.selected.edit){
-                        //                                        print("lets goooo")
-                        //                                        let x =
-                        //                                        config.hostingController?.parent as! Alive4thVC
-                        //                                        x.confirm()
-                        //                                    } else {
-                        //
-                        //                                    }
-                        //                                }  else {
-                        //                                    print("fail22222")
+                        
+                        //                        self.updateData { succuss in
+                        //                            if succuss {
+                        //                                print("lets goooo")
+                        //                                if(Constants.selected.edit){
+                        //                                    self.deleteDoc()
                         //                                }
+                        //                                else {
+                        //                                    let x =
+                        //                                    config.hostingController?.parent as! Alive4thVC
+                        //                                    x.confirm()
+                        //                                    DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                        //                                        listener?.remove()
+                        //                                    }
+                        //                                }
+                        //                            }else{
+                        //                                let x =
+                        //                                config.hostingController?.parent as! Alive4thVC
+                        //                                x.fail()
+                        //                                DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                        //                                    listener?.remove()
+                        //                                }
+                        //                                print("failed")
                         //                            }
-                        //                            else {
-                        //                                print("fail1111")
-                        //                            }
-                        //                        }
-                        //                        else {
-                        //                            print("fail3333")
                         //                        }
                         
                     }) {
@@ -174,203 +188,336 @@ struct ConfirmAppointmentPopUp: View {
     }
     
     func deleteDoc(){
-        
-        if(self.DeleteFromAppointment()){
-            if(self.DeleteFromUser()){
-                if(self.DeleteFromInnerAppointment()){
-                    let x = config.hostingController?.parent as! Alive4thVC
-                    x.confirm()
-                
-                }
-            }
-        }
-        
+        DeleteFromInnerAppointment()
     }
     
     // Constants.selected.mainDoc
     // Constants.selected.exactDoc
     
-    func DeleteFromInnerAppointment() -> Bool {
-        var success = true
+    func DeleteFromInnerAppointment() {
         
-        db.collection("appointments").document(Constants.selected.mainDoc).collection("appointments").document(Constants.selected.exactDoc).setData(["booked":false, "donor": ""], merge: true) { error in
-            
-            if error == nil {
-                success = true
-            } else {
-                print("\(String(describing: error))")
-                success = false
-            }
-        }
-        
-        return success
-    }
-    
-    func DeleteFromAppointment() -> Bool {
-        var success = true
-        
-        var doc = db.collection("appointments").document(Constants.selected.mainDoc)
-        
-        doc.updateData(["bookedAppointments": FieldValue.arrayRemove([Constants.selected.exactDoc])]) { error in
-            if (error == nil) {
-                success = true
-            } else {
-                print(error!)
-                success = false
-            }
-        }
-        return success
-    }
-    
-    func DeleteFromUser() -> Bool {
-        var success = true
-        
-        db.collection("volunteer").document(userID).collection("organAppointments").document(Constants.selected.exactDoc).delete() { error in
-            
-            if error == nil {
-                success = true
-            } else {
-                print("\(String(describing: error))")
-                success = false
-            }
-        }
-        return success
-    }
-    
-    
-    func updateData(completion: (Bool) -> () ){
-        var success = true
-        
-        self.listener = db.collection("appointments").document(appointment.docID).collection("appointments").limit(to: 1).addSnapshotListener { QuerySnapshot, Error in
-            
-            guard let documents = QuerySnapshot?.documents else {
-                print("no documents")
-                return
-            }
-            
-            self.appointmentsTemp = documents.map { (queryDocumentSnapshot) -> DAppointment in
+        self.updateDocumentCancellable = Future<Bool, Error> { promise in
+            DispatchQueue.main.async {
+                let doc = db.collection("appointments").document(self.mainDocID).collection("appointments").document(self.exactID)
                 
-                let data = queryDocumentSnapshot.data()
-                let docID = queryDocumentSnapshot.documentID
-                let donor: String = "-1"
-                let hName: String = ""
-                let confirmed: Bool = false
-                let booked: Bool = false
-                
-                let type = data["type"] as? String ?? ""
-                
-                let stamp1 = data["start_time"] as? Timestamp
-                let startTime = stamp1!.dateValue()
-                
-                let stamp2 = data["end_time"] as? Timestamp
-                let endTime = stamp2!.dateValue()
-                
-                let hospital = data["hospital"] as? String ?? ""
-                
-                
-                let organ = data["organ"] as? String ?? ""
-                let aptDuration = 60.0
-                var apt = DAppointment(type: "organ")
-                apt.startTime = startTime
-                apt.endTime = endTime
-                apt.hName = hospital
-                apt.docID = docID
-                self.docID = docID
-                return apt
-            }
-            
-            db.collection("appointments").document(appointment.docID).collection("appointments").document(docID!).setData(["booked":true, "donor": userID], merge: true) { error in
-                
-                if error == nil {
-                    if(appointment.bookedAppointments == nil){
-                        appointment.bookedAppointments = [String]()
-                        
+                doc.getDocument {  (document, error) in
+                    
+                    if ((document?.exists) != nil) {
+                        doc.setData(["booked":false, "donor": ""], merge: true) { error in
+                            if error == nil {
+                                promise(.success(true))
+                            } else {
+                                print("\(String(describing: error))")
+                                promise(.failure(error!))
+                            }
+                        }
+                    } else {
+                        print("Document does not exist")
+                        promise(.failure(error!))
                     }
-                    print("heerreeee44444 \(exact.docID)")
-                    appointment.bookedAppointments?.append(exact.docID)
-                    success = true && success
-                } else {
-                    print("\(String(describing: error))")
-                    success = false
                 }
             }
-            
-            var doc = db.collection("appointments").document(appointment.docID)
-            
-            doc.updateData(["bookedAppointments": FieldValue.arrayUnion([docID!])]) { error in
-                if (error == nil) {
-                    success = true && success
-                } else {
-                    print(error!)
-                    success = false
-                }
+        }.sink(receiveCompletion: { completion in
+            switch completion {
+            case .finished:
+                print("finished")
+            case .failure(let error):
+                print(error)
             }
-            
-            
-            // add to user
-            let newDoc = db.collection("volunteer").document(userID).collection("organAppointments").document(exact.docID)
-            
-            newDoc.setData(["type": appointment.type,"hospital": appointment.hospital, "start_time": appointment.startTime,
-                            "end_time": appointment.endTime, "date": appointment.aptDate, "appointment_duration": 60
-                            , "docID": exact.docID, "mainDocId": appointment.docID, "hospital_name": self.hospitalName, "organ": appointment.organ, "location": self.hospitalLocation]) { error in
+        }, receiveValue: { success in
+            print(success)
+            if(success){
+                self.DeleteFromUser()
+            } else {
+                let x =
+                config.hostingController?.parent as! Alive4thVC
+                x.fail()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                    listener?.remove()
+                }
+                print("failed")
+            }
+        })
+    }
+    
+    func removeFromInnerAppointment(appointmentID: String, mainAppointmentId: String) {
+        
+        self.updateDocumentCancellable = Future<Bool, Error> { promise in
+            DispatchQueue.main.async {
+                let doc = db.collection("appointments").document(mainAppointmentId).collection("appointments").document(appointmentID)
                 
-                if (error == nil){
-                    success = true && success
-                } else {
-                    print(error!)
-                    success = false
+                doc.getDocument {  (document, error) in
+                    
+                    if ((document?.exists) != nil) {
+                        doc.setData(["booked":false, "donor": ""], merge: true) { error in
+                            if error == nil {
+                                promise(.success(true))
+                            } else {
+                                print("\(String(describing: error))")
+                                promise(.failure(error!))
+                            }
+                        }
+                    } else {
+                        print("Document does not exist")
+                        promise(.failure(error!))
+                    }
                 }
             }
-            
-        }
-        
-        completion(success)
+        }.sink(receiveCompletion: { completion in
+            switch completion {
+            case .finished:
+                print("finished")
+            case .failure(let error):
+                print(error)
+            }
+        }, receiveValue: { success in
+            print(success)
+            if(success){
+                self.addToArray()
+            } else {
+                let x =
+                config.hostingController?.parent as! Alive4thVC
+                x.fail()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                    listener?.remove()
+                }
+                print("failed")
+            }
+        })
     }
     
     
-    func addToArray(completion: (Bool) -> () ){
-        var success = true
+    
+    func DeleteFromAppointment(mainAppointmentId: String) {
         
-        var doc = db.collection("appointments").document(appointment.docID)
-        
-        doc.updateData(["bookedAppointments": FieldValue.arrayUnion([docID!])]) { error in
-            if (error == nil) {
-                success = true
-            } else {
-                print(error!)
-                success = false
+        self.deleteFromArrayCancellable = Future<Bool, Error> { promise in
+            DispatchQueue.main.async {
+                let doc = db.collection("appointments").document(mainAppointmentId)
+                
+                doc.updateData(["bookedAppointments": FieldValue.arrayRemove([Constants.selected.exactDoc])]) { error in
+                    if (error == nil) {
+                        promise(.success(true))
+                    } else {
+                        promise(.failure(error!))
+                    }
+                }
             }
-        }
+        }.sink(receiveCompletion: { completion in
+            switch completion {
+            case .finished:
+                print("finished")
+            case .failure(let error):
+                print(error)
+            }
+        }, receiveValue: { success in
+            print(success)
+            if(success){
+                let x = config.hostingController?.parent as! Alive4thVC
+                x.confirm()
+            } else {
+                let x =
+                config.hostingController?.parent as! Alive4thVC
+                x.fail()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                    listener?.remove()
+                }
+                print("failed")
+            }
+        })
         
-        //            .setData(["bookedAppointments":appointment.bookedAppointments], merge: true) { error in
-        //
-        //            if error == nil {
-        //                success = true
-        //            } else {
-        //                success = false
-        //            }
-        //        }
-        
-        completion(success)
     }
     
-    func addToUser(completion: (Bool) -> () ){
-        var added = true
-        let newDoc = db.collection("volunteer").document(userID).collection("organAppointments").document(exact.docID)
-        
-        newDoc.setData(["type": appointment.type,"hospital": appointment.hospital, "start_time": appointment.startTime,
-                        "end_time": appointment.endTime, "date": appointment.aptDate, "appointment_duration": 60
-                        , "docID": exact.docID, "mainDocId": appointment.docID, "hospital_name": self.hospitalName, "organ": appointment.organ, "location": self.hospitalLocation]) { error in
-            
-            if (error == nil){
-                added = true
+    
+    
+    func DeleteFromUser() {
+        self.deleteFromUserCancellable = Future<Bool, Error> { promise in
+            DispatchQueue.main.async {
+                let doc = db.collection("volunteer").document(userID).collection("organAppointments").document(exactID)
+                
+                doc.getDocument {  (document, error) in
+                    
+                    if ((document?.exists) != nil) {
+                        doc.delete() { error in
+                            
+                            if error == nil {
+                                promise(.success(true))
+                            } else {
+                                print("\(String(describing: error))")
+                                promise(.failure(error!))
+                            }
+                        }
+                    } else {
+                        print("Document does not exist")
+                        promise(.failure(error!))
+                    }
+                }
+            }
+        }.sink(receiveCompletion: { completion in
+            switch completion {
+            case .finished:
+                print("finished")
+            case .failure(let error):
+                print(error)
+            }
+        }, receiveValue: { success in
+            print(success)
+            if(success){
+                self.DeleteFromAppointment(mainAppointmentId: mainDocID)
             } else {
-                print(error!)
-                added = false
+                let x =
+                config.hostingController?.parent as! Alive4thVC
+                x.fail()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                    listener?.remove()
+                }
+                print("failed")
+            }
+        })
+    }
+    
+    // Saving data to database
+    // first, we update appointment state
+    func saveData() -> Future<Bool, Error>{
+        
+        return Future<Bool, Error> { promise in
+            DispatchQueue.main.async {
+                
+                // Retrieve first Document
+                self.listener = db.collection("appointments").document(appointment.docID).collection("appointments").limit(to: 1).addSnapshotListener { QuerySnapshot, Error in
+                    
+                    guard let documents = QuerySnapshot?.documents else {
+                        print("no documents")
+                        promise(.failure(Error!))
+                        return
+                    }
+                    
+                    // Save document id
+                    self.docID = documents.map { (queryDocumentSnapshot) -> String in
+                        let docID = queryDocumentSnapshot.documentID
+                        return docID
+                    }
+                    
+                    // Uodate appointment status to booked and assign user as donor
+                    db.collection("appointments").document(appointment.docID).collection("appointments").document(docID![0]).setData(["booked":true, "donor": userID], merge: true) { error in
+                        
+                        if error == nil {
+                            if(self.appointment.bookedAppointments == nil){
+                                self.appointment.bookedAppointments = [String]()
+                                
+                            }
+                            print("exact document Id: \(exact.docID)")
+                            self.appointment.bookedAppointments?.append(exact.docID)
+                            promise(.success(true))
+                        } else {
+                            print("\(String(describing: error))")
+                            promise(.failure(error!))
+                        }
+                    }
+                }
             }
         }
+    }
+    
+    // Saving data to database
+    // second, we add appointment to array
+    func addToArray() {
         
-        completion(added)
+        addToArrayCancellable = Future<Bool, Error> { promise in
+            DispatchQueue.main.async {
+                
+                let doc = db.collection("appointments").document(self.appointment.docID)
+                
+                doc.updateData(["bookedAppointments": FieldValue.arrayUnion([docID![0]])]) { error in
+                    if (error == nil) {
+                        promise(.success(true))
+                    } else {
+                        
+                        promise(.failure(error!))
+                    }
+                }
+            }
+        }.receive(on: DispatchQueue.main
+        ).sink(receiveCompletion: { completion in
+            switch completion {
+            case .finished:
+                print("finished")
+            case .failure(let error):
+                print(error)
+            }
+        }, receiveValue: { success in
+            print(success)
+            if(success){
+                addToUser()
+            } else {
+                self.removeFromInnerAppointment(appointmentID: self.exact.docID, mainAppointmentId: self.appointment.docID)
+                let x =
+                config.hostingController?.parent as! Alive4thVC
+                x.fail()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                    listener?.remove()
+                }
+                print("failed")
+            }
+        })
+    }
+    
+    // Saving data to database
+    // last, we add appointment to user
+    func addToUser() {
+        
+        addToUserCancellable = Future<Bool, Error> { promise in
+            DispatchQueue.main.async {
+                
+                let newDoc = db.collection("volunteer").document(userID).collection("organAppointments").document(exact.docID)
+                
+                newDoc.setData(["type": appointment.type,"hospital": appointment.hospital, "start_time": appointment.startTime,
+                                "end_time": appointment.endTime, "date": appointment.aptDate, "appointment_duration": 60
+                                , "docID": exact.docID, "mainDocId": appointment.docID, "hospital_name": self.hospitalName, "organ": appointment.organ, "location": self.hospitalLocation]) { error in
+                    
+                    if (error == nil){
+                        promise(.success(true))
+                    } else {
+                        print(error!)
+                        promise(.failure(error!))
+                    }
+                }
+            }
+        }.receive(on: DispatchQueue.main
+        ).sink(receiveCompletion: { completion in
+            switch completion {
+            case .finished:
+                print("finished")
+            case .failure(let error):
+                print(error)
+            }
+        }, receiveValue: { success in
+            print(success)
+            if(success){
+                if(Constants.selected.edit){
+                    listener?.remove()
+                    self.deleteDoc()
+                }
+                else {
+                    let x =
+                    config.hostingController?.parent as! Alive4thVC
+                    x.confirm()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                        listener?.remove()
+                    }
+                }
+                
+            } else {
+                self.removeFromInnerAppointment(appointmentID: self.exact.docID, mainAppointmentId: self.appointment.docID)
+                self.DeleteFromAppointment(mainAppointmentId: self.appointment.docID)
+                let x =
+                config.hostingController?.parent as! Alive4thVC
+                x.fail()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                    listener?.remove()
+                }
+                print("failed")
+            }
+        })
     }
     
     func convertToArabic(date: Date) -> String {
@@ -412,6 +559,65 @@ struct ConfirmAppointmentPopUp: View {
         
         return hospitalName
     }
+    
+    //    func DeleteFromUser() -> Bool {
+    //        var success = true
+    //
+    //        let doc = db.collection("volunteer").document(userID).collection("organAppointments").document(exactID)
+    //
+    //        doc.getDocument {  (document, error) in
+    //
+    //            if ((document?.exists) != nil) {
+    //                doc.delete()
+    //
+    //           } else {
+    //              print("Document does not exist")
+    //           }
+    //
+    //
+    //        }
+    ////            .delete() { error in
+    ////
+    ////            if error == nil {
+    ////                success = true
+    ////            } else {
+    ////                print("\(String(describing: error))")
+    ////                success = false
+    ////            }
+    ////        }
+    //        return success
+    //    }
+    //
+    //    func DeleteFromAppointment(mainAppointmentId: String) -> Bool {
+    //        var success = true
+    //
+    //        let doc = db.collection("appointments").document(mainAppointmentId)
+    //
+    //        doc.updateData(["bookedAppointments": FieldValue.arrayRemove([Constants.selected.exactDoc])]) { error in
+    //            if (error == nil) {
+    //                success = true
+    //            } else {
+    //                print(error!)
+    //                success = false
+    //            }
+    //        }
+    //        return success
+    //    }
+    //    func DeleteFromInnerAppointment(appointmentID: String, mainAppointmentId: String) -> Bool {
+    //        var success = true
+    //
+    //        db.collection("appointments").document(mainAppointmentId).collection("appointments").document(appointmentID).setData(["booked":false, "donor": ""], merge: true) { error in
+    //
+    //            if error == nil {
+    //                success = true
+    //            } else {
+    //                print("\(String(describing: error))")
+    //                success = false
+    //            }
+    //        }
+    //
+    //        return success
+    //    }
 }
 
 //struct ConfirmAppointmentPopUp_Previews: PreviewProvider {
@@ -422,3 +628,5 @@ struct ConfirmAppointmentPopUp: View {
 //        ConfirmAppointmentPopUp(config: Configuration(), appointment: apt, exact: DAppointment(type: "organ", startTime: Date(), endTime: Date().addingTimeInterval(30 * 60), donor: "", hName: Constants.selected.selectedOrgan.hospital, confirmed: false, booked: false))
 //    }
 //}
+
+

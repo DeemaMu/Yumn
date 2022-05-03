@@ -146,7 +146,8 @@ struct AfterDeathOrganSelection: View {
                 , y:  self.organsVM.selected[organ]! ? 0 : 6)
     }
     
-    // On organ selected, change it value and hide error message
+    // On organ selected, change its value in the dictionary
+    // and hide error message if its displayed
     func buttonPressed(organ: String){
         self.organsVM.selected[organ]?.toggle()
         for organ in self.organsVM.selected {
