@@ -111,6 +111,13 @@ class RewardsViewController: UIViewController {
             
          
         }
+        
+        if segue.identifier == "toStores" {
+            let destinationVC = segue.destination as! AllStoresViewController
+            
+         
+        }
+        
     }
     
     @IBAction func generateQRCode(_ sender: Any) {

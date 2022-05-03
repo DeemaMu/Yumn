@@ -49,6 +49,11 @@
 		8DC80B7827F9BDA400A1DF6E /* BloodDonationAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC80B7727F9BDA300A1DF6E /* BloodDonationAppointmentViewController.swift */; };
 		8DC80B7A27FA24B400A1DF6E /* BloodAppointmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC80B7927FA24B400A1DF6E /* BloodAppointmentView.swift */; };
 		8DC80B7C27FB16A000A1DF6E /* RewardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC80B7B27FB169F00A1DF6E /* RewardsViewController.swift */; };
+		8DE28D492821655B00B54BE6 /* AllStoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE28D482821655B00B54BE6 /* AllStoresViewController.swift */; };
+		8DE28D4B282166FE00B54BE6 /* StoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DE28D4A282166FE00B54BE6 /* StoreCell.xib */; };
+		8DE28D4D2821752600B54BE6 /* StoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE28D4C2821752600B54BE6 /* StoreCell.swift */; };
+		8DE28D4F28217A7800B54BE6 /* StoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE28D4E28217A7800B54BE6 /* StoreController.swift */; };
+		8DE28D5128217AF800B54BE6 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE28D5028217AF800B54BE6 /* Store.swift */; };
 		947FF56BA4936985B11C4116 /* Pods_Yumn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC0BC66019C4D1F5FD76092 /* Pods_Yumn.framework */; };
 		95062D9627CADC0500D63911 /* Tajawal-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95062D9227CADC0400D63911 /* Tajawal-Light.ttf */; };
 		95062D9727CADC0500D63911 /* Tajawal-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95062D9327CADC0500D63911 /* Tajawal-Medium.ttf */; };
@@ -121,6 +126,11 @@
 		8DC80B7727F9BDA300A1DF6E /* BloodDonationAppointmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationAppointmentViewController.swift; sourceTree = "<group>"; };
 		8DC80B7927FA24B400A1DF6E /* BloodAppointmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodAppointmentView.swift; sourceTree = "<group>"; };
 		8DC80B7B27FB169F00A1DF6E /* RewardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsViewController.swift; sourceTree = "<group>"; };
+		8DE28D482821655B00B54BE6 /* AllStoresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStoresViewController.swift; sourceTree = "<group>"; };
+		8DE28D4A282166FE00B54BE6 /* StoreCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreCell.xib; sourceTree = "<group>"; };
+		8DE28D4C2821752600B54BE6 /* StoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCell.swift; sourceTree = "<group>"; };
+		8DE28D4E28217A7800B54BE6 /* StoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreController.swift; sourceTree = "<group>"; };
+		8DE28D5028217AF800B54BE6 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		95062D9227CADC0400D63911 /* Tajawal-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tajawal-Light.ttf"; sourceTree = "<group>"; };
 		95062D9327CADC0500D63911 /* Tajawal-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tajawal-Medium.ttf"; sourceTree = "<group>"; };
 		95062D9427CADC0500D63911 /* Tajawal-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tajawal-Regular.ttf"; sourceTree = "<group>"; };
@@ -240,6 +250,7 @@
 				8D123A7B2818B5C000E1828F /* QRController.swift */,
 				8D123A872818C8FB00E1828F /* TController.swift */,
 				8D123A9B281CD4DD00E1828F /* TimeController.swift */,
+				8DE28D4E28217A7800B54BE6 /* StoreController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -259,6 +270,8 @@
 				8D123A8B2819765100E1828F /* DateCell.swift */,
 				8D123A91281B49B300E1828F /* TimeCell.swift */,
 				8D123A93281B49CD00E1828F /* TimeCell.xib */,
+				8DE28D4A282166FE00B54BE6 /* StoreCell.xib */,
+				8DE28D4C2821752600B54BE6 /* StoreCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -286,6 +299,7 @@
 				8DA7D5272804B1D7007F6416 /* QRCodeViewController.swift */,
 				8D123A6F280DF6CE00E1828F /* AllQRCodesViewController.swift */,
 				8D123A812818C68B00E1828F /* TViewController.swift */,
+				8DE28D482821655B00B54BE6 /* AllStoresViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -306,6 +320,7 @@
 				8D123A95281B810000E1828F /* BloodDonationDate.swift */,
 				8D123A97281B811900E1828F /* BloodDonationTime.swift */,
 				8D123A99281C598B00E1828F /* Date.swift */,
+				8DE28D5028217AF800B54BE6 /* Store.swift */,
 			);
 			path = "Custom Classes";
 			sourceTree = "<group>";
@@ -402,6 +417,7 @@
 				8D123A76280E08D200E1828F /* QRCodeTableViewCell.xib in Resources */,
 				95062D9727CADC0500D63911 /* Tajawal-Medium.ttf in Resources */,
 				95062D9627CADC0500D63911 /* Tajawal-Light.ttf in Resources */,
+				8DE28D4B282166FE00B54BE6 /* StoreCell.xib in Resources */,
 				8D5FD4A827D3A321008A266F /* Al%20Majeed%20Quranic%20Font_shiped.ttf in Resources */,
 				95062D9927CADC0500D63911 /* Tajawal-Bold.ttf in Resources */,
 				8D7F152527D25EF200E1EB1A /* yumnLoading.gif in Resources */,
@@ -474,6 +490,7 @@
 				8D123A882818C8FB00E1828F /* TController.swift in Sources */,
 				8DAB1E4527E3556F00BE45DB /* OrganDonInfoViewController.swift in Sources */,
 				95062D9F27CADE9E00D63911 /* ConvertingColors.swift in Sources */,
+				8DE28D492821655B00B54BE6 /* AllStoresViewController.swift in Sources */,
 				8D123A78280E0BBD00E1828F /* QRCodeTableViewCell.swift in Sources */,
 				8D123A9A281C598D00E1828F /* Date.swift in Sources */,
 				8D123A7A280E140300E1828F /* QRCode.swift in Sources */,
@@ -484,8 +501,10 @@
 				8DC80B7C27FB16A000A1DF6E /* RewardsViewController.swift in Sources */,
 				B97A380227BA9EA000718079 /* BloodDonationViewController.swift in Sources */,
 				8D7D721C27E131280088AC98 /* BloodDonationInfoViewController.swift in Sources */,
+				8DE28D5128217AF800B54BE6 /* Store.swift in Sources */,
 				8D123A92281B49B300E1828F /* TimeCell.swift in Sources */,
 				B9DA61DC27C1100B00359487 /* Location.swift in Sources */,
+				8DE28D4F28217A7800B54BE6 /* StoreController.swift in Sources */,
 				8D7F152227D25DD200E1EB1A /* GIfCode.swift in Sources */,
 				8D123A7C2818B5C100E1828F /* QRController.swift in Sources */,
 				8D7F153A27D2C5BE00E1EB1A /* ContinueViewController.swift in Sources */,
@@ -495,6 +514,7 @@
 				8D123A822818C68B00E1828F /* TViewController.swift in Sources */,
 				B930F86827B85D5F00E70860 /* RoundedView.swift in Sources */,
 				8DC80B7827F9BDA400A1DF6E /* BloodDonationAppointmentViewController.swift in Sources */,
+				8DE28D4D2821752600B54BE6 /* StoreCell.swift in Sources */,
 				8D7F152D27D299F300E1EB1A /* HomeViewController.swift in Sources */,
 				8D123A96281B810100E1828F /* BloodDonationDate.swift in Sources */,
 				B97A37FE27B9D32A00718079 /* RoundedShadowedView.swift in Sources */,

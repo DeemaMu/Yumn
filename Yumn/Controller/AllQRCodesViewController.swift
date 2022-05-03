@@ -159,7 +159,7 @@ extension AllQRCodesViewController: UITableViewDataSource{
         cell.createdAt.text! = "تم إنشاؤه في: " +
         sortedValidQRCodes![indexPath.row].dateCreated
         
-        cell.viewQRCodeBtn.addTarget(self, action:#selector(transitionToQr(sender:)), for: .touchUpInside)
+        cell.viewQRCodeBtn.addTarget(self, action:#selector(push(sender:)), for: .touchUpInside)
         
         
         
@@ -181,8 +181,13 @@ extension AllQRCodesViewController: UITableViewDataSource{
 }
     
     @objc func push(sender: Any){
+        
+        Constants.Globals.newQR = false
 
-    self.navigationController?.pushViewController(QRCodeViewController(), animated: true)
+   // self.navigationController?.pushViewController(QRCodeViewController(), animated: true)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "QR")
+        self.present(vc, animated: true)
     }
     
     

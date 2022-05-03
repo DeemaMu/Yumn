@@ -21,6 +21,7 @@ class QRCodeViewController: UIViewController {
     @IBOutlet weak var qrImage: UIImageView!
     @IBOutlet weak var bottomImage: UIImageView!
     
+    @IBOutlet weak var backBtn: UIBarButtonItem!
     @IBOutlet weak var backgroundView: UIView!
     
     
@@ -100,6 +101,7 @@ class QRCodeViewController: UIViewController {
     }
     
     
+
     
     
     @IBAction func onPressedBAck(_ sender: Any) {
@@ -122,6 +124,9 @@ class QRCodeViewController: UIViewController {
        // }
         
     }
+    
+ 
+    
     func transitionToHome(){
         
         
