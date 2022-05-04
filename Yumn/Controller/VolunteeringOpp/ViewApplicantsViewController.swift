@@ -43,9 +43,8 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
     var clickedCellIndex: Int = -1
     let db = Firestore.firestore()
     
-    // from segue
-    let VODocID = "s1MR2pbNW4tO8njESfp7"
-
+    // from segue | Updated
+    var VODocID : String = ""
     
     // By Modhi
    // let user = Auth.auth().currentUser
@@ -208,7 +207,7 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
     
     func getAcceptedApplicants(docID : String){
 
-        self.acceptedApplicants = []
+     //   self.acceptedApplicants = []
         let userRef = db.collection("volunteeringOpp").document(docID).collection("applicants").whereField("status", isEqualTo: "accepted")
         userRef.addSnapshotListener { (querySnapshot, error) in
             if let e = error {

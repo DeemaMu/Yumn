@@ -69,6 +69,7 @@
 		D1627E4428160CA1003EB949 /* viewOldVolunteerOppTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1627E4228160CA1003EB949 /* viewOldVolunteerOppTableViewCell.swift */; };
 		D1627E4528160CA1003EB949 /* viewOldVolunteerOppTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1627E4328160CA1003EB949 /* viewOldVolunteerOppTableViewCell.xib */; };
 		D1627E472816AC22003EB949 /* volunteerVOpp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1627E462816AC22003EB949 /* volunteerVOpp.swift */; };
+		D1627E512821C837003EB949 /* YumnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1627E502821C837003EB949 /* YumnTests.swift */; };
 		D195443427D4996700B03DFF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D195443327D4996600B03DFF /* ViewController.swift */; };
 		D195443627D4998F00B03DFF /* bloodShortageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D195443527D4998F00B03DFF /* bloodShortageViewController.swift */; };
 		D195443827D499A200B03DFF /* organShortageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D195443727D499A200B03DFF /* organShortageVC.swift */; };
@@ -101,6 +102,16 @@
 		D1DEE93A280AF56300966DE0 /* acceptedApplicantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DEE939280AF56300966DE0 /* acceptedApplicantTableViewCell.swift */; };
 		D1DEE93C280AF56900966DE0 /* acceptedApplicantTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1DEE93B280AF56900966DE0 /* acceptedApplicantTableViewCell.xib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D1627E522821C837003EB949 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9578504D279E1917004F3D8F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 95785054279E1917004F3D8F;
+			remoteInfo = Yumn;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		5F047914A3061485A9ACA08B /* Pods-Yumn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.release.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.release.xcconfig"; sourceTree = "<group>"; };
@@ -168,6 +179,8 @@
 		D1627E4228160CA1003EB949 /* viewOldVolunteerOppTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewOldVolunteerOppTableViewCell.swift; sourceTree = "<group>"; };
 		D1627E4328160CA1003EB949 /* viewOldVolunteerOppTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = viewOldVolunteerOppTableViewCell.xib; sourceTree = "<group>"; };
 		D1627E462816AC22003EB949 /* volunteerVOpp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = volunteerVOpp.swift; sourceTree = "<group>"; };
+		D1627E4E2821C836003EB949 /* YumnTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YumnTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1627E502821C837003EB949 /* YumnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YumnTests.swift; sourceTree = "<group>"; };
 		D195443327D4996600B03DFF /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D195443527D4998F00B03DFF /* bloodShortageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bloodShortageViewController.swift; sourceTree = "<group>"; };
 		D195443727D499A200B03DFF /* organShortageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = organShortageVC.swift; sourceTree = "<group>"; };
@@ -208,6 +221,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C6203A44D2441D95BBF9677 /* Pods_Yumn.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1627E4B2821C836003EB949 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				95785057279E1917004F3D8F /* Yumn */,
+				D1627E4F2821C837003EB949 /* YumnTests */,
 				95785056279E1917004F3D8F /* Products */,
 				FB3A4FC32329E4399DABC3B5 /* Pods */,
 				F747AC8986A68E85D8601F3F /* Frameworks */,
@@ -282,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				95785055279E1917004F3D8F /* Yumn.app */,
+				D1627E4E2821C836003EB949 /* YumnTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -476,6 +498,14 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		D1627E4F2821C837003EB949 /* YumnTests */ = {
+			isa = PBXGroup;
+			children = (
+				D1627E502821C837003EB949 /* YumnTests.swift */,
+			);
+			path = YumnTests;
+			sourceTree = "<group>";
+		};
 		D19B1B5727E9629000CB3FFA /* VBloodApp */ = {
 			isa = PBXGroup;
 			children = (
@@ -523,6 +553,24 @@
 			productReference = 95785055279E1917004F3D8F /* Yumn.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D1627E4D2821C836003EB949 /* YumnTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D1627E542821C837003EB949 /* Build configuration list for PBXNativeTarget "YumnTests" */;
+			buildPhases = (
+				D1627E4A2821C836003EB949 /* Sources */,
+				D1627E4B2821C836003EB949 /* Frameworks */,
+				D1627E4C2821C836003EB949 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D1627E532821C837003EB949 /* PBXTargetDependency */,
+			);
+			name = YumnTests;
+			productName = YumnTests;
+			productReference = D1627E4E2821C836003EB949 /* YumnTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -535,6 +583,10 @@
 				TargetAttributes = {
 					95785054279E1917004F3D8F = {
 						CreatedOnToolsVersion = 13.2;
+					};
+					D1627E4D2821C836003EB949 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 95785054279E1917004F3D8F;
 					};
 				};
 			};
@@ -552,6 +604,7 @@
 			projectRoot = "";
 			targets = (
 				95785054279E1917004F3D8F /* Yumn */,
+				D1627E4D2821C836003EB949 /* YumnTests */,
 			);
 		};
 /* End PBXProject section */
@@ -580,6 +633,13 @@
 				D19B1B5127E95F2200CB3FFA /* oldBloodAppTableViewCell.xib in Resources */,
 				8D7F152527D25EF200E1EB1A /* yumnLoading.gif in Resources */,
 				B9DA61CE27C10C2900359487 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1627E4C2821C836003EB949 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -708,7 +768,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D1627E4A2821C836003EB949 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1627E512821C837003EB949 /* YumnTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D1627E532821C837003EB949 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 95785054279E1917004F3D8F /* Yumn */;
+			targetProxy = D1627E522821C837003EB949 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9578505E279E1917004F3D8F /* Main.storyboard */ = {
@@ -916,6 +992,42 @@
 			};
 			name = Release;
 		};
+		D1627E552821C837003EB949 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "\"${SRCROOT}/Pods/Firebase/CoreOnly/Sources\"";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gp.YumnTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Yumn.app/Yumn";
+			};
+			name = Debug;
+		};
+		D1627E562821C837003EB949 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "\"${SRCROOT}/Pods/Firebase/CoreOnly/Sources\"";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gp.YumnTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Yumn.app/Yumn";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -933,6 +1045,15 @@
 			buildConfigurations = (
 				9578506A279E1918004F3D8F /* Debug */,
 				9578506B279E1918004F3D8F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D1627E542821C837003EB949 /* Build configuration list for PBXNativeTarget "YumnTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1627E552821C837003EB949 /* Debug */,
+				D1627E562821C837003EB949 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

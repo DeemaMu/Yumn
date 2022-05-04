@@ -178,6 +178,11 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
             let controller = segue.destination as! editVolunteeringOpp
             controller.docemntID = self.passDocID
         }
+        // added by Modhi
+        else if (segue.identifier == "viewApplicantsPage"){
+            let destinationVC = segue.destination as! ViewApplicantsViewController
+             destinationVC.VODocID = self.passDocID
+        }
         
     }
     
@@ -224,6 +229,8 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
         self.navigationController?.navigationBar.layoutIfNeeded()
         
     }
+    
+    
     
     
     

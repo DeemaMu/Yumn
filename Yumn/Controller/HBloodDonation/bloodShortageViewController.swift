@@ -286,6 +286,30 @@ extension updateBloodShortageVC : UITableViewDataSource {
 
 
     }
+    
+    
+    // helper for testing || tests if the received value == 0 do not decrease value
+    func decreaseValueButtonHelper(value : Int) -> Bool{
+        
+    //    var oldValue = bloodTypeArray[sender.tag].value
+        
+        if value == 0 {
+            return false
+        }
+        else {
+            _ = value-1
+            return true
+        }
+      
+    
+    }
+    
+    
+    func getBloodValue(sender: UIButton) -> Int{
+        
+        return bloodTypeArray[sender.tag].value
+        
+    }
 
 }
 
