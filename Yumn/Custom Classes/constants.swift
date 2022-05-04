@@ -34,7 +34,7 @@ struct Constants {
          static var city = ""
          static var gender = "f"
          static var weight = ""
-         static var  bloodType = ""
+         static var bloodType = ""
          static var firstNameFromdb = ""
          static var isLoggingOut = false
          static var currentQRID = "Zgtw52fTlum4bv7zpIlY"

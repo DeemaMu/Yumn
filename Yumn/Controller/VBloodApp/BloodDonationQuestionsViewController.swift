@@ -9,7 +9,7 @@ import UIKit
 
 class BloodDonationQuestionsViewController: UIViewController {
     
-  
+    
     @IBOutlet weak var backBtn: UIButton!
     
     @IBOutlet weak var q1Btn: UIButton!
@@ -74,82 +74,82 @@ class BloodDonationQuestionsViewController: UIViewController {
         q7Btn.contentHorizontalAlignment = .right
         
         popupStack.superview?.bringSubviewToFront(popupStack)
-
+        
         
         super.viewDidLoad()
         
         q1Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
-
-
+        
+        
         // Do any additional setup after loading the view.
     }
     
     @IBAction func onPressedBAckBtn(_ sender: Any) {
-    
-    
+        
+        
         
         self.navigationController?.popViewController(animated:true)
-
+        
         
         
     }
     
     /*
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+     
+     let isValidDonor = questions[0]&&questions[1]&&questions[2]&&questions[3]&&questions[4]&&questions[5]&&questions[6]
+     
+     if (!isValidDonor){
+     
+     popupTitle.text = "مقدرين حبك للمساعدة"
+     popupMsg.text = "للأسف أنت غير مؤهل للتبرع بالدم"
+     popupView.isHidden = false
+     blackBlurredView.isHidden = false
+     return false
+     }
+     
+     else {
+     return true
+     }
+     
+     
+     
+     
+     
+     
+     }*/
+    
+    @IBAction func onPressedCont(_ sender: Any) {
+        
+        
         
         let isValidDonor = questions[0]&&questions[1]&&questions[2]&&questions[3]&&questions[4]&&questions[5]&&questions[6]
         
         if (!isValidDonor){
             
             popupTitle.text = "مقدرين حبك للمساعدة"
-            popupMsg.text = "للأسف أنت غير مؤهل للتبرع بالدم"
+            //        popupMsg.text = "للأسف أنت غير مؤهل للتبرع بالدم"
             popupView.isHidden = false
             blackBlurredView.isHidden = false
-            return false
+            
         }
         
-        else {
-            return true
+        else{
+            
+            //Go to next page
+            
+            
         }
-        
-      
-        
-      
-         
-        
-    }*/
-    
-    @IBAction func onPressedCont(_ sender: Any) {
-  
-        
-    
-    let isValidDonor = questions[0]&&questions[1]&&questions[2]&&questions[3]&&questions[4]&&questions[5]&&questions[6]
-    
-    if (!isValidDonor){
-        
-        popupTitle.text = "مقدرين حبك للمساعدة"
-        popupMsg.text = "للأسف أنت غير مؤهل للتبرع بالدم"
-        popupView.isHidden = false
-        blackBlurredView.isHidden = false
-         
-    }
-    
-    else{
-        
-    //Go to next page
-        
-        
-    }
     }
     
     
     
     @IBAction func onPressedBackBtn(_ sender: Any) {
-    
-   
         
-
-            self.navigationController?.popViewController(animated:true)
+        
+        
+        
+        self.navigationController?.popViewController(animated:true)
         
     }
     
@@ -159,38 +159,38 @@ class BloodDonationQuestionsViewController: UIViewController {
         
         questions[0] = !questions[0]
         print (questions)
-
+        
         if (q1Radio.currentImage == UIImage(named: "fullRadio")){
             
             
-                q1Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            q1Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
             
         }
         else {
             
             q1Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
             
-
+            
         }
-    
+        
     }
     
     @IBAction func onPressedQ1Radio(_ sender: Any) {
-      
+        
         questions[0] = !questions[0]
         print (questions)
-
+        
         if (q1Radio.currentImage == UIImage(named: "fullRadio")){
             
             
-                q1Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            q1Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
             
         }
         else {
             
             q1Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
             
-
+            
         }
     }
     
@@ -199,18 +199,18 @@ class BloodDonationQuestionsViewController: UIViewController {
         
         questions[1] = !questions[1]
         print (questions)
-
+        
         if (q2Radio.currentImage == UIImage(named: "fullRadio")){
             
             
-                q2Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            q2Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
             
         }
         else {
             
             q2Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
             
-
+            
         }
         
         
@@ -220,18 +220,18 @@ class BloodDonationQuestionsViewController: UIViewController {
     @IBAction func onPressedRadio2(_ sender: Any) {
         questions[1] = !questions[1]
         print (questions)
-
+        
         if (q2Radio.currentImage == UIImage(named: "fullRadio")){
             
             
-                q2Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            q2Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
             
         }
         else {
             
             q2Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
             
-
+            
         }
     }
     
@@ -239,18 +239,18 @@ class BloodDonationQuestionsViewController: UIViewController {
     @IBAction func onPressedRadio3(_ sender: Any) {
         questions[2] = !questions[2]
         print (questions)
-
+        
         if (q3Radio.currentImage == UIImage(named: "fullRadio")){
             
             
-                q3Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            q3Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
             
         }
         else {
             
             q3Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
             
-
+            
         }
     }
     
@@ -260,18 +260,18 @@ class BloodDonationQuestionsViewController: UIViewController {
         
         questions[2] = !questions[2]
         print (questions)
-
+        
         if (q3Radio.currentImage == UIImage(named: "fullRadio")){
             
             
-                q3Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            q3Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
             
         }
         else {
             
             q3Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
             
-
+            
         }
     }
     
@@ -280,18 +280,18 @@ class BloodDonationQuestionsViewController: UIViewController {
         
         questions[3] = !questions[3]
         print (questions)
-
+        
         if (q4Radio.currentImage == UIImage(named: "fullRadio")){
             
             
-                q4Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            q4Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
             
         }
         else {
             
             q4Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
             
-
+            
         }
     }
     
@@ -299,18 +299,18 @@ class BloodDonationQuestionsViewController: UIViewController {
     @IBAction func onPrssedQ4(_ sender: Any) {
         questions[3] = !questions[3]
         print (questions)
-
+        
         if (q4Radio.currentImage == UIImage(named: "fullRadio")){
             
             
-                q4Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            q4Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
             
         }
         else {
             
             q4Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
             
-
+            
         }
     }
     
@@ -319,18 +319,18 @@ class BloodDonationQuestionsViewController: UIViewController {
         
         questions[4] = !questions[4]
         print (questions)
-
+        
         if (q5Radio.currentImage == UIImage(named: "fullRadio")){
             
             
-                q5Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            q5Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
             
         }
         else {
             
             q5Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
             
-
+            
         }
     }
     
@@ -338,41 +338,41 @@ class BloodDonationQuestionsViewController: UIViewController {
     @IBAction func onPressedRadio5(_ sender: Any) {
         questions[4] = !questions[4]
         print (questions)
-
+        
         if (q5Radio.currentImage == UIImage(named: "fullRadio")){
             
             
-                q5Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            q5Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
             
         }
         else {
             
             q5Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
             
-
+            
         }
     }
     
-   
+    
     
     
     @IBAction func onPressedRadio6(_ sender: Any) {
-   
+        
         
         questions[5] = !questions[5]
         print (questions)
-
+        
         if (q6Radio.currentImage == UIImage(named: "fullRadio")){
             
             
-                q6Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            q6Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
             
         }
         else {
             
             q6Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
             
-
+            
         }
     }
     
@@ -380,18 +380,18 @@ class BloodDonationQuestionsViewController: UIViewController {
     @IBAction func onPressedQ6(_ sender: Any) {
         questions[5] = !questions[5]
         print (questions)
-
+        
         if (q6Radio.currentImage == UIImage(named: "fullRadio")){
             
             
-                q6Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            q6Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
             
         }
         else {
             
             q6Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
             
-
+            
         }
     }
     
@@ -400,18 +400,18 @@ class BloodDonationQuestionsViewController: UIViewController {
         
         questions[6] = !questions[6]
         print (questions)
-
+        
         if (q7Radio.currentImage == UIImage(named: "fullRadio")){
             
             
-                q7Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            q7Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
             
         }
         else {
             
             q7Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
             
-
+            
         }
     }
     
@@ -419,15 +419,15 @@ class BloodDonationQuestionsViewController: UIViewController {
     
     @IBAction func onPressedQ7(_ sender: Any) {
         
-
+        
         
         questions[6] = !questions[6]
         print (questions)
-
+        
         if (q7Radio.currentImage == UIImage(named: "fullRadio")){
             
             
-                q7Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
+            q7Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
             
         }
         else {
@@ -436,7 +436,7 @@ class BloodDonationQuestionsViewController: UIViewController {
         }
     }
     
- 
+    
     @IBAction func onPressedOk(_ sender: Any) {
         
         blackBlurredView.isHidden = true
@@ -449,16 +449,16 @@ class BloodDonationQuestionsViewController: UIViewController {
     
     
     
-      
-
+    
+    
     
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-   // override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
     
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    // Get the new view controller using segue.destination.
+    // Pass the selected object to the new view controller.
+}
+
 
 

@@ -29,13 +29,14 @@ class StoreCell: UITableViewCell {
         print("here")
         // Initialization code
         
-        storeImage.layer.cornerRadius = 20
+        storeImage.layer.cornerRadius = 32
         
         whiteView.layer.cornerRadius = 15
     
-        whiteView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        whiteView.layer.shadowOffset = CGSize(width: 0, height: 6)
         whiteView.layer.shadowColor = UIColor.gray.cgColor
-        whiteView.layer.shadowOpacity = 0.5
+        whiteView.layer.shadowRadius = 6
+        whiteView.layer.shadowOpacity = 0.1
         whiteView.layer.shadowRadius = 15
         whiteView.layer.masksToBounds = false
 
