@@ -9,9 +9,7 @@ import UIKit
 
 class BloodDonationQuestionsViewController: UIViewController {
     
-    
-    @IBOutlet weak var backBtn: UIButton!
-    
+        
     @IBOutlet weak var q1Btn: UIButton!
     
     @IBOutlet weak var q1Radio: UIButton!
@@ -43,9 +41,7 @@ class BloodDonationQuestionsViewController: UIViewController {
     @IBOutlet weak var q7Radio: UIButton!
     
     @IBOutlet weak var contBtn: UIButton!
-    
-    @IBOutlet weak var popupStack: UIStackView!
-    
+        
     @IBOutlet weak var popupView: UIView!
     
     @IBOutlet weak var popupTitle: UILabel!
@@ -57,9 +53,7 @@ class BloodDonationQuestionsViewController: UIViewController {
     var questions = [false, false,false, false, false, false, false]
     
     override func viewDidLoad() {
-        
-        backBtn.superview?.bringSubviewToFront(backBtn)
-        
+                
         
         contBtn.layer.cornerRadius = 25
         okBtn.layer.cornerRadius = 20
@@ -72,9 +66,10 @@ class BloodDonationQuestionsViewController: UIViewController {
         q6Btn.contentHorizontalAlignment = .right
         q6Btn.contentHorizontalAlignment = .right
         q7Btn.contentHorizontalAlignment = .right
-        
-        popupStack.superview?.bringSubviewToFront(popupStack)
-        
+                
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.layoutIfNeeded()
         
         super.viewDidLoad()
         
@@ -119,6 +114,43 @@ class BloodDonationQuestionsViewController: UIViewController {
      
      }*/
     
+    override func viewWillAppear(_ animated: Bool) {
+        //        self.navigationController?.navigationBar.tintColor = UIColor.white
+        super.viewWillAppear(animated)
+        
+        let nav = self.navigationController?.navigationBar
+        guard let customFont = UIFont(name: "Tajawal-Bold", size: 25) else {
+            fatalError("""
+                Failed to load the "Tajawal" font.
+                Make sure the font file is included in the project and the font name is spelled correctly.
+                """
+            )
+        }
+        
+        nav?.tintColor = UIColor.white
+        nav?.barTintColor = UIColor.init(named: "mainLight")
+        nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: customFont]
+        navigationController?.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+//        var nav = self.navigationController?.navigationBar
+//        guard let customFont = UIFont(name: "Tajawal-Bold", size: 25) else {
+//            fatalError("""
+//                Failed to load the "Tajawal" font.
+//                Make sure the font file is included in the project and the font name is spelled correctly.
+//                """
+//            )
+//        }
+//        nav?.tintColor = UIColor.init(named: "mainLight")
+//        nav?.barTintColor = UIColor.init(named: "mainLight")
+//        nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(named: "mainLight")!, NSAttributedString.Key.font: customFont]
+    }
+    
+    
+    
     @IBAction func onPressedCont(_ sender: Any) {
         
         
@@ -129,6 +161,8 @@ class BloodDonationQuestionsViewController: UIViewController {
             
             popupTitle.text = "مقدرين حبك للمساعدة"
             //        popupMsg.text = "للأسف أنت غير مؤهل للتبرع بالدم"
+            popupView.superview?.bringSubviewToFront(popupView)
+            blackBlurredView.superview?.bringSubviewToFront(blackBlurredView)
             popupView.isHidden = false
             blackBlurredView.isHidden = false
             
@@ -143,37 +177,6 @@ class BloodDonationQuestionsViewController: UIViewController {
     }
     
     
-    
-    @IBAction func onPressedBackBtn(_ sender: Any) {
-        
-        
-        
-        
-        self.navigationController?.popViewController(animated:true)
-        
-    }
-    
-    
-    
-    @IBAction func onPressedQ1(_ sender: Any) {
-        
-        questions[0] = !questions[0]
-        print (questions)
-        
-        if (q1Radio.currentImage == UIImage(named: "fullRadio")){
-            
-            
-            q1Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
-            
-        }
-        else {
-            
-            q1Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
-            
-            
-        }
-        
-    }
     
     @IBAction func onPressedQ1Radio(_ sender: Any) {
         
@@ -217,42 +220,6 @@ class BloodDonationQuestionsViewController: UIViewController {
     }
     
     
-    @IBAction func onPressedRadio2(_ sender: Any) {
-        questions[1] = !questions[1]
-        print (questions)
-        
-        if (q2Radio.currentImage == UIImage(named: "fullRadio")){
-            
-            
-            q2Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
-            
-        }
-        else {
-            
-            q2Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
-            
-            
-        }
-    }
-    
-    
-    @IBAction func onPressedRadio3(_ sender: Any) {
-        questions[2] = !questions[2]
-        print (questions)
-        
-        if (q3Radio.currentImage == UIImage(named: "fullRadio")){
-            
-            
-            q3Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
-            
-        }
-        else {
-            
-            q3Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
-            
-            
-        }
-    }
     
     
     
@@ -276,8 +243,11 @@ class BloodDonationQuestionsViewController: UIViewController {
     }
     
     
-    @IBAction func onPressedRadio4(_ sender: Any) {
-        
+    
+    
+    
+    
+    @IBAction func onPressedQ4(_ sender: Any) {
         questions[3] = !questions[3]
         print (questions)
         
@@ -294,25 +264,7 @@ class BloodDonationQuestionsViewController: UIViewController {
             
         }
     }
-    
-    
-    @IBAction func onPrssedQ4(_ sender: Any) {
-        questions[3] = !questions[3]
-        print (questions)
-        
-        if (q4Radio.currentImage == UIImage(named: "fullRadio")){
-            
-            
-            q4Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
-            
-        }
-        else {
-            
-            q4Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
-            
-            
-        }
-    }
+
     
     
     @IBAction func onPressedQ5(_ sender: Any) {
@@ -333,26 +285,6 @@ class BloodDonationQuestionsViewController: UIViewController {
             
         }
     }
-    
-    
-    @IBAction func onPressedRadio5(_ sender: Any) {
-        questions[4] = !questions[4]
-        print (questions)
-        
-        if (q5Radio.currentImage == UIImage(named: "fullRadio")){
-            
-            
-            q5Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
-            
-        }
-        else {
-            
-            q5Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
-            
-            
-        }
-    }
-    
     
     
     
@@ -377,24 +309,6 @@ class BloodDonationQuestionsViewController: UIViewController {
     }
     
     
-    @IBAction func onPressedQ6(_ sender: Any) {
-        questions[5] = !questions[5]
-        print (questions)
-        
-        if (q6Radio.currentImage == UIImage(named: "fullRadio")){
-            
-            
-            q6Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
-            
-        }
-        else {
-            
-            q6Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
-            
-            
-        }
-    }
-    
     
     @IBAction func onPressedRadio7(_ sender: Any) {
         
@@ -416,25 +330,6 @@ class BloodDonationQuestionsViewController: UIViewController {
     }
     
     
-    
-    @IBAction func onPressedQ7(_ sender: Any) {
-        
-        
-        
-        questions[6] = !questions[6]
-        print (questions)
-        
-        if (q7Radio.currentImage == UIImage(named: "fullRadio")){
-            
-            
-            q7Radio.setImage(UIImage(named: "emptyRadio"), for: .normal)
-            
-        }
-        else {
-            
-            q7Radio.setImage(UIImage(named: "fullRadio"), for: .normal)
-        }
-    }
     
     
     @IBAction func onPressedOk(_ sender: Any) {

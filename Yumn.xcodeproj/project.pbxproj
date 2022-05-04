@@ -105,6 +105,11 @@
 		B9B3143D2815F82200C62981 /* Alive3rdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3143C2815F82000C62981 /* Alive3rdVC.swift */; };
 		B9B3143F2815FB8400C62981 /* AODHospitalList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3143E2815FB8300C62981 /* AODHospitalList.swift */; };
 		B9BAC6EA280E0CDF001489A1 /* AfterDeathODFirstController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BAC6E9280E0CDF001489A1 /* AfterDeathODFirstController.swift */; };
+		B9BD3879282209470006219F /* ConfirmBloodAppointmentPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BD3878282209450006219F /* ConfirmBloodAppointmentPopUp.swift */; };
+		B9BD387B282209690006219F /* BloodThankYouPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BD387A282209690006219F /* BloodThankYouPopup.swift */; };
+		B9BD387D282209C60006219F /* BloodAppointmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BD387C282209C60006219F /* BloodAppointmentModel.swift */; };
+		B9BD387F28220A170006219F /* BloodAppointmentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BD387E28220A170006219F /* BloodAppointmentsVC.swift */; };
+		B9BD388128220B620006219F /* SelectBDAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BD388028220B620006219F /* SelectBDAppointment.swift */; };
 		B9C7969527C7A83A006A78A3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C7969427C7A839006A78A3 /* TabBarController.swift */; };
 		B9D831C72818BDF40023CBC5 /* ThankYouPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D831C62818BDF30023CBC5 /* ThankYouPopup.swift */; };
 		B9DA61CE27C10C2900359487 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9DA61CD27C10C2800359487 /* GoogleService-Info.plist */; };
@@ -243,6 +248,11 @@
 		B9B3143C2815F82000C62981 /* Alive3rdVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alive3rdVC.swift; sourceTree = "<group>"; };
 		B9B3143E2815FB8300C62981 /* AODHospitalList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AODHospitalList.swift; sourceTree = "<group>"; };
 		B9BAC6E9280E0CDF001489A1 /* AfterDeathODFirstController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterDeathODFirstController.swift; sourceTree = "<group>"; };
+		B9BD3878282209450006219F /* ConfirmBloodAppointmentPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmBloodAppointmentPopUp.swift; sourceTree = "<group>"; };
+		B9BD387A282209690006219F /* BloodThankYouPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodThankYouPopup.swift; sourceTree = "<group>"; };
+		B9BD387C282209C60006219F /* BloodAppointmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodAppointmentModel.swift; sourceTree = "<group>"; };
+		B9BD387E28220A170006219F /* BloodAppointmentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodAppointmentsVC.swift; sourceTree = "<group>"; };
+		B9BD388028220B620006219F /* SelectBDAppointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBDAppointment.swift; sourceTree = "<group>"; };
 		B9C7969427C7A839006A78A3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B9D831C62818BDF30023CBC5 /* ThankYouPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThankYouPopup.swift; sourceTree = "<group>"; };
 		B9DA61CD27C10C2800359487 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -569,8 +579,13 @@
 		B9CC6E8D27E147630005C160 /* VBloodDonation */ = {
 			isa = PBXGroup;
 			children = (
+				8DE28D6D2821AF9800B54BE6 /* BloodDonationQuestionsViewController.swift */,
 				B97A380127BA9EA000718079 /* BloodDonationViewController.swift */,
 				D195443927D499C700B03DFF /* bloodChartViewController.swift */,
+				B9BD3878282209450006219F /* ConfirmBloodAppointmentPopUp.swift */,
+				B9BD387A282209690006219F /* BloodThankYouPopup.swift */,
+				B9BD387E28220A170006219F /* BloodAppointmentsVC.swift */,
+				B9BD388028220B620006219F /* SelectBDAppointment.swift */,
 			);
 			path = VBloodDonation;
 			sourceTree = "<group>";
@@ -625,6 +640,7 @@
 			children = (
 				B9DA61D927C10FCC00359487 /* LocationManger.swift */,
 				B96EABA4281DD919004AD51E /* AppointmentManager.swift */,
+				B9BD387C282209C60006219F /* BloodAppointmentModel.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -632,7 +648,6 @@
 		D19B1B5727E9629000CB3FFA /* VBloodApp */ = {
 			isa = PBXGroup;
 			children = (
-				8DE28D6D2821AF9800B54BE6 /* BloodDonationQuestionsViewController.swift */,
 				D19B1B5827E962BC00CB3FFA /* VolunteerBloodAppointmentsViewController.swift */,
 			);
 			path = VBloodApp;
@@ -797,12 +812,14 @@
 				B91DD29827E9BA9200BA9881 /* popupAddFormOrgan.swift in Sources */,
 				D195444827D49A3900B03DFF /* totalOrgansShortage.swift in Sources */,
 				B9AC662A281B1B6C0013301B /* ViewApplicantsViewController.swift.swift in Sources */,
+				B9BD387D282209C60006219F /* BloodAppointmentModel.swift in Sources */,
 				B94CB96A280EBE160088470D /* AfterDeathOrganSelection.swift in Sources */,
 				B9503D8827BAE4E500E312B8 /* CustomSegmentedControl.swift in Sources */,
 				8DE28D6C2821A71800B54BE6 /* QRCodeTableViewCell.swift in Sources */,
 				D195444627D49A2F00B03DFF /* totalBloodShortage.swift in Sources */,
 				D195444427D49A2400B03DFF /* organShortage.swift in Sources */,
 				B9DDAE8C281753300001149C /* SelectODAppointment.swift in Sources */,
+				B9BD388128220B620006219F /* SelectBDAppointment.swift in Sources */,
 				B9AD3F2A27E2CF81001AB734 /* ManageAppointmentsViewController.swift in Sources */,
 				B9AC66242819E90E0013301B /* VAppointmentsView.swift in Sources */,
 				D195444C27D49AA300B03DFF /* components.swift in Sources */,
@@ -827,6 +844,7 @@
 				8DE28D5E2821A64C00B54BE6 /* RewardsViewController.swift in Sources */,
 				B99C2724281C226200EAC439 /* OlderOrganAppointments.swift in Sources */,
 				D19B1B4B27E95F1000CB3FFA /* currentBldAppCell.swift in Sources */,
+				B9BD387F28220A170006219F /* BloodAppointmentsVC.swift in Sources */,
 				B9D831C72818BDF40023CBC5 /* ThankYouPopup.swift in Sources */,
 				959A52CB27E87E51002244A0 /* cancelPopup.swift in Sources */,
 				B9533F002811A79E00485482 /* Alive2ndVC.swift in Sources */,
@@ -840,6 +858,7 @@
 				D195443427D4996700B03DFF /* ViewController.swift in Sources */,
 				B975979C28195D9300AD2C93 /* Donor.swift in Sources */,
 				B96EABA7281DEEB7004AD51E /* CannotDonatePopup.swift in Sources */,
+				B9BD387B282209690006219F /* BloodThankYouPopup.swift in Sources */,
 				B91DD28E27E995F200BA9881 /* CalenderAndAppointments.swift in Sources */,
 				B9DDAE8A281742A80001149C /* Alive4thVC.swift in Sources */,
 				B9533EFC2810D23000485482 /* Alive1stVC.swift in Sources */,
@@ -866,6 +885,7 @@
 				B9AC6626281AF4AC0013301B /* OlderAppointmentsVC.swift in Sources */,
 				B9DA61DC27C1100B00359487 /* Location.swift in Sources */,
 				954F2DB327E80C4100A3DFB1 /* ViewVolunteeringOpportunities.swift in Sources */,
+				B9BD3879282209470006219F /* ConfirmBloodAppointmentPopUp.swift in Sources */,
 				8D7F152227D25DD200E1EB1A /* GIfCode.swift in Sources */,
 				95C5967927D767FE00A5572C /* VSignUpViewController.swift in Sources */,
 				D19B1B4F27E95F1D00CB3FFA /* oldBloodAppTableViewCell.swift in Sources */,
