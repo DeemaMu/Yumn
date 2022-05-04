@@ -733,11 +733,11 @@ class VAppointments : ObservableObject {
                 let type = "blood"
                 let hName = data["hospitalName"] as! String
                 let exact = data["appID"] as! String
-                let mainDoc = data["mainDocID"] as? String  ?? ""
                 let hospitalId = data["hospitalID"] as! String
                 let area = data["area"] as! String
                 let city = data["city"] as! String
                 let location = city + " - " + area
+                let mainDocId = data["mainDocId"] as! String
                 
                 let stamp1 = data["appDateAndTime"] as? Timestamp
                 let startTime = stamp1?.dateValue()
@@ -755,7 +755,7 @@ class VAppointments : ObservableObject {
                 apt.date = aptDate
                 
                 apt.appointmentID = exact
-                apt.mainAppointmentID = mainDoc
+                apt.mainAppointmentID = mainDocId
                 apt.endTime = endTime
                 
                 apt.startTime = startTime
@@ -977,17 +977,7 @@ class VAppointments : ObservableObject {
                         filtered.append( self.volunteeringOpp[i])
                     }
                 }
-                
-                //                filtered.append(contentsOf:
-                //                                    self.volunteeringOpp.filter {
-                //
-                //                    let aptDate = self.dateFormatter.string(from: $0.date!)
-                //                    let endDate = self.dateFormatter.string(from: $0.endDate!)
-                //                    print(aptDate)
-                //                    print(today)
-                //                    return (today < aptDate)
-                //                })
-                
+ 
             }
             
             DispatchQueue.main.async {

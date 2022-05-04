@@ -91,7 +91,7 @@ struct deleteAppointment: View {
                         }
                         if(appointment.type == "blood"){
                             if(self.DeleteFromAppointment()){
-                                if(self.DeleteFromUser()){
+                                if(self.DeleteBloodFromUser()){
                                     if(self.DeleteFromInnerAppointment()){
                                         if(controllerType == 1){
                                             Constants.selected.deleted = true
@@ -179,6 +179,22 @@ struct deleteAppointment: View {
         }
         return success
     }
+    
+    func DeleteBloodFromUser() -> Bool {
+        var success = true
+        
+        db.collection("volunteer").document(userID).collection("bloodAppointments").document(appointment.appointmentID!).delete() { error in
+            
+            if error == nil {
+                success = true
+            } else {
+                print("\(String(describing: error))")
+                success = false
+            }
+        }
+        return success
+    }
+
 }
 
 

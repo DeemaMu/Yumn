@@ -157,17 +157,7 @@ class VViewAppointmentsVC: UIViewController {
         performSegue(withIdentifier: "goToBook", sender: nil)
     }
     
-    
-//
-//    func getDataFromDatabase( completion: @escaping([retrievedAppointment]) -> Void) {
-//        let retrievedData: [retrievedAppointment] = getUserOA()
-//        // 'Get data from database' code goes here
-//        // In this example, the data received will be of type 'String?'
-//        // Once you've got your data from the database, which in this case is a string
-//        // Call your completion block as follows
-//        completion(retrievedData)
-//    }
-//
+
     func moveToOldApts(){
         performSegue(withIdentifier: "goToOldApts", sender: nil)
     }
@@ -176,50 +166,6 @@ class VViewAppointmentsVC: UIViewController {
         performSegue(withIdentifier: "goToFuture", sender: nil)
     }
     
-    
-    //    @IBAction func confirm(_ sender: UIButton) {
-    //        thankYouPopup.superview?.bringSubviewToFront(thankYouPopup)
-    //        popupView.isHidden = true
-    //        thankYouPopup.isHidden = false
-    //
-    //        for organ in selectedOrgans! {
-    //            if(organ.value){
-    //                self.organs.append(organ.key)
-    //            }
-    //        }
-    //
-    //        if(saveDate()){
-    //            let configuration = Configuration()
-    //            let controller = UIHostingController(rootView: ThankYouPopup(config: configuration, controllerType: 2))
-    //            // injects here, because `configuration` is a reference !!
-    //            configuration.hostingController = controller
-    //            addChild(controller)
-    //            controller.view.frame = innerThanku.bounds
-    //            innerThanku.addSubview(controller.view)
-    //        }
-    //    }
-    //
-    //    func saveDate() -> Bool {
-    //        var added = true
-    //        let newDoc = db.collection("afterDeathDonors").document(userID)
-    //
-    //        newDoc.setData(["bloodType": self.donor!.bloodType, "city": self.donor!.city, "name": self.donor!.name, "nationalID": self.donor!.nationalID, "organs": self.donor!.organs,
-    //                        "uid": userID]) { error in
-    //
-    //            if (error == nil){
-    //                print("added")
-    //            } else {
-    //                print(error!)
-    //                added = false
-    //            }
-    //        }
-    //        return added
-    //    }
-    //
-    //
-    //    func thankYou(){
-    //        performSegue(withIdentifier: "wrapToHome", sender: nil)
-    //    }
     
 }
 
