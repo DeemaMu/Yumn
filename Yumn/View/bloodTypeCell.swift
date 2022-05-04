@@ -21,7 +21,7 @@ class bloodTypeCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
+        bloodTypeLbl.textAlignment = .center
          decreaseBtn.layer.cornerRadius = decreaseBtn.frame.width/2
          decreaseBtn.layer.masksToBounds = true
         
