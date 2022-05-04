@@ -44,7 +44,7 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
     let db = Firestore.firestore()
     
     // from segue | Updated
-    var VODocID : String = ""
+    var VODocID = ""
     
     // By Modhi
    // let user = Auth.auth().currentUser
@@ -76,10 +76,11 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
         
         acceptedApplicantsTable.register(UINib(nibName: "acceptedApplicantTableViewCell", bundle: nil), forCellReuseIdentifier: "acceptedApplicantCell")
         
-        
+        if VODocID != "" {
+        print("Doc ID of VOpp is \(VODocID)")
         getCurrentApplicants(docID: VODocID)
         getAcceptedApplicants(docID: VODocID)
-        
+        }
         
         guard let customFont = UIFont(name: "Tajawal-Regular", size: UIFont.labelFontSize) else {
             fatalError("""
@@ -129,11 +130,27 @@ class ViewApplicantsViewController: UIViewController, CustomSegmentedControlDele
     }
     
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+
+     //   let navigationController: UINavigationController = self.navigationController!
+
+      VODocID = ""
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        VODocID = ""
+    }
+    
+    
     // docID fron segue
     //4duFZ8QsjfxWDqzoRhpq
     // from applicants we wil bring the uid pf the app with status == pending
     // sva e the uids in array then bring info
     func getCurrentApplicants(docID:String){
+        
+        print("Doc ID of VOpp in current is \(VODocID)")
         
         db.collection("volunteeringOpp").document(docID).collection("applicants").whereField("status", isEqualTo: "pending").getDocuments() { (querySnapshot, err) in
             if let err = err {
