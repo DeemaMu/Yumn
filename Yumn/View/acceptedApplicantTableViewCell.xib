@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -100,17 +100,17 @@
                                         <color key="textColor" name="mainDark"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="email" translatesAutoresizingMaskIntoConstraints="NO" id="mm4-1s-0hT">
-                                        <rect key="frame" x="183" y="1" width="29" height="20"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email-1" translatesAutoresizingMaskIntoConstraints="NO" id="mm4-1s-0hT">
+                                        <rect key="frame" x="195" y="4" width="15" height="13"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="mm4-1s-0hT" firstAttribute="top" secondItem="HBZ-jY-NvO" secondAttribute="top" constant="4" id="1Hs-gh-ZA8"/>
                                     <constraint firstAttribute="bottom" secondItem="coZ-A8-AL1" secondAttribute="bottom" constant="2" id="4SS-cJ-m8C"/>
                                     <constraint firstAttribute="width" constant="215" id="8en-wL-BvO"/>
-                                    <constraint firstAttribute="trailing" secondItem="mm4-1s-0hT" secondAttribute="trailing" constant="5" id="STU-Xm-ddQ"/>
                                     <constraint firstItem="coZ-A8-AL1" firstAttribute="leading" secondItem="HBZ-jY-NvO" secondAttribute="leading" constant="8" id="Z1E-cs-Msi"/>
+                                    <constraint firstAttribute="trailing" secondItem="mm4-1s-0hT" secondAttribute="trailing" constant="5" id="oE9-n5-fR3"/>
                                     <constraint firstAttribute="height" constant="22" id="vlD-19-N0X"/>
-                                    <constraint firstItem="mm4-1s-0hT" firstAttribute="top" secondItem="HBZ-jY-NvO" secondAttribute="top" constant="4" id="zyd-nB-fUv"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="i1R-sm-WJa">
@@ -206,7 +206,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="email" width="46" height="28"/>
+        <image name="email-1" width="15" height="13"/>
         <image name="location2" width="21" height="24"/>
         <namedColor name="mainDark">
             <color red="0.2199999988079071" green="0.37999999523162842" blue="0.36500000953674316" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
