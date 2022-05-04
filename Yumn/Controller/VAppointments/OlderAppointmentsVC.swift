@@ -210,11 +210,10 @@ class olderAppointmensVC: UIViewController {
         dateFormatter.dateFormat = "yyyy/MM/dd"
         let currentDate = dateFormatter.string(from: Date() - 7 )
         print("current date is \(currentDate)")
-        let currentDateAR = currentDate.convertedDigitsToLocale(Locale(identifier: "AR"))
        
                 
 
-        db.collection("volunteer").document(userID).collection("bloodAppointments").whereField("date", isLessThan: currentDateAR).getDocuments() { (querySnapshot, err) in
+        db.collection("volunteer").document(userID).collection("bloodAppointments").whereField("date", isLessThan: currentDate).getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {

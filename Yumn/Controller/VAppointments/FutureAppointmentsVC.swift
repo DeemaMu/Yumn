@@ -188,7 +188,7 @@ class futureAppointmensVC: UIViewController {
         print("current date is \(currentDate)")
         let currentDateAR = currentDate.convertedDigitsToLocale(Locale(identifier: "AR"))
         
-        db.collection("volunteer").document(userID).collection("bloodAppointments").whereField("date", isGreaterThanOrEqualTo: currentDateAR).getDocuments() { (querySnapshot, err) in
+        db.collection("volunteer").document(userID).collection("bloodAppointments").whereField("date", isGreaterThanOrEqualTo: currentDate).getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
