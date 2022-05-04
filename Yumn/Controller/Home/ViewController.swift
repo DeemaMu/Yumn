@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseFirestore
 import FirebaseAuth
+import ContextMenuSwift
 class HospitalHomeMainViewController: UIViewController {
     
     @IBOutlet weak var popupView: UIView!
@@ -65,7 +66,8 @@ class HospitalHomeMainViewController: UIViewController {
     var bloodRow = [bloodTypeAndValue]()
     var organsRow = [organsAndValue]()
     
-    
+    //ContextMenu view <by deema>
+    @IBOutlet weak var menuView: UIView!
     
     
     
@@ -397,18 +399,15 @@ class HospitalHomeMainViewController: UIViewController {
         }
         
     }
-    @IBAction func onPressedLogout(_ sender: Any) {
-
-        
-        
-        
-                popupTitle.text = "تأكيد تسجيل الخروج"
-                popupMsg.text = "هل أنت متأكد من أنك تريد تسجيل الخروج؟"
-        
-               popupView.isHidden = false
-               blurredView.isHidden = false
-        
-    }
+//    @IBAction func onPressedLogout(_ sender: Any) {
+//
+//                popupTitle.text = "تأكيد تسجيل الخروج"
+//                popupMsg.text = "هل أنت متأكد من أنك تريد تسجيل الخروج؟"
+//
+//               popupView.isHidden = false
+//               blurredView.isHidden = false
+//
+//    }
     
     
     @IBAction func onPressedCancel(_ sender: Any) {
@@ -485,6 +484,14 @@ class HospitalHomeMainViewController: UIViewController {
         
     }
     
+    @IBAction func viewMenu(_ sender: Any) {
+        let profile = ContextMenuItemWithImage(title: "ملف المستشفى", image: UIImage.init(named: "pofileHospital")!)
+        let donorsList = ContextMenuItemWithImage(title: "قائمة المتبرعين  بالاعضاء", image: UIImage.init(named: "charity")!)
+        let logout = ContextMenuItemWithImage(title: "تسجيل الخروج", image: UIImage.init(named: "signout")!)
+        
+        CM.items = [profile,donorsList,logout]
+        CM.showMenu(viewTargeted: menuView, delegate: self, animated: true)
+    }
     
     
     
@@ -544,6 +551,7 @@ extension String {
 
 
 
+
 extension HospitalHomeMainViewController : BloodShortageDelegate,  OrganShortageDelegate{
     
     
@@ -584,9 +592,38 @@ extension HospitalHomeMainViewController : BloodShortageDelegate,  OrganShortage
     //end f extension
 }
 
+extension HospitalHomeMainViewController: ContextMenuDelegate {
+
+    func contextMenuDidSelect(_ contextMenu: ContextMenu, cell: ContextMenuCell, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int) -> Bool {
+        
+        if(item.title == "ملف المستشفى"){
+            performSegue(withIdentifier: "hospitalProfile", sender: self)
+        }
+        if(item.title == "قائمة المتبرعين  بالاعضاء"){
+            performSegue(withIdentifier: "afterDeathDonors", sender: self)
+            print("here")
+        }
+        if(item.title == "تسجيل الخروج"){
+            popupTitle.text = "تأكيد تسجيل الخروج"
+            popupMsg.text = "هل أنت متأكد من أنك تريد تسجيل الخروج؟"
+    
+           popupView.isHidden = false
+           blurredView.isHidden = false
+        }
+        return true
+    }
+
+    func contextMenuDidDeselect(_ contextMenu: ContextMenu, cell: ContextMenuCell, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int) {
+
+    }
+
+    func contextMenuDidAppear(_ contextMenu: ContextMenu) {
+
+    }
+
+    func contextMenuDidDisappear(_ contextMenu: ContextMenu) {
+
+    }
 
 
-
-
-
-
+}

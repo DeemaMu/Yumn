@@ -50,18 +50,48 @@ class applyPopup: UIViewController{
         // Apply Query
         let db = Firestore.firestore()
         let uid = Auth.auth().currentUser?.uid
-
+        
         DispatchQueue.main.async {
             db.collection("volunteeringOpp").document(self.docID).collection("applicants").document(uid!).setData([
+                "uid": uid! ,
+                "status":"pending"]){ error in
+                    if error != nil {
+                        print(error?.localizedDescription as Any)
+                        print ("Error in Apply")
+                    }
+                }
+            
+            let docRef = db.collection("volunteeringOpp").document(self.docID)
+            
+            docRef.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    let data = document.data()
+
+                    db.collection("volunteer").document(uid!).collection("volunteeringOpps").document().setData([
                         "uid": uid! ,
-                        "status":"pending"]){ error in
+                        "status":"pending",
+                        "mainDocId":self.docID,
+                        "title":data!["title"] as? String ?? "",
+                        "date":data!["date"] as? String ?? "",
+                        "workingHours":data!["workingHours"] as? String ?? "",
+                        "location":data!["location"] as? String ?? "",
+                        "description":data!["description"] as? String ?? "",
+                        "start_date":data!["start_date"] as? Timestamp,
+                        "end_date":data!["end_date"] as? Timestamp,
+                        
+                    ]){ error in
                         if error != nil {
                             print(error?.localizedDescription as Any)
                             print ("Error in Apply")
                         }
                     }
-              
+                    
+                } else {
+                    print("Document does not exist")
+                }
             }
+            
+        }// end thread
         // Go back
         self.dismiss(animated: true, completion: nil)
     }

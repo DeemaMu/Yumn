@@ -192,6 +192,13 @@ struct CustomDatePicker: View {
                             //                        .overlay(RoundedRectangle(cornerRadius: 10).stroke(mainLight, lineWidth: 1))
                         }.padding(.horizontal, 30)
                             .padding(.vertical, 5)
+                            .onTapGesture {
+                                let time = "\(appointment.startTime.getFormattedDate(format: "HH:mm"))-\(appointment.endTime.getFormattedDate(format: "HH:mm"))"
+                                let day = "\(appointment.startTime.getFormattedDate(format: "dd/MM/yyyy"))"
+                                let period = day + ", " + time
+
+                                controller.viewAppointments(appointment.docID, period,"Blood")
+                            }
                         
                         
                     } else {
@@ -270,6 +277,13 @@ struct CustomDatePicker: View {
                                 )
                             }.padding(.horizontal, 30)
                                 .padding(.vertical, 5)
+                                .onTapGesture {
+                                    let time = "\(appointments[index].startTime.getFormattedDate(format: "HH:mm"))-\(appointments[index].endTime.getFormattedDate(format: "HH:mm"))"
+                                    let day = "\(appointments[index].startTime.getFormattedDate(format: "dd/MM/yyyy"))"
+                                    let period = day + ", " + time
+
+                                    controller.viewAppointments(appointments[index].docID, period,"Organ")
+                                }
                         }
 
                     } else {

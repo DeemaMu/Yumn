@@ -23,7 +23,7 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // Update collection
         NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: NSNotification.Name(rawValue: "newDataNotif"), object: nil)
         noVolunteeringOPPLabel.isHidden = true
         

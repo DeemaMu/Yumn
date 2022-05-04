@@ -346,7 +346,6 @@ struct PopupAddForm: View {
         print("hereeeee1111")
         let duration = 30.0
         let apList = createAppointmentList()
-        
         let apt = BloodAppointment(appointments: apList, type: "blood", startTime: selectedDate, endTime: endDate, aptDate: date, hospital: Constants.UserInfo.userID, aptDuration: duration, donors: peoplePerA)
         apt.bookedAppointments = [String]()
         aptVM.addData(apt: apt)
@@ -373,9 +372,7 @@ struct PopupAddForm: View {
         while(currentDate != endDate){
             num += 1
             let currentEnd = currentDate.addingTimeInterval(30 * 60)
-            
-            list.append(DAppointment(type: "blood", startTime: currentDate, endTime: currentEnd, donor: "", hName: Constants.UserInfo.userID, confirmed: "", booked: false))
-            
+            list.append(DAppointment(type: "blood", startTime: currentDate, endTime: currentEnd, donor: "", hName: Constants.UserInfo.userID, confirmed: "", booked: false))   
             currentDate = currentDate.addingTimeInterval(30 * 60)
         }
         

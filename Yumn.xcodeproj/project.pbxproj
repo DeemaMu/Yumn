@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		53C0F2997E8C226FAB9EC584 /* Pods_Yumn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0C8FB1234885614A7C527B /* Pods_Yumn.framework */; };
 		8D0E9A1F27E5339C00890AC0 /* BloodDonationInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0E9A1E27E5339C00890AC0 /* BloodDonationInformationViewController.swift */; };
 		8D7F152227D25DD200E1EB1A /* GIfCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7F152127D25DD200E1EB1A /* GIfCode.swift */; };
 		8D7F152527D25EF200E1EB1A /* yumnLoading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8D7F152427D25EF200E1EB1A /* yumnLoading.gif */; };
@@ -38,9 +39,15 @@
 		9520693927E3A5D100D5DC11 /* addVolunteeringOpp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9520693827E3A5D100D5DC11 /* addVolunteeringOpp.swift */; };
 		9520693C27E3A5FF00D5DC11 /* VolunteeringOpportunities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9520693B27E3A5FF00D5DC11 /* VolunteeringOpportunities.swift */; };
 		952C5D1227E4CF4800DF6537 /* DateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952C5D1127E4CF4800DF6537 /* DateTimePicker.swift */; };
+		9536DDFA2818EBF200A0195C /* appointmentCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9536DDF92818EBF200A0195C /* appointmentCollectionCell.swift */; };
+		954A24DD281DC70D001EE3BE /* confirmAppointmentPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954A24DC281DC70D001EE3BE /* confirmAppointmentPopup.swift */; };
 		954F2DB327E80C4100A3DFB1 /* ViewVolunteeringOpportunities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954F2DB227E80C4100A3DFB1 /* ViewVolunteeringOpportunities.swift */; };
 		954F2DB527E80CD200A3DFB1 /* ViewVOCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954F2DB427E80CD200A3DFB1 /* ViewVOCollectionViewCell.swift */; };
 		95531DC727E869E30029B490 /* addPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95531DC627E869E30029B490 /* addPopup.swift */; };
+		95546DDA281878CC00992CC8 /* viewAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95546DD9281878CC00992CC8 /* viewAppointment.swift */; };
+		955DD1D72814FAF600CC0725 /* Donor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955DD1D62814FAF600CC0725 /* Donor.swift */; };
+		9572140E28146B9900E46AEE /* AfterDeathDonor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572140D28146B9900E46AEE /* AfterDeathDonor.swift */; };
+		9572141028146BC800E46AEE /* DonorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572140F28146BC800E46AEE /* DonorCollectionViewCell.swift */; };
 		95785059279E1917004F3D8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95785058279E1917004F3D8F /* AppDelegate.swift */; };
 		9578505B279E1917004F3D8F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9578505A279E1917004F3D8F /* SceneDelegate.swift */; };
 		9578505D279E1917004F3D8F /* VHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9578505C279E1917004F3D8F /* VHomeViewController.swift */; };
@@ -149,6 +156,8 @@
 		0428885CED34CA2584B5CE57 /* Pods-Yumn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.debug.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.debug.xcconfig"; sourceTree = "<group>"; };
 		42CBB521BBF3E151400B6354 /* Pods_Yumn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yumn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7618EEB441558579DF835A6E /* Pods-Yumn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.release.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.release.xcconfig"; sourceTree = "<group>"; };
+		0F0C8FB1234885614A7C527B /* Pods_Yumn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yumn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		19ADE82FE3698654CA99AF83 /* Pods-Yumn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.debug.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.debug.xcconfig"; sourceTree = "<group>"; };
 		8D0E9A1E27E5339C00890AC0 /* BloodDonationInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationInformationViewController.swift; sourceTree = "<group>"; };
 		8D7F152127D25DD200E1EB1A /* GIfCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIfCode.swift; sourceTree = "<group>"; };
 		8D7F152427D25EF200E1EB1A /* yumnLoading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = yumnLoading.gif; sourceTree = "<group>"; };
@@ -180,9 +189,15 @@
 		9520693827E3A5D100D5DC11 /* addVolunteeringOpp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addVolunteeringOpp.swift; sourceTree = "<group>"; };
 		9520693B27E3A5FF00D5DC11 /* VolunteeringOpportunities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolunteeringOpportunities.swift; sourceTree = "<group>"; };
 		952C5D1127E4CF4800DF6537 /* DateTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimePicker.swift; sourceTree = "<group>"; };
+		9536DDF92818EBF200A0195C /* appointmentCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = appointmentCollectionCell.swift; sourceTree = "<group>"; };
+		954A24DC281DC70D001EE3BE /* confirmAppointmentPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = confirmAppointmentPopup.swift; sourceTree = "<group>"; };
 		954F2DB227E80C4100A3DFB1 /* ViewVolunteeringOpportunities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewVolunteeringOpportunities.swift; sourceTree = "<group>"; };
 		954F2DB427E80CD200A3DFB1 /* ViewVOCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewVOCollectionViewCell.swift; sourceTree = "<group>"; };
 		95531DC627E869E30029B490 /* addPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addPopup.swift; sourceTree = "<group>"; };
+		95546DD9281878CC00992CC8 /* viewAppointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewAppointment.swift; sourceTree = "<group>"; };
+		955DD1D62814FAF600CC0725 /* Donor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Donor.swift; sourceTree = "<group>"; };
+		9572140D28146B9900E46AEE /* AfterDeathDonor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterDeathDonor.swift; sourceTree = "<group>"; };
+		9572140F28146BC800E46AEE /* DonorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonorCollectionViewCell.swift; sourceTree = "<group>"; };
 		95785055279E1917004F3D8F /* Yumn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yumn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95785058279E1917004F3D8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9578505A279E1917004F3D8F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -286,6 +301,7 @@
 		D19B1B5027E95F2200CB3FFA /* oldBloodAppTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = oldBloodAppTableViewCell.xib; sourceTree = "<group>"; };
 		D19B1B5227E95FCB00CB3FFA /* OrganDonationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganDonationViewController.swift; sourceTree = "<group>"; };
 		D19B1B5827E962BC00CB3FFA /* VolunteerBloodAppointmentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolunteerBloodAppointmentsViewController.swift; sourceTree = "<group>"; };
+		D5B4479A725A84B93C84F517 /* Pods-Yumn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.release.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF86558D574A538F9A3C060F /* Pods_Yumn.framework in Frameworks */,
+				53C0F2997E8C226FAB9EC584 /* Pods_Yumn.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +392,7 @@
 				95785056279E1917004F3D8F /* Products */,
 				FB3A4FC32329E4399DABC3B5 /* Pods */,
 				C4E4053701D8D9CE3F2EB40E /* Frameworks */,
+				A831026F942693E5A6EE5680 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -406,6 +424,14 @@
 			path = Yumn;
 			sourceTree = "<group>";
 		};
+		A831026F942693E5A6EE5680 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0F0C8FB1234885614A7C527B /* Pods_Yumn.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B930F85427B8547300E70860 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -426,6 +452,7 @@
 				B9AC6627281B1AE80013301B /* volunteerVOpp.swift */,
 				8DE28D582821A4A800B54BE6 /* Store.swift */,
 				B9AC6635281B2E520013301B /* applicant.swift */,
+				955DD1D62814FAF600CC0725 /* Donor.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -459,6 +486,8 @@
 				8DE28D6B2821A71800B54BE6 /* QRCodeTableViewCell.swift */,
 				8DE28D652821A6FF00B54BE6 /* StoreCell.xib */,
 				8DE28D672821A70900B54BE6 /* StoreCell.swift */,
+				9572140F28146BC800E46AEE /* DonorCollectionViewCell.swift */,
+				9536DDF92818EBF200A0195C /* appointmentCollectionCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -482,6 +511,7 @@
 				B9CC6E8C27E147460005C160 /* Home */,
 				B9C7969427C7A839006A78A3 /* TabBarController.swift */,
 				95C5967627D75A8D00A5572C /* styles.swift */,
+				9572140D28146B9900E46AEE /* AfterDeathDonor.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -544,6 +574,8 @@
 				B91DD29127E996CF00BA9881 /* CustomDatePicker.swift */,
 				B91DD29327E9976200BA9881 /* PopupAddForm.swift */,
 				B91DD29727E9BA9200BA9881 /* popupAddFormOrgan.swift */,
+				95546DD9281878CC00992CC8 /* viewAppointment.swift */,
+				954A24DC281DC70D001EE3BE /* confirmAppointmentPopup.swift */,
 			);
 			path = HAppointments;
 			sourceTree = "<group>";
@@ -658,6 +690,8 @@
 			children = (
 				0428885CED34CA2584B5CE57 /* Pods-Yumn.debug.xcconfig */,
 				7618EEB441558579DF835A6E /* Pods-Yumn.release.xcconfig */,
+				19ADE82FE3698654CA99AF83 /* Pods-Yumn.debug.xcconfig */,
+				D5B4479A725A84B93C84F517 /* Pods-Yumn.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -674,6 +708,11 @@
 				95785052279E1917004F3D8F /* Frameworks */,
 				95785053279E1917004F3D8F /* Resources */,
 				ABB4BDAF87DE0CA835B595FB /* [CP] Embed Pods Frameworks */,
+				3AC56F50C331F8D131ED0B2A /* [CP] Check Pods Manifest.lock */,
+				95785051279E1917004F3D8F /* Sources */,
+				95785052279E1917004F3D8F /* Frameworks */,
+				95785053279E1917004F3D8F /* Resources */,
+				0D353E27B049E1C1E58A21AA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -751,6 +790,7 @@
 
 /* Begin PBXShellScriptBuildPhase section */
 		ABB4BDAF87DE0CA835B595FB /* [CP] Embed Pods Frameworks */ = {
+		0D353E27B049E1C1E58A21AA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -768,6 +808,7 @@
 			showEnvVarsInLog = 0;
 		};
 		D13C4C7F0B0221070ED5FEF1 /* [CP] Check Pods Manifest.lock */ = {
+		3AC56F50C331F8D131ED0B2A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -816,11 +857,13 @@
 				B9503D8827BAE4E500E312B8 /* CustomSegmentedControl.swift in Sources */,
 				8DE28D6C2821A71800B54BE6 /* QRCodeTableViewCell.swift in Sources */,
 				D195444627D49A2F00B03DFF /* totalBloodShortage.swift in Sources */,
+				9536DDFA2818EBF200A0195C /* appointmentCollectionCell.swift in Sources */,
 				D195444427D49A2400B03DFF /* organShortage.swift in Sources */,
 				B9DDAE8C281753300001149C /* SelectODAppointment.swift in Sources */,
 				B9BD388128220B620006219F /* SelectBDAppointment.swift in Sources */,
 				B9AD3F2A27E2CF81001AB734 /* ManageAppointmentsViewController.swift in Sources */,
 				B9AC66242819E90E0013301B /* VAppointmentsView.swift in Sources */,
+				95546DDA281878CC00992CC8 /* viewAppointment.swift in Sources */,
 				D195444C27D49AA300B03DFF /* components.swift in Sources */,
 				B91DD29227E996CF00BA9881 /* CustomDatePicker.swift in Sources */,
 				B99C2726281C227700EAC439 /* FutureOrganAppointments.swift in Sources */,
@@ -834,6 +877,7 @@
 				B9BAC6EA280E0CDF001489A1 /* AfterDeathODFirstController.swift in Sources */,
 				D195443E27D499ED00B03DFF /* customTabBar.swift in Sources */,
 				B9419DFC27C52D9C00962A1B /* HospitalCellTableViewCell.swift in Sources */,
+				9572141028146BC800E46AEE /* DonorCollectionViewCell.swift in Sources */,
 				9578505D279E1917004F3D8F /* VHomeViewController.swift in Sources */,
 				959A52D127E8A41F002244A0 /* editVolunteeringOpp.swift in Sources */,
 				8DE28D682821A70A00B54BE6 /* StoreCell.swift in Sources */,
@@ -866,6 +910,7 @@
 				95531DC727E869E30029B490 /* addPopup.swift in Sources */,
 				9520693927E3A5D100D5DC11 /* addVolunteeringOpp.swift in Sources */,
 				B9B3143B2815BAB000C62981 /* AODInstructions.swift in Sources */,
+				9572140E28146B9900E46AEE /* AfterDeathDonor.swift in Sources */,
 				95C5967727D75A8D00A5572C /* styles.swift in Sources */,
 				8DE28D592821A4A900B54BE6 /* Store.swift in Sources */,
 				8DE28D642821A66700B54BE6 /* AllStoresViewController.swift in Sources */,
@@ -895,9 +940,11 @@
 				B952BB1227C641B80049D81B /* HospitalsController.swift in Sources */,
 				B930F86827B85D5F00E70860 /* RoundedView.swift in Sources */,
 				B9AC6628281B1AE80013301B /* volunteerVOpp.swift in Sources */,
+				955DD1D72814FAF600CC0725 /* Donor.swift in Sources */,
 				8D7F152D27D299F300E1EB1A /* HomeViewController.swift in Sources */,
 				D195444027D499FA00B03DFF /* tabBarVC.swift in Sources */,
 				B97A37FE27B9D32A00718079 /* RoundedShadowedView.swift in Sources */,
+				954A24DD281DC70D001EE3BE /* confirmAppointmentPopup.swift in Sources */,
 				8D7F152F27D29A6500E1EB1A /* HospitalHomeViewController.swift in Sources */,
 				B9AC663D281B2EF20013301B /* acceptedApplicantTableViewCell.swift in Sources */,
 				95062D9D27CADE1300D63911 /* VolunteerProfileViewController.swift in Sources */,
@@ -1053,6 +1100,7 @@
 		9578506A279E1918004F3D8F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0428885CED34CA2584B5CE57 /* Pods-Yumn.debug.xcconfig */;
+			baseConfigurationReference = 19ADE82FE3698654CA99AF83 /* Pods-Yumn.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1088,6 +1136,7 @@
 		9578506B279E1918004F3D8F /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7618EEB441558579DF835A6E /* Pods-Yumn.release.xcconfig */;
+			baseConfigurationReference = D5B4479A725A84B93C84F517 /* Pods-Yumn.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

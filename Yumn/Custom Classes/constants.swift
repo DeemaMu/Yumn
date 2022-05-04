@@ -10,19 +10,16 @@ import UIKit
 
 
 struct Constants {
-
-
+    
+    
     struct Storyboard{
-
       static let volunteerHomeViewController = "navToVHome"
       static let contSignUpViewController = "contSignUp"
       static let signInViewController = "SignIn1"
       static let hospitalHomeViewController = "navToHospitalHome"
       static let qrViewController = "QR"
-
-
     }
-
+    
     struct Globals {
          static var firstName = ""
          static var lastName = ""
@@ -44,13 +41,12 @@ struct Constants {
          static var newQR = false
          static var hosName = ""
          static var appDate:Date?
-
     }
     
     struct UserInfo {
-         static var userID = ""
+        static var userID = ""
     }
-
+    
     static let cellNibName = "bloodTypeCell"
     static let cellNibNameOrgans = "organCell"
     static let cellIdentifier = "reusableCell"
@@ -101,12 +97,15 @@ struct Constants {
     }
     
     struct VolunteeringOpp {
-         static var title = ""
-         static var date = ""
-         static var workingHours = ""
-         static var location  = ""
-         static var gender = ""
-         static var description = ""
+        static var title = ""
+        static var date = ""
+        static var endDate = ""
+        static var start_date: Date = Date()
+        static var end_date: Date = Date()
+        static var workingHours = ""
+        static var location  = ""
+        static var gender = ""
+        static var description = ""
         
     }
     
@@ -121,5 +120,5 @@ struct Constants {
         static var deleted = false
         static var selectedAppointment = ""
     }
-
+    
 }
