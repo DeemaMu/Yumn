@@ -55,6 +55,11 @@ struct ThankYouPopup: View {
                             config.hostingController?.parent as! AfterDeathODSecondController
                             x.thankYou()
                         }
+                        if(controllerType == 3){
+                            var x =
+                            config.hostingController?.parent as! BloodAppointmentsVC
+                            x.thankYou()
+                        }
                         
                     }
                     ) {

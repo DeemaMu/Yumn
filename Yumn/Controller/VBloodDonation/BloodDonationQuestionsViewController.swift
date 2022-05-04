@@ -153,7 +153,7 @@ class BloodDonationQuestionsViewController: UIViewController {
     
     @IBAction func onPressedCont(_ sender: Any) {
         
-        
+        print("heeree")
         
         let isValidDonor = questions[0]&&questions[1]&&questions[2]&&questions[3]&&questions[4]&&questions[5]&&questions[6]
         
@@ -169,9 +169,9 @@ class BloodDonationQuestionsViewController: UIViewController {
         }
         
         else{
-            
+            print("heeree222")
             //Go to next page
-            
+            performSegue(withIdentifier: "goToAppointments", sender: nil)
             
         }
     }

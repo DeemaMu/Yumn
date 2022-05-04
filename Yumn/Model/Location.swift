@@ -11,6 +11,7 @@ import CoreLocation
 struct Location: Identifiable {
     var id = UUID().uuidString
     let name:String
+    var docID:String? = ""
     let lat:Double
     let long:Double
     let city:String

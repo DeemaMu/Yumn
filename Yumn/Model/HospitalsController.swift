@@ -29,7 +29,10 @@ extension BloodDonationViewController {
                     let name: String = doc["name"] as! String
                     let city: String = doc["city"] as! String
                     let area: String = doc["area"] as! String
-                    hospitals.append(Location(name: name, lat: latitude, long: longitude, city: city, area: area, distance: self.calculateDistance( lat: latitude, long: longitude)))
+                    let docID = document.documentID
+                    var hospital = Location(name: name, lat: latitude, long: longitude, city: city, area: area, distance: self.calculateDistance( lat: latitude, long: longitude))
+                    hospital.docID = docID
+                    hospitals.append(hospital)
                     print("\(document.documentID) => \(document.data())")
                 }
                 self.sortedHospitals = hospitals.sorted(by: { (h0: Location, h1: Location) -> Bool in

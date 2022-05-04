@@ -37,10 +37,10 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
     // By Modhi
     var pieChart = PieChartView()
     let user = Auth.auth().currentUser
-
+    
     @IBOutlet weak var bloodArrow: UIButton!
     
- 
+    
     @IBOutlet weak var donBtn: UIButton!
     
     
@@ -48,15 +48,15 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
     
     
     @IBOutlet weak var stackView: UIStackView!
- 
+    
     @IBOutlet weak var donInfo: UILabel!
-
- 
+    
+    
     @IBOutlet weak var typeArrow: UIButton!
     
-  
+    
     @IBOutlet weak var typeBtn: UIButton!
-
+    
     @IBOutlet weak var viewPie: UIView!
     @IBOutlet weak var viewPieWhole: UIView!
     @IBOutlet weak var cityOfUser: UILabel!
@@ -86,8 +86,8 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
         donInfo.clipsToBounds = true
         donInfo.text = "هو إجراء طبي تطوعي يتم بنقل الدم أو أحد مركباته من شخص سليم معافى إلى شخص مريض يحتاج للدم. وهذا الإجراء يحتاج إليه الملايين من الناس كل عام. فيستخدم أثناء الجراحة أو الحوادث أو بعض الأمراض التي تتطلب نقل بعض مكونات الدم."
         donInfo.isHidden = true
-
-
+        
+        
         
         tableMain.isHidden = true
         
@@ -146,7 +146,7 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
         nav?.tintColor = UIColor.init(named: "mainLight")
         nav?.barTintColor = UIColor.init(named: "mainLight")
         nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(named: "mainLight")!, NSAttributedString.Key.font: customFont]
-
+        
         
     }
     
@@ -238,7 +238,7 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
         case 0:
             bloodImg.isHidden = true
             stackView.isHidden = true
-           
+            
             tableMain.isHidden = false
             chartsView.isHidden = true
             viewPieWhole.isHidden = true
@@ -248,7 +248,7 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
         case 1:
             bloodImg.isHidden = false
             stackView.isHidden = false
-        
+            
             tableMain.isHidden = true
             chartsView.isHidden = true
             viewPieWhole.isHidden = true
@@ -258,7 +258,7 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
         default:
             bloodImg.isHidden = true
             stackView.isHidden = true
-        
+            
             tableMain.isHidden = true
             chartsView.isHidden = false
             viewPieWhole.isHidden = false
@@ -268,65 +268,66 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
         }
     }
     
-   
+    
     @IBAction func onPressedTypeBtn(_ sender: Any) {
         
         typeStack.isHidden = !typeStack.isHidden
         
         if (typeStack.isHidden == false){
-         typeArrow.setImage(UIImage(systemName: "chevron.up"), for: .normal)
+            typeArrow.setImage(UIImage(systemName: "chevron.up"), for: .normal)
         }
         
         else{
             typeArrow.setImage(UIImage(systemName: "chevron.down"), for: .normal)
-
+            
             
         }
-
-
+        
+        
     }
     
-
+    
     
     @IBAction func onPressedDonInfo(_ sender: Any) {
         
         
         donInfo.isHidden = !donInfo.isHidden
-       
-       if (donInfo.isHidden == false){
-        bloodArrow.setImage(UIImage(systemName: "chevron.up"), for: .normal)
-       }
-       
-       else{
-           bloodArrow.setImage(UIImage(systemName: "chevron.down"), for: .normal)
-
-           
-       }
+        
+        if (donInfo.isHidden == false){
+            bloodArrow.setImage(UIImage(systemName: "chevron.up"), for: .normal)
+        }
+        
+        else{
+            bloodArrow.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+            
+            
+        }
     }
     
     
     @objc func onPressedBookApp(sender: Any){
- 
-    
-    let questionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "bloodQuestions") as! BloodDonationQuestionsViewController
+        
+        let questionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "bloodQuestions") as! BloodDonationQuestionsViewController
+        
         self.navigationController?.pushViewController(questionVC, animated: true)
-}
+        
+    }
     
-  
+    
     @IBAction func onPressedBloodArrow(_ sender: Any) {
         
         donInfo.isHidden = !donInfo.isHidden
-       
-       if (donInfo.isHidden == false){
-        bloodArrow.setImage(UIImage(systemName: "chevron.up"), for: .normal)
-       }
-       
-       else{
-           bloodArrow.setImage(UIImage(systemName: "chevron.down"), for: .normal)
-
-           
-       }
-
+        
+        if (donInfo.isHidden == false){
+            bloodArrow.setImage(UIImage(systemName: "chevron.up"), for: .normal)
+        }
+        
+        else{
+            bloodArrow.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+            
+            
+        }
+        
     }
     
     @IBAction func onPressedTypeArrow(_ sender: Any) {
@@ -334,26 +335,30 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
         typeStack.isHidden = !typeStack.isHidden
         
         if (typeStack.isHidden == false){
-         typeArrow.setImage(UIImage(systemName: "chevron.up"), for: .normal)
+            typeArrow.setImage(UIImage(systemName: "chevron.up"), for: .normal)
         }
         
         else{
             typeArrow.setImage(UIImage(systemName: "chevron.down"), for: .normal)
-
-            
+        }
+    }
+    
+    func handleTap(hospital: Location) {
+        Constants.selected.selectedOrgan.hospital = hospital.docID!
+        Constants.selected.selectedHospital = hospital
+        let questionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "bloodQuestions") as! BloodDonationQuestionsViewController
         
-
-
-       }
+        self.navigationController?.pushViewController(questionVC, animated: true)
+        
     }
     
     
-    }
+}
 
-    
-    
-    
-    
+
+
+
+
 
 
 
@@ -370,8 +375,13 @@ extension BloodDonationViewController: UITableViewDataSource {
         cell.locationText.text = "\(sortedHospitals![indexPath.row].area) - \(sortedHospitals![indexPath.row].city)"
         
         let distance = String(format: "%.3f", sortedHospitals![indexPath.row].distance!)
+        let hospital = sortedHospitals![indexPath.row]
         cell.distanceText.text = "يبعد: \(distance) كم"
-        cell.bookApp.addTarget(self, action:#selector(onPressedBookApp(sender:)), for: .touchUpInside)
+//        cell.bookApp.addTarget(self, action:#selector(onPressedBookApp(sender:)), for: .touchUpInside)
+        cell.bookApp.addAction(UIAction(identifier: UIAction.Identifier("imageClick")) { [weak self] action in
+            self?.handleTap(hospital: hospital)
+        }, for: .touchUpInside)
+        
         
         return cell
     }
@@ -478,15 +488,15 @@ extension UISegmentedControl {
 extension BloodDonationViewController{
     
     
-   
+    
+    
+    
+    
+    
+    
+    
+}
 
-         
-            
-        
-        
-     
-     }
-     
 
 
 //

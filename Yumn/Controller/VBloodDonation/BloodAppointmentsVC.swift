@@ -41,7 +41,7 @@ class BloodAppointmentsVC: UIViewController {
         thankYouPopup.layer.cornerRadius = 30
         
         let configuration = Configuration()
-        let controller = UIHostingController(rootView: SelectODAppointment(config: configuration, selectedDate: Date()))
+        let controller = UIHostingController(rootView: SelectBDAppointment(config: configuration, selectedDate: Date()))
         // injects here, because `configuration` is a reference !!
         configuration.hostingController = controller
         addChild(controller)
@@ -82,21 +82,14 @@ class BloodAppointmentsVC: UIViewController {
         self.navigationController?.navigationBar.layoutIfNeeded()
     }
     
-    func confirmAppoitment(apt: OrganAppointment, exact: DAppointment){
+    func confirmAppoitment(apt: BloodAppointment, exact: DAppointment){
         blackBlurredView.superview?.bringSubviewToFront(blackBlurredView)
         popupView.superview?.bringSubviewToFront(popupView)
         popupView.isHidden = false
         blackBlurredView.isHidden = false
         
-//
-//        FirestoreSubscription.subscribe(id: SubscriptionID(), docPath: "labels/title")
-//              .compactMap(FirestoreDecoder.decode(LabelDoc.self))
-//              .receive(on: DispatchQueue.main)
-//              .map(\LabelDoc.value)
-//              .store(in: &cancellables)
-        
         let configuration = Configuration()
-        let controller = UIHostingController(rootView: ConfirmAppointmentPopUp(config: configuration, appointment: apt, exact: exact))
+        let controller = UIHostingController(rootView: ConfirmBloodAppointmentPopUp(config: configuration, appointment: apt, exact: exact))
         // injects here, because `configuration` is a reference !!
         configuration.hostingController = controller
         addChild(controller)
@@ -120,7 +113,7 @@ class BloodAppointmentsVC: UIViewController {
         popupView.isHidden = true
         thankYouPopup.isHidden = false
         let configuration = Configuration()
-        let controller = UIHostingController(rootView: ThankYouPopup(config: configuration, controllerType: 1))
+        let controller = UIHostingController(rootView: ThankYouPopup(config: configuration, controllerType: 3))
         // injects here, because `configuration` is a reference !!
         configuration.hostingController = controller
         addChild(controller)

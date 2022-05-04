@@ -113,6 +113,7 @@ struct Constants {
     struct selected {
         static var selectedDate: Date = Date()
         static var selectedOrgan: SelectedOrgan = SelectedOrgan(organ: "", hospital: "", appointment: "", organHospitals: [])
+        static var selectedHospital = Location(name: "", lat: 0, long: 0, city: "", area: "")
         static var vc: Alive2ndVC = Alive2ndVC()
         static var edit = false
         static var mainDoc = ""
