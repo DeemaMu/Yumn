@@ -737,7 +737,7 @@ class VAppointments : ObservableObject {
                 let area = data["area"] as! String
                 let city = data["city"] as! String
                 let location = city + " - " + area
-                let mainDocId = data["mainDocId"] as! String
+                let mainDocId = data["mainDocId"] as? String ?? ""
                 
                 let stamp1 = data["appDateAndTime"] as? Timestamp
                 let startTime = stamp1?.dateValue()
