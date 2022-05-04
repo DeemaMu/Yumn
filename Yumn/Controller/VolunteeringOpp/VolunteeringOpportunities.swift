@@ -312,12 +312,11 @@ extension ManageAppointmentsViewController: ContextMenuDelegate {
             performSegue(withIdentifier: "showAfterDeathDonors", sender: self)
         }
         if(item.title == "تسجيل الخروج"){
-            performSegue(withIdentifier: "viewAfterDeathDonors", sender: self)
-//            popupTitle.text = "تأكيد تسجيل الخروج"
-//            popupMsg.text = "هل أنت متأكد من أنك تريد تسجيل الخروج؟"
-//
-//           popupView.isHidden = false
-//           blurredView.isHidden = false
+            popupTitle.text = "تأكيد تسجيل الخروج"
+            popupMsg.text = "هل أنت متأكد من أنك تريد تسجيل الخروج؟"
+
+           popupView.isHidden = false
+           blurredView.isHidden = false
         }
         return true
     }
