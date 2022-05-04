@@ -493,16 +493,6 @@ class HospitalHomeMainViewController: UIViewController {
         CM.showMenu(viewTargeted: menuView, delegate: self, animated: true)
     }
     
-//    @IBAction func viewMenu(_ sender: Any) {
-//        let profile = ContextMenuItemWithImage(title: "ملف المستشفى", image: UIImage.init(named: "pofileHospital")!)
-//        let donorsList = ContextMenuItemWithImage(title: "قائمة المتبرعين  بالاعضاء", image: UIImage.init(named: "charity")!)
-//        let logout = ContextMenuItemWithImage(title: "تسجيل الخروج", image: UIImage.init(named: "signout")!)
-//
-//        CM.items = [profile,donorsList,logout]
-//        CM.showMenu(viewTargeted: menuView, delegate: self, animated: true)
-//    }
-    
-    
     
 } // end of class
 

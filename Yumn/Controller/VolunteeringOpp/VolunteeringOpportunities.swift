@@ -9,6 +9,7 @@ import Foundation
 import FirebaseFirestore
 import FirebaseAuth
 import UIKit
+import ContextMenuSwift
 
 class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
     
@@ -20,6 +21,8 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
     
     @IBOutlet weak var addVOPBtn: UIButton!
     var passDocID = ""
+    
+    @IBOutlet weak var menuView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -205,6 +208,15 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
         
     }
     
+    @IBAction func viewMenu(_ sender: Any) {
+        let profile = ContextMenuItemWithImage(title: "ملف المستشفى", image: UIImage.init(named: "pofileHospital")!)
+        let donorsList = ContextMenuItemWithImage(title: "قائمة المتبرعين  بالاعضاء", image: UIImage.init(named: "charity")!)
+        let logout = ContextMenuItemWithImage(title: "تسجيل الخروج", image: UIImage.init(named: "signout")!)
+        
+        CM.items = [profile,donorsList,logout]
+        CM.showMenu(viewTargeted: menuView, delegate: self, animated: true)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -251,4 +263,76 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
     
     
     
+}
+
+extension VolunteeringOpportunities: ContextMenuDelegate {
+
+    func contextMenuDidSelect(_ contextMenu: ContextMenu, cell: ContextMenuCell, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int) -> Bool {
+        
+        if(item.title == "ملف المستشفى"){
+            performSegue(withIdentifier: "viewHospitalProfile", sender: self)
+        }
+        if(item.title == "قائمة المتبرعين  بالاعضاء"){
+            performSegue(withIdentifier: "viewAfterDeathDonors", sender: self)
+        }
+        if(item.title == "تسجيل الخروج"){
+            performSegue(withIdentifier: "viewAfterDeathDonors", sender: self)
+//            popupTitle.text = "تأكيد تسجيل الخروج"
+//            popupMsg.text = "هل أنت متأكد من أنك تريد تسجيل الخروج؟"
+//
+//           popupView.isHidden = false
+//           blurredView.isHidden = false
+        }
+        return true
+    }
+
+    func contextMenuDidDeselect(_ contextMenu: ContextMenu, cell: ContextMenuCell, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int) {
+
+    }
+
+    func contextMenuDidAppear(_ contextMenu: ContextMenu) {
+
+    }
+
+    func contextMenuDidDisappear(_ contextMenu: ContextMenu) {
+
+    }
+
+
+}
+
+extension ManageAppointmentsViewController: ContextMenuDelegate {
+
+    func contextMenuDidSelect(_ contextMenu: ContextMenu, cell: ContextMenuCell, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int) -> Bool {
+        
+        if(item.title == "ملف المستشفى"){
+            performSegue(withIdentifier: "showHospitalProfile", sender: self)
+        }
+        if(item.title == "قائمة المتبرعين  بالاعضاء"){
+            performSegue(withIdentifier: "showAfterDeathDonors", sender: self)
+        }
+        if(item.title == "تسجيل الخروج"){
+            performSegue(withIdentifier: "viewAfterDeathDonors", sender: self)
+//            popupTitle.text = "تأكيد تسجيل الخروج"
+//            popupMsg.text = "هل أنت متأكد من أنك تريد تسجيل الخروج؟"
+//
+//           popupView.isHidden = false
+//           blurredView.isHidden = false
+        }
+        return true
+    }
+
+    func contextMenuDidDeselect(_ contextMenu: ContextMenu, cell: ContextMenuCell, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int) {
+
+    }
+
+    func contextMenuDidAppear(_ contextMenu: ContextMenu) {
+
+    }
+
+    func contextMenuDidDisappear(_ contextMenu: ContextMenu) {
+
+    }
+
+
 }

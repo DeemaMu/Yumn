@@ -10,10 +10,10 @@ import UIKit
 import SwiftUI
 import FirebaseAuth
 import Combine
-
+import ContextMenuSwift
 
 class ManageAppointmentsViewController: UIViewController {
-    @IBOutlet weak var logoutBtn: UIBarButtonItem!
+//    @IBOutlet weak var logoutBtn: UIBarButtonItem!
     @IBOutlet weak var cancelBtn: UIButton!
     
     @IBOutlet weak var confirmBtn: UIButton!
@@ -40,6 +40,7 @@ class ManageAppointmentsViewController: UIViewController {
     var mainDocID = ""
     var appintmentsPeriod = ""
     var type = ""
+    @IBOutlet weak var menuView: UIView!
     
     override func viewDidLoad() {
         
@@ -179,17 +180,17 @@ class ManageAppointmentsViewController: UIViewController {
         failPopUp.isHidden = false
     }
 
-    
-    @IBAction func onPressedLogout(_ sender: Any) {
-        
-        
-        popupTitle.text = "تأكيد تسجيل الخروج"
-        popupMsg.text = "هل أنت متأكد من أنك تريد تسجيل الخروج؟"
-
-       popupView.isHidden = false
-       blurredView.isHidden = false
-        
-    }
+//
+//    @IBAction func onPressedLogout(_ sender: Any) {
+//
+//
+//        popupTitle.text = "تأكيد تسجيل الخروج"
+//        popupMsg.text = "هل أنت متأكد من أنك تريد تسجيل الخروج؟"
+//
+//       popupView.isHidden = false
+//       blurredView.isHidden = false
+//
+//    }
     
     @IBAction func onPressedCancel(_ sender: Any) {
       
@@ -220,6 +221,15 @@ class ManageAppointmentsViewController: UIViewController {
            
         }
         
+    }
+    
+    @IBAction func viewMenu(_ sender: Any) {
+        let profile = ContextMenuItemWithImage(title: "ملف المستشفى", image: UIImage.init(named: "pofileHospital")!)
+        let donorsList = ContextMenuItemWithImage(title: "قائمة المتبرعين  بالاعضاء", image: UIImage.init(named: "charity")!)
+        let logout = ContextMenuItemWithImage(title: "تسجيل الخروج", image: UIImage.init(named: "signout")!)
+        
+        CM.items = [profile,donorsList,logout]
+        CM.showMenu(viewTargeted: menuView, delegate: self, animated: true)
     }
     
     
@@ -288,6 +298,8 @@ class ManageAppointmentsViewController: UIViewController {
     }
     
 }
+
+
 
 class OverlayControl: ObservableObject {
     @Published var showOverlay = false
