@@ -127,8 +127,10 @@ class BloodAppointmentM: ObservableObject {
                 let bookedApts = data["bookedAppointments"] as? [String] ?? [String]()
                 let aptDuration = 60.0
                 
+                let docId = queryDocumentSnapshot.documentID
+                
                 let apt = BloodAppointment(appointments: self.miniAppointments, type: type, startTime: startTime, endTime: endTime,
-                                           aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, donors: 3)
+                                           aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, donors: 3, mainDocID: docId)
                 apt.docID = queryDocumentSnapshot.documentID
                 apt.bookedAppointments = bookedApts
                 

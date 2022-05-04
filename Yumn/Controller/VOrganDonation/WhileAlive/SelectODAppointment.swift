@@ -250,7 +250,6 @@ struct SelectODAppointment: View {
     // MARK: Appointments View
     func AppointmentsView() -> some View {
         ZStack(){
-            
             if(empty){
                 Text("لايوجد مواعيد متاحة لهذا التاريخ").font(Font.custom("Tajawal", size: 16))
                     .foregroundColor(lightGray).padding(.top, 100).multilineTextAlignment(.center)

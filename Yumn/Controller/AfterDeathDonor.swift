@@ -73,7 +73,7 @@ class AfterDeathDonor: UIViewController, UICollectionViewDelegate, UICollectionV
                     
                     let name = data["name"] as? String ?? ""
                     let city = data["city"] as? String ?? ""
-                    let organs = data["organs"] as? String ?? ""
+                    let organs = data["organs"] as? [String] ?? []
                     let bloodType = data["bloodType"] as? String ?? ""
                     let nationalID = data["nationalID"] as? String ?? ""
                     
@@ -105,7 +105,7 @@ class AfterDeathDonor: UIViewController, UICollectionViewDelegate, UICollectionV
         cell.name.text = donor.name
         cell.id.text = donor.nationalID
         cell.city.text = donor.city
-        cell.organs.text = donor.organs
+        cell.organs.text = getOrgans(donor.organs)
         cell.bloodType.image = getImage(donor.bloodType)
         
         
@@ -156,6 +156,12 @@ class AfterDeathDonor: UIViewController, UICollectionViewDelegate, UICollectionV
             return UIImage.init(named: "ABm")!
         }
         return UIImage.add
+    }
+    
+    func getOrgans(_ organs : [String]) -> String {
+        let organsList = organs.joined(separator: ", ")
+        print(organsList)
+        return organsList
     }
     
     override func viewWillAppear(_ animated: Bool) {

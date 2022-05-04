@@ -43,12 +43,14 @@ class AppointmentVM: ObservableObject {
                 
                 let bookedApts = data["bookedAppointments"] as? [String] ?? [String]()
                 
+                let docId = queryDocumentSnapshot.documentID
+                
                 if (type == "blood"){
                     let aptDuration = 30.0
                     let donors = data["donors"] as? Int ?? 0
                     
                     var apt = BloodAppointment(appointments: appointments, type: type, startTime: startTime, endTime: endTime,
-                                               aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, donors: donors)
+                                               aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, donors: donors, mainDocID: docId)
                     
                     apt.bookedAppointments = bookedApts
                     
@@ -58,7 +60,7 @@ class AppointmentVM: ObservableObject {
                     let organ = data["organ"] as? String ?? ""
                     let aptDuration = 60.0
                     var apt = OrganAppointment(type: type, startTime: startTime, endTime: endTime,
-                                               aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, organ: organ)
+                                               aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, organ: organ, mainDocID: docId)
                     apt.appointments = [DAppointment]()
                     apt.bookedAppointments = bookedApts
                     return apt
@@ -268,11 +270,13 @@ class AppointmentVM: ObservableObject {
                 let hospital = data["hospital"] as? String ?? ""
                 let organ = data["organ"] as? String ?? ""
                 let bookedApts = data["bookedAppointments"] as? [String] ?? [String]()
+                
                 print("\(organ)")
                 let aptDuration = 60.0
+                let docID = queryDocumentSnapshot.documentID
                 
                 let apt = OrganAppointment(type: type, startTime: startTime, endTime: endTime,
-                                           aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, organ: organ)
+                                           aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, organ: organ, mainDocID: docID)
                 apt.docID = queryDocumentSnapshot.documentID
                 apt.bookedAppointments = bookedApts
                 apt.appointments?.append(appointments[0])

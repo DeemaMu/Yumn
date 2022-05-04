@@ -230,7 +230,7 @@ class ODHospitals: ObservableObject {
                 let organ = data["organ"] as? String ?? ""
                 print("\(organ)")
                 let aptDuration = 60.0
-                
+                let docId = queryDocumentSnapshot.documentID
                 if(organ == Constants.selected.selectedOrgan.organ){
                     print("hereee")
                     if(!self.hospitalsID.contains(hospital)){
@@ -240,7 +240,7 @@ class ODHospitals: ObservableObject {
                 
                 var apt =
                 OrganAppointment(type: type, startTime: startTime, endTime: endTime,
-                                 aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, organ: organ)
+                                 aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, organ: organ, mainDocID: docId)
                 apt.appointments = appointments
                 return apt
                 
