@@ -161,8 +161,9 @@ class BloodDonationQuestionsViewController: UIViewController {
             
             popupTitle.text = "مقدرين حبك للمساعدة"
             //        popupMsg.text = "للأسف أنت غير مؤهل للتبرع بالدم"
-            popupView.superview?.bringSubviewToFront(popupView)
             blackBlurredView.superview?.bringSubviewToFront(blackBlurredView)
+            popupView.superview?.bringSubviewToFront(popupView)
+
             popupView.isHidden = false
             blackBlurredView.isHidden = false
             
