@@ -63,21 +63,36 @@ struct ChooseOrganButton: View {
                         radius: 6, x: 0
                         , y: 6)
                 .onTapGesture {
-                    Constants.selected.selectedOrgan.organ = "liver"
-                    liver.toggle()
-                    if(liver){
-                        if(LiverApp){
+                    cancellable = checkAppointments(type: "liver").receive(on: DispatchQueue.main).sink(receiveCompletion: { completion in
+                        switch completion {
+                        case .finished:
+                            print("finished")
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }, receiveValue: { success in
+                        print(success)
+                        if(success){
+                            liver.toggle()
+                            Constants.selected.selectedOrgan.organ = "liver"
+                            if(liver){
+                                if(LiverApp){
+                                    let x =
+                                    config!.hostingController?.parent as! AliveFirstVC
+                                    x.showPopup()
+                                } else {
+                                    kidney = false
+                                    let x =
+                                    config!.hostingController?.parent as! AliveFirstVC
+                                    x.moveToKindneySection()
+                                }
+                            }
+                        } else {
                             let x =
                             config!.hostingController?.parent as! AliveFirstVC
                             x.showPopup()
-                        } else {
-                            kidney = false
-                            let x =
-                            config!.hostingController?.parent as! AliveFirstVC
-                            x.moveToKindneySection()
                         }
-                        
-                    }
+                    })
                 }
             
             VStack(){
@@ -131,7 +146,9 @@ struct ChooseOrganButton: View {
                                 }
                             }
                         } else {
-                            
+                            let x =
+                            config!.hostingController?.parent as! AliveFirstVC
+                            x.showPopup()
                         }
                     })
                 }
@@ -169,11 +186,29 @@ struct ChooseOrganButton: View {
                         return
                     }
                     
-                    if(document.count > 0){
-                        print(document.count)
-                        promise(.success(true))
-                        print("there are none")
-                    } else {
+                    if(error == nil){
+                        if(document.count == 0){
+                            if(type == "kidney"){
+                                kidneyApp = false
+                            }
+                            if(type == "liver"){
+                                LiverApp = false
+                            }
+                            print(document.count)
+                            promise(.success(true))
+                            print("there are none")
+                        } else {
+                            if(type == "kidney"){
+                                kidneyApp = false
+                            }
+                            if(type == "liver"){
+                                LiverApp = false
+                            }
+                            promise(.success(false))
+                        }
+                        
+                    }
+                    else {
                         promise(.failure(error as! Error))
                     }
                     
