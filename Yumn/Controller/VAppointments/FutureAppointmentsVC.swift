@@ -280,6 +280,10 @@ class futureAppointmensVC: UIViewController {
         performSegue(withIdentifier: "goToBook", sender: nil)
     }
     
+    func bookBloodAppointment() {
+        performSegue(withIdentifier: "goToBookBlood", sender: nil)
+    }
+    
     
     @IBAction func cancelingAppDelete(_ sender: Any) {
         

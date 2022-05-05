@@ -202,7 +202,7 @@ struct ConfirmBloodAppointmentPopUp: View {
                 self.DeleteFromUser()
             } else {
                 let x =
-                config.hostingController?.parent as! Alive4thVC
+                config.hostingController?.parent as! BloodAppointmentsVC
                 x.fail()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
                     listener?.remove()
@@ -248,7 +248,7 @@ struct ConfirmBloodAppointmentPopUp: View {
                 self.addToArray()
             } else {
                 let x =
-                config.hostingController?.parent as! Alive4thVC
+                config.hostingController?.parent as! BloodAppointmentsVC
                 x.fail()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
                     listener?.remove()
@@ -284,11 +284,11 @@ struct ConfirmBloodAppointmentPopUp: View {
         }, receiveValue: { success in
             print(success)
             if(success){
-                let x = config.hostingController?.parent as! Alive4thVC
+                let x = config.hostingController?.parent as! BloodAppointmentsVC
                 x.confirm()
             } else {
                 let x =
-                config.hostingController?.parent as! Alive4thVC
+                config.hostingController?.parent as! BloodAppointmentsVC
                 x.fail()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
                     listener?.remove()
@@ -337,7 +337,7 @@ struct ConfirmBloodAppointmentPopUp: View {
                 self.DeleteFromAppointment(mainAppointmentId: mainDocID)
             } else {
                 let x =
-                config.hostingController?.parent as! Alive4thVC
+                config.hostingController?.parent as! BloodAppointmentsVC
                 x.fail()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
                     listener?.remove()
@@ -408,7 +408,7 @@ struct ConfirmBloodAppointmentPopUp: View {
             } else {
                 self.removeFromInnerAppointment(appointmentID: self.exact.docID, mainAppointmentId: self.appointment.docID)
                 let x =
-                config.hostingController?.parent as! Alive4thVC
+                config.hostingController?.parent as! BloodAppointmentsVC
                 x.fail()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
                     listener?.remove()
@@ -469,7 +469,7 @@ struct ConfirmBloodAppointmentPopUp: View {
                 self.removeFromInnerAppointment(appointmentID: self.exact.docID, mainAppointmentId: self.appointment.docID)
                 self.DeleteFromAppointment(mainAppointmentId: self.appointment.docID)
                 let x =
-                config.hostingController?.parent as! Alive4thVC
+                config.hostingController?.parent as! BloodAppointmentsVC
                 x.fail()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
                     listener?.remove()

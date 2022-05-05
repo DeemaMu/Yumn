@@ -264,7 +264,7 @@ struct SelectBDAppointment: View {
         
         ForEach(0..<aptVM.miniAppointments.count, id: \.self){ i in
             withAnimation {
-                timeAppoitmentCard(apt: apt, exact: aptVM.miniAppointments[i], index: i)
+                timeAppoitmentCard(apt: apt, exact: aptVM.miniAppointments[apt.docID]![i], index: i)
             }
         }
         

@@ -8,7 +8,7 @@ class BloodAppointmentM: ObservableObject {
     @Published var bloodAppointments = [BloodAppointment]()
     @Published var filteredAppointments: [BloodAppointment] = [BloodAppointment]()
     @Published var added = true
-    @Published var miniAppointments = [DAppointment]()
+    @Published var miniAppointments = [String: [DAppointment]]()
     @Published var appointmentsWithin = [DAppointment]()
     var BloodApppointmentsCancellable: AnyCancellable?
     let db = Firestore.firestore()
@@ -51,11 +51,11 @@ class BloodAppointmentM: ObservableObject {
         return self.appointmentsWithin
     }
     
-    func fetchBloodAppointmentsData(docID: String) -> Future<[DAppointment], Error> {
+    func fetchBloodAppointmentsData(docID: String) -> Future<[String: [DAppointment]], Error> {
         var appointments = [DAppointment]()
         
         
-        return Future<[DAppointment], Error> { promise in
+        return Future<[String: [DAppointment]], Error> { promise in
             
             DispatchQueue.main.async {
                 
@@ -86,8 +86,8 @@ class BloodAppointmentM: ObservableObject {
                     }
                     
                     if(!appointments.isEmpty) {
-                        self.miniAppointments = appointments
-                        promise(.success(appointments))
+                        self.miniAppointments.updateValue(appointments, forKey: docID)
+                        promise(.success(self.miniAppointments))
                     } else {
                         print("fail")
                     }
@@ -129,7 +129,7 @@ class BloodAppointmentM: ObservableObject {
                 
                 let docId = queryDocumentSnapshot.documentID
                 
-                let apt = BloodAppointment(appointments: self.miniAppointments, type: type, startTime: startTime, endTime: endTime,
+                let apt = BloodAppointment(appointments: self.miniAppointments[docId] ?? [DAppointment](), type: type, startTime: startTime, endTime: endTime,
                                            aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, donors: 3, mainDocID: docId)
                 apt.docID = queryDocumentSnapshot.documentID
                 apt.bookedAppointments = bookedApts
@@ -147,7 +147,7 @@ class BloodAppointmentM: ObservableObject {
     
     func filteringAppointments() -> [BloodAppointment] {
         let calender = Calendar.current
-        var dappointments = [DAppointment]()
+        var dappointments = [String: [DAppointment]]()
         
         DispatchQueue.global(qos: .userInteractive).async {
             

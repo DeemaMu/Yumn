@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1CO-Fa-MFY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1CO-Fa-MFY">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -62,19 +62,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="EGJ-P8-wum">
-                                <rect key="frame" x="0.0" y="98" width="414" height="798"/>
+                                <rect key="frame" x="0.0" y="98" width="414" height="779.5"/>
                                 <subviews>
                                     <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="det-XD-85J" customClass="RoundedView" customModule="Yumn" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="798"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="779.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Lr9-9u-T5Q" userLabel="sectionsStack">
-                                                <rect key="frame" x="20" y="30" width="379.5" height="638"/>
+                                                <rect key="frame" x="20" y="30" width="374" height="619.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" restorationIdentifier="section1" translatesAutoresizingMaskIntoConstraints="NO" id="Pcq-CD-zD8" userLabel="section1">
-                                                        <rect key="frame" x="0.0" y="0.0" width="379.5" height="202.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="196.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EYf-Ok-fH4" userLabel="BloodDonation" customClass="RoundedShadowedView" customModule="Yumn" customModuleProvider="target">
-                                                                <rect key="frame" x="17" y="8" width="340" height="180"/>
+                                                                <rect key="frame" x="17" y="8" width="340" height="174"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bn-fD-hri" userLabel="bdBtn">
                                                                         <rect key="frame" x="0.0" y="0.0" width="340" height="174"/>
@@ -152,13 +152,13 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QX9-cG-7n6" userLabel="section2">
-                                                        <rect key="frame" x="0.0" y="217.5" width="379.5" height="203"/>
+                                                        <rect key="frame" x="0.0" y="211.5" width="374" height="196.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b7f-48-aWc" userLabel="OrganDonation" customClass="RoundedShadowedView" customModule="Yumn" customModuleProvider="target">
-                                                                <rect key="frame" x="17" y="7.5" width="345.5" height="180.5"/>
+                                                                <rect key="frame" x="17" y="7.5" width="340" height="174"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohk-hz-Uhs" userLabel="odBtn">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="345.5" height="180.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="340" height="174"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain" title=""/>
                                                                         <connections>
@@ -166,7 +166,7 @@
                                                                         </connections>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تبرع بالأعضاء" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hqx-pO-75t">
-                                                                        <rect key="frame" x="100" y="75.5" width="232" height="30"/>
+                                                                        <rect key="frame" x="100" y="72" width="232" height="30"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="232" id="EkC-Dj-E3G"/>
                                                                         </constraints>
@@ -175,7 +175,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart icon" translatesAutoresizingMaskIntoConstraints="NO" id="1ey-kz-44t">
-                                                                        <rect key="frame" x="-6" y="20" width="125.5" height="139.5"/>
+                                                                        <rect key="frame" x="-6" y="20" width="120" height="133"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="1ey-kz-44t" secondAttribute="height" multiplier="120:133" id="nXN-ET-c7i"/>
                                                                         </constraints>
@@ -227,13 +227,13 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xom-dG-vju" userLabel="section3">
-                                                        <rect key="frame" x="0.0" y="435.5" width="379.5" height="202.5"/>
+                                                        <rect key="frame" x="0.0" y="423" width="374" height="196.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2gV-1d-cyZ" userLabel="VolunteeringOportunity" customClass="RoundedShadowedView" customModule="Yumn" customModuleProvider="target">
-                                                                <rect key="frame" x="17" y="7" width="345.5" height="180"/>
+                                                                <rect key="frame" x="17" y="7" width="340" height="174"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6pX-vg-oWI" userLabel="odBtn">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="345.5" height="180"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="340" height="174"/>
                                                                         <color key="tintColor" red="0.82352941180000006" green="0.81960784310000001" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain">
@@ -250,7 +250,7 @@
                                                                         </connections>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الفرص التطوعية" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKN-0b-weh">
-                                                                        <rect key="frame" x="105.5" y="75" width="232" height="30"/>
+                                                                        <rect key="frame" x="100" y="72" width="232" height="30"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="232" id="kHL-BU-Br7"/>
                                                                         </constraints>
@@ -259,7 +259,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="help" translatesAutoresizingMaskIntoConstraints="NO" id="sDo-vb-iL2">
-                                                                        <rect key="frame" x="8" y="40" width="99" height="99"/>
+                                                                        <rect key="frame" x="8" y="40" width="93" height="93"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="sDo-vb-iL2" secondAttribute="height" multiplier="1:1" id="Ysk-L3-qgh"/>
                                                                         </constraints>
@@ -2044,7 +2044,7 @@
                                                                 <color key="highlightedColor" red="0.39607843139999999" green="0.41960784309999999" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="رئة" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vsk-7N-cCz">
-                                                                <rect key="frame" x="31" y="40.5" width="21" height="20.5"/>
+                                                                <rect key="frame" x="31.5" y="40.5" width="20.5" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                 <color key="textColor" red="0.39607843139999999" green="0.41960784309999999" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <color key="highlightedColor" red="0.39607843139999999" green="0.41960784309999999" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2068,7 +2068,7 @@
                                                                 <color key="highlightedColor" red="0.39607843139999999" green="0.41960784309999999" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="قرنية" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBr-vb-IEi">
-                                                                <rect key="frame" x="23.5" y="202.5" width="36.5" height="20.5"/>
+                                                                <rect key="frame" x="23.5" y="202.5" width="36" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                 <color key="textColor" red="0.39607843139999999" green="0.41960784309999999" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <color key="highlightedColor" red="0.39607843139999999" green="0.41960784309999999" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2088,7 +2088,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="4x4-1P-Dxo">
-                                                        <rect key="frame" x="100" y="88" width="27.5" height="304"/>
+                                                        <rect key="frame" x="100" y="88" width="27" height="304"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="١" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i10-jw-F2v">
                                                                 <rect key="frame" x="11" y="0.0" width="5.5" height="20.5"/>
@@ -2097,43 +2097,43 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="٥٧٦" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5HY-vv-TDv">
-                                                                <rect key="frame" x="0.0" y="40.5" width="27.5" height="20.5"/>
+                                                                <rect key="frame" x="0.0" y="40.5" width="27" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                                 <color key="textColor" red="0.39607843139999999" green="0.41960784309999999" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="٥٠٠" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mCx-GU-vHE">
-                                                                <rect key="frame" x="4" y="81" width="20" height="20.5"/>
+                                                                <rect key="frame" x="3.5" y="81" width="20" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                                 <color key="textColor" red="0.39607843139999999" green="0.41960784309999999" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="٥٠٠" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bY-jl-2Gm">
-                                                                <rect key="frame" x="4" y="121.5" width="20" height="20.5"/>
+                                                                <rect key="frame" x="3.5" y="121.5" width="20" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                                 <color key="textColor" red="0.39607843139999999" green="0.41960784309999999" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="٥٠٠" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1nl-Fb-Ds7">
-                                                                <rect key="frame" x="4" y="162" width="20" height="20.5"/>
+                                                                <rect key="frame" x="3.5" y="162" width="20" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                                 <color key="textColor" red="0.39607843139999999" green="0.41960784309999999" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="٥٠٠" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7He-XE-sqI">
-                                                                <rect key="frame" x="4" y="202.5" width="20" height="20.5"/>
+                                                                <rect key="frame" x="3.5" y="202.5" width="20" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                                 <color key="textColor" red="0.39607843139999999" green="0.41960784309999999" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="٥٠٠" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8PQ-Lf-qqu">
-                                                                <rect key="frame" x="4" y="243" width="20" height="20.5"/>
+                                                                <rect key="frame" x="3.5" y="243" width="20" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                                 <color key="textColor" red="0.39607843139999999" green="0.41960784309999999" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="٥٠٠" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lhf-WY-ZYQ">
-                                                                <rect key="frame" x="4" y="283.5" width="20" height="20.5"/>
+                                                                <rect key="frame" x="3.5" y="283.5" width="20" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                                 <color key="textColor" red="0.39607843139999999" green="0.41960784309999999" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -2618,7 +2618,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q75-yG-Apk">
-                                <rect key="frame" x="37" y="186" width="340" height="460"/>
+                                <rect key="frame" x="37" y="142" width="340" height="460"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الاحتياج للدم" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xin-e7-01X">
                                         <rect key="frame" x="113" y="25" width="126" height="29"/>
@@ -2753,7 +2753,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hJS-2F-bLk">
-                                <rect key="frame" x="37" y="186" width="340" height="460"/>
+                                <rect key="frame" x="37" y="142" width="340" height="460"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الاحتياج للأعضاء" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="INi-tb-BEZ">
                                         <rect key="frame" x="93.5" y="25" width="158.5" height="29"/>
@@ -3592,13 +3592,13 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="351" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ngi-Yt-RAF">
-                                                        <rect key="frame" x="0.0" y="0.0" width="206.5" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="50"/>
                                                         <fontDescription key="fontDescription" name="Tajawal-Medium" family="Tajawal Medium" pointSize="21"/>
                                                         <color key="textColor" name="mainLight"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="يتم التبرع بـ:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ifr-kf-wnD">
-                                                        <rect key="frame" x="266.5" y="0.0" width="84.5" height="50"/>
+                                                        <rect key="frame" x="267" y="0.0" width="84" height="50"/>
                                                         <fontDescription key="fontDescription" name="Tajawal-Medium" family="Tajawal Medium" pointSize="18"/>
                                                         <color key="textColor" name="mainLight"/>
                                                         <nil key="highlightedColor"/>
@@ -4030,7 +4030,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ydT-TK-6Qj">
-                                <rect key="frame" x="64" y="347.5" width="286" height="191"/>
+                                <rect key="frame" x="64" y="308.5" width="286" height="191"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="تاكيد الإضافة" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRw-bE-qK9">
                                         <rect key="frame" x="90.5" y="25" width="99" height="17"/>
@@ -4726,7 +4726,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7e2-Lj-wdV">
-                                <rect key="frame" x="64" y="347.5" width="286" height="191"/>
+                                <rect key="frame" x="64" y="308.5" width="286" height="191"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="تاكيد الحذف" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0C-qb-vZt">
                                         <rect key="frame" x="90.5" y="25" width="89" height="17"/>
@@ -5129,7 +5129,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Odh-OQ-lnm">
-                                <rect key="frame" x="64" y="347.5" width="286" height="191"/>
+                                <rect key="frame" x="64" y="308.5" width="286" height="191"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="تاكيد التغييرات" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHh-qi-lSm">
                                         <rect key="frame" x="90.5" y="25" width="112" height="17"/>
@@ -5398,7 +5398,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hiF-Ij-9kF">
-                                <rect key="frame" x="64" y="347.5" width="286" height="191"/>
+                                <rect key="frame" x="64" y="308.5" width="286" height="191"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="تاكيد التقديم" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7y-ET-9H7">
                                         <rect key="frame" x="22" y="25" width="236" height="17"/>
@@ -5488,7 +5488,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9qA-8f-boW">
-                                <rect key="frame" x="0.0" y="54" width="414" height="788"/>
+                                <rect key="frame" x="0.0" y="10" width="414" height="832"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PIq-0G-r0X">
                                         <rect key="frame" x="206.5" y="0.0" width="1" height="1"/>
@@ -5499,7 +5499,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="s9e-nB-ggn" customClass="RoundedView" customModule="Yumn" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1" width="414" height="787"/>
+                                        <rect key="frame" x="0.0" y="1" width="414" height="831"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UWz-9u-fhv">
                                                 <rect key="frame" x="45" y="8" width="324" height="64"/>
@@ -5519,14 +5519,14 @@
                                                 </constraints>
                                             </view>
                                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="159" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="eWZ-K0-0ni">
-                                                <rect key="frame" x="38.5" y="118" width="337" height="551"/>
+                                                <rect key="frame" x="25.5" y="118" width="363" height="595"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="eWZ-K0-0ni" secondAttribute="height" multiplier="184:311" constant="10.65" id="h4M-Dt-eMI"/>
                                                 </constraints>
                                             </tableView>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="159" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ybm-qb-dLW">
-                                                <rect key="frame" x="38.5" y="118" width="337" height="551"/>
+                                                <rect key="frame" x="25.5" y="118" width="363" height="595"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="ybm-qb-dLW" secondAttribute="height" multiplier="184:311" constant="10.65" id="ue1-8l-N5Q"/>
@@ -6149,7 +6149,7 @@
                                                                             <attributedString key="attributedTitle">
                                                                                 <fragment content="التبرع صادر عن رضا واقتناع وبإرادة حرة">
                                                                                     <attributes>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
@@ -6184,7 +6184,7 @@
                                                                                 <fragment content="لا تعاني من أمراض مزمنة مثل السكري، ارتفاع ضغط الدم، السرطان">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
@@ -6219,7 +6219,7 @@
                                                                             <attributedString key="attributedTitle">
                                                                                 <fragment content="لا تعاني من أمراض مزمنة معدية مثل الأيدز، التهاب الكبد، الزهري، الملاريا">
                                                                                     <attributes>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
@@ -6253,7 +6253,7 @@
                                                                             <attributedString key="attributedTitle">
                                                                                 <fragment content="عمرك أكبر من ١٨ سنة">
                                                                                     <attributes>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
@@ -6287,7 +6287,7 @@
                                                                             <attributedString key="attributedTitle">
                                                                                 <fragment content="لست مدخنًا">
                                                                                     <attributes>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
@@ -6936,7 +6936,7 @@
                                                                             <attributedString key="attributedTitle">
                                                                                 <fragment content="التبرع صادر عن رضا واقتناع وبإرادة حرة">
                                                                                     <attributes>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
@@ -6971,7 +6971,7 @@
                                                                                 <fragment content="لا تعاني من أمراض مزمنة مثل السكري، ارتفاع ضغط الدم، السرطان">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
@@ -7006,7 +7006,7 @@
                                                                             <attributedString key="attributedTitle">
                                                                                 <fragment content="لا تعاني من أمراض مزمنة معدية مثل الأيدز، التهاب الكبد، الزهري، الملاريا">
                                                                                     <attributes>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
@@ -7040,7 +7040,7 @@
                                                                             <attributedString key="attributedTitle">
                                                                                 <fragment content="عمرك أكبر من ١٨ سنة">
                                                                                     <attributes>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
@@ -7074,7 +7074,7 @@
                                                                             <attributedString key="attributedTitle">
                                                                                 <fragment content="لست مدخنًا">
                                                                                     <attributes>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
@@ -7109,7 +7109,7 @@
                                                                                 <fragment content="أدرك">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <font key="NSOriginalFont" metaFont="system" size="14"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
@@ -7117,14 +7117,14 @@
                                                                                 <fragment content=" ">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
                                                                                 <fragment content="ان">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <font key="NSOriginalFont" metaFont="system" size="14"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
@@ -7132,14 +7132,14 @@
                                                                                 <fragment content=" ">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
                                                                                 <fragment content="حجز">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <font key="NSOriginalFont" metaFont="system" size="14"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
@@ -7147,14 +7147,14 @@
                                                                                 <fragment content=" ">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
                                                                                 <fragment content="موعد">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <font key="NSOriginalFont" metaFont="system" size="14"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
@@ -7162,14 +7162,14 @@
                                                                                 <fragment content=" ">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
                                                                                 <fragment content="لا">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <font key="NSOriginalFont" metaFont="system" size="14"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
@@ -7177,14 +7177,14 @@
                                                                                 <fragment content=" ">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
                                                                                 <fragment content="يعني">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <font key="NSOriginalFont" metaFont="system" size="14"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
@@ -7192,14 +7192,14 @@
                                                                                 <fragment content=" ">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
                                                                                 <fragment content="أهليتي">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <font key="NSOriginalFont" metaFont="system" size="14"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
@@ -7207,14 +7207,14 @@
                                                                                 <fragment content=" ">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
                                                                                 <fragment content="للتبرع">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <font key="NSOriginalFont" metaFont="system" size="14"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
@@ -7222,14 +7222,14 @@
                                                                                 <fragment content=" ">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
                                                                                 <fragment content="بعضو">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <font key="NSOriginalFont" metaFont="system" size="14"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
@@ -7237,14 +7237,14 @@
                                                                                 <fragment content=" ">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
                                                                                 <fragment content="حي،">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <font key="NSOriginalFont" metaFont="system" size="14"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
@@ -7252,14 +7252,14 @@
                                                                                 <fragment content=" ">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
                                                                                 <fragment content="بل">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <font key="NSOriginalFont" metaFont="system" size="14"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
@@ -7267,14 +7267,14 @@
                                                                                 <fragment content=" ">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
                                                                                 <fragment content="هو">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <font key="NSOriginalFont" metaFont="system" size="14"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
@@ -7282,14 +7282,14 @@
                                                                                 <fragment content=" ">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
                                                                                 <fragment content="حجز">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <font key="NSOriginalFont" metaFont="system" size="14"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
@@ -7297,14 +7297,14 @@
                                                                                 <fragment content=" ">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
                                                                                 <fragment content="لموعد">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <font key="NSOriginalFont" metaFont="system" size="14"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
@@ -7312,14 +7312,14 @@
                                                                                 <fragment content=" ">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
                                                                                 <fragment content="فحص">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <font key="NSOriginalFont" metaFont="system" size="14"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
@@ -7327,14 +7327,14 @@
                                                                                 <fragment content=" ">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
                                                                                 <fragment content="مبدئي">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <font key="NSOriginalFont" metaFont="system" size="14"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
@@ -9454,7 +9454,7 @@
                                                                             <attributedString key="attributedTitle">
                                                                                 <fragment content="وزنك اعلى من ٥٠ كجم">
                                                                                     <attributes>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
@@ -9489,7 +9489,7 @@
                                                                                 <fragment content="مر على اخر عملية تبرع بالدم قمت بها ٦٠ يوم أو أكثر">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
@@ -9524,7 +9524,7 @@
                                                                             <attributedString key="attributedTitle">
                                                                                 <fragment content="لا تعاني من أمراض مزمنة مثل السكري، ارتفاع ضغط الدم، السرطان">
                                                                                     <attributes>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
@@ -9558,7 +9558,7 @@
                                                                             <attributedString key="attributedTitle">
                                                                                 <fragment content="لا تعاني من أمراض مزمنة معدية مثل الأيدز، التهاب الكبد، الزهري، الملاريا">
                                                                                     <attributes>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
@@ -9592,7 +9592,7 @@
                                                                             <attributedString key="attributedTitle">
                                                                                 <fragment content="عمرك أكبر من ١٨ سنة">
                                                                                     <attributes>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
@@ -9626,7 +9626,7 @@
                                                                             <attributedString key="attributedTitle">
                                                                                 <fragment content="غيز مصاب بفقر الدم الحاد">
                                                                                     <attributes>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
@@ -9661,7 +9661,7 @@
                                                                                 <fragment content="غير مصاب بأمراض الدم الوراثية">
                                                                                     <attributes>
                                                                                         <color key="NSColor" red="0.5490196078431373" green="0.55686274509803924" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <font key="NSFont" metaFont="system" size="16"/>
+                                                                                        <font key="NSFont" size="16" name="Tajawal-Regular"/>
                                                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
                                                                                     </attributes>
                                                                                 </fragment>
@@ -9820,13 +9820,13 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="tmV-Mi-vi9">
-                                <rect key="frame" x="0.0" y="54" width="414" height="788.5"/>
+                                <rect key="frame" x="0.0" y="10" width="414" height="832.5"/>
                                 <subviews>
                                     <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="76B-Q9-vox" customClass="RoundedView" customModule="Yumn" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="788.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="832.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Aa-sG-fJa">
-                                                <rect key="frame" x="32" y="83" width="350" height="664"/>
+                                                <rect key="frame" x="32" y="83" width="350" height="708"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vz3-8d-e9f">
@@ -10134,7 +10134,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pyn-vw-6ZZ">
-                                <rect key="frame" x="35" y="211" width="349" height="443"/>
+                                <rect key="frame" x="35" y="172" width="349" height="443"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="مواعيد الفترة:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afa-kQ-dew">
                                         <rect key="frame" x="202" y="91" width="110" height="17"/>
@@ -10326,7 +10326,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nqh-c8-of3">
-                                <rect key="frame" x="64" y="347.5" width="286" height="191"/>
+                                <rect key="frame" x="64" y="308.5" width="286" height="191"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="تحديث الحالة" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5o-5s-raj">
                                         <rect key="frame" x="33" y="25" width="234" height="17"/>
@@ -10547,8 +10547,8 @@
         <segue reference="6ea-SU-iN6"/>
         <segue reference="dSm-c0-q1r"/>
         <segue reference="jm4-C0-LC5"/>
-        <segue reference="mCX-oJ-ejz"/>
-        <segue reference="40V-c3-Yf8"/>
+        <segue reference="qS1-6L-Hcb"/>
+        <segue reference="nkG-dL-gcq"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="1:4" width="340" height="24"/>

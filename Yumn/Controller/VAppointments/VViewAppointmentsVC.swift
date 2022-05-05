@@ -157,6 +157,9 @@ class VViewAppointmentsVC: UIViewController {
         performSegue(withIdentifier: "goToBook", sender: nil)
     }
     
+    func bookBloodAppointment() {
+        performSegue(withIdentifier: "goToBookBlood", sender: nil)
+    }
 
     func moveToOldApts(){
         performSegue(withIdentifier: "goToOldApts", sender: nil)

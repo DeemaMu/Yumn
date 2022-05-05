@@ -8,6 +8,7 @@
 import SwiftUI
 import Firebase
 import FirebaseAuth
+import Combine
 
 struct ChooseOrganButton: View {
     
@@ -19,6 +20,7 @@ struct ChooseOrganButton: View {
     let whiteBg = Color(UIColor.white)
     let shadowColor = Color(#colorLiteral(red: 0.8653315902, green: 0.8654771447, blue: 0.8653123975, alpha: 1))
     @State var listener: ListenerRegistration?
+    @State var cancellable : AnyCancellable?
     
     let userID = Auth.auth().currentUser!.uid
     let db = Firestore.firestore()
@@ -31,7 +33,6 @@ struct ChooseOrganButton: View {
     
     init(config: Configuration) {
         self.config = config
-        self.checkAppointments()
     }
     
     var body: some View {
@@ -105,20 +106,34 @@ struct ChooseOrganButton: View {
                         radius: 6, x: 3
                         , y: 6)
                 .onTapGesture {
-                    kidney.toggle()
-                    Constants.selected.selectedOrgan.organ = "kidney"
-                    if(kidney){
-                        if(kidneyApp){
-                            let x =
-                            config!.hostingController?.parent as! AliveFirstVC
-                            x.showPopup()
-                        } else {
-                            liver = false
-                            let x =
-                            config!.hostingController?.parent as! AliveFirstVC
-                            x.moveToKindneySection()
+                    cancellable = checkAppointments(type: "kidney").receive(on: DispatchQueue.main).sink(receiveCompletion: { completion in
+                        switch completion {
+                        case .finished:
+                            print("finished")
+                        case .failure(let error):
+                            print(error)
                         }
-                    }
+                    }, receiveValue: { success in
+                        print(success)
+                        if(success){
+                            kidney.toggle()
+                            Constants.selected.selectedOrgan.organ = "kidney"
+                            if(kidney){
+                                if(kidneyApp){
+                                    let x =
+                                    config!.hostingController?.parent as! AliveFirstVC
+                                    x.showPopup()
+                                } else {
+                                    liver = false
+                                    let x =
+                                    config!.hostingController?.parent as! AliveFirstVC
+                                    x.moveToKindneySection()
+                                }
+                            }
+                        } else {
+                            
+                        }
+                    })
                 }
             
         }
@@ -129,9 +144,9 @@ struct ChooseOrganButton: View {
             )
                 .fill(.white)
         ).onAppear {
-            DispatchQueue.main.async {
-                self.checkAppointments()
-            }
+            //            DispatchQueue.main.async {
+            //                self.checkAppointments(type: <#T##String#>)
+            //            }
         }.onDisappear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
                 listener?.remove()
@@ -142,40 +157,29 @@ struct ChooseOrganButton: View {
         //                    , y: 6)
     }
     
-    func checkAppointments(){
-        listener =  db.collection("volunteer").document(userID).collection("organAppointments").whereField("organ", in: ["kidney"]).addSnapshotListener({ documentSnapshot, error in
+    func checkAppointments(type: String) -> Future<Bool, Error>{
+        return Future<Bool, Error> { promise in
             
-            guard let document = documentSnapshot else {
-                print("Error fetching document: \(error!)")
-                return
+            DispatchQueue.main.async {
+                
+                listener =  db.collection("volunteer").document(userID).collection("organAppointments").whereField("organ", in: [type]).addSnapshotListener({ documentSnapshot, error in
+                    
+                    guard let document = documentSnapshot else {
+                        print("Error fetching document: \(error!)")
+                        return
+                    }
+                    
+                    if(document.count > 0){
+                        print(document.count)
+                        promise(.success(true))
+                        print("there are none")
+                    } else {
+                        promise(.failure(error as! Error))
+                    }
+                    
+                })
             }
-            
-            if(document.count > 0){
-                print(document.count)
-                kidneyApp = true
-                print("there are none")
-            } else {
-                kidney = false
-            }
-            
-            db.collection("volunteer").document(userID).collection("organAppointments").whereField("organ", in: ["liver"]).addSnapshotListener({ documentSnapshot, error in
-                
-                guard let document = documentSnapshot else {
-                    print("Error fetching document: \(error!)")
-                    return
-                }
-                
-                if(document.count > 0){
-                    print(document.count)
-                    LiverApp = true
-                    print("there are none2")
-                } else {
-                    LiverApp = false
-                }
-                
-            })
-            
-        })
+        }
     }
 }
 

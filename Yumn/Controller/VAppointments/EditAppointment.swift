@@ -75,15 +75,27 @@ struct editAppointment: View {
                         Constants.selected.edit = true
                         Constants.selected.mainDoc = self.appointment.mainAppointmentID!
                         Constants.selected.exactDoc = self.appointment.appointmentID!
+                        if(appointment.type == "organ"){
                         Constants.selected.selectedOrgan.organ = self.appointment.organ!
+                        }
 
                         if(controllerType == 1) {
                         let x = config.hostingController?.parent as! VViewAppointmentsVC
-                            x.bookAppointment()
+                            if(appointment.type == "organ"){
+                                x.bookAppointment()
+                            }
+                            if(appointment.type == "blood"){
+                                x.bookBloodAppointment()
+                            }
                         } else {
                             //MARK: FROM FUTURE
                             let x = config.hostingController?.parent as! futureAppointmensVC
+                            if(appointment.type == "organ"){
                                 x.bookAppointment()
+                            }
+                            if(appointment.type == "blood"){
+                                x.bookBloodAppointment()
+                            }
                         }
                        
                         
