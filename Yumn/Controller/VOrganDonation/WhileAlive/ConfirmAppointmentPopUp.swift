@@ -535,19 +535,19 @@ struct ConfirmAppointmentPopUp: View {
         return hospitalName
     }
     func scheduleNotifications(_ appDate : Date , _ type : String){
-
+    
         //set up notifications
         let center = UNUserNotificationCenter.current()
 
         //step 2: Create the notification content
         let content = UNMutableNotificationContent()
-        content.title = "موعد التبرع ب" + type
-        content.body = "لديك غداً موعد للتبرع ب" + type
+        content.title = "موعد التبرع بالاعضاء"
+        content.body = "لديك غداً موعد للتبرع بالاعضاء"
         
         //step 3: Create the notification trigger
         // Get date format
-        var startTime = Date.appointmentDateFormatter(date : appDate)
-//        var startTime = "05:55:00-05.05.2022"
+//        var startTime = Date.appointmentDateFormatter(date : appDate)
+        var startTime = "20:56:00-05.05.2022"
 
         let date = startTime
         let hour = date[0...1]
@@ -560,21 +560,21 @@ struct ConfirmAppointmentPopUp: View {
         var DAY = Int(day)
         var dayBefore = 0
 
-        if let DAY = DAY {
-            if (DAY == 1){
-                dayBefore = 31
-            }
-            else{
-                dayBefore = DAY - 1
-            }
-        }
+//        if let DAY = DAY {
+//            if (DAY == 1){
+//                dayBefore = 31
+//            }
+//            else{
+//                dayBefore = DAY - 1
+//            }
+//        }
         
         var dateComponents = DateComponents()
         dateComponents.hour = Int(hour)
         dateComponents.minute = Int(minute)
         dateComponents.second = Int(second)
-        dateComponents.day = dayBefore
-//        dateComponents.day = DAY
+//        dateComponents.day = dayBefore
+        dateComponents.day = DAY
         dateComponents.month = Int(month)
         dateComponents.year = Int(year)
 

@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 import SwiftUI
+import UserNotifications
+
 class AliveFirstVC: UIViewController {
     
     @IBOutlet weak var container: UIView!
@@ -18,6 +20,13 @@ class AliveFirstVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewWillAppear(true)
+        
+        // Notification
+        // step 1: Ask for permission | Notifications
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert,.sound]) { granted, error in
+        }
+        
         popupView.layer.cornerRadius = 30
         popupView.isHidden = true
         blackBlurredView.isHidden = true
