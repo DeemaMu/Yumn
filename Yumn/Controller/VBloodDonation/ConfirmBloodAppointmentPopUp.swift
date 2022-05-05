@@ -114,6 +114,7 @@ struct ConfirmBloodAppointmentPopUp: View {
                             switch completion {
                             case .finished:
                                 print("finished")
+                                
                             case .failure(let error):
                                 print(error)
                             }
@@ -158,7 +159,6 @@ struct ConfirmBloodAppointmentPopUp: View {
             self.getHospitalName()
         }
     }
-    
     func deleteDoc(){
         DeleteFromInnerAppointment()
     }
@@ -435,6 +435,7 @@ struct ConfirmBloodAppointmentPopUp: View {
                     
                     if (error == nil){
                         promise(.success(true))
+                        scheduleNotifications(exact.startTime)
                     } else {
                         print(error!)
                         promise(.failure(error!))
@@ -517,6 +518,65 @@ struct ConfirmBloodAppointmentPopUp: View {
         }
         
         return hospitalName
+    }
+    func scheduleNotifications(_ appDate : Date){
+
+        //set up notifications
+        let center = UNUserNotificationCenter.current()
+
+        //step 2: Create the notification content
+        let content = UNMutableNotificationContent()
+        content.title = "موعد التبرع بالدم"
+        content.body = "لديك غداً موعد للتبرع بالدم"
+        
+        //step 3: Create the notification trigger
+        // Get date format
+        var startTime = Date.appointmentDateFormatter(date : appDate)
+//        var startTime = "05:55:00-05.05.2022"
+
+        let date = startTime
+        let hour = date[0...1]
+        let minute = date[3...4]
+        let second = date[6...7]
+        let day = date[9...10]
+        let month = date[12...13]
+        let year = date[15...18]
+        
+        var DAY = Int(day)
+        var dayBefore = 0
+
+        if let DAY = DAY {
+            if (DAY == 1){
+                dayBefore = 31
+            }
+            else{
+                dayBefore = DAY - 1
+            }
+        }
+        
+        var dateComponents = DateComponents()
+        dateComponents.hour = Int(hour)
+        dateComponents.minute = Int(minute)
+        dateComponents.second = Int(second)
+        dateComponents.day = dayBefore
+//        dateComponents.day = DAY
+        dateComponents.month = Int(month)
+        dateComponents.year = Int(year)
+
+        print(dateComponents)
+
+        let trigger =  UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+
+        //step 4: Create the request
+        let uuidString = UUID().uuidString
+        let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+
+        //step 5: Register the request
+        center.add(request) { error in
+            //Handle errors
+            print(error?.localizedDescription)
+        }
+        
     }
 }
 

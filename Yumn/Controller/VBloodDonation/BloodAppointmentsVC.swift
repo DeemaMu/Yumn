@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import SwiftUI
 import Combine
+import UserNotifications
 
 class BloodAppointmentsVC: UIViewController {
         
@@ -29,6 +30,11 @@ class BloodAppointmentsVC: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        //step 1: Ask for permission | Notifications
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert,.sound]) { granted, error in
+        }
         
         viewWillAppear(true)
 
@@ -138,3 +144,16 @@ class BloodAppointmentsVC: UIViewController {
     
 }
 
+extension String {
+    subscript (bounds: CountableClosedRange<Int>) -> String {
+        let start = index(startIndex, offsetBy: bounds.lowerBound)
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        return String(self[start...end])
+    }
+    
+    subscript (bounds: CountableRange<Int>) -> String {
+        let start = index(startIndex, offsetBy: bounds.lowerBound)
+        let end = index(startIndex, offsetBy: bounds.upperBound)
+        return String(self[start..<end])
+    }
+}

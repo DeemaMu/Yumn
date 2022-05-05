@@ -188,6 +188,13 @@ extension Date {
     
         return String(format: "%@", dateFormatter.string(from: date))
     }
+    static func appointmentDateFormatter(date: Date) -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm:ss-dd.MM.yyyy"
+    
+        return String(format: "%@", dateFormatter.string(from: date))
+    }
     static func reverseDateFormatter(date: Date) -> String {
         
         let dateFormatter = DateFormatter()

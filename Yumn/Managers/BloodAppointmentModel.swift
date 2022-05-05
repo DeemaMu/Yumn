@@ -74,11 +74,11 @@ class BloodAppointmentM: ObservableObject {
                         let confirmed = data["confirmed"] as? String ?? ""
                         let booked = data["booked"] as? Bool ?? false
                         
-                        let stamp1 = data["start_time"] as? Timestamp
-                        let startTime = stamp1!.dateValue()
+                        let stamp1 = data["start_time"] as? Timestamp ?? Timestamp()
+                        let startTime = stamp1.dateValue()
                         
-                        let stamp2 = data["end_time"] as? Timestamp
-                        let endTime = stamp2!.dateValue()
+                        let stamp2 = data["end_time"] as? Timestamp ?? Timestamp()
+                        let endTime = stamp2.dateValue()
                         
                         var apt = DAppointment(type: type, startTime: startTime, endTime: endTime, donor: donor, hName: hName, confirmed: confirmed, booked: booked)
                         apt.docID = id
