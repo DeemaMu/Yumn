@@ -102,6 +102,7 @@ class BloodAppointmentM: ObservableObject {
     func fetchBloodAppointments() {
         
         self.bloodAppointments.removeAll()
+        var dAppointments = [DAppointment]()
         
         db.collection("appointments").whereField("type", in: ["blood"]).addSnapshotListener { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
@@ -127,9 +128,23 @@ class BloodAppointmentM: ObservableObject {
                 let bookedApts = data["bookedAppointments"] as? [String] ?? [String]()
                 let aptDuration = 60.0
                 
+                self.BloodApppointmentsCancellable = self.fetchBloodAppointmentsData(docID: queryDocumentSnapshot.documentID).receive(on: DispatchQueue.main
+                ).sink(receiveCompletion: { completion in
+                    switch completion {
+                    case .finished:
+                        print("finished")
+                    case .failure(let error):
+                        print(error)
+                    }
+                }, receiveValue: { appointments in
+                    if(!appointments.isEmpty){
+                        dAppointments = appointments[queryDocumentSnapshot.documentID]!
+                    }
+                })
+                
                 let docId = queryDocumentSnapshot.documentID
                 
-                let apt = BloodAppointment(appointments: self.miniAppointments[docId] ?? [DAppointment](), type: type, startTime: startTime, endTime: endTime,
+                let apt = BloodAppointment(appointments: dAppointments, type: type, startTime: startTime, endTime: endTime,
                                            aptDate: aptDate!, hospital: hospital, aptDuration: aptDuration, donors: 3, mainDocID: docId)
                 apt.docID = queryDocumentSnapshot.documentID
                 apt.bookedAppointments = bookedApts
@@ -157,30 +172,30 @@ class BloodAppointmentM: ObservableObject {
                     return calender.isDate($0.aptDate, inSameDayAs: self.currentDay)
                 }
                 
-                DispatchQueue.main.async {
-                self.miniAppointments.removeAll()
-                for filter in filtered {
-                        self.BloodApppointmentsCancellable = self.fetchBloodAppointmentsData(docID: filter.docID).receive(on: DispatchQueue.main
-                        ).sink(receiveCompletion: { completion in
-                            switch completion {
-                            case .finished:
-                                print("finished")
-                            case .failure(let error):
-                                print(error)
-                            }
-                        }, receiveValue: { appointments in
-                            if(!appointments.isEmpty){
-                                dappointments = appointments
-                            }
-                        })
-                    }
-                }
+//                DispatchQueue.main.async {
+//                self.miniAppointments.removeAll()
+//                for filter in filtered {
+//                        self.BloodApppointmentsCancellable = self.fetchBloodAppointmentsData(docID: filter.docID).receive(on: DispatchQueue.main
+//                        ).sink(receiveCompletion: { completion in
+//                            switch completion {
+//                            case .finished:
+//                                print("finished")
+//                            case .failure(let error):
+//                                print(error)
+//                            }
+//                        }, receiveValue: { appointments in
+//                            if(!appointments.isEmpty){
+//                                dappointments = appointments
+//                            }
+//                        })
+//                    }
+//                }
                 
                 
                 DispatchQueue.main.async {
                     withAnimation {
                         self.filteredAppointments = filtered
-                        self.miniAppointments = dappointments
+//                        self.miniAppointments = dappointments
                     }
                 }
             }

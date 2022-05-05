@@ -23,6 +23,7 @@ struct SelectBDAppointment: View {
     
     @State var selectedDate: Date
     @State var checkedIndex: Int = -1
+    @State var checkedMainIndex: Int = -1
     @State var showError = false
     @State var empty = true
     var counter = 0
@@ -261,17 +262,19 @@ struct SelectBDAppointment: View {
     
     @ViewBuilder
     func AppoitmentCard(apt: BloodAppointment, index: Int) -> some View {
+
         
-        ForEach(0..<aptVM.miniAppointments.count, id: \.self){ i in
+        ForEach(0..<aptVM.miniAppointments[apt.docID]!.count, id: \.self){ i in
             withAnimation {
-                timeAppoitmentCard(apt: apt, exact: aptVM.miniAppointments[apt.docID]![i], index: i)
+                timeAppoitmentCard(apt: apt, exact: aptVM.miniAppointments[apt.docID]![i], index: index, exactIndex: i)
             }
+        
         }
         
     }
     
     @ViewBuilder
-    func timeAppoitmentCard(apt: BloodAppointment, exact: DAppointment , index: Int) -> some View {
+    func timeAppoitmentCard(apt: BloodAppointment, exact: DAppointment , index: Int, exactIndex: Int) -> some View {
         
         if(apt != nil){
             
@@ -279,10 +282,9 @@ struct SelectBDAppointment: View {
                 
                 HStack(){
                     VStack(alignment: .leading){
-                        if(self.checkedIndex == index){
+                        if(self.checkedIndex == exactIndex && self.checkedMainIndex == index){
                             RadioButton2(matched: true)
-                        }
-                        if(self.checkedIndex != index){
+                        } else {
                             RadioButton2(matched: false)
                         }
                     }.padding(.leading, 20)
@@ -334,11 +336,13 @@ struct SelectBDAppointment: View {
                 .onTapGesture {
                     if(checkedIndex == index){
                         checkedIndex = -1
+                        checkedMainIndex = -1
                         showError = true
                     } else {
                         selectedAppointment = apt
                         selectedMiniAppointment = exact
-                        checkedIndex = index
+                        checkedIndex = exactIndex
+                        checkedMainIndex = index
                         showError = false
                         
                     }
