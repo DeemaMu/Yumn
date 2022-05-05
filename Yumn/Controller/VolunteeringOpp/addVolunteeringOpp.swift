@@ -479,7 +479,7 @@ class addVolunteeringOpp: UIViewController, UITextFieldDelegate , UITextViewDele
         
     }
     
-    // Final Validation
+    // Final Form Validation
     func checkForValidForm()
     {
         if titleErrorMSG.isHidden && dateErrorMSG.isHidden && workHoursErrorMSG.isHidden && locationErrorMSG.isHidden && genderErrorMSG.isHidden && desErrorMSG.isHidden

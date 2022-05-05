@@ -30,18 +30,14 @@ class addPopup: UIViewController{
     }
     
     @IBAction func confirm(_ sender: Any) {
-        // Add Query
-        
-        // User was creted successfully, store the information
-
         let db = Firestore.firestore()
         let user = Auth.auth().currentUser
         let uid = user?.uid
         
-        // 1. get the Doc
+        // 1. get the Doc reference
         let docRef = db.collection("hospitalsInformation").document(uid!)
 
-        // 2. to get live data
+        // 2. read the hospital name
         docRef.addSnapshotListener { [weak self] snapshot, error in
             guard let data = snapshot?.data(), error == nil else{
                 return
@@ -50,15 +46,11 @@ class addPopup: UIViewController{
             guard let hospitalName = data["name"] as? String else {
                 return
             }
-            //            guard let phone = data["phone"] as? String else {
-            //                return
-            //            }
-
+            // 3. Save data to volunteeringOpp collection
             DispatchQueue.main.async {
-
+                // save the post date
                 let today = Date()
                 
-                // Volunteer collection
                 db.collection("volunteeringOpp").document().setData([
                     "title":Constants.VolunteeringOpp.title,
                     "date": Constants.VolunteeringOpp.date,
@@ -79,8 +71,7 @@ class addPopup: UIViewController{
                     }
             }
         }
-
-        // Update collections
+        // Update collection view
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotification"), object: nil)
         
         // Go back

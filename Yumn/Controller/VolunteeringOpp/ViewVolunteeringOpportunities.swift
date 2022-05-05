@@ -133,7 +133,7 @@ class ViewVolunteeringOpportunities: UIViewController, UICollectionViewDelegate,
     }
     
     @objc func applytoVO(_ sender : UIButton) {
-        
+        // pass the doc id
         let indexPath = IndexPath(row: sender.tag, section: 0)
         let cell = VolunteeringOpps[indexPath.row]
         self.passDocID = cell.id
@@ -148,18 +148,15 @@ class ViewVolunteeringOpportunities: UIViewController, UICollectionViewDelegate,
                 
                 let documents = querySnapshot?.data()
                 if (documents == nil){
-                 print("Not an applicant")
+                 //Not an applicant
                     self.applied = false
                     self.performSegue(withIdentifier: "applyPopUP", sender: self)
                 } else{
-                    // Already applied
-                print("he is an applicant")
+                 // Already applied
                     self.applied = true
                     self.performSegue(withIdentifier: "applyPopUP", sender: self)
                 }
-                
             }
- 
         }
     }
     

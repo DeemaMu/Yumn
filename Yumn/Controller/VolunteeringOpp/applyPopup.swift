@@ -47,11 +47,12 @@ class applyPopup: UIViewController{
     }
     
     @IBAction func confirm(_ sender: Any) {
-        // Apply Query
+        // Save data
         let db = Firestore.firestore()
         let uid = Auth.auth().currentUser?.uid
         
         DispatchQueue.main.async {
+            // Add applicant to applicants list
             db.collection("volunteeringOpp").document(self.docID).collection("applicants").document(uid!).setData([
                 "uid": uid! ,
                 "status":"pending"]){ error in
@@ -60,7 +61,7 @@ class applyPopup: UIViewController{
                         print ("Error in Apply")
                     }
                 }
-            
+            // Save the volunteering Oppotunities under the volunteer collection
             let docRef = db.collection("volunteeringOpp").document(self.docID)
             
             docRef.getDocument { (document, error) in
@@ -76,8 +77,8 @@ class applyPopup: UIViewController{
                         "workingHours":data!["workingHours"] as? String ?? "",
                         "location":data!["location"] as? String ?? "",
                         "description":data!["description"] as? String ?? "",
-                        "start_date":data!["start_date"] as? Timestamp,
-                        "end_date":data!["end_date"] as? Timestamp,
+                        "start_date":data!["start_date"] as? Timestamp ?? Timestamp(),
+                        "end_date":data!["end_date"] as? Timestamp ?? Timestamp(),
                         
                     ]){ error in
                         if error != nil {
@@ -90,8 +91,7 @@ class applyPopup: UIViewController{
                     print("Document does not exist")
                 }
             }
-            
-        }// end thread
+        }// end main thread
         // Go back
         self.dismiss(animated: true, completion: nil)
     }
