@@ -156,7 +156,9 @@ struct SelectBDAppointment: View {
             
             Section{
                 ScrollView(.vertical,  showsIndicators: false){
+                    if(aptVM.back){
                     AppointmentsView()
+                    }
                 }.padding()
                 
             }

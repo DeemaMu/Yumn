@@ -8,6 +8,7 @@ class BloodAppointmentM: ObservableObject {
     @Published var bloodAppointments = [BloodAppointment]()
     @Published var filteredAppointments: [BloodAppointment] = [BloodAppointment]()
     @Published var added = true
+    @Published var back = false
     @Published var miniAppointments = [String: [DAppointment]]()
     @Published var appointmentsWithin = [DAppointment]()
     var BloodApppointmentsCancellable: AnyCancellable?
@@ -138,6 +139,7 @@ class BloodAppointmentM: ObservableObject {
                     }
                 }, receiveValue: { appointments in
                     if(!appointments.isEmpty){
+                        self.back = true
                         dAppointments = appointments[queryDocumentSnapshot.documentID]!
                     }
                 })
