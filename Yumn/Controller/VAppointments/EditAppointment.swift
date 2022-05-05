@@ -8,12 +8,15 @@
 import SwiftUI
 import FirebaseAuth
 import Firebase
+import Combine
 
 struct editAppointment: View {
     let config: Configuration
     let appointment: retrievedAppointment
 //    let userID = Auth.auth().currentUser!.uid
     let controllerType: Int
+    
+    @State var hospitalCancellable: AnyCancellable?
     
     let db = Firestore.firestore()
     
@@ -85,7 +88,22 @@ struct editAppointment: View {
                                 x.bookAppointment()
                             }
                             if(appointment.type == "blood"){
-                                x.bookBloodAppointment()
+                                self.hospitalCancellable = fetchHospital().receive(on: DispatchQueue.main).sink(receiveCompletion: { completion in
+                                    switch completion {
+                                    case .finished:
+                                        print("finished")
+                                    case .failure(let error):
+                                        print(error)
+                                    }
+                                }, receiveValue: { Location in
+                                    if(Location != nil){
+                                        Constants.selected.selectedOrgan.hospital = self.appointment.hospitalID!
+                                        Constants.selected.selectedHospital = Location
+                                        x.bookBloodAppointment()
+                                    } else {
+                                        print("failed")
+                                    }
+                                })
                             }
                         } else {
                             //MARK: FROM FUTURE
@@ -94,7 +112,22 @@ struct editAppointment: View {
                                 x.bookAppointment()
                             }
                             if(appointment.type == "blood"){
-                                x.bookBloodAppointment()
+                                self.hospitalCancellable = fetchHospital().receive(on: DispatchQueue.main).sink(receiveCompletion: { completion in
+                                    switch completion {
+                                    case .finished:
+                                        print("finished")
+                                    case .failure(let error):
+                                        print(error)
+                                    }
+                                }, receiveValue: { Location in
+                                    if(Location != nil){
+                                        Constants.selected.selectedOrgan.hospital = self.appointment.hospitalID!
+                                        Constants.selected.selectedHospital = Location
+                                        x.bookBloodAppointment()
+                                    } else {
+                                        print("failed")
+                                    }
+                                })
                             }
                         }
                        
@@ -122,7 +155,41 @@ struct editAppointment: View {
         
     }
     
+    func fetchHospital() -> Future<Location, Error> {
+        return Future<Location, Error> { promise in
+            DispatchQueue.main.async {
+                
+                let doc = db.collection("hospitalsInformation").document(self.appointment.hospitalID!)
+                
+                doc.getDocument { (document, error) in
+                    guard let document = document, document.exists else {
+                        print("Document does not exist")
+                        return
+                    }
+                    if (error == nil) {
+                        print("here")
+                        let doc = document.data()
+                        let latitude:Double = doc!["latitude"] as! Double
+                        let longitude:Double = doc!["longitude"] as! Double
+                        let name: String = doc?["name"] as! String
+                        let city: String = doc?["city"] as! String
+                        let area: String = doc?["area"] as! String
+                        let docID = document.documentID
+                        var hospital = Location(name: name, lat: latitude, long: longitude, city: city, area: area)
+                        hospital.docID = docID
+                        
+                        promise(.success(hospital))
+                    } else {
+                        promise(.failure(error!))
+                    }
+                   
+                }
+            }
+        }
+    }
+    
 }
+
 
 struct editAppointment_Previews: PreviewProvider {
     static var previews: some View {
