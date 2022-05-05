@@ -157,6 +157,7 @@ struct AfterDeathOrganSelection: View {
         }
     }
     
+    // Check if at least one organ was selected
     func checkSelection() -> Bool {
         for organ in self.organsVM.selected {
             if(organ.value){

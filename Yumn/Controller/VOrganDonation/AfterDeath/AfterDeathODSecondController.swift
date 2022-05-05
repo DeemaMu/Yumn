@@ -36,7 +36,7 @@ class AfterDeathODSecondController: UIViewController {
     let db = Firestore.firestore()
     
     var cancellable : AnyCancellable?
-        
+    
     var selectedOrgans: [String:Bool]?
     
     var donor: Donor?
@@ -107,6 +107,16 @@ class AfterDeathODSecondController: UIViewController {
         nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(named: "mainLight")!, NSAttributedString.Key.font: customFont]
     }
     
+    
+    
+    
+    @IBAction func cancel(_ sender: UIButton) {
+        blackBlurredView.superview?.sendSubviewToBack(blackBlurredView)
+        popupView.superview?.sendSubviewToBack(popupView)
+        popupView.isHidden = true
+        blackBlurredView.isHidden = true
+    }
+    
     // The method called from the swiftui button to display the confirmation message
     func showConfirmationMessage(selected: [String:Bool], donor: Donor){
         blackBlurredView.superview?.bringSubviewToFront(blackBlurredView)
@@ -119,14 +129,6 @@ class AfterDeathODSecondController: UIViewController {
         self.donor = donor
     }
     
-    
-    @IBAction func cancel(_ sender: UIButton) {
-        blackBlurredView.superview?.sendSubviewToBack(blackBlurredView)
-        popupView.superview?.sendSubviewToBack(popupView)
-        popupView.isHidden = true
-        blackBlurredView.isHidden = true
-    }
-        
     // The method called from the swiftui button to display the confirmation message
     @IBAction func confirm(_ sender: UIButton) {
         
@@ -151,7 +153,9 @@ class AfterDeathODSecondController: UIViewController {
             if(success){
                 self!.showThankYou()
             } else {
-                components().showToast(message: "فشل في حفظ العملية. الرجاء المحاولة لاحقًا", font: .systemFont(ofSize: 20), image: UIImage(named: "yumn-1")!, viewC: self!)
+                components().showToast(message: "فشل في حفظ العملية. الرجاء المحاولة لاحقًا",
+                                       font: .systemFont(ofSize: 20),
+                                       image: UIImage(named: "yumn-1")!, viewC: self!)
             }
         })
     }
@@ -163,8 +167,10 @@ class AfterDeathODSecondController: UIViewController {
             DispatchQueue.main.async {
                 let newDoc = self?.db.collection("afterDeathDonors").document(self!.userID)
                 // Set new document data
-                newDoc?.setData(["bloodType": self?.donor?.bloodType, "city": self?.donor?.city, "name": self?.donor?.name, "nationalID": self?.donor!.nationalID, "organs": self?.donor?.organs,
-                                "uid": self!.userID]) { error in
+                newDoc?.setData(["bloodType": self?.donor?.bloodType, "city": self?.donor?.city,
+                                 "name": self?.donor?.name, "nationalID": self?.donor!.nationalID,
+                                 "organs": self?.donor?.organs,
+                                 "uid": self!.userID]) { error in
                     
                     if (error == nil){
                         promise(.success(true))
@@ -175,7 +181,7 @@ class AfterDeathODSecondController: UIViewController {
             }
         }
     }
-
+    
     
     
     func showThankYou(){

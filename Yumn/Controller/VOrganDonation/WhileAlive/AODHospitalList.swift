@@ -53,13 +53,18 @@ struct AODHospitalList: View {
                 ScrollView(.vertical, showsIndicators: false){
                     ZStack {
                         VStack{
+                            
+                            // If there werent any organ donation available for the next two weeks
+                            // display message
                             if(!thereIs){
                                 Text("لا توجد مواعيد خلال الاسبوعين القادمة.").font(Font.custom("Tajawal", size: 16))
                                     .foregroundColor(lightGray).padding(.top, 100).multilineTextAlignment(.center)
                                 Text("الرجاء المحاولة لاحقًا").font(Font.custom("Tajawal", size: 16))
                                     .foregroundColor(lightGray).padding(.top, 4).multilineTextAlignment(.center)
                             }
+                            
                         }
+                        // If there were, display each hospital
                         VStack(spacing: 20){
                             
                             ForEach(0..<hVM.odHospitals.count, id: \.self) { index in
@@ -73,13 +78,14 @@ struct AODHospitalList: View {
                     Text("الرجاء اختيار مستشفى لعرض المواعيد *").font(Font.custom("Tajawal", size: 15))
                         .foregroundColor(.red)
                 }
-                
-                //                NavigationLink(destination: UIKitView()) { Text("Berlin") }
-                
+            
                 Button(action: {
+                    // if the volunteer didnt select a hospital, display error
                     if(checkedIndex == -1){
                         showError = true
                     } else {
+                        // if the volunteer they did select a hospital, procced to
+                        // choosing an appointment
                         showError = false
                         Constants.selected.selectedOrgan.hospital = hVM.odHospitals[checkedIndex].hospitalID
                         let x =
@@ -120,9 +126,6 @@ struct AODHospitalList: View {
     func card(hospital: odHospital, index: Int) -> some View{
         let shadowColor = Color(#colorLiteral(red: 0.8653315902, green: 0.8654771447, blue: 0.8653123975, alpha: 1))
         let currentH = hospital.hospital
-        //        let raduis = 3
-        //        let ySpread = 0
-        
         
         HStack(){
             VStack(alignment: .leading){
@@ -180,9 +183,6 @@ struct AODHospitalList: View {
         }
     }
     
-    func showAppointments(){
-        //        controller
-    }
 }
 
 
