@@ -28,6 +28,7 @@
 		8DE28D6C2821A71800B54BE6 /* QRCodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE28D6B2821A71800B54BE6 /* QRCodeTableViewCell.swift */; };
 		8DE28D6E2821AF9800B54BE6 /* BloodDonationQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE28D6D2821AF9800B54BE6 /* BloodDonationQuestionsViewController.swift */; };
 		8DE28D702821CA9300B54BE6 /* grey.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8DE28D6F2821CA9300B54BE6 /* grey.gif */; };
+		90DCE881AE412C73F7F40B64 /* Pods_Yumn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DDC8590829BAF3C9BD2DED2 /* Pods_Yumn.framework */; };
 		95062D9627CADC0500D63911 /* Tajawal-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95062D9227CADC0400D63911 /* Tajawal-Light.ttf */; };
 		95062D9727CADC0500D63911 /* Tajawal-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95062D9327CADC0500D63911 /* Tajawal-Medium.ttf */; };
 		95062D9827CADC0500D63911 /* Tajawal-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95062D9427CADC0500D63911 /* Tajawal-Regular.ttf */; };
@@ -61,7 +62,6 @@
 		95C5967727D75A8D00A5572C /* styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C5967627D75A8D00A5572C /* styles.swift */; };
 		95C5967927D767FE00A5572C /* VSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C5967827D767FE00A5572C /* VSignUpViewController.swift */; };
 		95CCFF852823185C00A0016C /* bloodTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95CCFF842823185C00A0016C /* bloodTypeCell.xib */; };
-		95CCFF872823186400A0016C /* organCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95CCFF862823186400A0016C /* organCell.xib */; };
 		95EED9CB27E6602C009AFDAC /* VOCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EED9CA27E6602C009AFDAC /* VOCollectionViewCell.swift */; };
 		95EED9CD27E682DB009AFDAC /* VolunteeringOpp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EED9CC27E682DB009AFDAC /* VolunteeringOpp.swift */; };
 		B91DD28E27E995F200BA9881 /* CalenderAndAppointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91DD28D27E995F200BA9881 /* CalenderAndAppointments.swift */; };
@@ -149,13 +149,12 @@
 		D19B1B5127E95F2200CB3FFA /* oldBloodAppTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D19B1B5027E95F2200CB3FFA /* oldBloodAppTableViewCell.xib */; };
 		D19B1B5327E95FCB00CB3FFA /* OrganDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19B1B5227E95FCB00CB3FFA /* OrganDonationViewController.swift */; };
 		D19B1B5927E962BC00CB3FFA /* VolunteerBloodAppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19B1B5827E962BC00CB3FFA /* VolunteerBloodAppointmentsViewController.swift */; };
-		FB5C966C4C3AD122F778C966 /* Pods_Yumn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D9CA748816A41D56A62AAEF /* Pods_Yumn.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1D9CA748816A41D56A62AAEF /* Pods_Yumn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yumn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		35E2BAA8929406C058DB9B26 /* Pods-Yumn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.debug.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.debug.xcconfig"; sourceTree = "<group>"; };
-		83FD298A2688133769E9843C /* Pods-Yumn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.release.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.release.xcconfig"; sourceTree = "<group>"; };
+		071088220844E92B7CE52A0F /* Pods-Yumn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.debug.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.debug.xcconfig"; sourceTree = "<group>"; };
+		3DDC8590829BAF3C9BD2DED2 /* Pods_Yumn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yumn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8529D781440B8A98A2CE6262 /* Pods-Yumn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.release.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.release.xcconfig"; sourceTree = "<group>"; };
 		8D0E9A1E27E5339C00890AC0 /* BloodDonationInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationInformationViewController.swift; sourceTree = "<group>"; };
 		8D7F152127D25DD200E1EB1A /* GIfCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIfCode.swift; sourceTree = "<group>"; };
 		8D7F152427D25EF200E1EB1A /* yumnLoading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = yumnLoading.gif; sourceTree = "<group>"; };
@@ -212,7 +211,6 @@
 		95C5967627D75A8D00A5572C /* styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = styles.swift; sourceTree = "<group>"; };
 		95C5967827D767FE00A5572C /* VSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VSignUpViewController.swift; sourceTree = "<group>"; };
 		95CCFF842823185C00A0016C /* bloodTypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = bloodTypeCell.xib; sourceTree = "<group>"; };
-		95CCFF862823186400A0016C /* organCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = organCell.xib; path = "../../../../Downloads/Yumn-Deema-5/Yumn/View/organCell.xib"; sourceTree = "<group>"; };
 		95EED9CA27E6602C009AFDAC /* VOCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VOCollectionViewCell.swift; sourceTree = "<group>"; };
 		95EED9CC27E682DB009AFDAC /* VolunteeringOpp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolunteeringOpp.swift; sourceTree = "<group>"; };
 		B91DD28D27E995F200BA9881 /* CalenderAndAppointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderAndAppointments.swift; sourceTree = "<group>"; };
@@ -307,7 +305,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB5C966C4C3AD122F778C966 /* Pods_Yumn.framework in Frameworks */,
+				90DCE881AE412C73F7F40B64 /* Pods_Yumn.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,7 +386,7 @@
 				95785057279E1917004F3D8F /* Yumn */,
 				95785056279E1917004F3D8F /* Products */,
 				FB3A4FC32329E4399DABC3B5 /* Pods */,
-				9B425DD4991F6C716969E803 /* Frameworks */,
+				E535DEFEC2BA3373CBD83C00 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -418,14 +416,6 @@
 				95785066279E1918004F3D8F /* Info.plist */,
 			);
 			path = Yumn;
-			sourceTree = "<group>";
-		};
-		9B425DD4991F6C716969E803 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1D9CA748816A41D56A62AAEF /* Pods_Yumn.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		B930F85427B8547300E70860 /* Model */ = {
@@ -462,7 +452,6 @@
 				D195444F27D49AFF00B03DFF /* bloodTypeCell.swift */,
 				95CCFF842823185C00A0016C /* bloodTypeCell.xib */,
 				D195445327D49B2100B03DFF /* organCell.swift */,
-				95CCFF862823186400A0016C /* organCell.xib */,
 				D195445727D49B4800B03DFF /* charts.storyboard */,
 				95EED9CA27E6602C009AFDAC /* VOCollectionViewCell.swift */,
 				954F2DB427E80CD200A3DFB1 /* ViewVOCollectionViewCell.swift */,
@@ -674,11 +663,19 @@
 			path = VBloodApp;
 			sourceTree = "<group>";
 		};
+		E535DEFEC2BA3373CBD83C00 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3DDC8590829BAF3C9BD2DED2 /* Pods_Yumn.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FB3A4FC32329E4399DABC3B5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				35E2BAA8929406C058DB9B26 /* Pods-Yumn.debug.xcconfig */,
-				83FD298A2688133769E9843C /* Pods-Yumn.release.xcconfig */,
+				071088220844E92B7CE52A0F /* Pods-Yumn.debug.xcconfig */,
+				8529D781440B8A98A2CE6262 /* Pods-Yumn.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -690,11 +687,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 95785069279E1918004F3D8F /* Build configuration list for PBXNativeTarget "Yumn" */;
 			buildPhases = (
-				9A86D8B3288C134E79259DD9 /* [CP] Check Pods Manifest.lock */,
+				6F876C8F325E7C4FE2A5E1A2 /* [CP] Check Pods Manifest.lock */,
 				95785051279E1917004F3D8F /* Sources */,
 				95785052279E1917004F3D8F /* Frameworks */,
 				95785053279E1917004F3D8F /* Resources */,
-				298727B5EBFE102D9DDEBC56 /* [CP] Embed Pods Frameworks */,
+				A2D70477626E038BF72BFBC8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -750,7 +747,6 @@
 				D195445827D49B4800B03DFF /* charts.storyboard in Resources */,
 				95062D9827CADC0500D63911 /* Tajawal-Regular.ttf in Resources */,
 				95785062279E1918004F3D8F /* Assets.xcassets in Resources */,
-				95CCFF872823186400A0016C /* organCell.xib in Resources */,
 				95785060279E1917004F3D8F /* Main.storyboard in Resources */,
 				95062D9727CADC0500D63911 /* Tajawal-Medium.ttf in Resources */,
 				95062D9627CADC0500D63911 /* Tajawal-Light.ttf in Resources */,
@@ -772,24 +768,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		298727B5EBFE102D9DDEBC56 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Yumn/Pods-Yumn-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Yumn/Pods-Yumn-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Yumn/Pods-Yumn-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9A86D8B3288C134E79259DD9 /* [CP] Check Pods Manifest.lock */ = {
+		6F876C8F325E7C4FE2A5E1A2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -809,6 +788,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A2D70477626E038BF72BFBC8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Yumn/Pods-Yumn-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Yumn/Pods-Yumn-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Yumn/Pods-Yumn-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1080,7 +1076,7 @@
 		};
 		9578506A279E1918004F3D8F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 35E2BAA8929406C058DB9B26 /* Pods-Yumn.debug.xcconfig */;
+			baseConfigurationReference = 071088220844E92B7CE52A0F /* Pods-Yumn.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1115,7 +1111,7 @@
 		};
 		9578506B279E1918004F3D8F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 83FD298A2688133769E9843C /* Pods-Yumn.release.xcconfig */;
+			baseConfigurationReference = 8529D781440B8A98A2CE6262 /* Pods-Yumn.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
