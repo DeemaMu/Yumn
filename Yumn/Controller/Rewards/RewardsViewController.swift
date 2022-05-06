@@ -99,7 +99,8 @@ class RewardsViewController: UIViewController {
         super.viewDidLoad()
         
         
-        
+        // Hide keyboard
+        self.hideKeyboardWhenTappedAround()
 
         // Do any additional setup after loading the view.
     }

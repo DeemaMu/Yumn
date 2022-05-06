@@ -70,7 +70,7 @@ class VViewAppointmentsVC: UIViewController {
         super.viewWillAppear(animated)
         
         let nav = self.navigationController?.navigationBar
-        guard let customFont = UIFont(name: "Tajawal-Bold", size: 25) else {
+        guard let customFont = UIFont(name: "Tajawal-Bold", size: 23) else {
             fatalError("""
                 Failed to load the "Tajawal" font.
                 Make sure the font file is included in the project and the font name is spelled correctly.
@@ -87,7 +87,7 @@ class VViewAppointmentsVC: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         let nav = self.navigationController?.navigationBar
-        guard let customFont = UIFont(name: "Tajawal-Bold", size: 25) else {
+        guard let customFont = UIFont(name: "Tajawal-Bold", size: 23) else {
             fatalError("""
                 Failed to load the "Tajawal" font.
                 Make sure the font file is included in the project and the font name is spelled correctly.
