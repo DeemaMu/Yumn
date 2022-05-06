@@ -181,7 +181,7 @@ class viewAppointment: UIViewController, UICollectionViewDelegate, UICollectionV
         cell.incomplete.setAttributedTitle(NSAttributedString(string: "لم يتبرع", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: customFont]), for: .normal)
         
         cell.completeView.font? = UIFont(name: "Tajawal", size: 12)!
-        cell.completeView.font? = UIFont(name: "Tajawal", size: 12)!
+        cell.inCompleteView.font? = UIFont(name: "Tajawal", size: 12)!
         
         //This creates the shadows and modifies the cards a little bit
         cell.contentView.layer.cornerRadius = 20.0
