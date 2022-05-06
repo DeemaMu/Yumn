@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import ContextMenuSwift
 
 class RewardsViewController: UIViewController {
     @IBOutlet weak var points: UILabel!
@@ -32,6 +33,9 @@ class RewardsViewController: UIViewController {
     @IBOutlet weak var popupMsg: UILabel!
     @IBOutlet weak var popupTitle: UILabel!
     @IBOutlet weak var popupView: UIView!
+    
+    @IBOutlet weak var menuView: UIView!
+    
     override func viewDidLoad() {
         
         
@@ -103,6 +107,13 @@ class RewardsViewController: UIViewController {
         self.hideKeyboardWhenTappedAround()
 
         // Do any additional setup after loading the view.
+    }
+    @IBAction func viewMenu(_ sender: Any) {
+        let profile = ContextMenuItemWithImage(title: "صفحة المتطوع", image: UIImage.init(named: "pofileHospital")!)
+        let logout = ContextMenuItemWithImage(title: "تسجيل الخروج", image: UIImage.init(named: "signout")!)
+        
+        CM.items = [profile,logout]
+        CM.showMenu(viewTargeted: menuView, delegate: self, animated: true)
     }
     
  

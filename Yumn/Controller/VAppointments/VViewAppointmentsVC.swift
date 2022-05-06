@@ -10,6 +10,7 @@ import UIKit
 import SwiftUI
 import Firebase
 import FirebaseAuth
+import ContextMenuSwift
 
 class VViewAppointmentsVC: UIViewController {
     
@@ -19,6 +20,8 @@ class VViewAppointmentsVC: UIViewController {
     @IBOutlet weak var blackBlurredView: UIView!
     
     @IBOutlet weak var popupView: UIView!
+    
+    @IBOutlet weak var menuView: UIView!
     
 //    @IBOutlet weak var popupTitle: UILabel!
 //
@@ -53,7 +56,14 @@ class VViewAppointmentsVC: UIViewController {
         popupView.layer.cornerRadius = 30
         
     }
-    
+    @IBAction func viewMenu(_ sender: Any) {
+        let profile = ContextMenuItemWithImage(title: "صفحة المتطوع", image: UIImage.init(named: "pofileHospital")!)
+        let logout = ContextMenuItemWithImage(title: "تسجيل الخروج", image: UIImage.init(named: "signout")!)
+        
+        CM.items = [profile,logout]
+        CM.showMenu(viewTargeted: menuView, delegate: self, animated: true)
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         let configuration = Configuration()
         let controller = UIHostingController(rootView: VAppointmentsView(config: configuration))

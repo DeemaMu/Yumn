@@ -335,3 +335,104 @@ extension ManageAppointmentsViewController: ContextMenuDelegate {
 
 
 }
+
+extension VHomeViewController : ContextMenuDelegate {
+
+        func contextMenuDidSelect(_ contextMenu: ContextMenu, cell: ContextMenuCell, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int) -> Bool {
+            
+            if(item.title == "صفحة المتطوع"){
+                performSegue(withIdentifier: "showVProfileFromHome", sender: self)
+            }
+            if(item.title == "تسجيل الخروج"){
+                popupTitle.text = "تأكيد تسجيل الخروج"
+                popupMsg.text = "هل أنت متأكد من أنك تريد تسجيل الخروج؟"
+
+               popupView.isHidden = false
+               blurredView.isHidden = false
+            }
+            return true
+        }
+
+        func contextMenuDidDeselect(_ contextMenu: ContextMenu, cell: ContextMenuCell, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int) {
+
+        }
+
+        func contextMenuDidAppear(_ contextMenu: ContextMenu) {
+
+        }
+
+        func contextMenuDidDisappear(_ contextMenu: ContextMenu) {
+
+        }
+
+
+    }
+
+
+
+extension VViewAppointmentsVC : ContextMenuDelegate {
+
+        func contextMenuDidSelect(_ contextMenu: ContextMenu, cell: ContextMenuCell, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int) -> Bool {
+            
+            if(item.title == "صفحة المتطوع"){
+                performSegue(withIdentifier: "showVProfileFromMyAppointments", sender: self)
+            }
+            if(item.title == "تسجيل الخروج"){
+                
+//                popupTitle.text = "تأكيد تسجيل الخروج"
+//                popupMsg.text = "هل أنت متأكد من أنك تريد تسجيل الخروج؟"
+//
+//               popupView.isHidden = false
+//               blurredView.isHidden = false
+            }
+            return true
+        }
+
+        func contextMenuDidDeselect(_ contextMenu: ContextMenu, cell: ContextMenuCell, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int) {
+
+        }
+
+        func contextMenuDidAppear(_ contextMenu: ContextMenu) {
+
+        }
+
+        func contextMenuDidDisappear(_ contextMenu: ContextMenu) {
+
+        }
+
+
+    }
+
+
+extension RewardsViewController : ContextMenuDelegate {
+
+        func contextMenuDidSelect(_ contextMenu: ContextMenu, cell: ContextMenuCell, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int) -> Bool {
+            
+            if(item.title == "صفحة المتطوع"){
+                performSegue(withIdentifier: "showVProfileFromRewards", sender: self)
+            }
+            if(item.title == "تسجيل الخروج"){
+                
+//                popupTitle.text = "تأكيد تسجيل الخروج"
+//                popupMsg.text = "هل أنت متأكد من أنك تريد تسجيل الخروج؟"
+//
+//               popupView.isHidden = false
+//               blurredView.isHidden = false
+            }
+            return true
+        }
+
+        func contextMenuDidDeselect(_ contextMenu: ContextMenu, cell: ContextMenuCell, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int) {
+
+        }
+
+        func contextMenuDidAppear(_ contextMenu: ContextMenu) {
+
+        }
+
+        func contextMenuDidDisappear(_ contextMenu: ContextMenu) {
+
+        }
+
+
+    }

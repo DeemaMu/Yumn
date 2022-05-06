@@ -10,7 +10,7 @@ import SwiftUI
 import CoreLocation
 import FirebaseAuth
 import Firebase
-
+import ContextMenuSwift
 
 class VHomeViewController: UIViewController {
     
@@ -24,7 +24,7 @@ class VHomeViewController: UIViewController {
     
     @IBOutlet weak var blurredView: UIView!
     
-    @IBOutlet weak var logoutButton: UIBarButtonItem!
+//    @IBOutlet weak var logoutButton: UIBarButtonItem!
     
     @IBOutlet weak var cancelButton: UIButton!
     
@@ -34,7 +34,7 @@ class VHomeViewController: UIViewController {
     
     @IBOutlet weak var confirmBtn: UIButton!
     
-
+    @IBOutlet weak var menuView: UIView!
     
     
     @ObservedObject var lm = LocationManager()
@@ -174,16 +174,16 @@ class VHomeViewController: UIViewController {
     }
     
     
-    @IBAction func onPressedLogout(_ sender: Any) {
-    
-        
-        popupTitle.text = "تأكيد تسجيل الخروج"
-        popupMsg.text = "هل أنت متأكد من أنك تريد تسجيل الخروج؟"
-        
-        popupView.isHidden = false
-        blurredView.isHidden = false
-        
-    }
+//    @IBAction func onPressedLogout(_ sender: Any) {
+//
+//
+//        popupTitle.text = "تأكيد تسجيل الخروج"
+//        popupMsg.text = "هل أنت متأكد من أنك تريد تسجيل الخروج؟"
+//
+//        popupView.isHidden = false
+//        blurredView.isHidden = false
+//
+//    }
     
     
     
@@ -259,9 +259,15 @@ class VHomeViewController: UIViewController {
 
         })
     }
+      
+    @IBAction func viewMenu(_ sender: Any) {
+        let profile = ContextMenuItemWithImage(title: "صفحة المتطوع", image: UIImage.init(named: "pofileHospital")!)
+        let logout = ContextMenuItemWithImage(title: "تسجيل الخروج", image: UIImage.init(named: "signout")!)
         
+        CM.items = [profile,logout]
+        CM.showMenu(viewTargeted: menuView, delegate: self, animated: true)
+    }
     }
     
     
-
 
