@@ -1166,7 +1166,7 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
                     // Volunteer collection
                     db.collection("volunteer").document(result!.user.uid).setData([
                         "firstName":Constants.Globals.firstName,
-                        "lastName": Constants.Globals.firstName,
+                        "lastName": Constants.Globals.lastName,
                         "nationalID": Constants.Globals.id,
                         "email": Constants.Globals.email,
                         "phone": Constants.Globals.phone,

@@ -106,7 +106,13 @@ class AfterDeathDonor: UIViewController, UICollectionViewDelegate, UICollectionV
         cell.id.text = donor.nationalID
         cell.city.text = donor.city
         cell.organs.text = getOrgans(donor.organs)
-        cell.bloodType.image = getImage(donor.bloodType)
+        if(donor.bloodType == "لا اعلم"){
+            cell.bloodType.isHidden = true
+            
+        } else{
+            cell.bloodType.image = getImage(donor.bloodType)
+        }
+        
         
         
         //This creates the shadows and modifies the cards a little bit
