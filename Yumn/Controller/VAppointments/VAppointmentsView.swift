@@ -68,7 +68,8 @@ struct VAppointmentsView: View {
         "accepted": "مقبول",
         "rejected": "مرفوض",
         "DNAttend": "لم يحضر",
-        "confirmed": "مؤكد"
+        "confirmed": "مؤكد",
+        "attended": "حضر",
     ]
     
     var vOppStatusColor: [String:Color] =
@@ -77,7 +78,8 @@ struct VAppointmentsView: View {
         "accepted": Color.green,
         "rejected": Color.red,
         "DNAttend": Color.red,
-        "confirmed": Color.green
+        "confirmed": Color.green,
+        "attended": Color.green,
     ]
     
     var arOrgan: [String?:String] =

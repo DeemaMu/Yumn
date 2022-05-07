@@ -97,6 +97,7 @@ class olderAppointmensVC: UIViewController {
         
         mapPopUpBtn.layer.cornerRadius = 9
         mapPopUpBtn.layer.masksToBounds = true
+        noOldVOppLabel.isHidden = true
         
         mapsAvailablePopUp.layer.cornerRadius = 17
         // mapsAvailablePopUp.layer.cornerRadius = 12
@@ -398,6 +399,7 @@ class olderAppointmensVC: UIViewController {
             
             currentVOppTable.isHidden = true
             oldVOppTable.isHidden = false
+            noOldVOppLabel.isHidden = true
             noCurrentVOppLabel.isHidden = true
             noOldAppLbl.isHidden = true
             
@@ -412,6 +414,7 @@ class olderAppointmensVC: UIViewController {
             oldAppTable.isHidden = true
             
             currentVOppTable.isHidden = true
+            noOldVOppLabel.isHidden = true
             oldVOppTable.isHidden = true
             noCurrentVOppLabel.isHidden = true
             noOldAppLbl.isHidden = true
@@ -422,7 +425,7 @@ class olderAppointmensVC: UIViewController {
         default:
             tableMainForCurrentBldApp.isHidden = true
             oldAppTable.isHidden = false
-            
+            noOldVOppLabel.isHidden = true
             oldOA.isHidden = true
 
             noAppLabel.isHidden = true
