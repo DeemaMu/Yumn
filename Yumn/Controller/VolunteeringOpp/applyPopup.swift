@@ -92,8 +92,16 @@ class applyPopup: UIViewController{
                 }
             }
         }// end main thread
-        // Go back
-        self.dismiss(animated: true, completion: nil)
+        
+        showSuccessMessage()
+    }
+    
+    func showSuccessMessage(){
+        titleMSG.text = "تم التقديم!"
+        desMSG.text = "تم التقديم على هذه الفرصة بنجاح!"
+        confirmButton.isHidden = true
+        cancelButton.isHidden = true
+        okayButton.isHidden = false
     }
     
     @IBAction func cancel(_ sender: Any) {
