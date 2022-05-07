@@ -341,7 +341,7 @@ extension VHomeViewController : ContextMenuDelegate {
 
         func contextMenuDidSelect(_ contextMenu: ContextMenu, cell: ContextMenuCell, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int) -> Bool {
             
-            if(item.title == "صفحة المتطوع"){
+            if(item.title == "الصفحة الشخصية"){
                 performSegue(withIdentifier: "showVProfileFromHome", sender: self)
             }
             if(item.title == "تسجيل الخروج"){
@@ -375,7 +375,7 @@ extension VViewAppointmentsVC : ContextMenuDelegate {
 
         func contextMenuDidSelect(_ contextMenu: ContextMenu, cell: ContextMenuCell, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int) -> Bool {
             
-            if(item.title == "صفحة المتطوع"){
+            if(item.title == "الصفحة الشخصية"){
                 performSegue(withIdentifier: "showVProfileFromMyAppointments", sender: self)
             }
             if(item.title == "تسجيل الخروج"){
@@ -409,7 +409,7 @@ extension RewardsViewController : ContextMenuDelegate {
 
         func contextMenuDidSelect(_ contextMenu: ContextMenu, cell: ContextMenuCell, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int) -> Bool {
             
-            if(item.title == "صفحة المتطوع"){
+            if(item.title == "الصفحة الشخصية"){
                 performSegue(withIdentifier: "showVProfileFromRewards", sender: self)
             }
             if(item.title == "تسجيل الخروج"){

@@ -109,7 +109,7 @@ class RewardsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     @IBAction func viewMenu(_ sender: Any) {
-        let profile = ContextMenuItemWithImage(title: "صفحة المتطوع", image: UIImage.init(named: "pofileHospital")!)
+        let profile = ContextMenuItemWithImage(title: "الصفحة الشخصية", image: UIImage.init(named: "pofileHospital")!)
         let logout = ContextMenuItemWithImage(title: "تسجيل الخروج", image: UIImage.init(named: "signout")!)
         
         CM.items = [profile,logout]
