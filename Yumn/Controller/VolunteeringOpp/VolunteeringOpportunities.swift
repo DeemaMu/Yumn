@@ -39,6 +39,7 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
         }
         
         addVOPBtn.setAttributedTitle(NSAttributedString(string: "إضافة فرصة تطوع", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: customFont]), for: .normal)
+        
     }
     
     @objc func refresh() {
