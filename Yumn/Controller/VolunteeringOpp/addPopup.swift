@@ -16,8 +16,14 @@ class addPopup: UIViewController{
     
 
     @IBOutlet weak var backView: UIView!
+    
+    
+    @IBOutlet weak var msgTitle: UILabel!
+    @IBOutlet weak var msgDescription: UILabel!
+    
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var okayButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +33,7 @@ class addPopup: UIViewController{
     func setUp(){
         backView.layer.cornerRadius = 40
         confirmButton.layer.cornerRadius = 20
+        okayButton.layer.cornerRadius = 20
     }
     
     @IBAction func confirm(_ sender: Any) {
@@ -71,6 +78,25 @@ class addPopup: UIViewController{
                     }
             }
         }
+        
+        showSuccessMessage()
+        
+    }
+    @IBAction func cancel(_ sender: Any) {
+        // dismiss view
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func showSuccessMessage(){
+        msgTitle.text = "تمت الإضافة"
+        msgDescription.text = "تمت  إضافة الفرصة التطوعية بنجاح!"
+        confirmButton.isHidden = true
+        cancelButton.isHidden = true
+        okayButton.isHidden = false
+    }
+    
+    @IBAction func okayPressed(_ sender: Any) {
+        
         // Update collection view
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotification"), object: nil)
         
@@ -79,10 +105,6 @@ class addPopup: UIViewController{
         
     }
     
-    @IBAction func cancel(_ sender: Any) {
-        // dismiss view
-        self.dismiss(animated: true, completion: nil)
-    }
     
 }
 
