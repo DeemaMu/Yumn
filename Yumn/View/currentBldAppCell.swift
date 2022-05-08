@@ -23,7 +23,7 @@ class currentBldAppCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         // make the btn corners rounded
-        editAppBtn.layer.cornerRadius = 9
+        editAppBtn.layer.cornerRadius = 15
         editAppBtn.layer.masksToBounds = true
         
         

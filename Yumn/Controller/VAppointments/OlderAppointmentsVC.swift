@@ -768,7 +768,7 @@ extension olderAppointmensVC {
             }// end if stm
                 
                 else {
-                    self.showOldVoppLbl()
+//                    self.showOldVoppLbl()
                     self.reloadOldTableOpp()
                    
                 }

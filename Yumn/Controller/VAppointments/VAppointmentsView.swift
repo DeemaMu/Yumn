@@ -1,6 +1,7 @@
 import SwiftUI
 import Firebase
 import FirebaseAuth
+import Combine
 
 struct VAppointmentsView: View {
     
@@ -29,6 +30,9 @@ struct VAppointmentsView: View {
     let grey = Color(UIColor.gray)
     
     var thereIS = checkingAppointments()
+    
+    @State var cancellable:AnyCancellable?
+    @State var idCancellable:AnyCancellable?
     
     var calender = Calendar.current
     
@@ -365,8 +369,40 @@ struct VAppointmentsView: View {
                 HStack(){
                     
                     VStack(){
-                        Image("location").resizable()
-                            .scaledToFit()
+                        ZStack(){
+                            Button {
+                                
+                                self.cancellable = aptVM.getHospitalLocation(apt: apt).receive(on: DispatchQueue.main).sink(receiveCompletion: { completion in
+                                    switch completion {
+                                    case .finished:
+                                        print("finished")
+                                    case .failure(let error):
+                                        print(error)
+                                    }
+                                }, receiveValue: { location in
+                                    if(!location.isEmpty){
+                                        let url = URL(string: "comgooglemaps://?saddr=&daddr=\(location[0]),\(location[1])&directionsmode=driving")
+                                        
+                                        if UIApplication.shared.canOpenURL(url!) {
+                                            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+                                        } else {
+                                            let urlBrowser = URL(string: "https://www.google.co.in/maps/dir/??saddr=&daddr=\(location[0]),\(location[1])&directionsmode=driving")
+                                            
+                                            UIApplication.shared.open(urlBrowser!, options: [:], completionHandler: nil)
+                                        }
+                                    }
+                                })
+                                
+                            } label: {
+                                
+                                
+                                Image("location").resizable()
+                                    .scaledToFit()
+                                
+                            }
+                            
+                        }
+                        
                     }.padding(.top, 10).padding(.bottom, 10)
                     Text(apt.hospitalLocation!).font(Font.custom("Tajawal", size: 12)).foregroundColor(mainDark)
                         .padding(.trailing, 10).padding(.top, 4).padding(.leading, -5)
@@ -459,8 +495,27 @@ struct VAppointmentsView: View {
                 HStack(){
                     
                     VStack(){
-                        Image("location").resizable()
-                            .scaledToFit()
+                        ZStack(){
+                            Button {
+                                let url = URL(string: "comgooglemaps://?saddr=&daddr=\(apt.lat!),\(apt.long!)&directionsmode=driving")
+                                
+                                if UIApplication.shared.canOpenURL(url!) {
+                                    UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+                                } else {
+                                    let urlBrowser = URL(string: "https://www.google.co.in/maps/dir/??saddr=&daddr=\(apt.lat!),\(apt.long!)&directionsmode=driving")
+                                    
+                                    UIApplication.shared.open(urlBrowser!, options: [:], completionHandler: nil)
+                                }
+                            } label: {
+                                
+                                
+                                Image("location").resizable()
+                                    .scaledToFit()
+                                
+                            }
+                            
+                        }
+                        
                     }.padding(.top, 10).padding(.bottom, 10)
                     Text(apt.hospitalLocation!).font(Font.custom("Tajawal", size: 12)).foregroundColor(mainDark)
                         .padding(.trailing, 10).padding(.top, 4).padding(.leading, -5)
@@ -522,7 +577,7 @@ struct VAppointmentsView: View {
                     Text(apt.title!).font(Font.custom("Tajawal", size: 17))
                         .foregroundColor(mainDark).padding(.bottom, 10).padding(.top, 10)
                     Spacer()
-
+                    
                     VStack(){
                         Text(vOppStatus[apt.status!]!).font(Font.custom("Tajawal", size: 12))
                             .foregroundColor(vOppStatusColor[apt.status!]!)
@@ -538,8 +593,51 @@ struct VAppointmentsView: View {
                 HStack(){
                     
                     VStack(){
-                        Image("location").resizable()
-                            .scaledToFit()
+                        ZStack(){
+                            Button {
+                                
+                                self.idCancellable = aptVM.getHospitalID(apt: apt).receive(on: DispatchQueue.main).sink(receiveCompletion: { completion in
+                                    switch completion {
+                                    case .finished:
+                                        print("finished")
+                                    case .failure(let error):
+                                        print(error)
+                                    }
+                                }, receiveValue: { id in
+                                    if(id != ""){
+                                        self.cancellable = aptVM.getHospitalLocationById(id: id).receive(on: DispatchQueue.main).sink(receiveCompletion: { completion in
+                                            switch completion {
+                                            case .finished:
+                                                print("finished")
+                                            case .failure(let error):
+                                                print(error)
+                                            }
+                                        }, receiveValue: { location in
+                                            if(!location.isEmpty){
+                                                let url = URL(string: "comgooglemaps://?saddr=&daddr=\(location[0]),\(location[1])&directionsmode=driving")
+                                                
+                                                if UIApplication.shared.canOpenURL(url!) {
+                                                    UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+                                                } else {
+                                                    let urlBrowser = URL(string: "https://www.google.co.in/maps/dir/??saddr=&daddr=\(location[0]),\(location[1])&directionsmode=driving")
+                                                    
+                                                    UIApplication.shared.open(urlBrowser!, options: [:], completionHandler: nil)
+                                                }
+                                            }
+                                        })
+                                    }
+                                })
+                                
+                            } label: {
+                                
+                                
+                                Image("location").resizable()
+                                    .scaledToFit()
+                                
+                            }
+                            
+                        }
+
                     }.padding(.top, 6).padding(.bottom, 6)
                     Text(apt.hospitalLocation!).font(Font.custom("Tajawal", size: 12)).foregroundColor(mainDark)
                         .padding(.trailing, 15).padding(.top, 4).padding(.leading, -5)
@@ -701,6 +799,7 @@ class VAppointments : ObservableObject {
     @Published var volunteeringOpp = [retrievedAppointment]()
     @Published var olderOA = [retrievedAppointment]()
     @Published var futureOA = [retrievedAppointment]()
+    @State var cancellable:AnyCancellable?
     
     let dateFormatter: DateFormatter = DateFormatter()
     
@@ -740,6 +839,8 @@ class VAppointments : ObservableObject {
                 let city = data["city"] as! String
                 let location = city + " - " + area
                 let mainDocId = data["mainDocId"] as? String ?? ""
+                let latitude:Double = data["latitude"] as? Double ?? 0
+                let longitude:Double = data["longitude"] as? Double ?? 0
                 
                 let stamp1 = data["appDateAndTime"] as? Timestamp
                 let startTime = stamp1?.dateValue()
@@ -764,6 +865,9 @@ class VAppointments : ObservableObject {
                 apt.hospitalID = hospitalId
                 apt.hName = hName
                 apt.hospitalLocation = location
+                
+                apt.lat = latitude
+                apt.long = longitude
                 
                 return apt
                 
@@ -844,6 +948,7 @@ class VAppointments : ObservableObject {
                 apt.mainAppointmentID = mainDoc
                 
                 apt.hospitalLocation = location
+            
                 
                 return apt
                 
@@ -864,10 +969,10 @@ class VAppointments : ObservableObject {
         olderOA.removeAll()
         futureOA.removeAll()
         
-        self.dateFormatter.dateFormat = "yyyy-MM-dd"
-        self.dateFormatter.locale = Locale(identifier:"en_US_POSIX")
-        let past = self.dateFormatter.string(from: (Date() - 7))
-        let future = self.dateFormatter.string(from: (Date() + 7))
+        //        self.dateFormatter.dateFormat = "yyyy-MM-dd"
+        //        self.dateFormatter.locale = Locale(identifier:"en_US_POSIX")
+        let past = (Date() - 7).getFormattedDate(format: "yyyy/MM/dd")
+        let future = (Date() + 7).getFormattedDate(format: "yyyy/MM/dd")
         
         db.collection("volunteer").document(userID).collection("organAppointments").addSnapshotListener { (querySnapshot, error) in
             
@@ -923,7 +1028,7 @@ class VAppointments : ObservableObject {
             }
             
             for appointment in self.organAppointments {
-                let ogDate = self.dateFormatter.string(from: appointment.date!)
+                let ogDate = appointment.date!.getFormattedDate(format: "yyyy/MM/dd")
                 print(ogDate)
                 
                 if(future < ogDate){
@@ -979,7 +1084,7 @@ class VAppointments : ObservableObject {
                         filtered.append( self.volunteeringOpp[i])
                     }
                 }
- 
+                
             }
             
             DispatchQueue.main.async {
@@ -1028,6 +1133,79 @@ class VAppointments : ObservableObject {
         
         return name
     }
+    
+    func getHospitalID(apt: retrievedAppointment) -> Future<String, Error> {
+        var id = ""
+        
+        return Future<String, Error> { promise in
+            DispatchQueue.main.async {
+                
+                let doc = self.db.collection("volunteeringOpp").document(apt.mainAppointmentID!)
+                
+                doc.getDocument { (document, error) in
+                    guard let document = document, document.exists else {
+                        print("Document does not exist")
+                        promise(.failure(error!))
+                        return
+                    }
+                    print("here")
+                    let dataDescription = document.data()
+                    id = dataDescription?["posted_by"] as? String ?? ""
+                    promise(.success(id))
+                }
+            }
+        }
+        
+    }
+    
+    func getHospitalLocation(apt: retrievedAppointment) -> Future<[Double], Error> {
+        
+        return Future<[Double], Error> { promise in
+            DispatchQueue.main.async {
+                
+                let doc = self.db.collection("hospitalsInformation").document(apt.hospitalID!)
+                
+                doc.getDocument { (document, error) in
+                    guard let document = document, document.exists else {
+                        print("Document does not exist")
+                        promise(.failure(error!))
+                        return
+                    }
+                    print("got them")
+                    let dataDescription = document.data()
+                    let latitude:Double = dataDescription?["latitude"] as? Double ?? 0
+                    let longitude:Double = dataDescription?["longitude"] as? Double ?? 0
+                    promise(.success([latitude, longitude]))
+                }
+            }
+        }
+        
+    }
+    
+    func getHospitalLocationById(id: String) -> Future<[Double], Error> {
+        
+        return Future<[Double], Error> { promise in
+            DispatchQueue.main.async {
+                
+                let doc = self.db.collection("hospitalsInformation").document(id)
+                
+                doc.getDocument { (document, error) in
+                    guard let document = document, document.exists else {
+                        print("Document does not exist")
+                        promise(.failure(error!))
+                        return
+                    }
+                    print("got them")
+                    let dataDescription = document.data()
+                    let latitude:Double = dataDescription?["latitude"] as? Double ?? 0
+                    let longitude:Double = dataDescription?["longitude"] as? Double ?? 0
+                    promise(.success([latitude, longitude]))
+                }
+            }
+        }
+        
+    }
+
     
 }
 

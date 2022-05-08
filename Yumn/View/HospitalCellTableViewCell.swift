@@ -9,10 +9,11 @@ import UIKit
 
 class HospitalCellTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var locationBtn: UIButton!
     @IBOutlet weak var nameView: UIView!
     @IBOutlet weak var hospitalName: UILabel!
     @IBOutlet weak var locationText: UILabel!
-    @IBOutlet weak var locationBtn: UIButton!
+    @IBOutlet weak var locationImage: UIImageView!
     @IBOutlet weak var bookApp: UIButton!
     @IBOutlet weak var distanceText: UILabel!
     

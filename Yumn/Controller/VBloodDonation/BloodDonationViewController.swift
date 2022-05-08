@@ -352,6 +352,21 @@ class BloodDonationViewController: UIViewController, CustomSegmentedControlDeleg
         
     }
     
+    func locationPressed(hospital: Location) {
+            print("btn pressed")
+            let url = URL(string: "comgooglemaps://?saddr=&daddr=\(hospital.lat),\(hospital.long)&directionsmode=driving")
+            
+            if UIApplication.shared.canOpenURL(url!) {
+                UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+            } else {
+                let urlBrowser = URL(string: "https://www.google.co.in/maps/dir/??saddr=&daddr=\(hospital.lat),\(hospital.long)&directionsmode=driving")
+                          
+                 UIApplication.shared.open(urlBrowser!, options: [:], completionHandler: nil)
+          }
+            
+            
+        }
+    
     
 }
 
@@ -381,6 +396,9 @@ extension BloodDonationViewController: UITableViewDataSource {
         cell.bookApp.addAction(UIAction(identifier: UIAction.Identifier("imageClick")) { [weak self] action in
             self?.handleTap(hospital: hospital)
         }, for: .touchUpInside)
+        cell.locationBtn.addAction(UIAction(identifier: UIAction.Identifier("openLocation")) { [weak self] action in
+                    self?.locationPressed(hospital: hospital)
+                }, for: .touchUpInside)
         
         
         return cell
