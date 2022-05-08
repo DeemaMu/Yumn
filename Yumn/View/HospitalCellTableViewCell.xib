@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -32,13 +32,6 @@
                                 <rect key="frame" x="35" y="20" width="287" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="19"/>
-                                <color key="textColor" name="mainDark"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="النخيل - الرياض" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Jc-th-aLL">
-                                <rect key="frame" x="79" y="66" width="242" height="15"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="13"/>
                                 <color key="textColor" name="mainDark"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -74,6 +67,43 @@
                                     <action selector="bookFromList:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="jSP-BO-JMD"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="abP-f6-dlW">
+                                <rect key="frame" x="214" y="60" width="109" height="25"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dC9-WJ-CDb">
+                                        <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="els-Oc-LQr">
+                                                <rect key="frame" x="2.5" y="2.5" width="20" height="20"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cj0-6o-epH">
+                                                <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="els-Oc-LQr" firstAttribute="top" secondItem="dC9-WJ-CDb" secondAttribute="top" constant="2.5" id="6ba-IR-gyo"/>
+                                            <constraint firstAttribute="trailing" secondItem="cj0-6o-epH" secondAttribute="trailing" id="78b-7E-Abm"/>
+                                            <constraint firstAttribute="width" constant="25" id="Mut-QD-HM2"/>
+                                            <constraint firstAttribute="height" constant="25" id="NEp-fZ-pS9"/>
+                                            <constraint firstItem="cj0-6o-epH" firstAttribute="top" secondItem="dC9-WJ-CDb" secondAttribute="top" id="R9D-Sm-fBk"/>
+                                            <constraint firstAttribute="trailing" secondItem="els-Oc-LQr" secondAttribute="trailing" constant="2.5" id="XOd-pJ-neL"/>
+                                            <constraint firstAttribute="bottom" secondItem="cj0-6o-epH" secondAttribute="bottom" id="fUA-fX-3e9"/>
+                                            <constraint firstItem="els-Oc-LQr" firstAttribute="leading" secondItem="dC9-WJ-CDb" secondAttribute="leading" constant="2.5" id="gHd-kv-25f"/>
+                                            <constraint firstItem="cj0-6o-epH" firstAttribute="leading" secondItem="dC9-WJ-CDb" secondAttribute="leading" id="j1z-Jx-CKk"/>
+                                            <constraint firstAttribute="bottom" secondItem="els-Oc-LQr" secondAttribute="bottom" constant="2.5" id="vjN-IA-0cm"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="النخيل - الرياض" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Jc-th-aLL">
+                                        <rect key="frame" x="28" y="0.0" width="81" height="25"/>
+                                        <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="13"/>
+                                        <color key="textColor" name="mainDark"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <userDefinedRuntimeAttributes>
@@ -104,12 +134,15 @@
                 <outlet property="bookApp" destination="Ezt-pX-Ll1" id="GoD-RU-HgJ"/>
                 <outlet property="distanceText" destination="XGe-it-89Q" id="buB-ar-7A5"/>
                 <outlet property="hospitalName" destination="Z77-Jh-ea4" id="xdE-C6-C1g"/>
+                <outlet property="locationBtn" destination="cj0-6o-epH" id="uhL-CS-wZn"/>
+                <outlet property="locationImage" destination="els-Oc-LQr" id="BYf-KJ-HJR"/>
                 <outlet property="locationText" destination="9Jc-th-aLL" id="ivf-qc-gOJ"/>
             </connections>
             <point key="canvasLocation" x="200.72463768115944" y="132.25446428571428"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="location" width="21" height="24"/>
         <namedColor name="mainDark">
             <color red="0.2199999988079071" green="0.37999999523162842" blue="0.36500000953674316" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
