@@ -21,6 +21,7 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
     
     @IBOutlet weak var addVOPBtn: UIButton!
     var passDocID = ""
+    var notEditable = false
     
     @IBOutlet weak var menuView: UIView!
     
@@ -158,10 +159,9 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
         
         let indexPath = IndexPath(row: sender.tag, section: 0)
         let cell = VolunteeringOpps[indexPath.row]
-        
-        //        loadOPP()
-        
         self.passDocID = cell.id
+        print("in delteVOP")
+        self.notEditable = false
         performSegue(withIdentifier: "cancelPopUP", sender: self)
         
     }
@@ -170,12 +170,27 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
         
         let indexPath = IndexPath(row: sender.tag, section: 0)
         let cell = VolunteeringOpps[indexPath.row]
-        
-        //        loadOPP()
-        
         self.passDocID = cell.id
-        performSegue(withIdentifier: "editVOP", sender: self)
-        
+        DispatchQueue.main.async {
+                    
+                    let db = Firestore.firestore()
+                    db.collection("volunteeringOpp").document(cell.id).collection("applicants").getDocuments(){ (querySnapshot, error) in
+                        
+                        guard let documents = querySnapshot?.documents else {
+                            return
+                        }
+                        
+                        if documents.isEmpty {
+                            print("No applicants")
+                            self.performSegue(withIdentifier: "editVOP", sender: self)
+                            
+                        }else {
+                            print("You cant edit there is applicants")
+                            self.notEditable = true
+                            self.performSegue(withIdentifier: "cancelPopUP", sender: self)
+                        }
+                    }
+                }
     }
     
     // by Modhi
@@ -197,6 +212,7 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
         if (segue.identifier == "cancelPopUP"){
             let controller = segue.destination as! cancelPopup
             controller.docID = self.passDocID
+            controller.notEditable = self.notEditable
         } else if (segue.identifier == "editVOP"){
             let controller = segue.destination as! editVolunteeringOpp
             controller.docemntID = self.passDocID
