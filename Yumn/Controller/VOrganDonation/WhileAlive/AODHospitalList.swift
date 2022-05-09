@@ -78,7 +78,7 @@ struct AODHospitalList: View {
                     Text("الرجاء اختيار مستشفى لعرض المواعيد *").font(Font.custom("Tajawal", size: 15))
                         .foregroundColor(.red)
                 }
-            
+                
                 Button(action: {
                     // if the volunteer didnt select a hospital, display error
                     if(checkedIndex == -1){
@@ -126,6 +126,8 @@ struct AODHospitalList: View {
     func card(hospital: odHospital, index: Int) -> some View{
         let shadowColor = Color(#colorLiteral(red: 0.8653315902, green: 0.8654771447, blue: 0.8653123975, alpha: 1))
         let currentH = hospital.hospital
+        let lat = String(hVM.odHospitals[index].hospital!.lat)
+        let long = String(hVM.odHospitals[index].hospital!.long)
         
         HStack(){
             VStack(alignment: .leading){
@@ -139,11 +141,42 @@ struct AODHospitalList: View {
             
             Spacer()
             
-            VStack(alignment: .trailing, spacing: 20){
+            VStack(alignment: .trailing, spacing: 15){
+                
                 Text("\(currentH!.name)").font(Font.custom("Tajawal", size: 17))
-                    .foregroundColor(mainDark)
-                Text("\(currentH!.area) - \(currentH!.city)").font(Font.custom("Tajawal", size: 12))
-                    .foregroundColor(mainDark)
+                    .foregroundColor(mainDark).padding(.top, 20)
+                
+                HStack(){
+                    Text("\(currentH!.area) - \(currentH!.city)").font(Font.custom("Tajawal", size: 15))
+                        .foregroundColor(mainDark).padding(.trailing,-5)
+                    
+                    VStack(){
+                        ZStack(){
+                            Button {
+                                
+                                let url = URL(string: "comgooglemaps://?saddr=&daddr=\(lat),\( long)&directionsmode=driving")
+                                
+                                if UIApplication.shared.canOpenURL(url!) {
+                                    UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+                                } else {
+                                    let urlBrowser = URL(string: "https://www.google.co.in/maps/dir/??saddr=&daddr=\(lat),\(long)&directionsmode=driving")
+                                    
+                                    UIApplication.shared.open(urlBrowser!, options: [:], completionHandler: nil)
+                                }
+                                
+                            } label: {
+                                
+                                
+                                Image("location").resizable()
+                                    .scaledToFit()
+                                
+                            }
+                            
+                        }
+                        
+                    }.padding(.top,5).padding(.bottom,5)
+                    
+                }
             }.frame(maxWidth: .infinity, alignment: .trailing)
                 .frame(height: 90)
                 .padding(10)
