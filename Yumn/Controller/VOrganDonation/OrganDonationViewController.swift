@@ -162,6 +162,13 @@ class OrganDonationViewController: UIViewController, ChartViewDelegate{
         case 1:
             organDonImage.isHidden = false
             stackView.isHidden = false
+            arrow1.setImage(UIImage(systemName: "chevron.up"), for: .normal)
+            arrow2.setImage(UIImage(systemName: "chevron.up"), for: .normal)
+            organsStack1.isHidden = false
+            organsStack2.isHidden = false
+
+            
+
             
             // by Modhi
             organPieWholeContainer.isHidden = true
