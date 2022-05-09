@@ -25,6 +25,15 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
     
     @IBOutlet weak var menuView: UIView!
     
+    // For logout
+    @IBOutlet weak var popupView: UIView!
+    @IBOutlet weak var popupTitle: UILabel!
+    @IBOutlet weak var confirmBtn: UIButton!
+    @IBOutlet weak var blurredView: UIView!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var popupMsg: UILabel!
+    @IBOutlet weak var popupStack: UIStackView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Update collection
@@ -40,6 +49,12 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
         }
         
         addVOPBtn.setAttributedTitle(NSAttributedString(string: "إضافة فرصة تطوع", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: customFont]), for: .normal)
+        
+        // For logout
+        popupView.layer.cornerRadius = 35
+        cancelButton.layer.cornerRadius = 20
+        confirmBtn.layer.cornerRadius = 20
+        popupStack.superview?.bringSubviewToFront(popupStack)
         
     }
     
@@ -278,6 +293,55 @@ class VolunteeringOpportunities: UIViewController, UICollectionViewDelegate, UIC
         
     }
     
+    @IBAction func onPressedConfirmBtn(_ sender: Any) {
+   
+    
+    
+        do
+            {
+        try Auth.auth().signOut()
+                
+                Constants.UserInfo.userID = ""
+                
+                transitionToLogIn()
+                
+                
+                // add a flushbar
+               
+            }
+            catch let error as NSError
+            {
+                print(error.localizedDescription)
+                
+                // Show pop up message
+            }
+
+        
+    }
+    
+    func transitionToLogIn(){
+        
+        Constants.Globals.isLoggingOut = true
+        // I have to check if the user is volunteer or hospital, in the log in
+       let signInViewController =  storyboard?.instantiateViewController(identifier: Constants.Storyboard.signInViewController) as? SignInViewController
+        
+        view.window?.rootViewController = signInViewController
+        view.window?.makeKeyAndVisible()
+        
+       // SignInViewController.showToast(message: "تم تسجي لالخروج بنجاح", font: .systemFont(ofSize: 20), image: (UIImage(named: "yumn") ?? UIImage(named: "")! ))}
+
+    }
+    
+    @IBAction func onPressedCancel(_ sender: Any) {
+   
+        
+        popupView.isHidden = true
+        blurredView.isHidden = true
+        
+        
+        
+    }
+    
     
     
 }
@@ -293,12 +357,11 @@ extension VolunteeringOpportunities: ContextMenuDelegate {
             performSegue(withIdentifier: "viewAfterDeathDonors", sender: self)
         }
         if(item.title == "تسجيل الخروج"){
-            performSegue(withIdentifier: "viewAfterDeathDonors", sender: self)
-//            popupTitle.text = "تأكيد تسجيل الخروج"
-//            popupMsg.text = "هل أنت متأكد من أنك تريد تسجيل الخروج؟"
-//
-//           popupView.isHidden = false
-//           blurredView.isHidden = false
+            popupTitle.text = "تأكيد تسجيل الخروج"
+            popupMsg.text = "هل أنت متأكد من أنك تريد تسجيل الخروج؟"
+
+           popupView.isHidden = false
+           blurredView.isHidden = false
         }
         return true
     }
@@ -395,12 +458,10 @@ extension VViewAppointmentsVC : ContextMenuDelegate {
                 performSegue(withIdentifier: "showVProfileFromMyAppointments", sender: self)
             }
             if(item.title == "تسجيل الخروج"){
-                
-//                popupTitle.text = "تأكيد تسجيل الخروج"
-//                popupMsg.text = "هل أنت متأكد من أنك تريد تسجيل الخروج؟"
-//
-//               popupView.isHidden = false
-//               blurredView.isHidden = false
+                logoutPopupTitle.text = "تأكيد تسجيل الخروج"
+                logoutPopupMsg.text = "هل أنت متأكد من أنك تريد تسجيل الخروج؟"
+                logoutPopupView.isHidden = false
+                logoutBlurredView.isHidden = false
             }
             return true
         }
@@ -429,12 +490,10 @@ extension RewardsViewController : ContextMenuDelegate {
                 performSegue(withIdentifier: "showVProfileFromRewards", sender: self)
             }
             if(item.title == "تسجيل الخروج"){
-                
-//                popupTitle.text = "تأكيد تسجيل الخروج"
-//                popupMsg.text = "هل أنت متأكد من أنك تريد تسجيل الخروج؟"
-//
-//               popupView.isHidden = false
-//               blurredView.isHidden = false
+                logoutPopupTitle.text = "تأكيد تسجيل الخروج"
+                logoutPopupMsg.text = "هل أنت متأكد من أنك تريد تسجيل الخروج؟"
+                logoutPopupView.isHidden = false
+                logoutBlurredView.isHidden = false
             }
             return true
         }

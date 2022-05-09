@@ -39,6 +39,15 @@ class VViewAppointmentsVC: UIViewController {
     let db = Firestore.firestore()
     
     
+    // For logout
+    @IBOutlet weak var logoutPopupView: UIView!
+    @IBOutlet weak var logoutPopupTitle: UILabel!
+    @IBOutlet weak var logoutConfirmBtn: UIButton!
+    @IBOutlet weak var logoutBlurredView: UIView!
+    @IBOutlet weak var logoutCancelButton: UIButton!
+    @IBOutlet weak var logoutPopupMsg: UILabel!
+    @IBOutlet weak var logoutPopupStack: UIStackView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewWillAppear(true)
@@ -55,7 +64,58 @@ class VViewAppointmentsVC: UIViewController {
 //        saveBtn.layer.cornerRadius = 15
         popupView.layer.cornerRadius = 30
         
+        // For logout
+        logoutPopupView.layer.cornerRadius = 35
+        logoutCancelButton.layer.cornerRadius = 20
+        logoutConfirmBtn.layer.cornerRadius = 20
+        logoutPopupStack.superview?.bringSubviewToFront(logoutPopupStack)
+        
     }
+    @IBAction func onPressedConfirmLogout(_ sender: Any) {
+   
+    
+    
+        do
+            {
+        try Auth.auth().signOut()
+                
+                Constants.UserInfo.userID = ""
+                
+                transitionToLogIn()
+                
+                
+                // add a flushbar
+               
+            }
+            catch let error as NSError
+            {
+                print(error.localizedDescription)
+                
+                // Show pop up message
+            }
+
+        
+    }
+    
+    func transitionToLogIn(){
+        
+        Constants.Globals.isLoggingOut = true
+        // I have to check if the user is volunteer or hospital, in the log in
+       let signInViewController =  storyboard?.instantiateViewController(identifier: Constants.Storyboard.signInViewController) as? SignInViewController
+        
+        view.window?.rootViewController = signInViewController
+        view.window?.makeKeyAndVisible()
+        
+       // SignInViewController.showToast(message: "تم تسجي لالخروج بنجاح", font: .systemFont(ofSize: 20), image: (UIImage(named: "yumn") ?? UIImage(named: "")! ))}
+
+    }
+    @IBAction func onPressedCancelLogout(_ sender: Any) {
+        
+        logoutPopupView.isHidden = true
+        logoutBlurredView.isHidden = true
+        
+    }
+    
     @IBAction func viewMenu(_ sender: Any) {
         let profile = ContextMenuItemWithImage(title: "الصفحة الشخصية", image: UIImage.init(named: "pofileHospital")!)
         let logout = ContextMenuItemWithImage(title: "تسجيل الخروج", image: UIImage.init(named: "signout")!)
