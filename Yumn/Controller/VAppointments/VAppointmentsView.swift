@@ -693,7 +693,7 @@ struct VAppointmentsView: View {
                 x.editAppointment(apt: apt)
             }
             ) {
-                Text("تعديل").font(Font.custom("Tajawal", size: 16))
+                Text("تعديل").font(Font.custom("Tajawal", size: 14))
                     .foregroundColor(.white)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -710,7 +710,7 @@ struct VAppointmentsView: View {
                 
             }
             ) {
-                Text("تعديل").font(Font.custom("Tajawal", size: 16))
+                Text("تعديل").font(Font.custom("Tajawal", size: 14))
                     .foregroundColor(.white)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
