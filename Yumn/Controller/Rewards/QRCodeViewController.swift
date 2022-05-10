@@ -41,7 +41,7 @@ class QRCodeViewController: UIViewController {
                 let amount:Double = document.get("amount") as! Double
                  
 
-                self.amount.text = "المبلغ: " + self.convertEngToArabic(num: amount) + " ريال سعودي"
+                self.amount.text = "المبلغ: " + "\(amount)" + " ريال سعودي"
                 
                 let date:String = document.get("dateCreated") as! String? ?? ""
 

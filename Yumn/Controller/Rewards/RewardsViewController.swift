@@ -109,9 +109,9 @@ class RewardsViewController: UIViewController {
                 let vPoints:Int  = document.get("points") as! Int
                  
 
-                self.points.text = self.convertEngToArabic(num: vPoints)
+                self.points.text = "\(vPoints)"
                 
-                self.sarLabel.text = "تكافئ " + String(self.convertEngToArabic(num: Int(floor(Double(vPoints/5))))) + " ريال سعودي"
+                self.sarLabel.text = "تكافئ " + String(Int(floor(Double(vPoints/5)))) + " ريال سعودي"
                                                                         
             
 
@@ -220,43 +220,43 @@ class RewardsViewController: UIViewController {
     
     
     
-    func  convertEngToArabic(num: Int)-> String{
-        
-        let points=String(num)
-        var arabicString=""
-        
-        for ch in points{
-            
-            switch ch {
-                
-            case "0":
-                arabicString+="٠"
-            case "9":
-                arabicString+="٩"
-            case "8":
-                arabicString+="٨"
-            case "7":
-                arabicString+="٧"
-            case "6":
-                arabicString+="٦"
-            case "5":
-                arabicString+="٥"
-            case "4":
-                arabicString+="٤"
-            case "3":
-                arabicString+="٣"
-            case "2":
-                arabicString+="٢"
-            case "1":
-                arabicString+="١"
-           
-                
-            default:
-                arabicString="٠"
-            }
-        }
-        return arabicString
-    }
+//    func  convertEngToArabic(num: Int)-> String{
+//
+//        let points=String(num)
+//        var arabicString=""
+//
+//        for ch in points{
+//
+//            switch ch {
+//
+//            case "0":
+//                arabicString+="٠"
+//            case "9":
+//                arabicString+="٩"
+//            case "8":
+//                arabicString+="٨"
+//            case "7":
+//                arabicString+="٧"
+//            case "6":
+//                arabicString+="٦"
+//            case "5":
+//                arabicString+="٥"
+//            case "4":
+//                arabicString+="٤"
+//            case "3":
+//                arabicString+="٣"
+//            case "2":
+//                arabicString+="٢"
+//            case "1":
+//                arabicString+="١"
+//
+//
+//            default:
+//                arabicString="٠"
+//            }
+//        }
+//        return arabicString
+//    }
 
     
     
@@ -335,10 +335,10 @@ class RewardsViewController: UIViewController {
         else if (pointsRedeemed > (points.text! as NSString).doubleValue){
             
             if (pointsRedeemed > 10){
-            errorLabel.text = "نقاطك لا تكفي لاستبدال " + convertEngToArabic(num: Int(pointsRedeemed)) + " نقطة"
+            errorLabel.text = "نقاطك لا تكفي لاستبدال " + "\(Int(pointsRedeemed))" + " نقطة"
             }
             else {
-                errorLabel.text = "نقاطك لا تكفي لاستبدال " + convertEngToArabic(num: Int(pointsRedeemed)) + " نقاط"
+                errorLabel.text = "نقاطك لا تكفي لاستبدال " +  "\(Int(pointsRedeemed))" + " نقاط"
             }
             // Turn the textfield to red
             turnTextFieldTextfieldToRed(textfield: amountTextfield)
@@ -381,11 +381,11 @@ class RewardsViewController: UIViewController {
             // White space so that the layout is not affected; however, trim it in the validation
             
             if (pointsRedeemed > 10){
-                redeemLabel.text = "سوف يتم استبدال " + convertEngToArabic(num: Int(pointsRedeemed)) + " نقطة"
+                redeemLabel.text = "سوف يتم استبدال " + "\(Int(pointsRedeemed))" + " نقطة"
 
             }
             else {
-                redeemLabel.text = "سوف يتم استبدال " + convertEngToArabic(num: Int(pointsRedeemed)) + " نقاط"
+                redeemLabel.text = "سوف يتم استبدال " + "\(Int(pointsRedeemed))" + " نقاط"
             }
            
 

@@ -152,7 +152,7 @@ extension AllQRCodesViewController: UITableViewDataSource{
         
         
         
-        cell.amount.text! = convertEngToArabic(num:  sortedValidQRCodes![indexPath.row].amount)
+        cell.amount.text! = "\(sortedValidQRCodes![indexPath.row].amount)"
         
         print (cell.amount.text!)
         
