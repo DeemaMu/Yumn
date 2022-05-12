@@ -6,11 +6,14 @@
 //
 import FirebaseAuth
 import Firebase
+import FirebaseFirestore
 import UIKit
 
 class SignInViewController: UIViewController {
     
-//    let isUserLoggedIn:Bool = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
+
+    let isUserLoggedIn:Bool = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
+
     // @IBOutlet weak var pView: UIView!
     
     @IBOutlet var mainView: UIView!
@@ -87,12 +90,32 @@ class SignInViewController: UIViewController {
 //        }
 //    }
     override func viewDidLoad() {
+        
+        
+        if (Constants.Globals.isLoggingOut == true) {
+            
+            let mssg = "تم تسجيل خروجك بنجاح"
+            Constants.UserInfo.userID = ""
+
+            let seconds = 0.25
+            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+                
+                self.showToastHome(message: mssg, font: .systemFont(ofSize: 20), image: (UIImage(named: "yumn-1") ?? UIImage(named: "")! ))}
+        
+            
+            Constants.Globals.isLoggingOut = false
+            
+        }
+        
+        
+        
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         
         setUpElements()
         
-        // Do any additional setup after loading the view.
+        // Hide keyboard
+        self.hideKeyboardWhenTappedAround()
     }
     
     func setUpElements(){
@@ -200,19 +223,17 @@ class SignInViewController: UIViewController {
     @objc func styleTextFields(textfield: UITextField){
         
         
-        // It only worked this way in this page
-        
         
         
         let bottomLine = CALayer()
         
         
         if (textfield.text!.isEmpty){
-            bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width + 95, height: 2)
+            bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width , height: 2)
         } //was width + 120
         else {
-            bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width  , height: 2)
-            
+           bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width  , height: 2)
+
             
         }
         
@@ -221,7 +242,6 @@ class SignInViewController: UIViewController {
         textfield.borderStyle = .none
         
         textfield.layer.addSublayer(bottomLine)
-        
         
     }
     
@@ -403,8 +423,10 @@ class SignInViewController: UIViewController {
                         
                         // There exists a user and signed in
                     {
-//                        UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
-//                        UserDefaults.standard.synchronize()
+
+                        UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
+                        UserDefaults.standard.synchronize()
+                        
                         // Check which user
                         let db = Firestore.firestore()
                         
@@ -427,6 +449,8 @@ class SignInViewController: UIViewController {
                                 print("Document exists in volunteer")
                                 
                                 // Transition to volunteer home
+                                
+                                Constants.UserInfo.userID = Auth.auth().currentUser?.uid ?? ""
                                 
                                 self.transitionToHome()
                                 
@@ -463,7 +487,8 @@ class SignInViewController: UIViewController {
                                 self.loadingGif.isHidden = true
                                 
                                 
-                                
+                                Constants.UserInfo.userID = Auth.auth().currentUser?.uid ?? ""
+
                                 // Transition to hospital home page
                                 self.transitionToHospitalHome()
                                 
@@ -514,7 +539,7 @@ class SignInViewController: UIViewController {
     
     func transitionToHome(){
         
-        
+        print ("transitioning to v homeuntee")
         // I have to check if the user is volunteer or hospital, in the log in
         let volunteerHomeViewController =  storyboard?.instantiateViewController(identifier: Constants.Storyboard.volunteerHomeViewController) as? customTabBarVC
         
@@ -565,6 +590,54 @@ class SignInViewController: UIViewController {
     }
     
     
+
+
+
+func showToastHome(message : String, font: UIFont, image: UIImage){
+
+    let toastLabel = UILabel(frame: CGRect(x: 5, y: 45, width: self.view.frame.size.width-10, height: 70))
+        
+
+        toastLabel.backgroundColor = UIColor.gray.withAlphaComponent(1)
+        toastLabel.textColor = UIColor.white
+        toastLabel.font = font
+        toastLabel.textAlignment = .center;
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10;
+        toastLabel.clipsToBounds  =  true
+        self.view.addSubview(toastLabel)
+   
+
+        
+    let imageView = UIImageView(frame: CGRect(x: self.view.frame.size.width-70, y: 10, width: 45, height: 45))
+        imageView.layer.masksToBounds = true
+
+    imageView.image = image
+        imageView.layer.cornerRadius = 10
+        
+ 
+
+        toastLabel.addSubview(imageView)
+        
+        self.navigationController?.view.addSubview(toastLabel)
+
+    UIView.animate(withDuration: 10, delay: 5, options:
+                    
+                    
+                    .transitionFlipFromTop, animations: {
+
+                        
+         toastLabel.alpha = 0.0
+
+    }, completion: {(isCompleted) in
+        
+        
+
+        toastLabel.removeFromSuperview()
+
+
+
+    })
 }
-
-
+}

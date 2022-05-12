@@ -10,17 +10,16 @@ import UIKit
 
 
 struct Constants {
-
-
+    
+    
     struct Storyboard{
-
       static let volunteerHomeViewController = "navToVHome"
       static let contSignUpViewController = "contSignUp"
-      static let signInViewController = "SignIn"
+      static let signInViewController = "SignIn1"
       static let hospitalHomeViewController = "navToHospitalHome"
-
+      static let qrViewController = "QR"
     }
-
+    
     struct Globals {
          static var firstName = ""
          static var lastName = ""
@@ -32,10 +31,22 @@ struct Constants {
          static var city = ""
          static var gender = "f"
          static var weight = ""
-         static var  bloodType = ""
+         static var bloodType = ""
          static var firstNameFromdb = ""
+         static var isLoggingOut = false
+         static var currentQRID = "Zgtw52fTlum4bv7zpIlY"
+         static var isLoggingIn = true
+         static var sortedValidQRCodes:[QRCode]?
+         static var hospitalId = "y5I2Wz29l1cz2zAt8dVc1wETEK13"
+         static var newQR = false
+         static var hosName = ""
+         static var appDate:Date?
     }
-
+    
+    struct UserInfo {
+        static var userID = ""
+    }
+    
     static let cellNibName = "bloodTypeCell"
     static let cellNibNameOrgans = "organCell"
     static let cellIdentifier = "reusableCell"
@@ -84,6 +95,30 @@ struct Constants {
         static let pink = UIColor(red: 0.70, green: 0.21, blue: 0.33, alpha: 1.00)
         
     }
-
-
+    
+    struct VolunteeringOpp {
+        static var title = ""
+        static var date = ""
+        static var endDate = ""
+        static var start_date: Date = Date()
+        static var end_date: Date = Date()
+        static var workingHours = ""
+        static var location  = ""
+        static var gender = ""
+        static var description = ""
+        
+    }
+    
+    struct selected {
+        static var selectedDate: Date = Date()
+        static var selectedOrgan: SelectedOrgan = SelectedOrgan(organ: "", hospital: "", appointment: "", organHospitals: [])
+        static var selectedHospital = Location(name: "", lat: 0, long: 0, city: "", area: "")
+        static var vc: Alive2ndVC = Alive2ndVC()
+        static var edit = false
+        static var mainDoc = ""
+        static var exactDoc = ""
+        static var deleted = false
+        static var selectedAppointment = ""
+    }
+    
 }

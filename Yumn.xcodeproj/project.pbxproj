@@ -7,12 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3270E44D56D2EC7F0573DDF8 /* Pods_Yumn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6192F70BFC38D414F8AF08B8 /* Pods_Yumn.framework */; };
+		8D0E9A1F27E5339C00890AC0 /* BloodDonationInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0E9A1E27E5339C00890AC0 /* BloodDonationInformationViewController.swift */; };
 		8D7F152227D25DD200E1EB1A /* GIfCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7F152127D25DD200E1EB1A /* GIfCode.swift */; };
 		8D7F152527D25EF200E1EB1A /* yumnLoading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8D7F152427D25EF200E1EB1A /* yumnLoading.gif */; };
 		8D7F152727D25F3B00E1EB1A /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7F152627D25F3B00E1EB1A /* SignInViewController.swift */; };
 		8D7F152B27D299C100E1EB1A /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7F152A27D299C100E1EB1A /* constants.swift */; };
 		8D7F152D27D299F300E1EB1A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7F152C27D299F300E1EB1A /* HomeViewController.swift */; };
 		8D7F152F27D29A6500E1EB1A /* HospitalHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7F152E27D29A6500E1EB1A /* HospitalHomeViewController.swift */; };
+		8DE28D532821A45E00B54BE6 /* QRController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE28D522821A45E00B54BE6 /* QRController.swift */; };
+		8DE28D572821A46E00B54BE6 /* StoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE28D562821A46E00B54BE6 /* StoreController.swift */; };
+		8DE28D592821A4A900B54BE6 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE28D582821A4A800B54BE6 /* Store.swift */; };
+		8DE28D5B2821A4D100B54BE6 /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE28D5A2821A4D100B54BE6 /* QRCode.swift */; };
+		8DE28D5E2821A64C00B54BE6 /* RewardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE28D5D2821A64C00B54BE6 /* RewardsViewController.swift */; };
+		8DE28D602821A65800B54BE6 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE28D5F2821A65800B54BE6 /* QRCodeViewController.swift */; };
+		8DE28D622821A66000B54BE6 /* AllQRCodesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE28D612821A66000B54BE6 /* AllQRCodesViewController.swift */; };
+		8DE28D642821A66700B54BE6 /* AllStoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE28D632821A66700B54BE6 /* AllStoresViewController.swift */; };
+		8DE28D662821A6FF00B54BE6 /* StoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DE28D652821A6FF00B54BE6 /* StoreCell.xib */; };
+		8DE28D682821A70A00B54BE6 /* StoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE28D672821A70900B54BE6 /* StoreCell.swift */; };
+		8DE28D6A2821A71100B54BE6 /* QRCodeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DE28D692821A71100B54BE6 /* QRCodeTableViewCell.xib */; };
+		8DE28D6C2821A71800B54BE6 /* QRCodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE28D6B2821A71800B54BE6 /* QRCodeTableViewCell.swift */; };
+		8DE28D6E2821AF9800B54BE6 /* BloodDonationQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE28D6D2821AF9800B54BE6 /* BloodDonationQuestionsViewController.swift */; };
+		8DE28D702821CA9300B54BE6 /* grey.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8DE28D6F2821CA9300B54BE6 /* grey.gif */; };
 		95062D9627CADC0500D63911 /* Tajawal-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95062D9227CADC0400D63911 /* Tajawal-Light.ttf */; };
 		95062D9727CADC0500D63911 /* Tajawal-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95062D9327CADC0500D63911 /* Tajawal-Medium.ttf */; };
 		95062D9827CADC0500D63911 /* Tajawal-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95062D9427CADC0500D63911 /* Tajawal-Regular.ttf */; };
@@ -20,27 +36,98 @@
 		95062D9C27CADE1300D63911 /* HospitalProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95062D9A27CADE1300D63911 /* HospitalProfileViewController.swift */; };
 		95062D9D27CADE1300D63911 /* VolunteerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95062D9B27CADE1300D63911 /* VolunteerProfileViewController.swift */; };
 		95062D9F27CADE9E00D63911 /* ConvertingColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95062D9E27CADE9E00D63911 /* ConvertingColors.swift */; };
+		9520693927E3A5D100D5DC11 /* addVolunteeringOpp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9520693827E3A5D100D5DC11 /* addVolunteeringOpp.swift */; };
+		9520693C27E3A5FF00D5DC11 /* VolunteeringOpportunities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9520693B27E3A5FF00D5DC11 /* VolunteeringOpportunities.swift */; };
+		952C5D1227E4CF4800DF6537 /* DateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952C5D1127E4CF4800DF6537 /* DateTimePicker.swift */; };
+		9536DDFA2818EBF200A0195C /* appointmentCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9536DDF92818EBF200A0195C /* appointmentCollectionCell.swift */; };
+		954A24DD281DC70D001EE3BE /* confirmAppointmentPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954A24DC281DC70D001EE3BE /* confirmAppointmentPopup.swift */; };
+		954F2DB327E80C4100A3DFB1 /* ViewVolunteeringOpportunities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954F2DB227E80C4100A3DFB1 /* ViewVolunteeringOpportunities.swift */; };
+		954F2DB527E80CD200A3DFB1 /* ViewVOCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954F2DB427E80CD200A3DFB1 /* ViewVOCollectionViewCell.swift */; };
+		95531DC727E869E30029B490 /* addPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95531DC627E869E30029B490 /* addPopup.swift */; };
+		95546DDA281878CC00992CC8 /* viewAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95546DD9281878CC00992CC8 /* viewAppointment.swift */; };
+		955DD1D72814FAF600CC0725 /* Donor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955DD1D62814FAF600CC0725 /* Donor.swift */; };
+		9572140E28146B9900E46AEE /* AfterDeathDonor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572140D28146B9900E46AEE /* AfterDeathDonor.swift */; };
+		9572141028146BC800E46AEE /* DonorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9572140F28146BC800E46AEE /* DonorCollectionViewCell.swift */; };
 		95785059279E1917004F3D8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95785058279E1917004F3D8F /* AppDelegate.swift */; };
 		9578505B279E1917004F3D8F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9578505A279E1917004F3D8F /* SceneDelegate.swift */; };
 		9578505D279E1917004F3D8F /* VHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9578505C279E1917004F3D8F /* VHomeViewController.swift */; };
 		95785060279E1917004F3D8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9578505E279E1917004F3D8F /* Main.storyboard */; };
 		95785062279E1918004F3D8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95785061279E1918004F3D8F /* Assets.xcassets */; };
 		95785065279E1918004F3D8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95785063279E1918004F3D8F /* LaunchScreen.storyboard */; };
+		958E17DF28261EF700F63F0E /* HProfileSuccessPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958E17DE28261EF700F63F0E /* HProfileSuccessPopup.swift */; };
+		959A52CB27E87E51002244A0 /* cancelPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959A52CA27E87E50002244A0 /* cancelPopup.swift */; };
+		959A52CD27E88883002244A0 /* applyPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959A52CC27E88883002244A0 /* applyPopup.swift */; };
+		959A52D127E8A41F002244A0 /* editVolunteeringOpp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959A52D027E8A41F002244A0 /* editVolunteeringOpp.swift */; };
+		95A64FCF27E540F80004F830 /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A64FCE27E540F80004F830 /* TimePicker.swift */; };
+		95B7FCCF27E8D53D00865258 /* updatePopoup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B7FCCE27E8D53D00865258 /* updatePopoup.swift */; };
+		95C35DC5282620C0000DC4BC /* VProfileSuccessPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C35DC4282620C0000DC4BC /* VProfileSuccessPopup.swift */; };
 		95C5967727D75A8D00A5572C /* styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C5967627D75A8D00A5572C /* styles.swift */; };
 		95C5967927D767FE00A5572C /* VSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C5967827D767FE00A5572C /* VSignUpViewController.swift */; };
-		9952FE9476F64769FADCE805 /* Pods_Yumn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D15F4D6C65B1F0ABEB4460 /* Pods_Yumn.framework */; };
+		95CCFF852823185C00A0016C /* bloodTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95CCFF842823185C00A0016C /* bloodTypeCell.xib */; };
+		95EED9CB27E6602C009AFDAC /* VOCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EED9CA27E6602C009AFDAC /* VOCollectionViewCell.swift */; };
+		95EED9CD27E682DB009AFDAC /* VolunteeringOpp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EED9CC27E682DB009AFDAC /* VolunteeringOpp.swift */; };
+		B91DD28E27E995F200BA9881 /* CalenderAndAppointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91DD28D27E995F200BA9881 /* CalenderAndAppointments.swift */; };
+		B91DD29027E9965F00BA9881 /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91DD28F27E9965F00BA9881 /* Appointment.swift */; };
+		B91DD29227E996CF00BA9881 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91DD29127E996CF00BA9881 /* CustomDatePicker.swift */; };
+		B91DD29427E9976200BA9881 /* PopupAddForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91DD29327E9976200BA9881 /* PopupAddForm.swift */; };
+		B91DD29627E998C000BA9881 /* CustomPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91DD29527E998C000BA9881 /* CustomPopUpView.swift */; };
+		B91DD29827E9BA9200BA9881 /* popupAddFormOrgan.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91DD29727E9BA9200BA9881 /* popupAddFormOrgan.swift */; };
 		B930F86827B85D5F00E70860 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B930F86727B85D5E00E70860 /* RoundedView.swift */; };
 		B9419DFC27C52D9C00962A1B /* HospitalCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9419DFA27C52D9C00962A1B /* HospitalCellTableViewCell.swift */; };
 		B9419DFD27C52D9C00962A1B /* HospitalCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9419DFB27C52D9C00962A1B /* HospitalCellTableViewCell.xib */; };
+		B94CB968280EB8B00088470D /* AfterDeathODSecondController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94CB967280EB8AF0088470D /* AfterDeathODSecondController.swift */; };
+		B94CB96A280EBE160088470D /* AfterDeathOrganSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94CB969280EBE160088470D /* AfterDeathOrganSelection.swift */; };
 		B9503D8827BAE4E500E312B8 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9503D8727BAE4E400E312B8 /* CustomSegmentedControl.swift */; };
 		B952BB1227C641B80049D81B /* HospitalsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B952BB1127C641B80049D81B /* HospitalsController.swift */; };
+		B9533EFC2810D23000485482 /* Alive1stVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9533EFB2810D23000485482 /* Alive1stVC.swift */; };
+		B9533EFE2810D49E00485482 /* ChooseOrganButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9533EFD2810D49E00485482 /* ChooseOrganButton.swift */; };
+		B9533F002811A79E00485482 /* Alive2ndVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9533EFF2811A79D00485482 /* Alive2ndVC.swift */; };
 		B9570C2F27DFA828000D1B8B /* MaterialSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9570C2E27DFA826000D1B8B /* MaterialSegmentedControl.swift */; };
+		B96EABA5281DD919004AD51E /* AppointmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96EABA4281DD919004AD51E /* AppointmentManager.swift */; };
+		B96EABA7281DEEB7004AD51E /* CannotDonatePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96EABA6281DEEB7004AD51E /* CannotDonatePopup.swift */; };
+		B975979C28195D9300AD2C93 /* Donor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B975979B28195D9300AD2C93 /* Donor.swift */; };
 		B97A37FE27B9D32A00718079 /* RoundedShadowedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A37FD27B9D32A00718079 /* RoundedShadowedView.swift */; };
 		B97A380227BA9EA000718079 /* BloodDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A380127BA9EA000718079 /* BloodDonationViewController.swift */; };
+		B99C2724281C226200EAC439 /* OlderOrganAppointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99C2723281C226200EAC439 /* OlderOrganAppointments.swift */; };
+		B99C2726281C227700EAC439 /* FutureOrganAppointments.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99C2725281C227700EAC439 /* FutureOrganAppointments.swift */; };
+		B99C272A281C888200EAC439 /* EditAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99C2729281C888200EAC439 /* EditAppointment.swift */; };
+		B99C272C281C98EC00EAC439 /* DeleteAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99C272B281C98EC00EAC439 /* DeleteAppointment.swift */; };
+		B9AC66222819E7880013301B /* VViewAppointmentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC66212819E7880013301B /* VViewAppointmentsVC.swift */; };
+		B9AC66242819E90E0013301B /* VAppointmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC66232819E90E0013301B /* VAppointmentsView.swift */; };
+		B9AC6626281AF4AC0013301B /* OlderAppointmentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC6625281AF4AB0013301B /* OlderAppointmentsVC.swift */; };
+		B9AC6628281B1AE80013301B /* volunteerVOpp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC6627281B1AE80013301B /* volunteerVOpp.swift */; };
+		B9AC662C281B1BA10013301B /* ViewOppOfAVolunteerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC662B281B1BA10013301B /* ViewOppOfAVolunteerViewController.swift */; };
+		B9AC662F281B1C370013301B /* viewCurrentVolunteerOppTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC662D281B1C370013301B /* viewCurrentVolunteerOppTableViewCell.swift */; };
+		B9AC6630281B1C370013301B /* viewCurrentVolunteerOppTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9AC662E281B1C370013301B /* viewCurrentVolunteerOppTableViewCell.xib */; };
+		B9AC6633281B1CB50013301B /* viewOldVolunteerOppTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC6631281B1CB50013301B /* viewOldVolunteerOppTableViewCell.swift */; };
+		B9AC6634281B1CB50013301B /* viewOldVolunteerOppTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9AC6632281B1CB50013301B /* viewOldVolunteerOppTableViewCell.xib */; };
+		B9AC6636281B2E520013301B /* applicant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC6635281B2E520013301B /* applicant.swift */; };
+		B9AC6639281B2EBC0013301B /* currentApplicantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC6637281B2EBC0013301B /* currentApplicantTableViewCell.swift */; };
+		B9AC663A281B2EBC0013301B /* currentApplicantTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9AC6638281B2EBC0013301B /* currentApplicantTableViewCell.xib */; };
+		B9AC663D281B2EF20013301B /* acceptedApplicantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC663B281B2EF20013301B /* acceptedApplicantTableViewCell.swift */; };
+		B9AC663E281B2EF20013301B /* acceptedApplicantTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9AC663C281B2EF20013301B /* acceptedApplicantTableViewCell.xib */; };
+		B9AC6640281B582A0013301B /* FutureAppointmentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC663F281B582A0013301B /* FutureAppointmentsVC.swift */; };
+		B9AD3F2A27E2CF81001AB734 /* ManageAppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD3F2927E2CF81001AB734 /* ManageAppointmentsViewController.swift */; };
+		B9AD3F3027E335B3001AB734 /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AD3F2F27E335B3001AB734 /* DateValue.swift */; };
+		B9B3143B2815BAB000C62981 /* AODInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3143A2815BAB000C62981 /* AODInstructions.swift */; };
+		B9B3143D2815F82200C62981 /* Alive3rdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3143C2815F82000C62981 /* Alive3rdVC.swift */; };
+		B9B3143F2815FB8400C62981 /* AODHospitalList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B3143E2815FB8300C62981 /* AODHospitalList.swift */; };
+		B9BAC6EA280E0CDF001489A1 /* AfterDeathODFirstController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BAC6E9280E0CDF001489A1 /* AfterDeathODFirstController.swift */; };
+		B9BD3879282209470006219F /* ConfirmBloodAppointmentPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BD3878282209450006219F /* ConfirmBloodAppointmentPopUp.swift */; };
+		B9BD387B282209690006219F /* BloodThankYouPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BD387A282209690006219F /* BloodThankYouPopup.swift */; };
+		B9BD387D282209C60006219F /* BloodAppointmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BD387C282209C60006219F /* BloodAppointmentModel.swift */; };
+		B9BD387F28220A170006219F /* BloodAppointmentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BD387E28220A170006219F /* BloodAppointmentsVC.swift */; };
+		B9BD388128220B620006219F /* SelectBDAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BD388028220B620006219F /* SelectBDAppointment.swift */; };
 		B9C7969527C7A83A006A78A3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C7969427C7A839006A78A3 /* TabBarController.swift */; };
+		B9D831C72818BDF40023CBC5 /* ThankYouPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D831C62818BDF30023CBC5 /* ThankYouPopup.swift */; };
 		B9DA61CE27C10C2900359487 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9DA61CD27C10C2800359487 /* GoogleService-Info.plist */; };
 		B9DA61DA27C10FCC00359487 /* LocationManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DA61D927C10FCC00359487 /* LocationManger.swift */; };
 		B9DA61DC27C1100B00359487 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DA61DB27C1100B00359487 /* Location.swift */; };
+		B9DDAE8A281742A80001149C /* Alive4thVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DDAE89281742A80001149C /* Alive4thVC.swift */; };
+		B9DDAE8C281753300001149C /* SelectODAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DDAE8B281753300001149C /* SelectODAppointment.swift */; };
+		B9DDAE9028188D9B0001149C /* ConfirmAppointmentPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DDAE8F28188D990001149C /* ConfirmAppointmentPopUp.swift */; };
+		B9EC91E6282616CC00BC0697 /* organCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B97EFD8A28234F0700CCE086 /* organCell.xib */; };
+		D1627E742822EE84003EB949 /* ViewApplicantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1627E732822EE84003EB949 /* ViewApplicantsViewController.swift */; };
 		D195443427D4996700B03DFF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D195443327D4996600B03DFF /* ViewController.swift */; };
 		D195443627D4998F00B03DFF /* bloodShortageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D195443527D4998F00B03DFF /* bloodShortageViewController.swift */; };
 		D195443827D499A200B03DFF /* organShortageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D195443727D499A200B03DFF /* organShortageVC.swift */; };
@@ -53,22 +140,44 @@
 		D195444627D49A2F00B03DFF /* totalBloodShortage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D195444527D49A2F00B03DFF /* totalBloodShortage.swift */; };
 		D195444827D49A3900B03DFF /* totalOrgansShortage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D195444727D49A3900B03DFF /* totalOrgansShortage.swift */; };
 		D195444C27D49AA300B03DFF /* components.swift in Sources */ = {isa = PBXBuildFile; fileRef = D195444B27D49AA200B03DFF /* components.swift */; };
-		D195444E27D49AF600B03DFF /* bloodTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D195444D27D49AF600B03DFF /* bloodTypeCell.xib */; };
 		D195445027D49AFF00B03DFF /* bloodTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D195444F27D49AFF00B03DFF /* bloodTypeCell.swift */; };
-		D195445227D49B1600B03DFF /* organCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D195445127D49B1600B03DFF /* organCell.xib */; };
 		D195445427D49B2100B03DFF /* organCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D195445327D49B2100B03DFF /* organCell.swift */; };
 		D195445827D49B4800B03DFF /* charts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D195445727D49B4800B03DFF /* charts.storyboard */; };
+		D19B1B4727E95ED400CB3FFA /* OpenMapDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19B1B4627E95ED400CB3FFA /* OpenMapDirections.swift */; };
+		D19B1B4927E95EE500CB3FFA /* BloodAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19B1B4827E95EE500CB3FFA /* BloodAppointment.swift */; };
+		D19B1B4B27E95F1000CB3FFA /* currentBldAppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19B1B4A27E95F1000CB3FFA /* currentBldAppCell.swift */; };
+		D19B1B4D27E95F1900CB3FFA /* currentBldAppCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D19B1B4C27E95F1900CB3FFA /* currentBldAppCell.xib */; };
+		D19B1B4F27E95F1D00CB3FFA /* oldBloodAppTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19B1B4E27E95F1D00CB3FFA /* oldBloodAppTableViewCell.swift */; };
+		D19B1B5127E95F2200CB3FFA /* oldBloodAppTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D19B1B5027E95F2200CB3FFA /* oldBloodAppTableViewCell.xib */; };
+		D19B1B5327E95FCB00CB3FFA /* OrganDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19B1B5227E95FCB00CB3FFA /* OrganDonationViewController.swift */; };
+		D19B1B5927E962BC00CB3FFA /* VolunteerBloodAppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19B1B5827E962BC00CB3FFA /* VolunteerBloodAppointmentsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5B4D2E1AFA97FD137C0F82F9 /* Pods-Yumn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.debug.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.debug.xcconfig"; sourceTree = "<group>"; };
-		7C9CC10025196FAD7E195DFD /* Pods-Yumn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.release.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.release.xcconfig"; sourceTree = "<group>"; };
+		3C415697689A51A6B561F2AA /* Pods-Yumn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.debug.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.debug.xcconfig"; sourceTree = "<group>"; };
+		570A05FF106CAA64CA50BB4E /* Pods-Yumn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yumn.release.xcconfig"; path = "Target Support Files/Pods-Yumn/Pods-Yumn.release.xcconfig"; sourceTree = "<group>"; };
+		6192F70BFC38D414F8AF08B8 /* Pods_Yumn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yumn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D0E9A1E27E5339C00890AC0 /* BloodDonationInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationInformationViewController.swift; sourceTree = "<group>"; };
 		8D7F152127D25DD200E1EB1A /* GIfCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIfCode.swift; sourceTree = "<group>"; };
 		8D7F152427D25EF200E1EB1A /* yumnLoading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = yumnLoading.gif; sourceTree = "<group>"; };
 		8D7F152627D25F3B00E1EB1A /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		8D7F152A27D299C100E1EB1A /* constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		8D7F152C27D299F300E1EB1A /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8D7F152E27D29A6500E1EB1A /* HospitalHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HospitalHomeViewController.swift; sourceTree = "<group>"; };
+		8DE28D522821A45E00B54BE6 /* QRController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRController.swift; sourceTree = "<group>"; };
+		8DE28D562821A46E00B54BE6 /* StoreController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreController.swift; sourceTree = "<group>"; };
+		8DE28D582821A4A800B54BE6 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		8DE28D5A2821A4D100B54BE6 /* QRCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCode.swift; sourceTree = "<group>"; };
+		8DE28D5D2821A64C00B54BE6 /* RewardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardsViewController.swift; sourceTree = "<group>"; };
+		8DE28D5F2821A65800B54BE6 /* QRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
+		8DE28D612821A66000B54BE6 /* AllQRCodesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllQRCodesViewController.swift; sourceTree = "<group>"; };
+		8DE28D632821A66700B54BE6 /* AllStoresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllStoresViewController.swift; sourceTree = "<group>"; };
+		8DE28D652821A6FF00B54BE6 /* StoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreCell.xib; sourceTree = "<group>"; };
+		8DE28D672821A70900B54BE6 /* StoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreCell.swift; sourceTree = "<group>"; };
+		8DE28D692821A71100B54BE6 /* QRCodeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRCodeTableViewCell.xib; sourceTree = "<group>"; };
+		8DE28D6B2821A71800B54BE6 /* QRCodeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeTableViewCell.swift; sourceTree = "<group>"; };
+		8DE28D6D2821AF9800B54BE6 /* BloodDonationQuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloodDonationQuestionsViewController.swift; sourceTree = "<group>"; };
+		8DE28D6F2821CA9300B54BE6 /* grey.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = grey.gif; sourceTree = "<group>"; };
 		95062D9227CADC0400D63911 /* Tajawal-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tajawal-Light.ttf"; sourceTree = "<group>"; };
 		95062D9327CADC0500D63911 /* Tajawal-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tajawal-Medium.ttf"; sourceTree = "<group>"; };
 		95062D9427CADC0500D63911 /* Tajawal-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tajawal-Regular.ttf"; sourceTree = "<group>"; };
@@ -76,6 +185,18 @@
 		95062D9A27CADE1300D63911 /* HospitalProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HospitalProfileViewController.swift; sourceTree = "<group>"; };
 		95062D9B27CADE1300D63911 /* VolunteerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolunteerProfileViewController.swift; sourceTree = "<group>"; };
 		95062D9E27CADE9E00D63911 /* ConvertingColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertingColors.swift; sourceTree = "<group>"; };
+		9520693827E3A5D100D5DC11 /* addVolunteeringOpp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addVolunteeringOpp.swift; sourceTree = "<group>"; };
+		9520693B27E3A5FF00D5DC11 /* VolunteeringOpportunities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolunteeringOpportunities.swift; sourceTree = "<group>"; };
+		952C5D1127E4CF4800DF6537 /* DateTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimePicker.swift; sourceTree = "<group>"; };
+		9536DDF92818EBF200A0195C /* appointmentCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = appointmentCollectionCell.swift; sourceTree = "<group>"; };
+		954A24DC281DC70D001EE3BE /* confirmAppointmentPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = confirmAppointmentPopup.swift; sourceTree = "<group>"; };
+		954F2DB227E80C4100A3DFB1 /* ViewVolunteeringOpportunities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewVolunteeringOpportunities.swift; sourceTree = "<group>"; };
+		954F2DB427E80CD200A3DFB1 /* ViewVOCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewVOCollectionViewCell.swift; sourceTree = "<group>"; };
+		95531DC627E869E30029B490 /* addPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addPopup.swift; sourceTree = "<group>"; };
+		95546DD9281878CC00992CC8 /* viewAppointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewAppointment.swift; sourceTree = "<group>"; };
+		955DD1D62814FAF600CC0725 /* Donor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Donor.swift; sourceTree = "<group>"; };
+		9572140D28146B9900E46AEE /* AfterDeathDonor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterDeathDonor.swift; sourceTree = "<group>"; };
+		9572140F28146BC800E46AEE /* DonorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonorCollectionViewCell.swift; sourceTree = "<group>"; };
 		95785055279E1917004F3D8F /* Yumn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yumn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95785058279E1917004F3D8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9578505A279E1917004F3D8F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,21 +205,80 @@
 		95785061279E1918004F3D8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95785064279E1918004F3D8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		95785066279E1918004F3D8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		958E17DE28261EF700F63F0E /* HProfileSuccessPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HProfileSuccessPopup.swift; sourceTree = "<group>"; };
+		959A52CA27E87E50002244A0 /* cancelPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cancelPopup.swift; sourceTree = "<group>"; };
+		959A52CC27E88883002244A0 /* applyPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = applyPopup.swift; sourceTree = "<group>"; };
+		959A52D027E8A41F002244A0 /* editVolunteeringOpp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editVolunteeringOpp.swift; sourceTree = "<group>"; };
+		95A64FCE27E540F80004F830 /* TimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
+		95B7FCCE27E8D53D00865258 /* updatePopoup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = updatePopoup.swift; sourceTree = "<group>"; };
+		95C35DC4282620C0000DC4BC /* VProfileSuccessPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VProfileSuccessPopup.swift; sourceTree = "<group>"; };
 		95C5967627D75A8D00A5572C /* styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = styles.swift; sourceTree = "<group>"; };
 		95C5967827D767FE00A5572C /* VSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VSignUpViewController.swift; sourceTree = "<group>"; };
-		A9D15F4D6C65B1F0ABEB4460 /* Pods_Yumn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yumn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		95CCFF842823185C00A0016C /* bloodTypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = bloodTypeCell.xib; sourceTree = "<group>"; };
+		95EED9CA27E6602C009AFDAC /* VOCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VOCollectionViewCell.swift; sourceTree = "<group>"; };
+		95EED9CC27E682DB009AFDAC /* VolunteeringOpp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolunteeringOpp.swift; sourceTree = "<group>"; };
+		B91DD28D27E995F200BA9881 /* CalenderAndAppointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderAndAppointments.swift; sourceTree = "<group>"; };
+		B91DD28F27E9965F00BA9881 /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
+		B91DD29127E996CF00BA9881 /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
+		B91DD29327E9976200BA9881 /* PopupAddForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupAddForm.swift; sourceTree = "<group>"; };
+		B91DD29527E998C000BA9881 /* CustomPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopUpView.swift; sourceTree = "<group>"; };
+		B91DD29727E9BA9200BA9881 /* popupAddFormOrgan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popupAddFormOrgan.swift; sourceTree = "<group>"; };
 		B930F86727B85D5E00E70860 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		B9419DFA27C52D9C00962A1B /* HospitalCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalCellTableViewCell.swift; sourceTree = "<group>"; };
 		B9419DFB27C52D9C00962A1B /* HospitalCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HospitalCellTableViewCell.xib; sourceTree = "<group>"; };
+		B94CB967280EB8AF0088470D /* AfterDeathODSecondController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterDeathODSecondController.swift; sourceTree = "<group>"; };
+		B94CB969280EBE160088470D /* AfterDeathOrganSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterDeathOrganSelection.swift; sourceTree = "<group>"; };
 		B9503D8727BAE4E400E312B8 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		B952BB1127C641B80049D81B /* HospitalsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalsController.swift; sourceTree = "<group>"; };
+		B9533EFB2810D23000485482 /* Alive1stVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alive1stVC.swift; sourceTree = "<group>"; };
+		B9533EFD2810D49E00485482 /* ChooseOrganButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseOrganButton.swift; sourceTree = "<group>"; };
+		B9533EFF2811A79D00485482 /* Alive2ndVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alive2ndVC.swift; sourceTree = "<group>"; };
 		B9570C2E27DFA826000D1B8B /* MaterialSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialSegmentedControl.swift; sourceTree = "<group>"; };
+		B96EABA4281DD919004AD51E /* AppointmentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentManager.swift; sourceTree = "<group>"; };
+		B96EABA6281DEEB7004AD51E /* CannotDonatePopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CannotDonatePopup.swift; sourceTree = "<group>"; };
+		B975979B28195D9300AD2C93 /* Donor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Donor.swift; sourceTree = "<group>"; };
 		B97A37FD27B9D32A00718079 /* RoundedShadowedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowedView.swift; sourceTree = "<group>"; };
 		B97A380127BA9EA000718079 /* BloodDonationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodDonationViewController.swift; sourceTree = "<group>"; };
+		B97EFD8A28234F0700CCE086 /* organCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = organCell.xib; sourceTree = "<group>"; };
+		B99C2723281C226200EAC439 /* OlderOrganAppointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OlderOrganAppointments.swift; sourceTree = "<group>"; };
+		B99C2725281C227700EAC439 /* FutureOrganAppointments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureOrganAppointments.swift; sourceTree = "<group>"; };
+		B99C2729281C888200EAC439 /* EditAppointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAppointment.swift; sourceTree = "<group>"; };
+		B99C272B281C98EC00EAC439 /* DeleteAppointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAppointment.swift; sourceTree = "<group>"; };
+		B9AC66212819E7880013301B /* VViewAppointmentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VViewAppointmentsVC.swift; sourceTree = "<group>"; };
+		B9AC66232819E90E0013301B /* VAppointmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VAppointmentsView.swift; sourceTree = "<group>"; };
+		B9AC6625281AF4AB0013301B /* OlderAppointmentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OlderAppointmentsVC.swift; sourceTree = "<group>"; };
+		B9AC6627281B1AE80013301B /* volunteerVOpp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = volunteerVOpp.swift; sourceTree = "<group>"; };
+		B9AC662B281B1BA10013301B /* ViewOppOfAVolunteerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOppOfAVolunteerViewController.swift; sourceTree = "<group>"; };
+		B9AC662D281B1C370013301B /* viewCurrentVolunteerOppTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewCurrentVolunteerOppTableViewCell.swift; sourceTree = "<group>"; };
+		B9AC662E281B1C370013301B /* viewCurrentVolunteerOppTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = viewCurrentVolunteerOppTableViewCell.xib; sourceTree = "<group>"; };
+		B9AC6631281B1CB50013301B /* viewOldVolunteerOppTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewOldVolunteerOppTableViewCell.swift; sourceTree = "<group>"; };
+		B9AC6632281B1CB50013301B /* viewOldVolunteerOppTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = viewOldVolunteerOppTableViewCell.xib; sourceTree = "<group>"; };
+		B9AC6635281B2E520013301B /* applicant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = applicant.swift; sourceTree = "<group>"; };
+		B9AC6637281B2EBC0013301B /* currentApplicantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = currentApplicantTableViewCell.swift; sourceTree = "<group>"; };
+		B9AC6638281B2EBC0013301B /* currentApplicantTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = currentApplicantTableViewCell.xib; sourceTree = "<group>"; };
+		B9AC663B281B2EF20013301B /* acceptedApplicantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = acceptedApplicantTableViewCell.swift; sourceTree = "<group>"; };
+		B9AC663C281B2EF20013301B /* acceptedApplicantTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = acceptedApplicantTableViewCell.xib; sourceTree = "<group>"; };
+		B9AC663F281B582A0013301B /* FutureAppointmentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureAppointmentsVC.swift; sourceTree = "<group>"; };
+		B9AD3F2927E2CF81001AB734 /* ManageAppointmentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageAppointmentsViewController.swift; sourceTree = "<group>"; };
+		B9AD3F2F27E335B3001AB734 /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
+		B9B3143A2815BAB000C62981 /* AODInstructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AODInstructions.swift; sourceTree = "<group>"; };
+		B9B3143C2815F82000C62981 /* Alive3rdVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alive3rdVC.swift; sourceTree = "<group>"; };
+		B9B3143E2815FB8300C62981 /* AODHospitalList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AODHospitalList.swift; sourceTree = "<group>"; };
+		B9BAC6E9280E0CDF001489A1 /* AfterDeathODFirstController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterDeathODFirstController.swift; sourceTree = "<group>"; };
+		B9BD3878282209450006219F /* ConfirmBloodAppointmentPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmBloodAppointmentPopUp.swift; sourceTree = "<group>"; };
+		B9BD387A282209690006219F /* BloodThankYouPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodThankYouPopup.swift; sourceTree = "<group>"; };
+		B9BD387C282209C60006219F /* BloodAppointmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodAppointmentModel.swift; sourceTree = "<group>"; };
+		B9BD387E28220A170006219F /* BloodAppointmentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodAppointmentsVC.swift; sourceTree = "<group>"; };
+		B9BD388028220B620006219F /* SelectBDAppointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBDAppointment.swift; sourceTree = "<group>"; };
 		B9C7969427C7A839006A78A3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		B9D831C62818BDF30023CBC5 /* ThankYouPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThankYouPopup.swift; sourceTree = "<group>"; };
 		B9DA61CD27C10C2800359487 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B9DA61D927C10FCC00359487 /* LocationManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManger.swift; sourceTree = "<group>"; };
 		B9DA61DB27C1100B00359487 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		B9DDAE89281742A80001149C /* Alive4thVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alive4thVC.swift; sourceTree = "<group>"; };
+		B9DDAE8B281753300001149C /* SelectODAppointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectODAppointment.swift; sourceTree = "<group>"; };
+		B9DDAE8F28188D990001149C /* ConfirmAppointmentPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmAppointmentPopUp.swift; sourceTree = "<group>"; };
+		D1627E732822EE84003EB949 /* ViewApplicantsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewApplicantsViewController.swift; sourceTree = "<group>"; };
 		D195443327D4996600B03DFF /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D195443527D4998F00B03DFF /* bloodShortageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bloodShortageViewController.swift; sourceTree = "<group>"; };
 		D195443727D499A200B03DFF /* organShortageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = organShortageVC.swift; sourceTree = "<group>"; };
@@ -111,11 +291,17 @@
 		D195444527D49A2F00B03DFF /* totalBloodShortage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = totalBloodShortage.swift; sourceTree = "<group>"; };
 		D195444727D49A3900B03DFF /* totalOrgansShortage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = totalOrgansShortage.swift; sourceTree = "<group>"; };
 		D195444B27D49AA200B03DFF /* components.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = components.swift; sourceTree = "<group>"; };
-		D195444D27D49AF600B03DFF /* bloodTypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = bloodTypeCell.xib; sourceTree = "<group>"; };
 		D195444F27D49AFF00B03DFF /* bloodTypeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bloodTypeCell.swift; sourceTree = "<group>"; };
-		D195445127D49B1600B03DFF /* organCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = organCell.xib; sourceTree = "<group>"; };
 		D195445327D49B2100B03DFF /* organCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = organCell.swift; sourceTree = "<group>"; };
 		D195445727D49B4800B03DFF /* charts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = charts.storyboard; sourceTree = "<group>"; };
+		D19B1B4627E95ED400CB3FFA /* OpenMapDirections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenMapDirections.swift; sourceTree = "<group>"; };
+		D19B1B4827E95EE500CB3FFA /* BloodAppointment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloodAppointment.swift; sourceTree = "<group>"; };
+		D19B1B4A27E95F1000CB3FFA /* currentBldAppCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = currentBldAppCell.swift; sourceTree = "<group>"; };
+		D19B1B4C27E95F1900CB3FFA /* currentBldAppCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = currentBldAppCell.xib; sourceTree = "<group>"; };
+		D19B1B4E27E95F1D00CB3FFA /* oldBloodAppTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = oldBloodAppTableViewCell.swift; sourceTree = "<group>"; };
+		D19B1B5027E95F2200CB3FFA /* oldBloodAppTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = oldBloodAppTableViewCell.xib; sourceTree = "<group>"; };
+		D19B1B5227E95FCB00CB3FFA /* OrganDonationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganDonationViewController.swift; sourceTree = "<group>"; };
+		D19B1B5827E962BC00CB3FFA /* VolunteerBloodAppointmentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolunteerBloodAppointmentsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,27 +309,57 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9952FE9476F64769FADCE805 /* Pods_Yumn.framework in Frameworks */,
+				3270E44D56D2EC7F0573DDF8 /* Pods_Yumn.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		13505D6AE7CA106008989D7C /* Frameworks */ = {
+		54D2418149F7142D32813E95 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A9D15F4D6C65B1F0ABEB4460 /* Pods_Yumn.framework */,
+				6192F70BFC38D414F8AF08B8 /* Pods_Yumn.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8D0E9A1D27E5337900890AC0 /* Information */ = {
+			isa = PBXGroup;
+			children = (
+				8D0E9A1E27E5339C00890AC0 /* BloodDonationInformationViewController.swift */,
+			);
+			path = Information;
 			sourceTree = "<group>";
 		};
 		8D7F152327D25EC900E1EB1A /* GIF */ = {
 			isa = PBXGroup;
 			children = (
 				8D7F152427D25EF200E1EB1A /* yumnLoading.gif */,
+				8DE28D6F2821CA9300B54BE6 /* grey.gif */,
 			);
 			path = GIF;
+			sourceTree = "<group>";
+		};
+		8DC80B7227E7A70100A1DF6E /* VOrganDonation */ = {
+			isa = PBXGroup;
+			children = (
+				B9533EFA2810D1BC00485482 /* WhileAlive */,
+				B9BAC6E8280E0C8B001489A1 /* AfterDeath */,
+				D19B1B5227E95FCB00CB3FFA /* OrganDonationViewController.swift */,
+			);
+			path = VOrganDonation;
+			sourceTree = "<group>";
+		};
+		8DE28D5C2821A63E00B54BE6 /* Rewards */ = {
+			isa = PBXGroup;
+			children = (
+				8DE28D5F2821A65800B54BE6 /* QRCodeViewController.swift */,
+				8DE28D612821A66000B54BE6 /* AllQRCodesViewController.swift */,
+				8DE28D632821A66700B54BE6 /* AllStoresViewController.swift */,
+				8DE28D5D2821A64C00B54BE6 /* RewardsViewController.swift */,
+			);
+			path = Rewards;
 			sourceTree = "<group>";
 		};
 		95062D9127CADBE800D63911 /* Fonts */ = {
@@ -157,13 +373,32 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		9520693727E3A5B500D5DC11 /* VolunteeringOpp */ = {
+			isa = PBXGroup;
+			children = (
+				9520693827E3A5D100D5DC11 /* addVolunteeringOpp.swift */,
+				9520693B27E3A5FF00D5DC11 /* VolunteeringOpportunities.swift */,
+				952C5D1127E4CF4800DF6537 /* DateTimePicker.swift */,
+				95A64FCE27E540F80004F830 /* TimePicker.swift */,
+				954F2DB227E80C4100A3DFB1 /* ViewVolunteeringOpportunities.swift */,
+				95531DC627E869E30029B490 /* addPopup.swift */,
+				959A52CA27E87E50002244A0 /* cancelPopup.swift */,
+				959A52CC27E88883002244A0 /* applyPopup.swift */,
+				959A52D027E8A41F002244A0 /* editVolunteeringOpp.swift */,
+				95B7FCCE27E8D53D00865258 /* updatePopoup.swift */,
+				B9AC662B281B1BA10013301B /* ViewOppOfAVolunteerViewController.swift */,
+				D1627E732822EE84003EB949 /* ViewApplicantsViewController.swift */,
+			);
+			path = VolunteeringOpp;
+			sourceTree = "<group>";
+		};
 		9578504C279E1917004F3D8F = {
 			isa = PBXGroup;
 			children = (
 				95785057279E1917004F3D8F /* Yumn */,
 				95785056279E1917004F3D8F /* Products */,
 				FB3A4FC32329E4399DABC3B5 /* Pods */,
-				13505D6AE7CA106008989D7C /* Frameworks */,
+				54D2418149F7142D32813E95 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -204,6 +439,18 @@
 				D195444327D49A2400B03DFF /* organShortage.swift */,
 				D195444527D49A2F00B03DFF /* totalBloodShortage.swift */,
 				D195444727D49A3900B03DFF /* totalOrgansShortage.swift */,
+				B9AD3F2F27E335B3001AB734 /* DateValue.swift */,
+				95EED9CC27E682DB009AFDAC /* VolunteeringOpp.swift */,
+				8DE28D522821A45E00B54BE6 /* QRController.swift */,
+				D19B1B4827E95EE500CB3FFA /* BloodAppointment.swift */,
+				8DE28D562821A46E00B54BE6 /* StoreController.swift */,
+				B91DD28F27E9965F00BA9881 /* Appointment.swift */,
+				8DE28D5A2821A4D100B54BE6 /* QRCode.swift */,
+				B975979B28195D9300AD2C93 /* Donor.swift */,
+				B9AC6627281B1AE80013301B /* volunteerVOpp.swift */,
+				8DE28D582821A4A800B54BE6 /* Store.swift */,
+				B9AC6635281B2E520013301B /* applicant.swift */,
+				955DD1D62814FAF600CC0725 /* Donor.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -215,10 +462,30 @@
 				B9419DFA27C52D9C00962A1B /* HospitalCellTableViewCell.swift */,
 				B9419DFB27C52D9C00962A1B /* HospitalCellTableViewCell.xib */,
 				D195444F27D49AFF00B03DFF /* bloodTypeCell.swift */,
-				D195444D27D49AF600B03DFF /* bloodTypeCell.xib */,
+				95CCFF842823185C00A0016C /* bloodTypeCell.xib */,
 				D195445327D49B2100B03DFF /* organCell.swift */,
-				D195445127D49B1600B03DFF /* organCell.xib */,
 				D195445727D49B4800B03DFF /* charts.storyboard */,
+				95EED9CA27E6602C009AFDAC /* VOCollectionViewCell.swift */,
+				954F2DB427E80CD200A3DFB1 /* ViewVOCollectionViewCell.swift */,
+				D19B1B4A27E95F1000CB3FFA /* currentBldAppCell.swift */,
+				D19B1B4C27E95F1900CB3FFA /* currentBldAppCell.xib */,
+				D19B1B4E27E95F1D00CB3FFA /* oldBloodAppTableViewCell.swift */,
+				D19B1B5027E95F2200CB3FFA /* oldBloodAppTableViewCell.xib */,
+				B9AC662D281B1C370013301B /* viewCurrentVolunteerOppTableViewCell.swift */,
+				B9AC662E281B1C370013301B /* viewCurrentVolunteerOppTableViewCell.xib */,
+				B9AC6631281B1CB50013301B /* viewOldVolunteerOppTableViewCell.swift */,
+				B9AC6632281B1CB50013301B /* viewOldVolunteerOppTableViewCell.xib */,
+				B9AC6637281B2EBC0013301B /* currentApplicantTableViewCell.swift */,
+				B9AC6638281B2EBC0013301B /* currentApplicantTableViewCell.xib */,
+				B9AC663B281B2EF20013301B /* acceptedApplicantTableViewCell.swift */,
+				B9AC663C281B2EF20013301B /* acceptedApplicantTableViewCell.xib */,
+				8DE28D692821A71100B54BE6 /* QRCodeTableViewCell.xib */,
+				8DE28D6B2821A71800B54BE6 /* QRCodeTableViewCell.swift */,
+				8DE28D652821A6FF00B54BE6 /* StoreCell.xib */,
+				8DE28D672821A70900B54BE6 /* StoreCell.swift */,
+				9572140F28146BC800E46AEE /* DonorCollectionViewCell.swift */,
+				9536DDF92818EBF200A0195C /* appointmentCollectionCell.swift */,
+				B97EFD8A28234F0700CCE086 /* organCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -226,8 +493,15 @@
 		B930F85627B8548900E70860 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B9CC6E9227E1498E0005C160 /* HOrganShortage */,
+				8DE28D5C2821A63E00B54BE6 /* Rewards */,
+				B9AC66202819E7380013301B /* VAppointments */,
+				D19B1B5727E9629000CB3FFA /* VBloodApp */,
+				8DC80B7227E7A70100A1DF6E /* VOrganDonation */,
+				8D0E9A1D27E5337900890AC0 /* Information */,
+				9520693727E3A5B500D5DC11 /* VolunteeringOpp */,
+				B9AD3F2827E2CF1E001AB734 /* HAppointments */,
 				B9CC6E9127E148620005C160 /* Profile */,
+				B9CC6E9227E1498E0005C160 /* HOrganShortage */,
 				B9CC6E9027E147B10005C160 /* Controls */,
 				B9CC6E8F27E1478B0005C160 /* Signing */,
 				B9CC6E8E27E147780005C160 /* HBloodDonation */,
@@ -250,8 +524,68 @@
 				B97A37FD27B9D32A00718079 /* RoundedShadowedView.swift */,
 				B9503D8727BAE4E400E312B8 /* CustomSegmentedControl.swift */,
 				8D7F152127D25DD200E1EB1A /* GIfCode.swift */,
+				D19B1B4627E95ED400CB3FFA /* OpenMapDirections.swift */,
+				B91DD29527E998C000BA9881 /* CustomPopUpView.swift */,
 			);
 			path = "Custom Classes";
+			sourceTree = "<group>";
+		};
+		B9533EFA2810D1BC00485482 /* WhileAlive */ = {
+			isa = PBXGroup;
+			children = (
+				B9533EFB2810D23000485482 /* Alive1stVC.swift */,
+				B9533EFD2810D49E00485482 /* ChooseOrganButton.swift */,
+				B9533EFF2811A79D00485482 /* Alive2ndVC.swift */,
+				B9B3143A2815BAB000C62981 /* AODInstructions.swift */,
+				B9B3143C2815F82000C62981 /* Alive3rdVC.swift */,
+				B9B3143E2815FB8300C62981 /* AODHospitalList.swift */,
+				B9DDAE89281742A80001149C /* Alive4thVC.swift */,
+				B9DDAE8B281753300001149C /* SelectODAppointment.swift */,
+				B9DDAE8F28188D990001149C /* ConfirmAppointmentPopUp.swift */,
+				B9D831C62818BDF30023CBC5 /* ThankYouPopup.swift */,
+				B96EABA6281DEEB7004AD51E /* CannotDonatePopup.swift */,
+			);
+			path = WhileAlive;
+			sourceTree = "<group>";
+		};
+		B9AC66202819E7380013301B /* VAppointments */ = {
+			isa = PBXGroup;
+			children = (
+				B9AC66212819E7880013301B /* VViewAppointmentsVC.swift */,
+				B9AC66232819E90E0013301B /* VAppointmentsView.swift */,
+				B9AC6625281AF4AB0013301B /* OlderAppointmentsVC.swift */,
+				B9AC663F281B582A0013301B /* FutureAppointmentsVC.swift */,
+				B99C2723281C226200EAC439 /* OlderOrganAppointments.swift */,
+				B99C2725281C227700EAC439 /* FutureOrganAppointments.swift */,
+				B99C2729281C888200EAC439 /* EditAppointment.swift */,
+				B99C272B281C98EC00EAC439 /* DeleteAppointment.swift */,
+			);
+			path = VAppointments;
+			sourceTree = "<group>";
+		};
+		B9AD3F2827E2CF1E001AB734 /* HAppointments */ = {
+			isa = PBXGroup;
+			children = (
+				B9AD3F2927E2CF81001AB734 /* ManageAppointmentsViewController.swift */,
+				B91DD28D27E995F200BA9881 /* CalenderAndAppointments.swift */,
+				B91DD29127E996CF00BA9881 /* CustomDatePicker.swift */,
+				B91DD29327E9976200BA9881 /* PopupAddForm.swift */,
+				B91DD29727E9BA9200BA9881 /* popupAddFormOrgan.swift */,
+				95546DD9281878CC00992CC8 /* viewAppointment.swift */,
+				954A24DC281DC70D001EE3BE /* confirmAppointmentPopup.swift */,
+			);
+			path = HAppointments;
+			sourceTree = "<group>";
+		};
+		B9BAC6E8280E0C8B001489A1 /* AfterDeath */ = {
+			isa = PBXGroup;
+			children = (
+				9572140D28146B9900E46AEE /* AfterDeathDonor.swift */,
+				B9BAC6E9280E0CDF001489A1 /* AfterDeathODFirstController.swift */,
+				B94CB967280EB8AF0088470D /* AfterDeathODSecondController.swift */,
+				B94CB969280EBE160088470D /* AfterDeathOrganSelection.swift */,
+			);
+			path = AfterDeath;
 			sourceTree = "<group>";
 		};
 		B9CC6E8C27E147460005C160 /* Home */ = {
@@ -267,8 +601,13 @@
 		B9CC6E8D27E147630005C160 /* VBloodDonation */ = {
 			isa = PBXGroup;
 			children = (
+				8DE28D6D2821AF9800B54BE6 /* BloodDonationQuestionsViewController.swift */,
 				B97A380127BA9EA000718079 /* BloodDonationViewController.swift */,
 				D195443927D499C700B03DFF /* bloodChartViewController.swift */,
+				B9BD3878282209450006219F /* ConfirmBloodAppointmentPopUp.swift */,
+				B9BD387A282209690006219F /* BloodThankYouPopup.swift */,
+				B9BD387E28220A170006219F /* BloodAppointmentsVC.swift */,
+				B9BD388028220B620006219F /* SelectBDAppointment.swift */,
 			);
 			path = VBloodDonation;
 			sourceTree = "<group>";
@@ -305,6 +644,8 @@
 			children = (
 				95062D9A27CADE1300D63911 /* HospitalProfileViewController.swift */,
 				95062D9B27CADE1300D63911 /* VolunteerProfileViewController.swift */,
+				958E17DE28261EF700F63F0E /* HProfileSuccessPopup.swift */,
+				95C35DC4282620C0000DC4BC /* VProfileSuccessPopup.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -322,15 +663,25 @@
 			isa = PBXGroup;
 			children = (
 				B9DA61D927C10FCC00359487 /* LocationManger.swift */,
+				B96EABA4281DD919004AD51E /* AppointmentManager.swift */,
+				B9BD387C282209C60006219F /* BloodAppointmentModel.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		D19B1B5727E9629000CB3FFA /* VBloodApp */ = {
+			isa = PBXGroup;
+			children = (
+				D19B1B5827E962BC00CB3FFA /* VolunteerBloodAppointmentsViewController.swift */,
+			);
+			path = VBloodApp;
 			sourceTree = "<group>";
 		};
 		FB3A4FC32329E4399DABC3B5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				5B4D2E1AFA97FD137C0F82F9 /* Pods-Yumn.debug.xcconfig */,
-				7C9CC10025196FAD7E195DFD /* Pods-Yumn.release.xcconfig */,
+				3C415697689A51A6B561F2AA /* Pods-Yumn.debug.xcconfig */,
+				570A05FF106CAA64CA50BB4E /* Pods-Yumn.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -342,11 +693,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 95785069279E1918004F3D8F /* Build configuration list for PBXNativeTarget "Yumn" */;
 			buildPhases = (
-				2BE4FB83BBEE61C5254D01F3 /* [CP] Check Pods Manifest.lock */,
+				0853D046ED7B23D7791D5FB4 /* [CP] Check Pods Manifest.lock */,
 				95785051279E1917004F3D8F /* Sources */,
 				95785052279E1917004F3D8F /* Frameworks */,
 				95785053279E1917004F3D8F /* Resources */,
-				EB4BAA5B8B1A8F91736EDC62 /* [CP] Embed Pods Frameworks */,
+				033AC5CB9ED73C114B835E10 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -395,17 +746,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D195444E27D49AF600B03DFF /* bloodTypeCell.xib in Resources */,
+				D19B1B4D27E95F1900CB3FFA /* currentBldAppCell.xib in Resources */,
+				8DE28D6A2821A71100B54BE6 /* QRCodeTableViewCell.xib in Resources */,
 				B9419DFD27C52D9C00962A1B /* HospitalCellTableViewCell.xib in Resources */,
 				95785065279E1918004F3D8F /* LaunchScreen.storyboard in Resources */,
 				D195445827D49B4800B03DFF /* charts.storyboard in Resources */,
 				95062D9827CADC0500D63911 /* Tajawal-Regular.ttf in Resources */,
 				95785062279E1918004F3D8F /* Assets.xcassets in Resources */,
+				B9EC91E6282616CC00BC0697 /* organCell.xib in Resources */,
 				95785060279E1917004F3D8F /* Main.storyboard in Resources */,
 				95062D9727CADC0500D63911 /* Tajawal-Medium.ttf in Resources */,
 				95062D9627CADC0500D63911 /* Tajawal-Light.ttf in Resources */,
+				B9AC663E281B2EF20013301B /* acceptedApplicantTableViewCell.xib in Resources */,
 				95062D9927CADC0500D63911 /* Tajawal-Bold.ttf in Resources */,
-				D195445227D49B1600B03DFF /* organCell.xib in Resources */,
+				B9AC6634281B1CB50013301B /* viewOldVolunteerOppTableViewCell.xib in Resources */,
+				8DE28D702821CA9300B54BE6 /* grey.gif in Resources */,
+				D19B1B5127E95F2200CB3FFA /* oldBloodAppTableViewCell.xib in Resources */,
+				8DE28D662821A6FF00B54BE6 /* StoreCell.xib in Resources */,
+				B9AC663A281B2EBC0013301B /* currentApplicantTableViewCell.xib in Resources */,
+				95CCFF852823185C00A0016C /* bloodTypeCell.xib in Resources */,
+				B9AC6630281B1C370013301B /* viewCurrentVolunteerOppTableViewCell.xib in Resources */,
 				8D7F152527D25EF200E1EB1A /* yumnLoading.gif in Resources */,
 				B9DA61CE27C10C2900359487 /* GoogleService-Info.plist in Resources */,
 			);
@@ -414,7 +774,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2BE4FB83BBEE61C5254D01F3 /* [CP] Check Pods Manifest.lock */ = {
+		033AC5CB9ED73C114B835E10 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Yumn/Pods-Yumn-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Yumn/Pods-Yumn-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Yumn/Pods-Yumn-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0853D046ED7B23D7791D5FB4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -436,23 +813,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EB4BAA5B8B1A8F91736EDC62 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Yumn/Pods-Yumn-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Yumn/Pods-Yumn-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Yumn/Pods-Yumn-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -460,43 +820,127 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				959A52CD27E88883002244A0 /* applyPopup.swift in Sources */,
+				95EED9CD27E682DB009AFDAC /* VolunteeringOpp.swift in Sources */,
+				8DE28D602821A65800B54BE6 /* QRCodeViewController.swift in Sources */,
 				D195443A27D499C700B03DFF /* bloodChartViewController.swift in Sources */,
+				B91DD29427E9976200BA9881 /* PopupAddForm.swift in Sources */,
+				B99C272A281C888200EAC439 /* EditAppointment.swift in Sources */,
 				D195444227D49A1700B03DFF /* bloodShortage.swift in Sources */,
+				8DE28D6E2821AF9800B54BE6 /* BloodDonationQuestionsViewController.swift in Sources */,
+				B96EABA5281DD919004AD51E /* AppointmentManager.swift in Sources */,
+				95EED9CB27E6602C009AFDAC /* VOCollectionViewCell.swift in Sources */,
+				B94CB968280EB8B00088470D /* AfterDeathODSecondController.swift in Sources */,
+				B9AC6640281B582A0013301B /* FutureAppointmentsVC.swift in Sources */,
 				D195443627D4998F00B03DFF /* bloodShortageViewController.swift in Sources */,
+				B91DD29827E9BA9200BA9881 /* popupAddFormOrgan.swift in Sources */,
 				D195444827D49A3900B03DFF /* totalOrgansShortage.swift in Sources */,
+				B9BD387D282209C60006219F /* BloodAppointmentModel.swift in Sources */,
+				B94CB96A280EBE160088470D /* AfterDeathOrganSelection.swift in Sources */,
 				B9503D8827BAE4E500E312B8 /* CustomSegmentedControl.swift in Sources */,
+				8DE28D6C2821A71800B54BE6 /* QRCodeTableViewCell.swift in Sources */,
 				D195444627D49A2F00B03DFF /* totalBloodShortage.swift in Sources */,
+				9536DDFA2818EBF200A0195C /* appointmentCollectionCell.swift in Sources */,
 				D195444427D49A2400B03DFF /* organShortage.swift in Sources */,
+				B9DDAE8C281753300001149C /* SelectODAppointment.swift in Sources */,
+				B9BD388128220B620006219F /* SelectBDAppointment.swift in Sources */,
+				B9AD3F2A27E2CF81001AB734 /* ManageAppointmentsViewController.swift in Sources */,
+				B9AC66242819E90E0013301B /* VAppointmentsView.swift in Sources */,
+				95546DDA281878CC00992CC8 /* viewAppointment.swift in Sources */,
 				D195444C27D49AA300B03DFF /* components.swift in Sources */,
+				B91DD29227E996CF00BA9881 /* CustomDatePicker.swift in Sources */,
+				B99C2726281C227700EAC439 /* FutureOrganAppointments.swift in Sources */,
+				954F2DB527E80CD200A3DFB1 /* ViewVOCollectionViewCell.swift in Sources */,
+				D19B1B5327E95FCB00CB3FFA /* OrganDonationViewController.swift in Sources */,
+				B9AC662C281B1BA10013301B /* ViewOppOfAVolunteerViewController.swift in Sources */,
+				B9AC6639281B2EBC0013301B /* currentApplicantTableViewCell.swift in Sources */,
+				95A64FCF27E540F80004F830 /* TimePicker.swift in Sources */,
+				8DE28D572821A46E00B54BE6 /* StoreController.swift in Sources */,
 				8D7F152B27D299C100E1EB1A /* constants.swift in Sources */,
+				B9BAC6EA280E0CDF001489A1 /* AfterDeathODFirstController.swift in Sources */,
 				D195443E27D499ED00B03DFF /* customTabBar.swift in Sources */,
 				B9419DFC27C52D9C00962A1B /* HospitalCellTableViewCell.swift in Sources */,
+				9572141028146BC800E46AEE /* DonorCollectionViewCell.swift in Sources */,
 				9578505D279E1917004F3D8F /* VHomeViewController.swift in Sources */,
+				959A52D127E8A41F002244A0 /* editVolunteeringOpp.swift in Sources */,
+				8DE28D682821A70A00B54BE6 /* StoreCell.swift in Sources */,
+				B9AC6636281B2E520013301B /* applicant.swift in Sources */,
+				95C35DC5282620C0000DC4BC /* VProfileSuccessPopup.swift in Sources */,
+				B9B3143F2815FB8400C62981 /* AODHospitalList.swift in Sources */,
+				B99C272C281C98EC00EAC439 /* DeleteAppointment.swift in Sources */,
+				8DE28D5E2821A64C00B54BE6 /* RewardsViewController.swift in Sources */,
+				B99C2724281C226200EAC439 /* OlderOrganAppointments.swift in Sources */,
+				D19B1B4B27E95F1000CB3FFA /* currentBldAppCell.swift in Sources */,
+				B9BD387F28220A170006219F /* BloodAppointmentsVC.swift in Sources */,
+				B9D831C72818BDF40023CBC5 /* ThankYouPopup.swift in Sources */,
+				959A52CB27E87E51002244A0 /* cancelPopup.swift in Sources */,
+				B9533F002811A79E00485482 /* Alive2ndVC.swift in Sources */,
 				D195445027D49AFF00B03DFF /* bloodTypeCell.swift in Sources */,
+				8DE28D532821A45E00B54BE6 /* QRController.swift in Sources */,
+				B91DD29027E9965F00BA9881 /* Appointment.swift in Sources */,
 				95062D9C27CADE1300D63911 /* HospitalProfileViewController.swift in Sources */,
+				B9DDAE9028188D9B0001149C /* ConfirmAppointmentPopUp.swift in Sources */,
+				958E17DF28261EF700F63F0E /* HProfileSuccessPopup.swift in Sources */,
 				B9C7969527C7A83A006A78A3 /* TabBarController.swift in Sources */,
 				95062D9F27CADE9E00D63911 /* ConvertingColors.swift in Sources */,
 				D195443427D4996700B03DFF /* ViewController.swift in Sources */,
+				B975979C28195D9300AD2C93 /* Donor.swift in Sources */,
+				B96EABA7281DEEB7004AD51E /* CannotDonatePopup.swift in Sources */,
+				B9BD387B282209690006219F /* BloodThankYouPopup.swift in Sources */,
+				B91DD28E27E995F200BA9881 /* CalenderAndAppointments.swift in Sources */,
+				B9DDAE8A281742A80001149C /* Alive4thVC.swift in Sources */,
+				B9533EFC2810D23000485482 /* Alive1stVC.swift in Sources */,
+				B9AD3F3027E335B3001AB734 /* DateValue.swift in Sources */,
 				D195443C27D499D900B03DFF /* organsChartVC.swift in Sources */,
+				95531DC727E869E30029B490 /* addPopup.swift in Sources */,
+				9520693927E3A5D100D5DC11 /* addVolunteeringOpp.swift in Sources */,
+				B9B3143B2815BAB000C62981 /* AODInstructions.swift in Sources */,
+				9572140E28146B9900E46AEE /* AfterDeathDonor.swift in Sources */,
 				95C5967727D75A8D00A5572C /* styles.swift in Sources */,
+				8DE28D592821A4A900B54BE6 /* Store.swift in Sources */,
+				8DE28D642821A66700B54BE6 /* AllStoresViewController.swift in Sources */,
+				B9B3143D2815F82200C62981 /* Alive3rdVC.swift in Sources */,
 				B9570C2F27DFA828000D1B8B /* MaterialSegmentedControl.swift in Sources */,
 				D195443827D499A200B03DFF /* organShortageVC.swift in Sources */,
+				D19B1B4727E95ED400CB3FFA /* OpenMapDirections.swift in Sources */,
+				B9AC6633281B1CB50013301B /* viewOldVolunteerOppTableViewCell.swift in Sources */,
+				B9533EFE2810D49E00485482 /* ChooseOrganButton.swift in Sources */,
 				B9DA61DA27C10FCC00359487 /* LocationManger.swift in Sources */,
+				D1627E742822EE84003EB949 /* ViewApplicantsViewController.swift in Sources */,
+				B9AC662F281B1C370013301B /* viewCurrentVolunteerOppTableViewCell.swift in Sources */,
+				9520693C27E3A5FF00D5DC11 /* VolunteeringOpportunities.swift in Sources */,
 				8D7F152727D25F3B00E1EB1A /* SignInViewController.swift in Sources */,
 				B97A380227BA9EA000718079 /* BloodDonationViewController.swift in Sources */,
+				D19B1B4927E95EE500CB3FFA /* BloodAppointment.swift in Sources */,
+				B9AC6626281AF4AC0013301B /* OlderAppointmentsVC.swift in Sources */,
 				B9DA61DC27C1100B00359487 /* Location.swift in Sources */,
+				954F2DB327E80C4100A3DFB1 /* ViewVolunteeringOpportunities.swift in Sources */,
+				B9BD3879282209470006219F /* ConfirmBloodAppointmentPopUp.swift in Sources */,
 				8D7F152227D25DD200E1EB1A /* GIfCode.swift in Sources */,
 				95C5967927D767FE00A5572C /* VSignUpViewController.swift in Sources */,
+				D19B1B4F27E95F1D00CB3FFA /* oldBloodAppTableViewCell.swift in Sources */,
+				8D0E9A1F27E5339C00890AC0 /* BloodDonationInformationViewController.swift in Sources */,
+				8DE28D622821A66000B54BE6 /* AllQRCodesViewController.swift in Sources */,
 				D195445427D49B2100B03DFF /* organCell.swift in Sources */,
 				B952BB1227C641B80049D81B /* HospitalsController.swift in Sources */,
 				B930F86827B85D5F00E70860 /* RoundedView.swift in Sources */,
+				B9AC6628281B1AE80013301B /* volunteerVOpp.swift in Sources */,
+				955DD1D72814FAF600CC0725 /* Donor.swift in Sources */,
 				8D7F152D27D299F300E1EB1A /* HomeViewController.swift in Sources */,
 				D195444027D499FA00B03DFF /* tabBarVC.swift in Sources */,
 				B97A37FE27B9D32A00718079 /* RoundedShadowedView.swift in Sources */,
+				954A24DD281DC70D001EE3BE /* confirmAppointmentPopup.swift in Sources */,
 				8D7F152F27D29A6500E1EB1A /* HospitalHomeViewController.swift in Sources */,
+				B9AC663D281B2EF20013301B /* acceptedApplicantTableViewCell.swift in Sources */,
 				95062D9D27CADE1300D63911 /* VolunteerProfileViewController.swift in Sources */,
+				B91DD29627E998C000BA9881 /* CustomPopUpView.swift in Sources */,
+				8DE28D5B2821A4D100B54BE6 /* QRCode.swift in Sources */,
+				952C5D1227E4CF4800DF6537 /* DateTimePicker.swift in Sources */,
+				95B7FCCF27E8D53D00865258 /* updatePopoup.swift in Sources */,
 				95785059279E1917004F3D8F /* AppDelegate.swift in Sources */,
 				9578505B279E1917004F3D8F /* SceneDelegate.swift in Sources */,
+				D19B1B5927E962BC00CB3FFA /* VolunteerBloodAppointmentsViewController.swift in Sources */,
+				B9AC66222819E7880013301B /* VViewAppointmentsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,14 +1084,14 @@
 		};
 		9578506A279E1918004F3D8F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B4D2E1AFA97FD137C0F82F9 /* Pods-Yumn.debug.xcconfig */;
+			baseConfigurationReference = 3C415697689A51A6B561F2AA /* Pods-Yumn.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = PA99D4Y3ZA;
+				DEVELOPMENT_TEAM = 94UUPGX482;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Yumn/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "يُمْن";
@@ -657,13 +1101,14 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Nouf.Yumn;
+				PRODUCT_BUNDLE_IDENTIFIER = teeam.Yumn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -674,14 +1119,14 @@
 		};
 		9578506B279E1918004F3D8F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7C9CC10025196FAD7E195DFD /* Pods-Yumn.release.xcconfig */;
+			baseConfigurationReference = 570A05FF106CAA64CA50BB4E /* Pods-Yumn.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = PA99D4Y3ZA;
+				DEVELOPMENT_TEAM = 94UUPGX482;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Yumn/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "يُمْن";
@@ -691,13 +1136,14 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Nouf.Yumn;
+				PRODUCT_BUNDLE_IDENTIFIER = teeam.Yumn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;

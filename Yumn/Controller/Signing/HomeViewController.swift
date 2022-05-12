@@ -13,6 +13,9 @@ import Firebase
 class HomeViewController: UIViewController {
     @IBOutlet weak var logOutButton: UIButton!
     
+   
+    
+    
     override func viewDidLoad() {
         
         let db = Firestore.firestore()
@@ -29,7 +32,7 @@ class HomeViewController: UIViewController {
                     let mssg = "حياك الله " + name  + "، تو ما نور يُمْن"
                     
                     
-                    self.showToast(message: mssg, font: .systemFont(ofSize: 20), image: (UIImage(named: "yumn") ?? UIImage(named: "")! ))}
+                    self.showToast2(message: mssg, font: .systemFont(ofSize: 20), image: (UIImage(named: "yumn") ?? UIImage(named: "")! ))}
 
                 
                 print (Constants.Globals.firstNameFromdb)
@@ -54,29 +57,9 @@ class HomeViewController: UIViewController {
     }
     
     
-    @IBAction func onPressedLogOut(_ sender: Any) {
-        do
-            {
-        try Auth.auth().signOut()
-                transitionToLogIn()
-                
-                
-                // add a flushbar
-               
-            }
-            catch let error as NSError
-            {
-                print(error.localizedDescription)
-                
-                // Show pop up message
-            }
-
-        
-        
-        
-    }
     
     
+        
     
     func transitionToLogIn(){
         
@@ -133,3 +116,57 @@ class HomeViewController: UIViewController {
 }
 
 }
+
+
+extension UIViewController {
+
+    func showToast2(message : String, font: UIFont, image: UIImage){
+
+    let toastLabel = UILabel(frame: CGRect(x: 5, y: 45, width: self.view.frame.size.width-10, height: 70))
+        
+
+        toastLabel.backgroundColor = UIColor.gray.withAlphaComponent(1)
+        toastLabel.textColor = UIColor.white
+        toastLabel.font = font
+        toastLabel.textAlignment = .center;
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10;
+        toastLabel.clipsToBounds  =  true
+        self.view.addSubview(toastLabel)
+   
+
+        
+    let imageView = UIImageView(frame: CGRect(x: self.view.frame.size.width-70, y: 10, width: 45, height: 45))
+        imageView.layer.masksToBounds = true
+
+    imageView.image = image
+        imageView.layer.cornerRadius = 10
+        
+ 
+
+        toastLabel.addSubview(imageView)
+        
+        self.navigationController?.view.addSubview(toastLabel)
+
+    UIView.animate(withDuration: 10, delay: 5, options:
+                    
+                    
+                    .transitionFlipFromTop, animations: {
+
+                        
+         toastLabel.alpha = 0.0
+
+    }, completion: {(isCompleted) in
+        
+        
+
+        toastLabel.removeFromSuperview()
+
+
+
+    })
+}
+    
+}
+

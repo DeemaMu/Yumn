@@ -174,6 +174,7 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
         hideErrorMSGs()
         
         signUpButton.layer.cornerRadius = 45
+        loadingGif.layer.cornerRadius = 30
         signUpButton.layer.backgroundColor = UIColor(red: 56/225, green: 97/225, blue: 93/225, alpha: 1).cgColor
         
         
@@ -1165,7 +1166,7 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
                     // Volunteer collection
                     db.collection("volunteer").document(result!.user.uid).setData([
                         "firstName":Constants.Globals.firstName,
-                        "lastName": Constants.Globals.firstName,
+                        "lastName": Constants.Globals.lastName,
                         "nationalID": Constants.Globals.id,
                         "email": Constants.Globals.email,
                         "phone": Constants.Globals.phone,
@@ -1223,7 +1224,9 @@ class VSignUpViewController: UIViewController, UITextFieldDelegate {
     func transitionToHome(){
         
         // I have to check if the user is volunteer or hospital, in the log in
-        let volunteerHomeViewController =  storyboard?.instantiateViewController(identifier: Constants.Storyboard.volunteerHomeViewController) as? TabBarController
+        print ("transitioning to v homeuntee")
+        // I have to check if the user is volunteer or hospital, in the log in
+        let volunteerHomeViewController =  storyboard?.instantiateViewController(identifier: Constants.Storyboard.volunteerHomeViewController) as? customTabBarVC
         
         view.window?.rootViewController = volunteerHomeViewController
         view.window?.makeKeyAndVisible()

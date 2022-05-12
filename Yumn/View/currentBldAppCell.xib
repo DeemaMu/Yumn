@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Tajawal-Regular.ttf">
+            <string>Tajawal-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="currentBACell" rowHeight="126" id="KGk-i7-Jjw" customClass="currentBldAppCell" customModule="Yumn" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="355" height="165"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="355" height="165"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbq-c9-oxS" customClass="RoundedShadowedView" customModule="Yumn" customModuleProvider="target">
+                        <rect key="frame" x="7" y="14" width="341" height="137"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="topRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="مركز التبرع بالدم - مستشفى دلة" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" showsExpansionTextWhenTruncated="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0qa-oA-dD4">
+                                <rect key="frame" x="52" y="7" width="281" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="281" id="67g-j3-XrW"/>
+                                    <constraint firstAttribute="height" constant="48" id="EZN-0v-HC8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="17"/>
+                                <color key="textColor" name="mainDark"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c16-NZ-AB3">
+                                <rect key="frame" x="8" y="9" width="36" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" imagePlacement="trailing">
+                                    <imageReference key="image" image="x.circle.fill" catalog="system" symbolScale="large" renderingMode="hierarchical">
+                                        <hierarchicalColors>
+                                            <color systemColor="systemBackgroundColor"/>
+                                            <color systemColor="systemBackgroundColor"/>
+                                            <color name="mainDark"/>
+                                        </hierarchicalColors>
+                                    </imageReference>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="16" scale="medium" weight="medium"/>
+                                    <attributedString key="attributedTitle">
+                                        <fragment content=".">
+                                            <attributes>
+                                                <font key="NSFont" metaFont="smallSystem"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="bottom" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="v2B-JF-M1v">
+                                <rect key="frame" x="264.5" y="70" width="65.5" height="16"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2022/5/1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46Q-bE-LxE">
+                                        <rect key="frame" x="0.0" y="4" width="42.5" height="12"/>
+                                        <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="12"/>
+                                        <color key="textColor" name="mainDark"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appCalendar" translatesAutoresizingMaskIntoConstraints="NO" id="pbT-lG-GbD">
+                                        <rect key="frame" x="49.5" y="0.0" width="16" height="16"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="bottom" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Vtf-M9-maN">
+                                <rect key="frame" x="132" y="70" width="72" height="16"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="١٢:٥٠ مساءً" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3jE-1o-eOt">
+                                        <rect key="frame" x="0.0" y="4" width="50" height="12"/>
+                                        <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="12"/>
+                                        <color key="textColor" name="mainDark"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time" translatesAutoresizingMaskIntoConstraints="NO" id="yyr-Y9-gyr">
+                                        <rect key="frame" x="56" y="0.0" width="16" height="16"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NPX-cg-7rQ">
+                                <rect key="frame" x="159" y="100" width="176" height="24"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Khq-ML-WAz">
+                                        <rect key="frame" x="76.5" y="0.0" width="97.5" height="24"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="النخيل - الرياض" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q8b-Bt-ShU">
+                                                <rect key="frame" x="0.0" y="6" width="74.5" height="12"/>
+                                                <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="12"/>
+                                                <color key="textColor" name="mainDark"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="LH3-At-a97">
+                                                <rect key="frame" x="76.5" y="0.0" width="21" height="24"/>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHy-wP-Gpn">
+                                        <rect key="frame" x="48" y="0.0" width="126" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="."/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="176" id="3Fo-Ro-a05"/>
+                                    <constraint firstAttribute="trailing" secondItem="Khq-ML-WAz" secondAttribute="trailing" constant="2" id="YHd-Zg-G7b"/>
+                                    <constraint firstAttribute="bottom" secondItem="Khq-ML-WAz" secondAttribute="bottom" id="lS7-LE-hCe"/>
+                                    <constraint firstAttribute="height" constant="24" id="s7S-SU-HP9"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ur-Ig-5Gx">
+                                <rect key="frame" x="17" y="94" width="82" height="30"/>
+                                <color key="backgroundColor" red="0.21960784310000001" green="0.3803921569" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="EeH-J1-aO9"/>
+                                    <constraint firstAttribute="width" constant="82" id="aJV-mE-I4E"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="12"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="تعديل"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="NPX-cg-7rQ" secondAttribute="trailing" constant="6" id="63g-sP-eJf"/>
+                            <constraint firstAttribute="trailing" secondItem="0qa-oA-dD4" secondAttribute="trailing" constant="8" id="9xq-NH-JPs"/>
+                            <constraint firstAttribute="bottom" secondItem="NPX-cg-7rQ" secondAttribute="bottom" constant="13" id="CN3-VS-4cZ"/>
+                            <constraint firstAttribute="bottom" secondItem="6ur-Ig-5Gx" secondAttribute="bottom" constant="13" id="Hty-cz-Vnw"/>
+                            <constraint firstAttribute="trailing" secondItem="v2B-JF-M1v" secondAttribute="trailing" constant="11" id="RQu-oN-gKb"/>
+                            <constraint firstItem="Vtf-M9-maN" firstAttribute="top" secondItem="tbq-c9-oxS" secondAttribute="top" constant="70" id="TY4-pI-5yR"/>
+                            <constraint firstItem="Vtf-M9-maN" firstAttribute="leading" secondItem="tbq-c9-oxS" secondAttribute="leading" constant="132" id="Wbw-zu-mRg"/>
+                            <constraint firstItem="6ur-Ig-5Gx" firstAttribute="leading" secondItem="tbq-c9-oxS" secondAttribute="leading" constant="17" id="eB2-ry-Kbt"/>
+                            <constraint firstItem="v2B-JF-M1v" firstAttribute="top" secondItem="tbq-c9-oxS" secondAttribute="top" constant="70" id="fwG-a7-Teh"/>
+                            <constraint firstItem="0qa-oA-dD4" firstAttribute="top" secondItem="tbq-c9-oxS" secondAttribute="top" constant="7" id="zMf-dh-Vwu"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusV">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidthV">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                <size key="value" width="0.0" height="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                <real key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                <color key="value" red="0.82352941180000006" green="0.81960784310000001" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="tbq-c9-oxS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="aab-Pp-Ww9"/>
+                    <constraint firstItem="tbq-c9-oxS" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="dxa-gM-evN"/>
+                    <constraint firstAttribute="trailing" secondItem="tbq-c9-oxS" secondAttribute="trailing" constant="7" id="kQD-X0-wCs"/>
+                    <constraint firstItem="tbq-c9-oxS" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="qxq-Kg-gnj"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="cancelAppBtn" destination="c16-NZ-AB3" id="EhM-oj-q4e"/>
+                <outlet property="cityAndArea" destination="Q8b-Bt-ShU" id="ElV-6x-zer"/>
+                <outlet property="date" destination="46Q-bE-LxE" id="CB3-i9-cVE"/>
+                <outlet property="editAppBtn" destination="6ur-Ig-5Gx" id="TCC-Cz-V5J"/>
+                <outlet property="hospitalName" destination="0qa-oA-dD4" id="ty5-Xo-h59"/>
+                <outlet property="locBtn" destination="KHy-wP-Gpn" id="zHI-Fx-z0l"/>
+                <outlet property="locView" destination="NPX-cg-7rQ" id="9oR-gn-QvF"/>
+                <outlet property="time" destination="3jE-1o-eOt" id="Ie3-jm-rxx"/>
+            </connections>
+            <point key="canvasLocation" x="161.59420289855075" y="157.70089285714286"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="appCalendar" width="16" height="16"/>
+        <image name="location" width="21" height="24"/>
+        <image name="time" width="16" height="16"/>
+        <image name="x.circle.fill" catalog="system" width="128" height="121"/>
+        <namedColor name="mainDark">
+            <color red="0.2199999988079071" green="0.37999999523162842" blue="0.36500000953674316" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

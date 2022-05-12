@@ -281,7 +281,7 @@ class HospitalProfileViewController: UIViewController, UITextFieldDelegate {
         
             // save data
             docRef.updateData(["name": hospitalTextField.text!,
-                            "phone": Int(phoneTextField.text!)!,
+                            "phone": phoneTextField.text!,
                            ]){ error in
 
                 if error != nil {
@@ -295,34 +295,8 @@ class HospitalProfileViewController: UIViewController, UITextFieldDelegate {
           // No user is signed in.
           print("No user")
         }
-        
-        let color = blue
-        let white = UIColor.white
-        if let whiteColor = white.rgb(){
-            if let blueColor = color.rgb() {
-                
-                let timeoutAction: SCLAlertView.SCLTimeoutConfiguration.ActionType = {
-                    self.navigationController?.popViewController(animated: true)
-                    self.dismiss(animated: true, completion: nil)
-                        }
-                
-                let alertView = SCLAlertView()
-                
-//                alertView.addButton("تم", backgroundColor: blue, textColor: UIColor.white, showTimeout: .none) {
-//                    self.navigationController?.popViewController(animated: true)
-//                    self.dismiss(animated: true, completion: nil)
-//                }
-//
-//                alertView.showCustom("تم!", subTitle: "تم حفظ التغييرات بنجاح", color: blue, icon: UIImage(named: "done")!)
-//
-                
-                alertView.showSuccess("تم!", subTitle: "تم حفظ التغييرات بنجاح", closeButtonTitle: "تم", timeout: .init(timeoutValue: 10, timeoutAction: timeoutAction), colorStyle: UInt(blueColor), colorTextButton: UInt(whiteColor), circleIconImage: UIImage(named: "done"), animationStyle: SCLAnimationStyle.bottomToTop)
-        
-                
-            } else {
-                print("conversion failed")
-            }
-        }
+        // Show success message
+        performSegue(withIdentifier: "hProfileUpdated", sender: self)
        
     }
 }

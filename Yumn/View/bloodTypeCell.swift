@@ -10,7 +10,7 @@ import UIKit
 //@IBDesignable
 
 class bloodTypeCell: UITableViewCell {
-
+    
     
     @IBOutlet weak var bloodTypeLbl: UILabel!
     @IBOutlet weak var bloodTypeValue: UILabel!
@@ -21,20 +21,20 @@ class bloodTypeCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        bloodTypeLbl.textAlignment = .center
+        decreaseBtn.layer.cornerRadius = decreaseBtn.frame.width/2
+        decreaseBtn.layer.masksToBounds = true
         
-         decreaseBtn.layer.cornerRadius = decreaseBtn.frame.width/2
-         decreaseBtn.layer.masksToBounds = true
-        
-         increaseBtn.layer.cornerRadius = increaseBtn.frame.width/2
-         increaseBtn.layer.masksToBounds = true
+        increaseBtn.layer.cornerRadius = increaseBtn.frame.width/2
+        increaseBtn.layer.masksToBounds = true
         
         
         
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
